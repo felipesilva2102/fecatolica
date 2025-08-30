@@ -5,6 +5,9 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
+# Variável para a porta dinâmica
+ENV PORT 8080
+
 #### Etapa 2: WildFly + Java 20
 FROM eclipse-temurin:20-jdk
 WORKDIR /opt/jboss
@@ -16,8 +19,8 @@ RUN curl -L https://github.com/wildfly/wildfly/releases/download/36.0.1.Final/wi
 # Copia a aplicação para o diretório de deployments
 COPY --from=build /app/target/*.war /opt/jboss/wildfly/standalone/deployments/ROOT.war
 
-# Exposição da porta
-EXPOSE 8080
+# Exponha a porta que o Render irá usar
+EXPOSE $PORT
 
-# Comando padrão para rodar o WildFly
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
+# Inicie o WildFly escutando na porta dinâmica
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-Djboss.http.port=$PORT"]
