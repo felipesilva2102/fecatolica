@@ -23,7 +23,6 @@ public class KeepAliveScheduler {
                     .GET()
                     .build();
             client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Ping enviado (EJB)!");
         } catch (Exception e) {
             e.printStackTrace();
         }
