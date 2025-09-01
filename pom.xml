@@ -25,6 +25,36 @@
             <version>14.0.10</version>
             <classifier>jakarta</classifier>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>au.com.onegeek</groupId>
+            <artifactId>respite-core_2.10</artifactId>
+            <version>0.3.3</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-json_2.10</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-iteratees_2.10</artifactId>
+            <version>2.3.5</version>
+        </dependency>
+
     </dependencies>
     
     <build>
@@ -65,4 +95,12 @@
             </plugin>
         </plugins>
     </build>
+    
+    <repositories>
+        <repository>
+            <id>typesafe-releases</id>
+            <url>https://repo.typesafe.com/typesafe/releases/</url>
+        </repository>
+    </repositories>
+
 </project>

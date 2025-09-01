@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Liturgia</title>
+    </h:head>
+    <h:body>
+        <h:form id="formLiturgia">
+
+            <p:panel header="Selecione a Liturgia">
+                <p:selectOneMenu value="#{liturgiaBean.liturgiaSelecionada}" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItems value="#{liturgiaBean.liturgias}" var="l"
+                                   itemLabel="#{l.titulo}" itemValue="#{l}" />
+                    <p:ajax listener="#{liturgiaBean.selecionarLiturgia(liturgiaBean.liturgiaSelecionada)}" update="tabsLiturgia"/>
+                </p:selectOneMenu>
+            </p:panel>
+
+            <p:tabView id="tabsLiturgia" rendered="#{not empty liturgiaBean.liturgiaSelecionada}">
+                <p:tab title="Orações">
+                    <h:outputText value="Coleta: #{liturgiaBean.liturgiaSelecionada.oracoes.coleta}" escape="false"/><br/>
+                    <h:outputText value="Oferendas: #{liturgiaBean.liturgiaSelecionada.oracoes.oferendas}" escape="false"/><br/>
+                    <h:outputText value="Comunhão: #{liturgiaBean.liturgiaSelecionada.oracoes.comunhao}" escape="false"/><br/>
+
+                    <ui:repeat var="extra" value="#{liturgiaBean.liturgiaSelecionada.oracoes.extras}">
+                        <h3>#{extra.titulo}</h3>
+                        <h:outputText value="#{extra.texto}" escape="false"/><br/>
+                    </ui:repeat>
+                </p:tab>
+
+                <p:tab title="Leituras">
+                    <h3>Primeira Leitura</h3>
+                    <ui:repeat var="l" value="#{liturgiaBean.liturgiaSelecionada.leituras.primeiraLeitura}">
+                        <strong>#{l.titulo} (#{l.referencia})</strong>
+                        <p:outputPanel>
+                            <h:outputText value="#{l.texto}" escape="false"/>
+                        </p:outputPanel>
+                    </ui:repeat>
+
+                    <h3>Segunda Leitura</h3>
+                    <ui:repeat var="l" value="#{liturgiaBean.liturgiaSelecionada.leituras.segundaLeitura}">
+                        <strong>#{l.titulo} (#{l.referencia})</strong>
+                        <p:outputPanel>
+                            <h:outputText value="#{l.texto}" escape="false"/>
+                        </p:outputPanel>
+                    </ui:repeat>
+
+                    <h3>Evangelho</h3>
+                    <ui:repeat var="l" value="#{liturgiaBean.liturgiaSelecionada.leituras.evangelho}">
+                        <strong>#{l.titulo} (#{l.referencia})</strong>
+                        <p:outputPanel>
+                            <h:outputText value="#{l.texto}" escape="false"/>
+                        </p:outputPanel>
+                    </ui:repeat>
+                </p:tab>
+
+                <p:tab title="Salmos">
+                    <ui:repeat var="s" value="#{liturgiaBean.liturgiaSelecionada.leituras.salmos}">
+                        <strong>#{s.referencia}</strong><br/>
+                        <h:outputText value="#{s.refrao}" escape="false"/><br/>
+                        <h:outputText value="#{s.texto}" escape="false"/><br/><br/>
+                    </ui:repeat>
+                </p:tab>
+
+            </p:tabView>
+        </h:form>
+    </h:body>
+</html>
