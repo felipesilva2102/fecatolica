@@ -1,5 +1,5 @@
 # Etapa 1: Build do WAR usando Maven
-FROM maven:3.9.2-eclipse-temurin-21 AS build
+FROM maven:3.9.8-eclipse-temurin-21 AS build
 
 # Diretório de trabalho dentro do container
 WORKDIR /app
