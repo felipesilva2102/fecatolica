@@ -4,37 +4,42 @@
  */
 package com.mycompany.santo.terco.entity;
 
-import jakarta.persistence.CascadeType;
+import com.mycompany.santo.terco.DTO.Antifonas;
+import com.mycompany.santo.terco.DTO.Leituras;
+import com.mycompany.santo.terco.DTO.Oracoes;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.time.LocalDate;
-import java.util.List;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ *
+ * @author Felipe
+ */
+@Entity
 @Getter
 @Setter
-@Entity
 public class Liturgia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate data;
-    private String titulo;  // "Sábado Santo - Vigília Pascal"
-    private String cor;     // "Branco"
+    private String data;
+    private String liturgia;
+    private String cor;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Oracoes> oracoes;
+    @Transient
+    private Oracoes oracoes;  // Não será persistido no banco
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Leitura> leituras;
+    @Transient
+    private Leituras leituras; // Também não será persistido
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Antifonas> antifonas;
+    @Transient
+    private Antifonas antifonas; // Também não será persistido
 
 }
+
