@@ -13,28 +13,80 @@
                 margin: auto;
                 margin-top: 20px;
             }
+
+            /* Títulos */
             .section-title {
                 font-weight: bold;
                 margin-top: 10px;
                 margin-bottom: 5px;
             }
+
+            /* Controles superiores */
             .top-controls {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 20px;
                 flex-wrap: wrap;
+                gap: 10px;
             }
+
+            /* --- Responsividade --- */
+            @media screen and (max-width: 992px) {
+                .liturgia-panel {
+                    width: 98%;
+                }
+                .top-controls {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+                .top-controls .ui-calendar,
+                .top-controls .ui-button {
+                    width: 100%;
+                }
+            }
+
             @media screen and (max-width: 768px) {
                 .ui-panel-titlebar {
                     font-size: 1.1em;
+                    text-align: center;
                 }
                 .section-title {
                     font-size: 1em;
                 }
-                .top-controls {
-                    flex-direction: column;
-                    gap: 10px;
+                .liturgia-panel {
+                    padding: 10px;
+                }
+
+                /* PanelGrid: força 1 coluna no mobile */
+                .ui-panelgrid td {
+                    display: block;
+                    width: 100% !important;
+                    box-sizing: border-box;
+                    padding: 6px 0;
+                }
+                .ui-panelgrid .label {
+                    font-weight: bold;
+                    margin-top: 8px;
+                }
+                .ui-panelgrid .value {
+                    margin-bottom: 8px;
+                }
+
+                /* Accordion ocupa toda a largura */
+                .ui-accordion, .ui-accordion .ui-accordion-content {
+                    width: 100% !important;
+                }
+
+                /* Footer mais compacto */
+                #footer {
+                    font-size: 0.9em;
+                    padding: 16px;
+                }
+                #footer a {
+                    display: block;
+                    margin: 6px auto;
+                    text-align: center;
                 }
             }
         </style>
