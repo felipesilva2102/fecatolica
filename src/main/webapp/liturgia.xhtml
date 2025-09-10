@@ -41,15 +41,17 @@
                 <div class="container">
 
                     <div class="titulo">📖 Liturgia do Dia</div>
-                    <div class="top-controls" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <div class="top-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+    <!-- Calendário com largura máxima, mas encolhe em telas menores -->
     <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
-                navigator="true" showButtonPanel="true">
+                navigator="true" showButtonPanel="true" style="flex: 1 1 200px; max-width: 300px;">
         <p:ajax event="dateSelect" 
                 listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" 
                 update="liturgiaPanelWrapper"/>
     </p:calendar>
 
-    <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" icon="pi pi-arrow-left"/>
+    <!-- Botão sempre à direita -->
+    <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" icon="pi pi-arrow-left" style="white-space: nowrap;"/>
 </div>
                     <!-- Informações principais -->
                     <p:panel header="Informações" style="margin-bottom:15px;">
