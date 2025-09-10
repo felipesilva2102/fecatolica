@@ -44,7 +44,7 @@
                     <div class="top-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
     <!-- Calendário com largura máxima, mas encolhe em telas menores -->
     <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
-                navigator="true" showButtonPanel="true" style="flex: 1 1 200px; max-width: 300px;">
+                navigator="true" showButtonPanel="true" style="flex: 1 1 100px; max-width: 300px;">
         <p:ajax event="dateSelect" 
                 listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" 
                 update="liturgiaPanelWrapper"/>
