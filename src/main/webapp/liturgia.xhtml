@@ -41,91 +41,92 @@
                 <div class="container">
 
                     <div class="titulo">📖 Liturgia do Dia</div>
-                    <div class="top-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-    <!-- Calendário com largura máxima, mas encolhe em telas menores -->
-    <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
-                navigator="true" showButtonPanel="true" style="flex: 1 1 100px; max-width: 300px;">
-        <p:ajax event="dateSelect" 
-                listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" 
-                update="liturgiaPanelWrapper"/>
-    </p:calendar>
 
-    <!-- Botão sempre à direita -->
-    <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" icon="pi pi-arrow-left" style="white-space: nowrap;"/>
-</div>
                     <!-- Informações principais -->
                     <p:panel header="Informações" style="margin-bottom:15px;">
+                        <div class="top-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; text-align: center;">
+                            <!-- Calendário com largura máxima, mas encolhe em telas menores -->
+                            <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
+                                        navigator="true" showButtonPanel="true" style="flex: 1 1 100px; max-width: 200px;">
+                                <p:ajax event="dateSelect" 
+                                        listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" 
+                                        update="liturgiaPanelWrapper"/>
+                            </p:calendar>
+
+                            <!-- Botão sempre à direita -->
+                            <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" style="white-space: nowrap;"/>
+                        </div>
                         <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" style="width:100%;">
                             <h:outputText value="Data:" />
-                    <h:outputText value="#{liturgiaBean.liturgia.data}" />
+                            <h:outputText value="#{liturgiaBean.liturgia.data}" />
 
-                    <h:outputText value="Liturgia:" />
-                    <h:outputText value="#{liturgiaBean.liturgia.liturgia}" />
+                            <h:outputText value="Liturgia:" />
+                            <h:outputText value="#{liturgiaBean.liturgia.liturgia}" />
 
-                    <h:outputText value="Cor Litúrgica:" />
-                    <h:outputText value="#{liturgiaBean.liturgia.cor}" />
+                            <h:outputText value="Cor Litúrgica:" />
+                            <h:outputText value="#{liturgiaBean.liturgia.cor}" />
                         </p:panelGrid>
                     </p:panel>
 
                     <!-- Seções com accordion -->
                     <p:accordionPanel multiple="true" style="margin-bottom:15px;">
 
-                    <!-- Orações -->
-                    <p:tab title="Orações">
-                        <p:panelGrid columns="1" style="width:100%">
-                            <h:outputText value="Coleta:" styleClass="section-title"/>
-                            <h:outputText value="#{liturgiaBean.liturgia.oracoes.coleta}" escape="false" />
+                        <!-- Orações -->
+                        <p:tab title="Orações">
+                            <p:panelGrid columns="1" style="width:100%">
+                                <h:outputText value="Coleta:" styleClass="section-title"/>
+                                <h:outputText value="#{liturgiaBean.liturgia.oracoes.coleta}" escape="false" />
 
-                            <h:outputText value="Oferendas:" styleClass="section-title"/>
-                            <h:outputText value="#{liturgiaBean.liturgia.oracoes.oferendas}" escape="false" />
+                                <h:outputText value="Oferendas:" styleClass="section-title"/>
+                                <h:outputText value="#{liturgiaBean.liturgia.oracoes.oferendas}" escape="false" />
 
-                            <h:outputText value="Comunhão:" styleClass="section-title"/>
-                            <h:outputText value="#{liturgiaBean.liturgia.oracoes.comunhao}" escape="false" />
-                        </p:panelGrid>
-                    </p:tab>
+                                <h:outputText value="Comunhão:" styleClass="section-title"/>
+                                <h:outputText value="#{liturgiaBean.liturgia.oracoes.comunhao}" escape="false" />
+                            </p:panelGrid>
+                        </p:tab>
 
-                    <!-- Leituras -->
-                    <p:tab title="Leituras">
-                        <p:panelGrid columns="1" style="width:100%">
-                            <h:outputText value="Primeira Leitura:" styleClass="section-title"/>
-                            <ui:repeat value="#{liturgiaBean.liturgia.leituras.primeiraLeitura}" var="leitura">
-                                <p:panel style="margin-bottom:10px;">
-                                    <h:outputText value="#{leitura.titulo} (#{leitura.referencia})" style="font-weight:bold;"/>
-                                    <h:outputText value="#{leitura.texto}" escape="false"/>
-                                </p:panel>
-                            </ui:repeat>
+                        <!-- Leituras -->
+                        <p:tab title="Leituras">
+                            <p:panelGrid columns="1" style="width:100%">
+                                <h:outputText value="Primeira Leitura:" styleClass="section-title"/>
+                                <ui:repeat value="#{liturgiaBean.liturgia.leituras.primeiraLeitura}" var="leitura">
+                                    <p:panel style="margin-bottom:10px;">
+                                        <h:outputText value="#{leitura.titulo} (#{leitura.referencia})" style="font-weight:bold;"/>
+                                        <h:outputText value="#{leitura.texto}" escape="false"/>
+                                    </p:panel>
+                                </ui:repeat>
 
-                            <h:outputText value="Salmo:" styleClass="section-title"/>
-                            <ui:repeat value="#{liturgiaBean.liturgia.leituras.salmo}" var="salmo">
-                                <p:panel style="margin-bottom:10px;">
-                                    <h:outputText value="#{salmo.referencia}" style="font-weight:bold;"/>
-                                    <h:outputText value="#{salmo.refrao}" style="font-style:italic;"/><br/>
-                                    <h:outputText value="#{salmo.texto}" escape="false"/>
-                                </p:panel>
-                            </ui:repeat>
+                                <h:outputText value="Salmo:" styleClass="section-title"/>
+                                <ui:repeat value="#{liturgiaBean.liturgia.leituras.salmo}" var="salmo">
+                                    <p:panel style="margin-bottom:10px;">
+                                        <h:outputText value="#{salmo.referencia}" style="font-weight:bold;"/>
+                                        <h:outputText value="#{salmo.refrao}" style="font-style:italic;"/><br/>
+                                        <h:outputText value="#{salmo.texto}" escape="false"/>
+                                    </p:panel>
+                                </ui:repeat>
 
-                            <h:outputText value="Evangelho:" styleClass="section-title"/>
-                            <ui:repeat value="#{liturgiaBean.liturgia.leituras.evangelho}" var="evangelho">
-                                <p:panel style="margin-bottom:10px;">
-                                    <h:outputText value="#{evangelho.titulo} (#{evangelho.referencia})" style="font-weight:bold;"/>
-                                    <h:outputText value="#{evangelho.texto}" escape="false"/>
-                                </p:panel>
-                            </ui:repeat>
-                        </p:panelGrid>
-                    </p:tab>
+                                <h:outputText value="Evangelho:" styleClass="section-title"/>
+                                <ui:repeat value="#{liturgiaBean.liturgia.leituras.evangelho}" var="evangelho">
+                                    <p:panel style="margin-bottom:10px;">
+                                        <h:outputText value="#{evangelho.titulo} (#{evangelho.referencia})" style="font-weight:bold;"/>
+                                        <h:outputText value="#{evangelho.texto}" escape="false"/>
+                                    </p:panel>
+                                </ui:repeat>
+                            </p:panelGrid>
+                        </p:tab>
 
-                    <!-- Antífonas -->
-                    <p:tab title="Antífonas">
-                        <p:panelGrid columns="1" style="width:100%">
-                            <h:outputText value="Entrada:" styleClass="section-title"/>
-                            <h:outputText value="#{liturgiaBean.liturgia.antifonas.entrada}" escape="false"/>
+                        <!-- Antífonas -->
+                        <p:tab title="Antífonas">
+                            <p:panelGrid columns="1" style="width:100%">
+                                <h:outputText value="Entrada:" styleClass="section-title"/>
+                                <h:outputText value="#{liturgiaBean.liturgia.antifonas.entrada}" escape="false"/>
 
-                            <h:outputText value="Comunhão:" styleClass="section-title"/>
-                            <h:outputText value="#{liturgiaBean.liturgia.antifonas.comunhao}" escape="false"/>
-                        </p:panelGrid>
-                    </p:tab>
+                                <h:outputText value="Comunhão:" styleClass="section-title"/>
+                                <h:outputText value="#{liturgiaBean.liturgia.antifonas.comunhao}" escape="false"/>
+                            </p:panelGrid>
+                        </p:tab>
 
-                </p:accordionPanel>
+                    </p:accordionPanel>
                 </div>
                 <footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9;">
 
