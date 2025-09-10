@@ -41,14 +41,16 @@
                 <div class="container">
 
                     <div class="titulo">📖 Liturgia do Dia</div>
-                    <div class="top-controls">
-                        <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
-                                    navigator="true" showButtonPanel="true">
-                            <p:ajax event="dateSelect" listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" update="liturgiaPanelWrapper"/>
-                        </p:calendar>
+                    <div class="top-controls" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+    <p:calendar id="dataPicker" value="#{liturgiaBean.dataSelecionada}" pattern="dd/MM/yyyy" 
+                navigator="true" showButtonPanel="true">
+        <p:ajax event="dateSelect" 
+                listener="#{liturgiaBean.carregarLiturgiaPorData(liturgiaBean.dataSelecionada)}" 
+                update="liturgiaPanelWrapper"/>
+    </p:calendar>
 
-                        <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" icon="pi pi-arrow-left"/>
-                    </div>
+    <p:button value="🔙 Voltar para o Terço" outcome="/santo_terco.xhtml" icon="pi pi-arrow-left"/>
+</div>
                     <!-- Informações principais -->
                     <p:panel header="Informações" style="margin-bottom:15px;">
                         <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" style="width:100%;">
