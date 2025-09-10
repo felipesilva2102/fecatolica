@@ -26,20 +26,17 @@ public class QuaresmaSaoMiguelBean implements Serializable {
     private LocalDate dataSelecionada = LocalDate.now();
 
     private transient final String preparacaoDiaria = """
-                                                      \u2022 Tenha um cantinho de ora\u00e7\u00e3o com a imagem de S\u00e3o Miguel (ou de um anjo).
-                                                      \u2022 Acenda uma vela em honra de S\u00e3o Miguel.
-                                                      \u2022 Fa\u00e7a o Sinal da Cruz e comece a ora\u00e7\u00e3o.""";
+    • Tenha um cantinho de oração com a imagem de São Miguel (ou de um anjo).
+    • Acenda uma vela em honra de São Miguel.
+    • Faça o Sinal da Cruz e comece a oração.
+    """;
 
     private transient final String oracaoDiariaInicial = """
-                                                         S\u00e3o Miguel Arcanjo, defendei-nos no combate, sede nosso ref\u00fagio contra a
-                                                                    maldade e as ciladas do dem\u00f4nio. Ordene-lhe Deus, instantemente o pedimos; e
-                                                                     v\u00f3s, pr\u00edncipe da mil\u00edcia celeste, pela virtude divina, precipitai no inferno a Satan\u00e1s
-                                                                     e aos outros esp\u00edritos malignos que andam pelo mundo para perder as almas.
-                                                                     Am\u00e9m.""";
+                                                         S\u00e3o Miguel Arcanjo, defendei-nos no combate, sede nosso ref\u00fagio contra a maldade e as ciladas do dem\u00f4nio. Ordene-lhe Deus, instantemente o pedimos; e v\u00f3s, pr\u00edncipe da mil\u00edcia celeste, pela virtude divina, precipitai no inferno a Satan\u00e1s e aos outros esp\u00edritos malignos que andam pelo mundo para perder as almas. Am\u00e9m.""";
 
-    private transient final String exameConsciencia = "Momento de silêncio: pense em algo que fez de errado no dia e peça: <em>Senhor Jesus, misericórdia, perdoai-me.";
+    private transient final String exameConsciencia = "Momento de silêncio: pense em algo que fez de errado no dia e peça: Senhor Jesus, misericórdia, perdoai-me...";
 
-    private transient final String leituraBiblica = "Recomenda-se a leitura de passagens bíblicas que tratam do combate espiritual, da proteção divina e da intercessão dos anjos, como os livros de Daniel e Apocalipse.";
+    private transient final String leituraBiblica = "Recomenda-se a leitura de passagens bíblicas que tratam do combate espiritual, da proteção divina e da intercessão dos anjos, como os livros de Daniel e Apocalipse. Porém, abaixo temos uma passagem para meditação";
 
     private transient final String ladainhaSaoMiguel = "Senhor, tende piedade de nós.\n"
             + "Jesus Cristo, tende piedade de nós.\n"
@@ -64,15 +61,13 @@ public class QuaresmaSaoMiguelBean implements Serializable {
             + "São Miguel, honra e alegria da Igreja Triunfante, rogai por nós.\n"
             + "São Miguel, luz dos Anjos, rogai por nós.\n"
             + "São Miguel, baluarte dos cristãos, rogai por nós.\n"
-            + "São Miguel, força daqueles que combatem sob o estandarte da Cruz, rogai por\n"
-            + "nós.\n"
+            + "São Miguel, força daqueles que combatem sob o estandarte da Cruz, rogai por nós.\n"
             + "São Miguel, luz e confiança das almas no último momento da vida, rogai por nós.\n"
             + "São Miguel, socorro muito certo, rogai por nós.\n"
             + "São Miguel, nosso auxílio em todas as adversidades, rogai por nós.\n"
             + "São Miguel, arauto da sentença eterna, rogai por nós.\n"
             + "São Miguel, consolador das almas que estão no purgatório, rogai por nós.\n"
-            + "São Miguel, a quem o Senhor incumbiu de receber as almas depois da morte,\n"
-            + "rogai por nós.\n"
+            + "São Miguel, a quem o Senhor incumbiu de receber as almas depois da morte, rogai por nós.\n"
             + "São Miguel, nosso Príncipe, rogai por nós.\n"
             + "São Miguel, nosso advogado, rogai por nós.\n"
             + "Cordeiro de Deus, que tirais o pecado do mundo, perdoai-nos, Senhor.\n"
@@ -82,50 +77,24 @@ public class QuaresmaSaoMiguelBean implements Serializable {
             + "Príncipe da Igreja de Cristo,\n"
             + "para que sejamos dignos de suas promessas.";
 
-    private transient final String consagracaoSaoMiguel = "Ó Príncipe nobilíssimo dos Anjos, valoroso guerreiro do Altíssimo, zeloso defensor\n"
-            + "da glória do Senhor, terror dos espíritos rebeldes, amor e delícia de todos os\n"
-            + "Anjos justos, meu diletíssimo Arcanjo São Miguel, desejando eu fazer parte do\n"
-            + "número dos vossos devotos e servos, a vós hoje me consagro, me dou e me\n"
-            + "ofereço e ponho-me a mim próprio, a minha família e tudo o que me pertence,\n"
-            + "debaixo da vossa poderosíssima proteção.\n"
-            + "É pequena a oferta do meu serviço, sendo como sou um miserável pecador, mas\n"
-            + "vós engrandecereis o afeto do meu coração; recordai-vos que de hoje em diante\n"
-            + "estou debaixo do vosso sustento e deveis assistir-me em toda a minha vida e\n"
-            + "\n"
-            + "obter-me o perdão dos meus muitos e graves pecados, a graça de amar a Deus\n"
-            + "de todo coração, ao meu querido Salvador Jesus Cristo e a minha Mãe Maria\n"
-            + "Santíssima.\n"
-            + "Obtende-me aqueles auxílios que me são necessários para obter a coroa da\n"
-            + "eterna glória. Defendei-me dos inimigos da alma, especialmente na hora da\n"
-            + "morte. Vinde, ó príncipe gloriosíssimo, assistir-me na última luta e com a vossa\n"
-            + "arma poderosa lançai para longe, precipitando nos abismos do inferno, aquele\n"
-            + "anjo quebrador de promessas e soberbo que um dia prostrastes no combate no\n"
-            + "Céu.\n"
-            + "São Miguel Arcanjo, defendei-nos no combate para que não pereçamos no\n"
-            + "supremo juízo.";
+    private transient final String consagracaoSaoMiguel = "Ó Príncipe nobilíssimo dos Anjos, valoroso guerreiro do Altíssimo, zeloso defensor  da glória do Senhor, terror dos espíritos rebeldes, amor e delícia de todos os  Anjos justos, meu diletíssimo Arcanjo São Miguel, desejando eu fazer parte do  número dos vossos devotos e servos, a vós hoje me consagro, me dou e me  ofereço e ponho-me a mim próprio, a minha família e tudo o que me pertence,  debaixo da vossa poderosíssima proteção. \n" +
+"É pequena a oferta do meu serviço, sendo como sou um miserável pecador, mas  vós engrandecereis o afeto do meu coração; recordai-vos que de hoje em diante  estou debaixo do vosso sustento e deveis assistir-me em toda a minha vida e  obter-me o perdão dos meus muitos e graves pecados, a graça de amar a Deus  de todo coração, ao meu querido Salvador Jesus Cristo e a minha Mãe Maria  Santíssima. \n" +
+"Obtende-me aqueles auxílios que me são necessários para obter a coroa da  eterna glória. Defendei-me dos inimigos da alma, especialmente na hora da  morte. Vinde, ó príncipe gloriosíssimo, assistir-me na última luta e com a vossa  arma poderosa lançai para longe, precipitando nos abismos do inferno, aquele  anjo quebrador de promessas e soberbo que um dia prostrastes no combate no  Céu.\n" +
+"São Miguel Arcanjo, defendei-nos no combate para que não pereçamos no  supremo juízo.";
 
-    private transient final String oracaoFinal = "Levanta-se Deus, pela intercessão da bem-aventurada Virgem Maria, São Miguel\n"
-            + "Arcanjo e todas as milícias celestes; sejam dispersos os seus inimigos e fujam de\n"
-            + "sua face todos os que o odeiam. Em nome do Pai, e do Filho e do Espírito Santo.\n"
-            + "Amém.";
+    private transient final String oracaoFinal = """
+                                                 Levanta-se Deus, pela intercess\u00e3o da bem-aventurada Virgem Maria, S\u00e3o Miguel Arcanjo e todas as mil\u00edcias celestes; sejam dispersos os seus inimigos e fujam de sua face todos os que o odeiam. Em nome do Pai, e do Filho e do Esp\u00edrito Santo. Am\u00e9m.""";
 
-    private transient final String oracaoAugustaRainha = "Augusta Rainha dos céus, soberana mestra dos Anjos, Vós que, desde o\n"
-            + "princípio, recebestes de Deus o poder e a missão de esmagar a cabeça de\n"
-            + "Satanás, nós vo-lo pedimos humildemente, enviai vossas legiões celestes para\n"
-            + "que, sob vossas ordens, e por vosso poder, elas persigam os demônios,\n"
-            + "combatendo-os por toda a parte, reprimindo lhes a insolência, e lançando-os no\n"
-            + "abismo. Quem é como Deus? Ó Mãe de bondade e ternura, Vós sereis sempre o\n"
-            + "nosso amor e a nossa esperança. Ó Mãe divina, enviai os Santos Anjos para nos\n"
-            + "defenderem, e repeli para longe de nós o cruel inimigo. Santos Anjos e Arcanjos,\n"
-            + "defendei-nos e guardai-nos. Amém.";
+    private transient final String oracaoAugustaRainha = """
+                                                         Augusta Rainha dos c\u00e9us, soberana mestra dos Anjos, V\u00f3s que, desde o princ\u00edpio, recebestes de Deus o poder e a miss\u00e3o de esmagar a cabe\u00e7a de Satan\u00e1s, n\u00f3s vo-lo pedimos humildemente, enviai vossas legi\u00f5es celestes para que, sob vossas ordens, e por vosso poder, elas persigam os dem\u00f4nios, combatendo-os por toda a parte, reprimindo lhes a insol\u00eancia, e lan\u00e7ando-os no abismo. Quem \u00e9 como Deus? \u00d3 M\u00e3e de bondade e ternura, V\u00f3s sereis sempre o nosso amor e a nossa esperan\u00e7a. \u00d3 M\u00e3e divina, enviai os Santos Anjos para nos defenderem, e repeli para longe de n\u00f3s o cruel inimigo. Santos Anjos e Arcanjos, defendei-nos e guardai-nos. Am\u00e9m.""";
 
-    private transient final String oferendaFinal = "Senhor Jesus, por intercessão de São Miguel Arcanjo, eu Vos ofereço este dia da\n"
-            + "Quaresma pedindo: pela minha conversão, pela minha família, pela Igreja e pelo\n"
-            + "Santo Padre o Papa. Guardai-nos na fé e defendei-nos de todo mal. Amém.";
+    private transient final String oferendaFinal = """
+                                                   Senhor Jesus, por intercess\u00e3o de S\u00e3o Miguel Arcanjo, eu Vos ofere\u00e7o este dia da Quaresma pedindo: pela minha convers\u00e3o, pela minha fam\u00edlia, pela Igreja e pelo Santo Padre o Papa. Guardai-nos na f\u00e9 e defendei-nos de todo mal. Am\u00e9m.""";
 
-    private transient final String oracoesFinais = "• Pai-Nosso (3x)\n"
-            + "• Ave-Maria (3x)\n"
-            + "• Glória ao Pai (3x)";
+    private transient final String oracoesFinais = """
+                                                   \u2022 Pai-Nosso (3x)
+                                                   \u2022 Ave-Maria (3x)
+                                                   \u2022 Gl\u00f3ria ao Pai (3x)""";
 
     public LocalDate getDataSelecionada() {
         return dataSelecionada;
