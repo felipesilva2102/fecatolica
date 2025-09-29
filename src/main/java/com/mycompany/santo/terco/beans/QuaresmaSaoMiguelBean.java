@@ -7,6 +7,7 @@ package com.mycompany.santo.terco.beans;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -24,6 +25,8 @@ public class QuaresmaSaoMiguelBean implements Serializable {
     private LocalDate dataInicio = LocalDate.of(LocalDate.now().getYear(), 8, 15); // 15 de agosto
     private LocalDate dataFim = LocalDate.of(LocalDate.now().getYear(), 9, 29);   // 29 de setembro
     private LocalDate dataSelecionada = LocalDate.now();
+    
+    
     
     public boolean isQuaresmaMiguel() {
         LocalDate hoje = LocalDate.now();
@@ -116,7 +119,19 @@ public class QuaresmaSaoMiguelBean implements Serializable {
         if (dataSelecionada.isBefore(dataInicio) || dataSelecionada.isAfter(dataFim)) {
             return -1; // fora do período
         }
-        return (int) ChronoUnit.DAYS.between(dataInicio, dataSelecionada) + 1;
+        
+        // Ajusta a primeira data para o primeiro domingo no intervalo (se já não for domingo)
+        LocalDate primeiroDomingo = dataInicio;
+        if (dataInicio.getDayOfWeek() != DayOfWeek.SUNDAY) {
+            primeiroDomingo = dataInicio.with(java.time.temporal.TemporalAdjusters.next(DayOfWeek.SUNDAY));
+        }
+
+        long domingos = 0;
+        if (!primeiroDomingo.isAfter(dataFim)) {
+            domingos = ChronoUnit.WEEKS.between(primeiroDomingo, dataFim) + 1;
+        }
+        
+        return (int) ChronoUnit.DAYS.between(dataInicio, dataSelecionada) + 1 - (int) domingos;
     }
 
     public String getLeituraDoDia() {
