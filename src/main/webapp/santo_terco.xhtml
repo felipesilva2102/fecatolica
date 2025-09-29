@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="jakarta.tags.core">
 
     <h:head>
         <title>Santo Terço — FS Tech</title>
@@ -104,7 +105,10 @@
                     <a href="#tutorial">Tutorial</a>
                     <a href="#footer">Contato</a>
                     <a href="liturgia.xhtml">Liturgia</a>
-                    <a href="quaresma-sao-miguel.xhtml">Quaresma de São Miguel</a>
+                    <h:panelGroup rendered="#{quaresmaSaoMiguelBean.quaresmaMiguel}">
+                        <a href="quaresma-sao-miguel.xhtml">Quaresma de São Miguel</a>
+                    </h:panelGroup>
+
                 </nav>
 
                 <div class="card">
