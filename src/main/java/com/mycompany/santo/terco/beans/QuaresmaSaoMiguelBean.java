@@ -24,6 +24,13 @@ public class QuaresmaSaoMiguelBean implements Serializable {
     private LocalDate dataInicio = LocalDate.of(LocalDate.now().getYear(), 8, 15); // 15 de agosto
     private LocalDate dataFim = LocalDate.of(LocalDate.now().getYear(), 9, 29);   // 29 de setembro
     private LocalDate dataSelecionada = LocalDate.now();
+    
+    public boolean isQuaresmaMiguel() {
+        LocalDate hoje = LocalDate.now();
+        LocalDate inicio = LocalDate.of(hoje.getYear(), 8, 15);
+        LocalDate fim = LocalDate.of(hoje.getYear(), 9, 29);
+        return !hoje.isBefore(inicio) && !hoje.isAfter(fim);
+    }
 
     private transient final String preparacaoDiaria = """
     • Tenha um cantinho de oração com a imagem de São Miguel (ou de um anjo).

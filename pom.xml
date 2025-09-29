@@ -68,6 +68,17 @@
                     <server-config>standalone.xml</server-config>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <executable>${wildfly.home}/bin/standalone.bat</executable>
+                    <arguments>
+                        <argument>-Djboss.http.port=8081</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
