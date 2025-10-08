@@ -1,27 +1,32 @@
-# Etapa 1: Build da imagem nativa
+# Etapa 1: Build
 FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 
-# Copiar pom e baixar dependências
+# Copiar pom e mvnw
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
+
+# Dar permissão de execução para o mvnw
+RUN chmod +x mvnw
+
+# Baixar dependências offline
 RUN ./mvnw dependency:go-offline
 
-# Copiar o código fonte
+# Copiar código fonte
 COPY src ./src
 
-# Gerar o jar nativo (substitua 'jsf-spring' pelo nome do seu projeto se necessário)
-RUN ./mvnw clean package -Pnative -DskipTests
+# Gerar jar (ou nativo, se tiver profile native)
+RUN ./mvnw clean package -DskipTests
 
 # Etapa 2: Imagem final mínima
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-# Copiar binário nativo
-COPY --from=build /app/target/jsf-spring-1.0.0 /app/jsf-spring
+# Copiar o jar gerado
+COPY --from=build /app/target/jsf-spring-1.0.0.jar ./jsf-spring.jar
 
-# Expõe a porta do Spring Boot
+# Expõe a porta
 EXPOSE 8080
 
-# Comando de inicialização
-ENTRYPOINT ["./jsf-spring"]
+# Inicializar aplicação
+ENTRYPOINT ["java", "-jar", "jsf-spring.jar"]
