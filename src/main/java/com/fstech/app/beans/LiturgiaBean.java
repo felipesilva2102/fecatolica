@@ -71,7 +71,7 @@ public class LiturgiaBean implements Serializable {
 
     public String getCorLiturgiaHex() {
         if (liturgia == null || liturgia.getCor() == null) {
-            return "#ffffff"; 
+            return "#ffffff";
         }
         return switch (liturgia.getCor()) {
             case "Verde" ->
@@ -96,4 +96,19 @@ public class LiturgiaBean implements Serializable {
         return "Branco".equals(liturgia.getCor()) || "Rosa".equals(liturgia.getCor()) ? "#000000" : "#ffffff";
     }
 
+    public LocalDate getDataSelecionada() {
+        return dataSelecionada;
+    }
+
+    public void setDataSelecionada(LocalDate dataSelecionada) {
+        this.dataSelecionada = dataSelecionada;
+    }
+
+    public LiturgiaDTO getLiturgia() {
+        return liturgia;
+    }
+
+    public void setLiturgia(LiturgiaDTO liturgia) {
+        this.liturgia = liturgia;
+    }
 }

@@ -16,4 +16,38 @@ public class Oracoes {
     private String oferendas;
     private String comunhao;
     private List<String> extras;
+
+    public String getColeta() {
+        return coleta;
+    }
+
+    public void setColeta(String coleta) {
+        this.coleta = coleta;
+    }
+
+    public String getOferendas() {
+        return oferendas;
+    }
+
+    public void setOferendas(String oferendas) {
+        this.oferendas = oferendas;
+    }
+
+    public String getComunhao() {
+        return comunhao;
+    }
+
+    public void setComunhao(String comunhao) {
+        this.comunhao = comunhao;
+    }
+
+    public List<String> getExtras() {
+        return extras;
+    }
+
+    public void setExtras(List<String> extras) {
+        this.extras = extras;
+    }
+    
+    
 }
