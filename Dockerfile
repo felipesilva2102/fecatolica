@@ -26,7 +26,7 @@ RUN mkdir -p /root/.m2 && cat > /root/.m2/settings.xml <<'EOF'
 EOF
 
 # Baixar dependências Maven
-RUN ./mvnw dependency:go-offline -B
+# RUN ./mvnw dependency:go-offline -B
 
 # Copiar o código-fonte
 COPY src ./src
