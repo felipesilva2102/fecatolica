@@ -9,7 +9,7 @@ COPY pom.xml mvnw ./
 COPY .mvn .mvn
 RUN chmod +x mvnw
 
-# Criar settings.xml com mirror estável (Aliyun)
+# Criar settings.xml com mirror Maven Central (100% compatível)
 RUN mkdir -p /root/.m2 && cat > /root/.m2/settings.xml <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -17,21 +17,18 @@ RUN mkdir -p /root/.m2 && cat > /root/.m2/settings.xml <<'EOF'
            xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
   <mirrors>
     <mirror>
-      <id>aliyun</id>
+      <id>central</id>
       <mirrorOf>*</mirrorOf>
-      <url>https://maven.aliyun.com/repository/public</url>
+      <url>https://repo1.maven.org/maven2/</url>
     </mirror>
   </mirrors>
 </settings>
 EOF
 
-# Baixar dependências Maven
-# RUN ./mvnw dependency:go-offline -B
-
 # Copiar o código-fonte
 COPY src ./src
 
-# Compilar e empacotar a aplicação
+# Compilar e empacotar a aplicação (sem testes)
 RUN ./mvnw clean package -DskipTests -B
 
 # ===============================
