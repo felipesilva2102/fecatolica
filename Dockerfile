@@ -44,4 +44,4 @@ COPY --from=build /app/target/*.jar ./app.jar
 EXPOSE 8080
 
 # Comando de inicialização
-ENTRYPOINT ["sh", "-c", "java -Xmx400m -jar app.jar --server.port=$PORT"]
+ENTRYPOINT ["sh", "-c", "java -Xmx512m -jar app.jar --server.port=$PORT"]
