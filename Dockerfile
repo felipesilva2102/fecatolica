@@ -9,18 +9,22 @@ COPY pom.xml mvnw ./
 COPY .mvn .mvn
 RUN chmod +x mvnw
 
-# Adicionar um settings.xml com mirror estável (Aliyun)
-RUN mkdir -p /root/.m2 && echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
-  <mirrors>
-    <mirror>
-      <id>aliyun</id>
-      <mirrorOf>*</mirrorOf>
-      <url>https://maven.aliyun.com/repository/public</url>
-    </mirror>
-  </mirrors>
-</settings>' > /root/.m2/settings.xml
+# Criar settings.xml com mirror estável (Aliyun)
+RUN mkdir -p /root/.m2 && \
+    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
+<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"\n\
+           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n\
+           xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\">\n\
+  <mirrors>\n\
+    <mirror>\n\
+      <id>aliyun</id>\n\
+      <mirrorOf>*</mirrorOf>\n\
+      <url>https://maven.aliyun.com/repository/public</url>\n\
+    </mirror>\n\
+  </mirrors>\n\
+</settings>" > /root/.m2/settings.xml
 
-# Baixar dependências Maven (sem precisar compilar o código ainda)
+# Baixar dependências Maven
 RUN ./mvnw dependency:go-offline -B
 
 # Copiar o código-fonte
@@ -36,7 +40,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copiar o JAR gerado da etapa anterior
-COPY --from=build /app/target/jsf-spring-1.0.0.jar ./app.jar
+COPY --from=build /app/target/*.jar ./app.jar
 
 # Expor a porta padrão
 EXPOSE 8080
