@@ -10,19 +10,20 @@ COPY .mvn .mvn
 RUN chmod +x mvnw
 
 # Criar settings.xml com mirror estável (Aliyun)
-RUN mkdir -p /root/.m2 && \
-    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
-<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"\n\
-           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n\
-           xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\">\n\
-  <mirrors>\n\
-    <mirror>\n\
-      <id>aliyun</id>\n\
-      <mirrorOf>*</mirrorOf>\n\
-      <url>https://maven.aliyun.com/repository/public</url>\n\
-    </mirror>\n\
-  </mirrors>\n\
-</settings>" > /root/.m2/settings.xml
+RUN mkdir -p /root/.m2 && cat > /root/.m2/settings.xml <<'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <mirror>
+      <id>aliyun</id>
+      <mirrorOf>*</mirrorOf>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
+  </mirrors>
+</settings>
+EOF
 
 # Baixar dependências Maven
 RUN ./mvnw dependency:go-offline -B
