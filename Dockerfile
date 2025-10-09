@@ -15,9 +15,6 @@ RUN ./mvnw dependency:go-offline
 # Copiar código fonte
 COPY src ./src
 
-# Gerar jar (ou nativo, se tiver profile native)
-RUN ./mvnw clean package -DskipTests
-
 # Etapa 2: Imagem final mínima
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
