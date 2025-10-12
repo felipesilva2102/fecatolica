@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Quaresma de São José</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 16px;
+                background: #fff;
+                color: #222;
+            }
+
+            .container {
+                max-width: 980px;
+                margin: 0 auto;
+            }
+
+            h1.title {
+                text-align:center;
+                color: #8b0000;
+                margin-bottom: 6px;
+            }
+
+            .top-row {
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                gap:12px;
+                flex-wrap:wrap;
+                margin:18px 0;
+            }
+
+            .msg {
+                font-weight:600;
+                color:#1a4f89;
+            }
+
+            footer.page-footer {
+                text-align:center;
+                padding:18px;
+                background:#fafafa;
+                margin-top:20px;
+                border-radius:8px;
+            }
+
+            @media screen and (max-width: 720px) {
+                .top-row {
+                    flex-direction:column;
+                    align-items:stretch;
+                }
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h:form id="formQuaresmaJose" prependId="false">
+
+            <!-- Título -->
+            <h1 style="text-align:center; color:darkred;">
+                Quaresma de São José
+            </h1>
+
+            <!-- Calendário e botão de retorno -->
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:20px 0;">
+                <p:button value="🔙 Voltar para o Terço"
+                          outcome="/santo_terco.xhtml"
+                          style="white-space: nowrap;"/>
+
+                <!-- mostra número do dia da quaresma (ou aviso) -->
+                <h:panelGroup id="mensagem">
+                    <h:outputText rendered="#{quaresmaSaoJoseBean.diaQuaresma ne -1}"
+                                  value="📅 Dia da Quaresma: #{quaresmaSaoJoseBean.diaQuaresma}"
+                                  styleClass="msg" />
+                    <h:outputText rendered="#{quaresmaSaoJoseBean.diaQuaresma eq -1}"
+                                  value="📅 A data atual está fora da Quaresma (19/02 - 19/03)."
+                                  style="color:#b03030; font-weight:600;" />
+                </h:panelGroup>
+            </div>
+
+            <!-- Spinner global PrimeFaces (opcional) -->
+            <p:dialog widgetVar="busy" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="images/loading.gif" library="images" />
+            </p:dialog>
+
+            <!-- Accordion com as orações - só aparece se a data estiver no período -->
+            <p:accordionPanel id="accordion" multiple="true" activeIndex="0"
+                              rendered="true">
+                <!-- Preparação Diária -->
+                <p:tab title="Preparação Diária">
+                    <pre style="white-space: pre-line;">#{quaresmaSaoJoseBean.oracaoPreparatoria}</pre>
+                </p:tab>
+
+                <!-- Súplicas / Invocações (as 30 invocações) -->
+                <p:tab title="As 30 Invocações (Súplica)">
+                    <pre style="white-space: pre-line;">#{quaresmaSaoJoseBean.suplicas}</pre>
+                </p:tab>
+
+                <!-- Oração Final -->
+                <p:tab title="Oração Final">
+                    <pre style="white-space: pre-line;">#{quaresmaSaoJoseBean.oracaoFinal}</pre>
+                </p:tab>
+                
+                <!-- Jaculatória -->
+                <p:tab title="Jaculatória">
+                    <pre style="white-space: pre-line;">#{quaresmaSaoJoseBean.jaculatoria}</pre>
+                </p:tab>
+
+                <!-- Caso a data não esteja no período exibe uma aba explicativa -->
+                <p:tab title="Informações" rendered="#{quaresmaSaoJoseBean.diaQuaresma eq -1}">
+                    <h:outputText value="A Quaresma de São José vai normalmente de 19 de fevereiro a 19 de março (30 dias). Se quiser acompanhar a devoção em uma data dentro desse intervalo, selecione uma data no calendário." />
+                </p:tab>
+            </p:accordionPanel>
+
+            <!-- Rodapé com contatos -->
+            <footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9;">
+
+                <!-- Botões de contato -->
+                <div style="margin:16px 0;">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais"
+                       target="_blank"
+                       style="background:#25D366;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                        💬 WhatsApp
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:felipefrancelino2015@gmail.com?subject=Contato&amp;body=Olá!"
+                       onclick="window.open('https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=felipefrancelino2015@gmail.com&amp;su=Contato&amp;body=Olá!', '_blank'); return false;"
+                       style="background:#39588f;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                        📧 Email
+                    </a>
+                </div>
+
+                <!-- Desenvolvedor -->
+                <div style="margin-top:10px; color:#bbb; font-size:0.9rem;">
+                    Desenvolvido por <strong>FS Tech</strong>
+                </div>
+
+                <!-- Contato final -->
+                <div style="margin-top:8px;">
+                    <i class="pi pi-whatsapp" style="color:#25D366;"></i>
+                    <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+                       target="_blank"
+                       style="text-decoration:none; color:#25D366; margin-left:5px; font-weight:bold;">
+                        +55 (84) 99993-7274
+                    </a>
+                </div>
+            </footer>
+        </h:form>
+    </h:body>
+</html>
