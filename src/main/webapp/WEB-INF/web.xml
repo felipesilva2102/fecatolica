@@ -14,7 +14,7 @@
     </welcome-file-list>
 
    <servlet>
-       servlet-name>HealthCheckServlet</servlet-name>
+       <servlet-class>HealthCheckServlet</servlet-class>
        <servlet-class>com.mycompany.health.HealthCheckServlet</servlet-class>
    </servlet>
 
