@@ -14,7 +14,7 @@ WORKDIR /opt/jboss
 
 # Baixa e instala o WildFly 36
 RUN curl -L https://github.com/wildfly/wildfly/releases/download/36.0.1.Final/wildfly-36.0.1.Final.tar.gz \
-    | tar zx && mv wildfly-36.0.1.Final wildfly
+    | tar zx && mv wildfly-36.0.1.Final wildfly && ls -la /opt/jboss/wildfly/bin
 
 # Copia a aplicação para o diretório de deployments
 COPY --from=build /app/target/*.war /opt/jboss/wildfly/standalone/deployments/ROOT.war
