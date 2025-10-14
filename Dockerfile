@@ -9,20 +9,20 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jdk
 WORKDIR /opt/jboss
 
-# Baixa e instala o WildFly 36
+# Instala dependências e baixa o WildFly
 RUN apt-get update && apt-get install -y curl tar && \
-    curl -L https://github.com/wildfly/wildfly/releases/download/36.0.1.Final/wildfly-36.0.1.Final.tar.gz -o wildfly.tar.gz && \
-    tar -xzf wildfly.tar.gz && \
-    mv wildfly-36.0.1.Final wildfly && \
-    rm wildfly.tar.gz
+    curl -L https://github.com/wildfly/wildfly/releases/download/36.0.1.Final/wildfly-36.0.1.Final.tar.gz -o /tmp/wildfly.tar.gz && \
+    tar -xzf /tmp/wildfly.tar.gz -C /opt/jboss && \
+    mv /opt/jboss/wildfly-36.0.1.Final /opt/jboss/wildfly && \
+    rm /tmp/wildfly.tar.gz && \
+    chmod +x /opt/jboss/wildfly/bin/standalone.sh
 
-# Copia o WAR gerado
+# Copia o WAR compilado
 COPY --from=build /app/target/*.war /opt/jboss/wildfly/standalone/deployments/ROOT.war
 
-# Define a porta
+# Porta dinâmica
 ENV PORT=8080
 EXPOSE ${PORT}
 
-# Corrige permissões e inicia o servidor
-RUN chmod +x /opt/jboss/wildfly/bin/standalone.sh
-CMD sh -c "/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -Djboss.http.port=${PORT}"
+# Comando de execução (corrigido)
+ENTRYPOINT ["/bin/bash", "-c", "/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -Djboss.http.port=${PORT}"]
