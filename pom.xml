@@ -76,7 +76,7 @@
                 <configuration>
                     <executable>${wildfly.home}/bin/standalone.bat</executable>
                     <arguments>
-                        <argument>-Djboss.http.port=8081</argument>
+                        <argument>-Djboss.http.port=8080</argument>
                     </arguments>
                 </configuration>
             </plugin>
