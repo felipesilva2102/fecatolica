@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="jakarta.tags.core">
+      xmlns:c="jakarta.tags.core"
+      xmlns:ui="jakarta.faces.facelets">
 
     <h:head>
         <title>Santo Terço — FS Tech</title>
@@ -98,24 +99,10 @@
     <h:body>
         <h:form>
             <div class="container">
-                <nav>
-                    <a href="#">Início</a>
-                    <a href="#decadesContainer">Rezar as dezenas</a>
-                    <a href="#todayMystery">Mistério do dia</a>
-                    <a href="#tutorial">Tutorial</a>
-                    <a href="#footer">Contato</a>
-                    <a href="liturgia.xhtml">Liturgia</a>
-                    <h:panelGroup rendered="#{quaresmaSaoMiguelBean.quaresmaMiguel}">
-                        <a href="quaresma-sao-miguel.xhtml">Quaresma de São Miguel</a>
-                    </h:panelGroup>
-
- <h:panelGroup rendered="#{quaresmaSaoJoseBean.quaresmaJose}">
-                        <a href="quaresma-sao-jose.xhtml">Quaresma de São Jose</a>
-                    </h:panelGroup>
-                </nav>
+                <ui:include src="/includes/menu.xhtml"/>
 
                 <div class="card">
-                    <header>
+                    <header style="text-align:center;">
                         <h1>Santo Terço — Guia interativo</h1>
                         <p class="lead">Clique nas contas para acompanhar o progresso.</p>
                     </header>

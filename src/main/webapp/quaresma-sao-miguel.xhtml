@@ -1,131 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="jakarta.tags.core"
+      xmlns:ui="jakarta.faces.facelets">
     <h:head>
         <title>Quaresma de São Miguel Arcanjo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+                font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+                background: linear-gradient(180deg,#f7fbff 0%,#f0f6fb 50%,#eef7f1 100%);
+                margin:0;
+                padding:0;
+            }
+            .container{
+                max-width:1100px;
+                margin:24px auto;
+                padding:18px;
+            }
+            .card{
+                background:white;
+                border-radius:12px;
+                box-shadow:0 8px 30px rgba(20,40,80,0.08);
+                padding:18px;
+                margin-bottom:20px;
+            }
+            header h1{
+                margin:0 0 6px 0;
+                font-size:1.6rem;
+            }
+            header p.lead{
+                margin:0;
+                color:#555;
+            }
+            nav {
+                display: flex;
+                justify-content: center; /* centraliza horizontalmente */
+                gap: 24px; /* espaço entre os links */
+                margin-bottom: 24px;
+                flex-wrap: wrap; /* quebra linha em telas menores */
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 600;
+                padding: 8px 16px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                background-color: rgba(255, 255, 255, 0.6);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            }
+
+            nav a:hover {
+                background-color: #4CAF50;
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+
+            @media (max-width:920px){
+                .layout{
+                    grid-template-columns:1fr;
+                }
+                .container{
+                    padding:12px;
+                }
+            }
+        </style>
     </h:head>
 
-    <h:body style="font-family: Arial, sans-serif; margin: 20px;">
+    <h:body>
+        <h:form id="formQuaresmaMiguel">
+            <div class="container">
+                <!-- Inclui o menu igual ao santo-terco -->
+                <ui:include src="/includes/menu.xhtml"/>
 
-        <h:form id="formQuaresma">
+                <!-- Título -->
+                <div class="card">
+                    <header style="text-align:center;">
+                        <h1>Quaresma de São Miguel Arcanjo</h1>
+                        <p class="lead">Acompanhe seu progresso e medite nas orações do dia.</p>
+                    </header>
+                </div>
 
-            <!-- Título -->
-            <h1 style="text-align:center; color:darkred;">
-                Quaresma de São Miguel Arcanjo
-            </h1>
+                <!-- Exibe a data selecionada -->
+                <h3 style="text-align:center; margin-top:10px;">
+                    📅 #{quaresmaSaoMiguelBean.mensagemDia}
+                </h3>
 
-            <!-- Exibe a data selecionada -->
-            <h3 style="text-align:center; margin-top:10px;">
-                📅 #{quaresmaSaoMiguelBean.mensagemDia}
-            </h3>
+                <div class="card" style="margin-top:20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <p:calendar id="dataPicker"
+                                    value="#{quaresmaSaoMiguelBean.dataSelecionada}"
+                                    pattern="dd/MM/yyyy"
+                                    navigator="true"
+                                    showButtonPanel="true">
+                            <p:ajax event="dateSelect"
+                                    process="@this"
+                                    update=":formQuaresmaMiguel:accordion :formQuaresmaMiguel:mensagem" />
+                        </p:calendar>
 
-            <!-- Calendário e botão de retorno -->
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:20px 0;">
-                <p:calendar id="dataPicker"
-                            value="#{quaresmaSaoMiguelBean.dataSelecionada}"
-                            pattern="dd/MM/yyyy"
-                            navigator="true"
-                            showButtonPanel="true">
-                    <p:ajax event="dateSelect" update="accordion mensagem"/>
-                </p:calendar>
+                        <h:panelGroup id="mensagem">
+                            <h:outputText rendered="#{quaresmaSaoMiguelBean.diaSelecionadoRenderizar}"
+                                          value="📅 Dia da Quaresma: #{quaresmaSaoMiguelBean.mensagemDia}"
+                                          style="font-weight:bold; color:darkblue;" />
+                            <h:outputText rendered="#{not quaresmaSaoMiguelBean.diaSelecionadoRenderizar}"
+                                          value="📅 A data selecionada está fora do período da Quaresma (15/08 - 29/09)."
+                                          style="color:#b03030; font-weight:600;" />
+                        </h:panelGroup>
+                    </div>
+                </div>
 
-                <p:button value="🔙 Voltar para o Terço"
-                          outcome="/santo_terco.xhtml"
-                          style="white-space: nowrap;"/>
+                <!-- Accordion com as orações -->
+                <p:accordionPanel id="accordion" multiple="true" activeIndex="-1"
+                                  style="margin-top:20px; display: #{quaresmaSaoMiguelBean.diaSelecionadoRenderizar ? 'block' : 'none'};">
+
+                    <p:tab title="Preparação Diária">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.preparacaoDiaria}</pre>
+                    </p:tab>
+
+                    <p:tab title="1. Oração Inicial">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoDiariaInicial}</pre>
+                    </p:tab>
+
+                    <p:tab title="2. Exame de Consciência">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.exameConsciencia}</pre>
+                    </p:tab>
+
+                    <p:tab title="3. Leitura Bíblica">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.leituraBiblica}</pre>
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.leituraDoDia}</pre>
+                    </p:tab>
+
+                    <p:tab title="4. Ladainha de São Miguel">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.ladainhaSaoMiguel}</pre>
+                    </p:tab>
+
+                    <p:tab title="5. Consagração">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.consagracaoSaoMiguel}</pre>
+                    </p:tab>
+
+                    <p:tab title="6. Oração Final">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoFinal}</pre>
+                    </p:tab>
+
+                    <p:tab title="7. Augusta Rainha">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoAugustaRainha}</pre>
+                    </p:tab>
+
+                    <p:tab title="8. Oferenda Final">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oferendaFinal}</pre>
+                    </p:tab>
+
+                    <p:tab title="9. Orações Finais">
+                        <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracoesFinais}</pre>
+                    </p:tab>
+
+                </p:accordionPanel>
+
+                <!-- Footer igual ao santo-terco -->
+                <footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9;">
+                    <div style="margin:16px 0;">
+                        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais"
+                           target="_blank"
+                           style="background:#25D366;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                            💬 WhatsApp
+                        </a>
+                        <a href="mailto:felipefrancelino2015@gmail.com?subject=Contato&amp;body=Olá!"
+                           onclick="window.open('https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=felipefrancelino2015@gmail.com&amp;su=Contato&amp;body=Olá!', '_blank'); return false;"
+                           style="background:#39588f;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                            📧 Email
+                        </a>
+                    </div>
+                    <div style="margin-top:10px; color:#bbb; font-size:0.9rem;">
+                        Desenvolvido por <strong>FS Tech</strong>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <i class="pi pi-whatsapp" style="color:#25D366;"></i>
+                        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+                           target="_blank"
+                           style="text-decoration:none; color:#25D366; margin-left:5px; font-weight:bold;">
+                            +55 (84) 99993-7274
+                        </a>
+                    </div>
+                </footer>
             </div>
-
-            <!-- Mensagem de validação -->
-            <h:panelGroup id="mensagem">
-                <h:outputText value="#{quaresmaSaoMiguelBean.mensagemDia}"
-                              style="font-weight:bold; color:darkblue;"/>
-            </h:panelGroup>
-
-            <!-- Accordion com as orações -->
-            <p:accordionPanel id="accordion" multiple="true" activeIndex="0" style="margin-top:20px;"
-                              rendered="#{quaresmaSaoMiguelBean.diaQuaresma != -1}">
-
-                <p:tab title="Preparação Diária">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.preparacaoDiaria}</pre>
-                </p:tab>
-
-                <p:tab title="1. Oração Inicial">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoDiariaInicial}</pre>
-                </p:tab>
-
-                <p:tab title="2. Exame de Consciência">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.exameConsciencia}</pre>
-                </p:tab>
-
-                <p:tab title="3. Leitura Bíblica">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.leituraBiblica}</pre>
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.leituraDoDia}</pre>
-                </p:tab>
-
-                <p:tab title="4. Ladainha de São Miguel">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.ladainhaSaoMiguel}</pre>
-                </p:tab>
-
-                <p:tab title="5. Consagração">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.consagracaoSaoMiguel}</pre>
-                </p:tab>
-
-                <p:tab title="6. Oração Final">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoFinal}</pre>
-                </p:tab>
-
-                <p:tab title="7. Augusta Rainha">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracaoAugustaRainha}</pre>
-                </p:tab>
-
-                <p:tab title="8. Oferenda Final">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oferendaFinal}</pre>
-                </p:tab>
-
-                <p:tab title="9. Orações Finais">
-                    <pre style="white-space: pre-line;">#{quaresmaSaoMiguelBean.oracoesFinais}</pre>
-                </p:tab>
-
-            </p:accordionPanel>
-
-            <footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9;">
-
-                <!-- Botões de contato -->
-                <div style="margin:16px 0;">
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais"
-                       target="_blank"
-                       style="background:#25D366;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
-                        💬 WhatsApp
-                    </a>
-
-                    <!-- Email -->
-                    <a href="mailto:felipefrancelino2015@gmail.com?subject=Contato&amp;body=Olá!"
-                       onclick="window.open('https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=felipefrancelino2015@gmail.com&amp;su=Contato&amp;body=Olá!', '_blank'); return false;"
-                       style="background:#39588f;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
-                        📧 Email
-                    </a>
-                </div>
-
-                <!-- Desenvolvedor -->
-                <div style="margin-top:10px; color:#bbb; font-size:0.9rem;">
-                    Desenvolvido por <strong>FS Tech</strong>
-                </div>
-
-                <!-- Contato final -->
-                <div style="margin-top:8px;">
-                    <i class="pi pi-whatsapp" style="color:#25D366;"></i>
-                    <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
-                       target="_blank"
-                       style="text-decoration:none; color:#25D366; margin-left:5px; font-weight:bold;">
-                        +55 (84) 99993-7274
-                    </a>
-                </div>
-            </footer>
-
         </h:form>
-
     </h:body>
 </html>

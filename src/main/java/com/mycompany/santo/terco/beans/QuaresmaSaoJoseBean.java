@@ -30,6 +30,27 @@ public class QuaresmaSaoJoseBean implements Serializable {
         LocalDate fim = LocalDate.of(hoje.getYear(), 3, 19);
         return !hoje.isBefore(inicio) && !hoje.isAfter(fim);
     }
+    
+    public boolean isDiaSelecionadoRenderizar() {
+        if (dataSelecionada == null) {
+            return false;
+        }
+        
+        LocalDate hoje = LocalDate.now();
+        LocalDate inicio = LocalDate.of(hoje.getYear(), 2, 19);
+        LocalDate fim = LocalDate.of(hoje.getYear(), 3, 19);
+
+        return (dataSelecionada.isEqual(inicio) || dataSelecionada.isAfter(inicio))
+                && (dataSelecionada.isEqual(fim) || dataSelecionada.isBefore(fim));
+    }
+    
+    public String getMensagemDia() {
+        int dia = getDiaQuaresma();
+        if (dia == -1) {
+            return "A data selecionada não está dentro da Quaresma de São José (19/02 - 19/03).";
+        }
+        return "Dia " + dia + " da Quaresma de São José";
+    }
 
     private transient final String oracaoPreparatoria = """
                                                         Glorioso São José, esposo puríssimo de Maria e pai adotivo de Jesus!

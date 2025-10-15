@@ -25,14 +25,25 @@ public class QuaresmaSaoMiguelBean implements Serializable {
     private LocalDate dataInicio = LocalDate.of(LocalDate.now().getYear(), 8, 15); // 15 de agosto
     private LocalDate dataFim = LocalDate.of(LocalDate.now().getYear(), 9, 29);   // 29 de setembro
     private LocalDate dataSelecionada = LocalDate.now();
-    
-    
-    
+
     public boolean isQuaresmaMiguel() {
         LocalDate hoje = LocalDate.now();
         LocalDate inicio = LocalDate.of(hoje.getYear(), 8, 15);
         LocalDate fim = LocalDate.of(hoje.getYear(), 9, 29);
         return !hoje.isBefore(inicio) && !hoje.isAfter(fim);
+    }
+
+    public boolean isDiaSelecionadoRenderizar() {
+        if (dataSelecionada == null) {
+            return false;
+        }
+        
+        LocalDate hoje = LocalDate.now();
+        LocalDate inicio = LocalDate.of(hoje.getYear(), 8, 15);
+        LocalDate fim = LocalDate.of(hoje.getYear(), 9, 29);
+
+        return (dataSelecionada.isEqual(inicio) || dataSelecionada.isAfter(inicio))
+                && (dataSelecionada.isEqual(fim) || dataSelecionada.isBefore(fim));
     }
 
     private transient final String preparacaoDiaria = """
@@ -87,10 +98,10 @@ public class QuaresmaSaoMiguelBean implements Serializable {
             + "Príncipe da Igreja de Cristo,\n"
             + "para que sejamos dignos de suas promessas.";
 
-    private transient final String consagracaoSaoMiguel = "Ó Príncipe nobilíssimo dos Anjos, valoroso guerreiro do Altíssimo, zeloso defensor  da glória do Senhor, terror dos espíritos rebeldes, amor e delícia de todos os  Anjos justos, meu diletíssimo Arcanjo São Miguel, desejando eu fazer parte do  número dos vossos devotos e servos, a vós hoje me consagro, me dou e me  ofereço e ponho-me a mim próprio, a minha família e tudo o que me pertence,  debaixo da vossa poderosíssima proteção. \n" +
-"É pequena a oferta do meu serviço, sendo como sou um miserável pecador, mas  vós engrandecereis o afeto do meu coração; recordai-vos que de hoje em diante  estou debaixo do vosso sustento e deveis assistir-me em toda a minha vida e  obter-me o perdão dos meus muitos e graves pecados, a graça de amar a Deus  de todo coração, ao meu querido Salvador Jesus Cristo e a minha Mãe Maria  Santíssima. \n" +
-"Obtende-me aqueles auxílios que me são necessários para obter a coroa da  eterna glória. Defendei-me dos inimigos da alma, especialmente na hora da  morte. Vinde, ó príncipe gloriosíssimo, assistir-me na última luta e com a vossa  arma poderosa lançai para longe, precipitando nos abismos do inferno, aquele  anjo quebrador de promessas e soberbo que um dia prostrastes no combate no  Céu.\n" +
-"São Miguel Arcanjo, defendei-nos no combate para que não pereçamos no  supremo juízo.";
+    private transient final String consagracaoSaoMiguel = "Ó Príncipe nobilíssimo dos Anjos, valoroso guerreiro do Altíssimo, zeloso defensor  da glória do Senhor, terror dos espíritos rebeldes, amor e delícia de todos os  Anjos justos, meu diletíssimo Arcanjo São Miguel, desejando eu fazer parte do  número dos vossos devotos e servos, a vós hoje me consagro, me dou e me  ofereço e ponho-me a mim próprio, a minha família e tudo o que me pertence,  debaixo da vossa poderosíssima proteção. \n"
+            + "É pequena a oferta do meu serviço, sendo como sou um miserável pecador, mas  vós engrandecereis o afeto do meu coração; recordai-vos que de hoje em diante  estou debaixo do vosso sustento e deveis assistir-me em toda a minha vida e  obter-me o perdão dos meus muitos e graves pecados, a graça de amar a Deus  de todo coração, ao meu querido Salvador Jesus Cristo e a minha Mãe Maria  Santíssima. \n"
+            + "Obtende-me aqueles auxílios que me são necessários para obter a coroa da  eterna glória. Defendei-me dos inimigos da alma, especialmente na hora da  morte. Vinde, ó príncipe gloriosíssimo, assistir-me na última luta e com a vossa  arma poderosa lançai para longe, precipitando nos abismos do inferno, aquele  anjo quebrador de promessas e soberbo que um dia prostrastes no combate no  Céu.\n"
+            + "São Miguel Arcanjo, defendei-nos no combate para que não pereçamos no  supremo juízo.";
 
     private transient final String oracaoFinal = """
                                                  Levanta-se Deus, pela intercess\u00e3o da bem-aventurada Virgem Maria, S\u00e3o Miguel Arcanjo e todas as mil\u00edcias celestes; sejam dispersos os seus inimigos e fujam de sua face todos os que o odeiam. Em nome do Pai, e do Filho e do Esp\u00edrito Santo. Am\u00e9m.""";
@@ -119,7 +130,7 @@ public class QuaresmaSaoMiguelBean implements Serializable {
         if (dataSelecionada.isBefore(dataInicio) || dataSelecionada.isAfter(dataFim)) {
             return -1; // fora do período
         }
-        
+
         // Ajusta a primeira data para o primeiro domingo no intervalo (se já não for domingo)
         LocalDate primeiroDomingo = dataInicio;
         if (dataInicio.getDayOfWeek() != DayOfWeek.SUNDAY) {
@@ -130,7 +141,7 @@ public class QuaresmaSaoMiguelBean implements Serializable {
         if (!primeiroDomingo.isAfter(dataFim)) {
             domingos = ChronoUnit.WEEKS.between(primeiroDomingo, dataFim) + 1;
         }
-        
+
         return (int) ChronoUnit.DAYS.between(dataInicio, dataSelecionada) + 1 - (int) domingos;
     }
 
