@@ -65,26 +65,29 @@
     <div class="card">
         <p:growl id="messages"/>
 
-        <div class="menu-container">
-            <h:graphicImage value="/imagens/logo3.png" width="300" height="150"/>
+        <div class="menu-container" style="text-align: center;">
+            <p:panelGrid columns="1" layout="grid" style="margin: 0 auto;">
 
-            <p:menubar>
-                <p:submenu label="📿 Santo Terço">
-                    <p:menuitem value="Início" outcome="santo_terco.xhtml" />
-                    <p:menuitem value="Rezar as dezenas" outcome="santo_terco.xhtml" fragment="decadesContainer" />
-                    <p:menuitem value="Mistério do dia" outcome="santo_terco.xhtml" fragment="todayMystery" />
-                    <p:menuitem value="Tutorial" outcome="santo_terco.xhtml" fragment="tutorial" />
-                    <p:menuitem value="Contato" outcome="santo_terco.xhtml" fragment="footer" />
-                </p:submenu>
+                <h:graphicImage value="/imagens/logo3.png" width="300" height="150" 
+                                style="margin: 0 auto; display: block;"/>
 
-                <p:menuitem value="📖 Liturgia" outcome="liturgia.xhtml?faces-redirect=true" />
+                <p:menubar style="display: inline-block; margin-top: 10px;">
+                    <p:submenu label="📿 Santo Terço">
+                        <p:menuitem value="Início" outcome="santo_terco.xhtml" />
+                        <p:menuitem value="Rezar as dezenas" outcome="santo_terco.xhtml" fragment="decadesContainer" />
+                        <p:menuitem value="Mistério do dia" outcome="santo_terco.xhtml" fragment="todayMystery" />
+                        <p:menuitem value="Tutorial" outcome="santo_terco.xhtml" fragment="tutorial" />
+                    </p:submenu>
 
-                <p:submenu label="✝️ Quaresmas">
-                    <p:menuitem value="Quaresma de São Miguel" outcome="quaresma-sao-miguel.xhtml?faces-redirect=true"/>
-                    <p:menuitem value="Quaresma de São José" outcome="quaresma-sao-jose.xhtml?faces-redirect=true"/>
-                </p:submenu>
+                    <p:menuitem value="📖 Liturgia" outcome="liturgia.xhtml?faces-redirect=true" />
 
-            </p:menubar>
+                    <p:submenu label="✝️ Quaresmas">
+                        <p:menuitem value="Quaresma de São Miguel" outcome="quaresma-sao-miguel.xhtml?faces-redirect=true"/>
+                        <p:menuitem value="Quaresma de São José" outcome="quaresma-sao-jose.xhtml?faces-redirect=true"/>
+                    </p:submenu>
+                </p:menubar>
+
+            </p:panelGrid>
         </div>
     </div>
 </ui:composition>
