@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.santo.terco.beans;
+package com.mycompany.santo.terco.quaresma;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -22,15 +22,18 @@ public class QuaresmaSaoMiguelBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private LocalDate dataInicio = LocalDate.of(LocalDate.now().getYear(), 8, 15); // 15 de agosto
-    private LocalDate dataFim = LocalDate.of(LocalDate.now().getYear(), 9, 29);   // 29 de setembro
     private LocalDate dataSelecionada = LocalDate.now();
-
+    private LocalDate dataInicio = LocalDate.of(dataSelecionada.getYear(), 8, 15); // 15 de agosto
+    private LocalDate dataFim = LocalDate.of(dataSelecionada.getYear(), 9, 29);   // 29 de setembro
+    
+    private void ajustarData() {
+        dataInicio = LocalDate.of(dataSelecionada.getYear(), 8, 15);
+        dataFim = LocalDate.of(dataSelecionada.getYear(), 9, 29);
+    }
+    
     public boolean isQuaresmaMiguel() {
-        LocalDate hoje = LocalDate.now();
-        LocalDate inicio = LocalDate.of(hoje.getYear(), 8, 15);
-        LocalDate fim = LocalDate.of(hoje.getYear(), 9, 29);
-        return !hoje.isBefore(inicio) && !hoje.isAfter(fim);
+        ajustarData();
+        return !dataSelecionada.isBefore(dataInicio) && !dataSelecionada.isAfter(dataFim);
     }
 
     public boolean isDiaSelecionadoRenderizar() {
@@ -38,12 +41,10 @@ public class QuaresmaSaoMiguelBean implements Serializable {
             return false;
         }
         
-        LocalDate hoje = LocalDate.now();
-        LocalDate inicio = LocalDate.of(hoje.getYear(), 8, 15);
-        LocalDate fim = LocalDate.of(hoje.getYear(), 9, 29);
-
-        return (dataSelecionada.isEqual(inicio) || dataSelecionada.isAfter(inicio))
-                && (dataSelecionada.isEqual(fim) || dataSelecionada.isBefore(fim));
+        ajustarData();
+        
+        return (dataSelecionada.isEqual(dataInicio) || dataSelecionada.isAfter(dataInicio))
+                && (dataSelecionada.isEqual(dataFim) || dataSelecionada.isBefore(dataFim));
     }
 
     private transient final String preparacaoDiaria = """
@@ -66,7 +67,6 @@ public class QuaresmaSaoMiguelBean implements Serializable {
             + "Jesus Cristo, atendei-nos.\n"
             + "Pai Celeste, que sois Deus, tende piedade de nós.\n"
             + "Filho Redentor do mundo, que sois Deus, tende piedade de nós.\n"
-            + "\n"
             + "Espírito Santo, que sois Deus, tende piedade de nós.\n"
             + "Santíssima Trindade, que sois um só Deus, tende piedade de nós.\n"
             + "Santa Maria, Rainha dos Anjos, rogai por nós.\n"
@@ -117,16 +117,9 @@ public class QuaresmaSaoMiguelBean implements Serializable {
                                                    \u2022 Ave-Maria (3x)
                                                    \u2022 Gl\u00f3ria ao Pai (3x)""";
 
-    public LocalDate getDataSelecionada() {
-        return dataSelecionada;
-    }
-
-    public void setDataSelecionada(LocalDate dataSelecionada) {
-        this.dataSelecionada = dataSelecionada;
-    }
-
     // Retorna o dia da Quaresma com base na data
     public int getDiaQuaresma() {
+        ajustarData();
         if (dataSelecionada.isBefore(dataInicio) || dataSelecionada.isAfter(dataFim)) {
             return -1; // fora do período
         }
@@ -138,8 +131,8 @@ public class QuaresmaSaoMiguelBean implements Serializable {
         }
 
         long domingos = 0;
-        if (!primeiroDomingo.isAfter(dataFim)) {
-            domingos = ChronoUnit.WEEKS.between(primeiroDomingo, dataFim) + 1;
+        if (!primeiroDomingo.isAfter(dataSelecionada)) {
+            domingos = ChronoUnit.WEEKS.between(primeiroDomingo, dataSelecionada) + 1;
         }
 
         return (int) ChronoUnit.DAYS.between(dataInicio, dataSelecionada) + 1 - (int) domingos;
