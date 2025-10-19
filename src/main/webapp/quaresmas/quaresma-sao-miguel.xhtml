@@ -88,9 +88,11 @@
                 </div>
 
                 <!-- Exibe a data selecionada -->
-                <h3 style="text-align:center; margin-top:10px;">
-                    📅 #{quaresmaSaoMiguelBean.mensagemDia}
-                </h3>
+                <h:panelGroup id="mensagemDia">
+                    <h3 style="text-align:center; margin-top:10px;">
+                        📅 #{quaresmaSaoMiguelBean.mensagemDia}
+                    </h3>
+                </h:panelGroup>
 
                 <div class="card" style="margin-top:20px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
@@ -101,7 +103,7 @@
                                     showButtonPanel="true">
                             <p:ajax event="dateSelect"
                                     process="@this"
-                                    update=":formQuaresmaMiguel:accordion :formQuaresmaMiguel:mensagem" />
+                                    update=":formQuaresmaMiguel:accordion :formQuaresmaMiguel:mensagem :formQuaresmaMiguel:mensagemDia" />
                         </p:calendar>
 
                         <h:panelGroup id="mensagem">

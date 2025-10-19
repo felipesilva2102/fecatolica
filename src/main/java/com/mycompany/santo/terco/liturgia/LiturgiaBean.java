@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.santo.terco.beans;
+package com.mycompany.santo.terco.liturgia;
 
 import com.mycompany.santo.terco.DTO.LiturgiaDTO;
 import jakarta.annotation.PostConstruct;

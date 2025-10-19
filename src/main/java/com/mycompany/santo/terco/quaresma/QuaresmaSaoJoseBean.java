@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.santo.terco.beans;
+package com.mycompany.santo.terco.quaresma;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -20,15 +20,18 @@ public class QuaresmaSaoJoseBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private LocalDate dataInicio = LocalDate.of(LocalDate.now().getYear(), 2, 19); // 19 de fevereiro
-    private LocalDate dataFim = LocalDate.of(LocalDate.now().getYear(), 3, 19);   // 19 de março
     private LocalDate dataSelecionada = LocalDate.now();
+    private LocalDate dataInicio = LocalDate.of(dataSelecionada.getYear(), 2, 19); // 19 de fevereiro
+    private LocalDate dataFim = LocalDate.of(dataSelecionada.getYear(), 3, 19);   // 19 de março
 
     public boolean isQuaresmaJose() {
-        LocalDate hoje = LocalDate.now();
-        LocalDate inicio = LocalDate.of(hoje.getYear(), 2, 19);
-        LocalDate fim = LocalDate.of(hoje.getYear(), 3, 19);
-        return !hoje.isBefore(inicio) && !hoje.isAfter(fim);
+        ajustarData();
+        return !dataSelecionada.isBefore(dataInicio) && !dataSelecionada.isAfter(dataFim);
+    }
+    
+    private void ajustarData() {
+        dataInicio = LocalDate.of(dataSelecionada.getYear(), 2, 19);
+        dataFim = LocalDate.of(dataSelecionada.getYear(), 3, 19);
     }
     
     public boolean isDiaSelecionadoRenderizar() {
@@ -36,12 +39,10 @@ public class QuaresmaSaoJoseBean implements Serializable {
             return false;
         }
         
-        LocalDate hoje = LocalDate.now();
-        LocalDate inicio = LocalDate.of(hoje.getYear(), 2, 19);
-        LocalDate fim = LocalDate.of(hoje.getYear(), 3, 19);
+        ajustarData();
 
-        return (dataSelecionada.isEqual(inicio) || dataSelecionada.isAfter(inicio))
-                && (dataSelecionada.isEqual(fim) || dataSelecionada.isBefore(fim));
+        return (dataSelecionada.isEqual(dataInicio) || dataSelecionada.isAfter(dataInicio))
+                && (dataSelecionada.isEqual(dataFim) || dataSelecionada.isBefore(dataFim));
     }
     
     public String getMensagemDia() {
@@ -113,6 +114,7 @@ public class QuaresmaSaoJoseBean implements Serializable {
 
     // Retorna o dia da Quaresma com base na data
     public int getDiaQuaresma() {
+        ajustarData();
         if (dataSelecionada.isBefore(dataInicio) || dataSelecionada.isAfter(dataFim)) {
             return -1; // fora do período
         }
