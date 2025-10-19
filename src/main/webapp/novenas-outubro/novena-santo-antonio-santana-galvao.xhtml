@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="jakarta.faces.facelets">
     <h:head>
-        <title>Novena de São Carlo Acutis</title>
+        <title>Novena a Santo Antônio de Sant'Ana Galvão</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <style>
             body {
@@ -82,53 +82,61 @@
                 <!-- Título -->
                 <div class="card">
                     <header style="text-align:center;">
-                        <h1>Novena de São Carlo Acutis</h1>
+                        <h1>Novena a Santo Antônio de Sant'Ana Galvão</h1>
                         <p class="lead">Acompanhe seu progresso e medite nas orações do dia.</p>
-                        <p class="lead">Normalmente feita dos dias 03 de outubro à 11 de outubro.</p>
+                        <p class="lead">Normalmente feita dos dias 16 de outubro à 24 de outubro.</p>
                     </header>
                 </div>
 
                 <!-- Accordion com as orações -->
                 <p:accordionPanel id="accordion" multiple="true" activeIndex="0">
 
-                    <p:tab title="Como fazer?">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.comoFazer}</pre>
+                    <p:tab title="Quem Foi?">
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.quemFoi}</pre>
+                    </p:tab>
+                    
+                    <p:tab title="Oração Inicial">
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.oracaoInicial}</pre>
                     </p:tab>
 
+                    <p:tab title="Oração Final">
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.oracaoFinal}</pre>
+                    </p:tab>
+                    
                     <p:tab title="Primeiro dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.primeiroDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.primeiroDia}</pre>
                     </p:tab>
 
                     <p:tab title="Segundo dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.segundoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.segundoDia}</pre>
                     </p:tab>
 
                     <p:tab title="Terceiro dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.terceiroDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.terceiroDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Quarto dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.quartoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.quartoDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Quinto dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.quintoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.quintoDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Sexto dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.sextoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.sextoDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Sétimo dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.setimoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.setimoDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Oitavo dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.oitavoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.oitavoDia}</pre>
                     </p:tab>
                     
                     <p:tab title="Nono dia">
-                        <pre style="white-space: pre-line;">#{novenaSaoCarloAcutisBean.nonoDia}</pre>
+                        <pre style="white-space: pre-line;">#{novenaSantoAntonioSantanaGalvaoBean.nonoDia}</pre>
                     </p:tab>
                 </p:accordionPanel>
                 
