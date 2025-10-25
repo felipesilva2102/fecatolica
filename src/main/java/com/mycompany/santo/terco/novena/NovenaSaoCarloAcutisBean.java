@@ -22,6 +22,10 @@ public class NovenaSaoCarloAcutisBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String nome = "Novena a São Carlo Acutis";
+
+    private String periodo = "Normalmente feita dos dias 03 de outubro à 11 de outubro.";
+
     private String comoFazer = "A novena a Carlo Acutis consiste em 4 momentos:\n"
             + "\n"
             + "Oração inicial: é a mesma, deve ser repetida todos os dias, incluindo nela o pedido da graça que se deseja alcançar com a novena.\n"

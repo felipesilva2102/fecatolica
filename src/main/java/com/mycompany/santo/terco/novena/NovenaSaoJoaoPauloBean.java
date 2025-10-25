@@ -22,7 +22,11 @@ public class NovenaSaoJoaoPauloBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String quemFoi = "São João Paulo II foi um dos papas mais amados da história. Teve o terceiro mais longevo papado da história e evangelizou o mundo por meio de suas inúmeras viagens. Seu papel no fim do comunismo soviético, seu perdão ao homem que atentou contra sua vida, a liderança do diálogo ecumênico e inter-religioso, o início da Jornada Mundial da Juventude, a celebração do Jubileu do Ano 2000 e sua luta contra a doença de Parkinson foram apenas algumas das maneiras pelas quais ele testemunhou a fé. Rezemos com fé a Novena a São João Paulo II.";
+    private String nome = "Novena a São João Paulo II";
+
+    private String periodo = "Normalmente feita dos dias 13 de outubro à 21 de outubro.";
+
+    private String historia = "São João Paulo II foi um dos papas mais amados da história. Teve o terceiro mais longevo papado da história e evangelizou o mundo por meio de suas inúmeras viagens. Seu papel no fim do comunismo soviético, seu perdão ao homem que atentou contra sua vida, a liderança do diálogo ecumênico e inter-religioso, o início da Jornada Mundial da Juventude, a celebração do Jubileu do Ano 2000 e sua luta contra a doença de Parkinson foram apenas algumas das maneiras pelas quais ele testemunhou a fé. Rezemos com fé a Novena a São João Paulo II.";
 
     private String ladainha = "Senhor, tende piedade de nós.\n"
             + "Senhor, tende piedade de nós.\n"

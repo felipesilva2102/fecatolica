@@ -22,6 +22,10 @@ public class NovenaNossaSenhoraConceicaoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String nome = "Novena de Nossa Senhora da Conceição";
+
+    private String periodo = "Normalmente feita dos dias 03 de outubro à 11 de outubro.";
+
     private String motivo = "Rezar a Novena à Imaculada é uma forma carinhosa de expressar nosso amor por Ela e de caminhar ao seu lado. Durante nove dias, vamos desejar a beleza, contemplar Aquela que é toda bela, toda pura, toda de Deus, e procurar imitá-la. Assim, seguiremos nosso caminho de fé com Aquela que pôde dizer de si mesma: “Eu sou a Imaculada Conceição!”";
 
     private String palavrasPapa = "“Olhando para Nossa Senhora, como não deixar despertar em nós, seus filhos, a aspiração à beleza, à bondade, à pureza do coração? A sua celeste candura nos atrai a Deus, ajudando-nos a superar a tentação de uma vida medíocre, feita de compromissos com o mal, para orientar-nos decididamente para um autêntico bem, que é fonte de alegria”. (Bento XVI, 08.12.2005)";

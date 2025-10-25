@@ -21,8 +21,12 @@ import lombok.Setter;
 public class NovenaSantaMargaridaMariaAlacoqueBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Santa Margarida Maria Alacoque";
 
-    private String inicio = "Ato de Contrição. Ó Senhor! Ofendi-Vos ingrata e Vós, misericordiosamente, retardastes o castigo merecido por tantos pecados. Completai o ato final de tantas bondades: lavai a minha alma com o Sangue e a Água preciosíssimos que brotam do Vosso Lado; apagai as manchas que a desfiguram e ofendem o Vosso olhar amoroso. Lamento-as de todo o coração e preferiria ter morrido lutando para preservar o Vosso amor e a Vossa graça a ter-Vos ofendido. Perdoai-me, meu Jesus, lavai-me e serei mais branco que a neve; criai em mim um coração novo, e tudo será para Vós. Assim seja.\n"
+    private String periodo = "Normalmente feita dos dias 07 de outubro à 15 de outubro.";
+
+    private String comoFazer = "Ato de Contrição. Ó Senhor! Ofendi-Vos ingrata e Vós, misericordiosamente, retardastes o castigo merecido por tantos pecados. Completai o ato final de tantas bondades: lavai a minha alma com o Sangue e a Água preciosíssimos que brotam do Vosso Lado; apagai as manchas que a desfiguram e ofendem o Vosso olhar amoroso. Lamento-as de todo o coração e preferiria ter morrido lutando para preservar o Vosso amor e a Vossa graça a ter-Vos ofendido. Perdoai-me, meu Jesus, lavai-me e serei mais branco que a neve; criai em mim um coração novo, e tudo será para Vós. Assim seja.\n"
             + "\n"
             + "Oração. Adorável Trindade, agradecemos-te por todos os favores com que te dignaste enriquecer a tua serva, a Bem-Aventurada Margarida Maria, e por sua intercessão, pedimos-te as graças que desejamos nesta Novena.\n"
             + "\n"

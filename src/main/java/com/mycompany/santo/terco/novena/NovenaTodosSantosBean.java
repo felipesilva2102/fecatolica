@@ -22,7 +22,11 @@ public class NovenaTodosSantosBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String contexto = "Antes de falar da Novena de Todos os Santos, lembremos do que se trata a festa.\n"
+    private String nome = "Novena a Todos os Santos";
+
+    private String periodo = "Normalmente feita dos dias 23 de outubro à 31 de outubro.";
+
+    private String historia = "Antes de falar da Novena de Todos os Santos, lembremos do que se trata a festa.\n"
             + "\n"
             + "A Igreja que, no decurso do ano, celebra incessantemente as festas dos santos, reúne-os todos numa festa comum. Além dos que pode chamar pelo seu nome, ela evoca, numa visão grandiosa, a multidão inumerável dos outros “de todas as nações, tribos, povos e línguas, de pé diante do trono e diante do Cordeiro, vestidos com túnicas brancas e de palmas na mão”, aclamando Aquele que os resgatou com o Seu Sangue.\n"
             + "\n"
