@@ -21,6 +21,10 @@ import lombok.Setter;
 public class NovenaSantaCatarinaAlexandriaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Santa Catarina de Alexandria";
+
+    private String periodo = "Normalmente feita dos dias 16 de novembro à 24 de novembro.";
 
     private String comoFazer = "    Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
             + "    Reza-se a oração inicial para todos os dias;\n"

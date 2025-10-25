@@ -22,7 +22,11 @@ public class NovenaSaoPedroAlcantaraBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String quemFoi = "Santo padroeiro do Brasil. Festa dia 19 de outubro. Religioso contemporâneo de Santa Teresa d’Ávila, reformou a Ordem Franciscana. Praticava rigorosos jejuns e mortificações. Destacou-se por sua filial devoção a Nossa Senhora e seu ardoroso amor à Santa Cruz.\n";
+    private String nome = "Novena a São Pedro de Alcântara";
+
+    private String periodo = "Normalmente feita dos dias 10 de outubro à 18 de outubro.";
+
+    private String historia = "Santo padroeiro do Brasil. Festa dia 19 de outubro. Religioso contemporâneo de Santa Teresa d’Ávila, reformou a Ordem Franciscana. Praticava rigorosos jejuns e mortificações. Destacou-se por sua filial devoção a Nossa Senhora e seu ardoroso amor à Santa Cruz.\n";
 
     private String oracaoInicial = "Deus e Senhor nosso, que nos dais, em vossos santos, admiráveis exemplos de virtudes, e que, no bem-aventurado São Pedro de Alcântara, nos apresentais um modelo acabado de oração, de humildade, de penitência e de caridade ardente: Fazei que copiemos, em nosso coração, tão eximias virtudes, e que apenas na cruz e na mortificação, que são chaves do céu, ponhamos, como São Pedro, nossas maiores complacências. Amém.\n";
 
@@ -43,10 +47,10 @@ public class NovenaSaoPedroAlcantaraBean implements Serializable {
     private String oitavoDia = "Esforçado discípulo da Santa Cruz, São Pedro de Alcântara, que soubeste cravar-vos nela cada dia de vossa vida: fazei que percamos o medo da cruz, e descubramos, em nossas dores, as imagens dessa cruz que beijamos com devoção. Amém.\n";
 
     private String nonoDia = "Bendito São Pedro de Alcântara, filho insigne da Mãe Igreja, e hoje exemplo e glória dos católicos: infundi em nós um vivo e prático amor a Igreja de Jesus Cristo, arca de nossa salvação. Amém.\n";
-    
+
     private String oracaoFinalTodosDias = "Pai-Nosso, Ave-Maria, Glória. Pede-se a graça que se deseja alcançar com a novena. Concluir com o responsório e a oração final.\n";
-    
+
     private String responsorio = "Soberano Redentor, a quem Pedro serviu fiel todo o tempo de sua vida, de modo que detida foi vossa ira por ele: Fazei, Deus meu, o favor de que seja concedida nossa súplica rendida por seu mérito e vosso amor. Pois, Senhor, destes palavra cumprida de que, o que em seu nome peça, vos teria por devedor: Fazei, Deus meu, o favor de que seja concedida nossa súplica rendida por seu mérito e vosso amor. Rogai, Pedro, por nós à divina Bondade, para que assim consigamos sua soberana Piedade. Amém.\n";
-    
+
     private String oracaoFinal = "Onipotente e sempre eterno Deus, que, por vossos santos, vos dignas fazer sempre maravilhas: vos rogamos humildemente que, assim como tens prometido escutar, misericordioso, os rogos dos que vos implorem por meio de São Pedro de Alcântara, assim atendas agora, pelos méritos do mesmo, as súplicas que vos fazemos, e derrames, sobre nós, o saudável rocío de vossa bênção, para que, livres de todo mal, mereçamos chegar felizmente ao porto de vossa misericórdia. Por Jesus Cristo nosso Senhor. Amém.\n";
 }

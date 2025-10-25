@@ -21,6 +21,10 @@ import lombok.Setter;
 public class NovenaApresentacaoNossaSenhoraBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena da Apresentação de Nossa Senhora";
+
+    private String periodo = "Normalmente feita dos dias 12 de novembro à 20 de novembro.";
 
     private String comoFazer = "    Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
             + "    Reza-se todos os dias as mesmas orações seguidas das 3 Ave-Marias;\n"

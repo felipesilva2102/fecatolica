@@ -21,8 +21,12 @@ import lombok.Setter;
 public class NovenaSantoInacioAntioquiaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Santo Inácio de Antioquia";
 
-    private String comoRezar = "Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
+    private String periodo = "Normalmente feita dos dias 08 de outubro à 16 de outubro.";
+
+    private String comoFazer = "Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
             + "Reza-se a Oração preparatória para todos os dias\n"
             + "Faz-se a meditação do dia;\n"
             + "Rezar um Pai-Nosso, uma Ave Maria e um Glória ao Pai;\n"

@@ -21,6 +21,10 @@ import lombok.Setter;
 public class NovenaSantaTeresaJesusBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Santa Teresa de Jesus";
+
+    private String periodo = "Normalmente feita dos dias 06 de outubro à 14 de outubro.";
 
     private String aprendizado = "Com a Novena de Santa Teresa D’Ávila aprendemos que a oração é o caminho que devemos seguir para nos encontrarmos com Cristo, para vivermos com Ele uma profunda intimidade. A oração de contemplação nos faz conhecer toda a humanidade de Jesus e, a partir daí, experimentar um crescimento e uma maturidade para vivermos o matrimônio Espiritual com o Amado Esposo. \n"
             + "\n"

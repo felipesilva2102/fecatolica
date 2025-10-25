@@ -22,7 +22,11 @@ public class NovenaAlmas implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String explicacao = "A NOVENA TÊM TRÊS PARTES\n"
+    private String nome = "Novena das Almas";
+
+    private String periodo = "Normalmente feita dos dias 24 de outubro à 01 de novembro.";
+
+    private String comoFazer = "A NOVENA TÊM TRÊS PARTES\n"
             + "\n"
             + "1 – ORAÇÕES INICIAIS PARA TODOS OS DIAS\n"
             + "\n"

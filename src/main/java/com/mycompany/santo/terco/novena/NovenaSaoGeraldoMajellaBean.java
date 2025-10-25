@@ -22,7 +22,11 @@ public class NovenaSaoGeraldoMajellaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String apresentacao = "São Geraldo é o santo das Mães e das Gestantes\n"
+    private String nome = "Novena a São Geraldo Majella";
+
+    private String periodo = "Normalmente feita dos dias 07 de outubro à 15 de outubro.";
+
+    private String historia = "São Geraldo é o santo das Mães e das Gestantes\n"
             + "\n"
             + "São Geraldo Majella é considerado o “Santo das Mães”. Podemos dizer que sua predileção às gestantes, mães e crianças vem do seu imenso amor pela Virgem Maria e seu Filho Jesus.\n"
             + "\n"

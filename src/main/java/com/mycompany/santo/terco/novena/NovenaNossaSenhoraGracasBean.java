@@ -21,6 +21,10 @@ import lombok.Setter;
 public class NovenaNossaSenhoraGracasBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Nossa Senhora das Graças"; 
+
+    private String periodo = "Normalmente feita dos dias 18 de novembro à 26 de novembro."; 
 
     private String comoFazer = "    Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
             + "    Reza-se o Ato de Contrição\n"

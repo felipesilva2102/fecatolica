@@ -22,6 +22,10 @@ public class NovenaCristoReiBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String nome = "Novena a Cristo Rei";
+
+    private String periodo = "Normalmente feita dos dias 11 de novembro à 23 de novembro";
+
     private String comoFazer = "    Inicia-se com o Sinal da Cruz: Em nome do Pai e do Filho e do Espírito Santo;\n"
             + "    Reza-se a oração inicial para todos os dias;\n"
             + "    Faz-se a meditação do dia;\n"
@@ -70,7 +74,6 @@ public class NovenaCristoReiBean implements Serializable {
             + "    São José, ensinai-nos a amar a Jesus e a Maria. Amém";
 
     private String terceiroDia = "“Logo vós sois Rei? – bem dizes: Eu sou Rei. – Eu tenho vindo ao mundo para dar testemunho da verdade.- e o que é a verdade?”.\n"
-   
             + "\n"
             + "Deus nosso Senhor é a verdade por essência, e é verdade encantadora, é verdade que entusiasma o coração; que este Deus onipotente se fez Homem por mim, e me amou entre desprezos, entre burlas, entre toda classe de sofrimentos, e não por ser necessário para salvar-me, pois umas gotas de Seu Sangue bastavam para isso, mas sim por ser necessário ao amor\n"
             + " grande e infinito que ardia em Seu coração pelas almas.\n"

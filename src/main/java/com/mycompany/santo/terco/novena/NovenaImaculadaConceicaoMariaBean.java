@@ -22,6 +22,10 @@ public class NovenaImaculadaConceicaoMariaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String nome = "Novena à Imaculada Conceição de Maria";
+
+    private String periodo = "Normalmente feita dos dias 29 de novembro à 07 de dezembro.";
+
     private String historia = "A novena inicia-se em 29 de novembro e deve ser rezada por nove dias consecutivos, encerrando-se em 7 de dezembro, comemorando a solenidade no dia 8.\n"
             + "\n"
             + "O dogma da Imaculada Conceição da Virgem Maria foi oficialmente proclamado pelo Papa Pio IX na bula Ineffabilis Deus, em 8 de dezembro de 1854. A festa dedicada à Imaculada Conceição, celebrada no mesmo dia, foi incluída no calendário litúrgico pelo Papa Sisto IV, em 28 de fevereiro de 1477. Em sua aparição a Santa Bernadete, em 1858, a Virgem Santíssima declarou-se como a Imaculada Conceição. Até hoje, o corpo de Santa Bernadete permanece incorrupto, reforçando a importância dessa mensagem.\n"

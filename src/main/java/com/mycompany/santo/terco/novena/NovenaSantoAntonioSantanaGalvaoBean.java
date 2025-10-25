@@ -21,8 +21,12 @@ import lombok.Setter;
 public class NovenaSantoAntonioSantanaGalvaoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    private String nome = "Novena a Santo Antônio de Sant'Ana Galvão";
 
-    private String quemFoi = "São Frei Galvão é o primeiro santo que nasceu em terras brasileiras e seu testemunho de virtudes deve ser seguido por nós, que um dia desejamos alcançar o céu.\n"
+    private String periodo = "Normalmente feita dos dias 16 de outubro à 24 de outubro.";
+
+    private String historia = "São Frei Galvão é o primeiro santo que nasceu em terras brasileiras e seu testemunho de virtudes deve ser seguido por nós, que um dia desejamos alcançar o céu.\n"
             + "\n"
             + "Pertencente a uma família nobre, ele não se apegou aos bens materiais. Ao contrário: dedicou sua vida à oração e à caridade.\n"
             + "\n"

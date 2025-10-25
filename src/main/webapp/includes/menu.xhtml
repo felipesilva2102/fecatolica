@@ -106,23 +106,39 @@
                         <p:submenu label="Novenas do Mês de Setembro">
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Outubro">
-                            <p:menuitem value="Novena de Nossa Senhora da Conceição" outcome="/novenas-outubro/novena-nossa-senhora-da-conceicao.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Santa Margarida Maria Alacoque" outcome="/novenas-outubro/novena-santa-margarida-maria-alacoque.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Santa Teresa de Jesus" outcome="/novenas-outubro/novena-santa-teresa-de-jesus.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Santo Antônio de Sant'Ana Galvão" outcome="/novenas-outubro/novena-santo-antonio-santana-galvao.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Santo Inácio de Antioquia" outcome="/novenas-outubro/novena-santo-inacio-de-antioquia.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a São Carlo Acutis" outcome="/novenas-outubro/novena-sao-carlo-acutis.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a São Geraldo Majella" outcome="/novenas-outubro/novena-sao-geraldo-majella.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a São João Paulo II" outcome="/novenas-outubro/novena-sao-joao-paulo-II.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a São Pedro de Alcântara" outcome="/novenas-outubro/novena-sao-pedro-de-alcantara.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Todos os Santos" outcome="/novenas-outubro/novena-todos-os-santos.xhtml?faces-redirect=true"/>
+                            <p:menuitem value="Novena de Nossa Senhora da Conceição"
+                                        action="#{beanUtil.mudarPara('novenaNossaSenhoraConceicaoBean')}"/>
+                            <p:menuitem value="Novena a Santa Margarida Maria Alacoque"
+                                        action="#{beanUtil.mudarPara('novenaSantaMargaridaMariaAlacoqueBean')}"/>
+                            <p:menuitem value="Novena a Santa Teresa de Jesus"
+                                        action="#{beanUtil.mudarPara('novenaSantaTeresaJesusBean')}"/>
+                            <p:menuitem value="Novena a Santo Antônio de Sant'Ana Galvão"
+                                        action="#{beanUtil.mudarPara('novenaSantoAntonioSantanaGalvaoBean')}"/>
+                            <p:menuitem value="Novena a Santo Inácio de Antioquia"
+                                        action="#{beanUtil.mudarPara('novenaSantoInacioAntioquiaBean')}"/>
+                            <p:menuitem value="Novena a São Carlo Acutis"
+                                        action="#{beanUtil.mudarPara('novenaSaoCarloAcutisBean')}"/>
+                            <p:menuitem value="Novena a São Geraldo Majella"
+                                        action="#{beanUtil.mudarPara('novenaSaoGeraldoMajellaBean')}"/>
+                            <p:menuitem value="Novena a São João Paulo II"
+                                        action="#{beanUtil.mudarPara('novenaSaoJoaoPauloBean')}"/>
+                            <p:menuitem value="Novena a São Pedro de Alcântara"
+                                        action="#{beanUtil.mudarPara('novenaSaoPedroAlcantaraBean')}"/>
+                            <p:menuitem value="Novena a Todos os Santos"
+                                        action="#{beanUtil.mudarPara('novenaTodosSantosBean')}"/>
                         </p:submenu>
+
                         <p:submenu label="Novenas do Mês de Novembro">
-                            <p:menuitem value="Novena a Santa Catarina de Alexandria" outcome="/novenas-novembro/novena-a-santa-catarina-de-alexandria.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Cristo Rei" outcome="/novenas-novembro/novena-cristo-rei.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena a Nossa Senhora das Graças" outcome="/novenas-novembro/novena-da-apresentacao-de-nossa-senhora.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena à Imaculada Conceição de Maria" outcome="/novenas-novembro/novena-imaculada-conceicao-de-maria.xhtml?faces-redirect=true"/>
-                            <p:menuitem value="Novena da Apresentação de Nossa Senhora" outcome="/novenas-novembro/novena-nossa-senhora-das-gracas.xhtml?faces-redirect=true"/>
+                            <p:menuitem value="Novena a Santa Catarina de Alexandria"
+                                        action="#{beanUtil.mudarPara('novenaSantaCatarinaAlexandriaBean')}"/>
+                            <p:menuitem value="Novena a Cristo Rei"
+                                        action="#{beanUtil.mudarPara('novenaCristoReiBean')}"/>
+                            <p:menuitem value="Novena a Nossa Senhora das Graças"
+                                        action="#{beanUtil.mudarPara('novenaNossaSenhoraGracasBean')}"/>
+                            <p:menuitem value="Novena à Imaculada Conceição de Maria"
+                                        action="#{beanUtil.mudarPara('novenaImaculadaConceicaoMariaBean')}"/>
+                            <p:menuitem value="Novena da Apresentação de Nossa Senhora"
+                                        action="#{beanUtil.mudarPara('novenaApresentacaoNossaSenhoraBean')}"/>
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Dezembro">
                         </p:submenu>
