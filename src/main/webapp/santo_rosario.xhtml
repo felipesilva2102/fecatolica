@@ -297,13 +297,15 @@
                         box.innerHTML = '';
                         mysteries.forEach((m, idx) => {
                             const btn = document.createElement('button');
+                            btn.type = 'button'; // EVITA SUBMIT!
                             btn.textContent = m.title;
                             btn.style.margin = '6px';
                             btn.style.padding = '8px 12px';
                             btn.style.borderRadius = '8px';
                             btn.style.border = '1px solid #ccc';
                             btn.style.cursor = 'pointer';
-                            btn.onclick = () => {
+                            btn.onclick = function (event) {
+                                event.preventDefault(); // Impede erro futuro
                                 document.getElementById('todayMystery').innerText = m.title;
                                 buildUI(m);
                             };
