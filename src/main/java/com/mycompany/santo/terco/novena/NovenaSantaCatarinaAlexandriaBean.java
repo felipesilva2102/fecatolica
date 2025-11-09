@@ -21,7 +21,7 @@ import lombok.Setter;
 public class NovenaSantaCatarinaAlexandriaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private String nome = "Novena a Santa Catarina de Alexandria";
 
     private String periodo = "Normalmente feita dos dias 16 de novembro à 24 de novembro.";
@@ -73,4 +73,6 @@ public class NovenaSantaCatarinaAlexandriaBean implements Serializable {
             + "O Imperador, surpreendido pelo êxito inesperado da discussão, procurou pessoalmente ganhar as simpatias de Catarina, para desta arte fazê-la abandonar o Cristianismo. Entre outras muitas promessas que lhe fez, foi a principal a de elevá-la à dignidade de Imperatriz. Catarina, porém, rejeitou firmemente todas as pretensões do tirano, não querendo reconhecer por esposo do coração senão o divino Salvador. Maximino mudou então de tática e em vez do amor, que não lhe possuía, revelou o ódio sem limites contra a religião de Cristo e contra a nobre donzela. Durante onze dias Catarina foi sujeita a toda sorte de sofrimentos. Duras flagelações revezavam com desumanas privações. O resultado foi que muitas pessoas, que visitaram a pobre vítima das iras imperiais, se converteram ao Cristianismo. Esta circunstância provocou mais ainda o furor do déspota, que baixou uma ordem, segundo a qual Catarina devia ser colocada sobre uma roda com lâminas cortantes e ferros pontiagudos. Catarina fez o sinal da cruz sobre o instrumento do martírio, que se fez em pedaços, fato este que causou máxima admiração e determinou a conversão de outros pagãos. Maximino não mais ousou aplicar outras medidas, com receio de tornar-se propagandista do Cristianismo. Por isto deu ordem para que Catarina fosse decapitada. A jovem cristã recebeu jubilosa esta sentença. e saudou o dia que lhe ia proporcionar a maior das venturas: a união com o celestial Esposo.\n"
             + "\n"
             + "Diz a história da vida de Santa Catarina que o corpo da Santa foi pelos Anjos levado ao monte Sinai. Falconio, arcebispo de San Severino, referindo-se a esta lenda, diz: Os Anjos, isto é, os religiosos do convento de Sinai levaram o corpo da mártir ao monte santo, onde o sepultaram com todas as honras. A maior parte das relíquias de Santa Catarina se acham de fato no Mosteiro de Sinai.";
+
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/santa-catarina-de-alexandria-oracao/?srsltid=AfmBOooi9tJfhfdPQSmrtQtc8LiUpiKt-PXRPrUf1yHT_lHYJv2pKwU6";
 }

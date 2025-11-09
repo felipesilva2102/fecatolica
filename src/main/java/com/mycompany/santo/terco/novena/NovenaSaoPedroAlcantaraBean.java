@@ -53,4 +53,6 @@ public class NovenaSaoPedroAlcantaraBean implements Serializable {
     private String responsorio = "Soberano Redentor, a quem Pedro serviu fiel todo o tempo de sua vida, de modo que detida foi vossa ira por ele: Fazei, Deus meu, o favor de que seja concedida nossa súplica rendida por seu mérito e vosso amor. Pois, Senhor, destes palavra cumprida de que, o que em seu nome peça, vos teria por devedor: Fazei, Deus meu, o favor de que seja concedida nossa súplica rendida por seu mérito e vosso amor. Rogai, Pedro, por nós à divina Bondade, para que assim consigamos sua soberana Piedade. Amém.\n";
 
     private String oracaoFinal = "Onipotente e sempre eterno Deus, que, por vossos santos, vos dignas fazer sempre maravilhas: vos rogamos humildemente que, assim como tens prometido escutar, misericordioso, os rogos dos que vos implorem por meio de São Pedro de Alcântara, assim atendas agora, pelos méritos do mesmo, as súplicas que vos fazemos, e derrames, sobre nós, o saudável rocío de vossa bênção, para que, livres de todo mal, mereçamos chegar felizmente ao porto de vossa misericórdia. Por Jesus Cristo nosso Senhor. Amém.\n";
+    
+    private String disponivel = "https://novenas.totusmariae.org/sao-pedro-de-alcantara/";
 }

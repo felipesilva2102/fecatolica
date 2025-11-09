@@ -154,4 +154,6 @@ public class NovenaSagradaFamiliaBean implements Serializable {
             + "Sagrada Família, exemplo de união, concedei este dom à minha família, às vezes tão dividida por tantas circunstâncias. Afastai-nos do poder daquele que divide, guardai-nos unidos para a vinda do Reino de Deus. Amém.\n"
             + "\n"
             + "Pai-Nosso, Ave-Maria, Glória.";
+    
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/novena-da-sagrada-familia/?srsltid=AfmBOooEPCNeeIW2g8qVTg29s-8juvlgoagtS_a5rpzHFcKl5ktwUb59";
 }

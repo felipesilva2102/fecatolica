@@ -72,20 +72,15 @@
                                 style="margin: 0 auto; display: block;"/>
 
                 <p:menubar style="display: inline-block; margin-top: 10px;">
-                    <p:submenu label="📿 Santo Terço">
-                        <p:menuitem value="Início" outcome="/santo_terco.xhtml" />
-                        <p:menuitem value="Rezar as dezenas" outcome="/santo_terco.xhtml" fragment="decadesContainer" />
-                        <p:menuitem value="Mistério do dia" outcome="/santo_terco.xhtml" fragment="todayMystery" />
-                        <p:menuitem value="Tutorial" outcome="/santo_terco.xhtml" fragment="tutorial" />
-                    </p:submenu>
+                    <p:menuitem value="📿 Santo Terço" action="#{beanUtil.resetTerco()}"/>
 
-                    <p:menuitem value="🌹 Santo Rosário" outcome="/santo_rosario.xhtml?faces-redirect=true" />
+                    <p:menuitem value="🌹 Santo Rosário" action="#{beanUtil.resetRosario()}"/>
 
-                    <p:menuitem value="📖 Liturgia" outcome="/liturgia.xhtml?faces-redirect=true" />
+                    <p:menuitem value="📖 Liturgia" action="#{beanUtil.resetLiturgia()}"/>
 
                     <p:submenu label="✝️ Quaresmas">
-                        <p:menuitem value="Quaresma de São Miguel" outcome="/quaresmas/quaresma-sao-miguel.xhtml?faces-redirect=true"/>
-                        <p:menuitem value="Quaresma de São José" outcome="/quaresmas/quaresma-sao-jose.xhtml?faces-redirect=true"/>
+                        <p:menuitem value="Quaresma de São Miguel" action="#{beanUtil.resetQuaresma('miguel')}"/>
+                        <p:menuitem value="Quaresma de São José" action="#{beanUtil.resetQuaresma('jose')}"/>
                     </p:submenu>
 
                     <p:submenu label="🙏 Novenas">

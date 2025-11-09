@@ -26,6 +26,20 @@ public class NovenaSaoCarloAcutisBean implements Serializable {
 
     private String periodo = "Normalmente feita dos dias 03 de outubro à 11 de outubro.";
 
+    private String historia = "Para bem rezar a Novena a Carlo Acutis, é conveniente conhecer um pouco mais de sua vida.\n"
+            + "\n"
+            + "Carlo Acutis nasceu em 3 de maio de 1991, em Londres, mas cresceu em Milão, Itália. Desde cedo, demonstrou uma fé profunda, influenciado por sua babá polonesa, Beata, que o introduziu às práticas católicas. Desde cedo, ele desenvolveu uma piedade diferenciada, que o inclinou a uma adesão à fé bastante avançada para sua pouca idade. Ele foi capaz de conjugar perfeitamente os ensinamentos cristãos com o cotidiano, vivenciando o Evangelho em meio às atividades ordinárias que realizava.\n"
+            + "\n"
+            + "Aos 7 anos, recebeu a Primeira Comunhão e, a partir de então, frequentava a missa diariamente, participava da Adoração Eucarística e rezava o Rosário. Apesar de pertencer a uma família abastada, Carlo destacava-se pelo desapego material e pelo serviço aos pobres, distribuindo alimentos e auxiliando os necessitados em Milão.\n"
+            + "\n"
+            + "Apaixonado pela Eucaristia, referia-se a ela como “a minha estrada para o céu” e mantinha uma vida de oração constante. Além disso, tinha uma forte devoção a Nossa Senhora, sendo consagrado a ela e incentivando a recitação do Rosário entre amigos e familiares. Seu testemunho de fé influenciou a conversão de pessoas próximas, evidenciando sua maturidade espiritual desde tenra idade.\n"
+            + "\n"
+            + "Com habilidade em tecnologia, Carlo viu na internet uma ferramenta eficaz para a evangelização. Aos 11 anos, iniciou a criação de um site que catalogava milagres eucarísticos ao redor do mundo, trabalho que exigiu extensa pesquisa e dedicação. Seu objetivo era compartilhar com outros a importância da Eucaristia e fortalecer a fé por meio desses relatos.\n"
+            + "\n"
+            + "A sobriedade com que usufruía dos bens, a forma diligente como lutava para corrigir suas imperfeições e o equilíbrio com que empregava seu tempo entre estudos, diversões, serviços à Igreja e aos pobres, adoração ao Santíssimo Sacramento, oração do terço e missa diária, tornaram-se modelo não apenas para os que lhe eram mais próximos, mas, após a beatificação, para os cristãos do mundo inteiro.    \n"
+            + "\n"
+            + "Carlo faleceu em 12 de outubro de 2006, vítima de leucemia, mas seu legado continua inspirando muitos a buscar uma vida de santidade no cotidiano.";
+
     private String comoFazer = "A novena a Carlo Acutis consiste em 4 momentos:\n"
             + "\n"
             + "Oração inicial: é a mesma, deve ser repetida todos os dias, incluindo nela o pedido da graça que se deseja alcançar com a novena.\n"
@@ -157,4 +171,6 @@ public class NovenaSaoCarloAcutisBean implements Serializable {
             + "\n"
             + "Oração final\n"
             + "Deus Pai de Misericórdia, que elevastes à glória dos altares este vosso servo Carlo Acutis, a fim de que, por ele, vós fôsseis mais glorificado, concedei-nos, pelos méritos dele — que em tudo viveu a vossa vontade —, a graça que ardentemente desejo. Amém.";
+
+    private String disponivel = "https://templariodemaria.com/novena-a-sao-carlo-acutis/";
 }

@@ -113,4 +113,6 @@ public class NovenaSantoInacioAntioquiaBean implements Serializable {
             + "Rezar um Pai-Nosso, uma Ave Maria e um Glória ao Pai.\n"
             + "\n"
             + "Santo Inácio de Antioquia, dai-nos o vosso espírito de sacrifício e ousadia.";
+    
+    private String disponivel = "https://rumoasantidade.com.br/novena-a-santo-inacio-de-antioquia/?srsltid=AfmBOorXZ8V3s5iQ_dzw9YlI67b3i8CfQKQld3VmdjeM44K1JIcVZyhB";
 }

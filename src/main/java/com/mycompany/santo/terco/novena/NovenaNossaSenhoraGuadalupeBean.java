@@ -159,4 +159,6 @@ public class NovenaNossaSenhoraGuadalupeBean implements Serializable {
             + "Como nos remanescentes 17 anos de sua vida, Juan Diego divulgou a mensagem aos índios, permita-me minha amada Mãe, ajudar a humanidade a conhecer vossa celestial mensagem entre os meus conterrâneos. Anima e abençoa a todos os que se juntarem neste Apostolado e Novena, a fim de propagar a religião Católica entre seus amigos, tendo como bandeira vossa admirável imagem sobre o poncho de Juan Diego, junto com a cruz, emblema de nossa redenção.\n"
             + "\n"
             + "(Fazer a oração final)";
+
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/novena-de-nossa-senhora-de-guadalupe/?srsltid=AfmBOook9CAKFPeO-F5_W57nvAPAFdmXeT11cp5DlgLyb4XXTKqv9-9O";
 }

@@ -277,4 +277,6 @@ public class NovenaSantaTeresaJesusBean implements Serializable {
             + "\n"
             + "Pai Nosso, Ave Maria, Glória. \n"
             + "Santa Teresa d’Ávila, rogai por nós.";
+    
+    private String disponivel = "https://comshalom.org/novena-de-santa-teresa-davila/";
 }

@@ -24,7 +24,12 @@
 
         <!-- Texto -->
         <p style="font-size:.88rem; color:#444; margin:8px 0;">
-            Este rodapé pode conter informações de contato, links úteis, reflexões espirituais e avisos importantes.
+            Este rodapé pode conter informações de contato, links úteis, reflexões espirituais e avisos importantes. <br/>
+            <h:outputText 
+                value="Disponível em: #{beanUtil.getValorCampo('disponivel')}"
+                rendered="#{beanUtil.nomeBean != null}" 
+                style="white-space: pre-line;" />
+
         </p>
 
         <!-- Desenvolvedor -->

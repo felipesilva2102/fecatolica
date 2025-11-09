@@ -60,4 +60,6 @@ public class NovenaSaoJoaoCruzBean implements Serializable {
 
     private String nonoDia = "Silêncio / Paz\n"
             + "«Veja aquele saber infinito, aquele segredo escondido! Que paz, que amor, que silêncio não está naquele peito divino, que ciência tão elevada a que Deus ali ensina» (Pontos de Amor, Ditos de Luz e Amor 138/Pontos de Amor 60), … «em todas as coisas, pois, por adversas que sejam, nos devemos alegrar em vez de perturbar, para não perder o bem maior que toda a prosperidade, isto é, a tranquilidade de ânimo e paz em todas as coisas adversas ou prósperas, levando a todas de igual maneira» (Subida do Monte Carmelo III, VI, 4), «pondo todo o cuidado em coisa mais alta que é buscar o reino de Deus isto é, em não faltar a Deus, porque o demais, como Sua Majestade disse, nos será dado por acréscimo, pois não se há de esquecer de nós Aquele que cuida dos animais. Com isto se adquirirá silêncio e paz» (2ª Cautela contra o mundo).";
+    
+    private String disponivel = "https://rumoasantidade.com.br/novena-a-sao-joao-da-cruz/?srsltid=AfmBOoqzRWlG0rPcDhC74oIMbj7f0jpiTXOyIzakEpfFaSTJstdpX51O";
 }

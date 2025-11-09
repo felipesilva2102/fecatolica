@@ -232,4 +232,6 @@ public class NovenaAlmas implements Serializable {
             + "Triunfai, pois, reinai e gozai do Céu, mas não esqueçais de nós, que ainda combatemos sobre a Terra; olhai-nos com compaixão, porque estamos rodeados de numerosos e terríveis inimigos.\n"
             + "\n"
             + "Já que sois tão poderosas perante Deus, rogai pelos vossos devotos, para que sejamos fiéis e constantes no serviço de Deus e possamos também louvá-Lo e bendizê-Lo um dia convosco eternamente na glória celeste. Amém";
+    
+    private String disponivel = "https://quemrezasesalva.com.br/oracao/novena-as-almas-do-purgatorio-santo-afonso-maria-de-ligorio";
 }
