@@ -8,7 +8,7 @@
       xmlns:ui="jakarta.faces.facelets">
 
     <h:head>
-        <title>Santo Terço — FS Tech</title>
+        <title>Santo Rosário — FS Tech</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style type="text/css">
             body {
@@ -70,10 +70,10 @@
             }
             nav {
                 display: flex;
-                justify-content: center; /* centraliza horizontalmente */
-                gap: 24px; /* espaço entre os links */
+                justify-content: center;
+                gap: 24px;
                 margin-bottom: 24px;
-                flex-wrap: wrap; /* quebra linha em telas menores */
+                flex-wrap: wrap;
             }
 
             nav a {
@@ -88,7 +88,7 @@
             }
 
             nav a:hover {
-                background-color: #4CAF50; /* cor ao passar o mouse */
+                background-color: #4CAF50;
                 color: white;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -103,59 +103,59 @@
 
                 <div class="card">
                     <header style="text-align:center;">
-                        <h1>Santo Terço — Guia interativo</h1>
-                        <p class="lead">Clique nas contas para acompanhar o progresso.</p>
+                        <h1>Santo Rosário — Guia interativo</h1>
+                        <p class="lead">Clique nas contas para acompanhar o progresso das orações.</p>
                     </header>
                 </div>
 
                 <!-- Tutorial -->
                 <div class="card" id="tutorial">
-                    <h2>Como rezar o Santo Terço</h2>
-                    <p class="muted">Siga os passos abaixo para rezar o Terço corretamente:</p>
+                    <h2>Como rezar o Santo Rosário</h2>
+                    <p class="muted">O Santo Rosário é composto de quatro mistérios (Gozosos, Dolorosos, Gloriosos e Luminosos), totalizando vinte dezenas. Siga os passos abaixo para rezá-lo corretamente:</p>
 
                     <div class="tutorial-step">
-                        <img src="imagens\ImageUm.png" alt="Ave Maria"/>
+                        <img src="imagens/ImageUm.png" alt="Credo"/>
                         <p><strong>1. Início:</strong> Faça o sinal da cruz e reze o <em>Credo</em>.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <img src="imagens\imageDois.png" alt="Pai Nosso"/>
+                        <img src="imagens/imageDois.png" alt="Pai Nosso"/>
                         <p><strong>2. Primeira conta grande:</strong> Reze o <em>Pai-Nosso</em>.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <img src="imagens\ImageTrês.png" alt="Ave-Maria"/>
-                        <p><strong>3. Três contas pequenas:</strong> Reze três <em>Ave-Marias</em>.</p>
+                        <img src="imagens/ImageTrês.png" alt="Ave-Maria"/>
+                        <p><strong>3. Três contas pequenas:</strong> Reze três <em>Ave-Marias</em> em honra à Santíssima Trindade.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <img src="imagens\imageQuatro.png" alt="Glória"/>
+                        <img src="imagens/imageQuatro.png" alt="Glória"/>
                         <p><strong>4. Em seguida:</strong> Reze o <em>Glória</em>.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <img src="imagens\ImageCinco.png" alt="Mistério"/>
-                        <p><strong>5. Nas dezenas:</strong> Medite cada Mistério, rezando <em>1 Pai-Nosso, 10 Ave-Marias e 1 Glória</em>.</p>
+                        <img src="imagens/ImageCinco.png" alt="Mistério"/>
+                        <p><strong>5. Nas dezenas:</strong> Para cada mistério, medite sobre o tema proposto e reze <em>1 Pai-Nosso, 10 Ave-Marias e 1 Glória</em>.</p>
                     </div>
 
                     <div class="tutorial-step">
-                        <img src="imagens\ImageSeis.png" alt="Salve Rainha"/>
-                        <p><strong>6. Final:</strong> Reze a <em>Salve Rainha</em> e encerre com o sinal da cruz.</p>
+                        <img src="imagens/ImageSeis.png" alt="Salve Rainha"/>
+                        <p><strong>6. Final:</strong> Após os quatro mistérios, reze a <em>Salve Rainha</em> e encerre com o sinal da cruz.</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <header>
-                        <h1>Santo Terço — Guia interativo</h1>
-                        <p class="lead">Clique nas contas para acompanhar o progresso.</p>
+                        <h1>Orações do Santo Rosário</h1>
+                        <p class="lead">Medite, reze e acompanhe cada parte do Rosário.</p>
                     </header>
 
                     <div class="layout" style="margin-top:14px">
                         <main>
                             <div class="card">
-                                <h2 style="margin-top:0;">Rezar as dezenas</h2>
+                                <h2 style="margin-top:0;">Orações principais</h2>
                                 <div class="prayers">
-                                    <h4>O Credo</h4>
+                                    <h4>Credo</h4>
                                     <p>Creio em Deus Pai todo-poderoso, Criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso, donde há de vir a julgar os vivos e os mortos; creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
 
                                     <h4>Pai-Nosso</h4>
@@ -167,20 +167,21 @@
                                     <h4>Glória</h4>
                                     <p>Glória ao Pai, ao Filho e ao Espírito Santo, como era no princípio, agora e sempre. Amém.</p>
 
-                                    <h4>Jaculatória</h4>
+                                    <h4>Ó meu Jesus</h4>
                                     <p>Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o céu, e socorrei principalmente as que mais precisarem da vossa misericórdia. Amém.</p>
 
                                     <h4>Salve Rainha</h4>
                                     <p>Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria. Rogai por nós, Santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém.</p>
                                 </div>
+
                                 <div id="decadesContainer" style="margin-top:12px;"></div>
                             </div>
                         </main>
 
                         <aside>
                             <div class="card">
-                                <h2 style="margin-top:0;">Mistério de hoje</h2>
-                                <p id="todayMystery" class="muted">Carregando...</p>
+                                <h2 style="margin-top:0;">Mistérios do Rosário</h2>
+                                <p id="todayMystery" class="muted">Selecione um conjunto de mistérios abaixo.</p>
                                 <div id="mysteryBody"></div>
                             </div>
                         </aside>
@@ -191,30 +192,30 @@
 
             <script type="text/javascript">
                 //<![CDATA[
-                const Terco = (function () {
+                const Rosario = (function () {
                     const mysteries = [
-                        {title: 'Mistérios Gozosos', days: ['segunda-feira', 'sábado'], items: [
+                        {title: 'Mistérios Gozosos', items: [
                                 'A Anunciação do Anjo a Maria',
                                 'A Visitação de Maria a Santa Isabel',
                                 'O Nascimento de Jesus em Belém',
                                 'A Apresentação de Jesus no Templo',
                                 'O Encontro de Jesus no Templo'
                             ]},
-                        {title: 'Mistérios Dolorosos', days: ['terça-feira', 'sexta-feira'], items: [
+                        {title: 'Mistérios Dolorosos', items: [
                                 'A Agonia de Jesus no Horto',
                                 'A Flagelação de Jesus',
                                 'A Coroação de Espinhos',
                                 'Jesus carregando a Cruz',
                                 'A Crucificação e Morte de Jesus'
                             ]},
-                        {title: 'Mistérios Gloriosos', days: ['quarta-feira', 'domingo'], items: [
+                        {title: 'Mistérios Gloriosos', items: [
                                 'A Ressurreição de Jesus',
                                 'A Ascensão de Jesus aos Céus',
                                 'A Descida do Espírito Santo',
                                 'A Assunção de Maria ao Céu',
                                 'A Coroação de Maria como Rainha do Céu'
                             ]},
-                        {title: 'Mistérios Luminosos', days: ['quinta-feira'], items: [
+                        {title: 'Mistérios Luminosos', items: [
                                 'O Batismo de Jesus no Jordão',
                                 'A Autorrevelação nas Bodas de Caná',
                                 'O Anúncio do Reino e o convite à conversão',
@@ -243,66 +244,30 @@
                             beads.style.gap = '6px';
                             beads.style.flexWrap = 'wrap';
 
-                            // Pai Nosso
                             const pai = document.createElement('div');
-                            pai.className = 'bead';
                             pai.innerText = 'P';
                             pai.title = 'Pai Nosso';
-                            pai.style.backgroundColor = '#eee';
-                            pai.style.display = 'flex';
-                            pai.style.alignItems = 'center';
-                            pai.style.justifyContent = 'center';
-                            pai.style.cursor = 'pointer';
-                            pai.style.borderRadius = '50%';
-                            pai.style.width = '48px';
-                            pai.style.height = '48px';
-                            pai.onclick = () => {
-                                pai.classList.toggle('active');
-                                pai.style.backgroundColor = pai.classList.contains('active') ? '#4CAF50' : '#eee';
-                                pai.style.color = pai.classList.contains('active') ? 'white' : 'black';
-                            };
+                            pai.className = 'bead';
+                            styleBead(pai, '#eee');
+                            pai.onclick = () => toggleBead(pai, '#4CAF50');
                             beads.appendChild(pai);
 
-                            // 10 Ave-Marias
                             for (let i = 1; i <= 10; i++) {
                                 const b = document.createElement('div');
-                                b.className = 'bead';
                                 b.innerText = i;
                                 b.title = 'Ave Maria ' + i;
-                                b.style.backgroundColor = '#eee';
-                                b.style.display = 'flex';
-                                b.style.alignItems = 'center';
-                                b.style.justifyContent = 'center';
-                                b.style.cursor = 'pointer';
-                                b.style.borderRadius = '50%';
-                                b.style.width = '40px';
-                                b.style.height = '40px';
-                                b.onclick = () => {
-                                    b.classList.toggle('active');
-                                    b.style.backgroundColor = b.classList.contains('active') ? '#2196F3' : '#eee';
-                                    b.style.color = b.classList.contains('active') ? 'white' : 'black';
-                                };
+                                b.className = 'bead';
+                                styleBead(b, '#eee', 40);
+                                b.onclick = () => toggleBead(b, '#2196F3');
                                 beads.appendChild(b);
                             }
 
-                            // Glória
                             const gloria = document.createElement('div');
-                            gloria.className = 'bead';
                             gloria.innerText = 'G';
                             gloria.title = 'Glória';
-                            gloria.style.backgroundColor = '#eee';
-                            gloria.style.display = 'flex';
-                            gloria.style.alignItems = 'center';
-                            gloria.style.justifyContent = 'center';
-                            gloria.style.cursor = 'pointer';
-                            gloria.style.borderRadius = '50%';
-                            gloria.style.width = '48px';
-                            gloria.style.height = '48px';
-                            gloria.onclick = () => {
-                                gloria.classList.toggle('active');
-                                gloria.style.backgroundColor = gloria.classList.contains('active') ? '#FF9800' : '#eee';
-                                gloria.style.color = gloria.classList.contains('active') ? 'white' : 'black';
-                            };
+                            gloria.className = 'bead';
+                            styleBead(gloria, '#eee');
+                            gloria.onclick = () => toggleBead(gloria, '#FF9800');
                             beads.appendChild(gloria);
 
                             wrap.appendChild(beads);
@@ -310,33 +275,49 @@
                         }
                     }
 
-                    function showTodayMystery() {
-                        const options = {weekday: 'long'};
-                        const today = new Date().toLocaleDateString('pt-BR', options).toLowerCase();
-                        let selected = mysteries.find(m => m.days.includes(today));
-                        if (!selected)
-                            selected = mysteries[0];
-
-                        document.getElementById('todayMystery').innerText = selected.title + ' (' + today + ')';
-
-                        const box = document.getElementById('mysteryBody');
-                        box.innerHTML = '';
-                        const list = document.createElement('ol');
-                        selected.items.forEach(it => {
-                            const li = document.createElement('li');
-                            li.textContent = it;
-                            list.appendChild(li);
-                        });
-                        box.appendChild(list);
-
-                        buildUI(selected);
+                    function styleBead(el, color, size = 48) {
+                        el.style.backgroundColor = color;
+                        el.style.display = 'flex';
+                        el.style.alignItems = 'center';
+                        el.style.justifyContent = 'center';
+                        el.style.cursor = 'pointer';
+                        el.style.borderRadius = '50%';
+                        el.style.width = size + 'px';
+                        el.style.height = size + 'px';
                     }
 
-                    return {buildUI, showTodayMystery};
+                    function toggleBead(el, activeColor) {
+                        el.classList.toggle('active');
+                        el.style.backgroundColor = el.classList.contains('active') ? activeColor : '#eee';
+                        el.style.color = el.classList.contains('active') ? 'white' : 'black';
+                    }
+
+                    function showMysteries() {
+                        const box = document.getElementById('mysteryBody');
+                        box.innerHTML = '';
+                        mysteries.forEach((m, idx) => {
+                            const btn = document.createElement('button');
+                            btn.type = 'button'; // EVITA SUBMIT!
+                            btn.textContent = m.title;
+                            btn.style.margin = '6px';
+                            btn.style.padding = '8px 12px';
+                            btn.style.borderRadius = '8px';
+                            btn.style.border = '1px solid #ccc';
+                            btn.style.cursor = 'pointer';
+                            btn.onclick = function (event) {
+                                event.preventDefault(); // Impede erro futuro
+                                document.getElementById('todayMystery').innerText = m.title;
+                                buildUI(m);
+                            };
+                            box.appendChild(btn);
+                        });
+                    }
+
+                    return {showMysteries};
                 })();
 
                 document.addEventListener('DOMContentLoaded', function () {
-                    Terco.showTodayMystery();
+                    Rosario.showMysteries();
                 });
                 //]]>
             </script>
