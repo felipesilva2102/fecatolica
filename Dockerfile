@@ -5,24 +5,24 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-### Etapa 2: WildFly + Java 21
+### Etapa 2: Tomcat + Java 21
 FROM eclipse-temurin:21-jdk
-WORKDIR /opt/jboss
+WORKDIR /opt/tomcat
 
-# Instala dependências e baixa o WildFly
-RUN apt-get update && apt-get install -y curl tar && \
-    curl -L https://github.com/wildfly/wildfly/releases/download/36.0.1.Final/wildfly-36.0.1.Final.tar.gz -o /tmp/wildfly.tar.gz && \
-    tar -xzf /tmp/wildfly.tar.gz -C /opt/jboss && \
-    mv /opt/jboss/wildfly-36.0.1.Final /opt/jboss/wildfly && \
-    rm /tmp/wildfly.tar.gz && \
-    chmod +x /opt/jboss/wildfly/bin/standalone.sh
+# Baixa e prepara o Tomcat
+ENV TOMCAT_VERSION=10.1.17
+RUN apt-get update && apt-get install -y curl && \
+    curl -L https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/tomcat.tar.gz && \
+    tar -xzf /tmp/tomcat.tar.gz -C /opt/tomcat --strip-components=1 && \
+    rm /tmp/tomcat.tar.gz && \
+    chmod +x /opt/tomcat/bin/catalina.sh
 
-# Copia o WAR compilado
-COPY --from=build /app/target/*.war /opt/jboss/wildfly/standalone/deployments/ROOT.war
+# Copia o WAR compilado (app principal como ROOT.war)
+COPY --from=build /app/target/*.war /opt/tomcat/webapps/ROOT.war
 
 # Porta dinâmica
 ENV PORT=8080
 EXPOSE ${PORT}
 
-# Comando de execução (corrigido)
-ENTRYPOINT ["/bin/bash", "-c", "/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -Djboss.http.port=${PORT}"]
+# Comando de execução
+ENTRYPOINT ["/bin/bash", "-c", "/opt/tomcat/bin/catalina.sh run"]

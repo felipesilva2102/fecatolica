@@ -18,25 +18,25 @@ public class BeanUtil implements Serializable {
 
     public String resetTerco() {
         this.nomeBean = null;
-        return "/santo_terco.xhtml?faces-redirect=true";
+        return "santo_terco.xhtml?faces-redirect=true";
     }
 
     public String resetRosario() {
         this.nomeBean = null;
-        return "/santo_rosario.xhtml?faces-redirect=true";
+        return "santo_rosario.xhtml?faces-redirect=true";
     }
 
     public String resetLiturgia() {
         this.nomeBean = null;
-        return "/liturgia.xhtml?faces-redirect=true";
+        return "liturgia.xhtml?faces-redirect=true";
     }
 
     public String resetQuaresma(String quaresma) {
         this.nomeBean = null;
         if (quaresma.equals("miguel")) {
-            return "/quaresmas/quaresma-sao-miguel.xhtml?faces-redirect=true";
+            return "quaresmas/quaresma-sao-miguel.xhtml?faces-redirect=true";
         } else if (quaresma.equals("jose")) {
-            return "/quaresmas/quaresma-sao-jose.xhtml?faces-redirect=true";
+            return "quaresmas/quaresma-sao-jose.xhtml?faces-redirect=true";
         }
         return null;
     }

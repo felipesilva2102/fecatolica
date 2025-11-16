@@ -1,19 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
     <artifactId>santo-terco</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>santo-terco-1.0-SNAPSHOT</name>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
-        <wildfly.version>36.0.1.Final</wildfly.version> <!-- Você está usando essa versão -->
+        <!-- Tomcat não exige propriedade de versão no POM -->
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -21,6 +23,17 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-shaded</artifactId>
+            <version>5.1.2.Final</version> <!-- Para Jakarta EE 9/10 e Tomcat 10 -->
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>4.0.11</version> <!-- Use a última versão compatível -->
+        </dependency>
+        <!-- PrimeFaces Jakarta (mantém a mesma) -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
@@ -34,7 +47,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -59,27 +72,17 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-
+            <!-- Plugin para rodar Tomcat de forma embedded (opcional): -->
             <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${wildfly.version}</version>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
-                    <server-config>standalone.xml</server-config>
+                    <path>/</path>
+                    <port>8080</port>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <executable>${wildfly.home}/bin/standalone.bat</executable>
-                    <arguments>
-                        <argument>-Djboss.http.port=8080</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
+            <!-- Ou, para Tomcat 10+, use tomcat9-maven-plugin, mas pode haver desafios de compatibilidade -->
         </plugins>
     </build>
 </project>
