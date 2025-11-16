@@ -10,7 +10,7 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /opt/tomcat
 
 # Baixa e prepara o Tomcat
-ENV TOMCAT_VERSION=10.1.17
+ENV TOMCAT_VERSION=10.1.49
 RUN apt-get update && apt-get install -y curl && \
     curl -L https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/tomcat.tar.gz && \
     mkdir -p /opt/tomcat && \
