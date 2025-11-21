@@ -76,4 +76,6 @@ public class NovenaNossaSenhoraGracasBean implements Serializable {
     private String nonoDia = "Ó Mãe Imaculada, fazei que a cruz de vossa Medalha brilhe sempre diante de meus olhos, suavize as penas da vida presente e me conduza à vida eterna.\n"
             + "\n"
             + "Rezar: 3 Ave-marias, seguidas cada uma da invocação: “Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!”";
+    
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/novena-a-nossa-senhora-das-gracas/?srsltid=AfmBOorZ3sT5MSEADidLD1DVFt3bWlhZ9q3XFjg867_A5Q1RMj4cpg0H";
 }

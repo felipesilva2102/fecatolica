@@ -104,4 +104,6 @@ public class NovenaSantoAntonioSantanaGalvaoBean implements Serializable {
             + "Ó castíssimo Santo Antônio de Santana Galvão, espelho de virtudes para o nosso Brasil, dai-nos a graça de vivermos a pobreza, a obediência e a castidade, imitando o vosso exemplo para que cheios do espírito santo possamos um dia gozar das alegrias da pátria eterna.\n"
             + "\n"
             + "Orações finais para todos os dias";
+    
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/novena-de-frei-galvao/?srsltid=AfmBOop3a03ybyuPLpL3UYj3SXppp0qev-JYG0q6mgo_PVcNMjMkKm58";
 }

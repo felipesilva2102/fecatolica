@@ -462,4 +462,6 @@ public class NovenaNossaSenhoraConceicaoBean implements Serializable {
             + "Sob a tua proteção, ó Mãe dulcíssima, e com a invocação do mistério da tua Imaculada Conceição, desejo realizar todos os meus atos e suportar tudo o que me aconteça. Além disso, prometo contribuir, com todas as energias à minha disposição, para render a Deus o culto devido, por meio da difusão da devoção a Ti. Peço-te, portanto, ó Mãe amorosíssima, que te dignes ajudar-me em minhas fadigas. De minha parte, prometo, devota e livremente, como é justo, reconhecer como obtido de Deus por tua intercessão qualquer benefício que resulte das minhas atividades.\n"
             + "\n"
             + "Concede-me louvar-te, ó Virgem Santíssima; e dá-me força contra os teus inimigos! (EK 1353)";
+    
+    private String disponivel = "https://www.miliciadaimaculada.org.br/espiritualidade/nossa-senhora/novena-imaculada-conceicao-2023";
 }

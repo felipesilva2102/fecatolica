@@ -126,4 +126,6 @@ public class NovenaSantaMargaridaMariaAlacoqueBean implements Serializable {
             + "Oração: Ó Santa Margarida Maria, a quem o Sagrado Coração de Jesus constituiu herdeira de seus Divinos Tesouros. Nós vos suplicamos, de obter desse Coração adorável as graças que atualmente precisamos.\n"
             + "Nós vos pedimos com plena confiança. Que esse Coração se digne nos atender uma vez mais por vossa intercessão e para sua maior glória. Ó Coração de amor, eu ponho toda a minha confiança em vós, pois eu temo tudo da minha fraqueza, mas espero tudo da vossa bondade. Amém.\n"
             + "Santa Margarida Maria, rogai por nós.";
+    
+    private String disponivel = "https://aomej.org.br/oracoes/novena-a-santa-margarida-maria-alacoque";
 }

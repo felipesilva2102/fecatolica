@@ -146,4 +146,6 @@ public class NovenaTodosSantosBean implements Serializable {
             + "S. Zélia e S. Luís Martin, pais de S. Teresa de Lisieux, rogai por nós.\n"
             + "S. Nona e S. Gregório, o Velho, pais de S. Gorgonia, S. Cesáreo e S. Gregório Nazianzeno, rogai por nós.\n"
             + "Amém.";
+    
+    private String disponivel = "https://bibliotecacatolica.com.br/blog/novenas/novena-de-todos-os-santos/?srsltid=AfmBOopduwI_3_MMfv4AQIXjl2qy_KndHk5n7qnzu6G5khnqUgb7azVj";
 }

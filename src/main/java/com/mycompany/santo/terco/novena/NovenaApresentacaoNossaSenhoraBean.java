@@ -40,4 +40,5 @@ public class NovenaApresentacaoNossaSenhoraBean implements Serializable {
             + "℟. Da mihi virtutem contra hostes tuos.	℟. Dai-me valor contra os vossos inimigos.\n"
             + "Orémus. Deus, qui beátam Mariam semper Vírginem Spíritus Sancti habitáculum hodiérna dia in templo praesentári voluísti: praesta, quaesumus, ut ejus intercessióne in templo glóriae tuae praesentári mereámur. Per Christum Dóminum nostrum. ℟. Amen	Oremos. Ó Deus, que quisestes se apresentasse neste dia no templo a bem-aventurada sempre Virgem Maria, habitáculo do Espírito Santo: concedei-nos que por sua intercessão mereçamos ser apresentados no templo da vossa glória. Por Cristo, Nosso Senhor. ℟. Amém.";
 
+    private String disponivel = "https://www.arsenalcatolico.com.br/novena-da-apresentacao-de-nossa-senhora/";
 }

@@ -151,4 +151,6 @@ public class NovenaNatalSaoLeaoMagnoBean implements Serializable {
             + "\n"
             + "Oração final\n"
             + "Ó Menino Jesus, a Vós recorro e Vos suplico, pela intercessão de Vossa Mãe Santíssima: assisti-me nesta necessidade, porque creio firmemente que a Vossa divindade pode me socorrer! Espero com toda a confiança obter a Vossa santa graça. Amo-vos de todo o meu coração e com todas as forças de minha alma. Proponho-me não mais Vos ofender e a Vós me ofereço, dispondo-me a sofrer antes de fazer-vos sofrer. Quero de agora em diante Vos servir com toda a fidelidade, e, pelo Vosso Amor, ó Menino Deus, amarei o meu próximo como a mim mesmo. Concedei-me, principalmente, a graça de Vos possuir eternamente na companhia de Maria Santíssima e de São José, para Vos adorar com todos os anjos na Corte Celestial. Amém.";
+    
+    private String disponivel = "https://quemrezasesalva.com.br/oracao/novena-de-natal";
 }

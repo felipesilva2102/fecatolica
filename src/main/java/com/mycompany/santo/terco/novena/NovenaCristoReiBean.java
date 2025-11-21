@@ -269,4 +269,6 @@ public class NovenaCristoReiBean implements Serializable {
             + "Sê, ó Coração de bondade, a minha justificação diante de Deus, vosso Pai, para que desvie de mim a sua justa cólera. Ó Coração de amor, deposito toda a minha confiança em Vós, pois tudo temo de minha malícia e de minha fraqueza, mas tudo espero de vossa bondade! Extingui em mim tudo o que possa desagradar-Vos ou que se oponha à vossa vontade.\n"
             + "\n"
             + "Seja o vosso puro amor tão profundamente impresso em meu coração, que jamais possa eu esquecer-Vos nem separar-me de Vós. Suplico-Vos que o meu nome seja escrito no vosso Coração, pois quero fazer consistir toda a minha felicidade e toda a minha glória em viver e morrer como vosso escravo. Amém.";
+    
+    private String disponivel = "https://rumoasantidade.com.br/novena-a-jesus-cristo-rei-do-universo/?srsltid=AfmBOoqF0nD4sqUoMESjXnLKsPMUJDFahjXvKeOn5ASUnQwbfEnz-mCH";
 }

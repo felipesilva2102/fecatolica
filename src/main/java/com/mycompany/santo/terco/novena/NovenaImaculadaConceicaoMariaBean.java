@@ -92,4 +92,6 @@ public class NovenaImaculadaConceicaoMariaBean implements Serializable {
     private String oitavoDia = "Ó Virgem Maria, sol sem mancha, alegro-me convosco, cheio de gozo por terdes recebido de Deus em vossa Conceição uma graça maior e mais copiosa que a alcançada por todos os anjos e santos no auge de seus méritos. Dou graças à Santíssima Trindade, admirado da suma beneficência com que vos dispensou este privilégio. Fazei-me corresponder à graça divina e a dela não mais abusar. Transformai-me o coração e fazei que eu me arrependa desde agora de minhas culpas.";
 
     private String nonoDia = "Ó Maria, Virgem Imaculada, luz viva de santidade, exemplo de pureza e Mãe minha. Vós, apenas concebida, adorastes profundamente a Deus e lhe rendestes graças, já que por meio de vós, desfeita a antiga maldição, derramou-se a maior bênção sobre os filhos de Adão. Fazei que esta bênção acenda em meu coração um amor ardente a Deus. Inflamai-o vós, para que eu o ame constantemente e dele goze depois para sempre no paraíso, onde poderei dar-lhe graças mais ardentemente pelos singulares privilégios que vos concedeu e gozar de vós coroada de tanta glória.";
+    
+    private String disponivel = "https://rumoasantidade.com.br/novena-imaculada-conceicao/?srsltid=AfmBOoqPptyVAKJz5IPK5-_rETls0fD8cZ47M3-CYCdplWGQ75Lo3UcY";
 }

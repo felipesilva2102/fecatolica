@@ -1,7 +1,9 @@
 package com.mycompany.santo.terco.util;
 
+import com.mycompany.santo.terco.liturgia.LiturgiaBean;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -15,6 +17,37 @@ import lombok.Setter;
 public class BeanUtil implements Serializable {
 
     private String nomeBean;
+
+    @Inject
+    private LiturgiaBean liturgiaBean;
+
+    public String resetTerco() {
+        this.nomeBean = null;
+        return "/santo_terco.xhtml?faces-redirect=true";
+    }
+
+    public String resetRosario() {
+        this.nomeBean = null;
+        return "/santo_rosario.xhtml?faces-redirect=true";
+    }
+
+    public String resetLiturgia() {
+        this.nomeBean = null;
+        if (getLiturgiaBean().getLiturgia().getData() == null) {
+            liturgiaBean.carregarLiturgia();
+        }
+        return "/liturgia.xhtml?faces-redirect=true";
+    }
+
+    public String resetQuaresma(String quaresma) {
+        this.nomeBean = null;
+        if (quaresma.equals("miguel")) {
+            return "/quaresmas/quaresma-sao-miguel.xhtml?faces-redirect=true";
+        } else if (quaresma.equals("jose")) {
+            return "/quaresmas/quaresma-sao-jose.xhtml?faces-redirect=true";
+        }
+        return null;
+    }
 
     /**
      * Obtém dinamicamente o bean atual pelo nome armazenado.

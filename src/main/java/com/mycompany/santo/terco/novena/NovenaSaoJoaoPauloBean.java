@@ -259,4 +259,6 @@ public class NovenaSaoJoaoPauloBean implements Serializable {
             + "Oremos: Deus, nosso Pai: vosso Filho nos amou até o fim e permaneceu conosco na Eucaristia. Que o Amém que dizemos na presença do Corpo e Sangue de Nosso Senhor nos disponha a um serviço humilde aos irmãos que têm fome de amor. Que sejais louvado no brilhante exemplo desse amor, como demonstrado pelo Papa São João Paulo II. Como a comunhão com a Igreja dos redimidos no Céu é expressa e fortalecida na Eucaristia, concedei-nos por sua intercessão esta graça (fazer pedido). Por Cristo, Nosso Senhor. Amém.\n"
             + "\n"
             + "Pai Nosso, Ave Maria, Glória e Ladainha";
+    
+    private String disponivel = "https://meldedeus.com/novena-de-sao-joao-paulo-ii/";
 }

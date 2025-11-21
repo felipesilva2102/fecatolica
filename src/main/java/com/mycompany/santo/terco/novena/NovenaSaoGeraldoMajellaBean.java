@@ -176,4 +176,6 @@ public class NovenaSaoGeraldoMajellaBean implements Serializable {
             + "\n"
             + "OREMOS.\n"
             + "Ó Deus que abençoou São Geraldo desde a sua juventude, e sendo feito à imagem do Teu Filho crucificado, concedei, nós Vos suplicamos, que seguindo o seu exemplo, também possamos ser transformados na imagem de Cristo Nosso Senhor. Amém.";
+    
+    private String disponivel = "https://pocketterco.com.br/terco/novena-a-sao-geraldo-para-gestantes-rezar-em-qualquer-epoca";
 }
