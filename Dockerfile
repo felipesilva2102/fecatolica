@@ -2,28 +2,25 @@
 FROM maven:3.9.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY pom.xml .
+# Baixa as dependências primeiro para aproveitar o cache do Docker
+RUN mvn dependency:go-offline 
 COPY src ./src
+# Garante que o WAR final se chame ROOT.war
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Tomcat + Java 21
-FROM eclipse-temurin:21-jdk
-WORKDIR /opt/tomcat
+# Etapa 2: Servidor Tomcat Oficial (Java 21)
+# Imagem oficial já vem com Tomcat 10.1.x e JDK 21 instalados
+FROM tomcat:10.1-jdk21-temurin
 
-ENV TOMCAT_VERSION=10.1.49
-RUN apt-get update && apt-get install -y curl && \
-    curl -L https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/tomcat.tar.gz && \
-    mkdir -p /opt/tomcat && \
-    tar -xzf /tmp/tomcat.tar.gz -C /opt/tomcat --strip-components=1 && \
-    rm /tmp/tomcat.tar.gz && \
-    chmod +x /opt/tomcat/bin/catalina.sh
+# Remove aplicações padrão do Tomcat para segurança e limpeza
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Limpa pasta ROOT padrão se necessário
-RUN rm -rf /opt/tomcat/webapps/ROOT
+# Copia o WAR gerado na etapa anterior
+# Nota: No Tomcat oficial, o caminho padrão é /usr/local/tomcat/webapps/
+COPY --from=build /app/target/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# Copia WAR gerado como ROOT
-COPY --from=build /app/target/ROOT.war /opt/tomcat/webapps/ROOT.war
+EXPOSE 8080
 
-ENV PORT=8080
-EXPOSE ${PORT}
-
-ENTRYPOINT ["/bin/bash", "-c", "/opt/tomcat/bin/catalina.sh run"]
+# ENTRYPOINT padrão da imagem oficial já é o catalina.sh run
+# Caso queira deixar explícito:
+CMD ["catalina.sh", "run"]

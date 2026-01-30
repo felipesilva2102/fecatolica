@@ -25,14 +25,13 @@
         <dependency>
             <groupId>org.jboss.weld.servlet</groupId>
             <artifactId>weld-servlet-shaded</artifactId>
-            <version>5.1.2.Final</version> <!-- Para Jakarta EE 9/10 e Tomcat 10 -->
+            <version>5.1.2.Final</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.faces</artifactId>
-            <version>4.0.11</version> <!-- Use a última versão compatível -->
+            <version>4.0.11</version>
         </dependency>
-        <!-- PrimeFaces Jakarta (mantém a mesma) -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
@@ -53,7 +52,7 @@
         <dependency>
             <groupId>jakarta.json.bind</groupId>
             <artifactId>jakarta.json.bind-api</artifactId>
-            <version>3.0.1</version> <!-- Use a versão compatível com sua plataforma -->
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.parsson</groupId>
@@ -93,17 +92,25 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-            <!-- Plugin para rodar Tomcat de forma embedded (opcional): -->
+
+            <!-- Configuração do Cargo para rodar o Tomcat 10+ (Jakarta EE) -->
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>1.10.11</version>
                 <configuration>
-                    <path>/</path>
-                    <port>8080</port>
+                    <container>
+                        <containerId>tomcat10x</containerId>
+                        <type>embedded</type>
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>8080</cargo.servlet.port>
+                            <cargo.context>/</cargo.context>
+                        </properties>
+                    </configuration>
                 </configuration>
             </plugin>
-            <!-- Ou, para Tomcat 10+, use tomcat9-maven-plugin, mas pode haver desafios de compatibilidade -->
         </plugins>
     </build>
 </project>
