@@ -7,6 +7,11 @@
     <h:head>
         <title>Liturgia do Dia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/acessibilidade.css" />
+        <link rel="stylesheet" href="css/print.css" />
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#1a4f89" />
+        <style>#{tempoLiturgicoBean.cssVariaveis}</style>
         <style>
             body {
                 font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -160,8 +165,14 @@
                         </p:tab>
                     </p:accordionPanel>
                 </div>
+                <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
                 <ui:include src="/includes/footer.xhtml"/>
             </div>
         </h:form>
+
+        <script src="js/acessibilidade.js"></script>
+        <script src="js/streaks.js"></script>
+        <script src="js/partilha.js"></script>
+        <script src="js/sw-register.js"></script>
     </h:body>
 </html>

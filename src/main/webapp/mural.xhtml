@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets">
+
+    <h:head>
+        <title>Mural de Intencoes - FeCatolica</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/acessibilidade.css"/>
+        <link rel="stylesheet" href="css/print.css" media="print"/>
+        <link rel="manifest" href="manifest.json"/>
+        <style>
+            body {
+                font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+                background:linear-gradient(180deg,#f7fbff 0%,#f0f6fb 50%,#eef7f1 100%);
+                margin:0;
+                padding:0;
+            }
+            .container{
+                max-width:1100px;
+                margin:24px auto;
+                padding:18px;
+            }
+            .card{
+                background:white;
+                border-radius:12px;
+                box-shadow:0 8px 30px rgba(20,40,80,0.08);
+                padding:18px;
+                margin-bottom:20px;
+            }
+            .mural-form {
+                background: #f8f9fa;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            html.dark-mode .mural-form {
+                background: #16213e;
+            }
+            .mural-form label {
+                display: block;
+                margin-bottom: 4px;
+                font-weight: bold;
+                color: #333;
+            }
+            html.dark-mode .mural-form label {
+                color: #e0e0e0;
+            }
+            .mural-form input[type="text"],
+            .mural-form textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                margin-bottom: 12px;
+                font-size: 1rem;
+                box-sizing: border-box;
+            }
+            html.dark-mode .mural-form input[type="text"],
+            html.dark-mode .mural-form textarea {
+                background: #1a1a2e;
+                color: #e0e0e0;
+                border-color: #0f3460;
+            }
+            .mural-form textarea {
+                resize: vertical;
+                min-height: 80px;
+            }
+            .intencao-card {
+                background: #fff;
+                border-left: 4px solid var(--cor-primaria, #6f42c1);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin-bottom: 12px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            }
+            html.dark-mode .intencao-card {
+                background: #16213e;
+                border-left-color: var(--cor-primaria, #6f42c1);
+            }
+            .intencao-nome {
+                font-weight: bold;
+                color: var(--cor-primaria, #6f42c1);
+                font-size: 0.95rem;
+            }
+            .intencao-data {
+                font-size: 0.8rem;
+                color: #999;
+                float: right;
+            }
+            .intencao-texto {
+                margin-top: 6px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            .mural-titulo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .mural-titulo h2 {
+                margin: 0 0 4px 0;
+            }
+            .mural-contador {
+                font-size: 0.85rem;
+                color: #888;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h:form id="formMural">
+            <div class="container">
+                <ui:include src="/includes/menu.xhtml"/>
+
+                <div class="card">
+                    <div class="mural-titulo">
+                        <h2>Mural de Intencoes</h2>
+                        <p class="mural-contador">
+                            <h:outputText id="totalIntencoes"
+                                          value="#{muralIntencoesBean.totalIntencoes} intencao(oes) registrada(s)"/>
+                        </p>
+                    </div>
+
+                    <div class="mural-form">
+                        <label for="formMural:nome">Seu nome (opcional):</label>
+                        <h:inputText id="nome"
+                                     value="#{muralIntencoesBean.novoNome}"
+                                     maxlength="100"
+                                     styleClass="mural-input"/>
+
+                        <label for="formMural:intencao">Sua intencao:</label>
+                        <h:inputTextarea id="intencao"
+                                         value="#{muralIntencoesBean.novaIntencao}"
+                                         maxlength="500"
+                                         required="true"
+                                         requiredMessage="Por favor, escreva sua intencao."
+                                         styleClass="mural-textarea"/>
+
+                        <p:commandButton value="Enviar Intencao"
+                                         action="#{muralIntencoesBean.adicionarIntencao()}"
+                                         update="formMural:listaIntencoes formMural:totalIntencoes"
+                                         process="@form"
+                                         style="background:var(--cor-primaria, #6f42c1);color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-size:1rem;"/>
+                    </div>
+
+                    <h:panelGroup id="listaIntencoes" layout="block">
+                        <ui:repeat value="#{muralIntencoesBean.intencoes}" var="item">
+                            <div class="intencao-card">
+                                <span class="intencao-data">#{item.dataHora}</span>
+                                <span class="intencao-nome">#{item.nome}</span>
+                                <div class="intencao-texto">#{item.intencao}</div>
+                            </div>
+                        </ui:repeat>
+                    </h:panelGroup>
+                </div>
+
+                <ui:include src="/includes/footer.xhtml"/>
+            </div>
+        </h:form>
+
+        <script src="js/acessibilidade.js"></script>
+        <script src="js/streaks.js"></script>
+        <script src="js/partilha.js"></script>
+        <script src="js/sw-register.js"></script>
+    </h:body>
+</html>

@@ -1,0 +1,42 @@
+/* === Terço Interativo === */
+.conta-terco,
+[data-terco-conta] {
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+    user-select: none;
+}
+
+.conta-terco:active,
+[data-terco-conta]:active {
+    transform: scale(0.92);
+}
+
+.conta-rezada {
+    background-color: #d4edda !important;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.4);
+    position: relative;
+}
+
+.conta-rezada::after {
+    content: '\2713';
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+html.dark-mode .conta-rezada {
+    background-color: #1e4620 !important;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.6);
+}
+
+#misterio-do-dia {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--cor-primaria, #6f42c1);
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 10px;
+}

@@ -88,6 +88,8 @@
                         <p:menuitem value="Quaresma de São José" action="#{beanUtil.resetQuaresma('jose')}" />
                     </p:submenu>
 
+                    <p:menuitem value="🕯️ Mural" action="#{beanUtil.resetMural()}" />
+
                     <p:submenu label="🙏 Novenas">
                         <p:submenu label="Novenas do Mês de Janeiro">
                             <p:menuitem value="Novena a Santo Antão"
@@ -116,16 +118,32 @@
                                 action="#{beanUtil.mudarPara('novenaNossaSenhoraAnunciacaoBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Abril">
+                            <p:menuitem value="Novena a São Jorge"
+                                action="#{beanUtil.mudarPara('novenaAbrSaoJorgeBean')}" />
+                            <p:menuitem value="Novena a São Marcos"
+                                action="#{beanUtil.mudarPara('novenaAbrSaoMarcosBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Maio">
+                            <p:menuitem value="Novena a Nossa Senhora de Fátima"
+                                action="#{beanUtil.mudarPara('novenaMaiNossaSenhoraFatimaBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Junho">
+                            <p:menuitem value="Novena ao Sagrado Coração de Jesus"
+                                action="#{beanUtil.mudarPara('novenaJunSagradoCoracaoBean')}" />
+                            <p:menuitem value="Novena a Santo Antônio de Pádua"
+                                action="#{beanUtil.mudarPara('novenaJunSantoAntonioBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Julho">
+                            <p:menuitem value="Novena a Sant'Ana e São Joaquim"
+                                action="#{beanUtil.mudarPara('novenaJulSantAnaBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Agosto">
+                            <p:menuitem value="Novena da Assunção de Nossa Senhora"
+                                action="#{beanUtil.mudarPara('novenaAgoAssuncaoBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Setembro">
+                            <p:menuitem value="Novena a Nossa Senhora das Dores"
+                                action="#{beanUtil.mudarPara('novenaSetNossaSenhoraDoresBean')}" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Outubro">
                             <p:menuitem value="Novena de Nossa Senhora da Conceição"

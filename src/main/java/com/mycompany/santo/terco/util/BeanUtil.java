@@ -39,6 +39,11 @@ public class BeanUtil implements Serializable {
         return "/liturgia.xhtml?faces-redirect=true";
     }
 
+    public String resetMural() {
+        this.nomeBean = null;
+        return "/mural.xhtml?faces-redirect=true";
+    }
+
     public String resetQuaresma(String quaresma) {
         this.nomeBean = null;
         if (quaresma.equals("miguel")) {
