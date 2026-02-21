@@ -52,6 +52,8 @@ public class BeanUtil implements Serializable {
             return "/quaresmas/quaresma-sao-miguel.xhtml?faces-redirect=true";
         } else if (quaresma.equals("jose")) {
             return "/quaresmas/quaresma-sao-jose.xhtml?faces-redirect=true";
+        } else if (quaresma.equals("liturgica")) {
+            return "/quaresmas/quaresma-liturgica.xhtml?faces-redirect=true";
         }
         return null;
     }
