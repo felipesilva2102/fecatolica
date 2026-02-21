@@ -112,10 +112,12 @@
     </h:head>
 
     <h:body>
-        <h:form id="formMural">
-            <div class="container">
+        <div class="container">
+            <h:form id="formMenu">
                 <ui:include src="/includes/menu.xhtml"/>
+            </h:form>
 
+            <h:form id="formMural">
                 <div class="card">
                     <div class="mural-titulo">
                         <h2>Mural de Intencoes</h2>
@@ -157,10 +159,10 @@
                         </ui:repeat>
                     </h:panelGroup>
                 </div>
+            </h:form>
 
-                <ui:include src="/includes/footer.xhtml"/>
-            </div>
-        </h:form>
+            <ui:include src="/includes/footer.xhtml"/>
+        </div>
 
         <script src="js/acessibilidade.js"></script>
         <script src="js/streaks.js"></script>
