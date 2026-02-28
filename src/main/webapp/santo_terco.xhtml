@@ -4,18 +4,25 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+<<<<<<< HEAD
+      xmlns:c="jakarta.tags.core">
+=======
       xmlns:c="jakarta.tags.core"
       xmlns:ui="jakarta.faces.facelets">
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 
     <h:head>
         <title>Santo Terço — FS Tech</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
+=======
         <link rel="stylesheet" href="css/acessibilidade.css" />
         <link rel="stylesheet" href="css/terco-interativo.css" />
         <link rel="stylesheet" href="css/print.css" />
         <link rel="manifest" href="manifest.json" />
         <meta name="theme-color" content="#1a4f89" />
         <style>#{tempoLiturgicoBean.cssVariaveis}</style>
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
         <style type="text/css">
             body {
                 font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -105,10 +112,31 @@
     <h:body>
         <h:form>
             <div class="container">
+<<<<<<< HEAD
+                <nav>
+                    <a href="#">Início</a>
+                    <a href="#decadesContainer">Rezar as dezenas</a>
+                    <a href="#todayMystery">Mistério do dia</a>
+                    <a href="#tutorial">Tutorial</a>
+                    <a href="#footer">Contato</a>
+                    <a href="liturgia.xhtml">Liturgia</a>
+                    <h:panelGroup rendered="#{quaresmaSaoMiguelBean.quaresmaMiguel}">
+                        <a href="quaresma-sao-miguel.xhtml">Quaresma de São Miguel</a>
+                    </h:panelGroup>
+
+ <h:panelGroup rendered="#{quaresmaSaoJoseBean.quaresmaJose}">
+                        <a href="quaresma-sao-jose.xhtml">Quaresma de São Jose</a>
+                    </h:panelGroup>
+                </nav>
+
+                <div class="card">
+                    <header>
+=======
                 <ui:include src="/includes/menu.xhtml"/>
 
                 <div class="card">
                     <header style="text-align:center;">
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
                         <h1>Santo Terço — Guia interativo</h1>
                         <p class="lead">Clique nas contas para acompanhar o progresso.</p>
                     </header>
@@ -192,7 +220,51 @@
                         </aside>
                     </div>
                 </div>
+<<<<<<< HEAD
+
+                <footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9;">
+
+                    <!-- Botões de contato -->
+                    <div style="margin:16px 0;">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais"
+                           target="_blank"
+                           style="background:#25D366;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                            💬 WhatsApp
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:felipefrancelino2015@gmail.com?subject=Contato&amp;body=Olá!"
+                           onclick="window.open('https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=felipefrancelino2015@gmail.com&amp;su=Contato&amp;body=Olá!', '_blank'); return false;"
+                           style="background:#39588f;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+                            📧 Email
+                        </a>
+                    </div>
+
+                    <!-- Texto -->
+                    <p style="font-size:.88rem; color:#444; margin:8px 0;">
+                        Este rodapé pode conter informações de contato, links úteis, reflexões espirituais e avisos importantes.
+                    </p>
+
+                    <!-- Desenvolvedor -->
+                    <div style="margin-top:10px; color:#bbb; font-size:0.9rem;">
+                        Desenvolvido por <strong>FS Tech</strong>
+                    </div>
+
+                    <!-- Contato final -->
+                    <div style="margin-top:8px;">
+                        <i class="pi pi-whatsapp" style="color:#25D366;"></i>
+                        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+                           target="_blank"
+                           style="text-decoration:none; color:#25D366; margin-left:5px; font-weight:bold;">
+                            +55 (84) 99993-7274
+                        </a>
+                    </div>
+                </footer>
+
+=======
                 <ui:include src="/includes/footer.xhtml"/>
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
             </div>
 
             <script type="text/javascript">
@@ -222,7 +294,11 @@
                             ]},
                         {title: 'Mistérios Luminosos', days: ['quinta-feira'], items: [
                                 'O Batismo de Jesus no Jordão',
+<<<<<<< HEAD
+                                'A Autorrevelação nas Bodas de Caná',
+=======
                                 'A Autorrevelação nas Bodas de Canaá',
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
                                 'O Anúncio do Reino e o convite à conversão',
                                 'A Transfiguração',
                                 'A Instituição da Eucaristia'
@@ -346,6 +422,9 @@
                 });
                 //]]>
             </script>
+<<<<<<< HEAD
+        </h:form>
+=======
 
             <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
             <div id="misterio-do-dia" style="text-align:center;margin:8px 0;font-style:italic;color:#555;"></div>
@@ -356,5 +435,6 @@
         <script src="js/streaks.js"></script>
         <script src="js/partilha.js"></script>
         <script src="js/sw-register.js"></script>
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
     </h:body>
 </html>
