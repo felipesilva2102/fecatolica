@@ -25,12 +25,12 @@ public class BeanUtil implements Serializable {
 
     public String resetTerco() {
         this.nomeBean = null;
-        return "santo_terco.xhtml?faces-redirect=true";
+        return "/santo_terco.xhtml?faces-redirect=true";
     }
 
     public String resetRosario() {
         this.nomeBean = null;
-        return "santo_rosario.xhtml?faces-redirect=true";
+        return "/santo_rosario.xhtml?faces-redirect=true";
     }
 
     public String resetLiturgia() {
@@ -38,12 +38,12 @@ public class BeanUtil implements Serializable {
         if (getLiturgiaBean().getLiturgia().getData() == null) {
             liturgiaBean.carregarLiturgia();
         }
-        return "liturgia.xhtml?faces-redirect=true";
+        return "/liturgia.xhtml?faces-redirect=true";
     }
 
     public String resetMural() {
         this.nomeBean = null;
-        return "mural.xhtml?faces-redirect=true";
+        return "/mural.xhtml?faces-redirect=true";
     }
 
     public String resetQuaresma(String quaresma) {
