@@ -35,7 +35,11 @@ public class BeanUtil implements Serializable {
 
     public String resetLiturgia() {
         this.nomeBean = null;
-        if (getLiturgiaBean().getLiturgia().getData() == null) {
+        try {
+            if (getLiturgiaBean().getLiturgia() == null || getLiturgiaBean().getLiturgia().getData() == null) {
+                liturgiaBean.carregarLiturgia();
+            }
+        } catch (Exception e) {
             liturgiaBean.carregarLiturgia();
         }
         return "/liturgia.xhtml?faces-redirect=true";

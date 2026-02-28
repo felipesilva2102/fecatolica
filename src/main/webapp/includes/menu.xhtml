@@ -77,121 +77,121 @@
                     style="margin: 0 auto; display: block;" />
 
                 <p:menubar style="display: inline-block; margin-top: 10px;">
-                    <p:menuitem value="📿 Santo Terço" action="#{beanUtil.resetTerco()}" />
+                    <p:menuitem value="📿 Santo Terço" action="#{beanUtil.resetTerco()}" ajax="false" />
 
-                    <p:menuitem value="🌹 Santo Rosário" action="#{beanUtil.resetRosario()}" />
+                    <p:menuitem value="🌹 Santo Rosário" action="#{beanUtil.resetRosario()}" ajax="false" />
 
-                    <p:menuitem value="📖 Liturgia" action="#{beanUtil.resetLiturgia()}" />
+                    <p:menuitem value="📖 Liturgia" action="#{beanUtil.resetLiturgia()}" ajax="false" />
 
                     <p:submenu label="✝️ Quaresmas">
-                        <p:menuitem value="Quaresma Litúrgica" action="#{beanUtil.resetQuaresma('liturgica')}" />
-                        <p:menuitem value="Quaresma de São Miguel" action="#{beanUtil.resetQuaresma('miguel')}" />
-                        <p:menuitem value="Quaresma de São José" action="#{beanUtil.resetQuaresma('jose')}" />
+                        <p:menuitem value="Quaresma Litúrgica" action="#{beanUtil.resetQuaresma('liturgica')}" ajax="false" />
+                        <p:menuitem value="Quaresma de São Miguel" action="#{beanUtil.resetQuaresma('miguel')}" ajax="false" />
+                        <p:menuitem value="Quaresma de São José" action="#{beanUtil.resetQuaresma('jose')}" ajax="false" />
                     </p:submenu>
 
-                    <p:menuitem value="🕯️ Mural" action="#{beanUtil.resetMural()}" />
+                    <p:menuitem value="🕯️ Mural" action="#{beanUtil.resetMural()}" ajax="false" />
 
                     <p:submenu label="🙏 Novenas">
                         <p:submenu label="Novenas do Mês de Janeiro">
                             <p:menuitem value="Novena a Santo Antão"
-                                action="#{beanUtil.mudarPara('novenaSantoAntaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantoAntaoBean')}" ajax="false" />
                             <p:menuitem value="Novena a São Francisco de Sales"
-                                action="#{beanUtil.mudarPara('novenaSaoFranciscoSalesBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoFranciscoSalesBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santo Tomás de Aquino"
-                                action="#{beanUtil.mudarPara('novenaSantoTomasAquinoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantoTomasAquinoBean')}" ajax="false" />
                             <p:menuitem value="Novena a São João Bosco"
-                                action="#{beanUtil.mudarPara('novenaSaoJoaoBoscoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoJoaoBoscoBean')}" ajax="false" />
                             <p:menuitem value="Novena a Nossa Senhora das Candeias"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraCandeiasBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraCandeiasBean')}" ajax="false" />
                             <p:menuitem value="Novena para a Purificação de Nossa Senhora"
-                                action="#{beanUtil.mudarPara('novenaPurificacao')}" />
+                                action="#{beanUtil.mudarPara('novenaPurificacao')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Fevereiro">
                             <p:menuitem value="Novena de Nossa Senhora de Lourdes"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraLourdesBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraLourdesBean')}" ajax="false" />
                             <p:menuitem value="Novena da Sagrada Face de Jesus"
-                                action="#{beanUtil.mudarPara('novenaSagradaFaceBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSagradaFaceBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Março">
                             <p:menuitem value="Novena de São José"
-                                action="#{beanUtil.mudarPara('novenaSaoJoseBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoJoseBean')}" ajax="false" />
                             <p:menuitem value="Novena de Nossa Senhora da Anunciação"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraAnunciacaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraAnunciacaoBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Abril">
                             <p:menuitem value="Novena a São Jorge"
-                                action="#{beanUtil.mudarPara('novenaAbrSaoJorgeBean')}" />
+                                action="#{beanUtil.mudarPara('novenaAbrSaoJorgeBean')}" ajax="false" />
                             <p:menuitem value="Novena a São Marcos"
-                                action="#{beanUtil.mudarPara('novenaAbrSaoMarcosBean')}" />
+                                action="#{beanUtil.mudarPara('novenaAbrSaoMarcosBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Maio">
                             <p:menuitem value="Novena a Nossa Senhora de Fátima"
-                                action="#{beanUtil.mudarPara('novenaMaiNossaSenhoraFatimaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaMaiNossaSenhoraFatimaBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Junho">
                             <p:menuitem value="Novena ao Sagrado Coração de Jesus"
-                                action="#{beanUtil.mudarPara('novenaJunSagradoCoracaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaJunSagradoCoracaoBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santo Antônio de Pádua"
-                                action="#{beanUtil.mudarPara('novenaJunSantoAntonioBean')}" />
+                                action="#{beanUtil.mudarPara('novenaJunSantoAntonioBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Julho">
                             <p:menuitem value="Novena a Sant'Ana e São Joaquim"
-                                action="#{beanUtil.mudarPara('novenaJulSantAnaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaJulSantAnaBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Agosto">
                             <p:menuitem value="Novena da Assunção de Nossa Senhora"
-                                action="#{beanUtil.mudarPara('novenaAgoAssuncaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaAgoAssuncaoBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Setembro">
                             <p:menuitem value="Novena a Nossa Senhora das Dores"
-                                action="#{beanUtil.mudarPara('novenaSetNossaSenhoraDoresBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSetNossaSenhoraDoresBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Outubro">
                             <p:menuitem value="Novena de Nossa Senhora da Conceição"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraConceicaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraConceicaoBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santa Margarida Maria Alacoque"
-                                action="#{beanUtil.mudarPara('novenaSantaMargaridaMariaAlacoqueBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantaMargaridaMariaAlacoqueBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santa Teresa de Jesus"
-                                action="#{beanUtil.mudarPara('novenaSantaTeresaJesusBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantaTeresaJesusBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santo Antônio de Sant'Ana Galvão"
-                                action="#{beanUtil.mudarPara('novenaSantoAntonioSantanaGalvaoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantoAntonioSantanaGalvaoBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santo Inácio de Antioquia"
-                                action="#{beanUtil.mudarPara('novenaSantoInacioAntioquiaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantoInacioAntioquiaBean')}" ajax="false" />
                             <p:menuitem value="Novena a São Carlo Acutis"
-                                action="#{beanUtil.mudarPara('novenaSaoCarloAcutisBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoCarloAcutisBean')}" ajax="false" />
                             <p:menuitem value="Novena a São Geraldo Majella"
-                                action="#{beanUtil.mudarPara('novenaSaoGeraldoMajellaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoGeraldoMajellaBean')}" ajax="false" />
                             <p:menuitem value="Novena a São João Paulo II"
-                                action="#{beanUtil.mudarPara('novenaSaoJoaoPauloBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoJoaoPauloBean')}" ajax="false" />
                             <p:menuitem value="Novena a São Pedro de Alcântara"
-                                action="#{beanUtil.mudarPara('novenaSaoPedroAlcantaraBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoPedroAlcantaraBean')}" ajax="false" />
                             <p:menuitem value="Novena a Todos os Santos"
-                                action="#{beanUtil.mudarPara('novenaTodosSantosBean')}" />
+                                action="#{beanUtil.mudarPara('novenaTodosSantosBean')}" ajax="false" />
                         </p:submenu>
 
                         <p:submenu label="Novenas do Mês de Novembro">
                             <p:menuitem value="Novena a Santa Catarina de Alexandria"
-                                action="#{beanUtil.mudarPara('novenaSantaCatarinaAlexandriaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantaCatarinaAlexandriaBean')}" ajax="false" />
                             <p:menuitem value="Novena a Cristo Rei"
-                                action="#{beanUtil.mudarPara('novenaCristoReiBean')}" />
+                                action="#{beanUtil.mudarPara('novenaCristoReiBean')}" ajax="false" />
                             <p:menuitem value="Novena a Nossa Senhora das Graças"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraGracasBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraGracasBean')}" ajax="false" />
                             <p:menuitem value="Novena à Imaculada Conceição de Maria"
-                                action="#{beanUtil.mudarPara('novenaImaculadaConceicaoMariaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaImaculadaConceicaoMariaBean')}" ajax="false" />
                             <p:menuitem value="Novena da Apresentação de Nossa Senhora"
-                                action="#{beanUtil.mudarPara('novenaApresentacaoNossaSenhoraBean')}" />
+                                action="#{beanUtil.mudarPara('novenaApresentacaoNossaSenhoraBean')}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Novenas do Mês de Dezembro">
                             <p:menuitem value="Novena a Nossa Senhora de Guadalupe"
-                                action="#{beanUtil.mudarPara('novenaNossaSenhoraGuadalupeBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNossaSenhoraGuadalupeBean')}" ajax="false" />
                             <p:menuitem value="Novena a Santa Luzia"
-                                action="#{beanUtil.mudarPara('novenaSantaLuziaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSantaLuziaBean')}" ajax="false" />
                             <p:menuitem value="Novena a São João da Cruz"
-                                action="#{beanUtil.mudarPara('novenaSaoJoaoCruzBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSaoJoaoCruzBean')}" ajax="false" />
                             <p:menuitem value="Novena de Natal de São Leão Magno"
-                                action="#{beanUtil.mudarPara('novenaNatalSaoLeaoMagnoBean')}" />
+                                action="#{beanUtil.mudarPara('novenaNatalSaoLeaoMagnoBean')}" ajax="false" />
                             <p:menuitem value="Novena a Sagrada Família"
-                                action="#{beanUtil.mudarPara('novenaSagradaFamiliaBean')}" />
+                                action="#{beanUtil.mudarPara('novenaSagradaFamiliaBean')}" ajax="false" />
                         </p:submenu>
                     </p:submenu>
                 </p:menubar>
