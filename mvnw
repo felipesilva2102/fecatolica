@@ -19,7 +19,11 @@
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
+<<<<<<< HEAD
+# Apache Maven Wrapper startup batch script, version 3.3.2
+=======
 # Apache Maven Wrapper startup batch script, version 3.3.4
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 #
 # Optional ENV vars
 # -----------------
@@ -105,17 +109,25 @@ trim() {
   printf "%s" "${1}" | tr -d '[:space:]'
 }
 
+<<<<<<< HEAD
+=======
 scriptDir="$(dirname "$0")"
 scriptName="$(basename "$0")"
 
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 # parse distributionUrl and optional distributionSha256Sum, requires .mvn/wrapper/maven-wrapper.properties
 while IFS="=" read -r key value; do
   case "${key-}" in
   distributionUrl) distributionUrl=$(trim "${value-}") ;;
   distributionSha256Sum) distributionSha256Sum=$(trim "${value-}") ;;
   esac
+<<<<<<< HEAD
+done <"${0%/*}/.mvn/wrapper/maven-wrapper.properties"
+[ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in ${0%/*}/.mvn/wrapper/maven-wrapper.properties"
+=======
 done <"$scriptDir/.mvn/wrapper/maven-wrapper.properties"
 [ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in $scriptDir/.mvn/wrapper/maven-wrapper.properties"
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 
 case "${distributionUrl##*/}" in
 maven-mvnd-*bin.*)
@@ -133,7 +145,11 @@ maven-mvnd-*bin.*)
   distributionUrl="${distributionUrl%-bin.*}-$distributionPlatform.zip"
   ;;
 maven-mvnd-*) MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/ ;;
+<<<<<<< HEAD
+*) MVN_CMD="mvn${0##*/mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;
+=======
 *) MVN_CMD="mvn${scriptName#mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 esac
 
 # apply MVNW_REPOURL and calculate MAVEN_HOME
@@ -230,7 +246,11 @@ if [ -n "${distributionSha256Sum-}" ]; then
     echo "Please disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
     exit 1
   elif command -v sha256sum >/dev/null; then
+<<<<<<< HEAD
+    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c >/dev/null 2>&1; then
+=======
     if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c - >/dev/null 2>&1; then
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
       distributionSha256Result=true
     fi
   elif command -v shasum >/dev/null; then
@@ -255,6 +275,10 @@ if command -v unzip >/dev/null; then
 else
   tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"
 fi
+<<<<<<< HEAD
+printf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$distributionUrlNameMain/mvnw.url"
+mv -- "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"
+=======
 
 # Find the actual extracted directory name (handles snapshots where filename != directory name)
 actualDistributionDir=""
@@ -290,6 +314,7 @@ fi
 verbose "Found extracted Maven distribution directory: $actualDistributionDir"
 printf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$actualDistributionDir/mvnw.url"
 mv -- "$TMP_DOWNLOAD_DIR/$actualDistributionDir" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347
 
 clean || :
 exec_maven "$@"
