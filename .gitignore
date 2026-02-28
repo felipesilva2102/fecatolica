@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/maven,eclipse,netbeans,intellij+all
 # Edit at https://www.gitignore.io/?templates=maven,eclipse,netbeans,intellij+all
@@ -179,3 +180,6 @@ nbdist/
 .nb-gradle/
 
 # End of https://www.gitignore.io/api/maven,eclipse,netbeans,intellij+all
+=======
+/target/
+>>>>>>> 7490e34c038d05bab60fb474b7faacb883bd8347

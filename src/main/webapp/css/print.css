@@ -1,0 +1,74 @@
+/* === Estilos de Impressao === */
+@media print {
+    * {
+        color: #000 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        font-family: 'Georgia', 'Times New Roman', Times, serif !important;
+        font-size: 12pt !important;
+        line-height: 1.6 !important;
+        margin: 2cm !important;
+    }
+
+    /* Ocultar interface interativa */
+    .barra-acessibilidade,
+    .vela-container,
+    .ui-menubar,
+    .ui-menu,
+    .ui-button,
+    .ui-calendar,
+    .ui-datepicker,
+    #streak-display,
+    [data-partilhar],
+    .no-print,
+    .ui-panel-titlebar-icon,
+    .menu-container,
+    footer {
+        display: none !important;
+    }
+
+    /* Links */
+    a, a:visited {
+        text-decoration: underline;
+        color: #000 !important;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #555 !important;
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript"]::after {
+        content: "";
+    }
+
+    /* Evitar quebras */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+
+    p, blockquote, ul, ol {
+        orphans: 3;
+        widows: 3;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    .card, .ui-panel {
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}

@@ -1,0 +1,158 @@
+/* === Acessibilidade - Tamanho de fonte e Dark Mode === */
+html {
+    transition: font-size 0.3s ease;
+}
+
+html.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --card-bg: #16213e;
+    --border-color: #0f3460;
+    --link-color: #e94560;
+}
+
+html.dark-mode body {
+    background-color: var(--bg-color, #1a1a2e) !important;
+    color: var(--text-color, #e0e0e0) !important;
+}
+
+html.dark-mode .card,
+html.dark-mode .ui-panel,
+html.dark-mode .ui-panel-content,
+html.dark-mode .ui-accordion,
+html.dark-mode .ui-accordion-content {
+    background-color: var(--card-bg, #16213e) !important;
+    color: var(--text-color, #e0e0e0) !important;
+    border-color: var(--border-color, #0f3460) !important;
+}
+
+html.dark-mode .ui-widget-header {
+    background-color: var(--border-color, #0f3460) !important;
+    color: var(--text-color, #e0e0e0) !important;
+}
+
+html.dark-mode a {
+    color: var(--link-color, #e94560) !important;
+}
+
+html.dark-mode pre {
+    color: var(--text-color, #e0e0e0) !important;
+}
+
+/* === Barra de Acessibilidade === */
+.barra-acessibilidade {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.barra-acessibilidade button {
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.2s;
+    background: #ffffff;
+    color: #333;
+}
+
+html.dark-mode .barra-acessibilidade button {
+    background: #16213e;
+    color: #e0e0e0;
+    border: 1px solid #0f3460;
+}
+
+.barra-acessibilidade button:hover {
+    transform: scale(1.15);
+}
+
+/* === Vela Virtual === */
+.vela-container {
+    position: fixed;
+    bottom: 220px;
+    right: 14px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.vela-corpo {
+    width: 22px;
+    height: 60px;
+    background: linear-gradient(to bottom, #fff8dc, #f5deb3);
+    border-radius: 3px 3px 6px 6px;
+    position: relative;
+    box-shadow: 0 0 6px rgba(255,200,50,0.3);
+}
+
+.vela-pavio {
+    width: 2px;
+    height: 10px;
+    background: #333;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vela-chama {
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(ellipse at bottom, #ffdd44 0%, #ff6600 50%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.4s ease-in-out infinite alternate;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.vela-chama.apagada {
+    opacity: 0;
+    animation: none;
+}
+
+.vela-brilho {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(255,200,50,0.25) 0%, transparent 70%);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.vela-brilho.apagada {
+    opacity: 0;
+}
+
+.vela-timer {
+    font-size: 0.6rem;
+    color: #999;
+    margin-top: 4px;
+    text-align: center;
+    min-height: 14px;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(-1deg); opacity: 1; }
+    25% { transform: translateX(-50%) scale(1.02) rotate(1deg); opacity: 0.95; }
+    50% { transform: translateX(-50%) scale(0.98) rotate(-0.5deg); opacity: 1; }
+    75% { transform: translateX(-50%) scale(1.01) rotate(0.5deg); opacity: 0.97; }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}

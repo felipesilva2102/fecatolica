@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets">
+    <h:head>
+        <title>Quaresma Litúrgica</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+                font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+                background:linear-gradient(180deg,#f7fbff 0%,#f0f6fb 50%,#eef7f1 100%);
+                margin:0;
+                padding:0;
+            }
+            .container{
+                max-width:1100px;
+                margin:24px auto;
+                padding:18px;
+            }
+            .card{
+                background:white;
+                border-radius:12px;
+                box-shadow:0 8px 30px rgba(20,40,80,0.08);
+                padding:18px;
+                margin-bottom:20px;
+            }
+            header h1{
+                margin:0 0 6px 0;
+                font-size:1.6rem;
+            }
+            header p.lead{
+                margin:0;
+                color:#555;
+            }
+            @media (max-width:920px){
+                .container{
+                    padding:12px;
+                }
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h:form id="formQuaresmaLiturgica" prependId="false">
+            <div class="container">
+                <ui:include src="/includes/menu.xhtml"/>
+
+                <div class="card">
+                    <header style="text-align:center;">
+                        <h1>Quaresma Litúrgica</h1>
+                        <p class="lead">Caminho oficial da Igreja em preparação para a Páscoa.</p>
+                    </header>
+                </div>
+
+                <h:panelGroup id="mensagemDia">
+                    <h3 style="text-align:center; margin-top:10px;">
+                        📅 #{quaresmaLiturgicaBean.mensagemDia}
+                    </h3>
+                    <p style="text-align:center; color:#555; margin-top:6px;">
+                        Período deste ano: #{quaresmaLiturgicaBean.periodoFormatado}
+                    </p>
+                </h:panelGroup>
+
+                <div class="card" style="margin-top:20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <p:calendar id="dataPicker"
+                                    value="#{quaresmaLiturgicaBean.dataSelecionada}"
+                                    pattern="dd/MM/yyyy"
+                                    navigator="true"
+                                    showButtonPanel="true">
+                            <p:ajax event="dateSelect"
+                                    process="@this"
+                                    update=":formQuaresmaLiturgica:accordion :formQuaresmaLiturgica:mensagem :formQuaresmaLiturgica:mensagemDia" />
+                        </p:calendar>
+
+                        <h:panelGroup id="mensagem">
+                            <h:outputText rendered="#{quaresmaLiturgicaBean.diaSelecionadoRenderizar}"
+                                          value="📅 Dia da Quaresma: #{quaresmaLiturgicaBean.mensagemDia}"
+                                          style="font-weight:bold; color:darkblue;" />
+                            <h:outputText rendered="#{not quaresmaLiturgicaBean.diaSelecionadoRenderizar}"
+                                          value="📅 A data selecionada está fora do período da Quaresma litúrgica deste ano."
+                                          style="color:#b03030; font-weight:600;" />
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+                <p:accordionPanel id="accordion" multiple="true" activeIndex="-1"
+                                  style="display: #{quaresmaLiturgicaBean.diaSelecionadoRenderizar ? 'block' : 'none'};">
+
+                    <p:tab title="Tema do Dia">
+                        <pre style="white-space: pre-line;">#{quaresmaLiturgicaBean.temaDoDia}</pre>
+                    </p:tab>
+
+                    <p:tab title="Práticas Quaresmais">
+                        <pre style="white-space: pre-line;">#{quaresmaLiturgicaBean.praticasQuaresmais}</pre>
+                    </p:tab>
+
+                    <p:tab title="Oração">
+                        <pre style="white-space: pre-line;">#{quaresmaLiturgicaBean.oracaoQuaresmal}</pre>
+                    </p:tab>
+
+                    <p:tab title="Leitura Sugerida">
+                        <pre style="white-space: pre-line;">#{quaresmaLiturgicaBean.leituraSugerida}</pre>
+                    </p:tab>
+                </p:accordionPanel>
+
+                <ui:include src="/includes/footer.xhtml"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
