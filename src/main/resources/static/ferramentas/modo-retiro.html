@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Modo Retiro — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#0a0a0a"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body.retiro-mode { background:#0d0d0d !important; color:#c9b87a !important; }
+        body.retiro-mode .container { max-width:700px; }
+        body.retiro-mode .card { background:#1a1a1a !important; border:1px solid #2a2a2a !important; color:#c9b87a; }
+        body.retiro-mode .card h1, body.retiro-mode .card h2, body.retiro-mode .card h3 { color:#c9b87a; }
+        body.retiro-mode .accordion-header { background:#222 !important; color:#c9b87a !important; }
+        body.retiro-mode .accordion-content { background:#1a1a1a !important; color:#c9b87a; }
+        body.retiro-mode .lead, body.retiro-mode .muted { color:#888 !important; }
+        body.retiro-mode #menu-placeholder { display:none; }
+        body.retiro-mode .retiro-topbar { display:flex !important; }
+
+        .retiro-topbar { display:none; align-items:center; justify-content:space-between; padding:12px 16px; background:#111; border-bottom:1px solid #2a2a2a; margin-bottom:12px; }
+        .retiro-clock { font-size:1.8rem; font-weight:700; color:#c9b87a; font-variant-numeric:tabular-nums; }
+        .retiro-exit { padding:6px 16px; background:none; border:1px solid #c9b87a; color:#c9b87a; border-radius:6px; cursor:pointer; font-size:0.9rem; }
+        .retiro-exit:hover { background:#c9b87a; color:#0d0d0d; }
+
+        .retiro-btn { padding:14px 32px; background:#1a4f89; color:#fff; border:none; border-radius:10px; font-size:1.1rem; font-weight:600; cursor:pointer; display:block; margin:0 auto; }
+        .retiro-btn:hover { background:#0d3166; }
+
+        .retiro-tema-grid { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0; }
+        .retiro-tema-btn { padding:8px 16px; border:1px solid #ccc; border-radius:20px; background:none; cursor:pointer; font-size:0.9rem; }
+        .retiro-tema-btn.active { background:#1a4f89; color:#fff; border-color:#1a4f89; }
+        body.retiro-mode .retiro-tema-btn { border-color:#555; color:#c9b87a; }
+        body.retiro-mode .retiro-tema-btn.active { background:#c9b87a; color:#0d0d0d; border-color:#c9b87a; }
+
+        .versiculoRetiro { font-size:1.6rem; line-height:1.7; text-align:center; margin:24px 0; font-style:italic; }
+        .refRetiro { font-size:0.9rem; text-align:center; color:#888; margin-top:8px; }
+
+        .retiro-oracao-block { font-size:1.1rem; line-height:1.9; text-align:center; }
+    </style>
+</head>
+<body>
+<div class="retiro-topbar" id="retiroTopbar">
+    <div class="retiro-clock" id="retiroClock">00:00</div>
+    <span style="color:#888;font-size:0.9rem;">Modo Retiro</span>
+    <button class="retiro-exit" id="btnSairRetiro">✕ Sair do Retiro</button>
+</div>
+
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🕯️ Modo Retiro</h1>
+            <p class="lead">Tela minimalista para oração contemplativa. Elimina distrações e cria um espaço de silêncio.</p>
+            <p class="muted">"Retira-te para o teu quarto, fecha a porta e ora ao teu Pai." (Mt 6,6)</p>
+        </header>
+    </div>
+
+    <div class="card" id="retiroConfigCard">
+        <h2 style="text-align:center;margin-top:0;">🎚️ Configurar o Retiro</h2>
+
+        <p><strong>Tema de meditação:</strong></p>
+        <div class="retiro-tema-grid" id="temaGrid">
+            <button class="retiro-tema-btn active" data-tema="silencio">🤫 Silêncio</button>
+            <button class="retiro-tema-btn" data-tema="paixao">✝️ Paixão</button>
+            <button class="retiro-tema-btn" data-tema="ressurreicao">☀️ Ressurreição</button>
+            <button class="retiro-tema-btn" data-tema="maria">🌹 Maria</button>
+            <button class="retiro-tema-btn" data-tema="misericordia">❤️ Misericórdia</button>
+            <button class="retiro-tema-btn" data-tema="eucaristia">🍞 Eucaristia</button>
+        </div>
+
+        <button class="retiro-btn" id="btnEntrarRetiro" style="margin-top:20px;">🕯️ Entrar no Modo Retiro</button>
+    </div>
+
+    <!-- Conteúdo do Retiro (oculto até ativar) -->
+    <div id="retiroConteudo" style="display:none;">
+        <div class="card">
+            <div class="versiculoRetiro" id="retiroVers"></div>
+            <div class="refRetiro" id="retiroRef"></div>
+        </div>
+        <div class="card">
+            <div class="retiro-oracao-block" id="retiroOracao"></div>
+        </div>
+        <div class="card" style="text-align:center;">
+            <p class="muted">Permaneça em silêncio diante de Deus. Deixe a oração vir do coração, não das palavras.</p>
+            <p id="retiroTimerDisplay" style="font-size:2rem;font-weight:700;color:#1a4f89;"></p>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+const temas = {
+    silencio: {
+        vers: "\"Sede quietos e sabei que Eu sou Deus.\"",
+        ref: "Sl 46,11",
+        oracao: "Senhor,<br/>no silêncio deste momento,<br/>aquieto meu coração diante de Vós.<br/><br/>Não peço nada agora.<br/>Apenas estou aqui.<br/>Com Vós.<br/><br/>Que o Vosso silêncio me fale<br/>e o Vosso amor me sustente.<br/><br/>Amém."
+    },
+    paixao: {
+        vers: "\"Olharão para aquele que traspassaram.\"",
+        ref: "Jo 19,37",
+        oracao: "Jesus,<br/>contemplo Vossas chagas.<br/>Cada ferida é uma palavra de amor<br/>pronunciada por Vós a mim.<br/><br/>Que eu nunca passe indiferente<br/>diante do Calvário.<br/><br/>Vossa Cruz é minha salvação.<br/><br/>Amém."
+    },
+    ressurreicao: {
+        vers: "\"Eu sou a ressurreição e a vida.\"",
+        ref: "Jo 11,25",
+        oracao: "Cristo ressuscitado,<br/>a morte não teve sobre Vós a última palavra.<br/><br/>Que também em mim<br/>tudo aquilo que parece morto<br/>ressuscite em Vós.<br/><br/>Aleluia!<br/><br/>Amém."
+    },
+    maria: {
+        vers: "\"Fiat mihi secundum verbum tuum.\"",
+        ref: "Lc 1,38",
+        oracao: "Maria,<br/>Vós dissestes sim<br/>quando tudo era incerto.<br/><br/>Ensinai-me a dizer também<br/>o meu fiat —<br/>pequeno, imperfeito,<br/>mas sincero.<br/><br/>Amém."
+    },
+    misericordia: {
+        vers: "\"As misericórdias do Senhor não têm fim.\"",
+        ref: "Lm 3,22",
+        oracao: "Jesus misericordioso,<br/>não mereço nada do que sou<br/>e do que tenho.<br/><br/>Mas Vós me amastes<br/>antes mesmo de eu Vos conhecer.<br/><br/>Que eu carregue essa misericórdia<br/>para todos que encontrar hoje.<br/><br/>Amém."
+    },
+    eucaristia: {
+        vers: "\"Eu sou o pão vivo descido do céu.\"",
+        ref: "Jo 6,51",
+        oracao: "Jesus Eucarístico,<br/>Vós Vos deste inteiramente —<br/>em cada hóstia,<br/>em cada missa,<br/>em cada tabernáculo do mundo.<br/><br/>Que eu nunca me habitue<br/>à grandeza desse mistério.<br/><br/>Amém."
+    }
+};
+
+let temaSelecionado = 'silencio';
+let retiroAtivo = false;
+let clockInterval = null;
+let retiroStart = null;
+
+$('.retiro-tema-btn').on('click', function () {
+    $('.retiro-tema-btn').removeClass('active');
+    $(this).addClass('active');
+    temaSelecionado = $(this).data('tema');
+});
+
+$('#btnEntrarRetiro').on('click', function () {
+    const t = temas[temaSelecionado];
+    $('#retiroVers').html(t.vers);
+    $('#retiroRef').text(t.ref);
+    $('#retiroOracao').html(t.oracao);
+    $('#retiroConteudo').show();
+    $('body').addClass('retiro-mode');
+    $('#retiroTopbar').show();
+    $('.hero-card, #retiroConfigCard').hide();
+    retiroStart = Date.now();
+    clockInterval = setInterval(updateClock, 1000);
+    updateClock();
+    window.scrollTo(0, 0);
+    retiroAtivo = true;
+});
+
+$('#btnSairRetiro').on('click', function () {
+    $('body').removeClass('retiro-mode');
+    $('#retiroTopbar').hide();
+    $('#retiroConteudo').hide();
+    $('.hero-card, #retiroConfigCard').show();
+    clearInterval(clockInterval);
+    retiroAtivo = false;
+    retiroStart = null;
+});
+
+function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    $('#retiroClock').text(h + ':' + m);
+
+    if (retiroStart) {
+        const elapsed = Math.floor((Date.now() - retiroStart) / 1000);
+        const em = Math.floor(elapsed / 60);
+        const es = elapsed % 60;
+        $('#retiroTimerDisplay').text('⏱️ ' + String(em).padStart(2,'0') + ':' + String(es).padStart(2,'0'));
+    }
+}
+</script>
+</body>
+</html>

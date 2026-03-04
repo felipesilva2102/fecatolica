@@ -15,10 +15,13 @@
     <div class="container">
         <div id="menu-placeholder"></div>
 
-        <div class="card">
+        <div class="card hero-card">
             <header style="text-align:center;">
-                <h1>Quaresma de São José</h1>
-                <p class="lead">Acompanhe seu progresso e medite nas orações do dia.</p>
+                <h1>🌿 Quaresma de São José</h1>
+                <p class="lead">40 dias de devoção ao esposo de Maria e pai de Jesus — do dia 19 de fevereiro ao dia 19 de março.</p>
+                <p class="muted" style="margin-top:6px;">
+                    <em>"Ide a José."</em> (Gn 41,55) — Patrono da Igreja Universal, dos trabalhadores e da boa morte.
+                </p>
             </header>
         </div>
 
@@ -51,10 +54,10 @@
                     $('#qStatus').text('📅 Dia da Quaresma: ' + data.mensagemDia).css('color', 'darkblue');
 
                     var sections = [];
-                    if (data.oracaoPreparatoria) sections.push({title: 'Preparação Diária', content: data.oracaoPreparatoria});
-                    if (data.suplicas) sections.push({title: 'As 30 Invocações (Súplica)', content: data.suplicas});
-                    if (data.oracaoFinal) sections.push({title: 'Oração Final', content: data.oracaoFinal});
-                    if (data.jaculatoria) sections.push({title: 'Jaculatória', content: data.jaculatoria});
+                    if (data.oracaoPreparatoria) sections.push({title: '🙏 Preparação Diária', content: data.oracaoPreparatoria});
+                    if (data.suplicas) sections.push({title: '📿 As 30 Invocações (Súplica)', content: data.suplicas});
+                    if (data.oracaoFinal) sections.push({title: '✝️ Oração Final', content: data.oracaoFinal});
+                    if (data.jaculatoria) sections.push({title: '✨ Jaculatória', content: data.jaculatoria});
                     buildAccordion(sections, '#accordionQuaresma');
                 } else {
                     $('#qStatus').text('📅 A data selecionada está fora do período da Quaresma (19/02 - 19/03).').css('color', '#b03030');

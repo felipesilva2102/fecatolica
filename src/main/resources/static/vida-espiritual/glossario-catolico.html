@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Glossário Católico — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .glossario-search { width:100%; padding:10px 14px; font-size:1rem; border:1px solid #ccc; border-radius:6px; margin-bottom:16px; }
+        .glossario-item { padding:10px 0; border-bottom:1px solid #eee; }
+        .glossario-item:last-child { border-bottom:none; }
+        .glossario-item dt { font-weight:700; color:#1a4f89; }
+        .glossario-item dd { margin:4px 0 0 0; color:#444; }
+        .glossario-letra { font-size:1.4rem; font-weight:700; color:#1a4f89; margin:18px 0 8px; border-bottom:2px solid #1a4f89; padding-bottom:4px; }
+        .hidden { display:none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>📖 Glossário Católico</h1>
+            <p class="lead">Termos litúrgicos, teológicos e devocionais explicados de forma simples e precisa.</p>
+            <p class="muted">"Ide, pois, aprendei o que significa..." (Mt 9,13)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <input type="text" class="glossario-search" id="glossSearch" placeholder="🔍 Pesquisar termo..." autocomplete="off"/>
+        <div id="glossarioContent">
+            <!-- Termos gerados por JS -->
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+const termos = [
+    { letra: "A", termo: "Advento", def: "Tempo litúrgico de quatro semanas que precede o Natal. Período de espera e preparação para a vinda de Cristo." },
+    { letra: "A", termo: "Aleluia", def: "Palavra hebraica que significa 'Louvai o Senhor'. Exclamação de alegria e louvor usada na liturgia, especialmente no Tempo Pascal." },
+    { letra: "A", termo: "Altar", def: "Mesa central da celebração eucarística onde o sacrifício de Cristo é tornado presente. Simboliza Cristo, pedra angular." },
+    { letra: "A", termo: "Ambo", def: "Estrado ou púlpito da igreja de onde se proclamam as leituras bíblicas e o Evangelho." },
+    { letra: "A", termo: "Amém", def: "Palavra hebraica que significa 'Assim é' ou 'Assim seja'. Expressão de assentimento e ratificação da oração da comunidade." },
+    { letra: "A", termo: "Apóstolo", def: "Enviado. Designação dos doze discípulos escolhidos por Jesus para serem suas testemunhas. A Igreja é apostólica porque fundada sobre os Apóstolos." },
+    { letra: "A", termo: "Ascensão", def: "Subida gloriosa de Cristo ressuscitado ao Pai, quarenta dias após a Páscoa. Solenidade litúrgica celebrada nesse dia." },
+    { letra: "B", termo: "Batistério", def: "Local da Igreja ou espaço separado onde se celebra o sacramento do Batismo, com a pia batismal." },
+    { letra: "B", termo: "Bênção", def: "Ação pela qual Deus concede graças, ou gesto litúrgico pelo qual o ministro invoca a graça de Deus sobre pessoas ou objetos." },
+    { letra: "C", termo: "Cálice", def: "Copo sagrado usado na Missa para conter o vinho que se tornará o Sangue de Cristo." },
+    { letra: "C", termo: "Canon", def: "Parte central da Missa, a Oração Eucarística, na qual se realiza a consagração do pão e do vinho." },
+    { letra: "C", termo: "Catecúmeno", def: "Pessoa que está se preparando para receber os sacramentos da iniciação cristã (Batismo, Crisma, Eucaristia)." },
+    { letra: "C", termo: "Ciborium / Cibório", def: "Vaso sagrado, similar ao cálice mas com tampa, usado para guardar as hóstias consagradas no tabernáculo." },
+    { letra: "C", termo: "Comunhão dos Santos", def: "União espiritual entre os membros da Igreja Triunfante (céu), Sofrente (purgatório) e Militante (terra)." },
+    { letra: "C", termo: "Consagração", def: "Momento central da Missa em que, pelas palavras do sacerdote in persona Christi, o pão e vinho se tornam o Corpo e Sangue de Cristo (transubstanciação)." },
+    { letra: "D", termo: "Doxologia", def: "Oração de glória a Deus. 'Glória ao Pai, ao Filho e ao Espírito Santo' é a Pequena Doxologia; o 'Por Cristo, com Cristo...' da Missa é a Grande Doxologia." },
+    { letra: "E", termo: "Epifania", def: "Manifestação. Solenidade (6 de janeiro) que comemora a visita dos Magos, revelando Cristo às nações." },
+    { letra: "E", termo: "Eucaristia", def: "Do grego 'ação de graças'. Sacramento central da fé católica: o Corpo e Sangue de Cristo sob as espécies do pão e do vinho. Sinônimo de Missa, Ceia do Senhor, Santíssimo Sacramento." },
+    { letra: "E", termo: "Evangelhos", def: "Os quatro livros do Novo Testamento (Mateus, Marcos, Lucas, João) que narram a vida, ensinamentos, paixão e ressurreição de Jesus Cristo." },
+    { letra: "H", termo: "Hóstia", def: "Do latim 'vítima'. O pão (ázimo, sem fermento) used na celebração eucarística, que após a consagração se torna o Corpo de Cristo." },
+    { letra: "I", termo: "Indulgência", def: "Remissão perante Deus da pena temporal devida pelos pecados já perdoados. Pode ser plenária (total) ou parcial." },
+    { letra: "I", termo: "Intercessão", def: "Oração feita a favor de outra pessoa. Os santos interceden por nós diante de Deus, sendo nossos advogados celestiais." },
+    { letra: "J", termo: "Jaculatória", def: "Oração breve e intensa lançada para Deus como um dardo ('jaculare' = lançar). Usada para manter o estado de oração ao longo do dia." },
+    { letra: "K", termo: "Kyrie Eleison", def: "Grego para 'Senhor, tende piedade'. Aclamação litúrgica cantada no início da Missa." },
+    { letra: "L", termo: "Liturgia", def: "Do grego 'obra do povo'. O culto público e oficial da Igreja, especialmente a Missa e os sacramentos." },
+    { letra: "L", termo: "Liturgia das Horas", def: "A oração oficial da Igreja distribuída pelos momentos do dia: Laudes, Hora Intermédia, Vésperas, Completas, Vigílias. Também chamado Ofício Divino ou Breviário." },
+    { letra: "M", termo: "Martírio", def: "Do grego 'testemunhar'. Morte voluntária aceita em testemunho da fé cristã. O mártir é considerado confessor supremo da fé." },
+    { letra: "M", termo: "Missal", def: "Livro litúrgico que contém os textos das Missas para todo o ano litúrgico." },
+    { letra: "O", termo: "Ofertório", def: "Momento da Missa em que o pão e o vinho são apresentados ao altar e oferecidos a Deus antes da consagração." },
+    { letra: "P", termo: "Páscoa", def: "A festa central do ano litúrgico cristão, celebrando a Ressurreição de Cristo. Todas as demais festas giram em torno da Páscoa." },
+    { letra: "P", termo: "Pentecostes", def: "Cinquenta dias após a Páscoa, a vinda do Espírito Santo sobre os Apóstolos reunidos no Cenáculo. Considera-se o 'nascimento' da Igreja." },
+    { letra: "P", termo: "Purgatório", def: "Estado de purificação final das almas salvas mas ainda imperfeitas, antes de entrarem na plena visão de Deus." },
+    { letra: "R", termo: "Rosário", def: "Devoção mariana que consiste em rezar 5 (ou 20 no rosário completo) dezenas de Ave-Marias meditando os mistérios da vida de Cristo e Maria." },
+    { letra: "S", termo: "Sacramento", def: "Sinal eficaz da graça instituído por Cristo e confiado à Igreja. Os sete sacramentos são: Batismo, Crisma, Eucaristia, Penitência, Unção dos Enfermos, Ordem e Matrimônio." },
+    { letra: "S", termo: "Santíssima Trindade", def: "O mistério central da fé cristã: Deus é único em natureza mas triplo em Pessoas — Pai, Filho e Espírito Santo — distintas mas inseparáveis." },
+    { letra: "S", termo: "Sufrágio", def: "Ato de piedade (oração, missa, esmola) oferecido em benefício das almas do Purgatório. A Igreja encoraja o sufrágio pelos defuntos." },
+    { letra: "T", termo: "Tabernáculo", def: "Armário sagrado no altar onde se reservam as hóstias consagradas para a comunhão dos doentes e para a adoração. Sua presença é indicada pela lâmpada acesa." },
+    { letra: "T", termo: "Transubstanciação", def: "Conversão completa da substância do pão na substância do Corpo de Cristo, e do vinho na substância do Sangue de Cristo, permanecendo as aparências externas (acídentes)." },
+    { letra: "V", termo: "Vésperas", def: "A oração do entardecer na Liturgia das Horas, rezada no fim da tarde como 'sacrifice vespertino de louvor'." },
+    { letra: "V", termo: "Via Crucis", def: "As 14 Estações da Paixão de Cristo, que permitem meditar o caminho de Jesus até o Calvário. Devocão especialmente praticada na Quaresma." }
+];
+
+$(function () {
+    function renderGlossario(filtro) {
+        const $content = $('#glossarioContent');
+        $content.empty();
+        const filtroLower = filtro ? filtro.toLowerCase() : '';
+        let letraAtual = '';
+        let encontrou = false;
+
+        termos.forEach(function(t) {
+            if (filtroLower && t.termo.toLowerCase().indexOf(filtroLower) === -1 && t.def.toLowerCase().indexOf(filtroLower) === -1) return;
+            encontrou = true;
+            if (!filtroLower && t.letra !== letraAtual) {
+                letraAtual = t.letra;
+                $content.append(`<div class="glossario-letra">${t.letra}</div>`);
+            }
+            $content.append(`
+                <dl class="glossario-item">
+                    <dt>${t.termo}</dt>
+                    <dd>${t.def}</dd>
+                </dl>
+            `);
+        });
+
+        if (!encontrou) {
+            $content.html('<p style="color:#888;text-align:center;">Nenhum termo encontrado.</p>');
+        }
+    }
+
+    renderGlossario('');
+
+    $('#glossSearch').on('input', function () {
+        renderGlossario($(this).val().trim());
+    });
+});
+</script>
+</body>
+</html>

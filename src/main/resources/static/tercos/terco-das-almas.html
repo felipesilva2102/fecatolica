@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço das Almas — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🕯️ Terço das Almas</h1>
+            <p class="lead">Sufrágio pelas almas do Purgatório, em especial pelas que mais necessitam da nossa oração.</p>
+            <p class="muted">"Orar pelos mortos é coisa santa e salutar." (2Mac 12,46)</p>
+        </header>
+    </div>
+
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Purgatório e o Sufrágio</div>
+                <div class="accordion-content">
+                    <p>O Purgatório é o estado de purificação final das almas que, embora salvas, necessitam ainda de purificação antes de entrarem na plena visão de Deus. A Igreja ensina que podemos ajudar essas almas com nossas orações, missas, indulgências e atos de caridade.</p>
+                    <p>O Terço das Almas é rezado como o Santo Terço/Rosário, com a intenção especial pelas almas do Purgatório. Cada dezena leva uma meditação específica sobre sua situação e nossa solidariedade com elas.</p>
+                    <p>Jaculatória após o Glória: <strong>"Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><em>Oferecimento:</em> Ó meu Deus, ofereço este Terço em sufrágio pelas Almas do Purgatório, especialmente pelas almas dos meus familiares, amigos e benfeitores que necessitam da nossa oração. Que a Vossa misericórdia as liberte de todo sofrimento e as admita à visão gloriosa de Vós. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><em>1 Pai-Nosso, 3 Ave-Marias pelas almas que mais sofrem, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- As 5 Dezenas -->
+    <div id="decadesContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Súplica pelas Almas do Purgatório</div>
+                <div class="accordion-content">
+                    <p>Misericordioso Jesus, a quem pertence poder sobre a vida e a morte, olhai com amor pelas almas que purificam seus últimos vínculos com o pecado.</p>
+                    <p>Pelas dores de Vossa Paixão, pelo Sangue que derramastes na Cruz, pela intercessão de Nossa Senhora das Dores — tende misericórdia delas. Abreviai seu sofrimento e abri-lhes as portas do Paraíso.</p>
+                    <p>Que em breve possam contemplar Vosso rosto e gozar da eterna felicidade, enquanto nós cá rogamos por elas. Amém.</p>
+                    <p><em>Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Dezena — As Almas Esquecidas",
+            meditation: "Há almas no Purgatório que não têm ninguém que ore por elas — morreram sozinhas, sem família, sem amigos que as lembrem. São as almas mais abandonadas. A Tradição pede que tenhamos especial carinho por essas almas, pois ao oramos por elas, a Providência fará com que outros orem por nós quando necessitarmos.",
+            jaculatoria: "Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."
+        },
+        {
+            title: "2ª Dezena — As Almas dos nossos Parentes",
+            meditation: "Nossos pais, avós, tios, irmãos que partiram antes de nós podem ainda estar em processo de purificação. O amor de família não termina com a morte — ele se expande para a comunhão dos santos. Ofereçamos esta dezena de coração pelos nossos familiares que já se foram.",
+            jaculatoria: "Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."
+        },
+        {
+            title: "3ª Dezena — As Almas que mais Sofreram",
+            meditation: "Algumas almas, pela gravidade de suas faltas ou pelo pouco arrependimento em vida, passam por uma purificação mais intensa. São como ouro refinado em fogo mais ardente. Nossa oração é como água que refresca sua sed de Deus — quanto mais rezamos, mais aliviamos seu sofrimento e apressamos seu encontro com Ele.",
+            jaculatoria: "Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."
+        },
+        {
+            title: "4ª Dezena — As Almas dos Sacerdotes e Religiosos",
+            meditation: "Os sacerdotes e religiosos que partiram desta vida serviram a Igreja com suas vidas, mas também eram humanos e sujeitos a imperfeições. Oferecem por nós as orações que rezaram em vida; ofereçamos por eles as orações que podemos rezar agora.",
+            jaculatoria: "Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."
+        },
+        {
+            title: "5ª Dezena — As Almas que estão Prestes a Entrar no Céu",
+            meditation: "Algumas almas estão quase purificadas — falta pouco para o encontro definitivo com Deus. Nossa oração pode ser o último empurrão que as conduz ao Paraíso. E quando chegarem lá, elas intercederão por nós com todo o poder de quem já vê a face de Deus. Que alegria saber que as almas pelas quais rezamos hoje serão nossos intercessores no céu!",
+            jaculatoria: "Eterno descanso dai-lhes, Senhor, e a luz perpétua os ilumine. Descansem em paz. Amém."
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Ave-Marias e Sufrágio</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — pelas almas do Purgatório...<br/><br/>
+                            <strong>10 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 10 vezes)</em><br/><br/>
+                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

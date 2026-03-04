@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Coroa das Sete Dores — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🗡️ Coroa das Sete Dores</h1>
+            <p class="lead">Meditação das sete dores de Nossa Senhora, rezando 7 grupos de 7 Ave-Marias.</p>
+            <p class="muted">"Passai, passai, e vede se existe dor semelhante à minha dor." (Lm 1,12)</p>
+        </header>
+    </div>
+
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Estrutura da Coroa</div>
+                <div class="accordion-content">
+                    <p>A Coroa das Sete Dores é composta por:</p>
+                    <ul>
+                        <li>1 <strong>Ato de Contrição</strong> no início</li>
+                        <li>7 <strong>grupos de 7 Ave-Marias</strong>, cada um meditando uma das Dores de Maria</li>
+                        <li>1 <strong>Oração Final</strong> por intercessão de Nossa Senhora das Dores</li>
+                    </ul>
+                    <p>Ao início de cada grupo, anuncia-se a Dor. Após as 7 Ave-Marias, reza-se:<br/>
+                    <em>"Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."</em></p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">As Sete Dores de Maria</div>
+                <div class="accordion-content">
+                    <ol>
+                        <li>A Profecia de Simeão (Lc 2,34-35)</li>
+                        <li>A Fuga para o Egito (Mt 2,13-14)</li>
+                        <li>A Perda do Menino Jesus no Templo (Lc 2,43-45)</li>
+                        <li>O Encontro com Jesus no Caminho do Calvário (Lc 23,26-27)</li>
+                        <li>A Crucifixão e Morte de Jesus (Jo 19,25-30)</li>
+                        <li>A Descida do Corpo de Jesus da Cruz (Lc 23,53)</li>
+                        <li>A Sepultura de Jesus (Jo 19,40-42)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Oração Inicial -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Oração Inicial</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Ato de Contrição</div>
+                <div class="accordion-content">
+                    <p>Meu Deus, eu me arrependo de todo o coração de Vos ter ofendido, porque sois infinitamente bom e o pecado Vos desagrada. Proponho firmemente, com o auxílio da vossa graça, fazer penitência, não mais pecar e evitar as ocasiões de pecado. Senhor, pela Paixão de nosso Salvador Jesus Cristo, tende piedade de nós. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- As 7 Dores -->
+    <div id="decadesContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oração a Nossa Senhora das Dores</div>
+                <div class="accordion-content">
+                    <p>Ó Maria, Mãe de Dores, que estivestes junto à Cruz de vosso Filho Jesus, recebei as Ave-Marias que acabamos de oferecer em memória de vossas sete dores.</p>
+                    <p>Assim como rezastes junto ao Calvário, intercedei por nós junto ao trono de Deus. Ob­tende-nos a graça de meditar as vossas dores com contrito coração, de amar a Cruz do vosso Filho e de perseverar na virtude até à morte. Amém.</p>
+                    <p><em>3 Ave-Marias pelas intenções do Santo Padre.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Dor — A Profecia de Simeão",
+            meditation: "Quando Maria e José apresentaram o Menino Jesus no Templo, o ancião Simeão profetizou: <em>"Este está posto para queda e soerguimento de muitos em Israel, e como sinal de contradição — e a tua própria alma uma espada atravessará."</em> (Lc 2,34-35). Maria recebeu no coração esta profecia, meditando-a em silêncio por toda a vida.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "2ª Dor — A Fuga para o Egito",
+            meditation: "Um anjo apareceu a José em sonho: <em>"Levanta-te, toma o menino e sua mãe, foge para o Egito e fica lá até que eu te avise."</em> (Mt 2,13). Maria, carregando o recém-nascido, partiu em plena noite para terra estranha, exilada por causa de um rei cruel, abraçando o sofrimento por amor ao Filho.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "3ª Dor — A Perda do Menino Jesus",
+            meditation: "Após a Páscoa em Jerusalém, Maria e José retornavam quando perceberam que Jesus, de doze anos, não estava na caravana. Durante três dias o procuraram com angústia. Maria disse ao encontrá-Lo: <em>"Filho, por que fizestes isso conosco? Vosso pai e eu, angustiados, andávamos à vossa procura."</em> (Lc 2,48). Três dias de dor e busca prefiguraram os três dias da sepultura.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "4ª Dor — O Encontro no Caminho do Calvário",
+            meditation: "Quando conduziam Jesus ao Calvário, Maria encontrou-O na Via Dolorosa. Ver o Filho carregando a Cruz, coberto de chagas e de escárnio, foi para Maria um golpe de espada no coração. Nem assim ela recuou: seguiu-O até ao fim, oferecendo a sua dor em union com a dele.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "5ª Dor — A Crucifixão e Morte de Jesus",
+            meditation: "Junto à Cruz de Jesus estava sua mãe. Jesus viu sua mãe e, a seu lado, o discípulo que ele amava, e disse: <em>"Mulher, eis o teu filho."</em> (Jo 19,26). Maria assistiu às três horas de agonia do Filho, ouviu o último grito, viu a cabeça inclinar-se — e permaneceu de pé (stabat), unindo-se inteiramente ao sacrifício redentor.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "6ª Dor — A Descida do Corpo de Jesus da Cruz",
+            meditation: "José de Arimateia e Nicodemos desceram o Corpo de Jesus da Cruz e o depuseram nos braços de Maria. A Pietà — a mãe segurando o Filho morto — é a imagem da dor que ultrapassa toda dor humana. Maria envolveu o Corpo sagrado nos próprios braços, cumprindo até ao fim o sim dito na Anunciação.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        },
+        {
+            title: "7ª Dor — A Sepultura de Jesus",
+            meditation: "Envolveram o corpo de Jesus em faixas de linho com os aromas, conforme o costume judaico de sepultar. (Jo 19,40). Maria viu a pedra ser fechada sobre o sepulcro do Filho. Ficou na escuridão da morte — mas não sem esperança: ela foi a primeira a crer na Ressurreição, guardando em silêncio a promessa que Ele mesmo fizera.",
+            prayer: "<strong>7 Ave-Marias</strong><br/><br/>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.<br/><br/><em>(Repita 7 vezes)</em><br/><br/>Lembrai-vos, ó Virgem das Dores, de todas as almas que recorrem a vós."
+        }
+    ];
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">🌹 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Oração (7 Ave-Marias)</div>
+                        <div class="accordion-content">
+                            <p>${d.prayer}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Intenções do Papa — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .intencao-card { border-left:4px solid #1a4f89; padding:14px 18px; background:#f7f9fc; border-radius:0 8px 8px 0; margin:10px 0; }
+        .intencao-card h3 { margin:0 0 6px; color:#1a4f89; }
+        .intencao-card p { margin:0; color:#444; }
+        .mes-ativo { background:#1a4f89; color:#fff; padding:4px 12px; border-radius:12px; font-size:0.85rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🕊️ Intenções do Papa</h1>
+            <p class="lead">As intenções mensais de oração do Santo Padre — para unirmos nossa oração à do Pastor universal da Igreja.</p>
+            <p class="muted">"Rezai por mim, para que eu possa anunciar o Evangelho com toda a confiança." (Ef 6,19)</p>
+        </header>
+    </div>
+
+    <!-- Intenção do Mês -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📅 Intenção do Mês Atual</h2>
+        <div id="intencaoAtual" style="text-align:center;">
+            <p class="muted">Carregando intenção do mês...</p>
+        </div>
+    </div>
+
+    <!-- Oração das Intenções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração pela Intenção do Pope</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Oração para rezar pela intenção</div>
+                <div class="accordion-content" style="display:block;">
+                    <p>Ó meu Jesus, ofereço-Vos os sofrimentos, orações, trabalhos e alegrias deste dia, em união com o Divino Coração de Jesus na Santa Missa com todas as intenções pelas quais Ele Se oferece ao Pai eterno.</p>
+                    <p>Ofereço em particular pela intenção recomendada pelo Santo Padre para este mês:</p>
+                    <p id="oracaoIntencaoTexto" style="font-style:italic;border-left:3px solid #1a4f89;padding-left:12px;color:#555;">Carregando...</p>
+                    <p>Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Todas as Intenções do Ano -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📋 Intenções de 2025</h2>
+        <p class="muted" style="text-align:center;">Intenções gerais do Papa Francisco para o ano de 2025.</p>
+        <div id="todasIntencoes"></div>
+    </div>
+
+    <!-- Como Participar -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🌐 Como Participar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Rede Mundial de Oração do Papa</div>
+                <div class="accordion-content">
+                    <p>O <strong>Apostolado da Oração</strong> (Rede Mundial de Oração do Papa) é um movimento eclesial que une os fiéis na oração pelas intenções do Papa Francisco.</p>
+                    <p>Como participar:</p>
+                    <ol>
+                        <li>Ofereça cada dia ao Sagrado Coração de Jesus pelas intenções do Santo Padre</li>
+                        <li>Assista à Missa e Comunhão com essa intenção</li>
+                        <li>Reze a <em>"Oferta da Manhã"</em> (Apostolado da Oração)</li>
+                        <li>Conheça o aplicativo <em>Click To Pray</em> do Apostolado da Oração</li>
+                    </ol>
+                    <p><em>Site oficial:</em> <a href="https://www.apostolado.org.br" target="_blank" rel="noopener">apostolado.org.br</a></p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferta da Manhã</div>
+                <div class="accordion-content">
+                    <p>Ó Jesus, pelo Imaculado Coração de Maria, eu Vos ofereço as minhas orações, trabalhos, alegrias e sofrimentos deste dia, como reparação pelos pecados e pela salvação de todas as almas, em união com os sacrifícios do Santo Sacrifício da Missa em todo o mundo, em sufrágio pelas almas do Purgatório, e especialmente com as intenções do Santo Padre. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+// Intenções do Papa Francisco 2025
+const intencoes2025 = [
+    { mes: "Janeiro", num: 1, titulo: "Por um Povo que Encontrou as Raízes da Paz", texto: "Rezemos para que o povo de Deus, alimentado pela Palavra e pelos sacramentos, encontre nas raízes da paz o caminho para ser fermento de reconciliação no mundo.", tema: "Paz" },
+    { mes: "Fevereiro", num: 2, titulo: "Por uma Igreja Missionária", texto: "Rezemos para que a Igreja, fiel ao Evangelho, seja cada vez mais missionária, saindo ao encontro de todos os que anseiam por misericórdia e esperança.", tema: "Missão" },
+    { mes: "Março", num: 3, titulo: "Pelos Refugiados e Migrantes", texto: "Rezemos pelos refugiados e migrantes forçados a abandonar suas terras, para que sejam acolhidos com respeito à sua dignidade e possam construir uma vida digna nos países de acolhida.", tema: "Solidariedade" },
+    { mes: "Abril", num: 4, titulo: "Pela Família", texto: "Rezemos pelas famílias para que vivam como verdadeiras comunidades de amor, de fé e de acolhimento, especialmente as que estão em situações de dificuldade.", tema: "Família" },
+    { mes: "Maio", num: 5, titulo: "Por uma Inteligência Artificial Humana", texto: "Rezemos para que o uso da inteligência artificial seja sempre posto a serviço da humanidade, respeitando a dignidade de cada pessoa e protegendo os mais vulneráveis.", tema: "Tecnologia" },
+    { mes: "Junho", num: 6, titulo: "Pelos Jovens", texto: "Rezemos pelos jovens para que, com discernimento e coragem, encontrem sua vocação e construam uma sociedade mais justa e fraterna.", tema: "Juventude" },
+    { mes: "Julho", num: 7, titulo: "Pelas Comunidades Locais", texto: "Rezemos pelas comunidades cristãs locais para que, animadas pelo Espírito Santo, sejam presença viva de Cristo no mundo, especialmente onde a Igreja é pequena.", tema: "Comunidade" },
+    { mes: "Agosto", num: 8, titulo: "Pela Casa Comum", texto: "Rezemos para que a humanidade, guiada pela sabedoria do Criador, cuide com responsabilidade da nossa Casa Comum e não comprometa as gerações futuras.", tema: "Ecologia" },
+    { mes: "Setembro", num: 9, titulo: "Pelos Doentes e Cuidadores", texto: "Rezemos pelos doentes e pelos que os cuidam, para que experimentem o amor de Deus e a solidariedade da comunidade humana, encontrando força e esperança.", tema: "Saúde" },
+    { mes: "Outubro", num: 10, titulo: "Pelas Missões", texto: "Rezemos para que a Igreja fortaleça as missões em todo o mundo, anunciando a todos os povos a Boa Nova do Evangelho com alegria e serviço.", tema: "Missão" },
+    { mes: "Novembro", num: 11, titulo: "Pelas Vítimas da Guerra", texto: "Rezemos pelas vítimas dos conflitos armados, especialmente as crianças e as mulheres, para que o clamor da paz seja ouvido e os corações se abram ao diálogo e à reconciliação.", tema: "Paz" },
+    { mes: "Dezembro", num: 12, titulo: "Pelo Advento da Esperança", texto: "Rezemos para que o tempo de Advento renove em todos a esperança que nasce do Natal de Jesus, e para que essa esperança seja luz no caminho de tantos que sofrem.", tema: "Esperança" }
+];
+
+$(function () {
+    const mesAtual = new Date().getMonth(); // 0 = janeiro
+    const intAtual = intencoes2025[mesAtual] || intencoes2025[0];
+
+    $('#intencaoAtual').html(`
+        <div class="intencao-card" style="text-align:left;">
+            <h3>🗓️ ${intAtual.mes} 2025 <span class="mes-ativo">Mês Atual</span></h3>
+            <p style="font-size:1.1rem;font-weight:600;color:#1a4f89;margin:8px 0 4px;">${intAtual.titulo}</p>
+            <p>${intAtual.texto}</p>
+            <p style="margin-top:8px;"><span style="background:#e7ecf5;padding:3px 10px;border-radius:12px;font-size:0.85rem;color:#1a4f89;">🏷️ ${intAtual.tema}</span></p>
+        </div>
+    `);
+
+    $('#oracaoIntencaoTexto').text(intAtual.titulo + ': ' + intAtual.texto);
+
+    const $todas = $('#todasIntencoes');
+    intencoes2025.forEach(function (int, i) {
+        const isAtual = i === mesAtual;
+        $todas.append(`
+            <div class="intencao-card${isAtual ? '' : ''}" style="margin-bottom:8px;">
+                <h3 style="font-size:0.95rem;margin-bottom:4px;">${isAtual ? '▶ ' : ''}${int.mes} — ${int.titulo} ${isAtual ? '<span class="mes-ativo">Atual</span>' : ''}</h3>
+                <p style="font-size:0.9rem;">${int.texto}</p>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

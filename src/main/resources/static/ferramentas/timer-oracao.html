@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Timer de Oração — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .timer-display { font-size:4rem; font-weight:700; color:#1a4f89; text-align:center; letter-spacing:4px; margin:20px 0; font-variant-numeric:tabular-nums; }
+        .timer-controls { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:16px 0; }
+        .timer-btn { padding:12px 28px; border:none; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:600; }
+        .timer-btn.start { background:#1a4f89; color:#fff; }
+        .timer-btn.start:hover { background:#0d3166; }
+        .timer-btn.pause { background:#e67e22; color:#fff; }
+        .timer-btn.pause:hover { background:#ca6f1e; }
+        .timer-btn.reset { background:#888; color:#fff; }
+        .timer-btn.reset:hover { background:#666; }
+        .preset-grid { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:12px 0; }
+        .preset-btn { padding:8px 16px; border:2px solid #1a4f89; border-radius:20px; background:none; color:#1a4f89; cursor:pointer; font-size:0.9rem; }
+        .preset-btn:hover, .preset-btn.active { background:#1a4f89; color:#fff; }
+        .timer-ring { position:relative; width:220px; height:220px; margin:0 auto; }
+        .timer-ring svg { transform:rotate(-90deg); }
+        .timer-ring-bg { fill:none; stroke:#e0e8f0; stroke-width:12; }
+        .timer-ring-prog { fill:none; stroke:#1a4f89; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset 1s linear; }
+        .timer-ring-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+        .timer-intencao { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1rem; margin-top:8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>⏱️ Timer de Oração</h1>
+            <p class="lead">Defina um tempo para sua oração ou Lectio Divina. O timer avisa suavemente ao término.</p>
+            <p class="muted">"Perseverai na oração, vigilantes e gratos." (Cl 4,2)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">⏳ Timer</h2>
+
+        <!-- Anel de progresso -->
+        <div class="timer-ring">
+            <svg viewBox="0 0 220 220" width="220" height="220">
+                <circle class="timer-ring-bg" cx="110" cy="110" r="95"/>
+                <circle class="timer-ring-prog" id="ringProg" cx="110" cy="110" r="95"/>
+            </svg>
+            <div class="timer-ring-text">
+                <div class="timer-display" id="timerDisplay">05:00</div>
+                <div class="muted" id="timerStatus">Pronto</div>
+            </div>
+        </div>
+
+        <!-- Presets -->
+        <div style="text-align:center;margin-top:14px;">
+            <p class="muted" style="margin-bottom:8px;">Presets:</p>
+            <div class="preset-grid">
+                <button class="preset-btn" data-min="3">3 min</button>
+                <button class="preset-btn active" data-min="5">5 min</button>
+                <button class="preset-btn" data-min="10">10 min</button>
+                <button class="preset-btn" data-min="15">15 min</button>
+                <button class="preset-btn" data-min="20">20 min</button>
+                <button class="preset-btn" data-min="30">30 min</button>
+                <button class="preset-btn" data-min="45">45 min</button>
+                <button class="preset-btn" data-min="60">1h</button>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="timer-controls">
+            <button class="timer-btn start" id="btnStart">▶ Iniciar</button>
+            <button class="timer-btn pause" id="btnPause" style="display:none;">⏸ Pausar</button>
+            <button class="timer-btn reset" id="btnReset">↺ Reiniciar</button>
+        </div>
+
+        <!-- Intenção -->
+        <div style="margin-top:16px;">
+            <label for="intencaoInput" style="font-weight:600;">🙏 Minha intenção de oração:</label>
+            <textarea class="timer-intencao" id="intencaoInput" rows="2" placeholder="Escreva aqui sua intenção..."></textarea>
+        </div>
+    </div>
+
+    <!-- Sugestões de oração -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">💡 Sugestões para o Tempo de Oração</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">3–5 minutos</div>
+                <div class="accordion-content">
+                    <p>Ideal para uma pausa de oração no trabalho ou escola. Sugestões:</p>
+                    <ul>
+                        <li>Rezar um Pai-Nosso e uma Ave-Maria com atenção plena</li>
+                        <li>Fazer um breve exame de consciência</li>
+                        <li>Ler e meditar um salmo curto</li>
+                        <li>Rezar um terço de 1 dezena</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">10–15 minutos</div>
+                <div class="accordion-content">
+                    <p>Tempo adequado para uma oração mais completa. Sugestões:</p>
+                    <ul>
+                        <li>Rezar um terço completo (5 dezenas)</li>
+                        <li>Lectio Divina de um trecho do Evangelho</li>
+                        <li>Meditação de uma estação da Via Crucis</li>
+                        <li>Adoração silenciosa ao Santíssimo (mentalmente)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">20–30 minutos</div>
+                <div class="accordion-content">
+                    <p>Tempo recomendado pelos Padres da Igreja para oração diária. Sugestões:</p>
+                    <ul>
+                        <li>Oração mental (preparação, presença de Deus, pedido de luz, meditação, colóquio)</li>
+                        <li>Rosário completo com meditação dos mistérios</li>
+                        <li>Laudes ou Vésperas da Liturgia das Horas com salmos</li>
+                        <li>Lectio Divina completa (leitura, meditação, oração, contemplação)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">45–60 minutos</div>
+                <div class="accordion-content">
+                    <p>Tempo de oração profunda, para quem quer aprofundar a vida espiritual. Sugestões:</p>
+                    <ul>
+                        <li>Hora Santa (adoração, leitura, contemplação, intercessão)</li>
+                        <li>Rosário completo com leituras bíblicas entre os mistérios</li>
+                        <li>Via Crucis meditada com orações</li>
+                        <li>Leitura e oração a partir de um livro espiritual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    let totalSeconds = 5 * 60;
+    let remaining = totalSeconds;
+    let interval = null;
+    let running = false;
+
+    const circumf = 2 * Math.PI * 95;
+    $('#ringProg').css('stroke-dasharray', circumf).css('stroke-dashoffset', 0);
+
+    function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = s % 60;
+        return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    }
+
+    function updateUI() {
+        $('#timerDisplay').text(formatTime(remaining));
+        const progress = 1 - (remaining / totalSeconds);
+        const offset = circumf * (1 - progress);
+        $('#ringProg').css('stroke-dashoffset', offset);
+    }
+
+    function startTimer() {
+        if (remaining <= 0) return;
+        running = true;
+        $('#btnStart').hide();
+        $('#btnPause').show();
+        $('#timerStatus').text('Em oração...');
+        interval = setInterval(function () {
+            remaining--;
+            updateUI();
+            if (remaining <= 0) {
+                clearInterval(interval);
+                running = false;
+                $('#btnPause').hide();
+                $('#btnStart').show();
+                $('#timerStatus').text('✅ Tempo cumprido!');
+                // Notificar
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    new Notification('FeCatolica — Timer de Oração', { body: 'Seu tempo de oração foi concluído. Amém!' });
+                }
+                try {
+                    const audio = new AudioContext();
+                    const osc = audio.createOscillator();
+                    const gain = audio.createGain();
+                    osc.connect(gain); gain.connect(audio.destination);
+                    osc.frequency.value = 440;
+                    osc.type = 'sine';
+                    gain.gain.setValueAtTime(0.3, audio.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 2);
+                    osc.start(); osc.stop(audio.currentTime + 2);
+                } catch(e) {}
+            }
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(interval);
+        running = false;
+        $('#btnPause').hide();
+        $('#btnStart').show();
+        $('#timerStatus').text('⏸ Pausado');
+    }
+
+    function resetTimer() {
+        clearInterval(interval);
+        running = false;
+        remaining = totalSeconds;
+        updateUI();
+        $('#btnPause').hide();
+        $('#btnStart').show();
+        $('#timerStatus').text('Pronto');
+    }
+
+    $('#btnStart').on('click', startTimer);
+    $('#btnPause').on('click', pauseTimer);
+    $('#btnReset').on('click', resetTimer);
+
+    $('.preset-btn').on('click', function () {
+        if (running) return;
+        $('.preset-btn').removeClass('active');
+        $(this).addClass('active');
+        const min = parseInt($(this).data('min'));
+        totalSeconds = min * 60;
+        remaining = totalSeconds;
+        updateUI();
+        $('#timerStatus').text('Pronto');
+    });
+
+    // Pedir permissão para notificação
+    if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission();
+    }
+
+    updateUI();
+});
+</script>
+</body>
+</html>

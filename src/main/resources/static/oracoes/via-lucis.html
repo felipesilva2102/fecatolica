@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Via Lucis — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>☀️ Via Lucis</h1>
+            <p class="lead">As 14 Estações da Ressurreição — caminho de luz desde o sepulcro vazio até o dom do Espírito Santo.</p>
+            <p class="muted">"Eu sou a ressurreição e a vida. Quem crê em Mim, ainda que morra, viverá." (Jo 11,25)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 O que é a Via Lucis</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Origem e Estrutura</div>
+                <div class="accordion-content">
+                    <p>A Via Lucis (Caminho da Luz) é uma devoção cristã que contempla os 14 acontecimentos pós-ressurreição de Cristo, desde o sepulcro vazio até Pentecostes. É o complemento pascal da Via Crucis, rezada especialmente no Tempo Pascal (Páscoa a Pentecostes).</p>
+                    <p>A devoção foi promovida pelo Servant of God Stefano Lamera (1924-2002) e aprovada pela Pontifícia Academia Mariana Internacional.</p>
+                    <p>Estrutura de cada estação:</p>
+                    <ol>
+                        <li>Anúncio da estação</li>
+                        <li>Versículo bíblico</li>
+                        <li>Breve meditação</li>
+                        <li>Oração</li>
+                        <li>Resposta: <em>"Ressuscitaste, Senhor! Como é verdade que ressuscitastes!"</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Oração Inicial -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Ato de Contrição e Oferecimento</div>
+                <div class="accordion-content">
+                    <p>Cristo ressuscitou dos mortos! A morte foi vencida! Aleluia!</p>
+                    <p>Senhor Jesus, que venceste a morte e nos deste a vida, percorremos agora este Caminho da Luz para contemplar as maravilhas que realizastes após a Vossa gloriosa Ressurreição. Que este caminho nos ilumine, fortaleça a nossa fé e nos conduza ao encontro definitivo convosco. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- As 14 Estações -->
+    <div id="stationsContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Cântico de Louvor Pascal</div>
+                <div class="accordion-content">
+                    <p>Senhor Jesus ressuscitado, Fonte de toda a luz, a Vós glorificamos e bendizemos. As trevas da morte foram dissipadas; o sepulcro ficou vazio; a piedade de Deus Pai triunfou sobre o pecado.</p>
+                    <p>Como as mulheres que correram para anunciar a Boa Nova, como os discípulos que viram e creram, como Tomé que tocou as chagas gloriosas — fazemos nossa a alegria de todo o povo que encontrou o Ressuscitado.</p>
+                    <p>Enviai-nos de novo o Vosso Espírito para que sejamos testemunhas da Ressurreição em nossa família, em nosso trabalho e em toda a nossa vida. Amém. Aleluia!</p>
+                    <p><em>Pai-Nosso, Ave-Maria, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const stations = [
+        {
+            title: "1ª Estação — Jesus ressuscita dos mortos",
+            verse: "\"Ele não está aqui. Ressuscitou, como havia dito.\" (Mt 28,6)",
+            meditation: "No terceiro dia após a crucifixão, o sepulcro estava vazio. O corpo entregue à morte glorificou-se e retornou à vida — não como antes, mas completamente transfigurado. A Ressurreição não é um retorno ao passado: é uma nova criação.",
+            prayer: "Senhor ressuscitado, abre nossos olhos ao mistério da nova vida que nos ofereces. Que a nossa fé não vacile diante do sepulcro vazio, mas descubra nele o anúncio da vitória definitiva. Amém.\n\nRessuscitaste, Senhor! Como é verdade que ressuscitastes!"
+        },
+        {
+            title: "2ª Estação — Maria Madalena encontra o Ressuscitado",
+            verse: "\"Jesus lhe disse: 'Maria!' Ela se voltou e disse: 'Rabuni!' — que quer dizer Mestre.\" (Jo 20,16)",
+            meditation: "Maria Madalena chorava junto ao sepulcro quando o Ressuscitado lhe chamou pelo nome. O amor persistente de quem busca a Deus é recompensado com o encontro pessoal. Jesus ainda hoje chama cada um de nós pelo nome — seremos capazes de reconhecê-Lo?",
+            prayer: "Jesus vivo, que chamastes Maria pelo nome, chamais-nos também a nós. Que reconheçamos a Vossa voz nos momentos de busca e de dor e corramos a anunciar aos nossos irmãos: 'Vi o Senhor!' Amém."
+        },
+        {
+            title: "3ª Estação — Jesus aparece às Mulheres",
+            verse: "\"E elas se aproximaram, abraçaram-Lhe os pés e O adoraram.\" (Mt 28,9)",
+            meditation: "Ao sair do sepulcro, as mulheres encontraram Jesus no caminho. Diante d'Ele, prostraram-se, abraçaram-Lhe os pés e O adoraram. A adoração é a resposta mais profunda ao Ressuscitado: reconhecer Sua dignidade divina e entregar-se a Ele.",
+            prayer: "Senhor Jesus, que Vos deixastes adorar pelas mulheres santas, ensinai-nos a adorar-Vos em espírito e verdade. Que a nossa vida seja uma adoração contínua ao Deus vivo. Amém."
+        },
+        {
+            title: "4ª Estação — Pedro e João correm ao sepulcro",
+            verse: "\"O outro discípulo correu mais rápido que Pedro e chegou primeiro ao sepulcro.\" (Jo 20,4)",
+            meditation: "Quando souberam que o sepulcro estava vazio, Pedro e João correram. João chegou primeiro, mas esperou Pedro. Percorreram juntos o caminho da fé: o entusiasmo do amor que corre adiante e a autoridade que entra primeiro e confirma. A fé é ao mesmo tempo pessoal e eclesial.",
+            prayer: "Senhor, que reunistes os Apóstolos na descoberta da Vossa Ressurreição, ajudai-nos a correr juntos em direção a Vós, sem rivalidades, mas como Igreja unida na mesma esperança. Amém."
+        },
+        {
+            title: "5ª Estação — Jesus aparece a Maria, Sua Mãe",
+            verse: "\"Eis que alguns da guarda foram à cidade e anunciaram aos sumos sacerdotes tudo o que acontecera.\" (Mt 28,11)",
+            meditation: "A Tradição piadosa afirma que Jesus, ao ressuscitar, apareceu primeiro à Sua Mãe. Maria, que esteve de pé junto à Cruz (Jo 19,25), foi a primeira a receber o abraço do Filho Ressuscitado. Ela que teve a maior dor, recebeu a maior alegria.",
+            prayer: "Nossa Senhora, que na Ressurreição recebestes a confirmação de toda a vossa fé, alcançai-nos a graça de perseverar na esperança mesmo nos momentos de noite escura, certos de que a luz sempre vence. Amém."
+        },
+        {
+            title: "6ª Estação — Jesus aparece aos discípulos de Emaús",
+            verse: "\"Ficai conosco, porque o dia está declinando e a tarde se aproxima.\" (Lc 24,29)",
+            meditation: "Cleopas e um companheiro caminhavam para Emaús, tristes e desesperançados, quando o Ressuscitado os alcançou e começou a explicar as Escrituras. O coração deles 'ardia' — mas só O reconheceram na fração do pão. Jesus se revela na Palavra e na Eucaristia.",
+            prayer: "Senhor Jesus, peregrino de Emaús, caminha conosco quando avançamos desanimados. Inflama o nosso coração com Tua Palavra e revela-Te a nós na fração do pão da Eucaristia. Amém."
+        },
+        {
+            title: "7ª Estação — Jesus aparece aos Apóstolos",
+            verse: "\"A paz esteja convosco! Como o Pai Me enviou, também Eu vos envio.\" (Jo 20,21)",
+            meditation: "No Cenáculo, com as portas fechadas por medo, Jesus apareceu no meio dos Seus: 'A paz esteja convosco!' Sua primeira palavra aos Apóstolos não é reprovação pelo abandono, mas paz. O Ressuscitado não cobrou o passado — ofereceu perdão e missão.",
+            prayer: "Jesus pacífico, que entraste através das portas fechadas do Cenáculo, entra também nos lugares fechados do nosso coração. Traz-nos a Tua paz — única paz verdadeira que o mundo não pode dar. Amém."
+        },
+        {
+            title: "8ª Estação — Jesus e Tomé",
+            verse: "\"Coloca aqui o teu dedo e vê as minhas mãos; estende a tua mão e coloca-a no meu lado.\" (Jo 20,27)",
+            meditation: "Tomé havia dito que não acreditaria sem ver as chagas. Jesus voltou especialmente por causa de Tomé, oferecendo-lhe as próprias feridas para tocar. A dúvida honesta encontrou a paciência infinita de Deus. A profissão de Tomé — 'Meu Senhor e meu Deus!' — é a mais alta confissão de fé dos Evangelhos.",
+            prayer: "Senhor e meu Deus, na hora da dúvida e do questionamento, mostrai-nos as Vossas chagas como prova do Vosso amor. Que nossa fé se aprofunde pelo encontro pessoal convosco. Amém."
+        },
+        {
+            title: "9ª Estação — Jesus aparece às margens do Lago de Tiberíades",
+            verse: "\"Jesus lhes disse: 'Filhos, tendes algum peixe?' Eles responderam: 'Não.'\" (Jo 21,5)",
+            meditation: "Os discípulos pescaram a noite toda sem nada apanhar. Ao amanhecer, Jesus esperava na praia. Ao lançar a rede por sugestão d'Ele, colheram 153 peixes sem romper a rede — imagem da missão universal da Igreja que inclui a todos sem os perder.",
+            prayer: "Senhor da aurora, que apareces quando estamos exaustos e de mãos vazias, renova em nós a esperança missionária. Que as nossas redes se encham de almas para o Teu Reino. Amém."
+        },
+        {
+            title: "10ª Estação — Jesus restaura Pedro",
+            verse: "\"Simão, filho de João, tu Me amas mais do que estes?\" (Jo 21,15)",
+            meditation: "Três vezes Pedro negara Jesus. Três vezes Jesus lhe perguntou: 'Tu Me amas?' Para cada negação, uma profissão de amor e um envio. O Ressuscitado não anulou o erro de Pedro — transfarmou-o em missão de pastoreio. Nenhum fracasso é definitivo diante da misericórdia de Deus.",
+            prayer: "Jesus misericordioso, que restaurastes Pedro com mais amor do que ele vos negara, levantai-nos também a nós de nossas quedas. Que cada recomeço seja mais firme do que a queda que o precedeu. Amém."
+        },
+        {
+            title: "11ª Estação — Jesus envia seus discípulos",
+            verse: "\"Ide, portanto, e fazei discípulos de todos os povos, batizando-os em nome do Pai, do Filho e do Espírito Santo.\" (Mt 28,19)",
+            meditation: "Sobre o monte na Galileia, o Ressuscitado encontrou os Onze. Ainda que alguns duvidassem, Ele os enviou a todos os povos. A missão não espera pela perfeição dos missionários — é o próprio Jesus que permanece: 'Estarei convosco todos os dias até à consumação dos séculos.'",
+            prayer: "Senhor da missão, que nos enviastes a todos os povos, renova em nós o ardor apostólico. Que não guardemos para nós sozinhos a alegria de Te ter encontrado, mas a partilhemos com todos. Amém."
+        },
+        {
+            title: "12ª Estação — Jesus Ascende aos Céus",
+            verse: "\"Quando disse isso, foi elevado às alturas enquanto eles O contemplavam, e uma nuvem O tirou de seus olhos.\" (At 1,9)",
+            meditation: "A Ascensão não é uma ausência: é a presença de Cristo que se universaliza. Sentado à direita do Pai, Ele intercede por nós sem cessar. Onde quer que reunamos em Seu nome, Ele está no meio de nós. Os céus não O afastam de nós — aproximam-n'O de cada um.",
+            prayer: "Cristo glorificado, que subistes aos céus para preparar um lugar para nós, levantai o nosso coração acima das preocupações do mundo. Que o nosso cidadania nos céus nos dê perspectiva para viver bem esta vida na terra. Amém."
+        },
+        {
+            title: "13ª Estação — Maria e os Discípulos esperam em oração",
+            verse: "\"Todos estes perseveravam unânimes em oração, juntamente com Maria, a mãe de Jesus.\" (At 1,14)",
+            meditation: "No Cenáculo, entre a Ascensão e Pentecostes, Maria e os discípulos formaram a primeira comunidade orante da Igreja. Maria no centro, todos unidos na mesma esperança. A Igreja nasce da oração e da espera confiante por Aquele que foi prometido.",
+            prayer: "Nossa Senhora, Mãe da Igreja, que presidistes a comunidade orante do Cenáculo, ensinai-nos a orar com perseverança. Que nossas comunidades sejam cenáculos de oração, fraternidade e espera pelo Espírito. Amém."
+        },
+        {
+            title: "14ª Estação — A Vinda do Espírito Santo",
+            verse: "\"De repente veio do céu um ruído como o de vento impetuoso e encheu toda a casa onde estavam sentados.\" (At 2,2)",
+            meditation: "No dia de Pentecostes, o Espírito Santo desceu sobre Maria e os discípulos. Do medo nascia a coragem; do silêncio, o anúncio; do grupo fechado, a Igreja aberta a todos os povos. Pentecostes não foi um evento único — é o estado permanente da Igreja renovada pelo Espírito.",
+            prayer: "Espírito Santo, Paráclito e Consolador, vinde encher de novo o nosso coração. Dai-nos a coragem de anunciar Christ ressuscitado em nossa vida cotidiana. Que a alegria pascal se manifeste em tudo o que fazemos. Amém. Aleluia!"
+        }
+    ];
+
+    const $container = $('#stationsContainer');
+    stations.forEach(function (s, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card">
+                <h3 style="text-align:center;margin-top:0;">${s.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">✝️ Versículo e Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p><em>${s.verse}</em></p>
+                            <p>${s.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Oração</div>
+                        <div class="accordion-content">
+                            <p>${s.prayer.replace(/\n/g, '<br/>')}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

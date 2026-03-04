@@ -430,3 +430,98 @@ html.dark-mode .hamburger-btn {
 html.dark-mode .hamburger-btn:hover {
     background: var(--card-bg);
 }
+
+/* ===== Plano de Leitura Bíblica dark ===== */
+html.dark-mode .plano-day {
+    border-bottom-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .plano-day.done label { color: #555 !important; }
+html.dark-mode .month-header {
+    color: var(--link-color) !important;
+    border-bottom-color: var(--border-color) !important;
+}
+html.dark-mode .progress-bar-wrap { background: var(--border-color) !important; }
+html.dark-mode .progress-bar-fill { background: var(--link-color) !important; }
+html.dark-mode .plano-stats { color: var(--link-color) !important; }
+html.dark-mode #resetarPlano {
+    border-color: #8b0000 !important;
+    color: #e57373 !important;
+}
+
+/* ===== Glossário Católico dark ===== */
+html.dark-mode .glossario-search {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .glossario-letra {
+    color: var(--link-color) !important;
+    border-bottom-color: var(--border-color) !important;
+}
+html.dark-mode .glossario-item { border-bottom-color: var(--border-color) !important; }
+html.dark-mode .glossario-item dt { color: var(--link-color) !important; }
+html.dark-mode .glossario-item dd { color: var(--text-color) !important; }
+
+/* ===== Liturgia das Horas dark ===== */
+html.dark-mode .hora-btn {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .hora-btn.active,
+html.dark-mode .hora-btn:hover {
+    background: var(--link-color) !important;
+    color: #000 !important;
+}
+html.dark-mode .versiculo-hora {
+    color: var(--muted-text) !important;
+    border-left-color: var(--link-color) !important;
+}
+
+/* ===== Modo Retiro dark ===== */
+html.dark-mode .retiro-tema-btn {
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+    background: var(--card-bg) !important;
+}
+html.dark-mode .retiro-tema-btn.active {
+    background: var(--link-color) !important;
+    color: #000 !important;
+    border-color: var(--link-color) !important;
+}
+
+/* ===== Ladainhas / Orações / Colapsíveis dark ===== */
+html.dark-mode .collapsible-body {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .collapsible-toggle {
+    color: var(--text-color) !important;
+    border-bottom-color: var(--border-color) !important;
+}
+html.dark-mode .collapsible-toggle:hover { color: var(--link-color) !important; }
+html.dark-mode .blessing-item,
+html.dark-mode .prayer-block {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ===== Terços / inputs / inline styles dark ===== */
+html.dark-mode input[type="text"],
+html.dark-mode input[type="search"] {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode p { color: var(--text-color) !important; }
+html.dark-mode h1, html.dark-mode h2, html.dark-mode h3,
+html.dark-mode h4, html.dark-mode h5 {
+    color: var(--text-color) !important;
+}
+html.dark-mode .lead { color: var(--muted-text) !important; }
+html.dark-mode ol, html.dark-mode ul, html.dark-mode li {
+    color: var(--text-color) !important;
+}
+html.dark-mode strong { color: var(--text-color) !important; }
+html.dark-mode em { color: var(--muted-text) !important; }

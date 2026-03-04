@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Santo do Dia — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .santo-header { text-align:center; padding:20px 10px; }
+        .santo-emoji { font-size:4rem; display:block; margin-bottom:8px; }
+        .santo-nome { font-size:1.8rem; font-weight:700; color:#1a4f89; }
+        .santo-data { color:#888; font-size:0.95rem; margin-top:4px; }
+        .santo-badge { display:inline-block; padding:3px 12px; background:#e7ecf5; border-radius:12px; font-size:0.85rem; color:#1a4f89; margin:4px 2px; }
+        .nav-santo { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:12px 0; }
+        .nav-santo input[type=date] { padding:8px 12px; border:1px solid #ccc; border-radius:6px; font-size:1rem; }
+        .nav-santo button { padding:8px 16px; background:#1a4f89; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+        .nav-santo button:hover { background:#0d3166; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>✨ Santo do Dia</h1>
+            <p class="lead">Conheça o santo celebrado hoje — sua vida, espiritualidade e oração de intercessão.</p>
+            <p class="muted">"Sede, pois, perfeitos como o Pai celestial é perfeito." (Mt 5,48)</p>
+        </header>
+    </div>
+
+    <!-- Navegação -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📅 Escolher Data</h2>
+        <div class="nav-santo">
+            <input type="date" id="dataInput"/>
+            <button id="btnIr">Ver Santo</button>
+        </div>
+    </div>
+
+    <!-- Santo do Dia atual -->
+    <div id="santoCard" class="card">
+        <div class="santo-header">
+            <span class="santo-emoji" id="santoEmoji">✨</span>
+            <div class="santo-nome" id="santoNome">Carregando...</div>
+            <div class="santo-data" id="santoData"></div>
+            <div id="santoBadges" style="margin-top:8px;"></div>
+        </div>
+    </div>
+
+    <!-- Biografia -->
+    <div class="card" id="santoBioCard">
+        <h2 style="text-align:center;margin-top:0;">📖 Vida e Espiritualidade</h2>
+        <div id="santoBio"></div>
+    </div>
+
+    <!-- Oração -->
+    <div class="card" id="santoOracaoCard">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração ao Santo</h2>
+        <div id="santoOracao"></div>
+    </div>
+
+    <!-- Reflexão -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">💡 Reflexão do Dia</h2>
+        <div id="santoReflexao"></div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+// Banco de santos por dia do ano (MM-DD)
+const santos = {
+    "01-01": { nome:"Maria Santíssima, Mãe de Deus", emoji:"👑", badges:["Solenidade","1 de Janeiro"], bio:"O dia 1 de janeiro celebra a Solenidade de Maria, Mãe de Deus (Theotokos), definida pelo Concílio de Éfeso em 431. É também o Dia Mundial da Paz instituído pelo Papa Paulo VI em 1967. Maria, pelo seu 'fiat', colaborou na obra da Redenção. Ela é a Mãe de Deus não porque seja anterior a Deus, mas porque gerou no tempo o Filho eterno de Deus que se fez homem.", oracao:"Ó Maria, Mãe de Deus e nossa Mãe, no início de um novo ano nos colocamos sob o Vosso manto protetor. Abençoai este ano, as nossas famílias, as nossas decisões e os nossos projetos. Que Jesus, fruto do Vosso ventre, reine em nossos corações. Amém.", reflexao:"Ao inaugurarmos um novo ano, contemplamos Maria que disse 'sim' ao Senhor. Que tipo de 'sim' o Senhor está esperando de você neste ano que começa?" },
+    "01-17": { nome:"Santo Antão Abade", emoji:"🏜️", badges:["Séc. III-IV","Egito","Pai do Monaquismo"], bio:"Antão (250-356) nasceu no Egito. Aos 20 anos, após ouvir Mt 19,21, distribuiu seus bens e foi para o deserto. Viveu como eremita por décadas, combatendo tentações e aprofundando a vida contemplativa. Atanásio escreveu sua biografia, que influenciou profundamente o monaquismo ocidental. É o Pai dos Monges e patrono dos animais domésticos.", oracao:"Santo Antão, que renunciastes ao mundo para encontrar plenamente a Deus no deserto, intercedei por nós para que encontremos o nosso deserto interior — o espaço de silêncio onde Deus nos fala. Amém.", reflexao:"Antão foi para o deserto para encontrar Deus. Como você cria espaço de silêncio em sua vida para escutar a voz de Deus?" },
+    "01-24": { nome:"São Francisco de Sales", emoji:"📖", badges:["Doutor da Igreja","1567-1622","Escritor"], bio:"Francisco de Sales (1567-1622) foi Bispo de Genebra e Doutor da Igreja. Seu livro 'Introdução à Vida Devota' revolucionou a espiritualidade ao mostrar que a santidade é possível para todos os estados de vida — casados, solteiros, trabalhadores — não apenas para religiosos. Cofundador das Visitandinas com Santa Joana de Chantal. Patrono dos jornalistas e escritores.", oracao:"São Francisco de Sales, que revelasteis ao mundo que a santidade está ao alcance de todos, ensinai-nos a buscar a Deus na vida cotidiana, com mansidão e doçura. Que o Vosso lema — 'Coração a coração' — seja também o lema da nossa oração com Deus. Amém.", reflexao:"'Nada pela força, tudo pelo amor.' — São Francisco de Sales. Como esta máxima se aplica às relações mais difíceis da sua vida?" },
+    "01-28": { nome:"Santo Tomás de Aquino", emoji:"🦁", badges:["Doutor da Igreja","1225-1274","Filósofo"], bio:"Tomás de Aquino (1225-1274) é o maior teólogo da Igreja medieval. Sua obra 'Summa Theologica' é uma síntese monumental da fé e da razão. Chamado de 'Doutor Angélico', Tomás mostrou que a fé e a razão não se contradizem, mas se complementam. Sua frase mais famosa é 'A graça não suprime a natureza, mas a aperfeiçoa.' Patrono das universidades e estudantes.", oracao:"Santo Tomás de Aquino, que amasteis igualmente Deus e a verdade, intercedeis por todos os estudantes e intelectuais para que o saber humano sempre sirva à glória de Deus e ao bem das pessoas. Que nunca nos separemos da fé e da razão. Amém.", reflexao:"Tomás de Aquino dizia 'Reze como se tudo dependesse de Deus; trabalhe como se tudo dependesse de você.' Como você equilibra confiança e esforço em sua vida?" },
+    "01-31": { nome:"São João Bosco", emoji:"🎓", badges:["1815-1888","Educador","Salesiano"], bio:"João Bosco (1815-1888) é o apóstolo dos jovens. Nascido em família humilde no Piemonte, tornou-se padre e dedicou sua vida à educação de meninos pobres e abandonados. Fundou a Congregação Salesiana e as Filhas de Maria Auxiliadora com Santa Maria Mazzarello. Seu 'sistema preventivo' de educação baseia-se na razão, religião e amor — não no castigo. É patrono dos aprendizes e dos jovens.", oracao:"Dom Bosco, que amasteis os jovens com o coração de Deus, intercedeis por toda a juventude — especialmente pelos mais vulneráveis e desorientados. Que encontrem na Igreja um lugar de acolhimento, alegria e esperança. Amém.", reflexao:"'É mais fácil um jovem tornar-se delinquente do que um delinquente tornar-se jovem.' É ainda assim. Como você pode ser presença positiva para algum jovem em sua vida?" },
+    "02-02": { nome:"Apresentação do Senhor (Candelária)", emoji:"🕯️", badges:["Solenidade","Festa da Luz"], bio:"A Apresentação do Senhor celebra o cumprimento da Lei (Lv 12,2-8) por Maria e José, que levaram Jesus ao Templo 40 dias após o Nascimento. O ancião Simeão reconheceu o Menino como 'luz para iluminar as nações' (Lc 2,32). Por isso se abençoam velas — chamadas 'candelária. É também a festa das consagrações: seminaristas, religiosos e religiosas renovam seus compromissos.", oracao:"Senhor Jesus, luz das nações, apresentado no Templo por Maria e José, que também nós Te apresentemos ao mundo pela testemunha da nossa vida. Que a tua luz ilumine nossas famílias e comunidades. Amém.", reflexao:"Como você pode ser luz de Cristo para quem está no escuro ao seu redor?" },
+    "02-11": { nome:"Nossa Senhora de Lourdes", emoji:"💧", badges:["1858","Bernadette","Dia Mundial do Doente"], bio:"Em 11 de fevereiro de 1858, a Imaculada Conceição apareceu à pastorinha Bernadette Soubirous em Lourdes, França. Nas 18 aparições, Maria identificou-se: 'Eu sou a Imaculada Conceição.' A fonte que brotou na Gruta já curou milagrosamente incontáveis pessoas. João Paulo II instituiu neste dia o <strong>Dia Mundial do Doente</strong>.", oracao:"Nossa Senhora de Lourdes, que aparecestes pobre e humilde a uma menina simples, olhai para todos os que sofrem doenças e limitações. Intercedei por todos os enfermos, pelos médicos e pelos que dedicam sua vida ao cuidado dos doentes. Amém.", reflexao:"'Eu não prometo fazer-vos felizes neste mundo, mas no outro.' A felicidade que você busca é eterna ou passageira?" },
+    "02-14": { nome:"Santos Valentim e Cirilo e Metódio", emoji:"❤️", badges:["Mártir","Apóstolos dos Eslavos"], bio:"São Valentim (séc. III) foi sacerdote mártir em Roma. Os Santos Cirilo (826-869) e Metódio (815-885) são os Apóstolos dos Eslavos — irmãos que evangelizaram a Morávia e criaram o alfabeto glagolítico (precursor do cirílico), traduzindo a Bíblia para a língua eslava. São co-padroeiros da Europa.", oracao:"Santos Cirilo e Metódio, que levasteis o Evangelho a novos povos traduzindo-o em sua língua, ajudai-nos a anunciar Cristo na linguagem do nosso tempo, respeitando cada cultura. São Valentim, rogai por todos os que amam. Amém.", reflexao:"O amor cristão não é só sentimento — é escolha e compromisso. Como você pode amar com mais concretude neste dia?" },
+    "02-22": { nome:"Cátedra de São Pedro", emoji:"⛪", badges:["Solenidade","Primado de Pedro"], bio:"A festa da Cátedra de São Pedro celebra a missão de Pedro como pastor da Igreja universal. 'Tu és Pedro, e sobre esta pedra edificarei a minha Igreja.' (Mt 16,18) A 'cátedra' é o símbolo da autoridade docente. A Igreja conserva em Roma a cadeira relicária atribuída a Pedro.", oracao:"São Pedro, que recebestes as chaves do Reino e a missão de confirmar seus irmãos na fé, intercedeis pelo Santo Padre e por toda a Igreja. Que a barca de Pedro persevere com segurança nas águas agitadas do mundo. Amém.", reflexao:"Como você pode ser pedra de sustento para sua comunidade e família?" },
+    "03-17": { nome:"São Patrício", emoji:"☘️", badges:["Séc. V","Irlanda","Apóstolo"], bio:"Patrício (385-461) foi capturado por piratas irlandeses aos 16 anos e escravizado. Fugiu anos depois, tornou-se padre e voltou voluntariamente para a Irlanda para evangelizá-la. Usou o trevo de três folhas para explicar a Santíssima Trindade. Converteu reis, fundou mosteiros e transformou toda a Irlanda numa nação cristã.", oracao:"São Patrício, que voltasteis por amor ao povo que antes vos escravizara, ensinai-nos a amar sem medir, a perdoar sem reservas e a evangelizar com alegria e criatividade. Amém.", reflexao:"Patrício poderia ter escapado e nunca mais voltar. O amor o trouxe de volta. Há alguma 'Irlanda' na sua vida da qual você fugiu mas ao qual Deus o chama a voltar?" },
+    "03-19": { nome:"São José, Esposo da Virgem Maria", emoji:"🌿", badges:["Solenidade","Patrono da Igreja"], bio:"José era descendente de Davi, carpinteiro em Nazaré. Escolheu acolher Maria mesmo sem entender o mistério, obedeceu aos anjos sem questionar, protegeu Jesus dos perigos e o criou como filho seu. São João Paulo II escreveu a exortação 'Redemptoris Custos' sobre São José. O Papa Francisco consagrou 2021 como o Ano de São José. É patrono da Igreja universal, dos trabalhadores, da boa morte.", oracao:"São José, guardião de Jesus e de Maria, sede também o guardião da nossa família, da nossa Igreja e de cada um de nós. Ensinai-nos o silêncio fecundo, a obediência humilde e o trabalho feito com amor. Amém.", reflexao:"José trabalhou em silêncio sem que nenhuma de suas palavras tenha sido registrada nos Evangelhos. O que o seu silêncio diz sobre você?" },
+    "03-25": { nome:"Anunciação do Senhor", emoji:"🕊️", badges:["Solenidade","9 meses antes do Natal"], bio:"A Anunciação celebra o momento em que o Anjo Gabriel anunciou a Maria que ela seria a Mãe do Filho de Deus. Maria respondeu com o mais importante 'sim' da história: 'Faça-se em mim segundo a Vossa Palavra.' (Lc 1,38) É o momento da Encarnação — o Verbo se fez carne.", oracao:"Ó Maria da Anunciação, que dissestes 'fiat' ao convite de Deus mesmo sem entender a totalidade do mistério, ensinai-nos a confiar mesmo quando não compreendemos o plano divino. Que o nosso 'sim' diário a Deus seja tão total quanto o vosso. Amém.", reflexao:"Deus pediu a Maria um 'sim' que mudaria o mundo. Ele está pedindo algo de você agora. O que lhe impede de dizer 'sim'?" },
+    "04-23": { nome:"São Jorge", emoji:"⚔️", badges:["Mártir","Séc. III","Patrono da Inglaterra"], bio:"Jorge foi soldado romano martirizado por sua fé por volta do ano 303. Embora os detalhes históricos sejam escassos, sua figura de cavaleiro que mata o dragão tornou-se símbolo do cristão que combate o mal com a força da fé. É patrono da Inglaterra, de Portugal, de soldados e escoteiros.", oracao:"São Jorge, cavaleiro de Cristo que preferistes a morte a negar vossa fé, fortalecei os cristãos perseguidos e todos que são tentados a negar sua identidade cristã por medo. Que tenhamos coragem de ser discípulos públicos de Jesus. Amém.", reflexao:"Jorge morreu por recusar a fazer algo que sabia errado. Em que situação da sua vida você precisa da coragem de Jorge para fazer o que é certo, mesmo que custe algo?" },
+    "05-01": { nome:"São José Operário", emoji:"🔨", badges:["Solenidade","Dia do Trabalho"], bio:"Em 1955, o Papa Pio XII instituiu a festa de São José Operário em 1º de maio, em resposta ao Dia Internacional do Trabalho. Honrar o trabalho de José é honrar o trabalho humano como participação na criação de Deus. Jesus passou a maior parte de sua vida em Nazaré, aprendendo a trabalhar com José.", oracao:"São José Operário, que santificaste o trabalho humano com tuas próprias mãos, intercedeis por todos os trabalhadores — especialmente os que são explorados, os desempregados e os que trabalham em condições injustas. Que o trabalho humano seja sempre digno e justo. Amém.", reflexao:"'O trabalho é do homem, não o homem é do trabalho.' Como você pode integrar o trabalho à sua espiritualidade?" },
+    "05-13": { nome:"Nossa Senhora de Fátima", emoji:"🌸", badges:["1917","Aparições","Portugal"], bio:"Em 13 de maio de 1917, Nossa Senhora apareceu pela primeira vez aos três pastorinhos Lúcia, Francisco e Jacinta na Cova da Iria, Fátima, Portugal. Nas seis aparições até outubro, pediu oração, penitência, consagração ao Imaculado Coração e o Rosário diário. Em outubro, o Milagre do Sol confirmou as aparições diante de 70.000 pessoas.", oracao:"Nossa Senhora de Fátima, que pedictes oração e penitência pela conversão dos pecadores, recebei o Terço que rezamos hoje e intercedeis pela paz no mundo, pela conversão dos corações e pela guarda da Santa Igreja. Amém.", reflexao:"Nossa Senhora de Fátima pediu oração pelo mundo. Você incluiu o mundo em suas orações hoje?" },
+    "06-13": { nome:"Santo Antônio de Pádua", emoji:"📖", badges:["1195-1231","Doutor da Igreja","Lisboa/Pádua"], bio:"Antônio nasceu em Lisboa em 1195 e morreu em Pádua em 1231 com apenas 36 anos. Franciscano, é chamado de 'Martelo dos Hereges' por sua pregação poderosa e 'Arca do Testamento' por seu profundo conhecimento das Escrituras. É o santo mais invocado do mundo e um dos santos mais rapidamente canonizados (menos de 1 ano após a morte). Patrono dos objetos perdidos, dos pobres e da Igreja.", oracao:"Santo Antônio, pregador ardente e amigo dos pobres, intercedeis por todos que buscam o que perderam — objetos, fé, esperança, relacionamentos, o caminho de volta a Deus. Que o pão de Santo Antônio continue alimentando os pobres e os famientos de Deus. Amém.", reflexao:"'Os livros que não leio não me ensinam nada.' Santo Antônio conhecia as Escrituras de cor. Qual texto bíblico você precisa aprofundar?" },
+    "06-24": { nome:"Natividade de São João Batista", emoji:"✝️", badges:["Solenidade","Precursor"], bio:"João Batista é o único santo além de Maria cuja natividade (nascimento) é celebrada liturgicamente — pois nasceu já santificado no ventre de Isabel (Lc 1,41). Filho de Zacarias e Isabel, primo de Jesus, foi o último profeta do Antigo Testamento e o primeiro do Novo. Preparou os caminhos do Senhor e apontou: 'Eis o Cordeiro de Deus.' (Jo 1,29).", oracao:"São João Batista, precursor de Cristo que apontaste para o Cordeiro, ajudai-nos a sermos também apontadores do Senhor — a preparar Seus caminhos nas vidas de quem encontramos. Que em nós cresça Ele e diminuamos nós. Amém.", reflexao:"'É preciso que Ele cresça e que eu diminua.' (Jo 3,30) Em qual área da sua vida você precisa deixar Cristo crescer mais?" },
+    "06-29": { nome:"Santos Pedro e Paulo", emoji:"⚓", badges:["Solenidade","Apóstolos","Pilares da Igreja"], bio:"Pedro, pescador de Cafarnaum, foi escolhido por Jesus como pedra e recebeu as chaves do Reino. Paulo, de Tarso, perseguia a Igreja até ser convertido milagrosamente no caminho de Damasco. Os dois juntos são os dois grandes pilares sobre os quais a Igreja de Roma foi edificada. Morreram mártires em Roma sob Nero.", oracao:"Santos Pedro e Paulo, colunas da Igreja, intercedeis pelo Santo Padre e por todos os bispos para que sejam fiéis ao Evangelho que recebeste. Que a Igreja una, santa, católica e apostólica brilhe no mundo como sinal de salvação. Amém.", reflexao:"Pedro negou Jesus mas voltou. Paulo perseguiu a Igreja mas se converteu. Nenhuma queda é definitiva. Que queda do passado você precisa deixar para trás?" },
+    "08-15": { nome:"Assunção de Nossa Senhora", emoji:"👑", badges:["Solenidade","Dogma de 1950"], bio:"A Assunção, definida como dogma de fé pelo Papa Pio XII em 1950, celebra que Maria, ao fim de sua vida terrena, foi assunta ao céu em corpo e em alma. É a maior festa mariana do ano litúrgico no Oriente e no Ocidente. A Assunção é o 'antitype' da Ressurreição — antecipação da nossa ressurreição.", oracao:"Nossa Senhora da Assunção, que sois a primeira das ressuscitados depois de Vosso Filho, sede a nossa esperança de vida eterna. Que ao fim de nossa vida, também nós encontremos Deus face a face, pela Vossa intercessão materna. Amém.", reflexao:"Maria passou direto para o céu. O que você faria diferente se soubesse que este é o seu último dia na terra?" },
+    "09-08": { nome:"Natividade de Nossa Senhora", emoji:"⭐", badges:["Solenidade","Nascimento de Maria"], bio:"A Igreja celebra o nascimento de Maria em 8 de setembro, 9 meses após a Imaculada Conceição (8 de dezembro). Segundo os Evangelhos apócrifos aprovados pela Tradição, Maria foi filha de Joaquim e Ana. Seu nascimento foi o início da maior história de amor entre Deus e a humanidade.", oracao:"Ó Maria, que nascestes como aurora que anuncia o sol de justiça que é Cristo, intercedeis para que o Senhor nasça também em nossos corações com uma graça renovada. Amém.", reflexao:"Como você pode 'dar à luz' Cristo no seu ambiente — família, trabalho, amizades?" },
+    "09-29": { nome:"Santos Arcanjos: Miguel, Gabriel e Rafael", emoji:"🌟", badges:["Solenidade","Arcanjos"], bio:"Os três arcanjos têm nomes revelados nas Escrituras: Miguel ('Quem como Deus?') combate o mal (Ap 12); Gabriel ('Força de Deus') anuncia a Palavra (Lc 1,26); Rafael ('Deus cura') cura e acompanha (Tb). São os mensageiros, guerreiros e médicos do exército celestial.", oracao:"São Miguel, São Gabriel, São Rafael — sede nossos protetores, mensageiros e médicos. Defendei-nos em cada batalha espiritual, anunciai-nos a Palavra de Deus, e curai as feridas da nossa alma. Amém.", reflexao:"Qual dos três arcanjos você mais precisa hoje — o guerreiro Miguel, o mensageiro Gabriel ou o curador Rafael?" },
+    "10-02": { nome:"Santos Anjos da Guarda", emoji:"🌠", badges:["Festa","Anjos"], bio:"A festa dos Anjos da Guarda, celebrada em 2 de outubro, honra os anjos protetores que Deus atribuiu a cada pessoa. 'Seus anjos no céu veem sempre a face de meu Pai celestial.' (Mt 18,10) Santo Basílio escreveu: 'Ao lado de cada fiel há um anjo como protetor e pastor para guiá-lo à vida.'", oracao:"Santo Anjo da Guarda, obrigado por estar ao meu lado desde o meu nascimento. Hoje, de forma especial, peço-te que me guies, me guardes, me governes e me ilumines. Que eu siga sempre o teu conselho e nunca te entristece com o pecado. Amém.", reflexao:"Você tem conversado com seu Anjo da Guarda? Ele está sempre ao seu lado, esperando ser invocado." },
+    "10-04": { nome:"São Francisco de Assis", emoji:"🐦", badges:["1181-1226","Patrono da Ecologia"], bio:"Francisco de Assis (1181-1226) nasceu rico, mas converteu-se com força ao ouvir o Crucifixo de São Damião dizer: 'Vai, Francesco, e repara minha Igreja.' Fundou a Ordem Franciscana, viveu em pobreza absoluta e cantou as criaturas como irmãos e irmãs no famoso Cântico das Criaturas. O Papa Francisco tomou seu nome. É padroeiro da ecologia.", oracao:"São Francisco, que amasteis a Criação como obra de Deus e nela vistes a beleza do Criador, ensinai-nos a cuidar da nossa Casa Comum com responsabilidade e amor. Que nunca destruamos aquilo que Deus criou como bom. Amém.", reflexao:"'Onde não há amor, põe amor e encontrarás amor.' São Francisco. Em qual relação você pode colocar amor hoje?" },
+    "10-15": { nome:"Santa Teresa de Jesus (Ávila)", emoji:"📜", badges:["1515-1582","Doutora da Igreja","Mística"], bio:"Teresa de Ávila (1515-1582) é uma das duas primeiras mulheres declaradas Doutoras da Igreja. Reformou a Ordem Carmelita com São João da Cruz e escreveu obras clássicas da mística cristã: 'O Castelo Interior', 'O Caminho da Perfeição', 'Livro da Vida'. Sua espiritualidade é marcada pelo aprofundamento progressivo da oração mental.", oracao:"Santa Teresa, mestra de oração que ensinastes que a oração é 'uma relação íntima de amizade com Aquele por quem somos amados', intercedeis por todos que buscam aprofundar sua vida interior. Que nunca desistamos da oração, mesmo nos dias de secura e distração. Amém.", reflexao:"Teresa dizia que a oração não é muito falar, mas estar com quem se ama. Você está presente a Deus, ou apenas repete palavras?" },
+    "11-01": { nome:"Todos os Santos", emoji:"🌟", badges:["Solenidade","Dia de Todos os Santos"], bio:"A solenidade de Todos os Santos celebra a vitória definitiva de todos os que alcançaram a vida eterna, incluindo os não canonizados. 'Vi uma multidão imensa, que ninguém podia contar, de todas as nações, tribos, povos e línguas.' (Ap 7,9) É a grande festa da esperança cristã.", oracao:"Ó todos os Santos do Céu, que já vedes a face de Deus, intercedeis por nós que ainda peregrinamos. Que a Vossa intercessão nos fortaleça no caminho da santidade e nos dê certeza da recompensa eterna. Santos de Deus, intercedei por nós! Amém.", reflexao:"Entre os santos anônimos que o Apocalipse descreve — sem nome, de toda nação — talvez estejam pessoas que você amou e que já partiram. Ore por elas e deixe que elas orem por você." },
+    "11-02": { nome:"Fiéis Defuntos", emoji:"🕯️", badges:["Sufrágio","Almas do Purgatório"], bio:"O dia de Finados (2 novembro) é dedicado ao sufrágio pelas almas do Purgatório. A Igreja crê que podemos ajudar os defuntos com nossas orações, missas, indulgências e obras de caridade. Esta fé expressa a bela doutrina da Comunhão dos Santos — a morte não separa os membros da Igreja.", oracao:"Misericordioso Senhor, recebeis com bondade todos os que partiram desta vida confiando em Vós. Tende piedade das almas do Purgatório — especialmente dos nossos familiares e amigos. Que a luz perpétua os ilumine e que descansem em paz. Amém.", reflexao:"Quem você quer lembrar e rezar hoje? Nomeie-os diante de Deus agora." },
+    "11-21": { nome:"Apresentação de Nossa Senhora", emoji:"🏛️", badges:["Festa","Tradição"], bio:"A Apresentação de Maria celebra a consagração de Maria ao Templo com 3 anos de idade, segundo a tradição do Proto-Evangelho de Tiago. É festa especialmente cara ao Oriente cristão. Expressa a prioridade de Deus em toda a vida de Maria — desde a infância, ela foi de Deus.", oracao:"Maria apresentada no Templo desde criança, intercedeis pelas crianças e jovens para que encontrem em Deus o centro de suas vidas desde cedo. Que nossas famílias apresentem os filhos a Deus no batismo e os eduquem na fé. Amém.", reflexao:"Como você 'apresenta' sua vida a Deus cotidianamente — no trabalho, nas decisões, nos relacionamentos?" },
+    "12-08": { nome:"Imaculada Conceição de Maria", emoji:"✨", badges:["Solenidade","Dogma de 1854"], bio:"A Imaculada Conceição, definida como dogma pelo Papa Pio IX em 1854, affirma que Maria foi preservada do pecado original desde o primeiro instante de sua concepção, em virtude dos méritos previsto de Cristo. Não é uma prerrogativa de Maria: é uma graça plenamente de Deus. Maria não se 'salvou sozinha' — foi 'pré-redimida.'", oracao:"Ó Maria Imaculada, que fostes preservada de toda mancha de pecado por graça especial de Deus, obtende também para nós a graça de lutar contra o pecado e crescer na santidade. Que nunca cedamos às tentações que nos afastam de Deus. Amém.", reflexao:"A graça de Deus pode fazer em nós muito mais do que imaginamos. Maria é a prova. O que Deus poderia fazer em você se você se deixasse completamente nas Suas mãos?" },
+    "12-25": { nome:"Natividade do Senhor — Natal", emoji:"⭐", badges:["Solenidade","Natal"], bio:"O Natal celebra a Encarnação — o Filho eterno de Deus tornando-se homem num estábulo de Belém. 'O Verbo se fez carne e habitou entre nós.' (Jo 1,14) O Deus transcendente entra na história humana como bebê frágil e pobre. Este é o 'admirável intercâmbio': Deus se faz homem para que o homem se torne Deus.", oracao:"Deus menino de Belém, que escolhestes a pobreza, o frio e a humildade para mostrar o Vosso amor, entrai na pobreza do nosso coração. Que o verdadeiro Natal seja o vosso nascer em nós — não as trocas de presentes, mas a troca de nós pelo Vosso amor. Amém.", reflexao:"'Deus se fez homem para que o homem se tornasse Deus.' (Santo Atanásio) O que muda na sua vida ao levar esta afirmação a sério?" }
+};
+
+function getSantoByDate(date) {
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const dia = String(date.getDate()).padStart(2, '0');
+    const key = mes + '-' + dia;
+    return santos[key] || {
+        nome: "Santo do Dia",
+        emoji: "✨",
+        badges: [dia + "/" + mes],
+        bio: `Neste dia, a Igreja celebra santos e beatos de cada canto do mundo. Há dezenas de milhares de santos canonizados e incontáveis beatos. Consulte o Martirológio Romano ou o site da Diocese para saber o(s) santo(s) completo(s) de hoje, ${dia}/${mes}.`,
+        oracao: "Todos os Santos do Céu, rogai por nós. Que o exemplo dos santos nos inspire a viver com fé e amor, e que um dia possamos nos reunir com eles na glória do Paraíso. Amém.",
+        reflexao: "Cada dia do calendário é a festa de algum santo. Eles eram humanos como nós — com fraquezas, medos e dúvidas. A santidade não é para super-heróis: é o caminho de quem diz sim a Deus dia após dia."
+    };
+}
+
+function mostrarSanto(date) {
+    const s = getSantoByDate(date);
+    const dia = date.getDate();
+    const mes = date.toLocaleString('pt-BR', { month: 'long' });
+    const ano = date.getFullYear();
+
+    $('#santoEmoji').text(s.emoji);
+    $('#santoNome').text(s.nome);
+    $('#santoData').text(dia + ' de ' + mes.charAt(0).toUpperCase() + mes.slice(1) + ' de ' + ano);
+
+    const $badges = $('#santoBadges');
+    $badges.empty();
+    (s.badges || []).forEach(function (b) {
+        $badges.append(`<span class="santo-badge">${b}</span>`);
+    });
+
+    $('#santoBio').html('<p>' + s.bio.replace(/\n/g, '</p><p>') + '</p>');
+    $('#santoOracao').html('<p>' + s.oracao + '</p>');
+    $('#santoReflexao').html('<p><em>' + s.reflexao + '</em></p>');
+}
+
+$(function () {
+    const hoje = new Date();
+    const dd = String(hoje.getDate()).padStart(2, '0');
+    const mm = String(hoje.getMonth() + 1).padStart(2, '0');
+    const yy = hoje.getFullYear();
+    $('#dataInput').val(yy + '-' + mm + '-' + dd);
+    mostrarSanto(hoje);
+
+    $('#btnIr').on('click', function () {
+        const val = $('#dataInput').val();
+        if (val) {
+            const parts = val.split('-');
+            mostrarSanto(new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2])));
+        }
+    });
+});
+</script>
+</body>
+</html>

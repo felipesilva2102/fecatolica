@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço dos Anjos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>😇 Terço dos Anjos</h1>
+            <p class="lead">Reze em comunhão com os nove coros angélicos, invocando sua proteção e louvor a Deus.</p>
+            <p class="muted">"Cada fiel tem ao seu lado um anjo como protetor e pastor para guiá-lo à vida." — Santo Basílio</p>
+        </header>
+    </div>
+
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Estrutura do Terço dos Anjos</div>
+                <div class="accordion-content">
+                    <p>O Terço dos Anjos honra os <strong>9 coros angélicos</strong> revelados na Sagrada Escritura e na Tradição: Serafins, Querubins, Tronos, Dominações, Virtudes, Potestades, Principados, Arcanjos e Anjos.</p>
+                    <p>Estrutura de cada dezena:</p>
+                    <ol>
+                        <li>Invocação ao coro angélico</li>
+                        <li>1 Pai-Nosso</li>
+                        <li>10 Ave-Marias com meditação</li>
+                        <li>Glória ao Pai</li>
+                        <li>Jaculatória: <em>"Anjos, arcanjos e todos os coros dos céus, louvai e glorificai o Senhor!"</em></li>
+                    </ol>
+                    <p><em>Início:</em> Credo, 1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Credo, Pai-Nosso e Ave-Marias iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><strong>Pai-Nosso</strong> que estais no céu, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.</p>
+                    <p><em>3 Ave-Marias pelas virtudes da fé, esperança e caridade.</em></p>
+                    <p><strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Os 9 Coros -->
+    <div id="decadesContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oração aos Santos Anjos</div>
+                <div class="accordion-content">
+                    <p>Ó vós, santos Anjos e Arcanjos que defendeis e guardais as almas, que apresentais diante de Deus as nossas preces e orações, intercedei por nós que humildemente imploramos o vosso auxílio.</p>
+                    <p>Santos Anjos da Guarda, protegei nossas famílias, nossas casas e todos os que nos são queridos. Dai-nos força para resistir ao mal e fidelidade para seguir a Deus em tudo. Amém.</p>
+                    <p>São Miguel, São Gabriel, São Rafael — guiai-nos no caminho que leva a Deus. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Dezena — Serafins",
+            meditation: "Os Serafins (Isaías 6,2) estão mais próximos de Deus e ardem no amor divino. Seu grito eterno é: <em>'Santo, Santo, Santo é o Senhor dos Exércitos!'</em> Meditemos hoje a caridade e o amor ardente a Deus.",
+            jaculatoria: "Ó Serafins, que ardeis no amor de Deus, inflamai nossos corações nesse mesmo amor!"
+        },
+        {
+            title: "2ª Dezena — Querubins",
+            meditation: "Os Querubins (Ez 10) contemplam a sabedoria infinita de Deus. Eles guardam o Paraíso e o Santo dos Santos. Meditemos hoje a sabedoria e o conhecimento de Deus.",
+            jaculatoria: "Ó Querubins, que contemplais a sabedoria divina, iluminai nossas mentes com a luz da verdade!"
+        },
+        {
+            title: "3ª Dezena — Tronos",
+            meditation: "Os Tronos (Cl 1,16) são o suporte do trono divino e expressam a justiça e a paz de Deus. Meditemos hoje a submissão à vontade de Deus e o amor à justiça.",
+            jaculatoria: "Ó Tronos, que sustentais o reino de Deus, ensinai-nos a nos submeter à Sua santa vontade!"
+        },
+        {
+            title: "4ª Dezena — Dominações",
+            meditation: "As Dominações (Cl 1,16) governam os coros inferiores segundo os desígnios divinos. Meditemos hoje a soberania de Deus sobre toda a criação e nossa obediência a Ele.",
+            jaculatoria: "Ó Dominações, que regeis segundo Deus, ajudai-nos a obedecer a Suas leis com amor!"
+        },
+        {
+            title: "5ª Dezena — Virtudes",
+            meditation: "As Virtudes (Ef 1,21) exercem poder sobre os elementos do cosmos e realizam os milagres divinos. São elas que auxiliam os santos em seus prodígios. Meditemos hoje a confiança no poder de Deus.",
+            jaculatoria: "Ó Virtudes, que operais os prodígios de Deus, fortalecei nossa fé nos momentos de provação!"
+        },
+        {
+            title: "6ª Dezena — Potestades",
+            meditation: "As Potestades (Ef 6,12) combatem as forças do mal e protegem os homens das tentações. São os guardiões da ordem espiritual. Meditemos hoje o combate espiritual e a oração como arma.",
+            jaculatoria: "Ó Potestades, que combateis o maligno, protegei-nos de toda tentação e do poder do inimigo!"
+        },
+        {
+            title: "7ª Dezena — Principados",
+            meditation: "Os Principados (Rm 8,38) guardam os reinos, as nações e as comunidades humanas. São os anjos das nações, que orientam os povos para Deus. Meditemos hoje a paz entre os povos e as famílias.",
+            jaculatoria: "Ó Principados, que guardais as nações, conduzi nosso povo ao caminho da paz e da fé!"
+        },
+        {
+            title: "8ª Dezena — Arcanjos",
+            meditation: "São Miguel, São Gabriel e São Rafael são os Arcanjos revelados nas Escrituras. Miguel combate o mal; Gabriel anuncia a Palavra de Deus; Rafael cura e acompanha os caminhantes. Meditemos hoje sua missão na nossa vida.",
+            jaculatoria: "São Miguel, São Gabriel, São Rafael — sede nossos protetores, mensageiros e guias!"
+        },
+        {
+            title: "9ª Dezena — Anjos da Guarda",
+            meditation: "Cada pessoa humana tem um Anjo da Guarda que a acompanha desde o nascimento (Mt 18,10): <em>'Não desprezeis um desses pequeninos; porque vos digo que os seus anjos no céu veem sempre a face de meu Pai celestial.'</em> Meditemos hoje a presença amorosa do nosso Anjo ao nosso lado.",
+            jaculatoria: "Ó meu Anjo da Guarda, obrigado por me guardar, reger, governar e iluminar a cada dia!"
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+    const gloria = "<strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.";
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Ave-Marias e Jaculatória</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
+                            <strong>10 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 10 vezes)</em><br/><br/>
+                            ${gloria}<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Quaresma Litúrgica</title>
+    <title>Quaresma de Santo Antônio de Pádua</title>
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/acessibilidade.css"/>
     <link rel="stylesheet" href="/css/print.css" media="print"/>
@@ -15,19 +15,18 @@
     <div class="container">
         <div id="menu-placeholder"></div>
 
-        <div class="card hero-card">
+        <div class="card">
             <header style="text-align:center;">
-                <h1>✝️ Quaresma Litúrgica</h1>
-                <p class="lead">Caminho oficial da Igreja Católica em preparação para a Páscoa — 40 dias de jejum, oração e esmola.</p>
+                <h1>🌸 Quaresma de Santo Antônio de Pádua</h1>
+                <p class="lead">40 dias de devoção ao Taumaturgo de Pádua — do dia 4 de maio ao dia 13 de junho.</p>
                 <p class="muted" style="margin-top:6px;">
-                    <em>"Convertei-vos a mim de todo o vosso coração, com jejum, choro e pranto."</em> (Joel 2,12)
+                    <em>"Recorre a Santo Antônio, o santo dos milagres, e serás atendido."</em>
                 </p>
             </header>
         </div>
 
         <div id="mensagemDia" style="text-align:center;">
             <h3 id="qMensagem">📅 Carregando...</h3>
-            <p id="qPeriodo" style="color:#555;margin-top:6px;"></p>
         </div>
 
         <div class="card" style="margin-top:20px;">
@@ -45,24 +44,24 @@
     <script src="/js/app.js"></script>
     <script>
         function carregarQuaresma(dataStr) {
-            var url = '/api/quaresma/liturgica';
+            var url = '/api/quaresma/santo-antonio';
             if (dataStr) url += '?data=' + dataStr;
 
             $.getJSON(url, function (data) {
                 $('#qMensagem').text('📅 ' + (data.mensagemDia || ''));
-                if (data.periodoFormatado) $('#qPeriodo').text('Período deste ano: ' + data.periodoFormatado);
 
                 if (data.diaSelecionadoRenderizar) {
                     $('#qStatus').text('📅 Dia da Quaresma: ' + data.mensagemDia).css('color', 'darkblue');
 
                     var sections = [];
-                    if (data.temaDoDia) sections.push({title: '🌿 Tema do Dia', content: data.temaDoDia});
-                    if (data.praticasQuaresmais) sections.push({title: '🙏 Práticas Quaresmais', content: data.praticasQuaresmais});
-                    if (data.oracaoQuaresmal) sections.push({title: '✝️ Oração', content: data.oracaoQuaresmal});
-                    if (data.leituraSugerida) sections.push({title: '📖 Leitura Sugerida', content: data.leituraSugerida});
+                    if (data.oracaoPreparatoria) sections.push({title: '🙏 Oração Preparatória', content: data.oracaoPreparatoria});
+                    if (data.trezeInvocacoes)    sections.push({title: '📿 As 13 Invocações', content: data.trezeInvocacoes});
+                    if (data.oracaoPaoDoPobres)  sections.push({title: '🍞 Oração do Pão dos Pobres', content: data.oracaoPaoDoPobres});
+                    if (data.oracaoPaxEtBonum)   sections.push({title: '☮️ Pax et Bonum', content: data.oracaoPaxEtBonum});
+                    if (data.jaculatoria)        sections.push({title: '✨ Jaculatória', content: data.jaculatoria});
                     buildAccordion(sections, '#accordionQuaresma');
                 } else {
-                    $('#qStatus').text('📅 A data selecionada está fora do período da Quaresma litúrgica deste ano.').css('color', '#b03030');
+                    $('#qStatus').text('📅 A data selecionada está fora do período da Quaresma (04/05 - 13/06).').css('color', '#b03030');
                     $('#accordionQuaresma').empty();
                 }
             });

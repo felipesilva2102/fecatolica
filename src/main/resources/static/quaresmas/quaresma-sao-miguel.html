@@ -15,10 +15,13 @@
     <div class="container">
         <div id="menu-placeholder"></div>
 
-        <div class="card">
+        <div class="card hero-card">
             <header style="text-align:center;">
-                <h1>Quaresma de São Miguel Arcanjo</h1>
-                <p class="lead">Acompanhe seu progresso e medite nas orações do dia.</p>
+                <h1>⚔️ Quaresma de São Miguel Arcanjo</h1>
+                <p class="lead">40 dias de devoção ao Príncipe das Milícias Celestiais — do dia 15 de agosto ao dia 29 de setembro.</p>
+                <p class="muted" style="margin-top:6px;">
+                    <em>"São Miguel Arcanjo, defendei-nos no combate; sede nosso amparo contra as maldades e as ciladas do demônio."</em>
+                </p>
             </header>
         </div>
 
@@ -51,20 +54,20 @@
                     $('#qStatus').text('📅 Dia da Quaresma: ' + data.mensagemDia).css('color', 'darkblue');
 
                     var sections = [];
-                    if (data.preparacaoDiaria) sections.push({title: 'Preparação Diária', content: data.preparacaoDiaria});
-                    if (data.oracaoDiariaInicial) sections.push({title: '1. Oração Inicial', content: data.oracaoDiariaInicial});
-                    if (data.exameConsciencia) sections.push({title: '2. Exame de Consciência', content: data.exameConsciencia});
+                    if (data.preparacaoDiaria) sections.push({title: '🙏 Preparação Diária', content: data.preparacaoDiaria});
+                    if (data.oracaoDiariaInicial) sections.push({title: '1. ✝️ Oração Inicial', content: data.oracaoDiariaInicial});
+                    if (data.exameConsciencia) sections.push({title: '2. 🔍 Exame de Consciência', content: data.exameConsciencia});
 
                     var leituraContent = (data.leituraBiblica || '');
                     if (data.leituraDoDia) leituraContent += '\n\n' + data.leituraDoDia;
-                    if (leituraContent) sections.push({title: '3. Leitura Bíblica', content: leituraContent});
+                    if (leituraContent) sections.push({title: '3. 📖 Leitura Bíblica', content: leituraContent});
 
-                    if (data.ladainhaSaoMiguel) sections.push({title: '4. Ladainha de São Miguel', content: data.ladainhaSaoMiguel});
-                    if (data.consagracaoSaoMiguel) sections.push({title: '5. Consagração', content: data.consagracaoSaoMiguel});
-                    if (data.oracaoFinal) sections.push({title: '6. Oração Final', content: data.oracaoFinal});
-                    if (data.oracaoAugustaRainha) sections.push({title: '7. Augusta Rainha', content: data.oracaoAugustaRainha});
-                    if (data.oferendaFinal) sections.push({title: '8. Oferenda Final', content: data.oferendaFinal});
-                    if (data.oracoesFinais) sections.push({title: '9. Orações Finais', content: data.oracoesFinais});
+                    if (data.ladainhaSaoMiguel) sections.push({title: '4. 📜 Ladainha de São Miguel', content: data.ladainhaSaoMiguel});
+                    if (data.consagracaoSaoMiguel) sections.push({title: '5. ⚔️ Consagração', content: data.consagracaoSaoMiguel});
+                    if (data.oracaoFinal) sections.push({title: '6. ✨ Oração Final', content: data.oracaoFinal});
+                    if (data.oracaoAugustaRainha) sections.push({title: '7. 👑 Augusta Rainha', content: data.oracaoAugustaRainha});
+                    if (data.oferendaFinal) sections.push({title: '8. 🕊️ Oferenda Final', content: data.oferendaFinal});
+                    if (data.oracoesFinais) sections.push({title: '9. 🙏 Orações Finais', content: data.oracoesFinais});
                     buildAccordion(sections, '#accordionQuaresma');
                 } else {
                     $('#qStatus').text('📅 A data selecionada está fora do período da Quaresma (15/08 - 29/09).').css('color', '#b03030');

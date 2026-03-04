@@ -173,11 +173,7 @@
 
         // Eventos
         $('#decadesContainer').on('click', '.rosary-bead', beadClick);
-        $('#decadesContainer').on('click', '.accordion-header', function() {
-            var $this = $(this);
-            $this.toggleClass('active');
-            $this.next('.accordion-content').slideToggle(200);
-        });
+        // Accordions são gerenciados globalmente pelo app.js (initAccordions)
 
         // Destacar primeira conta
         $('#decadesContainer .rosary-bead').first().addClass('nextPulse');

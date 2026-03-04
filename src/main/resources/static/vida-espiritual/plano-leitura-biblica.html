@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Plano de Leitura Bíblica — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .progress-bar-wrap { background:#eee; border-radius:8px; height:18px; overflow:hidden; margin:12px 0; }
+        .progress-bar-fill { height:100%; background:#1a4f89; transition:width .3s; border-radius:8px; }
+        .plano-month { margin-bottom:6px; }
+        .plano-day { display:flex; align-items:center; padding:6px 0; border-bottom:1px solid #f0f0f0; }
+        .plano-day:last-child { border-bottom:none; }
+        .plano-day input[type=checkbox] { width:18px; height:18px; margin-right:12px; cursor:pointer; }
+        .plano-day label { cursor:pointer; flex:1; }
+        .plano-day.done label { text-decoration:line-through; color:#999; }
+        .plano-stats { font-weight:600; color:#1a4f89; }
+        .month-header { font-weight:700; color:#1a4f89; font-size:1.05rem; margin:14px 0 6px; border-bottom:2px solid #1a4f89; padding-bottom:3px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>📖 Plano de Leitura Bíblica</h1>
+            <p class="lead">Leia toda a Bíblia em um ano — 365 leituras diárias, seguindo a ordem dos livros sagrados.</p>
+            <p class="muted">"A vossa palavra é uma luz no meu caminho." (Sl 119,105)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📊 Seu Progresso</h2>
+        <p style="text-align:center;" id="progressoTexto">Carregando...</p>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressoBarra" style="width:0%"></div>
+        </div>
+        <p style="text-align:center;">
+            <button id="resetarPlano" style="padding:6px 16px;border:1px solid #c00;color:#c00;background:none;border-radius:6px;cursor:pointer;">Reiniciar plano</button>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📅 Leituras por Mês</h2>
+        <p class="muted" style="text-align:center;">Marque cada leitura conforme for completando. O progresso é salvo no dispositivo.</p>
+        <div id="planoContainer"></div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+// Plano de leitura completo — 365 dias, 12 meses
+const plano = [
+    { mes: "Janeiro", livros: [
+        "Gn 1–2", "Gn 3–5", "Gn 6–9", "Gn 10–11", "Gn 12–15",
+        "Gn 16–18", "Gn 19–21", "Gn 22–24", "Gn 25–27", "Gn 28–30",
+        "Gn 31–33", "Gn 34–36", "Gn 37–39", "Gn 40–42", "Gn 43–45",
+        "Gn 46–47", "Gn 48–50", "Êx 1–3", "Êx 4–6", "Êx 7–9",
+        "Êx 10–12", "Êx 13–15", "Êx 16–18", "Êx 19–21", "Êx 22–24",
+        "Êx 25–27", "Êx 28–30", "Êx 31–33", "Êx 34–36", "Êx 37–38", "Êx 39–40"
+    ]},
+    { mes: "Fevereiro", livros: [
+        "Lv 1–4", "Lv 5–7", "Lv 8–10", "Lv 11–13", "Lv 14–15",
+        "Lv 16–18", "Lv 19–21", "Lv 22–23", "Lv 24–25", "Lv 26–27",
+        "Nm 1–2", "Nm 3–4", "Nm 5–6", "Nm 7–8", "Nm 9–10",
+        "Nm 11–13", "Nm 14–15", "Nm 16–18", "Nm 19–21", "Nm 22–24",
+        "Nm 25–27", "Nm 28–30", "Nm 31–32", "Nm 33–36", "Dt 1–2",
+        "Dt 3–4", "Dt 5–7", "Dt 8–10"
+    ]},
+    { mes: "Março", livros: [
+        "Dt 11–13", "Dt 14–16", "Dt 17–19", "Dt 20–22", "Dt 23–25",
+        "Dt 26–28", "Dt 29–31", "Dt 32–34", "Js 1–3", "Js 4–6",
+        "Js 7–9", "Js 10–12", "Js 13–15", "Js 16–18", "Js 19–21",
+        "Js 22–24", "Jz 1–3", "Jz 4–6", "Jz 7–9", "Jz 10–12",
+        "Jz 13–15", "Jz 16–18", "Jz 19–21", "Rt 1–4", "1Sm 1–3",
+        "1Sm 4–6", "1Sm 7–9", "1Sm 10–12", "1Sm 13–15", "1Sm 16–18", "1Sm 19–21"
+    ]},
+    { mes: "Abril", livros: [
+        "1Sm 22–24", "1Sm 25–27", "1Sm 28–31", "2Sm 1–3", "2Sm 4–6",
+        "2Sm 7–9", "2Sm 10–12", "2Sm 13–15", "2Sm 16–18", "2Sm 19–21",
+        "2Sm 22–24", "1Rs 1–3", "1Rs 4–6", "1Rs 7–8", "1Rs 9–11",
+        "1Rs 12–14", "1Rs 15–17", "1Rs 18–19", "1Rs 20–22", "2Rs 1–3",
+        "2Rs 4–6", "2Rs 7–9", "2Rs 10–12", "2Rs 13–15", "2Rs 16–18",
+        "2Rs 19–21", "2Rs 22–25", "1Cr 1–3", "1Cr 4–6", "1Cr 7–9"
+    ]},
+    { mes: "Maio", livros: [
+        "1Cr 10–12", "1Cr 13–15", "1Cr 16–18", "1Cr 19–21", "1Cr 22–24",
+        "1Cr 25–27", "1Cr 28–29", "2Cr 1–3", "2Cr 4–6", "2Cr 7–9",
+        "2Cr 10–12", "2Cr 13–15", "2Cr 16–18", "2Cr 19–21", "2Cr 22–24",
+        "2Cr 25–27", "2Cr 28–30", "2Cr 31–33", "2Cr 34–36", "Ed 1–4",
+        "Ed 5–7", "Ed 8–10", "Ne 1–4", "Ne 5–7", "Ne 8–10",
+        "Ne 11–13", "Tb 1–4", "Tb 5–8", "Tb 9–14", "Jt 1–5", "Jt 6–10"
+    ]},
+    { mes: "Junho", livros: [
+        "Jt 11–16", "Est 1–5", "Est 6–10", "1Mc 1–3", "1Mc 4–6",
+        "1Mc 7–9", "1Mc 10–12", "1Mc 13–16", "2Mc 1–3", "2Mc 4–6",
+        "2Mc 7–9", "2Mc 10–12", "2Mc 13–15", "Jó 1–4", "Jó 5–8",
+        "Jó 9–12", "Jó 13–16", "Jó 17–20", "Jó 21–24", "Jó 25–28",
+        "Jó 29–32", "Jó 33–35", "Jó 36–38", "Jó 39–42", "Sl 1–10",
+        "Sl 11–20", "Sl 21–30", "Sl 31–40", "Sl 41–50", "Sl 51–60"
+    ]},
+    { mes: "Julho", livros: [
+        "Sl 61–70", "Sl 71–80", "Sl 81–90", "Sl 91–100", "Sl 101–110",
+        "Sl 111–118", "Sl 119 (parte 1)", "Sl 119 (parte 2)", "Sl 120–130", "Sl 131–140",
+        "Sl 141–150", "Pr 1–4", "Pr 5–8", "Pr 9–12", "Pr 13–16",
+        "Pr 17–20", "Pr 21–24", "Pr 25–28", "Pr 29–31", "Ecl 1–4",
+        "Ecl 5–8", "Ecl 9–12", "Ct 1–4", "Ct 5–8", "Sb 1–4",
+        "Sb 5–8", "Sb 9–12", "Sb 13–16", "Sb 17–19", "Eclo 1–5", "Eclo 6–10"
+    ]},
+    { mes: "Agosto", livros: [
+        "Eclo 11–15", "Eclo 16–20", "Eclo 21–25", "Eclo 26–30", "Eclo 31–35",
+        "Eclo 36–40", "Eclo 41–44", "Eclo 45–48", "Eclo 49–51", "Is 1–4",
+        "Is 5–8", "Is 9–12", "Is 13–16", "Is 17–20", "Is 21–24",
+        "Is 25–28", "Is 29–32", "Is 33–36", "Is 37–40", "Is 41–43",
+        "Is 44–46", "Is 47–50", "Is 51–54", "Is 55–58", "Is 59–62",
+        "Is 63–66", "Jr 1–4", "Jr 5–8", "Jr 9–12", "Jr 13–16", "Jr 17–20"
+    ]},
+    { mes: "Setembro", livros: [
+        "Jr 21–24", "Jr 25–28", "Jr 29–31", "Jr 32–34", "Jr 35–37",
+        "Jr 38–40", "Jr 41–44", "Jr 45–48", "Jr 49–52", "Lm 1–5",
+        "Br 1–6", "Ez 1–4", "Ez 5–8", "Ez 9–12", "Ez 13–16",
+        "Ez 17–20", "Ez 21–24", "Ez 25–28", "Ez 29–32", "Ez 33–36",
+        "Ez 37–39", "Ez 40–42", "Ez 43–45", "Ez 46–48", "Dn 1–3",
+        "Dn 4–6", "Dn 7–9", "Dn 10–12", "Os 1–7", "Os 8–14"
+    ]},
+    { mes: "Outubro", livros: [
+        "Jl 1–3", "Am 1–4", "Am 5–9", "Ab 1", "Jn 1–4",
+        "Mq 1–4", "Mq 5–7", "Na 1–3", "Hb 1–3", "Sf 1–3",
+        "Ag 1–2", "Zc 1–5", "Zc 6–10", "Zc 11–14", "Ml 1–4",
+        "Mt 1–4", "Mt 5–7", "Mt 8–10", "Mt 11–13", "Mt 14–16",
+        "Mt 17–19", "Mt 20–22", "Mt 23–25", "Mt 26–28", "Mc 1–3",
+        "Mc 4–6", "Mc 7–9", "Mc 10–12", "Mc 13–14", "Mc 15–16", "Lc 1–2"
+    ]},
+    { mes: "Novembro", livros: [
+        "Lc 3–5", "Lc 6–8", "Lc 9–11", "Lc 12–14", "Lc 15–17",
+        "Lc 18–20", "Lc 21–22", "Lc 23–24", "Jo 1–3", "Jo 4–6",
+        "Jo 7–9", "Jo 10–12", "Jo 13–15", "Jo 16–18", "Jo 19–21",
+        "At 1–3", "At 4–6", "At 7–9", "At 10–12", "At 13–15",
+        "At 16–18", "At 19–21", "At 22–24", "At 25–26", "At 27–28",
+        "Rm 1–4", "Rm 5–8", "Rm 9–11", "Rm 12–16", "1Cor 1–4"
+    ]},
+    { mes: "Dezembro", livros: [
+        "1Cor 5–8", "1Cor 9–11", "1Cor 12–14", "1Cor 15–16", "2Cor 1–4",
+        "2Cor 5–9", "2Cor 10–13", "Gl 1–3", "Gl 4–6", "Ef 1–3",
+        "Ef 4–6", "Fl 1–4", "Cl 1–4", "1Ts 1–5", "2Ts 1–3",
+        "1Tm 1–3", "1Tm 4–6", "2Tm 1–4", "Tt 1–3 / Fm 1", "Hb 1–4",
+        "Hb 5–8", "Hb 9–11", "Hb 12–13", "Tg 1–5", "1Pd 1–5",
+        "2Pd 1–3 / Jd", "1Jo 1–5", "2Jo / 3Jo", "Ap 1–5", "Ap 6–11",
+        "Ap 12–22 🎉 Parabéns! Você leu toda a Bíblia!"
+    ]}
+];
+
+const STORAGE_KEY = 'biblePlano_v1';
+
+function getChecked() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
+}
+
+function saveChecked(obj) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+}
+
+function updateProgress() {
+    var checked = getChecked();
+    var total = 0;
+    plano.forEach(function(m) { total += m.livros.length; });
+    var done = Object.keys(checked).filter(function(k) { return checked[k]; }).length;
+    var pct = Math.round(done / total * 100);
+    var el = document.getElementById('progressoTexto');
+    if (el) el.innerHTML = '<span class="plano-stats">' + done + ' de ' + total + '</span> leituras concluídas (' + pct + '%)';
+    var barra = document.getElementById('progressoBarra');
+    if (barra) barra.style.width = pct + '%';
+}
+
+function initPlanoLeitura() {
+    var checked = getChecked();
+    var container = document.getElementById('planoContainer');
+    if (!container) return;
+
+    var html = '';
+    var dayIdx = 0;
+    plano.forEach(function (mes) {
+        html += '<div class="month-header">📅 ' + mes.mes + '</div>';
+        mes.livros.forEach(function (livro) {
+            var key = 'day_' + dayIdx;
+            var isDone = !!checked[key];
+            html += '<div class="plano-day' + (isDone ? ' done' : '') + '" id="row_' + key + '">' +
+                    '<input type="checkbox" id="' + key + '"' + (isDone ? ' checked' : '') + '/>' +
+                    '<label for="' + key + '">📖 ' + livro + '</label>' +
+                    '</div>';
+            dayIdx++;
+        });
+    });
+    container.innerHTML = html;
+
+    // Força visibilidade do card pai (initScrollAnimations do app.js seta opacity:0 inline
+    // antes do conteúdo ser gerado, fazendo o card ficar invisível permanentemente)
+    var parentCard = container.parentElement;
+    while (parentCard && !parentCard.classList.contains('card')) {
+        parentCard = parentCard.parentElement;
+    }
+    if (parentCard) {
+        parentCard.style.opacity = '1';
+        parentCard.style.transform = 'none';
+        parentCard.classList.add('fade-in');
+    }
+
+    updateProgress();
+
+    container.addEventListener('change', function (e) {
+        if (e.target.type !== 'checkbox') return;
+        var key = e.target.id;
+        var obj = getChecked();
+        obj[key] = e.target.checked;
+        saveChecked(obj);
+        var row = document.getElementById('row_' + key);
+        if (row) row.classList.toggle('done', e.target.checked);
+        updateProgress();
+    });
+
+    var btnReset = document.getElementById('resetarPlano');
+    if (btnReset) {
+        btnReset.addEventListener('click', function () {
+            if (confirm('Tem certeza que deseja reiniciar? Todo o progresso será apagado.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        });
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPlanoLeitura);
+} else {
+    initPlanoLeitura();
+}
+</script>
+</body>
+</html>

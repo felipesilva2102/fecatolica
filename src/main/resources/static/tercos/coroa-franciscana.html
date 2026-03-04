@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Coroa Franciscana — 7 Alegrias de N. Sra. — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🌸 Coroa Franciscana</h1>
+                <p class="lead">As 7 Alegrias de Nossa Senhora — devoção franciscana que celebra os momentos mais felizes da vida de Maria.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>Composta por São Boaventura, conta 72 Ave-Marias, representando os anos de vida de Nossa Senhora (tradição).</em></p>
+            </header>
+        </div>
+
+        <!-- Instrução -->
+        <div class="card" style="text-align:center;">
+            <p class="muted">A Coroa Franciscana tem <strong>7 dezenas</strong> (1 Pai-Nosso + 10 Ave-Marias), meditando as 7 Alegrias de Maria. Ao final, rezam-se 2 Ave-Marias extras para completar 72 — os anos de vida de Nossa Senhora.</p>
+            <div class="beads-legend" style="margin-top:10px;">
+                <span>⚪ Pendente</span>
+                <span>🔵 Atual</span>
+                <span>🟡 Rezada</span>
+            </div>
+        </div>
+
+        <!-- Progresso SVG -->
+        <div class="card beads-card" style="text-align:center;">
+            <svg class="progress-ring" width="100" height="100">
+                <circle class="progress-ring-bg" cx="50" cy="50" r="44" stroke="#e0e0e0" stroke-width="6" fill="none"/>
+                <circle class="progress-ring-fg" id="progressRing" cx="50" cy="50" r="44"
+                        stroke="#8e44ad" stroke-width="6" fill="none"
+                        stroke-dasharray="276.46" stroke-dashoffset="276.46"
+                        stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                <text x="50" y="54" text-anchor="middle" font-size="16" fill="#333" id="progressText">0%</text>
+            </svg>
+            <div class="progress-bar-linear" style="margin-top:10px;">
+                <div class="progress-bar-fill" id="linearBar" style="width:0%;background:#8e44ad;"></div>
+            </div>
+        </div>
+
+        <!-- Início -->
+        <div class="card" id="sectionInicio">
+            <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+            <p style="text-align:center;line-height:1.8;">
+                <strong>Sinal da Cruz:</strong><br/>
+                Em nome do Pai, e do Filho, e do Espírito Santo. Amém.
+            </p>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">Pai-Nosso</p>
+                <p style="line-height:1.8;">Pai nosso, que estais nos Céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">Ave-Maria</p>
+                <p style="line-height:1.8;">Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.</p>
+            </div>
+        </div>
+
+        <!-- 7 Dezenas -->
+        <div id="decadesContainer"></div>
+
+        <!-- 2 Ave-Marias extras -->
+        <div class="card" id="sectionExtras" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🌸 Duas Ave-Marias Finais</h2>
+            <p style="text-align:center;line-height:1.8;font-size:0.97rem;">
+                Segundo a tradição, rezam-se 2 Ave-Marias extras para completar as <strong>72 Ave-Marias</strong>,
+                em honra dos 72 anos de vida de Nossa Senhora.
+            </p>
+            <div class="beads-row" style="justify-content:center;margin:16px 0;gap:10px;">
+                <span class="rosary-bead extra-bead" style="width:26px;height:26px;" id="extra1"></span>
+                <span class="rosary-bead extra-bead" style="width:26px;height:26px;" id="extra2"></span>
+            </div>
+            <p style="text-align:center;font-style:italic;font-size:0.93rem;color:#666;">Toque cada conta para rezar a Ave-Maria.</p>
+        </div>
+
+        <!-- Oração Final -->
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🌸 Oração Final</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Bendita e louvada seja a hora em que o Verbo eterno do Pai<br/>
+                habitou no seio virginal de Maria!<br/><br/>
+                <em>(Pausa de contemplação)</em>
+            </p>
+            <div style="background:#f9f0ff;border-left:4px solid #8e44ad;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Antífona final:</strong><br/>
+                    <em>Alegra-te, Virgem Maria, porque o Senhor está contigo.
+                    Tu és bendita entre as mulheres e bendito é o fruto do teu ventre.
+                    Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou a Coroa Franciscana! Ave, Maria, cheia de graça!
+            </div>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Coroa Franciscana — FeCatolica" data-partilhar-texto="Reze a Coroa Franciscana (7 Alegrias de Nossa Senhora) no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var decades = [
+            {
+                titulo: '1ª Alegria — A Anunciação do Anjo Gabriel',
+                referencia: 'Lc 1,26-38',
+                reflexao: 'O Anjo Gabriel anuncia a Maria que ela será a Mãe do Filho de Deus. A alegria de Maria ao dizer "Eis a serva do Senhor; faça-se em mim segundo a tua palavra."'
+            },
+            {
+                titulo: '2ª Alegria — A Visitação a Santa Isabel',
+                referencia: 'Lc 1,39-56',
+                reflexao: 'Maria visita sua prima Isabel, que levada pelo Espírito Santo exclama: "Bendita és tu entre as mulheres!" João Batista pula de alegria no seio de sua mãe.'
+            },
+            {
+                titulo: '3ª Alegria — O Nascimento de Jesus em Belém',
+                referencia: 'Lc 2,1-21',
+                reflexao: 'Maria dá à luz o Filho de Deus numa manjedoura. Os anjos cantam glória e os pastores adoram o Menino Jesus nos braços de sua Mãe.'
+            },
+            {
+                titulo: '4ª Alegria — A Adoração dos Santos Reis Magos',
+                referencia: 'Mt 2,1-12',
+                reflexao: 'Os Magos do Oriente seguem a estrela, encontram Jesus com Maria sua Mãe e prostram-se para adorá-lo, oferecendo ouro, incenso e mirra.'
+            },
+            {
+                titulo: '5ª Alegria — O Encontro de Jesus no Templo',
+                referencia: 'Lc 2,41-52',
+                reflexao: 'Após três dias de angustiosa busca, Maria e José encontram Jesus no Templo entre os doutores. Jesus diz: "Não sabíeis que devo estar nas coisas do meu Pai?"'
+            },
+            {
+                titulo: '6ª Alegria — A Aparição do Ressuscitado a Maria',
+                referencia: 'Tradição piadosa',
+                reflexao: 'Segundo a piedosa tradição da Igreja, Jesus ressuscitado apareceu primeiro à sua Mãe — que crendo sempre na Ressurreição, aguardava com esperança firme.'
+            },
+            {
+                titulo: '7ª Alegria — A Assunção e Coroação de Maria',
+                referencia: 'Ap 12; dogma definido em 1950',
+                reflexao: 'Maria, associada plenamente ao seu Filho, é levada ao Céu em corpo e alma e coroada Rainha do Céu e da Terra — suprema alegria de quem viveu totalmente para Deus.'
+            }
+        ];
+
+        var TOTAL_BEADS = 77; // 7 dezenas × (1 Pai-Nosso + 10 Ave-Marias)
+        var beadsDone = 0;
+        var extrasDone = 0;
+        var circumference = 2 * Math.PI * 44;
+
+        function updateProgress() {
+            var pct = Math.round(beadsDone / TOTAL_BEADS * 100);
+            var offset = circumference - (beadsDone / TOTAL_BEADS) * circumference;
+            $('#progressRing').attr('stroke-dashoffset', offset);
+            $('#progressText').text(pct + '%');
+            $('#linearBar').css('width', pct + '%');
+
+            if (beadsDone >= TOTAL_BEADS) {
+                $('#sectionExtras').slideDown();
+            }
+        }
+
+        function beadClick() {
+            var $b = $(this);
+            if ($b.hasClass('clicked')) return;
+            $b.removeClass('nextPulse');
+            $b.addClass('clicked');
+            beadsDone++;
+            updateProgress();
+
+            var $next = $b.parent().find('.rosary-bead:not(.clicked)').first();
+            if ($next.length === 0) {
+                var $nextDec = $b.closest('.decade-section').next('.decade-section');
+                if ($nextDec.length) {
+                    $nextDec.find('.accordion-header:not(.active)').click();
+                    $next = $nextDec.find('.rosary-bead:not(.clicked)').first();
+                }
+            }
+            if ($next.length) $next.addClass('nextPulse');
+        }
+
+        function extraBeadClick() {
+            var $b = $(this);
+            if ($b.hasClass('clicked')) return;
+            $b.removeClass('nextPulse');
+            $b.addClass('clicked');
+            extrasDone++;
+
+            if (extrasDone === 1) {
+                $('#extra2').addClass('nextPulse');
+            }
+            if (extrasDone >= 2) {
+                $('#sectionFinal').slideDown();
+                localStorage.setItem('coroa_franciscana_' + new Date().toISOString().slice(0,10), 'true');
+                if (window.FeStreaks) window.FeStreaks.record();
+            }
+        }
+
+        var html = '';
+        for (var d = 0; d < 7; d++) {
+            var dec = decades[d];
+            html += '<div class="card decade-section">';
+            html += '<div class="accordion-header' + (d === 0 ? ' active' : '') + '">' + dec.titulo + '</div>';
+            html += '<div class="accordion-content"' + (d === 0 ? ' style="display:block;"' : '') + '>';
+
+            html += '<div style="background:#f9f0ff;border-left:3px solid #8e44ad;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;">';
+            html += '<p style="margin:0 0 4px;font-size:0.82rem;color:#8e44ad;font-weight:600;">' + dec.referencia + '</p>';
+            html += '<p style="margin:0;font-size:0.95rem;color:#5b2c6f;font-style:italic;">' + dec.reflexao + '</p>';
+            html += '</div>';
+
+            html += '<div style="text-align:center;margin:12px 0;">';
+            html += '<p style="font-weight:600;color:#8e44ad;">Conta grande (Pai-Nosso):</p>';
+            html += '<div class="beads-row" style="justify-content:center;margin:8px 0;"><span class="rosary-bead" style="width:30px;height:30px;" data-d="' + d + '"></span></div>';
+            html += '</div>';
+
+            html += '<div style="text-align:center;margin:12px 0;">';
+            html += '<p style="font-weight:600;color:#5b2c6f;">Contas pequenas (10 Ave-Marias):</p>';
+            html += '<div class="beads-row" style="flex-wrap:wrap;justify-content:center;gap:6px;margin:8px 0;">';
+            for (var b = 1; b <= 10; b++) {
+                html += '<span class="rosary-bead" style="width:22px;height:22px;" data-d="' + d + '"></span>';
+            }
+            html += '</div></div>';
+
+            html += '<div style="text-align:center;margin:8px 0;">';
+            html += '<p style="font-style:italic;color:#8e44ad;font-size:0.93rem;">Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Amém.</p>';
+            html += '</div>';
+
+            html += '</div></div>';
+        }
+        $('#decadesContainer').html(html);
+
+        $('#decadesContainer').on('click', '.rosary-bead', beadClick);
+        $('#sectionExtras').on('click', '.extra-bead', extraBeadClick);
+
+        // Destacar primeira conta
+        $('#decadesContainer .rosary-bead').first().addClass('nextPulse');
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

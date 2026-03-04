@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Liturgia das Horas — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .hora-btn { display:inline-block; padding:8px 18px; margin:4px; border-radius:20px; background:#1a4f89; color:#fff; cursor:pointer; border:none; font-size:0.95rem; }
+        .hora-btn.active, .hora-btn:hover { background:#0d3166; }
+        .hora-content { display:none; }
+        .hora-content.active { display:block; }
+        .versiculo-hora { font-style:italic; color:#555; border-left:3px solid #1a4f89; padding-left:12px; margin:12px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>⏰ Liturgia das Horas</h1>
+            <p class="lead">A oração oficial da Igreja que santifica cada momento do dia — Laudes, Hora Terça, Sexta, Nona, Vésperas e Completas.</p>
+            <p class="muted">"Sete vezes por dia vos louvo." (Sl 119,164)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 O que é a Liturgia das Horas</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">A Oração da Igreja</div>
+                <div class="accordion-content">
+                    <p>A Liturgia das Horas (Ofício Divino ou Breviário) é a oração pública e comum da Igreja Católica, que santifica as diferentes partes do dia. Ao longo dos séculos, a Igreja organizou a oração em "horas" inspirada na prática judaica dos sete momentos de oração diária.</p>
+                    <p>Sacerdotes e religiosos são obrigados a rezá-la. Os fiéis leigos são expressamente convidados a participar, especialmente das Laudes (manhã) e Vésperas (tarde).</p>
+                    <p>Cada "Hora" é formada por: hino, salmos com antífonas, leitura bíblica breve, responsório, cântico e oração conclusiva.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seletor de Hora -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🕐 Escolha a Hora</h2>
+        <p style="text-align:center;">
+            <button class="hora-btn active" data-hora="laudes">🌅 Laudes</button>
+            <button class="hora-btn" data-hora="terca">🌄 Hora Terça</button>
+            <button class="hora-btn" data-hora="sexta">☀️ Hora Sexta</button>
+            <button class="hora-btn" data-hora="nona">🌤️ Hora Nona</button>
+            <button class="hora-btn" data-hora="vesperas">🌇 Vésperas</button>
+            <button class="hora-btn" data-hora="completas">🌙 Completas</button>
+        </p>
+    </div>
+
+    <!-- Laudes -->
+    <div id="hora-laudes" class="hora-content active">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🌅 Laudes — Oração da Manhã</h2>
+            <p class="muted" style="text-align:center;">Rezadas ao amanhecer, oferecem o dia a Deus e cantam a vitória da luz sobre as trevas.</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Hino de Abertura</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Deus, vinde em meu auxílio.<br/>
+                        <strong>Senhor, dai-vos pressa em me socorrer.</strong><br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo.<br/>
+                        Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.</p>
+                        <div class="versiculo-hora">Aleluia! (fora da Quaresma)</div>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Salmo 63 — Sede de Deus</div>
+                    <div class="accordion-content">
+                        <p>Ó Deus, sois o meu Deus, e eu Vos procuro ansiosamente;<br/>
+                        minha alma tem sede de Vós,<br/>
+                        meu corpo suspira por Vós,<br/>
+                        numa terra árida e ressequida, sem água.<br/><br/>
+                        Assim, Vos contemplo no Santuário,<br/>
+                        para ver o Vosso poder e a Vossa glória.<br/><br/>
+                        O Vosso amor vale mais do que a vida;<br/>
+                        meus lábios Vos louvarão.<br/><br/>
+                        Assim Vos bendirei enquanto eu viver;<br/>
+                        em Vosso nome levantarei as mãos.<br/><br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo.<br/>
+                        Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Cântico de Zacarias (Bênedictus)</div>
+                    <div class="accordion-content">
+                        <p>Bendito seja o Senhor, Deus de Israel,<br/>
+                        porque visitou e remiu o seu povo,<br/>
+                        e suscitou para nós um poder de salvação<br/>
+                        na casa de Davi, seu servo.<br/><br/>
+                        Conforme prometeu pelos lábios dos seus profetas<br/>
+                        desde os tempos antigos:<br/>
+                        salvação dos nossos inimigos<br/>
+                        e das mãos de todos os que nos odeiam.<br/><br/>
+                        E Vós, menino, sereis chamado profeta do Altíssimo,<br/>
+                        porque ireis diante do Senhor a preparar os seus caminhos,<br/>
+                        para dar ao seu povo o conhecimento da salvação<br/>
+                        pelo perdão dos seus pecados.<br/><br/>
+                        Por causa da ternura do coração do nosso Deus,<br/>
+                        que nos visitará do alto como o sol nascente,<br/>
+                        para iluminar os que estão nas trevas e na sombra da morte<br/>
+                        e guiar os nossos passos no caminho da paz.<br/><br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo.<br/>
+                        Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Leitura Breve e Preces</div>
+                    <div class="accordion-content">
+                        <p><strong>Leitura:</strong> "Suba a minha oração como incenso perante Vós; o erguer das minhas mãos seja como a oblação da tarde." (Sl 141,2)</p>
+                        <p><strong>Preces da Manhã:</strong><br/>
+                        Abre os nossos olhos, Senhor, para reconhecermos as maravilhas de Vossa lei. <strong>R. Senhor, tende piedade.</strong><br/>
+                        Concedei-nos começar este dia com alegria e dedicação. <strong>R. Senhor, tende piedade.</strong><br/>
+                        Que toda a nossa ação de hoje seja feita para a Vossa glória. <strong>R. Senhor, tende piedade.</strong></p>
+                        <p><strong>Pai-Nosso... Oração conclusiva:</strong><br/>
+                        Deus Todo-Poderoso e eterno, que pela luz do novo dia nos renovais em graça e esperança, recebei a oferta deste dia: todos os nossos pensamentos, palavras e obras. Por Cristo, nosso Senhor. Amém.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terça -->
+    <div id="hora-terca" class="hora-content">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🌄 Hora Terça (9h)</h2>
+            <p class="muted" style="text-align:center;">Hora em que o Espírito Santo desceu sobre os Apóstolos em Pentecostes. Pede-se discernimento para o dia.</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Hino e Salmo</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Deus, vinde em meu auxílio.<br/>
+                        <strong>Senhor, dai-vos pressa em me socorrer.</strong></p>
+                        <p><em>Hino:</em> Vinha o Espírito Santo sobre os apóstolos em línguas de fogo. Que Ele nos inflame também a nós com o fervor do amor e da missão de Deus.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Salmo 119 (trecho) e Leitura</div>
+                    <div class="accordion-content">
+                        <p>Sede o meu amparo e eu ficarei salvo;<br/>
+                        sempre meditarei nos Vossos preceitos.<br/>
+                        Sustende-me segundo a Vossa promessa e viverei;<br/>
+                        não me confundais na minha esperança. (Sl 119,117.116)</p>
+                        <p><strong>Leitura breve:</strong> "Seja vossa palavra sempre amável, temperada como que com sal, de modo a saberdes como deveis responder a cada um." (Cl 4,6)</p>
+                        <p><strong>Oração:</strong> Senhor, que às nona horas enviastes o Espírito Santo sobre a Igreja nascente, envieis também sobre nós a luz e o calor que precisamos para este dia. Amém.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sexta -->
+    <div id="hora-sexta" class="hora-content">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">☀️ Hora Sexta (12h)</h2>
+            <p class="muted" style="text-align:center;">Hora da crucifixão de Jesus. Meditação da entrega de Cristo e agradecimento pelo dom do meio-dia.</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Hino, Salmo e Leitura</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Deus, vinde em meu auxílio.<br/>
+                        <strong>Senhor, dai-vos pressa em me socorrer.</strong></p>
+                        <p>Deus fiel, que governais as horas e os dias, ao meio-dia quando o sol está no zênite, nós Vos louvamos e agradecemos o calor do Vosso amor que nos sustenta.</p>
+                        <p><strong>Salmo 23 (trecho):</strong><br/>
+                        O Senhor é meu pastor: nada me falta.<br/>
+                        Em verdes prados me faz repousar<br/>
+                        e me conduz às águas tranquilas.</p>
+                        <p><strong>Leitura:</strong> "Eis o meu servo, que escolhi; o meu amado, em quem pus o meu contentamento. Porei nele o meu Espírito, e ele anunciará o seu direito às nações." (Mt 12,18)</p>
+                        <p><strong>Oração:</strong> Senhor Jesus, que às seis horas foste levantado na Cruz por nós, que nesse momento de descanso do meio do dia nos lembremos de Vosso sacrifício e renovemos nossa dedicação a Vós. Amém.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nona -->
+    <div id="hora-nona" class="hora-content">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🌤️ Hora Nona (15h)</h2>
+            <p class="muted" style="text-align:center;">Hora da morte de Jesus na Cruz. A Hora da Misericórdia (Divina Misericórdia).</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Coroa da Misericórdia e Oração</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Às 15h, a Igreja reza especialmente em memória da morte de Jesus.</p>
+                        <p><strong>Oração da Hora da Misericórdia:</strong><br/>
+                        Ó Jesus, que dissestes: "Fazei isto em memória de Mim", olhamos para Vós nesta hora em que expirastes na Cruz pelo amor a nós. Que a Vossa misericórdia encontre em nós um coração aberto e arrependido. Amém.</p>
+                        <p><em>Pode-se rezar aqui a Coroa da Divina Misericórdia.</em></p>
+                        <p><strong>Leitura:</strong> "Jesus emitiu um grande grito e expirou. O véu do Templo rasgou-se em dois, de alto a baixo." (Mc 15,37-38)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vésperas -->
+    <div id="hora-vesperas" class="hora-content">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🌇 Vésperas — Oração da Tarde</h2>
+            <p class="muted" style="text-align:center;">Encerram o dia com louvor. Lembram a Última Ceia e o pão eucarístico. São as horas mais solenes, convidadas a ser rezadas com a família.</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Abertura, Salmo e Cântico de Maria</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Deus, vinde em meu auxílio.<br/>
+                        <strong>Senhor, dai-vos pressa em me socorrer.</strong></p>
+                        <p><strong>Salmo 113 (trecho):</strong><br/>
+                        Louvai, servos do Senhor,<br/>
+                        louvai o nome do Senhor!<br/>
+                        Seja bendito o nome do Senhor,<br/>
+                        desde agora e sempre.<br/>
+                        Do oriente ao ocidente do sol,<br/>
+                        seja louvado o nome do Senhor!</p>
+                        <p><strong>Cântico de Maria (Magnificat):</strong><br/>
+                        Minha alma glorifica ao Senhor,<br/>
+                        meu espírito exulta de alegria em Deus, meu Salvador,<br/>
+                        porque olhou para a humildade de sua serva.<br/>
+                        Por isso, desde agora todas as gerações me chamarão bem-aventurada,<br/>
+                        porque o Todo-Poderoso fez grandes coisas em meu favor.<br/>
+                        Santo é o seu nome!<br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo.<br/>
+                        Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Leitura e Preces Vespertinas</div>
+                    <div class="accordion-content">
+                        <p><strong>Leitura:</strong> "A Palavra de Deus é viva e eficaz, mais cortante que qualquer espada de dois gumes." (Hb 4,12)</p>
+                        <p><strong>Preces das Vésperas:</strong><br/>
+                        Pelos que neste dia trabalharam por nossa comunidade: <strong>R. Senhor, ouvi-nos.</strong><br/>
+                        Pelos enfermos e pelos que sofrem: <strong>R. Senhor, ouvi-nos.</strong><br/>
+                        Por todos os que hoje partiram deste mundo: <strong>R. Senhor, ouvi-nos.</strong></p>
+                        <p><strong>Pai-Nosso... Oração conclusiva:</strong><br/>
+                        Deus Todo-Poderoso, enquanto o dia declina e a tarde se aproxima, fazei que a Vossa luz não se apague em nós. Que o descanso desta noite nos renove para servirdes amanhã com novo fervor. Por Cristo, nosso Senhor. Amém.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completas -->
+    <div id="hora-completas" class="hora-content">
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🌙 Completas — Oração da Noite</h2>
+            <p class="muted" style="text-align:center;">Última oração do dia. Entrega do sono e da noite nas mãos de Deus. Sempre terminam com o Salve Regina.</p>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Exame de Consciência e Abertura</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Deus, vinde em meu auxílio.<br/>
+                        <strong>Senhor, dai-vos pressa em me socorrer.</strong></p>
+                        <p><em>Breve exame de consciência do dia que termina. Ato de contrição:</em></p>
+                        <p>Meu Deus, eu me arrependo de coração de Vos ter ofendido. Perdoai-me e dai-me a graça de não mais pecar e de dormir em Vossa paz. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Salmo 91 — Proteção Noturna</div>
+                    <div class="accordion-content">
+                        <p>Aquele que habita sob a proteção do Altíssimo,<br/>
+                        que descansa à sombra do Todo-Poderoso,<br/>
+                        diz ao Senhor: "Meu refúgio, minha fortaleza,<br/>
+                        meu Deus em quem confio."<br/><br/>
+                        Pois Ele vos livrará do laço dos caçadores<br/>
+                        e da pestilência maligna.<br/>
+                        Com suas asas Ele vos cobrirá,<br/>
+                        e sob suas penas encontrareis refúgio.<br/><br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Cântico de Simeão e Salve Regina</div>
+                    <div class="accordion-content">
+                        <p><strong>Cântico de Simeão (Nunc Dimittis):</strong><br/>
+                        Agora, Senhor, podeis deixar partir em paz o Vosso servo,<br/>
+                        segundo a Vossa palavra;<br/>
+                        porque os meus olhos viram a Vossa salvação,<br/>
+                        que preparastes na presença de todos os povos:<br/>
+                        luz para iluminar as nações e glória de Israel, Vosso povo.<br/>
+                        Glória ao Pai, e ao Filho, e ao Espírito Santo. Amém.</p>
+                        <p><strong>Salve Regina:</strong><br/>
+                        Salve, Rainha, Mãe de misericórdia, vida, doçura, esperança nossa, salve!<br/>
+                        A Vós bradamos, os degredados filhos de Eva.<br/>
+                        A Vós suspiramos, gemendo e chorando neste vale de lágrimas.<br/>
+                        Eia, pois, advogada nossa: esses Vossos olhos misericordiosos a nós volvei.<br/>
+                        E depois deste desterro, mostrai-nos Jesus, bendito fruto do Vosso ventre.<br/>
+                        Ó clemente, ó piedosa, ó doce Virgem Maria!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    $('.hora-btn').on('click', function () {
+        const hora = $(this).data('hora');
+        $('.hora-btn').removeClass('active');
+        $(this).addClass('active');
+        $('.hora-content').removeClass('active');
+        $('#hora-' + hora).addClass('active');
+    });
+});
+</script>
+</body>
+</html>
