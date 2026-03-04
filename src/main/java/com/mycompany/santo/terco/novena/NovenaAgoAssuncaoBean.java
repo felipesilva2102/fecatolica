@@ -2,13 +2,9 @@ package com.mycompany.santo.terco.novena;
 
 import java.io.Serializable;
 
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 
-@Named
-@SessionScoped
 @Getter
 @Setter
 public class NovenaAgoAssuncaoBean implements Serializable {

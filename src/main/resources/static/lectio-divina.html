@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lectio Divina — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📖 Lectio Divina</h1>
+                <p class="lead">A leitura orante da Palavra de Deus — método dos monges desde o séc. III.</p>
+                <p class="muted" style="margin-top:6px;">"A ignorância das Escrituras é ignorância de Cristo." — São Jerônimo</p>
+            </header>
+        </div>
+
+        <!-- Passo a passo visual -->
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">Os 4 Degraus</h2>
+            <div class="lectio-steps" id="stepsNav">
+                <div class="lectio-step active" data-step="1">
+                    <span class="lectio-step-num">1</span>
+                    <span class="lectio-step-label">Lectio</span>
+                </div>
+                <div class="lectio-step-arrow">→</div>
+                <div class="lectio-step" data-step="2">
+                    <span class="lectio-step-num">2</span>
+                    <span class="lectio-step-label">Meditatio</span>
+                </div>
+                <div class="lectio-step-arrow">→</div>
+                <div class="lectio-step" data-step="3">
+                    <span class="lectio-step-num">3</span>
+                    <span class="lectio-step-label">Oratio</span>
+                </div>
+                <div class="lectio-step-arrow">→</div>
+                <div class="lectio-step" data-step="4">
+                    <span class="lectio-step-num">4</span>
+                    <span class="lectio-step-label">Contemplatio</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Texto bíblico do dia -->
+        <div class="card" id="scriptureCard">
+            <h2 style="text-align:center;margin-top:0;">📜 Trecho Bíblico do Dia</h2>
+            <div class="loading-spinner" id="scriptureLoading">
+                <div class="lds-dual-ring"></div>
+                <p>Buscando a Palavra do dia...</p>
+            </div>
+            <div id="scriptureText" style="display:none;">
+                <blockquote id="dailyScripture" style="font-size:1.05rem;line-height:1.8;color:#333;border-left:4px solid #c9a84c;padding:12px 16px;margin:12px 0;background:#faf8f4;border-radius:0 8px 8px 0;"></blockquote>
+                <p id="scriptureRef" class="muted" style="text-align:right;"></p>
+            </div>
+            <div id="scriptureFallback" style="display:none;">
+                <blockquote id="fallbackScripture" style="font-size:1.05rem;line-height:1.8;color:#333;border-left:4px solid #c9a84c;padding:12px 16px;margin:12px 0;background:#faf8f4;border-radius:0 8px 8px 0;"></blockquote>
+                <p id="fallbackRef" class="muted" style="text-align:right;"></p>
+            </div>
+        </div>
+
+        <!-- Passo 1: Lectio -->
+        <div class="card lectio-phase" id="phase1">
+            <h2 style="text-align:center;margin-top:0;">📖 1. Lectio — Leitura</h2>
+            <p style="line-height:1.8;">
+                Leia o texto bíblico acima <strong>lentamente</strong>, em voz alta se possível. 
+                Leia pelo menos <strong>duas ou três vezes</strong>. Não tenha pressa.
+                Deixe que cada palavra entre no seu coração.
+            </p>
+            <div style="background:#e8f4e8;padding:12px 16px;border-radius:8px;margin:12px 0;">
+                <p style="margin:0;">💡 <strong>Dica:</strong> Preste atenção na palavra ou frase que mais toca o seu coração. Destaque-a mentalmente.</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">⏱️ Tempo sugerido: 5 minutos</p>
+                <div class="lectio-timer" id="timer1">
+                    <span class="timer-display" id="timerDisplay1">5:00</span>
+                    <button class="btn-primary" onclick="startTimer(1, 300)">▶ Iniciar</button>
+                    <button class="btn-primary" style="background:#888;" onclick="resetTimer(1, 300)">↩ Reiniciar</button>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:16px;">
+                <button class="btn-primary" onclick="goToPhase(2)">Avançar para Meditatio →</button>
+            </div>
+        </div>
+
+        <!-- Passo 2: Meditatio -->
+        <div class="card lectio-phase" id="phase2" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🧠 2. Meditatio — Meditação</h2>
+            <p style="line-height:1.8;">
+                Agora <strong>reflita</strong> sobre o que leu. O que Deus está dizendo a <em>você</em> 
+                através dessas palavras? Como esse texto se aplica à sua vida hoje?
+            </p>
+            <div style="background:#e8f0f8;padding:12px 16px;border-radius:8px;margin:12px 0;">
+                <p style="margin:0;font-weight:600;">Perguntas para meditar:</p>
+                <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+                    <li>Que palavra ou frase tocou mais o meu coração?</li>
+                    <li>O que o Senhor quer me dizer hoje?</li>
+                    <li>Há algo na minha vida que precisa mudar?</li>
+                    <li>Como posso viver essa Palavra concretamente?</li>
+                </ul>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">⏱️ Tempo sugerido: 10 minutos</p>
+                <div class="lectio-timer" id="timer2">
+                    <span class="timer-display" id="timerDisplay2">10:00</span>
+                    <button class="btn-primary" onclick="startTimer(2, 600)">▶ Iniciar</button>
+                    <button class="btn-primary" style="background:#888;" onclick="resetTimer(2, 600)">↩ Reiniciar</button>
+                </div>
+            </div>
+            <div style="margin-top:16px;">
+                <label style="font-weight:600;">📝 Anotações da meditação:</label>
+                <textarea id="meditationNotes" style="width:100%;min-height:100px;margin-top:8px;padding:12px;border:1px solid #ccc;border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;" placeholder="Escreva aqui o que Deus tocou no seu coração..."></textarea>
+            </div>
+            <div style="text-align:center;margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                <button class="btn-primary" style="background:#888;" onclick="goToPhase(1)">← Voltar</button>
+                <button class="btn-primary" onclick="goToPhase(3)">Avançar para Oratio →</button>
+            </div>
+        </div>
+
+        <!-- Passo 3: Oratio -->
+        <div class="card lectio-phase" id="phase3" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">💬 3. Oratio — Oração</h2>
+            <p style="line-height:1.8;">
+                Agora <strong>responda a Deus</strong> com suas próprias palavras. A meditação despertou 
+                sentimentos — expresse-os em oração. Pode ser louvor, agradecimento, pedido de perdão 
+                ou súplica.
+            </p>
+            <div style="background:#f8f0e8;padding:12px 16px;border-radius:8px;margin:12px 0;">
+                <p style="margin:0;">💡 <strong>Dica:</strong> Fale com Deus como se fala com um amigo. Seja sincero(a). Ele conhece o seu coração.</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">⏱️ Tempo sugerido: 5 minutos</p>
+                <div class="lectio-timer" id="timer3">
+                    <span class="timer-display" id="timerDisplay3">5:00</span>
+                    <button class="btn-primary" onclick="startTimer(3, 300)">▶ Iniciar</button>
+                    <button class="btn-primary" style="background:#888;" onclick="resetTimer(3, 300)">↩ Reiniciar</button>
+                </div>
+            </div>
+            <div style="margin-top:16px;">
+                <label style="font-weight:600;">📝 Minha oração:</label>
+                <textarea id="oratioNotes" style="width:100%;min-height:100px;margin-top:8px;padding:12px;border:1px solid #ccc;border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;" placeholder="Senhor, eu Vos digo..."></textarea>
+            </div>
+            <div style="text-align:center;margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                <button class="btn-primary" style="background:#888;" onclick="goToPhase(2)">← Voltar</button>
+                <button class="btn-primary" onclick="goToPhase(4)">Avançar para Contemplatio →</button>
+            </div>
+        </div>
+
+        <!-- Passo 4: Contemplatio -->
+        <div class="card lectio-phase" id="phase4" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🕊️ 4. Contemplatio — Contemplação</h2>
+            <p style="line-height:1.8;">
+                É hora do <strong>silêncio</strong>. Não fale, não pense — apenas <strong>descanse 
+                na presença de Deus</strong>. Como um filho nos braços do pai. Deixe Deus agir em você.
+            </p>
+            <div style="background:#f0e8f8;padding:12px 16px;border-radius:8px;margin:12px 0;">
+                <p style="margin:0;">🕯️ <strong>Simplesmente esteja com Deus.</strong> Se pensamentos surgirem, acolha-os com suavidade e volte a estar em silêncio diante d'Ele.</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <p style="font-weight:600;">⏱️ Tempo sugerido: 5 minutos</p>
+                <div class="lectio-timer" id="timer4">
+                    <span class="timer-display" id="timerDisplay4">5:00</span>
+                    <button class="btn-primary" onclick="startTimer(4, 300)">▶ Iniciar</button>
+                    <button class="btn-primary" style="background:#888;" onclick="resetTimer(4, 300)">↩ Reiniciar</button>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:24px;">
+                <button class="btn-primary" style="background:#888;" onclick="goToPhase(3)">← Voltar</button>
+                <button class="btn-primary" style="background:#2e7d32;margin-left:12px;" onclick="completeLectio()">✅ Concluir Lectio Divina</button>
+            </div>
+        </div>
+
+        <!-- Conclusão -->
+        <div class="card" id="completionCard" style="display:none;text-align:center;">
+            <h2 style="margin-top:0;">🎉 Lectio Divina Concluída!</h2>
+            <div class="msg-success">
+                Parabéns! Você completou a Lectio Divina de hoje. Que a Palavra de Deus 
+                permaneça no seu coração e guie os seus passos.
+            </div>
+            <p style="font-style:italic;margin-top:12px;" class="muted">
+                "Lâmpada para os meus pés é a Vossa palavra, e luz para o meu caminho." — Sl 119,105
+            </p>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Lectio Divina — FeCatolica" data-partilhar-texto="Pratique a leitura orante da Bíblia com a Lectio Divina no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var timers = {};
+
+        // Trechos bíblicos para Lectio (rotação diária)
+        var passages = [
+            {text: 'Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei. Tomai sobre vós o meu jugo e aprendei de mim, porque sou manso e humilde de coração; e encontrareis descanso para as vossas almas. Porque o meu jugo é suave e o meu fardo é leve.', ref: 'Mt 11,28-30'},
+            {text: 'Eu sou a videira verdadeira, e meu Pai é o vinhateiro. Todo ramo que em mim não dá fruto, ele o corta; e todo ramo que dá fruto, ele o limpa, para que dê mais fruto. Vós já estais limpos pela palavra que vos tenho falado. Permanecei em mim, e eu permanecerei em vós.', ref: 'Jo 15,1-4'},
+            {text: 'O Senhor é o meu pastor, nada me faltará. Em verdes pastagens me faz repousar. Para junto das águas tranquilas me conduz, e restaura as minhas forças. Ele me guia por caminhos retos, por amor do seu nome.', ref: 'Sl 23,1-3'},
+            {text: 'O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não maltrata, não procura os seus interesses, não se ira facilmente, não guarda rancor. O amor não se alegra com a injustiça, mas se alegra com a verdade.', ref: '1Cor 13,4-6'},
+            {text: 'Não se inquietem com nada, mas em todas as circunstâncias apresentem os seus pedidos a Deus, pela oração e pela súplica, com ação de graças. E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e as vossas mentes em Cristo Jesus.', ref: 'Fl 4,6-7'},
+            {text: 'Assim como a chuva e a neve descem dos céus e para lá não voltam sem terem regado a terra, fecundando-a e fazendo-a germinar, assim acontecerá com a palavra que sai da minha boca: não voltará para mim vazia, mas realizará tudo o que eu quero.', ref: 'Is 55,10-11'},
+            {text: 'Eis que estou à porta e bato. Se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa e cearei com ele, e ele comigo. Ao vencedor, darei o direito de sentar-se comigo no meu trono.', ref: 'Ap 3,20-21'},
+            {text: 'Não temas, porque eu estou contigo; não te assustes, porque eu sou o teu Deus. Eu te fortaleço, e te ajudo, e te sustento com a minha destra vitoriosa.', ref: 'Is 41,10'},
+            {text: 'Pedi e dar-se-vos-á; buscai e encontrareis; batei e abrir-se-vos-á. Porque todo o que pede recebe; o que busca encontra; e a quem bate, abrir-se-lhe-á. Qual de vós, se o filho lhe pedir pão, lhe dará uma pedra?', ref: 'Mt 7,7-9'},
+            {text: 'Marta, Marta! Tu te preocupas e andas agitada com muitas coisas; no entanto, uma só coisa é necessária. Maria escolheu a melhor parte, que não lhe será tirada.', ref: 'Lc 10,41-42'},
+            {text: 'Se Deus é por nós, quem será contra nós? Aquele que não poupou o seu próprio Filho, mas o entregou por nós todos, como não nos dará também todas as coisas juntamente com ele?', ref: 'Rm 8,31-32'},
+            {text: 'Eu vos deixo a paz, a minha paz vos dou; não vo-la dou como o mundo a dá. Não se turbe o vosso coração, nem se atemorize. Ouvistes que eu vos disse: Vou, mas voltarei a vós.', ref: 'Jo 14,27-28'},
+            {text: 'Lançai sobre Ele toda a vossa preocupação, porque Ele tem cuidado de vós. Sede sóbrios e vigilai; o vosso adversário, o diabo, anda ao redor de vós como leão que ruge, buscando a quem devorar. Resisti-lhe firmes na fé.', ref: '1Pd 5,7-9'},
+            {text: 'Porque eu sei os planos que tenho para vós — declara o Senhor — planos de paz e não de mal, para vos dar um futuro e uma esperança. Então me invocareis, e vireis orar a mim, e eu vos ouvirei.', ref: 'Jr 29,11-12'}
+        ];
+
+        // Tentar buscar Evangelho do dia via API
+        $.getJSON('/api/liturgia', function(data) {
+            $('#scriptureLoading').hide();
+            if (data && data.evangelho) {
+                var txt = data.evangelho;
+                if (typeof txt === 'object' && txt.texto) txt = txt.texto;
+                $('#dailyScripture').html(txt);
+                $('#scriptureRef').text('— Evangelho do dia');
+                $('#scriptureText').show();
+            } else {
+                showFallback();
+            }
+        }).fail(function() {
+            showFallback();
+        });
+
+        function showFallback() {
+            $('#scriptureLoading').hide();
+            var day = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+            var p = passages[day % passages.length];
+            $('#fallbackScripture').text(p.text);
+            $('#fallbackRef').text('— ' + p.ref);
+            $('#scriptureFallback').show();
+        }
+
+        // Timer
+        window.startTimer = function(phase, seconds) {
+            if (timers[phase]) clearInterval(timers[phase]);
+            var remaining = parseInt($('#timerDisplay' + phase).text().split(':')[0]) * 60 + parseInt($('#timerDisplay' + phase).text().split(':')[1]);
+
+            timers[phase] = setInterval(function() {
+                remaining--;
+                if (remaining <= 0) {
+                    clearInterval(timers[phase]);
+                    remaining = 0;
+                    $('#timerDisplay' + phase).text('0:00').css('color', '#2e7d32');
+                    if (window.showToast) showToast('⏱️ Tempo esgotado! Avance quando estiver pronto.');
+                }
+                var m = Math.floor(remaining / 60);
+                var s = remaining % 60;
+                $('#timerDisplay' + phase).text(m + ':' + (s < 10 ? '0' : '') + s);
+            }, 1000);
+        };
+
+        window.resetTimer = function(phase, seconds) {
+            if (timers[phase]) clearInterval(timers[phase]);
+            var m = Math.floor(seconds / 60);
+            var s = seconds % 60;
+            $('#timerDisplay' + phase).text(m + ':' + (s < 10 ? '0' : '') + s).css('color', '');
+        };
+
+        // Navegação entre fases
+        window.goToPhase = function(phase) {
+            $('.lectio-phase').hide();
+            $('#phase' + phase).fadeIn(300);
+            // Atualizar steps
+            $('.lectio-step').removeClass('active completed');
+            for (var i = 1; i < phase; i++) {
+                $('.lectio-step[data-step="' + i + '"]').addClass('completed');
+            }
+            $('.lectio-step[data-step="' + phase + '"]').addClass('active');
+            // Scroll
+            $('html, body').animate({scrollTop: $('#phase' + phase).offset().top - 80}, 300);
+        };
+
+        // Concluir
+        window.completeLectio = function() {
+            // Salvar notas
+            var today = new Date().toISOString().slice(0, 10);
+            var entry = {
+                date: today,
+                meditation: $('#meditationNotes').val(),
+                prayer: $('#oratioNotes').val()
+            };
+            var history = JSON.parse(localStorage.getItem('lectio_history') || '[]');
+            history.push(entry);
+            localStorage.setItem('lectio_history', JSON.stringify(history));
+            localStorage.setItem('lectio_' + today, 'true');
+
+            if (window.FeStreaks) window.FeStreaks.record();
+            $('#completionCard').fadeIn(300);
+            $('html, body').animate({scrollTop: $('#completionCard').offset().top - 80}, 300);
+        };
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

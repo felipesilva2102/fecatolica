@@ -1,0 +1,432 @@
+/* === Acessibilidade - Tamanho de fonte e Dark Mode === */
+html {
+    transition: font-size 0.3s ease;
+}
+
+html.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --card-bg: #16213e;
+    --border-color: #0f3460;
+    --link-color: #64b5f6;
+    --accent: #e94560;
+    --muted-text: #aaa;
+}
+
+html.dark-mode body {
+    background: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Cards, hero, beads */
+html.dark-mode .card {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3) !important;
+}
+
+html.dark-mode .hero-card {
+    background: linear-gradient(135deg, #0f3460 0%, #1a4f2e 100%) !important;
+}
+
+html.dark-mode .beads-card {
+    background: linear-gradient(180deg, var(--card-bg) 0%, #121e36 100%) !important;
+}
+
+html.dark-mode .beads-legend {
+    background: #121e36 !important;
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode .decade-section {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode .beads-row {
+    background: linear-gradient(180deg, #1a2540 0%, #162040 100%) !important;
+    border-color: #2a3a5e !important;
+}
+
+html.dark-mode .rosary-bead {
+    background: linear-gradient(145deg, #2a3a5e 0%, #1e2d4a 100%) !important;
+    border-color: #3a4a6e !important;
+    color: #ccc !important;
+}
+
+html.dark-mode .rosary-bead.clicked {
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.5), 0 0 8px rgba(100,181,246,0.3) !important;
+}
+
+html.dark-mode .beads-progress-area {
+    background: linear-gradient(135deg, #121e36 0%, #162032 100%) !important;
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode .progress-ring-bg { stroke: #2a3a5e !important; }
+html.dark-mode .progress-ring-text { color: var(--link-color) !important; }
+html.dark-mode .progress-bar-track { background: #2a3a5e !important; }
+html.dark-mode .progress-count { color: var(--muted-text) !important; }
+html.dark-mode .btn-reset {
+    background: var(--card-bg) !important;
+    border-color: #3a4a6e !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .btn-reset:hover {
+    border-color: var(--link-color) !important;
+    color: var(--link-color) !important;
+    background: #1a2540 !important;
+}
+
+/* Accordion */
+html.dark-mode .accordion-header {
+    background: #1a2540 !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .accordion-header:hover { background: #1e2d4a !important; }
+html.dark-mode .accordion-content {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .accordion-tab { border-color: var(--border-color) !important; }
+
+/* Links, texts */
+html.dark-mode a { color: var(--link-color) !important; }
+html.dark-mode pre { color: var(--text-color) !important; }
+html.dark-mode .muted { color: var(--muted-text) !important; }
+html.dark-mode .section-title { color: var(--link-color) !important; }
+
+/* Home page */
+html.dark-mode .home-card {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .home-card:hover {
+    border-color: var(--link-color) !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .home-card h3 { color: var(--link-color) !important; }
+html.dark-mode .home-card p { color: var(--muted-text) !important; }
+
+html.dark-mode .daily-banner {
+    background: linear-gradient(135deg, #1e2d4a 0%, #2a3520 100%) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .daily-banner h2 { color: #f0d9a0 !important; }
+html.dark-mode .daily-banner p { color: var(--muted-text) !important; }
+
+html.dark-mode .badge-month {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Mural */
+html.dark-mode .mural-form {
+    background: #121e36 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .mural-form label { color: var(--text-color) !important; }
+html.dark-mode .mural-form input,
+html.dark-mode .mural-form textarea {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .intencao-card {
+    background: #121e36 !important;
+    border-left-color: var(--link-color) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
+}
+html.dark-mode .intencao-nome { color: var(--link-color) !important; }
+html.dark-mode .intencao-texto { color: var(--text-color) !important; }
+
+/* Exame de Consciência */
+html.dark-mode .exame-item:hover { background: #1a2540 !important; }
+html.dark-mode .exame-item { color: var(--text-color) !important; }
+
+/* Mystery buttons */
+html.dark-mode .mystery-btn {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .mystery-btn:hover {
+    border-color: var(--link-color) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+html.dark-mode .mystery-btn small { color: var(--muted-text) !important; }
+
+/* Buttons */
+html.dark-mode .btn-primary {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Navbar */
+html.dark-mode .navbar a,
+html.dark-mode .navbar .dropdown-toggle { color: var(--text-color) !important; }
+html.dark-mode .navbar a:hover,
+html.dark-mode .navbar .dropdown-toggle:hover {
+    background: var(--border-color) !important;
+    color: #fff !important;
+}
+html.dark-mode .dropdown-menu {
+    background: var(--card-bg) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+html.dark-mode .dropdown-menu a { color: var(--text-color) !important; }
+html.dark-mode .dropdown-menu a:hover { background: #1a2540 !important; }
+
+/* Info grid */
+html.dark-mode .info-grid dt { color: var(--muted-text) !important; }
+html.dark-mode .info-grid dd { color: var(--text-color) !important; }
+
+/* Top controls */
+html.dark-mode .top-controls input[type="date"] {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Footer */
+html.dark-mode footer,
+html.dark-mode #footer {
+    background: #121e36 !important;
+    border-top-color: var(--border-color) !important;
+    color: var(--muted-text) !important;
+}
+html.dark-mode .footer-prayer {
+    background: linear-gradient(135deg, #1a2540 0%, #162032 100%) !important;
+    border-color: var(--border-color) !important;
+    color: var(--muted-text) !important;
+}
+
+/* Collapsible sections */
+html.dark-mode .collapsible-toggle { border-bottom-color: var(--border-color) !important; }
+html.dark-mode .decade-title { color: var(--text-color) !important; }
+html.dark-mode .decade-virtue { color: var(--muted-text) !important; }
+html.dark-mode .bible-ref { color: var(--link-color) !important; }
+html.dark-mode .mystery-virtue { color: var(--muted-text) !important; border-top-color: var(--border-color) !important; }
+
+/* Scroll to Top */
+html.dark-mode .btn-scroll-top {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Shares */
+html.dark-mode .share-bar .btn-share {
+    background: #1a2540 !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Loading spinner */
+html.dark-mode .loading-spinner span { color: var(--muted-text) !important; }
+
+/* Novena progress */
+html.dark-mode .novena-day-tracker .day-dot { border-color: #3a4a6e !important; background: #1a2540 !important; }
+html.dark-mode .novena-day-tracker .day-dot.completed { background: var(--link-color) !important; border-color: var(--link-color) !important; }
+html.dark-mode .novena-day-tracker .day-dot.current { border-color: #f0d9a0 !important; }
+
+/* Pray button */
+html.dark-mode .btn-pray { background: #1a2540 !important; color: var(--muted-text) !important; border-color: var(--border-color) !important; }
+html.dark-mode .btn-pray:hover { color: var(--link-color) !important; border-color: var(--link-color) !important; }
+html.dark-mode .pray-count { color: var(--muted-text) !important; }
+
+/* Toast notification */
+html.dark-mode .toast-notification { background: var(--border-color) !important; }
+
+/* Via-Sacra dark */
+html.dark-mode .via-sacra-progress { background: var(--border-color) !important; }
+html.dark-mode .via-sacra-dot { background: var(--border-color) !important; color: var(--muted-text) !important; }
+html.dark-mode .via-sacra-dot.active { background: #8b0000 !important; color: #fff !important; }
+html.dark-mode .via-sacra-dot.completed { background: #c9a84c !important; color: #fff !important; }
+
+/* Lectio Divina dark */
+html.dark-mode .lectio-step-num { background: var(--border-color) !important; color: var(--muted-text) !important; }
+html.dark-mode .lectio-step.active .lectio-step-num { background: #64b5f6 !important; color: #000 !important; }
+html.dark-mode .lectio-step.completed .lectio-step-num { background: #2e7d32 !important; color: #fff !important; }
+html.dark-mode .lectio-step-label { color: var(--muted-text) !important; }
+html.dark-mode .lectio-step.active .lectio-step-label { color: #64b5f6 !important; }
+html.dark-mode .lectio-step-arrow { color: var(--border-color) !important; }
+html.dark-mode .timer-display { color: #64b5f6 !important; }
+
+/* Calendário dark */
+html.dark-mode .cal-header-cell { background: var(--border-color) !important; color: #64b5f6 !important; }
+html.dark-mode .cal-cell { border-color: var(--border-color) !important; color: var(--text-color) !important; }
+html.dark-mode .cal-cell:hover { background: var(--border-color) !important; }
+html.dark-mode .cal-cell.cal-today { background: rgba(100,181,246,0.15) !important; border-color: #64b5f6 !important; }
+html.dark-mode .cal-cell.cal-feast { background: rgba(201,168,76,0.1) !important; }
+html.dark-mode .cal-feast-name { color: var(--muted-text) !important; }
+html.dark-mode .cal-legend { color: var(--muted-text) !important; }
+
+/* Diário dark */
+html.dark-mode .diary-entry { background: var(--card-bg) !important; border-color: #c9a84c !important; }
+html.dark-mode .diary-tag { background: var(--border-color) !important; border-color: var(--border-color) !important; color: var(--text-color) !important; }
+html.dark-mode .diary-tag:hover { background: rgba(100,181,246,0.15) !important; }
+html.dark-mode textarea { background: var(--card-bg) !important; color: var(--text-color) !important; border-color: var(--border-color) !important; }
+html.dark-mode select { background: var(--card-bg) !important; color: var(--text-color) !important; border-color: var(--border-color) !important; }
+
+/* === Barra de Acessibilidade === */
+.barra-acessibilidade {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.barra-acessibilidade button {
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.2s;
+    background: #ffffff;
+    color: #333;
+}
+
+html.dark-mode .barra-acessibilidade button {
+    background: #16213e;
+    color: #e0e0e0;
+    border: 1px solid #0f3460;
+}
+
+.barra-acessibilidade button:hover {
+    transform: scale(1.15);
+}
+
+/* === Vela Virtual === */
+.vela-container {
+    position: fixed;
+    bottom: 220px;
+    right: 14px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.vela-corpo {
+    width: 22px;
+    height: 60px;
+    background: linear-gradient(to bottom, #fff8dc, #f5deb3);
+    border-radius: 3px 3px 6px 6px;
+    position: relative;
+    box-shadow: 0 0 6px rgba(255,200,50,0.3);
+}
+
+.vela-pavio {
+    width: 2px;
+    height: 10px;
+    background: #333;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vela-chama {
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(ellipse at bottom, #ffdd44 0%, #ff6600 50%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.4s ease-in-out infinite alternate;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.vela-chama.apagada {
+    opacity: 0;
+    animation: none;
+}
+
+.vela-brilho {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(255,200,50,0.25) 0%, transparent 70%);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.vela-brilho.apagada {
+    opacity: 0;
+}
+
+.vela-timer {
+    font-size: 0.6rem;
+    color: #999;
+    margin-top: 4px;
+    text-align: center;
+    min-height: 14px;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) rotate(-1deg); opacity: 1; }
+    25% { transform: translateX(-50%) scale(1.02) rotate(1deg); opacity: 0.95; }
+    50% { transform: translateX(-50%) scale(0.98) rotate(-0.5deg); opacity: 1; }
+    75% { transform: translateX(-50%) scale(1.01) rotate(0.5deg); opacity: 0.97; }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ===== Acessibilidade Responsivo ===== */
+@media (max-width: 768px) {
+    .barra-acessibilidade {
+        bottom: 8px;
+        right: 8px;
+        gap: 5px;
+    }
+    .barra-acessibilidade button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.05rem;
+    }
+    .vela-container {
+        bottom: 6px;
+        left: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-acessibilidade {
+        flex-direction: row;
+        bottom: 6px;
+        right: 6px;
+        left: auto;
+        gap: 4px;
+    }
+    .barra-acessibilidade button {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Dark mode hamburger */
+html.dark-mode .hamburger-btn {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+html.dark-mode .hamburger-btn:hover {
+    background: var(--card-bg);
+}

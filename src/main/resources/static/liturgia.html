@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Liturgia do Dia — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <meta name="description" content="Liturgia Diária Católica — Leituras, Salmo, Evangelho e Orações do dia."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <!-- Hero -->
+        <div class="card hero-card" style="padding:16px 18px;">
+            <header style="text-align:center;">
+                <h1 style="font-size:1.4rem;margin:0;">📖 Liturgia do Dia</h1>
+                <p class="lead" style="font-size:0.9rem;margin:4px 0 0;">A Palavra de Deus para iluminar o seu dia.</p>
+            </header>
+        </div>
+
+        <!-- Calendário e cor litúrgica -->
+        <div class="card top-controls" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:8px;flex:1 1 200px;">
+                <label for="dataPicker" style="font-weight:600;white-space:nowrap;">📅 Data:</label>
+                <input type="date" id="dataPicker" class="input-date"/>
+            </div>
+            <div id="litCorBadge" style="display:none;" class="liturgy-color-badge">
+                <span id="litCorDot" class="liturgy-dot"></span>
+                <span id="litCorText"></span>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading-spinner" id="liturgiaLoading">
+            <div class="spinner"></div>
+            <span>Carregando liturgia...</span>
+        </div>
+
+        <!-- Informações principais -->
+        <div class="card fade-in" id="infoLiturgia" style="display:none;">
+            <h2 id="litLiturgia" style="margin:0 0 8px;font-size:1.15rem;color:var(--cor-primaria);text-align:center;"></h2>
+            <p id="litData" style="text-align:center;color:#777;font-size:0.9rem;margin:0;"></p>
+        </div>
+
+        <!-- Accordion com seções -->
+        <div class="card fade-in" id="liturgiaAccordionCard" style="display:none;">
+            <div id="accordionLiturgia"></div>
+        </div>
+
+        <!-- Botão partilha -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Liturgia do Dia" data-partilhar-texto="Confira a Liturgia de hoje no FeCatolica!">
+                📤 Partilhar Liturgia
+            </button>
+        </div>
+
+        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        var COR_MAP = {
+            'Verde': '#2c7a2c', 'Roxo': '#6f42c1', 'Branco': '#ddd',
+            'Vermelho': '#dc3545', 'Rosa': '#e83e8c', 'Preto': '#333'
+        };
+
+        function carregarLiturgia(dia, mes) {
+            $('#liturgiaLoading').show();
+            $('#infoLiturgia, #liturgiaAccordionCard').hide();
+
+            $.getJSON('/api/liturgia', {dia: dia, mes: mes}, function (data) {
+                $('#liturgiaLoading').hide();
+                $('#infoLiturgia, #liturgiaAccordionCard').fadeIn(300);
+
+                $('#litData').text(data.data || '');
+                $('#litLiturgia').text(data.liturgia || '');
+
+                // Badge da cor litúrgica
+                if (data.cor) {
+                    var corHex = COR_MAP[data.cor] || '#999';
+                    $('#litCorDot').css('background', corHex);
+                    $('#litCorText').text(data.cor);
+                    $('#litCorBadge').show();
+                }
+
+                var sections = [];
+
+                if (data.antifonas) {
+                    var ahtml = '';
+                    if (data.antifonas.entrada) ahtml += '<p class="section-title">🎵 Antífona de Entrada:</p><p>' + data.antifonas.entrada + '</p>';
+                    if (data.antifonas.comunhao) ahtml += '<p class="section-title">🎵 Antífona da Comunhão:</p><p>' + data.antifonas.comunhao + '</p>';
+                    if (ahtml) sections.push({title: '🎵 Antífonas', content: ahtml, html: true});
+                }
+
+                if (data.leituras) {
+                    if (data.leituras.primeiraLeitura) {
+                        var l1 = '';
+                        data.leituras.primeiraLeitura.forEach(function(l) {
+                            l1 += '<div class="reading-block"><strong class="reading-ref">' + (l.titulo||'') + ' (' + (l.referencia||'') + ')</strong><div class="reading-text">' + (l.texto||'') + '</div></div>';
+                        });
+                        sections.push({title: '📕 Primeira Leitura', content: l1, html: true});
+                    }
+                    if (data.leituras.salmo) {
+                        var shtml = '';
+                        data.leituras.salmo.forEach(function(s) {
+                            shtml += '<div class="reading-block"><strong class="reading-ref">' + (s.referencia||'') + '</strong><blockquote class="psalm-refrain">' + (s.refrao||'') + '</blockquote><div class="reading-text">' + (s.texto||'') + '</div></div>';
+                        });
+                        sections.push({title: '🎶 Salmo Responsorial', content: shtml, html: true});
+                    }
+                    if (data.leituras.segundaLeitura) {
+                        var l2 = '';
+                        data.leituras.segundaLeitura.forEach(function(l) {
+                            l2 += '<div class="reading-block"><strong class="reading-ref">' + (l.titulo||'') + ' (' + (l.referencia||'') + ')</strong><div class="reading-text">' + (l.texto||'') + '</div></div>';
+                        });
+                        sections.push({title: '📗 Segunda Leitura', content: l2, html: true});
+                    }
+                    if (data.leituras.evangelho) {
+                        var ev = '';
+                        data.leituras.evangelho.forEach(function(l) {
+                            ev += '<div class="reading-block"><strong class="reading-ref">' + (l.titulo||'') + ' (' + (l.referencia||'') + ')</strong><div class="reading-text">' + (l.texto||'') + '</div></div>';
+                        });
+                        sections.push({title: '📖 Evangelho', content: ev, html: true});
+                    }
+                }
+
+                if (data.oracoes) {
+                    var ohtml = '';
+                    if (data.oracoes.coleta) ohtml += '<p class="section-title">Coleta:</p><p>' + data.oracoes.coleta + '</p>';
+                    if (data.oracoes.oferendas) ohtml += '<p class="section-title">Sobre as Oferendas:</p><p>' + data.oracoes.oferendas + '</p>';
+                    if (data.oracoes.comunhao) ohtml += '<p class="section-title">Após a Comunhão:</p><p>' + data.oracoes.comunhao + '</p>';
+                    sections.push({title: '🙏 Orações', content: ohtml, html: true});
+                }
+
+                buildAccordion(sections, '#accordionLiturgia');
+
+                // Registrar atividade para streak
+                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+
+            }).fail(function() {
+                $('#liturgiaLoading').hide();
+                $('#infoLiturgia').show().html('<p style="text-align:center;color:#dc3545;padding:20px;">❌ Erro ao carregar a liturgia. Verifique sua conexão e tente novamente.</p>');
+            });
+        }
+
+        $(function () {
+            var hoje = new Date();
+            carregarLiturgia(hoje.getDate(), hoje.getMonth() + 1);
+            $('#dataPicker').val(hoje.toISOString().split('T')[0]);
+
+            $('#dataPicker').on('change', function () {
+                var parts = $(this).val().split('-');
+                if (parts.length === 3) {
+                    carregarLiturgia(parseInt(parts[2]), parseInt(parts[1]));
+                }
+            });
+        });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

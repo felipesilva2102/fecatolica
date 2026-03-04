@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Exame de Consciência — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🔍 Exame de Consciência</h1>
+                <p class="lead">Preparação para uma boa Confissão segundo os Dez Mandamentos.</p>
+            </header>
+        </div>
+
+        <!-- Introdução -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">📖 Como fazer o Exame de Consciência</h2>
+            <div class="collapsible-section" style="margin-top:12px;">
+                <h3 class="collapsible-toggle" style="font-size:1rem;">Instruções para a Confissão <span class="toggle-icon">▸</span></h3>
+                <div class="collapsible-body" style="display:none;">
+                    <ol>
+                        <li><strong>Oração ao Espírito Santo:</strong> Peça luz para reconhecer seus pecados.</li>
+                        <li><strong>Examine-se:</strong> Reveja seus pensamentos, palavras, ações e omissões desde a última confissão.</li>
+                        <li><strong>Ato de Contrição:</strong> Arrependa-se sinceramente de cada pecado.</li>
+                        <li><strong>Propósito de emenda:</strong> Decida firmemente evitar os pecados e as ocasiões de pecado.</li>
+                        <li><strong>Confesse todos os pecados:</strong> Sem omitir nenhum pecado grave (mortal), confesse com humildade ao sacerdote.</li>
+                        <li><strong>Penitência:</strong> Cumpra a penitência dada pelo sacerdote como reparação.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oração preparatória -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🙏 Oração ao Espírito Santo</h2>
+            <p style="text-align:center;line-height:1.7;">
+                Vinde, Espírito Santo, enchei os corações dos vossos fiéis e acendei neles o fogo do vosso amor.
+                Enviai o vosso Espírito e tudo será criado, e renovareis a face da terra.<br/><br/>
+                <em>Ó Deus, que instruístes os corações dos vossos fiéis com a luz do Espírito Santo,
+                fazei que apreciemos retamente todas as coisas segundo o mesmo Espírito e gozemos sempre da sua consolação.
+                Por Cristo, Senhor nosso. Amém.</em>
+            </p>
+        </div>
+
+        <!-- Exame pelos Mandamentos -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">⚖️ Exame pelos Dez Mandamentos</h2>
+            <p style="text-align:center;" class="muted">Reflita com sinceridade sobre cada mandamento. Marque os pontos que se aplicam à sua situação.</p>
+
+            <div class="accordion-panel" id="mandamentosPanel">
+                <!-- 1º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">1.º — Amar a Deus sobre todas as coisas</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Amarás o Senhor teu Deus de todo o coração" (Dt 6,5)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Negligenciei a oração diária?</label>
+                            <label class="exame-item"><input type="checkbox"/> Coloquei algo (dinheiro, trabalho, pessoas) acima de Deus?</label>
+                            <label class="exame-item"><input type="checkbox"/> Duvidei da fé ou questionei os dogmas da Igreja?</label>
+                            <label class="exame-item"><input type="checkbox"/> Pratiquei superstição, simpatias, horóscopo, consulta a espíritas ou cartomantes?</label>
+                            <label class="exame-item"><input type="checkbox"/> Recebi a comunhão em estado de pecado mortal?</label>
+                            <label class="exame-item"><input type="checkbox"/> Tive preguiça ou descaso em buscar conhecer mais a Deus?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">2.º — Não tomar seu Santo Nome em vão</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não pronunciarás em vão o nome do Senhor" (Ex 20,7)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Pronunciei o nome de Deus, de Jesus ou de Maria sem respeito?</label>
+                            <label class="exame-item"><input type="checkbox"/> Blasfemei ou amaldiçoei?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fiz juramentos falsos ou desnecessários?</label>
+                            <label class="exame-item"><input type="checkbox"/> Falei com irreverência das coisas sagradas?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">3.º — Guardar domingos e festas de guarda</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Lembra-te de santificar o dia de sábado" (Ex 20,8)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Deixei de participar da Missa aos domingos e dias santos de obrigação?</label>
+                            <label class="exame-item"><input type="checkbox"/> Participei da Missa sem atenção, com preguiça ou distraído com o celular?</label>
+                            <label class="exame-item"><input type="checkbox"/> Trabalhei desnecessariamente no domingo, sem dedicar tempo a Deus?</label>
+                            <label class="exame-item"><input type="checkbox"/> Cheguei atrasado ou saí antes do fim da Missa sem necessidade?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">4.º — Honrar pai e mãe</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Honra teu pai e tua mãe" (Ex 20,12)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Desobedeci, desrespeitei ou magoei meus pais?</label>
+                            <label class="exame-item"><input type="checkbox"/> Negligenciei o cuidado com meus pais idosos ou doentes?</label>
+                            <label class="exame-item"><input type="checkbox"/> Causei divisão ou discórdia na família?</label>
+                            <label class="exame-item"><input type="checkbox"/> Dei mau exemplo aos mais jovens da família?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui ingrato para com quem me faz bem?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">5.º — Não matar</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não matarás" (Ex 20,13)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Tive ódio, rancor ou desejo de vingança?</label>
+                            <label class="exame-item"><input type="checkbox"/> Pratiquei violência física ou verbal contra alguém?</label>
+                            <label class="exame-item"><input type="checkbox"/> Causei escândalo que levou outros ao pecado?</label>
+                            <label class="exame-item"><input type="checkbox"/> Abusei de álcool, drogas ou outra substância?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui a favor ou cooperei com o aborto?</label>
+                            <label class="exame-item"><input type="checkbox"/> Maltratei animais ou destruí a natureza por negligência?</label>
+                            <label class="exame-item"><input type="checkbox"/> Neguei perdão a quem me ofendeu?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">6.º — Não pecar contra a castidade</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não cometerás adultério" (Ex 20,14)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Pratiquei atos impuros sozinho ou com outra pessoa fora do matrimônio?</label>
+                            <label class="exame-item"><input type="checkbox"/> Consumi pornografia, filmes ou conteúdos imorais?</label>
+                            <label class="exame-item"><input type="checkbox"/> Tive pensamentos ou desejos impuros consentidos?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui infiel ao meu cônjuge em pensamento, palavra ou ação?</label>
+                            <label class="exame-item"><input type="checkbox"/> Vesti-me de maneira immodesta ou incitei outros ao pecado?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">7.º — Não roubar</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não roubarás" (Ex 20,15)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Roubei, furtei ou me apropriei do que não me pertence?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui desonesto no trabalho, nos negócios ou nos estudos (cola)?</label>
+                            <label class="exame-item"><input type="checkbox"/> Causei dano ao patrimônio de outros por descuido ou maldade?</label>
+                            <label class="exame-item"><input type="checkbox"/> Deixei de pagar dívidas que podia saldar?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui ganancioso, avarento ou desperdicei bens sem necessidade?</label>
+                            <label class="exame-item"><input type="checkbox"/> Neguei ajuda a quem passava necessidade, podendo ajudar?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">8.º — Não levantar falso testemunho</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não darás testemunho falso contra o teu próximo" (Ex 20,16)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Menti, mesmo em coisas "pequenas"?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fofoquei, espalhei boatos ou falei mal de alguém?</label>
+                            <label class="exame-item"><input type="checkbox"/> Julguei os outros com facilidade e sem caridade?</label>
+                            <label class="exame-item"><input type="checkbox"/> Caluniei alguém, atribuindo-lhe algo que não fez?</label>
+                            <label class="exame-item"><input type="checkbox"/> Quebrei segredos confiados a mim?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui hipócrita ou fingido?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">9.º — Não desejar a mulher/o marido do próximo</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não cobiçarás a mulher do teu próximo" (Ex 20,17)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Alimentei pensamentos impuros sobre pessoas comprometidas?</label>
+                            <label class="exame-item"><input type="checkbox"/> Desejei a destruição do casamento de alguém?</label>
+                            <label class="exame-item"><input type="checkbox"/> Tive inveja do relacionamento de outras pessoas?</label>
+                            <label class="exame-item"><input type="checkbox"/> Busquei satisfação emocional fora do meu compromisso?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10º Mandamento -->
+                <div class="accordion-tab">
+                    <div class="accordion-header">10.º — Não cobiçar as coisas alheias</div>
+                    <div class="accordion-content">
+                        <p class="bible-ref">📖 "Não cobiçarás... coisa alguma que pertença ao teu próximo" (Ex 20,17)</p>
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Tive inveja dos bens, talentos ou sucesso dos outros?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui materialista, pondo minha esperança nos bens terrenos?</label>
+                            <label class="exame-item"><input type="checkbox"/> Fui ingrato pelo que Deus me deu?</label>
+                            <label class="exame-item"><input type="checkbox"/> Desejei ter o que é dos outros em vez de confiar na providência divina?</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mandamentos da Igreja -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">⛪ Mandamentos da Igreja</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header">Deveres como católico</div>
+                    <div class="accordion-content">
+                        <div class="exame-checklist">
+                            <label class="exame-item"><input type="checkbox"/> Deixei de confessar-me ao menos uma vez por ano?</label>
+                            <label class="exame-item"><input type="checkbox"/> Deixei de comungar ao menos na Páscoa?</label>
+                            <label class="exame-item"><input type="checkbox"/> Deixei de jejuar e fazer abstinência nos dias prescritos (Quarta-feira de Cinzas e Sexta-feira Santa)?</label>
+                            <label class="exame-item"><input type="checkbox"/> Deixei de contribuir para as necessidades da Igreja conforme minhas possibilidades?</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contador e Ato de Contrição -->
+        <div class="card">
+            <div style="text-align:center;margin-bottom:16px;">
+                <p class="muted">Itens marcados: <strong id="checkedCount">0</strong></p>
+            </div>
+            <h2 style="text-align:center;margin-top:0;">💔 Ato de Contrição</h2>
+            <p style="text-align:center;line-height:1.7;font-size:1.05rem;">
+                Meu Deus, eu me arrependo de todo o coração de Vos ter ofendido, porque sois infinitamente bom e o pecado Vos desagrada. Proponho firmemente, com o auxílio da vossa graça, fazer penitência, não mais pecar e evitar as ocasiões de pecado. Senhor, pela Paixão de nosso Salvador Jesus Cristo, tende piedade de nós. <strong>Amém.</strong>
+            </p>
+        </div>
+
+        <!-- Oração após a confissão -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">✨ Oração de Agradecimento após a Confissão</h2>
+            <p style="text-align:center;line-height:1.7;">
+                Senhor meu Jesus Cristo, eu Vos agradeço por este Sacramento da Reconciliação. Agradeço pelo perdão dos meus pecados e pela graça que novamente recebi. Ajudai-me, Senhor, a perseverar no caminho do bem, a evitar as ocasiões de pecado e a crescer cada dia mais no vosso amor. Que a Virgem Maria, minha Mãe, me proteja e guie sempre. Amém.
+            </p>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        // Contador de itens marcados
+        $(document).on('change', '.exame-item input[type="checkbox"]', function() {
+            var count = $('.exame-item input:checked').length;
+            $('#checkedCount').text(count);
+        });
+
+        // Collapsible
+        $('.collapsible-toggle').on('click', function() {
+            var $body = $(this).next('.collapsible-body');
+            var $icon = $(this).find('.toggle-icon');
+            $body.slideToggle(200);
+            $icon.text($body.is(':visible') ? '▾' : '▸');
+        });
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

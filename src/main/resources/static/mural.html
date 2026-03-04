@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mural de Intenções — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <meta name="description" content="Mural de Intenções — Deixe sua intenção de oração e reze pelas intenções dos irmãos na fé."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <!-- Hero -->
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🕯️ Mural de Intenções</h1>
+                <p class="lead">Deixe sua intenção de oração e reze pelas intenções dos irmãos na fé.</p>
+                <p class="muted" id="totalIntencoes" style="margin-top:6px;">Carregando...</p>
+            </header>
+        </div>
+
+        <!-- Formulário -->
+        <div class="card fade-in">
+            <h3 style="margin:0 0 12px;text-align:center;">✍️ Registrar Nova Intenção</h3>
+            <div class="mural-form">
+                <label for="muralNome">Seu nome (opcional):</label>
+                <input type="text" id="muralNome" maxlength="100" placeholder="Seu nome"/>
+
+                <label for="muralIntencao">Sua intenção:</label>
+                <textarea id="muralIntencao" maxlength="500" required placeholder="Escreva sua intenção de oração..."></textarea>
+
+                <div style="text-align:center;">
+                    <button class="btn btn-primary" id="btnEnviar" style="min-width:200px;">
+                        🙏 Enviar Intenção
+                    </button>
+                </div>
+                <div id="muralMsg" class="msg-success" style="display:none;">✅ Intenção enviada com sucesso! Deus ouve suas preces.</div>
+                <div id="muralErr" class="msg-error" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading-spinner" id="muralLoading">
+            <div class="spinner"></div>
+            <span>Carregando intenções...</span>
+        </div>
+
+        <!-- Lista de intenções -->
+        <div id="listaIntencoes" class="fade-in"></div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Mural de Intenções" data-partilhar-texto="Reze pelas intenções dos irmãos no FeCatolica!">
+                📤 Convidar para Rezar
+            </button>
+        </div>
+
+        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        // Rastrear orações feitas (localStorage)
+        function getPrayedSet() {
+            try { return JSON.parse(localStorage.getItem('fecatolica_prayed') || '{}'); } catch(e) { return {}; }
+        }
+        function setPrayed(id) {
+            var set = getPrayedSet();
+            set[id] = (set[id] || 0) + 1;
+            try { localStorage.setItem('fecatolica_prayed', JSON.stringify(set)); } catch(e) {}
+        }
+        function hasPrayed(id) {
+            return !!getPrayedSet()[id];
+        }
+
+        function carregarIntencoes() {
+            $('#muralLoading').show();
+            $.getJSON('/api/mural/intencoes', function (data) {
+                $('#muralLoading').hide();
+                var html = '';
+                data.forEach(function (item, idx) {
+                    var prayed = hasPrayed(item.id || idx);
+                    html += '<div class="card intencao-card-modern fade-in" style="animation-delay:' + (idx * 0.05) + 's">';
+                    html += '  <div class="intencao-header">';
+                    html += '    <span class="intencao-nome-badge">' + (item.nome || 'Anônimo') + '</span>';
+                    html += '    <span class="intencao-data">' + (item.dataHora || '') + '</span>';
+                    html += '  </div>';
+                    html += '  <div class="intencao-texto">' + (item.intencao || '') + '</div>';
+                    html += '  <div class="intencao-actions">';
+                    html += '    <button class="btn-pray' + (prayed ? ' prayed' : '') + '" data-pray-id="' + (item.id || idx) + '" title="Rezei por esta intenção">';
+                    html += '      ' + (prayed ? '❤️' : '🙏') + ' <span class="pray-label">' + (prayed ? 'Rezei' : 'Rezar por esta intenção') + '</span>';
+                    html += '    </button>';
+                    html += '  </div>';
+                    html += '</div>';
+                });
+                if (!data.length) {
+                    html = '<div class="card" style="text-align:center;padding:30px;color:#888;">Nenhuma intenção registrada ainda. Seja o primeiro a deixar a sua!</div>';
+                }
+                $('#listaIntencoes').html(html);
+            }).fail(function() {
+                $('#muralLoading').hide();
+                $('#listaIntencoes').html('<div class="card" style="text-align:center;color:#dc3545;padding:20px;">❌ Erro ao carregar intenções.</div>');
+            });
+
+            $.getJSON('/api/mural/total', function (data) {
+                var total = data.total || 0;
+                $('#totalIntencoes').text(total + ' intenção(ões) registrada(s) — Deus ouve cada uma delas.');
+            });
+        }
+
+        $(function () {
+            carregarIntencoes();
+
+            // Enviar
+            $('#btnEnviar').on('click', function () {
+                var intencao = $('#muralIntencao').val().trim();
+                if (!intencao) {
+                    $('#muralErr').text('Por favor, escreva sua intenção.').show();
+                    return;
+                }
+                $('#muralErr, #muralMsg').hide();
+                var $btn = $(this);
+                $btn.prop('disabled', true).text('Enviando...');
+
+                $.ajax({
+                    url: '/api/mural/intencoes',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        nome: $('#muralNome').val(),
+                        intencao: intencao
+                    }),
+                    success: function () {
+                        $('#muralMsg').fadeIn();
+                        $('#muralNome').val('');
+                        $('#muralIntencao').val('');
+                        $btn.prop('disabled', false).html('🙏 Enviar Intenção');
+                        carregarIntencoes();
+                        if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+                        setTimeout(function(){ $('#muralMsg').fadeOut(); }, 4000);
+                    },
+                    error: function () {
+                        $btn.prop('disabled', false).html('🙏 Enviar Intenção');
+                        $('#muralErr').text('Erro ao enviar. Tente novamente.').show();
+                    }
+                });
+            });
+
+            // Rezar por intenção
+            $(document).on('click', '.btn-pray:not(.prayed)', function() {
+                var $btn = $(this);
+                var id = $btn.data('pray-id');
+                setPrayed(id);
+                $btn.addClass('prayed').html('❤️ <span class="pray-label">Rezei</span>');
+                // Pequena animação
+                $btn.css('transform', 'scale(1.15)');
+                setTimeout(function() { $btn.css('transform', ''); }, 300);
+            });
+        });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

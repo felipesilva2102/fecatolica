@@ -4,8 +4,6 @@
  */
 package com.mycompany.santo.terco.novena;
 
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +12,6 @@ import lombok.Setter;
  *
  * @author Felipe
  */
-@Named
-@SessionScoped
 @Getter
 @Setter
 public class NovenaPurificacao implements Serializable {

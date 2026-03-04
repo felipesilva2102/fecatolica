@@ -1,0 +1,53 @@
+<footer id="footer" style="text-align:center; padding:20px; background:#f9f9f9; border-top:1px solid #eee;">
+    <!-- Jaculatória / Oração curta -->
+    <div class="footer-prayer" id="footerPrayer">
+        "Jesus, manso e humilde de Coração, fazei o meu coração semelhante ao Vosso."
+    </div>
+
+    <div style="margin:16px 0;">
+        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais"
+           target="_blank"
+           style="background:#25D366;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+            💬 WhatsApp
+        </a>
+        <a href="mailto:felipefrancelino2015@gmail.com?subject=Contato&body=Olá!"
+           onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=felipefrancelino2015@gmail.com&su=Contato&body=Olá!', '_blank'); return false;"
+           style="background:#39588f;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;margin:4px;display:inline-block;">
+            📧 Email
+        </a>
+    </div>
+    <p style="font-size:.85rem; color:#777; margin:8px 0;">
+        FeCatolica — Portal de Fé, Oração e Devoção Católica
+    </p>
+    <div style="margin-top:10px; color:#bbb; font-size:0.85rem;">
+        Desenvolvido por <strong>FS Tech</strong> —
+        <a href="https://wa.me/5584999937274?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+           target="_blank"
+           style="text-decoration:none; color:#25D366; font-weight:bold;">
+            📱 +55 (84) 99993-7274
+        </a>
+    </div>
+</footer>
+
+<script>
+(function() {
+    var prayers = [
+        '"Jesus, manso e humilde de Coração, fazei o meu coração semelhante ao Vosso."',
+        '"Meu Jesus, misericórdia!" — Jaculatória tradicional',
+        '"Maria, Mãe de Deus e nossa Mãe, rogai por nós!"',
+        '"Sagrado Coração de Jesus, eu confio em Vós!"',
+        '"São José, protetor da Sagrada Família, rogai por nós!"',
+        '"São Miguel Arcanjo, defendei-nos no combate!"',
+        '"Jesus, eu confio em Vós!" — Santa Faustina',
+        '"Ó Maria concebida sem pecado, rogai por nós que recorremos a Vós!"',
+        '"Senhor, aumentai a nossa fé!" — Lc 17,5',
+        '"Doce Coração de Maria, sede a nossa salvação!"',
+        '"Anjo da guarda, guardai-me e protegei-me!"',
+        '"Tudo por Jesus, nada sem Maria!"',
+        '"Senhor, não sou digno de que entreis em minha morada..."'
+    ];
+    var dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    var el = document.getElementById('footerPrayer');
+    if (el) el.textContent = prayers[dayOfYear % prayers.length];
+})();
+</script>

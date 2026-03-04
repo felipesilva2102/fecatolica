@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Via-Sacra — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✝️ Via-Sacra</h1>
+                <p class="lead">As 14 Estações do Caminho da Cruz — medite a Paixão de Nosso Senhor.</p>
+            </header>
+        </div>
+
+        <!-- Progresso visual -->
+        <div class="card" style="text-align:center;">
+            <p class="muted" id="stationProgress">Estação 1 de 14</p>
+            <div class="via-sacra-progress">
+                <div class="via-sacra-progress-fill" id="progressFill" style="width:7.14%;"></div>
+            </div>
+            <div class="via-sacra-dots" id="stationDots"></div>
+        </div>
+
+        <!-- Container da estação atual -->
+        <div class="card" id="stationCard">
+            <div style="text-align:center;margin-bottom:12px;">
+                <span class="badge-month" id="stationBadge">I</span>
+            </div>
+            <h2 style="text-align:center;margin-top:0;" id="stationTitle"></h2>
+            <p style="text-align:center;font-style:italic;color:#666;" id="stationRef" class="muted"></p>
+
+            <div class="reading-block" id="stationMeditation" style="margin:16px 0;"></div>
+
+            <div style="background:#f9f5ef;border-left:4px solid #c9a84c;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;font-weight:600;">🙏 Oração</p>
+                <p style="margin:8px 0 0;" id="stationPrayer"></p>
+            </div>
+
+            <div style="text-align:center;margin-top:8px;">
+                <p style="font-style:italic;color:#888;margin:0;">
+                    V. Tende piedade de nós, Senhor.<br/>
+                    R. Tende piedade de nós.<br/>
+                    <em>Pai-Nosso, Ave-Maria, Glória ao Pai...</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Navegação -->
+        <div style="display:flex;justify-content:center;gap:12px;margin:16px 0;flex-wrap:wrap;">
+            <button class="btn-primary" id="btnPrev" onclick="prevStation()">⬅ Anterior</button>
+            <button class="btn-primary" id="btnNext" onclick="nextStation()">Próxima ➡</button>
+        </div>
+
+        <!-- Oração Final (visível só no final) -->
+        <div class="card" id="finalPrayer" style="display:none;text-align:center;">
+            <h2 style="margin-top:0;">🕊️ Oração Final</h2>
+            <p style="line-height:1.8;">
+                Senhor Jesus Cristo, que pelo Vosso Caminho da Cruz quisestes redimir o mundo, 
+                concedei-nos que, meditando devotamente a Vossa Paixão, obtenhamos os frutos 
+                da Redenção. Vós que viveis e reinais pelos séculos dos séculos. Amém.
+            </p>
+            <p style="font-style:italic;margin-top:12px;" class="muted">
+                Reza-se: 1 Pai-Nosso, 1 Ave-Maria e 1 Glória ao Pai pelas intenções do Santo Padre.
+            </p>
+            <div class="msg-success" style="margin-top:16px;">
+                ✅ Você completou a Via-Sacra! Que Deus abençoe a sua meditação.
+            </div>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Via-Sacra — FeCatolica" data-partilhar-texto="Medite a Paixão de Cristo com a Via-Sacra no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var stations = [
+            {
+                num: 'I', title: '1ª Estação — Jesus é condenado à morte',
+                ref: 'Mt 27,22-26',
+                meditation: 'Pilatos perguntou: "Que farei de Jesus, chamado Cristo?" Todos responderam: "Crucifica-o!" Jesus, inocente, aceita em silêncio a sentença de morte. O Cordeiro de Deus se entrega voluntariamente para a nossa salvação.',
+                prayer: 'Senhor Jesus, quantas vezes condeno os outros com palavras, pensamentos e atitudes! Dai-me a graça de ser justo e misericordioso como Vós fostes, aceitando com paciência as injustiças da vida.'
+            },
+            {
+                num: 'II', title: '2ª Estação — Jesus carrega a Cruz',
+                ref: 'Jo 19,17',
+                meditation: 'Jesus, carregando a própria cruz, saiu para o lugar chamado Calvário. O peso da cruz não é apenas madeira — é o peso de todos os nossos pecados. Ele a abraça com amor infinito.',
+                prayer: 'Senhor, ajudai-me a carregar a minha cruz de cada dia com fé e confiança, sabendo que Vós carregais comigo o peso que me parece insuportável.'
+            },
+            {
+                num: 'III', title: '3ª Estação — Jesus cai pela primeira vez',
+                ref: 'Is 53,4-5',
+                meditation: 'Ele tomou sobre si as nossas dores e carregou os nossos sofrimentos. Debilitado pelos açoites e pelo peso da cruz, Jesus cai por terra. Mas levanta-se, porque o amor é mais forte.',
+                prayer: 'Senhor, nas minhas quedas e fraquezas, dai-me a força de me levantar sempre. Que eu nunca desista diante das dificuldades, confiando na Vossa graça.'
+            },
+            {
+                num: 'IV', title: '4ª Estação — Jesus encontra sua Mãe',
+                ref: 'Lc 2,34-35',
+                meditation: 'Uma espada de dor transpassará a tua alma, dissera Simeão a Maria. Agora, no caminho do Calvário, mãe e filho se encontram. Maria sofre em silêncio, unida à Paixão do seu Filho.',
+                prayer: 'Maria, Mãe das Dores, intercedei por nós. Ajudai-nos a estar junto de Jesus nos momentos de sofrimento, assim como estivestes junto dele no caminho da cruz.'
+            },
+            {
+                num: 'V', title: '5ª Estação — Simão Cireneu ajuda Jesus',
+                ref: 'Mc 15,21',
+                meditation: 'Obrigaram um certo Simão de Cirene a carregar a cruz de Jesus. O que começou como imposição tornou-se graça. Simão tocou a cruz de Cristo e sua vida foi transformada.',
+                prayer: 'Senhor, dai-me olhos para ver o irmão que sofre e a generosidade de ajudá-lo a carregar a sua cruz. Que eu saiba ser Cireneu para os outros.'
+            },
+            {
+                num: 'VI', title: '6ª Estação — Verônica enxuga o rosto de Jesus',
+                ref: 'Is 53,2-3',
+                meditation: 'Não tinha beleza nem esplendor que atraísse os olhos. Uma mulher corajosa rompe a multidão e enxuga o rosto ensanguentado de Jesus. No pano ficou gravada a Sua Santa Face.',
+                prayer: 'Senhor, dai-me a coragem de Verônica para me aproximar de quem sofre, sem medo de me envolver, e ali reconhecer o Vosso rosto desfigurado.'
+            },
+            {
+                num: 'VII', title: '7ª Estação — Jesus cai pela segunda vez',
+                ref: 'Sl 22,15-16',
+                meditation: 'Sou como água que se derrama; todos os meus ossos estão desconjuntados. Jesus cai novamente sob o peso da cruz. O esgotamento é extremo, mas Ele prossegue por amor a nós.',
+                prayer: 'Senhor, quando as recaídas e tentações me derrubam, lembrai-me que Vós também caístes e Vos levantastes. Renovai em mim a esperança e a perseverança.'
+            },
+            {
+                num: 'VIII', title: '8ª Estação — Jesus consola as mulheres de Jerusalém',
+                ref: 'Lc 23,28-29',
+                meditation: 'Filhas de Jerusalém, não choreis por mim; chorai por vós mesmas e por vossos filhos. Mesmo em agonia, Jesus pensa nos outros. O seu amor é doação total.',
+                prayer: 'Senhor, dai-me um coração compassivo como o Vosso, que mesmo no sofrimento se importa com o próximo. Que as minhas lágrimas sejam de conversão sincera.'
+            },
+            {
+                num: 'IX', title: '9ª Estação — Jesus cai pela terceira vez',
+                ref: 'Lm 3,27-32',
+                meditation: 'A misericórdia do Senhor não se esgota. A terceira queda mostra a profundidade do sofrimento de Cristo. Cada queda representa os pecados que cometemos mesmo depois de muitas conversões.',
+                prayer: 'Senhor misericordioso, Vós nunca desistis de mim, mesmo quando eu caio repetidamente. Dai-me a humildade de reconhecer a minha fragilidade e a confiança de buscar sempre o Vosso perdão.'
+            },
+            {
+                num: 'X', title: '10ª Estação — Jesus é despojado de suas vestes',
+                ref: 'Jo 19,23-24',
+                meditation: 'Dividiram entre si as minhas vestes e sobre a minha túnica lançaram sortes. Jesus é humilhado publicamente, despojado de tudo. Nada mais lhe resta senão o amor.',
+                prayer: 'Senhor, despojeus-me do orgulho, da vaidade e de tudo o que me afasta de Vós. Que eu aprenda a encontrar a minha dignidade não nas coisas, mas em ser filho de Deus.'
+            },
+            {
+                num: 'XI', title: '11ª Estação — Jesus é pregado na Cruz',
+                ref: 'Lc 23,33-34',
+                meditation: 'Pai, perdoa-lhes, porque não sabem o que fazem. Ao ser cravado na cruz, Jesus não grita vingança — clama perdão. Os cravos não O prendem; é o amor que O mantém na cruz.',
+                prayer: 'Senhor Jesus, cravado na cruz por mim, ajudai-me a perdoar quem me ofende. Que o Vosso amor vença todo ressentimento no meu coração.'
+            },
+            {
+                num: 'XII', title: '12ª Estação — Jesus morre na Cruz',
+                ref: 'Jo 19,30',
+                meditation: 'Está consumado! Jesus inclinou a cabeça e entregou o espírito. O véu do Templo se rasgou. Consumou-se a obra da Redenção. Pela morte de um só, todos vivem.',
+                prayer: 'Senhor, diante da Vossa morte na cruz, recolho-me em silêncio e gratidão. Pelo Vosso sacrifício, abrisses-me as portas do Céu. Não permitais que eu viva em vão o dom da Vossa Redenção.'
+            },
+            {
+                num: 'XIII', title: '13ª Estação — Jesus é descido da Cruz',
+                ref: 'Jo 19,38-40',
+                meditation: 'José de Arimateia pediu o corpo de Jesus. Maria recebe nos braços o corpo sem vida do seu Filho. A Pietà — a mesma Mãe que O acolheu em Belém agora O acolhe morto.',
+                prayer: 'Maria Santíssima, que acolhestes nos vossos braços o corpo de Jesus, acolhei-nos também a nós. Sede a nossa Mãe em todos os momentos, especialmente nos mais difíceis.'
+            },
+            {
+                num: 'XIV', title: '14ª Estação — Jesus é sepultado',
+                ref: 'Mt 27,59-60',
+                meditation: 'José tomou o corpo, envolveu-o num lençol limpo e o depositou num sepulcro novo escavado na rocha. O sepulcro é fechado. Mas a pedra não guardará a Vida para sempre. A Ressurreição está próxima.',
+                prayer: 'Senhor, assim como o grão de trigo que morre na terra para dar muito fruto, dai-me a esperança de que todo sofrimento, toda morte, é caminho para a Ressurreição. Amém.'
+            }
+        ];
+
+        var current = 0;
+
+        // Gerar dots
+        var dotsHtml = '';
+        for (var i = 0; i < stations.length; i++) {
+            dotsHtml += '<span class="via-sacra-dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '">' + (i+1) + '</span>';
+        }
+        $('#stationDots').html(dotsHtml);
+
+        // Click nos dots
+        $('.via-sacra-dot').on('click', function() {
+            current = parseInt($(this).data('idx'));
+            renderStation();
+        });
+
+        function renderStation() {
+            var s = stations[current];
+            $('#stationBadge').text(s.num);
+            $('#stationTitle').text(s.title);
+            $('#stationRef').text('📖 ' + s.ref);
+            $('#stationMeditation').html('<p style="line-height:1.8;">' + s.meditation + '</p>');
+            $('#stationPrayer').text(s.prayer);
+            $('#stationProgress').text('Estação ' + (current+1) + ' de 14');
+            $('#progressFill').css('width', ((current+1)/14*100).toFixed(1) + '%');
+
+            // Atualiza dots
+            $('.via-sacra-dot').removeClass('active completed');
+            for (var i = 0; i < current; i++) {
+                $('.via-sacra-dot').eq(i).addClass('completed');
+            }
+            $('.via-sacra-dot').eq(current).addClass('active');
+
+            // Botões
+            $('#btnPrev').prop('disabled', current === 0);
+            $('#btnNext').text(current === stations.length - 1 ? '✅ Concluir' : 'Próxima ➡');
+
+            // Oração final
+            $('#finalPrayer').toggle(current === stations.length - 1);
+
+            // Scroll suave
+            $('html, body').animate({scrollTop: $('#stationCard').offset().top - 80}, 300);
+
+            // Streak / localStorage
+            if (current === stations.length - 1) {
+                localStorage.setItem('viaSacra_completed_' + new Date().toISOString().slice(0,10), 'true');
+                if (window.FeStreaks) window.FeStreaks.record();
+            }
+        }
+
+        window.prevStation = function() {
+            if (current > 0) { current--; renderStation(); }
+        };
+        window.nextStation = function() {
+            if (current < stations.length - 1) { current++; renderStation(); }
+        };
+
+        renderStation();
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Novena — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <!-- Hero Header -->
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1 id="novenaNome">Carregando...</h1>
+                <p class="lead">Acompanhe seu progresso e medite nas orações do dia.</p>
+                <p class="muted" id="novenaPeriodo"></p>
+            </header>
+        </div>
+
+        <!-- Progresso dos 9 dias -->
+        <div class="card fade-in" id="novenaProgressCard" style="display:none;">
+            <h3 style="text-align:center;margin:0 0 12px;">📅 Progresso da Novena</h3>
+            <div class="novena-day-tracker" id="dayTracker"></div>
+            <p class="muted" style="text-align:center;margin:8px 0 0;" id="dayStatus"></p>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading-spinner" id="novenaLoading">
+            <div class="spinner"></div>
+            <span>Carregando novena...</span>
+        </div>
+
+        <!-- Accordion com as orações -->
+        <div id="accordionNovena" class="fade-in"></div>
+
+        <!-- Botões -->
+        <div style="text-align:center;margin:16px 0;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Estou rezando uma novena no FeCatolica! Reze comigo.">
+                📤 Convidar para Rezar
+            </button>
+            <button class="btn btn-primary" id="btnMarcarDia" style="display:none;">
+                ✅ Marcar Dia como Rezado
+            </button>
+        </div>
+
+        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        var fieldTitles = {
+            'historia': '📜 História',
+            'motivo': '💡 Motivo',
+            'palavrasPapa': null,
+            'gracas': null,
+            'comoFazer': '📖 Contexto',
+            'oracaoPreparatoria': '🙏 Oração Preparatória Para Todos os Dias',
+            'aprendizado': '📘 Aprendizado',
+            'atoContricao': '💔 Ato de Contrição',
+            'oracaoInicial': '🕊️ Oração Inicial',
+            'oracaoDias': '📿 Oração de Todos os Dias',
+            'jaculatoria': '✨ Jaculatória',
+            'primeiroDia': '1️⃣ Primeiro Dia',
+            'segundoDia': '2️⃣ Segundo Dia',
+            'terceiroDia': '3️⃣ Terceiro Dia',
+            'quartoDia': '4️⃣ Quarto Dia',
+            'quintoDia': '5️⃣ Quinto Dia',
+            'sextoDia': '6️⃣ Sexto Dia',
+            'setimoDia': '7️⃣ Sétimo Dia',
+            'oitavoDia': '8️⃣ Oitavo Dia',
+            'nonoDia': '9️⃣ Nono Dia',
+            'ladainha': '📖 Ladainha',
+            'atoConsagracaoGenero': '👑 Ato de Consagração',
+            'atoConsagracaoIndividual': '🙏 Consagração Individual',
+            'oracaoFinalTodosDias': '🙏 Oração Final de Todos os Dias',
+            'responsorio': '🎵 Responsório',
+            'oracaoFinal': '🙏 Oração Final',
+            'suplicaFinal': '💫 Súplica Final'
+        };
+
+        var skipFields = ['nome', 'periodo', 'palavrasPapa', 'gracas', 'disponivel', 'serialVersionUID'];
+
+        var dayFields = ['primeiroDia','segundoDia','terceiroDia','quartoDia','quintoDia','sextoDia','setimoDia','oitavoDia','nonoDia'];
+
+        // === Progresso de Novena (localStorage) ===
+        function getNovenaProgress(nomeBean) {
+            try { return JSON.parse(localStorage.getItem('fecatolica_novena_' + nomeBean) || '{}'); } catch(e) { return {}; }
+        }
+        function setNovenaProgress(nomeBean, progress) {
+            try { localStorage.setItem('fecatolica_novena_' + nomeBean, JSON.stringify(progress)); } catch(e) {}
+        }
+
+        function renderDayTracker(nomeBean) {
+            var progress = getNovenaProgress(nomeBean);
+            var daysCompleted = progress.days || [];
+            var html = '';
+            for (var i = 1; i <= 9; i++) {
+                var completed = daysCompleted.indexOf(i) !== -1;
+                var isCurrent = daysCompleted.length + 1 === i;
+                html += '<div class="day-dot' + (completed ? ' completed' : '') + (isCurrent ? ' current' : '') + '" data-day="' + i + '" title="Dia ' + i + '">';
+                html += completed ? '✓' : i;
+                html += '</div>';
+            }
+            $('#dayTracker').html(html);
+            $('#novenaProgressCard').show();
+
+            var total = daysCompleted.length;
+            if (total >= 9) {
+                $('#dayStatus').html('🎉 <strong>Novena concluída!</strong> Que Deus abençoe suas preces.');
+                $('#btnMarcarDia').hide();
+            } else {
+                $('#dayStatus').text('Dia ' + (total + 1) + ' de 9 — ' + total + ' dia(s) rezado(s)');
+                $('#btnMarcarDia').show().text('✅ Marcar Dia ' + (total + 1) + ' como Rezado');
+            }
+        }
+
+        $(function () {
+            var params = new URLSearchParams(window.location.search);
+            var nomeBean = params.get('n');
+
+            if (!nomeBean) {
+                $('#novenaNome').text('Nenhuma novena selecionada');
+                $('#novenaLoading').hide();
+                return;
+            }
+
+            $.getJSON('/api/novena/' + nomeBean, function (data) {
+                $('#novenaLoading').hide();
+
+                document.title = (data.nome || 'Novena') + ' — FeCatolica';
+                $('#novenaNome').text(data.nome || 'Novena');
+                if (data.periodo) $('#novenaPeriodo').text('📅 ' + data.periodo);
+
+                // Progresso
+                renderDayTracker(nomeBean);
+
+                var sections = [];
+
+                if (data.motivo) {
+                    var content = data.motivo;
+                    if (data.palavrasPapa) content += '\n\n' + data.palavrasPapa;
+                    if (data.gracas) content += '\n\n' + data.gracas;
+                    sections.push({title: '💡 Motivo', content: content});
+                }
+
+                var orderedFields = [
+                    'historia', 'comoFazer', 'oracaoPreparatoria', 'aprendizado',
+                    'atoContricao', 'oracaoInicial', 'oracaoDias', 'jaculatoria',
+                    'primeiroDia', 'segundoDia', 'terceiroDia', 'quartoDia',
+                    'quintoDia', 'sextoDia', 'setimoDia', 'oitavoDia', 'nonoDia',
+                    'ladainha', 'atoConsagracaoGenero', 'atoConsagracaoIndividual',
+                    'oracaoFinalTodosDias', 'responsorio', 'oracaoFinal', 'suplicaFinal'
+                ];
+
+                orderedFields.forEach(function (field) {
+                    if (data[field] && fieldTitles[field]) {
+                        sections.push({title: fieldTitles[field], content: data[field]});
+                    }
+                });
+
+                buildAccordion(sections, '#accordionNovena');
+
+                // Auto-open current day section
+                var progress = getNovenaProgress(nomeBean);
+                var currentDay = (progress.days || []).length;
+                if (currentDay < 9 && dayFields[currentDay]) {
+                    var dayTitle = fieldTitles[dayFields[currentDay]];
+                    if (dayTitle) {
+                        setTimeout(function() {
+                            $('.accordion-header').each(function() {
+                                if ($(this).text().trim() === dayTitle) {
+                                    $(this).trigger('click');
+                                    $('html,body').animate({scrollTop: $(this).offset().top - 80}, 400);
+                                }
+                            });
+                        }, 300);
+                    }
+                }
+
+            }).fail(function () {
+                $('#novenaLoading').hide();
+                $('#novenaNome').text('Novena não encontrada');
+            });
+
+            // Marcar dia
+            $('#btnMarcarDia').on('click', function() {
+                var progress = getNovenaProgress(nomeBean);
+                var days = progress.days || [];
+                var nextDay = days.length + 1;
+                if (nextDay <= 9) {
+                    days.push(nextDay);
+                    progress.days = days;
+                    progress.lastDate = new Date().toISOString().split('T')[0];
+                    setNovenaProgress(nomeBean, progress);
+                    renderDayTracker(nomeBean);
+                    if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+                }
+            });
+        });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

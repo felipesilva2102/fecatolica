@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Santo Terço — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📿 Santo Terço</h1>
+                <p class="lead">Reze o terço diário com meditações e contas interativas.</p>
+                <p id="todayMystery" class="muted" style="margin-top:6px;font-weight:600;"></p>
+            </header>
+        </div>
+
+        <!-- Tutorial colapsável -->
+        <div class="card collapsible-section">
+            <h2 class="collapsible-toggle">📖 Como rezar o Santo Terço <span class="toggle-icon">▸</span></h2>
+            <div class="collapsible-body" style="display:none;">
+                <p class="muted">O Terço é composto de cinco dezenas, correspondendo a um dos quatro grupos de mistérios do dia.</p>
+                <div class="tutorial-step">
+                    <img src="/imagens/ImageUm.png" alt="Credo"/>
+                    <p><strong>1. Início:</strong> Faça o <em>Sinal da Cruz</em> e reze o <em>Credo Apostólico</em>.</p>
+                </div>
+                <div class="tutorial-step">
+                    <img src="/imagens/imageDois.png" alt="Pai Nosso"/>
+                    <p><strong>2. Primeira conta grande:</strong> Reze o <em>Pai-Nosso</em>.</p>
+                </div>
+                <div class="tutorial-step">
+                    <img src="/imagens/ImageTrês.png" alt="Ave-Maria"/>
+                    <p><strong>3. Três contas pequenas:</strong> Reze três <em>Ave-Marias</em> pelas virtudes da Fé, Esperança e Caridade.</p>
+                </div>
+                <div class="tutorial-step">
+                    <img src="/imagens/imageQuatro.png" alt="Glória"/>
+                    <p><strong>4. Em seguida:</strong> Reze o <em>Glória ao Pai</em> e a <em>Oração de Fátima</em>.</p>
+                </div>
+                <div class="tutorial-step">
+                    <img src="/imagens/ImageCinco.png" alt="Mistério"/>
+                    <p><strong>5. Nas dezenas:</strong> Medite cada Mistério, rezando <em>1 Pai-Nosso + 10 Ave-Marias + 1 Glória + Oração de Fátima</em>.</p>
+                </div>
+                <div class="tutorial-step">
+                    <img src="/imagens/ImageSeis.png" alt="Salve Rainha"/>
+                    <p><strong>6. Final:</strong> Reze a <em>Salve Rainha</em> e encerre com o <em>Sinal da Cruz</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout principal -->
+        <div class="card">
+            <div class="layout">
+                <main>
+                    <div class="card" style="box-shadow:none;border:1px solid #e0e0e0;">
+                        <h2 style="margin-top:0;">🙏 Orações do Terço</h2>
+                        <div class="accordion-panel">
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Sinal da Cruz</div>
+                                <div class="accordion-content"><p>Pelo sinal da Santa Cruz, livrai-nos, Deus, Nosso Senhor, dos nossos inimigos. Em nome do Pai e do Filho e do Espírito Santo. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Credo Apostólico</div>
+                                <div class="accordion-content"><p>Creio em Deus Pai todo-poderoso, Criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso, donde há de vir a julgar os vivos e os mortos; creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Pai-Nosso</div>
+                                <div class="accordion-content"><p>Pai-Nosso que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade assim na terra como no céu; o pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Ave-Maria</div>
+                                <div class="accordion-content"><p>Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora de nossa morte. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Glória ao Pai</div>
+                                <div class="accordion-content"><p>Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Oração de Fátima</div>
+                                <div class="accordion-content"><p>Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o céu, e socorrei principalmente as que mais precisarem da vossa misericórdia. Amém.</p></div>
+                            </div>
+                            <div class="accordion-tab">
+                                <div class="accordion-header">Salve Rainha</div>
+                                <div class="accordion-content"><p>Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria.<br/><br/>V. Rogai por nós, Santa Mãe de Deus.<br/>R. Para que sejamos dignos das promessas de Cristo. Amém.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <aside>
+                    <div class="card" style="box-shadow:none;border:1px solid #e0e0e0;">
+                        <h2 style="margin-top:0;" id="mysteryTitle">Mistério de Hoje</h2>
+                        <div id="mysteryBody"></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Contas Interativas -->
+        <div class="card beads-card">
+            <div class="beads-header">
+                <h2>📿 Contas Interativas</h2>
+                <p class="muted">Toque em cada conta conforme reza. Acompanhe seu progresso abaixo.</p>
+            </div>
+
+            <!-- Legenda de cores -->
+            <div class="beads-legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#4CAF50;"></span> Pai-Nosso</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#2196F3;"></span> Ave-Maria</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FF9800;"></span> Glória</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#9C27B0;"></span> Fátima</span>
+            </div>
+
+            <div id="decadesContainer"></div>
+
+            <!-- Progresso e controles -->
+            <div id="progressBar" class="beads-progress-area" style="display:none;">
+                <div class="progress-ring-wrap">
+                    <svg class="progress-ring" width="90" height="90" viewBox="0 0 90 90">
+                        <circle class="progress-ring-bg" cx="45" cy="45" r="38" />
+                        <circle class="progress-ring-fill" id="progressRing" cx="45" cy="45" r="38" />
+                    </svg>
+                    <span class="progress-ring-text" id="progressPct">0%</span>
+                </div>
+                <div class="progress-details">
+                    <p id="progressText" class="progress-count">0 de 0 orações</p>
+                    <div class="progress-bar-linear">
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-reset" id="btnResetBeads" style="display:none;">↺ Recomeçar contagem</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    var Terco = (function () {
+        /* Mistérios na ordem correta — mesmo do Rosário */
+        var mysteries = [
+            {
+                title: 'Mistérios Gozosos', days: ['segunda-feira', 'sábado'], color: '#4CAF50', icon: '🕊️',
+                virtues: ['Humildade', 'Caridade', 'Desapego', 'Obediência', 'Piedade'],
+                items: [
+                    {name: '1.º — A Anunciação do Anjo a Maria', ref: 'Lc 1,26-38', meditation: 'Maria responde com humildade: "Eis aqui a serva do Senhor."'},
+                    {name: '2.º — A Visitação a Santa Isabel', ref: 'Lc 1,39-56', meditation: '"Bendita és tu entre as mulheres e bendito é o fruto do teu ventre!"'},
+                    {name: '3.º — O Nascimento de Jesus em Belém', ref: 'Lc 2,1-20', meditation: '"Glória a Deus nas alturas e paz na terra aos homens de boa vontade."'},
+                    {name: '4.º — A Apresentação no Templo', ref: 'Lc 2,22-40', meditation: '"Agora, Senhor, podeis deixar o vosso servo ir em paz."'},
+                    {name: '5.º — O Encontro de Jesus entre os Doutores', ref: 'Lc 2,41-52', meditation: '"Não sabíeis que devo ocupar-me das coisas de meu Pai?"'}
+                ]
+            },
+            {
+                title: 'Mistérios Luminosos', days: ['quinta-feira'], color: '#FFC107', icon: '✨',
+                virtues: ['Abertura ao Espírito', 'Fé', 'Conversão', 'Santidade', 'Adoração'],
+                items: [
+                    {name: '1.º — O Batismo de Jesus no Jordão', ref: 'Mt 3,13-17', meditation: '"Este é o meu Filho amado, em quem me comprazo."'},
+                    {name: '2.º — As Bodas de Caná', ref: 'Jo 2,1-12', meditation: '"Fazei tudo o que Ele vos disser."'},
+                    {name: '3.º — O Anúncio do Reino de Deus', ref: 'Mc 1,14-15', meditation: '"Convertei-vos e crede no Evangelho."'},
+                    {name: '4.º — A Transfiguração', ref: 'Mt 17,1-8', meditation: '"Este é o meu Filho amado. Escutai-O."'},
+                    {name: '5.º — A Instituição da Eucaristia', ref: 'Mt 26,26-29', meditation: '"Isto é o meu Corpo... fazei isto em minha memória."'}
+                ]
+            },
+            {
+                title: 'Mistérios Dolorosos', days: ['terça-feira', 'sexta-feira'], color: '#c0392b', icon: '✝️',
+                virtues: ['Contrição', 'Mortificação', 'Paciência', 'Perseverança', 'Entrega a Deus'],
+                items: [
+                    {name: '1.º — A Agonia no Horto', ref: 'Lc 22,39-46', meditation: '"Não se faça a minha vontade, mas a Tua."'},
+                    {name: '2.º — A Flagelação', ref: 'Jo 19,1', meditation: 'Jesus é açoitado, oferecendo cada golpe pela remissão dos pecados.'},
+                    {name: '3.º — A Coroação de Espinhos', ref: 'Mt 27,27-31', meditation: '"Salve, Rei dos judeus!" — Jesus aceita em silêncio.'},
+                    {name: '4.º — Jesus carrega a Cruz', ref: 'Jo 19,17', meditation: 'Jesus toma a pesada cruz e caminha rumo ao Calvário.'},
+                    {name: '5.º — A Crucificação e Morte', ref: 'Lc 23,33-46', meditation: '"Pai, em Tuas mãos entrego o meu espírito."'}
+                ]
+            },
+            {
+                title: 'Mistérios Gloriosos', days: ['quarta-feira', 'domingo'], color: '#8e44ad', icon: '👑',
+                virtues: ['Fé', 'Esperança', 'Amor ao Espírito', 'Devoção a Maria', 'Perseverança'],
+                items: [
+                    {name: '1.º — A Ressurreição de Jesus', ref: 'Mt 28,1-10', meditation: '"Ele não está aqui: ressuscitou como havia dito."'},
+                    {name: '2.º — A Ascensão ao Céu', ref: 'At 1,6-11', meditation: '"Ele voltará do mesmo modo como O vistes partir."'},
+                    {name: '3.º — A Descida do Espírito Santo', ref: 'At 2,1-13', meditation: 'O Espírito desce em línguas de fogo sobre Maria e os Apóstolos.'},
+                    {name: '4.º — A Assunção de Maria', ref: 'Ap 12,1', meditation: 'Maria é elevada em corpo e alma ao Céu.'},
+                    {name: '5.º — A Coroação de Maria', ref: 'Ap 12,1; Sl 45', meditation: 'Maria é coroada Rainha do Céu e da Terra.'}
+                ]
+            }
+        ];
+
+        var totalBeads = 0, clickedBeads = 0;
+
+        function getTodayMystery() {
+            var today = new Date().toLocaleDateString('pt-BR', {weekday:'long'}).toLowerCase();
+            for (var i = 0; i < mysteries.length; i++) {
+                if (mysteries[i].days.indexOf(today) !== -1) return mysteries[i];
+            }
+            return mysteries[0];
+        }
+
+        function makeBead(text, tip, size, activeColor) {
+            var el = document.createElement('div');
+            el.className = 'rosary-bead';
+            el.innerText = text;
+            el.title = tip;
+            el.style.width = size + 'px';
+            el.style.height = size + 'px';
+            el.style.lineHeight = size + 'px';
+            el.onclick = function() {
+                if (!el.classList.contains('clicked')) {
+                    el.classList.add('clicked');
+                    el.style.backgroundColor = activeColor;
+                    el.style.color = 'white';
+                    el.style.borderColor = activeColor;
+                    el.style.animation = 'beadPop 0.35s ease';
+                    clickedBeads++;
+                    updateProgress();
+                }
+            };
+            return el;
+        }
+
+        function updateProgress() {
+            if (totalBeads === 0) return;
+            var pct = Math.round(clickedBeads / totalBeads * 100);
+            // Barra linear
+            $('#progressFill').css('width', pct + '%');
+            // Anel SVG
+            var ring = document.getElementById('progressRing');
+            if (ring) {
+                var circ = 2 * Math.PI * 38;
+                ring.style.strokeDasharray = circ;
+                ring.style.strokeDashoffset = circ - (circ * pct / 100);
+            }
+            $('#progressPct').text(pct + '%');
+            $('#progressText').text(clickedBeads + ' de ' + totalBeads + ' orações');
+            if (clickedBeads >= totalBeads) {
+                $('#progressText').html('<strong class="beads-complete">🎉 Terço completo! Deus te abençoe!</strong>');
+                $('#progressPct').text('✓');
+            }
+        }
+
+        function buildBeads(m) {
+            var container = document.getElementById('decadesContainer');
+            container.innerHTML = '';
+            clickedBeads = 0;
+            totalBeads = 0;
+
+            for (var d = 0; d < 5; d++) {
+                var wrap = document.createElement('div');
+                wrap.className = 'decade-section';
+
+                var title = document.createElement('div');
+                title.className = 'decade-title';
+                title.innerHTML = '<span class="decade-number">' + (d+1) + 'ª Dezena</span> ' + m.items[d].name;
+                wrap.appendChild(title);
+
+                var virtue = document.createElement('div');
+                virtue.className = 'decade-virtue';
+                virtue.innerHTML = '🕯️ Fruto: <em>' + m.virtues[d] + '</em>';
+                wrap.appendChild(virtue);
+
+                var beads = document.createElement('div');
+                beads.className = 'beads-row';
+                beads.appendChild(makeBead('PN', 'Pai-Nosso', 44, m.color)); totalBeads++;
+                for (var i = 1; i <= 10; i++) { beads.appendChild(makeBead(i, 'Ave-Maria ' + i, 38, '#2196F3')); totalBeads++; }
+                beads.appendChild(makeBead('G', 'Glória', 44, '#FF9800')); totalBeads++;
+                beads.appendChild(makeBead('F', 'Oração de Fátima', 44, '#9C27B0')); totalBeads++;
+
+                wrap.appendChild(beads);
+                container.appendChild(wrap);
+            }
+            $('#btnResetBeads').show();
+            $('#progressBar').show();
+            updateProgress();
+        }
+
+        function showMystery() {
+            var m = getTodayMystery();
+            var today = new Date().toLocaleDateString('pt-BR', {weekday:'long'});
+            today = today.charAt(0).toUpperCase() + today.slice(1);
+
+            $('#todayMystery').html(m.icon + ' Hoje (' + today + '): <strong>' + m.title + '</strong>');
+            $('#mysteryTitle').text(m.icon + ' ' + m.title);
+
+            var box = $('#mysteryBody').empty();
+            var panel = $('<div class="accordion-panel"></div>');
+            m.items.forEach(function(item, i) {
+                var tab = $('<div class="accordion-tab"></div>');
+                var header = $('<div class="accordion-header"></div>').html(item.name);
+                var content = $('<div class="accordion-content"></div>').html(
+                    '<p class="bible-ref">📖 ' + item.ref + '</p>' +
+                    '<p>' + item.meditation + '</p>' +
+                    '<p class="mystery-virtue"><strong>Fruto:</strong> ' + m.virtues[i] + '</p>'
+                );
+                tab.append(header).append(content);
+                panel.append(tab);
+            });
+            box.append(panel);
+            buildBeads(m);
+        }
+
+        function init() {
+            showMystery();
+            $('#btnResetBeads').on('click', function() {
+                $('.rosary-bead').removeClass('clicked').css({backgroundColor:'', color:'', borderColor:'', animation:''});
+                clickedBeads = 0;
+                updateProgress();
+            });
+        }
+
+        return {init: init};
+    })();
+
+    $(function() {
+        Terco.init();
+        $('.collapsible-toggle').on('click', function() {
+            var $body = $(this).next('.collapsible-body');
+            var $icon = $(this).find('.toggle-icon');
+            $body.slideToggle(200);
+            $icon.text($body.is(':visible') ? '▾' : '▸');
+        });
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/terco-interativo.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

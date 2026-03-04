@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calendário Litúrgico — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📅 Calendário Litúrgico</h1>
+                <p class="lead">Festas, Solenidades e Memórias do Ano Litúrgico.</p>
+            </header>
+        </div>
+
+        <!-- Legenda de cores -->
+        <div class="card" style="text-align:center;">
+            <h3 style="margin-top:0;">🎨 Cores Litúrgicas</h3>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+                <span class="cal-legend"><span class="cal-dot" style="background:#fff;border:1px solid #999;"></span> Branco</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#8b0000;"></span> Vermelho</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#2e7d32;"></span> Verde</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#6a0dad;"></span> Roxo</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#f48fb1;"></span> Rosa</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#c9a84c;"></span> Dourado</span>
+            </div>
+        </div>
+
+        <!-- Navegação do mês -->
+        <div class="card" style="text-align:center;">
+            <div style="display:flex;justify-content:center;align-items:center;gap:16px;">
+                <button class="btn-primary" id="btnPrevMonth" style="padding:8px 16px;">◀</button>
+                <h2 style="margin:0;min-width:200px;" id="monthTitle"></h2>
+                <button class="btn-primary" id="btnNextMonth" style="padding:8px 16px;">▶</button>
+            </div>
+        </div>
+
+        <!-- Calendário Grid -->
+        <div class="card" style="overflow-x:auto;">
+            <div class="cal-grid">
+                <div class="cal-header-cell">Dom</div>
+                <div class="cal-header-cell">Seg</div>
+                <div class="cal-header-cell">Ter</div>
+                <div class="cal-header-cell">Qua</div>
+                <div class="cal-header-cell">Qui</div>
+                <div class="cal-header-cell">Sex</div>
+                <div class="cal-header-cell">Sáb</div>
+            </div>
+            <div class="cal-grid" id="calendarBody"></div>
+        </div>
+
+        <!-- Detalhes do dia selecionado -->
+        <div class="card" id="dayDetail" style="display:none;">
+            <h3 style="margin-top:0;" id="dayDetailTitle"></h3>
+            <div id="dayDetailContent"></div>
+        </div>
+
+        <!-- Próximas festas -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🎉 Próximas Festas e Solenidades</h2>
+            <div id="upcomingFeasts"></div>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Calendário Litúrgico — FeCatolica" data-partilhar-texto="Acompanhe as festas e solenidades do Ano Litúrgico no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var currentMonth = new Date().getMonth();
+        var currentYear = new Date().getFullYear();
+        var today = new Date();
+
+        // Festas fixas (mês 0-indexado)
+        var fixedFeasts = [
+            {m:0,d:1, name:'Santa Maria, Mãe de Deus', type:'Solenidade', color:'#fff'},
+            {m:0,d:6, name:'Epifania do Senhor', type:'Solenidade', color:'#fff'},
+            {m:0,d:25, name:'Conversão de São Paulo', type:'Festa', color:'#fff'},
+            {m:1,d:2, name:'Apresentação do Senhor', type:'Festa', color:'#fff'},
+            {m:1,d:11, name:'N. Sra. de Lourdes', type:'Memória', color:'#fff'},
+            {m:1,d:22, name:'Cátedra de São Pedro', type:'Festa', color:'#fff'},
+            {m:2,d:19, name:'São José, Esposo de Maria', type:'Solenidade', color:'#fff'},
+            {m:2,d:25, name:'Anunciação do Senhor', type:'Solenidade', color:'#fff'},
+            {m:3,d:23, name:'São Jorge', type:'Memória', color:'#8b0000'},
+            {m:3,d:25, name:'São Marcos Evangelista', type:'Festa', color:'#8b0000'},
+            {m:4,d:1, name:'São José Operário', type:'Memória', color:'#fff'},
+            {m:4,d:13, name:'N. Sra. de Fátima', type:'Memória', color:'#fff'},
+            {m:4,d:31, name:'Visitação de N. Sra.', type:'Festa', color:'#fff'},
+            {m:5,d:13, name:'Santo Antônio de Pádua', type:'Memória', color:'#fff'},
+            {m:5,d:24, name:'Nascimento de São João Batista', type:'Solenidade', color:'#fff'},
+            {m:5,d:29, name:'São Pedro e São Paulo', type:'Solenidade', color:'#8b0000'},
+            {m:6,d:3, name:'São Tomé Apóstolo', type:'Festa', color:'#8b0000'},
+            {m:6,d:22, name:'Santa Maria Madalena', type:'Festa', color:'#fff'},
+            {m:6,d:25, name:'São Tiago Apóstolo', type:'Festa', color:'#8b0000'},
+            {m:6,d:26, name:'Sant\'Ana e São Joaquim', type:'Memória', color:'#fff'},
+            {m:7,d:6, name:'Transfiguração do Senhor', type:'Festa', color:'#fff'},
+            {m:7,d:10, name:'São Lourenço', type:'Festa', color:'#8b0000'},
+            {m:7,d:15, name:'Assunção de N. Sra.', type:'Solenidade', color:'#fff'},
+            {m:7,d:22, name:'Sta. Maria Virgem Rainha', type:'Memória', color:'#fff'},
+            {m:8,d:8, name:'Natividade de N. Sra.', type:'Festa', color:'#fff'},
+            {m:8,d:14, name:'Exaltação da Santa Cruz', type:'Festa', color:'#8b0000'},
+            {m:8,d:15, name:'N. Sra. das Dores', type:'Memória', color:'#fff'},
+            {m:8,d:21, name:'São Mateus Apóstolo', type:'Festa', color:'#8b0000'},
+            {m:8,d:29, name:'Santos Arcanjos (Miguel, Gabriel, Rafael)', type:'Festa', color:'#fff'},
+            {m:9,d:1, name:'Santa Teresinha do Menino Jesus', type:'Memória', color:'#fff'},
+            {m:9,d:2, name:'Santos Anjos da Guarda', type:'Memória', color:'#fff'},
+            {m:9,d:4, name:'São Francisco de Assis', type:'Memória', color:'#fff'},
+            {m:9,d:7, name:'N. Sra. do Rosário', type:'Memória', color:'#fff'},
+            {m:9,d:12, name:'N. Sra. Aparecida', type:'Solenidade', color:'#fff'},
+            {m:9,d:15, name:'Santa Teresa de Jesus', type:'Memória', color:'#fff'},
+            {m:9,d:18, name:'São Lucas Evangelista', type:'Festa', color:'#8b0000'},
+            {m:9,d:28, name:'São Simão e São Judas', type:'Festa', color:'#8b0000'},
+            {m:10,d:1, name:'Todos os Santos', type:'Solenidade', color:'#fff'},
+            {m:10,d:2, name:'Fiéis Defuntos', type:'Comemoração', color:'#6a0dad'},
+            {m:10,d:9, name:'Dedicação Basílica de Latrão', type:'Festa', color:'#fff'},
+            {m:10,d:21, name:'Apresentação de N. Sra.', type:'Memória', color:'#fff'},
+            {m:10,d:30, name:'Santo André Apóstolo', type:'Festa', color:'#8b0000'},
+            {m:11,d:3, name:'São Francisco Xavier', type:'Memória', color:'#fff'},
+            {m:11,d:6, name:'São Nicolau', type:'Memória', color:'#fff'},
+            {m:11,d:8, name:'Imaculada Conceição de Maria', type:'Solenidade', color:'#fff'},
+            {m:11,d:12, name:'N. Sra. de Guadalupe', type:'Festa', color:'#fff'},
+            {m:11,d:13, name:'Santa Luzia', type:'Memória', color:'#8b0000'},
+            {m:11,d:25, name:'Natal do Senhor', type:'Solenidade', color:'#fff'},
+            {m:11,d:26, name:'Santo Estêvão', type:'Festa', color:'#8b0000'},
+            {m:11,d:27, name:'São João Evangelista', type:'Festa', color:'#fff'},
+            {m:11,d:28, name:'Santos Inocentes', type:'Festa', color:'#8b0000'},
+            {m:11,d:31, name:'Sagrada Família', type:'Festa', color:'#fff'}
+        ];
+
+        var MONTH_NAMES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+        function getFeastsForMonth(year, month) {
+            return fixedFeasts.filter(function(f) { return f.m === month; });
+        }
+
+        function getFeastForDay(year, month, day) {
+            return fixedFeasts.filter(function(f) { return f.m === month && f.d === day; });
+        }
+
+        function typeColor(type) {
+            switch (type) {
+                case 'Solenidade': return '#c9a84c';
+                case 'Festa': return '#1a4f89';
+                case 'Memória': return '#2e7d32';
+                case 'Comemoração': return '#6a0dad';
+                default: return '#666';
+            }
+        }
+
+        function renderCalendar() {
+            $('#monthTitle').text(MONTH_NAMES[currentMonth] + ' ' + currentYear);
+
+            var firstDay = new Date(currentYear, currentMonth, 1).getDay(); // 0=Dom
+            var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            var feasts = getFeastsForMonth(currentYear, currentMonth);
+
+            var html = '';
+            // Espaços vazios
+            for (var i = 0; i < firstDay; i++) {
+                html += '<div class="cal-cell empty"></div>';
+            }
+            // Dias
+            for (var d = 1; d <= daysInMonth; d++) {
+                var dayFeasts = getFeastForDay(currentYear, currentMonth, d);
+                var isToday = (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear());
+                var cls = 'cal-cell';
+                if (isToday) cls += ' cal-today';
+                if (dayFeasts.length > 0) cls += ' cal-feast';
+
+                html += '<div class="' + cls + '" data-day="' + d + '">';
+                html += '<span class="cal-day-num">' + d + '</span>';
+                if (dayFeasts.length > 0) {
+                    var f = dayFeasts[0];
+                    html += '<span class="cal-feast-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';"></span>';
+                    html += '<span class="cal-feast-name">' + f.name.substring(0, 15) + (f.name.length > 15 ? '…' : '') + '</span>';
+                }
+                html += '</div>';
+            }
+            $('#calendarBody').html(html);
+        }
+
+        function showDayDetail(day) {
+            var feasts = getFeastForDay(currentYear, currentMonth, day);
+            var dateStr = day + ' de ' + MONTH_NAMES[currentMonth] + ' de ' + currentYear;
+            $('#dayDetailTitle').text('📌 ' + dateStr);
+
+            if (feasts.length === 0) {
+                $('#dayDetailContent').html('<p class="muted">Não há festa litúrgica especial neste dia.</p>');
+            } else {
+                var html = '';
+                feasts.forEach(function(f) {
+                    html += '<div style="padding:12px;background:#faf8f4;border-left:4px solid ' + typeColor(f.type) + ';border-radius:0 8px 8px 0;margin:8px 0;">';
+                    html += '<strong>' + f.name + '</strong>';
+                    html += '<br/><span class="badge-month" style="font-size:0.75rem;padding:2px 8px;background:' + typeColor(f.type) + ';color:#fff;">' + f.type + '</span>';
+                    html += ' <span class="cal-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';display:inline-block;vertical-align:middle;"></span>';
+                    html += '</div>';
+                });
+                $('#dayDetailContent').html(html);
+            }
+            $('#dayDetail').slideDown(200);
+        }
+
+        function renderUpcoming() {
+            var now = new Date();
+            var upcoming = [];
+            // Próximos 60 dias
+            for (var i = 0; i < 60; i++) {
+                var d = new Date(now);
+                d.setDate(d.getDate() + i);
+                var feasts = getFeastForDay(d.getFullYear(), d.getMonth(), d.getDate());
+                feasts.forEach(function(f) {
+                    upcoming.push({
+                        date: d.toLocaleDateString('pt-BR', {day:'numeric', month:'short'}),
+                        name: f.name,
+                        type: f.type,
+                        color: f.color,
+                        days: i
+                    });
+                });
+            }
+            if (upcoming.length === 0) {
+                $('#upcomingFeasts').html('<p class="muted" style="text-align:center;">Nenhuma festa nos próximos 60 dias.</p>');
+                return;
+            }
+            var html = '';
+            upcoming.slice(0, 12).forEach(function(f) {
+                var label = f.days === 0 ? '🎉 Hoje!' : (f.days === 1 ? 'Amanhã' : 'em ' + f.days + ' dias');
+                html += '<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #eee;">';
+                html += '<span class="cal-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';flex-shrink:0;"></span>';
+                html += '<div style="flex:1;"><strong>' + f.name + '</strong><br/><span class="muted" style="font-size:0.85rem;">' + f.date + ' — ' + label + '</span></div>';
+                html += '<span class="badge-month" style="font-size:0.7rem;padding:2px 6px;background:' + typeColor(f.type) + ';color:#fff;">' + f.type + '</span>';
+                html += '</div>';
+            });
+            $('#upcomingFeasts').html(html);
+        }
+
+        // Eventos
+        $('#btnPrevMonth').on('click', function() {
+            currentMonth--;
+            if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            renderCalendar();
+        });
+        $('#btnNextMonth').on('click', function() {
+            currentMonth++;
+            if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+            renderCalendar();
+        });
+        $(document).on('click', '.cal-cell:not(.empty)', function() {
+            var day = parseInt($(this).data('day'));
+            showDayDetail(day);
+        });
+
+        renderCalendar();
+        renderUpcoming();
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

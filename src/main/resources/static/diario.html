@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Diário Espiritual — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📓 Diário Espiritual</h1>
+                <p class="lead">Registre suas reflexões, graças recebidas e propósitos diários.</p>
+                <p class="muted" style="margin-top:6px;">"Examinai-vos a vós mesmos se permaneceis na fé" — 2Cor 13,5</p>
+            </header>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="card" style="text-align:center;">
+            <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+                <div>
+                    <span style="font-size:1.8rem;font-weight:700;color:#1a4f89;" id="totalEntries">0</span>
+                    <p class="muted" style="margin:0;">Registros</p>
+                </div>
+                <div>
+                    <span style="font-size:1.8rem;font-weight:700;color:#2e7d32;" id="thisMonthEntries">0</span>
+                    <p class="muted" style="margin:0;">Este mês</p>
+                </div>
+                <div>
+                    <span style="font-size:1.8rem;font-weight:700;color:#c9a84c;" id="streakDays">0</span>
+                    <p class="muted" style="margin:0;">Dias seguidos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novo registro -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">✍️ Novo Registro</h2>
+            <p style="text-align:center;" class="muted" id="todayDate"></p>
+
+            <div style="margin-top:16px;">
+                <label style="font-weight:600;display:block;margin-bottom:6px;">🙏 Como foi o meu dia com Deus?</label>
+                <select id="moodSelect" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-bottom:12px;">
+                    <option value="">— Selecione —</option>
+                    <option value="😇 Muito próximo de Deus">😇 Muito próximo de Deus</option>
+                    <option value="🙂 Em paz">🙂 Em paz</option>
+                    <option value="😐 Dia normal">😐 Dia normal</option>
+                    <option value="😔 Distraído/a">😔 Distraído(a) espiritualmente</option>
+                    <option value="😢 Dia difícil">😢 Dia difícil</option>
+                    <option value="🔥 Dia de muita graça">🔥 Dia de muita graça!</option>
+                </select>
+            </div>
+
+            <div style="margin-top:12px;">
+                <label style="font-weight:600;display:block;margin-bottom:6px;">🕊️ Graças recebidas hoje:</label>
+                <textarea id="gracasText" style="width:100%;min-height:80px;padding:12px;border:1px solid #ccc;border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;" placeholder="Pelo que sou grato(a) hoje? Que bênçãos reconheço?"></textarea>
+            </div>
+
+            <div style="margin-top:12px;">
+                <label style="font-weight:600;display:block;margin-bottom:6px;">📖 Reflexão / O que Deus me disse hoje:</label>
+                <textarea id="reflexaoText" style="width:100%;min-height:100px;padding:12px;border:1px solid #ccc;border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;" placeholder="Uma Palavra, uma inspiração, um consolo..."></textarea>
+            </div>
+
+            <div style="margin-top:12px;">
+                <label style="font-weight:600;display:block;margin-bottom:6px;">🎯 Propósito para amanhã:</label>
+                <textarea id="propositoText" style="width:100%;min-height:60px;padding:12px;border:1px solid #ccc;border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;" placeholder="O que quero melhorar? Que virtude praticar?"></textarea>
+            </div>
+
+            <div style="margin-top:12px;">
+                <label style="font-weight:600;display:block;margin-bottom:6px;">🏷️ Tags (opcional):</label>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;" id="tagsContainer">
+                    <label class="diary-tag"><input type="checkbox" value="Missa"> ⛪ Missa</label>
+                    <label class="diary-tag"><input type="checkbox" value="Terço"> 📿 Terço</label>
+                    <label class="diary-tag"><input type="checkbox" value="Confissão"> 🙏 Confissão</label>
+                    <label class="diary-tag"><input type="checkbox" value="Jejum"> 🍞 Jejum</label>
+                    <label class="diary-tag"><input type="checkbox" value="Leitura Bíblica"> 📖 Leitura Bíblica</label>
+                    <label class="diary-tag"><input type="checkbox" value="Caridade"> ❤️ Caridade</label>
+                    <label class="diary-tag"><input type="checkbox" value="Adoração"> 🕯️ Adoração</label>
+                    <label class="diary-tag"><input type="checkbox" value="Lectio Divina"> 📜 Lectio Divina</label>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;">
+                <button class="btn-primary" onclick="saveEntry()" style="font-size:1.1rem;padding:12px 32px;">💾 Salvar Registro</button>
+            </div>
+            <div id="saveMsg" style="display:none;margin-top:12px;"></div>
+        </div>
+
+        <!-- Registros anteriores -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">📚 Registros Anteriores</h2>
+            <div style="text-align:center;margin-bottom:12px;">
+                <input type="text" id="searchEntries" placeholder="🔍 Buscar nos registros..." style="width:100%;max-width:400px;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"/>
+            </div>
+            <div id="entriesList"></div>
+            <div id="noEntries" style="display:none;text-align:center;" class="muted">
+                <p>📝 Nenhum registro ainda. Comece seu diário espiritual hoje!</p>
+            </div>
+        </div>
+
+        <!-- Exportar -->
+        <div style="text-align:center;margin:12px 0;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <button class="btn-primary" onclick="exportDiary()" style="background:#2e7d32;">📥 Exportar Diário (TXT)</button>
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Diário Espiritual — FeCatolica" data-partilhar-texto="Registre sua jornada espiritual no FeCatolica — Diário Espiritual!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var STORAGE_KEY = 'diary_entries';
+        var today = new Date().toISOString().slice(0, 10);
+        var weekday = new Date().toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+        $('#todayDate').text(weekday.charAt(0).toUpperCase() + weekday.slice(1));
+
+        function getEntries() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+
+        function saveEntries(entries) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        }
+
+        function updateStats() {
+            var entries = getEntries();
+            var now = new Date();
+            var month = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+            var thisMonth = entries.filter(function(e) { return e.date.startsWith(month); }).length;
+
+            // Calcular dias seguidos
+            var streak = 0;
+            var d = new Date();
+            while (true) {
+                var dStr = d.toISOString().slice(0, 10);
+                if (entries.some(function(e) { return e.date === dStr; })) {
+                    streak++;
+                    d.setDate(d.getDate() - 1);
+                } else {
+                    break;
+                }
+            }
+
+            $('#totalEntries').text(entries.length);
+            $('#thisMonthEntries').text(thisMonth);
+            $('#streakDays').text(streak);
+        }
+
+        function renderEntries(filter) {
+            var entries = getEntries().sort(function(a, b) { return b.date.localeCompare(a.date); });
+            if (filter) {
+                var f = filter.toLowerCase();
+                entries = entries.filter(function(e) {
+                    return (e.mood || '').toLowerCase().indexOf(f) !== -1 ||
+                           (e.gracas || '').toLowerCase().indexOf(f) !== -1 ||
+                           (e.reflexao || '').toLowerCase().indexOf(f) !== -1 ||
+                           (e.proposito || '').toLowerCase().indexOf(f) !== -1 ||
+                           (e.tags || []).join(' ').toLowerCase().indexOf(f) !== -1 ||
+                           (e.date || '').indexOf(f) !== -1;
+                });
+            }
+
+            if (entries.length === 0) {
+                $('#entriesList').html('');
+                $('#noEntries').show();
+                return;
+            }
+            $('#noEntries').hide();
+
+            var html = '';
+            entries.forEach(function(e, idx) {
+                var dateFormatted = new Date(e.date + 'T12:00:00').toLocaleDateString('pt-BR', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
+                var tags = (e.tags || []).map(function(t) { return '<span class="badge-month" style="font-size:0.75rem;padding:2px 8px;">' + t + '</span>'; }).join(' ');
+
+                html += '<div class="diary-entry" data-idx="' + idx + '">';
+                html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">';
+                html += '<strong>' + dateFormatted + '</strong>';
+                html += '<span>' + (e.mood || '') + '</span>';
+                html += '</div>';
+                if (e.gracas) html += '<p style="margin:8px 0 4px;"><strong>🕊️ Graças:</strong> ' + escapeHtml(e.gracas) + '</p>';
+                if (e.reflexao) html += '<p style="margin:4px 0;"><strong>📖 Reflexão:</strong> ' + escapeHtml(e.reflexao) + '</p>';
+                if (e.proposito) html += '<p style="margin:4px 0;"><strong>🎯 Propósito:</strong> ' + escapeHtml(e.proposito) + '</p>';
+                if (tags) html += '<div style="margin-top:6px;">' + tags + '</div>';
+                html += '<div style="text-align:right;margin-top:8px;">';
+                html += '<button class="btn-delete-entry" data-date="' + e.date + '" style="background:none;border:none;color:#c62828;cursor:pointer;font-size:0.85rem;">🗑️ Excluir</button>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $('#entriesList').html(html);
+        }
+
+        function escapeHtml(str) {
+            return $('<div>').text(str).html();
+        }
+
+        window.saveEntry = function() {
+            var mood = $('#moodSelect').val();
+            var gracas = $('#gracasText').val().trim();
+            var reflexao = $('#reflexaoText').val().trim();
+            var proposito = $('#propositoText').val().trim();
+            var tags = [];
+            $('#tagsContainer input:checked').each(function() { tags.push($(this).val()); });
+
+            if (!gracas && !reflexao && !proposito && !mood) {
+                $('#saveMsg').html('<div class="msg-error">Preencha ao menos um campo para salvar.</div>').show();
+                return;
+            }
+
+            var entries = getEntries();
+            // Remove entrada do mesmo dia se existir (sobrescreve)
+            entries = entries.filter(function(e) { return e.date !== today; });
+            entries.push({
+                date: today,
+                mood: mood,
+                gracas: gracas,
+                reflexao: reflexao,
+                proposito: proposito,
+                tags: tags
+            });
+            saveEntries(entries);
+
+            if (window.FeStreaks) window.FeStreaks.record();
+
+            $('#saveMsg').html('<div class="msg-success">✅ Registro salvo com sucesso!</div>').show();
+            setTimeout(function() { $('#saveMsg').fadeOut(); }, 3000);
+
+            renderEntries();
+            updateStats();
+        };
+
+        window.exportDiary = function() {
+            var entries = getEntries().sort(function(a, b) { return b.date.localeCompare(a.date); });
+            if (entries.length === 0) {
+                if (window.showToast) showToast('Nenhum registro para exportar.');
+                return;
+            }
+            var text = '=== DIÁRIO ESPIRITUAL — FeCatolica ===\n\n';
+            entries.forEach(function(e) {
+                text += '📅 ' + e.date + '\n';
+                if (e.mood) text += 'Estado: ' + e.mood + '\n';
+                if (e.gracas) text += 'Graças: ' + e.gracas + '\n';
+                if (e.reflexao) text += 'Reflexão: ' + e.reflexao + '\n';
+                if (e.proposito) text += 'Propósito: ' + e.proposito + '\n';
+                if (e.tags && e.tags.length) text += 'Tags: ' + e.tags.join(', ') + '\n';
+                text += '\n---\n\n';
+            });
+
+            var blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'diario-espiritual-fecatolica.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        };
+
+        // Deletar entrada
+        $(document).on('click', '.btn-delete-entry', function() {
+            var date = $(this).data('date');
+            if (confirm('Excluir registro de ' + date + '?')) {
+                var entries = getEntries().filter(function(e) { return e.date !== date; });
+                saveEntries(entries);
+                renderEntries();
+                updateStats();
+                if (window.showToast) showToast('Registro excluído.');
+            }
+        });
+
+        // Busca
+        $('#searchEntries').on('input', function() {
+            renderEntries($(this).val());
+        });
+
+        // Carregar entrada de hoje se existir
+        var entries = getEntries();
+        var todayEntry = entries.find(function(e) { return e.date === today; });
+        if (todayEntry) {
+            $('#moodSelect').val(todayEntry.mood || '');
+            $('#gracasText').val(todayEntry.gracas || '');
+            $('#reflexaoText').val(todayEntry.reflexao || '');
+            $('#propositoText').val(todayEntry.proposito || '');
+            (todayEntry.tags || []).forEach(function(t) {
+                $('#tagsContainer input[value="' + t + '"]').prop('checked', true);
+            });
+        }
+
+        renderEntries();
+        updateStats();
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

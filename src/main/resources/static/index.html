@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FeCatolica — Fé, Oração e Devoção</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <meta name="description" content="Portal católico com Santo Terço, Rosário, Novenas, Liturgia diária, Orações e mais."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <!-- Hero -->
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✝️ FeCatolica</h1>
+                <p class="lead">Fé, Oração e Devoção — Seu portal católico para crescer na vida espiritual.</p>
+                <p class="muted" style="margin-top:8px;" id="greeting"></p>
+            </header>
+        </div>
+
+        <!-- Banner litúrgico -->
+        <div class="daily-banner" id="liturgyBanner" style="display:none;">
+            <h2 id="liturgyTitle">📖 Liturgia de Hoje</h2>
+            <p id="liturgyInfo"></p>
+        </div>
+
+        <!-- Cards de navegação -->
+
+        <!-- Terços e Rosários -->
+        <div class="card" style="margin-top:10px;">
+            <h2 style="text-align:center;margin-top:0;">📿 Terços e Rosários</h2>
+            <div class="home-grid" style="margin-top:8px;">
+                <a href="/santo-terco.html" class="home-card">
+                    <span class="home-card-icon">📿</span>
+                    <h3>Santo Terço</h3>
+                    <p>Reze o terço diário com meditações bíblicas e contas interativas.</p>
+                </a>
+                <a href="/santo-rosario.html" class="home-card">
+                    <span class="home-card-icon">🌹</span>
+                    <h3>Santo Rosário</h3>
+                    <p>Os quatro mistérios completos com referências bíblicas e Ladainha.</p>
+                </a>
+                <a href="/terco-misericordia.html" class="home-card">
+                    <span class="home-card-icon">🙏</span>
+                    <h3>Terço da Misericórdia</h3>
+                    <p>Reze o Terço revelado por Jesus a Santa Faustina Kowalska.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Liturgia e Calendário (ações únicas) -->
+        <div class="home-grid">
+            <a href="/liturgia.html" class="home-card">
+                <span class="home-card-icon">📖</span>
+                <h3>Liturgia Diária</h3>
+                <p>Leituras, Salmo, Evangelho e reflexão do dia.</p>
+            </a>
+            <a href="/calendario.html" class="home-card">
+                <span class="home-card-icon">📅</span>
+                <h3>Calendário Litúrgico</h3>
+                <p>Festas, solenidades e memórias do ano litúrgico.</p>
+            </a>
+        </div>
+
+        <!-- Orações e Devoções -->
+        <div class="card" style="margin-top:10px;">
+            <h2 style="text-align:center;margin-top:0;">🙏 Orações e Devoções</h2>
+            <div class="home-grid" style="margin-top:8px;">
+                <a href="/oracoes.html" class="home-card">
+                    <span class="home-card-icon">🙏</span>
+                    <h3>Orações Diárias</h3>
+                    <p>Angelus, Orações da manhã e da noite, São Miguel, São José e mais.</p>
+                </a>
+                <a href="/via-sacra.html" class="home-card">
+                    <span class="home-card-icon">✝️</span>
+                    <h3>Via-Sacra</h3>
+                    <p>Medite as 14 Estações do Caminho da Cruz com orações guiadas.</p>
+                </a>
+                <a href="/hora-santa.html" class="home-card">
+                    <span class="home-card-icon">🕯️</span>
+                    <h3>Hora Santa</h3>
+                    <p>Adoração ao Santíssimo com roteiro guiado e timer.</p>
+                </a>
+                <a href="/lectio-divina.html" class="home-card">
+                    <span class="home-card-icon">📖</span>
+                    <h3>Lectio Divina</h3>
+                    <p>Leitura orante da Bíblia — 4 degraus: Lectio, Meditatio, Oratio, Contemplatio.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Vida Espiritual -->
+        <div class="card" style="margin-top:10px;">
+            <h2 style="text-align:center;margin-top:0;">📝 Vida Espiritual</h2>
+            <div class="home-grid" style="margin-top:8px;">
+                <a href="/exame-consciencia.html" class="home-card">
+                    <span class="home-card-icon">🔍</span>
+                    <h3>Exame de Consciência</h3>
+                    <p>Preparação para uma boa Confissão, baseado nos Dez Mandamentos.</p>
+                </a>
+                <a href="/diario.html" class="home-card">
+                    <span class="home-card-icon">📓</span>
+                    <h3>Diário Espiritual</h3>
+                    <p>Registre reflexões, graças e propósitos da sua caminhada de fé.</p>
+                </a>
+                <a href="/mural.html" class="home-card">
+                    <span class="home-card-icon">🕯️</span>
+                    <h3>Mural de Intenções</h3>
+                    <p>Deixe suas intenções de oração e reze pelas intenções dos irmãos.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Seção Novenas -->
+        <div class="card" style="margin-top:20px;">
+            <h2 style="text-align:center;margin-top:0;">🙏 Novenas Disponíveis</h2>
+            <p style="text-align:center;" class="muted">Mais de 35 novenas organizadas por mês. Acesse pelo menu acima.</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px;">
+                <span class="badge-month">Jan</span>
+                <span class="badge-month">Fev</span>
+                <span class="badge-month">Mar</span>
+                <span class="badge-month">Abr</span>
+                <span class="badge-month">Mai</span>
+                <span class="badge-month">Jun</span>
+                <span class="badge-month">Jul</span>
+                <span class="badge-month">Ago</span>
+                <span class="badge-month">Set</span>
+                <span class="badge-month">Out</span>
+                <span class="badge-month">Nov</span>
+                <span class="badge-month">Dez</span>
+            </div>
+        </div>
+
+        <!-- Quaresmas -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">✝️ Quaresmas</h2>
+            <div class="home-grid" style="margin-top:8px;">
+                <a href="/quaresmas/quaresma-liturgica.html" class="home-card" style="padding:16px;">
+                    <h3 style="font-size:1rem;">Quaresma Litúrgica</h3>
+                    <p>Reflexões para o tempo litúrgico da Quaresma.</p>
+                </a>
+                <a href="/quaresmas/quaresma-sao-miguel.html" class="home-card" style="padding:16px;">
+                    <h3 style="font-size:1rem;">Quaresma de São Miguel</h3>
+                    <p>40 dias de orações ao Príncipe da Milícia Celeste.</p>
+                </a>
+                <a href="/quaresmas/quaresma-sao-jose.html" class="home-card" style="padding:16px;">
+                    <h3 style="font-size:1rem;">Quaresma de São José</h3>
+                    <p>40 dias de orações ao patrono da Igreja Universal.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Versículo do dia -->
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">📜 Versículo do Dia</h2>
+            <blockquote id="dailyVerse" style="font-style:italic;font-size:1.1rem;color:#444;line-height:1.6;margin:12px 0;">
+                "Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei."
+            </blockquote>
+            <p id="dailyVerseRef" class="muted">— Mt 11,28</p>
+        </div>
+
+        <!-- Santo do Dia -->
+        <div class="card saint-of-day" id="saintCard">
+            <h3>⛪ Santo do Dia</h3>
+            <p class="saint-name" id="saintName"></p>
+            <p class="saint-desc" id="saintDesc"></p>
+        </div>
+
+        <!-- Streak display -->
+        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="FeCatolica" data-partilhar-texto="Descubra orações, novenas e a liturgia diária no FeCatolica!">
+                📤 Compartilhar o FeCatolica
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        // Saudação baseada na hora
+        var hour = new Date().getHours();
+        var greeting = hour < 12 ? 'Bom dia' : (hour < 18 ? 'Boa tarde' : 'Boa noite');
+        var weekday = new Date().toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+        weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+        $('#greeting').html(greeting + '! Hoje é <strong>' + weekday + '</strong>.');
+
+        // Banner litúrgico
+        $.getJSON('/api/liturgia', function(data) {
+            if (data) {
+                var info = '';
+                if (data.liturgia) info += '<strong>' + data.liturgia + '</strong>';
+                if (data.cor) info += ' — Cor litúrgica: ' + data.cor;
+                if (info) {
+                    $('#liturgyInfo').html(info);
+                    $('#liturgyBanner').show();
+                }
+            }
+        }).fail(function() {
+            // Silently hide if API unavailable
+        });
+
+        // Versículos rotativos
+        var verses = [
+            {text: '"Vinde a mim, todos vós que estais cansados e oprimidos, e eu vos aliviarei."', ref: 'Mt 11,28'},
+            {text: '"Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai senão por mim."', ref: 'Jo 14,6'},
+            {text: '"O Senhor é o meu pastor, nada me faltará."', ref: 'Sl 23,1'},
+            {text: '"Tudo posso naquele que me fortalece."', ref: 'Fl 4,13'},
+            {text: '"Não temas, porque eu estou contigo; não te assustes, porque eu sou o teu Deus."', ref: 'Is 41,10'},
+            {text: '"A fé é a garantia dos bens que se esperam, a prova das realidades que não se veem."', ref: 'Hb 11,1'},
+            {text: '"Sede fortes e corajosos, não temais, pois o Senhor vosso Deus vai convosco."', ref: 'Dt 31,6'},
+            {text: '"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."', ref: '1Cor 13,4'},
+            {text: '"Porque Deus amou o mundo de tal maneira que deu o seu Filho Unigênito."', ref: 'Jo 3,16'},
+            {text: '"Pedi e dar-se-vos-á; buscai e encontrareis; batei e abrir-se-vos-á."', ref: 'Mt 7,7'},
+            {text: '"Se Deus é por nós, quem será contra nós?"', ref: 'Rm 8,31'},
+            {text: '"Lançai sobre Ele toda a vossa preocupação, porque Ele tem cuidado de vós."', ref: '1Pd 5,7'},
+            {text: '"Eis que estou à porta e bato. Se alguém ouvir a minha voz e abrir a porta, entrarei em sua casa."', ref: 'Ap 3,20'},
+            {text: '"Eu vos deixo a paz, a minha paz vos dou; não vo-la dou como o mundo a dá."', ref: 'Jo 14,27'},
+            {text: '"O fruto do Espírito é amor, alegria, paz, paciência, amabilidade, bondade, fidelidade."', ref: 'Gl 5,22'},
+            {text: '"Em tudo dai graças, porque esta é a vontade de Deus em Cristo Jesus."', ref: '1Ts 5,18'},
+            {text: '"Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora de nossa morte."', ref: 'Ave-Maria'},
+            {text: '"Quem permanece em mim e eu nele, esse dá muito fruto; porque sem mim nada podeis fazer."', ref: 'Jo 15,5'},
+            {text: '"A misericórdia do Senhor é de eternidade a eternidade para os que O temem."', ref: 'Lc 1,50'},
+            {text: '"Buscai em primeiro lugar o Reino de Deus e a sua justiça, e tudo o mais vos será dado por acréscimo."', ref: 'Mt 6,33'}
+        ];
+        // Seleciona verso baseado no dia do ano para variar diariamente
+        var dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+        var verse = verses[dayOfYear % verses.length];
+        $('#dailyVerse').text(verse.text);
+        $('#dailyVerseRef').text('— ' + verse.ref);
+
+        // Santos do Dia (rotação diária)
+        var saints = [
+            {name: 'Santa Maria, Mãe de Deus', desc: 'Mãe de Jesus e Mãe da Igreja, modelo de fé e obediência a Deus.'},
+            {name: 'São Basílio Magno e São Gregório Nazianzeno', desc: 'Doutores da Igreja, defensores da fé trinitária no séc. IV.'},
+            {name: 'Santa Genoveva', desc: 'Padroeira de Paris, conhecida por sua vida de oração e penitência.'},
+            {name: 'Santa Ângela de Foligno', desc: 'Mística franciscana, exemplo de conversão radical e amor a Cristo.'},
+            {name: 'São João Neumann', desc: 'Bispo e santo redentorista, apóstolo da educação católica nos EUA.'},
+            {name: 'São Carlos de Sezze', desc: 'Frade franciscano, místico que recebeu os estigmas.'},
+            {name: 'Santo André Corsini', desc: 'Bispo carmelita de Florença, modelo de santidade episcopal.'},
+            {name: 'São Severino', desc: 'Apóstolo da fé entre os germânicos, exemplo de caridade heroica.'},
+            {name: 'Santo Adriano de Canterbury', desc: 'Monge e abade africano, mestre da fé na Inglaterra.'},
+            {name: 'São Gregório de Nissa', desc: 'Padre da Igreja, teólogo e defensor da fé ortodoxa.'},
+            {name: 'São Teodósio Cenobiarca', desc: 'Pai do cenobitismo na Palestina, fundador de mosteiros.'},
+            {name: 'Santa Margarida Bourgeoys', desc: 'Fundadora da Congregação de Notre-Dame, educadora do Canadá.'},
+            {name: 'Santo Hilário de Poitiers', desc: 'Doutor da Igreja, defensor da divindade de Cristo contra o arianismo.'},
+            {name: 'São Félix de Nola', desc: 'Mártir e confessor da fé, protector dos pobres.'},
+            {name: 'São Mauro Abade', desc: 'Discípulo de São Bento, propagador do monaquismo beneditino.'},
+            {name: 'São Marcelo I', desc: 'Papa e mártir, reorganizou a Igreja após as perseguições.'},
+            {name: 'Santo Antão Abade', desc: 'Pai do monaquismo cristão, o eremita do deserto.'},
+            {name: 'Santa Prisca', desc: 'Mártir romana dos primeiros séculos, testemunha da fé em Cristo.'},
+            {name: 'São Canuto', desc: 'Rei e mártir da Dinamarca, exemplo de governante cristão.'},
+            {name: 'São Fabiano e São Sebastião', desc: 'Papa e militar romanos, ambos mártires gloriosos da fé.'},
+            {name: 'Santa Inês', desc: 'Virgem e mártir, modelo de pureza e coragem juvenil na fé.'},
+            {name: 'São Vicente Mártir', desc: 'Diácono de Saragoça, padroeiro dos vinicultores.'},
+            {name: 'Santo Ildefonso de Toledo', desc: 'Doutor mariano, defensor da virgindade de Maria.'},
+            {name: 'São Francisco de Sales', desc: 'Doutor da Igreja, bispo de Genebra e mestre da vida devota.'},
+            {name: 'Conversão de São Paulo', desc: 'A transformação do perseguidor em apóstolo dos gentios.'},
+            {name: 'São Timóteo e São Tito', desc: 'Discípulos de São Paulo, bispos e guardiões da fé apostólica.'},
+            {name: 'Santa Ângela Merici', desc: 'Fundadora das Ursulinas, pioneira da educação feminina.'},
+            {name: 'Santo Tomás de Aquino', desc: 'Doutor Angélico, maior teólogo e filósofo da Igreja.'},
+            {name: 'São Gildas', desc: 'Historiador e monge britânico, cronista da fé cristã na Inglaterra.'},
+            {name: 'Santa Martinha', desc: 'Mártir romana, padroeira de Roma.'},
+            {name: 'São João Bosco', desc: 'Pai e mestre da juventude, fundador dos Salesianos.'}
+        ];
+        var saint = saints[(new Date().getDate() - 1) % saints.length];
+        $('#saintName').text(saint.name);
+        $('#saintDesc').text(saint.desc);
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>
