@@ -21,13 +21,14 @@ import java.util.regex.*;
  * a partir do site oficial popesprayer.va.
  *
  * Fluxo:
- *  1. Consulta a API WordPress do popesprayer.va para descobrir o ID do
- *     termo de taxonomia "sjd_intention_year" correspondente ao ano atual.
- *  2. Localiza o post do tipo "sjd_intention" com slug "pt-brazil" para o ano.
- *  3. Obtém a URL do arquivo PDF em português via endpoint de mídia do WordPress.
- *  4. Faz download do PDF e extrai o texto com Apache PDFBox.
- *  5. Divide o texto por nome de mês para produzir 12 registros de intenção.
- *  6. Armazena o resultado em cache por 24 horas.
+ * 1. Consulta a API WordPress do popesprayer.va para descobrir o ID do
+ * termo de taxonomia "sjd_intention_year" correspondente ao ano atual.
+ * 2. Localiza o post do tipo "sjd_intention" com slug "pt-brazil" para o ano.
+ * 3. Obtém a URL do arquivo PDF em português via endpoint de mídia do
+ * WordPress.
+ * 4. Faz download do PDF e extrai o texto com Apache PDFBox.
+ * 5. Divide o texto por nome de mês para produzir 12 registros de intenção.
+ * 6. Armazena o resultado em cache por 24 horas.
  */
 @Service
 public class IntencoesPapaService {
@@ -38,14 +39,14 @@ public class IntencoesPapaService {
 
     // Nomes normalizados (sem acentos) para busca no texto do PDF
     private static final String[] MESES_UPPER_NORM = {
-        "JANEIRO", "FEVEREIRO", "MARCO", "ABRIL", "MAIO", "JUNHO",
-        "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+            "JANEIRO", "FEVEREIRO", "MARCO", "ABRIL", "MAIO", "JUNHO",
+            "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
     };
 
     // Nomes corretos com acentuação para exibição
     private static final String[] MESES_NOMES = {
-        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
     };
 
     private final RestTemplate restTemplate;
@@ -62,11 +63,11 @@ public class IntencoesPapaService {
 
     /**
      * Retorna um mapa com:
-     *  - "ano"       : int — ano das intenções
-     *  - "status"    : "ok" | "error"
-     *  - "pdfUrl"    : String — URL do PDF oficial (quando disponível)
-     *  - "intencoes" : List<Map> — lista com 12 intenções mensais
-     *  - "erro"      : String — mensagem de erro (quando status = "error")
+     * - "ano" : int — ano das intenções
+     * - "status" : "ok" | "error"
+     * - "pdfUrl" : String — URL do PDF oficial (quando disponível)
+     * - "intencoes" : List<Map> — lista com 12 intenções mensais
+     * - "erro" : String — mensagem de erro (quando status = "error")
      */
     public Map<String, Object> getIntencoesDoPapa() {
         int ano = LocalDate.now().getYear();
@@ -111,7 +112,8 @@ public class IntencoesPapaService {
             // ── Passo 2: localizar post PT-Brazil para o ano ──
             Map[] posts = restTemplate.getForObject(
                     API_BASE + "/sjd_intention?sjd_intention_year=" + yearTaxId
-                            + "&per_page=100&_fields=id,slug", Map[].class);
+                            + "&per_page=100&_fields=id,slug",
+                    Map[].class);
 
             Integer postId = null;
             if (posts != null) {
@@ -126,7 +128,8 @@ public class IntencoesPapaService {
             }
 
             if (postId == null) {
-                return errorResponse(anoConsultado, "Arquivo de intenções em português do Brasil não encontrado para " + anoConsultado + ".");
+                return errorResponse(anoConsultado,
+                        "Arquivo de intenções em português do Brasil não encontrado para " + anoConsultado + ".");
             }
 
             // ── Passo 3: obter URL do PDF via endpoint de mídia ──
@@ -188,7 +191,8 @@ public class IntencoesPapaService {
             rawText = stripper.getText(doc);
         }
 
-        // Versão normalizada para busca (mantém tamanho igual ao original — substituições 1-para-1)
+        // Versão normalizada para busca (mantém tamanho igual ao original —
+        // substituições 1-para-1)
         String normUpper = normalizeForSearch(rawText).toUpperCase(Locale.ROOT);
 
         // Regex para detectar início de mês
@@ -201,7 +205,7 @@ public class IntencoesPapaService {
         List<String> foundMonths = new ArrayList<>();
 
         while (matcher.find()) {
-            positions.add(new int[]{matcher.start(), matcher.end()});
+            positions.add(new int[] { matcher.start(), matcher.end() });
             foundMonths.add(matcher.group().toUpperCase(Locale.ROOT));
         }
 
@@ -210,7 +214,7 @@ public class IntencoesPapaService {
             Pattern relaxed = Pattern.compile("\\b(" + monthAlt + ")\\b", Pattern.CASE_INSENSITIVE);
             Matcher rm = relaxed.matcher(normUpper);
             while (rm.find()) {
-                positions.add(new int[]{rm.start(), rm.end()});
+                positions.add(new int[] { rm.start(), rm.end() });
                 foundMonths.add(rm.group().toUpperCase(Locale.ROOT));
             }
         }
@@ -236,7 +240,8 @@ public class IntencoesPapaService {
 
             for (String linha : linhas) {
                 String t = linha.trim();
-                if (t.isEmpty()) continue;
+                if (t.isEmpty())
+                    continue;
 
                 // Ignora: nome do mês, números de ano (4 dígitos), números de página
                 String tNorm = normalizeForSearch(t).toUpperCase(Locale.ROOT);
@@ -247,7 +252,8 @@ public class IntencoesPapaService {
                 if (titulo.isEmpty()) {
                     titulo = t;
                 } else {
-                    if (textoSb.length() > 0) textoSb.append(" ");
+                    if (textoSb.length() > 0)
+                        textoSb.append(" ");
                     textoSb.append(t);
                 }
             }
@@ -303,20 +309,28 @@ public class IntencoesPapaService {
 
     private int indexOfMonth(String normUpper) {
         for (int i = 0; i < MESES_UPPER_NORM.length; i++) {
-            if (MESES_UPPER_NORM[i].equals(normUpper)) return i;
+            if (MESES_UPPER_NORM[i].equals(normUpper))
+                return i;
         }
         return -1;
     }
 
     private String capitalizar(String s) {
-        if (s == null || s.isEmpty()) return s;
+        if (s == null || s.isEmpty())
+            return s;
         return s.charAt(0) + s.substring(1).toLowerCase(Locale.ROOT);
     }
 
     private Integer toInt(Object val) {
-        if (val == null) return null;
-        if (val instanceof Number) return ((Number) val).intValue();
-        try { return Integer.parseInt(val.toString()); } catch (NumberFormatException e) { return null; }
+        if (val == null)
+            return null;
+        if (val instanceof Number)
+            return ((Number) val).intValue();
+        try {
+            return Integer.parseInt(val.toString());
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     private Map<String, Object> errorResponse(int ano, String mensagem) {

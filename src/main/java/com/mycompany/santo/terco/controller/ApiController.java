@@ -16,7 +16,7 @@ public class ApiController {
     private final IntencoesPapaService intencoesService;
 
     public ApiController(TempoLiturgicoService tempoLiturgicoService,
-                         IntencoesPapaService intencoesService) {
+            IntencoesPapaService intencoesService) {
         this.tempoLiturgicoService = tempoLiturgicoService;
         this.intencoesService = intencoesService;
     }
@@ -30,7 +30,8 @@ public class ApiController {
      * Retorna as intenções mensais de oração do Papa para o ano corrente,
      * extraídas automaticamente do PDF oficial em português (popesprayer.va).
      *
-     * Resposta: { "ano": 2026, "status": "ok", "pdfUrl": "...", "intencoes": [...] }
+     * Resposta: { "ano": 2026, "status": "ok", "pdfUrl": "...", "intencoes": [...]
+     * }
      */
     @GetMapping(value = "/intencoes-papa", produces = "application/json;charset=UTF-8")
     public Map<String, Object> getIntencoesPapa() {
@@ -47,4 +48,3 @@ public class ApiController {
         return Map.of("status", "alive");
     }
 }
-
