@@ -1,4 +1,4 @@
-var CACHE_NAME = 'fecatolica-cache-v6';
+var CACHE_NAME = 'fecatolica-cache-v7';
 var URLS_PRE_CACHE = [
     '/',
     '/tercos/santo-terco.html',
@@ -8,6 +8,8 @@ var URLS_PRE_CACHE = [
     '/tercos/terco-sao-jose.html',
     '/tercos/terco-das-almas.html',
     '/tercos/terco-dos-anjos.html',
+    '/tercos/terco-do-combate.html',
+    '/tercos/terco-da-providencia.html',
     '/tercos/coroa-franciscana.html',
     '/tercos/coroa-sete-dores.html',
     '/liturgia/liturgia.html',
