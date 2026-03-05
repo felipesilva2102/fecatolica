@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Coroa das Doze Estrelas — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>⭐ Coroa das Doze Estrelas</h1>
+            <p class="lead">Devoção mariana baseada na visão do Apocalipse, honrando os 12 privilégios e excelências de Nossa Senhora.</p>
+            <p class="muted">"Apareceu no céu um grande sinal: uma Mulher vestida de sol, com a lua debaixo dos pés e na cabeça uma coroa de doze estrelas." — Apocalipse 12,1</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre a Coroa das Doze Estrelas</div>
+                <div class="accordion-content">
+                    <p>A <strong>Coroa das Doze Estrelas</strong> é uma antiga devoção mariana que honra os <strong>12 privilégios</strong> de Nossa Senhora, correspondentes às 12 estrelas da sua coroa celestial (Ap 12,1). Foi promovida por diversas ordens religiosas ao longo dos séculos.</p>
+                    <p><strong>Estrutura:</strong> 3 grupos de 4 estrelas (4 privilégios por grupo), totalizando 12 estrelas:</p>
+                    <ol>
+                        <li>1º grupo: 4 privilégios como Filha de Deus Pai</li>
+                        <li>2º grupo: 4 privilégios como Mãe de Deus Filho</li>
+                        <li>3º grupo: 4 privilégios como Esposa do Espírito Santo</li>
+                    </ol>
+                    <p>Em cada estrela: 1 Pai-Nosso + 4 Ave-Marias + Glória.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento</div>
+                <div class="accordion-content">
+                    <p><em>Oferecimento:</em> Ó Virgem Santíssima, coroada de doze estrelas de glória, eu Vos ofereço esta Coroa em honra dos vossos privilégios singulares. Que cada estrela brilhe como graça em minha alma, conduzindo-me ao Vosso Filho Jesus Cristo, luz do mundo. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso... (Credo)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="decadesContainer"></div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oração à Mulher Vestida de Sol</div>
+                <div class="accordion-content">
+                    <p>Ó Maria, Mulher vestida de sol, coroada de doze estrelas, com a lua debaixo dos pés, Vós sois a obra-prima de Deus, a Rainha de toda a criação.</p>
+                    <p>Como Filha predileta do Pai, Mãe amantíssima do Filho e Esposa fidelíssima do Espírito Santo, Vós reunis em Vós todas as graças e todos os privilégios.</p>
+                    <p>Cobri-nos com o Vosso manto de luz, protegei-nos com as vossas doze estrelas e conduzi-nos ao Paraíso, onde reinaremos convosco para sempre. Amém.</p>
+                    <p><em>Salve Rainha...</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Estrela — Filha de Deus Pai: A Imaculada Conceição",
+            meditation: "Maria foi concebida sem pecado original — única entre todas as criaturas. O Pai a preservou pura para ser o Tabernáculo vivo de Seu Filho. Meditemos este privilégio singular e peçamos a pureza de coração.",
+            jaculatoria: "Bendita sejais, ó Maria, Filha predileta do Pai Eterno!"
+        },
+        {
+            title: "2ª Estrela — Filha de Deus Pai: A Plenitude de Graça",
+            meditation: "\"Cheia de graça\" — Maria foi repleta de todos os dons e virtudes desde o primeiro instante. Nenhum santo alcançou tanta graça quanto ela recebeu no momento de sua concepção. Meditemos sobre a graça que Deus deseja nos conceder.",
+            jaculatoria: "Bendita sejais, ó Maria, cheia de graça!"
+        },
+        {
+            title: "3ª Estrela — Filha de Deus Pai: A Anunciação",
+            meditation: "Na Anunciação, Maria recebeu a maior missão da história: ser a Mãe do Salvador. Com seu \"Fiat\" — \"Faça-se em mim segundo a Vossa palavra\" — ela aceitou livremente o plano de Deus. Meditemos sobre a obediência da fé.",
+            jaculatoria: "Bendita sejais, ó Maria, serva obediente do Pai!"
+        },
+        {
+            title: "4ª Estrela — Filha de Deus Pai: A Virgindade Perpétua",
+            meditation: "Maria é Virgem antes, durante e depois do parto — dogma da Igreja. Sua virgindade é sinal de sua total consagração a Deus. Meditemos sobre a pureza como entrega total ao Senhor.",
+            jaculatoria: "Bendita sejais, ó Maria, Virgem Puríssima!"
+        },
+        {
+            title: "5ª Estrela — Mãe de Deus Filho: A Maternidade Divina",
+            meditation: "Maria é verdadeiramente Mãe de Deus (Theotókos), como definido no Concílio de Éfeso (431). Ela gerou em seu ventre o Verbo Eterno feito carne. Não há dignidade maior para uma criatura. Meditemos sobre este mistério insondável.",
+            jaculatoria: "Bendita sejais, ó Maria, Mãe de Deus!"
+        },
+        {
+            title: "6ª Estrela — Mãe de Deus Filho: A Maternidade Espiritual",
+            meditation: "\"Mulher, eis aí o teu filho\" (Jo 19,26). Da Cruz, Jesus nos deu Maria como Mãe. Ela é Mãe de todos os cristãos, Mãe da Igreja. Meditemos sobre o amor maternal de Maria por cada um de nós.",
+            jaculatoria: "Bendita sejais, ó Maria, Mãe da Igreja e Mãe nossa!"
+        },
+        {
+            title: "7ª Estrela — Mãe de Deus Filho: A Co-Redenção",
+            meditation: "Ao pé da Cruz, Maria uniu seus sofrimentos aos de Cristo, tornando-se Co-Redentora — não em igualdade com Cristo, mas como cooperadora no plano da salvação. Suas lágrimas e dores têm valor redentor. Meditemos sobre o sentido do sofrimento unido a Cristo.",
+            jaculatoria: "Bendita sejais, ó Maria, Co-Redentora e Medianeira!"
+        },
+        {
+            title: "8ª Estrela — Mãe de Deus Filho: A Mediação de Todas as Graças",
+            meditation: "Maria é Medianeira de todas as graças — toda graça que vem de Cristo passa pelas mãos de Maria, como o canal pelo qual Deus distribui Seus dons. Meditemos sobre a intercessão poderosa de Nossa Senhora.",
+            jaculatoria: "Bendita sejais, ó Maria, Medianeira de todas as graças!"
+        },
+        {
+            title: "9ª Estrela — Esposa do Espírito Santo: O Pentecostes",
+            meditation: "No Cenáculo, Maria estava presente quando o Espírito Santo desceu sobre os Apóstolos. Ela, que já fora coberta pelo Espírito na Encarnação, intercedeu para que a Igreja recebesse a força do alto. Meditemos sobre a presença de Maria na vida da Igreja.",
+            jaculatoria: "Bendita sejais, ó Maria, Esposa Fidelíssima do Espírito Santo!"
+        },
+        {
+            title: "10ª Estrela — Esposa do Espírito Santo: A Dormição e Assunção",
+            meditation: "María foi elevada aos céus em corpo e alma — o dogma da Assunção (1950). Seu corpo imaculado não conheceu a corrupção do túmulo. Ela é a primeira a participar plenamente da Ressurreição de Cristo. Meditemos sobre a nossa esperança na vida eterna.",
+            jaculatoria: "Bendita sejais, ó Maria, Assunta ao Céu!"
+        },
+        {
+            title: "11ª Estrela — Esposa do Espírito Santo: A Coroação como Rainha",
+            meditation: "Maria foi coroada Rainha do Céu e da terra — Rainha dos Anjos, dos Santos, do Rosário, da Paz. Sua realeza é de serviço e amor, assim como a de Cristo. Meditemos sobre a soberania maternal de Maria.",
+            jaculatoria: "Bendita sejais, ó Maria, Rainha coroada de doze estrelas!"
+        },
+        {
+            title: "12ª Estrela — Esposa do Espírito Santo: A Glória Eterna",
+            meditation: "Maria reina agora na glória eterna, intercedendo por nós sem cessar. Ela é a Mulher do Apocalipse, vestida de sol, pisando a lua, coroada de estrelas — sinal da vitória definitiva do bem sobre o mal. Meditemos sobre a glória que nos espera se formos fiéis como Maria.",
+            jaculatoria: "Bendita sejais, ó Maria, glória eterna da Santíssima Trindade!"
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+
+    const $container = $('#decadesContainer');
+    let groupTitles = [
+        "🌟 Primeiro Grupo — Filha de Deus Pai (Estrelas 1-4)",
+        "🌟 Segundo Grupo — Mãe de Deus Filho (Estrelas 5-8)",
+        "🌟 Terceiro Grupo — Esposa do Espírito Santo (Estrelas 9-12)"
+    ];
+
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+
+        if (i === 0 || i === 4 || i === 8) {
+            $container.append(`<div class="card" style="text-align:center;"><h2 style="margin:0;">${groupTitles[Math.floor(i/4)]}</h2></div>`);
+        }
+
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Orações</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
+                            <strong>4 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 4 vezes)</em><br/><br/>
+                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

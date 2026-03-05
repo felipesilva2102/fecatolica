@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço das Lágrimas de Sangue — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>😢 Terço das Lágrimas de Sangue</h1>
+            <p class="lead">Devoção às Lágrimas de Nossa Senhora, pedindo sua intercessão pelas dores do mundo e pela conversão dos pecadores.</p>
+            <p class="muted">"Uma só lágrima de Maria é mais poderosa que todas as orações dos santos juntos." — São Boaventura</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço das Lágrimas</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço das Lágrimas de Sangue</strong> é uma devoção que honra as lágrimas derramadas por Nossa Senhora ao contemplar os sofrimentos de Seu Filho e os pecados da humanidade. Segundo a tradição, Maria não chorou apenas lágrimas de água, mas lágrimas de sangue — tão intenso era o seu sofrimento unido ao de Cristo.</p>
+                    <p>Esta devoção é especialmente poderosa para pedir a conversão dos pecadores, a paz no mundo e a consolação dos que sofrem.</p>
+                    <p><strong>Estrutura:</strong> 5 dezenas (7 contas cada, em honra às 7 dores de Maria), com meditação sobre cada dor.</p>
+                    <ol>
+                        <li>Meditação sobre uma das dores/lágrimas de Maria</li>
+                        <li>1 Pai-Nosso</li>
+                        <li>7 Ave-Marias</li>
+                        <li>Jaculatória: <em>"Ó Maria, por Vossas Lágrimas de Sangue, alcançai-nos a graça da conversão dos pecadores!"</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><em>Oferecimento:</em> Ó Mãe Dolorosíssima, cujas lágrimas de sangue banharam o Calvário, ofereço este terço em honra das vossas santas lágrimas. Uni as minhas orações às vossas dores e apresentai-as diante do trono de Deus, para a conversão dos pecadores, a libertação das almas do Purgatório e a consolação de todos os que sofrem. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><em>1 Pai-Nosso, 3 Ave-Marias pela consolação de Nossa Senhora, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="decadesContainer"></div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Súplica Final às Lágrimas de Maria</div>
+                <div class="accordion-content">
+                    <p>Ó Maria, Mãe das Lágrimas, Rainha dos Mártires, vossas lágrimas de sangue são mais preciosas que todas as pérolas do mundo, pois foram derramadas por amor a Deus e a nós, pobres pecadores.</p>
+                    <p>Por essas lágrimas santas, pedimos-Vos: obtende a conversão dos pecadores mais endurecidos, a libertação das almas do Purgatório, a paz nas famílias diante da discórdia, a cura dos enfermos do corpo e da alma.</p>
+                    <p>Ó Mãe Dolorosíssima, não permitais que as lágrimas de sangue que derramastes ao pé da Cruz sejam em vão. Fazei com que o Sangue do vosso Filho e as vossas lágrimas transformem o mundo. Amém.</p>
+                    <p><em>Salve Rainha...</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Mistério — As Lágrimas da Profecia de Simeão",
+            meditation: "\"Uma espada de dor traspassará a tua alma\" (Lc 2,35). No Templo de Jerusalém, quando Maria apresentou o Menino Jesus, o velho Simeão profetizou que uma espada de dor traspassaria sua alma. Desde aquele momento, Maria carregou no coração a sombra da Cruz. Suas primeiras lágrimas silenciosas começaram ali — lágrimas de uma Mãe que sabe que seu Filho nasceu para morrer pelos pecadores.",
+            jaculatoria: "Ó Maria, por Vossas Lágrimas de Sangue diante da profecia de Simeão, alcançai-nos a graça da aceitação da vontade de Deus!"
+        },
+        {
+            title: "2ª Mistério — As Lágrimas da Fuga para o Egito",
+            meditation: "\"Levanta-te, toma o Menino e Sua mãe, e foge para o Egito\" (Mt 2,13). Herodes queria matar o Menino. Maria fugiu na noite escura, apertando Jesus ao peito, chorando pelas mães de Belém cujos filhos seriam massacrados. Lágrimas de compaixão por um mundo que rejeita a Deus e mata os inocentes. Meditemos sobre as lágrimas de Maria pelos inocentes que sofrem hoje.",
+            jaculatoria: "Ó Maria, por Vossas Lágrimas de Sangue na fuga para o Egito, protegei os inocentes e perseguidos!"
+        },
+        {
+            title: "3ª Mistério — As Lágrimas da Perda de Jesus no Templo",
+            meditation: "\"Filho, por que fizeste assim conosco? Teu pai e eu, aflitos, te procurávamos\" (Lc 2,48). Durante três dias, Maria procurou Jesus com o coração dilacerado. Que angústia para uma Mãe perder seu Filho! Essas lágrimas representam a dor de todos os que se sentem longe de Deus, que O perderam pelo pecado. Meditemos sobre as lágrimas de Maria por cada alma que se afasta de Jesus.",
+            jaculatoria: "Ó Maria, por Vossas Lágrimas de Sangue ao procurar Jesus, trazei de volta os que se afastaram de Deus!"
+        },
+        {
+            title: "4ª Mistério — As Lágrimas no Caminho do Calvário",
+            meditation: "\"Seguia-O uma grande multidão de povo e de mulheres, que batiam no peito e O lamentavam\" (Lc 23,27). Maria acompanhou Jesus no caminho da Cruz. Viu-O cair, ser açoitado, coroado de espinhos. Cada gota do Sangue de Cristo arrancava de Maria uma lágrima de sangue. A Via Dolorosa foi percorrida por dois corações — o de Jesus e o de Maria — unidos na mesma dor redentora.",
+            jaculatoria: "Ó Maria, por Vossas Lágrimas de Sangue no caminho do Calvário, dai-nos força para carregar nossas cruzes!"
+        },
+        {
+            title: "5ª Mistério — As Lágrimas ao Pé da Cruz",
+            meditation: "\"Junto à cruz de Jesus estavam Sua mãe...\" (Jo 19,25). O momento supremo das Lágrimas de Sangue de Maria. Ali, ao pé da Cruz, ela viu seu Filho morrer. \"Tenho sede\", disse Jesus — e Maria não podia dar-Lhe água. \"Está consumado\" — e o coração de Maria foi traspassado pela espada. Suas lágrimas de sangue se misturaram ao Sangue de Cristo, tornando-se co-redentoras. Meditemos sobre o amor infinito de Maria que sofre conosco e por nós.",
+            jaculatoria: "Ó Maria, por Vossas Lágrimas de Sangue ao pé da Cruz, alcançai a conversão dos pecadores e a salvação das almas!"
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Orações e Jaculatória</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
+                            <strong>7 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 7 vezes, em honra às 7 dores de Maria)</em><br/><br/>
+                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

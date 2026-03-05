@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço da Imaculada Conceição — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>💙 Terço da Imaculada Conceição</h1>
+            <p class="lead">Devoção em honra da Virgem Maria concebida sem pecado original, louvando o privilégio singular dado por Deus à Mãe de Seu Filho.</p>
+            <p class="muted">"Eu sou a Imaculada Conceição." — Nossa Senhora a Santa Bernadette, Lourdes, 1858</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço da Imaculada Conceição</div>
+                <div class="accordion-content">
+                    <p>O dogma da <strong>Imaculada Conceição</strong>, definido pelo Papa Pio IX em 1854, declara que Maria foi preservada do pecado original desde o primeiro instante de sua concepção, por singular graça e privilégio de Deus, em vista dos méritos de Jesus Cristo.</p>
+                    <p>Este terço nos conduz a meditar sobre a pureza de Maria e a pedir sua intercessão para que também nós sejamos purificados do pecado e vivamos em santidade.</p>
+                    <p><strong>Estrutura:</strong> 3 grupos de 4 contas (totalizando 12, em honra às 12 estrelas da coroa de Maria — Ap 12,1), com meditações sobre o mistério da Imaculada Conceição.</p>
+                    <ol>
+                        <li>Meditação</li>
+                        <li>1 Pai-Nosso</li>
+                        <li>4 Ave-Marias</li>
+                        <li>Glória ao Pai</li>
+                        <li>Jaculatória: <em>"Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!"</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><em>Oferecimento:</em> Ó Virgem Imaculada, toda pura e sem mancha de pecado, ofereço-Vos este terço em honra do vosso singular privilégio. Por vossa Conceição Imaculada, alcançai-me a pureza de coração e a graça de viver sempre em estado de graça. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="decadesContainer"></div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Consagração à Imaculada</div>
+                <div class="accordion-content">
+                    <p><strong>Oração de São Maximiliano Kolbe:</strong></p>
+                    <p><em>Ó Imaculada, Rainha do Céu e da terra, Refúgio dos pecadores e Mãe misericordiosíssima, a Quem Deus quis confiar toda a ordem da misericórdia: eu, indigno pecador, prostro-me a Vossos pés, suplicando humildemente que Vos digneis me aceitar inteiramente e totalmente como coisa e propriedade Vossa, e façais tudo que quiserdes de mim e de todas as minhas faculdades de alma e corpo, e de toda a minha vida, morte e eternidade.</em></p>
+                    <p>Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós! (Repete-se 3 vezes)</p>
+                    <p>Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1º Mistério — A Eleição Eterna de Maria",
+            meditation: "\"Antes de te formar no ventre materno, eu te conheci\" (Jr 1,5). Desde toda a eternidade, Deus escolheu Maria para ser a Mãe de Seu Filho. Na mente divina, ela já existia como a obra-prima da criação — a mulher que esmagaria a cabeça da serpente (Gn 3,15). Meditemos sobre o plano eterno de Deus e a predestinação de Maria à santidade plena.",
+            jaculatoria: "Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!"
+        },
+        {
+            title: "2º Mistério — A Preservação do Pecado Original",
+            meditation: "\"Toda formosa és, minha amada, e não há mancha em ti\" (Ct 4,7). No primeiro instante de sua concepção, por singular privilégio de Deus e em previsão dos méritos de Cristo, Maria foi preservada de toda mancha do pecado original. Ela é a Arca da Nova Aliança, o Templo Santo onde Deus habitaria. Meditemos sobre a pureza de Maria e peçamos a graça de horror ao pecado.",
+            jaculatoria: "Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!"
+        },
+        {
+            title: "3º Mistério — A Plenitude de Graça",
+            meditation: "\"Ave, cheia de graça, o Senhor é convosco!\" (Lc 1,28). O Anjo Gabriel saudou Maria com um título único: \"cheia de graça\" — kecharitomene em grego, que significa \"plenamente agraciada\". Maria não apenas foi preservada do pecado, mas foi repleta da graça divina desde o primeiro instante. Ela é o modelo perfeito de como Deus deseja que sejamos. Meditemos na plenitude da graça e peçamos a intercessão de Maria para crescermos em santidade.",
+            jaculatoria: "Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!"
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Orações e Jaculatória</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
+                            <strong>4 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 4 vezes)</em><br/><br/>
+                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>

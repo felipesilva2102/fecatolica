@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/print.css" media="print"/>
     <link rel="manifest" href="/manifest.json"/>
     <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -18,20 +19,25 @@
         <div class="card hero-card">
             <header style="text-align:center;">
                 <h1>📅 Calendário Litúrgico</h1>
-                <p class="lead">Festas, Solenidades e Memórias do Ano Litúrgico.</p>
+                <p class="lead">Festas, Solenidades, Quaresmas e Novenas do Ano Litúrgico.</p>
             </header>
         </div>
 
-        <!-- Legenda de cores -->
+        <!-- Legenda -->
         <div class="card" style="text-align:center;">
-            <h3 style="margin-top:0;">🎨 Cores Litúrgicas</h3>
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
-                <span class="cal-legend"><span class="cal-dot" style="background:#fff;border:1px solid #999;"></span> Branco</span>
-                <span class="cal-legend"><span class="cal-dot" style="background:#8b0000;"></span> Vermelho</span>
-                <span class="cal-legend"><span class="cal-dot" style="background:#2e7d32;"></span> Verde</span>
-                <span class="cal-legend"><span class="cal-dot" style="background:#6a0dad;"></span> Roxo</span>
-                <span class="cal-legend"><span class="cal-dot" style="background:#f48fb1;"></span> Rosa</span>
-                <span class="cal-legend"><span class="cal-dot" style="background:#c9a84c;"></span> Dourado</span>
+            <h3 style="margin-top:0;">📖 Legenda</h3>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;">
+                <span class="cal-legend"><span class="cal-dot" style="background:#c9a84c;"></span> Solenidade</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#1a4f89;"></span> Festa</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#2e7d32;"></span> Memória</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#6a0dad;"></span> Quaresma</span>
+                <span class="cal-legend"><span class="cal-dot" style="background:#e67e22;"></span> Novena</span>
+            </div>
+            <!-- Filtros -->
+            <div class="cal-filter-bar" style="margin-top:10px;">
+                <label><input type="checkbox" id="filtFestas" checked/> Festas</label>
+                <label><input type="checkbox" id="filtQuaresmas" checked/> Quaresmas</label>
+                <label><input type="checkbox" id="filtNovenas" checked/> Novenas</label>
             </div>
         </div>
 
@@ -64,15 +70,32 @@
             <div id="dayDetailContent"></div>
         </div>
 
-        <!-- Próximas festas -->
+        <!-- Próximas eventos -->
         <div class="card">
-            <h2 style="text-align:center;margin-top:0;">🎉 Próximas Festas e Solenidades</h2>
+            <h2 style="text-align:center;margin-top:0;">🎉 Próximos Eventos</h2>
             <div id="upcomingFeasts"></div>
+        </div>
+
+        <!-- Sincronizar Google Calendar -->
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">📆 Sincronizar com Google Calendar</h2>
+            <p class="muted" style="margin-bottom:12px;">Exporte todas as festas, quaresmas e novenas para o seu Google Agenda.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+                <button class="cal-gcal-btn" id="btnExportIcs">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Baixar arquivo .ics
+                </button>
+                <button class="cal-gcal-btn" id="btnOpenGCal" style="background:#34a853;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                    Abrir Google Calendar
+                </button>
+            </div>
+            <p class="muted" style="margin-top:10px;font-size:0.8rem;">Após baixar o .ics, importe no Google Calendar: <strong>Configurações → Importar e exportar → Importar</strong>.</p>
         </div>
 
         <!-- Partilha -->
         <div style="text-align:center;margin:12px 0;">
-            <button class="btn-share" data-partilhar data-partilhar-titulo="Calendário Litúrgico — FeCatolica" data-partilhar-texto="Acompanhe as festas e solenidades do Ano Litúrgico no FeCatolica!">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Calendário Litúrgico — FeCatolica" data-partilhar-texto="Acompanhe as festas, quaresmas e novenas no FeCatolica!">
                 📤 Compartilhar
             </button>
         </div>
@@ -87,70 +110,174 @@
         var currentYear = new Date().getFullYear();
         var today = new Date();
 
-        // Festas fixas (mês 0-indexado)
+        // ===================== PÁSCOA (Meeus) =====================
+        function calcEaster(year) {
+            var a=year%19, b=Math.floor(year/100), c=year%100;
+            var d=Math.floor(b/4), e=b%4, f=Math.floor((b+8)/25);
+            var g=Math.floor((b-f+1)/3), h=(19*a+b-d-g+15)%30;
+            var i=Math.floor(c/4), k=c%4, l=(32+2*e+2*i-h-k)%7;
+            var m=Math.floor((a+11*h+22*l)/451);
+            var month=Math.floor((h+l-7*m+114)/31)-1;
+            var day=((h+l-7*m+114)%31)+1;
+            return new Date(year, month, day);
+        }
+        function addDays(d, n) { var r=new Date(d); r.setDate(r.getDate()+n); return r; }
+        function dateKey(d) { return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+        function pad2(n) { return n < 10 ? '0'+n : ''+n; }
+
+        // ===================== FESTAS FIXAS =====================
         var fixedFeasts = [
-            {m:0,d:1, name:'Santa Maria, Mãe de Deus', type:'Solenidade', color:'#fff'},
-            {m:0,d:6, name:'Epifania do Senhor', type:'Solenidade', color:'#fff'},
-            {m:0,d:25, name:'Conversão de São Paulo', type:'Festa', color:'#fff'},
-            {m:1,d:2, name:'Apresentação do Senhor', type:'Festa', color:'#fff'},
-            {m:1,d:11, name:'N. Sra. de Lourdes', type:'Memória', color:'#fff'},
-            {m:1,d:22, name:'Cátedra de São Pedro', type:'Festa', color:'#fff'},
-            {m:2,d:19, name:'São José, Esposo de Maria', type:'Solenidade', color:'#fff'},
-            {m:2,d:25, name:'Anunciação do Senhor', type:'Solenidade', color:'#fff'},
-            {m:3,d:23, name:'São Jorge', type:'Memória', color:'#8b0000'},
-            {m:3,d:25, name:'São Marcos Evangelista', type:'Festa', color:'#8b0000'},
-            {m:4,d:1, name:'São José Operário', type:'Memória', color:'#fff'},
-            {m:4,d:13, name:'N. Sra. de Fátima', type:'Memória', color:'#fff'},
-            {m:4,d:31, name:'Visitação de N. Sra.', type:'Festa', color:'#fff'},
-            {m:5,d:13, name:'Santo Antônio de Pádua', type:'Memória', color:'#fff'},
-            {m:5,d:24, name:'Nascimento de São João Batista', type:'Solenidade', color:'#fff'},
-            {m:5,d:29, name:'São Pedro e São Paulo', type:'Solenidade', color:'#8b0000'},
-            {m:6,d:3, name:'São Tomé Apóstolo', type:'Festa', color:'#8b0000'},
-            {m:6,d:22, name:'Santa Maria Madalena', type:'Festa', color:'#fff'},
-            {m:6,d:25, name:'São Tiago Apóstolo', type:'Festa', color:'#8b0000'},
-            {m:6,d:26, name:'Sant\'Ana e São Joaquim', type:'Memória', color:'#fff'},
-            {m:7,d:6, name:'Transfiguração do Senhor', type:'Festa', color:'#fff'},
-            {m:7,d:10, name:'São Lourenço', type:'Festa', color:'#8b0000'},
-            {m:7,d:15, name:'Assunção de N. Sra.', type:'Solenidade', color:'#fff'},
-            {m:7,d:22, name:'Sta. Maria Virgem Rainha', type:'Memória', color:'#fff'},
-            {m:8,d:8, name:'Natividade de N. Sra.', type:'Festa', color:'#fff'},
-            {m:8,d:14, name:'Exaltação da Santa Cruz', type:'Festa', color:'#8b0000'},
-            {m:8,d:15, name:'N. Sra. das Dores', type:'Memória', color:'#fff'},
-            {m:8,d:21, name:'São Mateus Apóstolo', type:'Festa', color:'#8b0000'},
-            {m:8,d:29, name:'Santos Arcanjos (Miguel, Gabriel, Rafael)', type:'Festa', color:'#fff'},
-            {m:9,d:1, name:'Santa Teresinha do Menino Jesus', type:'Memória', color:'#fff'},
-            {m:9,d:2, name:'Santos Anjos da Guarda', type:'Memória', color:'#fff'},
-            {m:9,d:4, name:'São Francisco de Assis', type:'Memória', color:'#fff'},
-            {m:9,d:7, name:'N. Sra. do Rosário', type:'Memória', color:'#fff'},
-            {m:9,d:12, name:'N. Sra. Aparecida', type:'Solenidade', color:'#fff'},
-            {m:9,d:15, name:'Santa Teresa de Jesus', type:'Memória', color:'#fff'},
-            {m:9,d:18, name:'São Lucas Evangelista', type:'Festa', color:'#8b0000'},
-            {m:9,d:28, name:'São Simão e São Judas', type:'Festa', color:'#8b0000'},
-            {m:10,d:1, name:'Todos os Santos', type:'Solenidade', color:'#fff'},
-            {m:10,d:2, name:'Fiéis Defuntos', type:'Comemoração', color:'#6a0dad'},
-            {m:10,d:9, name:'Dedicação Basílica de Latrão', type:'Festa', color:'#fff'},
-            {m:10,d:21, name:'Apresentação de N. Sra.', type:'Memória', color:'#fff'},
-            {m:10,d:30, name:'Santo André Apóstolo', type:'Festa', color:'#8b0000'},
-            {m:11,d:3, name:'São Francisco Xavier', type:'Memória', color:'#fff'},
-            {m:11,d:6, name:'São Nicolau', type:'Memória', color:'#fff'},
-            {m:11,d:8, name:'Imaculada Conceição de Maria', type:'Solenidade', color:'#fff'},
-            {m:11,d:12, name:'N. Sra. de Guadalupe', type:'Festa', color:'#fff'},
-            {m:11,d:13, name:'Santa Luzia', type:'Memória', color:'#8b0000'},
-            {m:11,d:25, name:'Natal do Senhor', type:'Solenidade', color:'#fff'},
-            {m:11,d:26, name:'Santo Estêvão', type:'Festa', color:'#8b0000'},
-            {m:11,d:27, name:'São João Evangelista', type:'Festa', color:'#fff'},
-            {m:11,d:28, name:'Santos Inocentes', type:'Festa', color:'#8b0000'},
-            {m:11,d:31, name:'Sagrada Família', type:'Festa', color:'#fff'}
+            {m:0,d:1,name:'Santa Maria, Mãe de Deus',type:'Solenidade',color:'#fff'},
+            {m:0,d:6,name:'Epifania do Senhor',type:'Solenidade',color:'#fff'},
+            {m:0,d:25,name:'Conversão de São Paulo',type:'Festa',color:'#fff'},
+            {m:1,d:2,name:'Apresentação do Senhor',type:'Festa',color:'#fff'},
+            {m:1,d:11,name:'N. Sra. de Lourdes',type:'Memória',color:'#fff'},
+            {m:1,d:22,name:'Cátedra de São Pedro',type:'Festa',color:'#fff'},
+            {m:2,d:19,name:'São José, Esposo de Maria',type:'Solenidade',color:'#fff'},
+            {m:2,d:25,name:'Anunciação do Senhor',type:'Solenidade',color:'#fff'},
+            {m:3,d:23,name:'São Jorge',type:'Memória',color:'#8b0000'},
+            {m:3,d:25,name:'São Marcos Evangelista',type:'Festa',color:'#8b0000'},
+            {m:4,d:1,name:'São José Operário',type:'Memória',color:'#fff'},
+            {m:4,d:13,name:'N. Sra. de Fátima',type:'Memória',color:'#fff'},
+            {m:4,d:31,name:'Visitação de N. Sra.',type:'Festa',color:'#fff'},
+            {m:5,d:13,name:'Santo Antônio de Pádua',type:'Memória',color:'#fff'},
+            {m:5,d:24,name:'Nascimento de São João Batista',type:'Solenidade',color:'#fff'},
+            {m:5,d:29,name:'São Pedro e São Paulo',type:'Solenidade',color:'#8b0000'},
+            {m:6,d:3,name:'São Tomé Apóstolo',type:'Festa',color:'#8b0000'},
+            {m:6,d:16,name:'N. Sra. do Carmo',type:'Memória',color:'#fff'},
+            {m:6,d:22,name:'Santa Maria Madalena',type:'Festa',color:'#fff'},
+            {m:6,d:25,name:'São Tiago Apóstolo',type:'Festa',color:'#8b0000'},
+            {m:6,d:26,name:'Sant\'Ana e São Joaquim',type:'Memória',color:'#fff'},
+            {m:7,d:6,name:'Transfiguração do Senhor',type:'Festa',color:'#fff'},
+            {m:7,d:10,name:'São Lourenço',type:'Festa',color:'#8b0000'},
+            {m:7,d:15,name:'Assunção de N. Sra.',type:'Solenidade',color:'#fff'},
+            {m:7,d:22,name:'Sta. Maria Virgem Rainha',type:'Memória',color:'#fff'},
+            {m:8,d:8,name:'Natividade de N. Sra.',type:'Festa',color:'#fff'},
+            {m:8,d:14,name:'Exaltação da Santa Cruz',type:'Festa',color:'#8b0000'},
+            {m:8,d:15,name:'N. Sra. das Dores',type:'Memória',color:'#fff'},
+            {m:8,d:21,name:'São Mateus Apóstolo',type:'Festa',color:'#8b0000'},
+            {m:8,d:29,name:'Santos Arcanjos (Miguel, Gabriel, Rafael)',type:'Festa',color:'#fff'},
+            {m:9,d:1,name:'Santa Teresinha do Menino Jesus',type:'Memória',color:'#fff'},
+            {m:9,d:2,name:'Santos Anjos da Guarda',type:'Memória',color:'#fff'},
+            {m:9,d:4,name:'São Francisco de Assis',type:'Memória',color:'#fff'},
+            {m:9,d:7,name:'N. Sra. do Rosário',type:'Memória',color:'#fff'},
+            {m:9,d:12,name:'N. Sra. Aparecida',type:'Solenidade',color:'#fff'},
+            {m:9,d:15,name:'Santa Teresa de Jesus',type:'Memória',color:'#fff'},
+            {m:9,d:18,name:'São Lucas Evangelista',type:'Festa',color:'#8b0000'},
+            {m:9,d:28,name:'São Simão e São Judas',type:'Festa',color:'#8b0000'},
+            {m:10,d:1,name:'Todos os Santos',type:'Solenidade',color:'#fff'},
+            {m:10,d:2,name:'Fiéis Defuntos',type:'Comemoração',color:'#6a0dad'},
+            {m:10,d:9,name:'Dedicação Basílica de Latrão',type:'Festa',color:'#fff'},
+            {m:10,d:21,name:'Apresentação de N. Sra.',type:'Memória',color:'#fff'},
+            {m:10,d:30,name:'Santo André Apóstolo',type:'Festa',color:'#8b0000'},
+            {m:11,d:3,name:'São Francisco Xavier',type:'Memória',color:'#fff'},
+            {m:11,d:6,name:'São Nicolau',type:'Memória',color:'#fff'},
+            {m:11,d:8,name:'Imaculada Conceição de Maria',type:'Solenidade',color:'#fff'},
+            {m:11,d:12,name:'N. Sra. de Guadalupe',type:'Festa',color:'#fff'},
+            {m:11,d:13,name:'Santa Luzia',type:'Memória',color:'#8b0000'},
+            {m:11,d:25,name:'Natal do Senhor',type:'Solenidade',color:'#fff'},
+            {m:11,d:26,name:'Santo Estêvão',type:'Festa',color:'#8b0000'},
+            {m:11,d:27,name:'São João Evangelista',type:'Festa',color:'#fff'},
+            {m:11,d:28,name:'Santos Inocentes',type:'Festa',color:'#8b0000'},
+            {m:11,d:31,name:'Sagrada Família',type:'Festa',color:'#fff'}
         ];
 
-        var MONTH_NAMES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-
-        function getFeastsForMonth(year, month) {
-            return fixedFeasts.filter(function(f) { return f.m === month; });
+        // ===================== QUARESMAS =====================
+        function getQuaresmas(year) {
+            var easter = calcEaster(year);
+            var pentecost = addDays(easter, 49);
+            var ashWed = addDays(easter, -46);
+            var holySat = addDays(easter, -1);
+            return [
+                {name:'Quaresma Litúrgica', start:ashWed, end:holySat, url:'/quaresmas/quaresma-liturgica.html'},
+                {name:'Quaresma de São José', start:new Date(year,1,19), end:new Date(year,2,19), url:'/quaresmas/quaresma-sao-jose.html'},
+                {name:'Quaresma de Santo Antônio', start:new Date(year,4,4), end:new Date(year,5,13), url:'/quaresmas/quaresma-santo-antonio.html'},
+                {name:'Quaresma de N. Sra. do Carmo', start:new Date(year,5,7), end:new Date(year,6,16), url:'/quaresmas/quaresma-nossa-senhora-carmo.html'},
+                {name:'Quaresma de São Miguel', start:new Date(year,7,15), end:new Date(year,8,29), url:'/quaresmas/quaresma-sao-miguel.html'},
+                {name:'Quaresma de Santa Teresinha', start:new Date(year,7,23), end:new Date(year,9,1), url:'/quaresmas/quaresma-santa-teresinha.html'},
+                {name:'Quaresma de São Francisco', start:new Date(year,7,26), end:new Date(year,9,4), url:'/quaresmas/quaresma-sao-francisco.html'},
+                {name:'Quaresma de N. Sra. Aparecida', start:new Date(year,8,2), end:new Date(year,9,12), url:'/quaresmas/quaresma-nossa-senhora-aparecida.html'},
+                {name:'Quaresma do Espírito Santo', start:addDays(pentecost,-39), end:pentecost, url:'/quaresmas/quaresma-espirito-santo.html'},
+                {name:'Quaresma de Natal', start:new Date(year,10,15), end:new Date(year,11,24), url:'/quaresmas/quaresma-natal.html'}
+            ];
         }
 
-        function getFeastForDay(year, month, day) {
-            return fixedFeasts.filter(function(f) { return f.m === month && f.d === day; });
+        // ===================== NOVENAS =====================
+        function getNovenas(year) {
+            var easter = calcEaster(year);
+            var corpusChristi = addDays(easter, 60);
+            var sagradoCoracao = addDays(corpusChristi, 8); // sexta após Corpus
+            var novSagCoracaoEnd = addDays(sagradoCoracao, -1);
+            var novSagCoracaoStart = addDays(novSagCoracaoEnd, -8);
+            return [
+                {name:'Novena de Santo Antão', start:new Date(year,0,8), end:new Date(year,0,16), bean:'novenaSantoAntaoBean'},
+                {name:'Novena de S. Francisco de Sales', start:new Date(year,0,15), end:new Date(year,0,23), bean:'novenaSaoFranciscoSalesBean'},
+                {name:'Novena de Sto. Tomás de Aquino', start:new Date(year,0,19), end:new Date(year,0,27), bean:'novenaSantoTomasAquinoBean'},
+                {name:'Novena de S. João Bosco', start:new Date(year,0,22), end:new Date(year,0,30), bean:'novenaSaoJoaoBoscoBean'},
+                {name:'Novena de N. Sra. das Candeias', start:new Date(year,0,24), end:new Date(year,1,1), bean:'novenaNossaSenhoraCandeiasBean'},
+                {name:'Novena da Purificação', start:new Date(year,0,24), end:new Date(year,1,1), bean:'novenaPurificacao'},
+                {name:'Novena de N. Sra. de Lourdes', start:new Date(year,1,2), end:new Date(year,1,10), bean:'novenaNossaSenhoraLourdesBean'},
+                {name:'Novena de São José', start:new Date(year,2,10), end:new Date(year,2,18), bean:'novenaSaoJoseBean'},
+                {name:'Novena da Anunciação', start:new Date(year,2,16), end:new Date(year,2,24), bean:'novenaNossaSenhoraAnunciacaoBean'},
+                {name:'Novena de São Jorge', start:new Date(year,3,14), end:new Date(year,3,22), bean:'novenaAbrSaoJorgeBean'},
+                {name:'Novena de São Marcos', start:new Date(year,3,16), end:new Date(year,3,24), bean:'novenaAbrSaoMarcosBean'},
+                {name:'Novena de N. Sra. de Fátima', start:new Date(year,4,4), end:new Date(year,4,12), bean:'novenaMaiNossaSenhoraFatimaBean'},
+                {name:'Novena de Santo Antônio', start:new Date(year,5,4), end:new Date(year,5,12), bean:'novenaJunSantoAntonioBean'},
+                {name:'Novena do Sagrado Coração', start:novSagCoracaoStart, end:novSagCoracaoEnd, bean:'novenaJunSagradoCoracaoBean'},
+                {name:'Novena de Sant\'Ana', start:new Date(year,6,17), end:new Date(year,6,25), bean:'novenaJulSantAnaBean'},
+                {name:'Novena da Assunção', start:new Date(year,7,6), end:new Date(year,7,14), bean:'novenaAgoAssuncaoBean'},
+                {name:'Novena de N. Sra. das Dores', start:new Date(year,8,6), end:new Date(year,8,14), bean:'novenaSetNossaSenhoraDoresBean'},
+                {name:'Novena do Rosário', start:new Date(year,8,30), end:new Date(year,9,8), bean:'novenaRosasBean'},
+                {name:'Novena da Conceição (out)', start:new Date(year,9,3), end:new Date(year,9,11), bean:'novenaNossaSenhoraConceicaoBean'},
+                {name:'Novena de Sta. Margarida M. Alacoque', start:new Date(year,9,7), end:new Date(year,9,15), bean:'novenaSantaMargaridaMariaAlacoqueBean'},
+                {name:'Novena de Sta. Teresa de Jesus', start:new Date(year,9,6), end:new Date(year,9,14), bean:'novenaSantaTeresaJesusBean'},
+                {name:'Novena de S. Geraldo Majella', start:new Date(year,9,7), end:new Date(year,9,15), bean:'novenaSaoGeraldoMajellaBean'},
+                {name:'Novena de Sto. Inácio Antioquia', start:new Date(year,9,8), end:new Date(year,9,16), bean:'novenaSantoInacioAntioquiaBean'},
+                {name:'Novena de S. Pedro Alcântara', start:new Date(year,9,10), end:new Date(year,9,18), bean:'novenaSaoPedroAlcantaraBean'},
+                {name:'Novena de S. João Paulo II', start:new Date(year,9,13), end:new Date(year,9,21), bean:'novenaSaoJoaoPauloBean'},
+                {name:'Novena de Sto. Antônio S. Galvão', start:new Date(year,9,16), end:new Date(year,9,24), bean:'novenaSantoAntonioSantanaGalvaoBean'},
+                {name:'Novena de S. Carlo Acutis', start:new Date(year,9,3), end:new Date(year,9,11), bean:'novenaSaoCarloAcutisBean'},
+                {name:'Novena de Todos os Santos', start:new Date(year,9,23), end:new Date(year,9,31), bean:'novenaTodosSantosBean'},
+                {name:'Novena das Almas', start:new Date(year,9,24), end:new Date(year,10,1), bean:'novenaAlmas'},
+                {name:'Novena da Apresentação N. Sra.', start:new Date(year,10,12), end:new Date(year,10,20), bean:'novenaApresentacaoNossaSenhoraBean'},
+                {name:'Novena de Cristo Rei', start:new Date(year,10,11), end:new Date(year,10,23), bean:'novenaCristoReiBean'},
+                {name:'Novena de Sta. Catarina Alexandria', start:new Date(year,10,16), end:new Date(year,10,24), bean:'novenaSantaCatarinaAlexandriaBean'},
+                {name:'Novena de N. Sra. das Graças', start:new Date(year,10,18), end:new Date(year,10,26), bean:'novenaNossaSenhoraGracasBean'},
+                {name:'Novena da Imaculada Conceição', start:new Date(year,10,29), end:new Date(year,11,7), bean:'novenaImaculadaConceicaoMariaBean'},
+                {name:'Novena de N. Sra. Guadalupe', start:new Date(year,11,3), end:new Date(year,11,11), bean:'novenaNossaSenhoraGuadalupeBean'},
+                {name:'Novena de Santa Luzia', start:new Date(year,11,4), end:new Date(year,11,12), bean:'novenaSantaLuziaBean'},
+                {name:'Novena de S. João da Cruz', start:new Date(year,11,5), end:new Date(year,11,13), bean:'novenaSaoJoaoCruzBean'},
+                {name:'Novena de Natal', start:new Date(year,11,16), end:new Date(year,11,24), bean:'novenaNatalSaoLeaoMagnoBean'},
+                {name:'Novena da Sagrada Família', start:new Date(year,11,19), end:new Date(year,11,27), bean:'novenaSagradaFamiliaBean'}
+            ];
+        }
+
+        // ===================== HELPERS =====================
+        var MONTH_NAMES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        var showFestas = true, showQuaresmas = true, showNovenas = true;
+
+        function isInRange(date, start, end) {
+            var t = date.getTime();
+            return t >= start.getTime() && t <= end.getTime();
+        }
+
+        function getEventsForDay(year, month, day) {
+            var date = new Date(year, month, day);
+            var result = {feasts:[], quaresmas:[], novenas:[]};
+            if (showFestas) {
+                result.feasts = fixedFeasts.filter(function(f){ return f.m===month && f.d===day; });
+            }
+            if (showQuaresmas) {
+                getQuaresmas(year).forEach(function(q) {
+                    if (isInRange(date, q.start, q.end)) result.quaresmas.push(q);
+                });
+            }
+            if (showNovenas) {
+                getNovenas(year).forEach(function(n) {
+                    if (isInRange(date, n.start, n.end)) result.novenas.push(n);
+                });
+            }
+            return result;
         }
 
         function typeColor(type) {
@@ -163,94 +290,170 @@
             }
         }
 
+        // ===================== RENDER CALENDAR =====================
         function renderCalendar() {
             $('#monthTitle').text(MONTH_NAMES[currentMonth] + ' ' + currentYear);
-
-            var firstDay = new Date(currentYear, currentMonth, 1).getDay(); // 0=Dom
+            var firstDay = new Date(currentYear, currentMonth, 1).getDay();
             var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-            var feasts = getFeastsForMonth(currentYear, currentMonth);
-
             var html = '';
-            // Espaços vazios
-            for (var i = 0; i < firstDay; i++) {
-                html += '<div class="cal-cell empty"></div>';
-            }
-            // Dias
+            for (var i = 0; i < firstDay; i++) html += '<div class="cal-cell empty"></div>';
             for (var d = 1; d <= daysInMonth; d++) {
-                var dayFeasts = getFeastForDay(currentYear, currentMonth, d);
-                var isToday = (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear());
+                var ev = getEventsForDay(currentYear, currentMonth, d);
+                var isToday = (d===today.getDate() && currentMonth===today.getMonth() && currentYear===today.getFullYear());
                 var cls = 'cal-cell';
                 if (isToday) cls += ' cal-today';
-                if (dayFeasts.length > 0) cls += ' cal-feast';
-
-                html += '<div class="' + cls + '" data-day="' + d + '">';
-                html += '<span class="cal-day-num">' + d + '</span>';
-                if (dayFeasts.length > 0) {
-                    var f = dayFeasts[0];
-                    html += '<span class="cal-feast-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';"></span>';
-                    html += '<span class="cal-feast-name">' + f.name.substring(0, 15) + (f.name.length > 15 ? '…' : '') + '</span>';
+                if (ev.feasts.length) cls += ' cal-feast';
+                if (ev.quaresmas.length) cls += ' cal-quaresma';
+                if (ev.novenas.length) cls += ' cal-novena';
+                html += '<div class="'+cls+'" data-day="'+d+'">';
+                html += '<span class="cal-day-num">'+d+'</span>';
+                // Indicadores
+                var dots = '';
+                ev.feasts.forEach(function(f){ dots += '<span class="cal-ind" style="background:'+typeColor(f.type)+';"></span>'; });
+                ev.quaresmas.forEach(function(){ dots += '<span class="cal-ind" style="background:#6a0dad;"></span>'; });
+                ev.novenas.forEach(function(){ dots += '<span class="cal-ind" style="background:#e67e22;"></span>'; });
+                if (dots) html += '<div class="cal-indicators">'+dots+'</div>';
+                // Nome resumido
+                if (ev.feasts.length) {
+                    var nm = ev.feasts[0].name;
+                    html += '<span class="cal-feast-name">'+nm.substring(0,15)+(nm.length>15?'…':'')+'</span>';
                 }
                 html += '</div>';
             }
             $('#calendarBody').html(html);
         }
 
+        // ===================== DAY DETAIL =====================
         function showDayDetail(day) {
-            var feasts = getFeastForDay(currentYear, currentMonth, day);
-            var dateStr = day + ' de ' + MONTH_NAMES[currentMonth] + ' de ' + currentYear;
-            $('#dayDetailTitle').text('📌 ' + dateStr);
-
-            if (feasts.length === 0) {
-                $('#dayDetailContent').html('<p class="muted">Não há festa litúrgica especial neste dia.</p>');
+            var ev = getEventsForDay(currentYear, currentMonth, day);
+            var dateStr = day+' de '+MONTH_NAMES[currentMonth]+' de '+currentYear;
+            $('#dayDetailTitle').text('📌 '+dateStr);
+            var total = ev.feasts.length + ev.quaresmas.length + ev.novenas.length;
+            if (total === 0) {
+                $('#dayDetailContent').html('<p class="muted">Nenhum evento litúrgico neste dia.</p>');
             } else {
                 var html = '';
-                feasts.forEach(function(f) {
-                    html += '<div style="padding:12px;background:#faf8f4;border-left:4px solid ' + typeColor(f.type) + ';border-radius:0 8px 8px 0;margin:8px 0;">';
-                    html += '<strong>' + f.name + '</strong>';
-                    html += '<br/><span class="badge-month" style="font-size:0.75rem;padding:2px 8px;background:' + typeColor(f.type) + ';color:#fff;">' + f.type + '</span>';
-                    html += ' <span class="cal-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';display:inline-block;vertical-align:middle;"></span>';
-                    html += '</div>';
+                ev.feasts.forEach(function(f) {
+                    html += '<div class="cal-detail-item" style="border-color:'+typeColor(f.type)+';"><strong>'+f.name+'</strong><br/><span class="badge-cat" style="background:'+typeColor(f.type)+';">'+f.type+'</span></div>';
+                });
+                ev.quaresmas.forEach(function(q) {
+                    var startStr = q.start.getDate()+'/'+(q.start.getMonth()+1);
+                    var endStr = q.end.getDate()+'/'+(q.end.getMonth()+1);
+                    html += '<div class="cal-detail-item" style="border-color:#6a0dad;"><strong>'+q.name+'</strong><br/><span class="muted" style="font-size:0.8rem;">'+startStr+' até '+endStr+'</span>';
+                    if (q.url) html += '<br/><a href="'+q.url+'" style="font-size:0.8rem;">📿 Rezar</a>';
+                    html += '<br/><span class="badge-cat" style="background:#6a0dad;">Quaresma</span></div>';
+                });
+                ev.novenas.forEach(function(n) {
+                    var startStr = n.start.getDate()+'/'+(n.start.getMonth()+1);
+                    var endStr = n.end.getDate()+'/'+(n.end.getMonth()+1);
+                    html += '<div class="cal-detail-item" style="border-color:#e67e22;"><strong>'+n.name+'</strong><br/><span class="muted" style="font-size:0.8rem;">'+startStr+' até '+endStr+'</span>';
+                    if (n.bean) html += '<br/><a href="/novenas/novena.html?n='+n.bean+'" style="font-size:0.8rem;">🙏 Rezar</a>';
+                    html += '<br/><span class="badge-cat" style="background:#e67e22;">Novena</span></div>';
                 });
                 $('#dayDetailContent').html(html);
             }
             $('#dayDetail').slideDown(200);
         }
 
+        // ===================== UPCOMING =====================
         function renderUpcoming() {
             var now = new Date();
             var upcoming = [];
-            // Próximos 60 dias
-            for (var i = 0; i < 60; i++) {
-                var d = new Date(now);
-                d.setDate(d.getDate() + i);
-                var feasts = getFeastForDay(d.getFullYear(), d.getMonth(), d.getDate());
-                feasts.forEach(function(f) {
-                    upcoming.push({
-                        date: d.toLocaleDateString('pt-BR', {day:'numeric', month:'short'}),
-                        name: f.name,
-                        type: f.type,
-                        color: f.color,
-                        days: i
-                    });
+            for (var i = 0; i < 90; i++) {
+                var d = addDays(now, i);
+                var ev = getEventsForDay(d.getFullYear(), d.getMonth(), d.getDate());
+                ev.feasts.forEach(function(f) {
+                    upcoming.push({date:d, name:f.name, cat:'Festa', catColor:typeColor(f.type), days:i});
+                });
+                // Mostrar só início de quaresma
+                ev.quaresmas.forEach(function(q) {
+                    if (q.start.getDate()===d.getDate() && q.start.getMonth()===d.getMonth() && q.start.getFullYear()===d.getFullYear()) {
+                        upcoming.push({date:d, name:q.name+' (início)', cat:'Quaresma', catColor:'#6a0dad', days:i});
+                    }
+                });
+                // Mostrar só início de novena
+                ev.novenas.forEach(function(n) {
+                    if (n.start.getDate()===d.getDate() && n.start.getMonth()===d.getMonth() && n.start.getFullYear()===d.getFullYear()) {
+                        upcoming.push({date:d, name:n.name+' (início)', cat:'Novena', catColor:'#e67e22', days:i});
+                    }
                 });
             }
             if (upcoming.length === 0) {
-                $('#upcomingFeasts').html('<p class="muted" style="text-align:center;">Nenhuma festa nos próximos 60 dias.</p>');
+                $('#upcomingFeasts').html('<p class="muted" style="text-align:center;">Nenhum evento nos próximos 90 dias.</p>');
                 return;
             }
             var html = '';
-            upcoming.slice(0, 12).forEach(function(f) {
-                var label = f.days === 0 ? '🎉 Hoje!' : (f.days === 1 ? 'Amanhã' : 'em ' + f.days + ' dias');
+            upcoming.slice(0,15).forEach(function(f) {
+                var label = f.days===0?'🎉 Hoje!':(f.days===1?'Amanhã':'em '+f.days+' dias');
+                var dateLabel = f.date.toLocaleDateString('pt-BR',{day:'numeric',month:'short'});
                 html += '<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #eee;">';
-                html += '<span class="cal-dot" style="background:' + f.color + ';border:1px solid ' + (f.color === '#fff' ? '#999' : f.color) + ';flex-shrink:0;"></span>';
-                html += '<div style="flex:1;"><strong>' + f.name + '</strong><br/><span class="muted" style="font-size:0.85rem;">' + f.date + ' — ' + label + '</span></div>';
-                html += '<span class="badge-month" style="font-size:0.7rem;padding:2px 6px;background:' + typeColor(f.type) + ';color:#fff;">' + f.type + '</span>';
+                html += '<span class="cal-dot" style="background:'+f.catColor+';flex-shrink:0;"></span>';
+                html += '<div style="flex:1;"><strong>'+f.name+'</strong><br/><span class="muted" style="font-size:0.85rem;">'+dateLabel+' — '+label+'</span></div>';
+                html += '<span class="badge-month" style="font-size:0.7rem;padding:2px 6px;background:'+f.catColor+';color:#fff;">'+f.cat+'</span>';
                 html += '</div>';
             });
             $('#upcomingFeasts').html(html);
         }
 
-        // Eventos
+        // ===================== ICS EXPORT =====================
+        function generateICS() {
+            var year = currentYear;
+            var lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//FeCatolica//Calendario Liturgico//PT','CALSCALE:GREGORIAN','X-WR-CALNAME:FeCatolica — Calendário Litúrgico'];
+            function fmtDate(d) { return d.getFullYear()+pad2(d.getMonth()+1)+pad2(d.getDate()); }
+            function fmtDateNext(d) { var n=addDays(d,1); return fmtDate(n); }
+            function uid(prefix,i) { return prefix+'-'+i+'-'+year+'@fecatolica'; }
+            // Festas
+            fixedFeasts.forEach(function(f,i) {
+                var dt = new Date(year, f.m, f.d);
+                lines.push('BEGIN:VEVENT');
+                lines.push('UID:'+uid('festa',i));
+                lines.push('DTSTART;VALUE=DATE:'+fmtDate(dt));
+                lines.push('DTEND;VALUE=DATE:'+fmtDateNext(dt));
+                lines.push('SUMMARY:'+f.name+' ('+f.type+')');
+                lines.push('DESCRIPTION:'+f.type+' — Calendário Litúrgico FeCatolica');
+                lines.push('CATEGORIES:Festa Litúrgica');
+                lines.push('END:VEVENT');
+            });
+            // Quaresmas
+            getQuaresmas(year).forEach(function(q,i) {
+                lines.push('BEGIN:VEVENT');
+                lines.push('UID:'+uid('quaresma',i));
+                lines.push('DTSTART;VALUE=DATE:'+fmtDate(q.start));
+                lines.push('DTEND;VALUE=DATE:'+fmtDateNext(q.end));
+                lines.push('SUMMARY:'+q.name);
+                lines.push('DESCRIPTION:Período de preparação e oração — FeCatolica');
+                lines.push('CATEGORIES:Quaresma');
+                lines.push('END:VEVENT');
+            });
+            // Novenas
+            getNovenas(year).forEach(function(n,i) {
+                lines.push('BEGIN:VEVENT');
+                lines.push('UID:'+uid('novena',i));
+                lines.push('DTSTART;VALUE=DATE:'+fmtDate(n.start));
+                lines.push('DTEND;VALUE=DATE:'+fmtDateNext(n.end));
+                lines.push('SUMMARY:'+n.name);
+                lines.push('DESCRIPTION:Nove dias de oração — FeCatolica');
+                lines.push('CATEGORIES:Novena');
+                lines.push('END:VEVENT');
+            });
+            lines.push('END:VCALENDAR');
+            return lines.join('\r\n');
+        }
+
+        function downloadICS() {
+            var ics = generateICS();
+            var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'fecatolica-calendario-'+currentYear+'.ics';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // ===================== EVENTOS =====================
         $('#btnPrevMonth').on('click', function() {
             currentMonth--;
             if (currentMonth < 0) { currentMonth = 11; currentYear--; }
@@ -262,8 +465,18 @@
             renderCalendar();
         });
         $(document).on('click', '.cal-cell:not(.empty)', function() {
-            var day = parseInt($(this).data('day'));
-            showDayDetail(day);
+            showDayDetail(parseInt($(this).data('day')));
+        });
+        $('#filtFestas, #filtQuaresmas, #filtNovenas').on('change', function() {
+            showFestas = $('#filtFestas').is(':checked');
+            showQuaresmas = $('#filtQuaresmas').is(':checked');
+            showNovenas = $('#filtNovenas').is(':checked');
+            renderCalendar();
+            renderUpcoming();
+        });
+        $('#btnExportIcs').on('click', downloadICS);
+        $('#btnOpenGCal').on('click', function() {
+            window.open('https://calendar.google.com/calendar/r/settings/export','_blank');
         });
 
         renderCalendar();

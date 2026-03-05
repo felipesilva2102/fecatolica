@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço da Libertação — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🔓 Terço da Libertação</h1>
+            <p class="lead">Oração poderosa de libertação espiritual, invocando o Sangue de Cristo para romper toda prisão do maligno.</p>
+            <p class="muted">"Se o Filho vos libertar, verdadeiramente sereis livres." — João 8,36</p>
+        </header>
+    </div>
+
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço da Libertação</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço da Libertação</strong> é uma poderosa oração de cura e libertação interior. É rezado invocando o Precioso Sangue de Jesus Cristo como escudo e arma contra todo tipo de opressão espiritual, vícios, medos e prisões interiores.</p>
+                    <p>Esta oração é especialmente indicada quando se sente opressão espiritual, tentações persistentes, angústias inexplicáveis ou quando se deseja libertar-se de hábitos nocivos e vícios.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração de abertura e invocação do Sangue de Cristo</li>
+                        <li>5 dezenas, cada uma com meditação sobre a libertação</li>
+                        <li>1 Pai-Nosso + 10 Ave-Marias + Glória</li>
+                        <li>Jaculatória: <em>"Pelo Vosso Precioso Sangue, libertai-nos, Senhor!"</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><em>Oferecimento:</em> Senhor Jesus Cristo, eu me coloco sob a proteção do Vosso Precioso Sangue derramado na Cruz. Cubro-me com esse Sangue, cubro minha família, minha casa e tudo o que me pertence. Pelo poder do Vosso Sangue, quebro toda corrente que me prende ao pecado, ao medo, à doença e a toda forma de mal. Renuncio a Satanás e a todas as suas obras. Jesus, eu confio em Vós. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- As 5 Dezenas -->
+    <div id="decadesContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🙏 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oração de Libertação</div>
+                <div class="accordion-content">
+                    <p>Senhor Jesus Cristo, pelo poder do Vosso Precioso Sangue, derramado na Cruz do Calvário, eu Vos peço: libertai-me de todo mal, de toda maldição, de toda influência maligna, de todo pecado e vício que me aprisiona.</p>
+                    <p>Cobri-me, Senhor, com o Vosso Sangue. Lavai-me, purificai-me, sarai-me. Que o Vosso Sangue penetre em cada fibra do meu ser — corpo, alma e espírito — restaurando tudo o que o inimigo destruiu.</p>
+                    <p>Maria Santíssima, Mãe da Libertação, intercedei por mim. São Miguel Arcanjo, defendei-me. Santos Anjos da Guarda, protegei-me.</p>
+                    <p>Jesus, eu creio que hoje sou liberto(a). Eu Vos agradeço pela liberdade que me dais. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function () {
+    const decades = [
+        {
+            title: "1ª Dezena — Libertação do Medo",
+            meditation: "\"Não temas, porque eu te resgatei; chamei-te pelo teu nome, tu és meu\" (Is 43,1). O medo é uma das maiores prisões da alma. Medo do futuro, medo da morte, medo do abandono, medo do sofrimento. Jesus veio para libertar-nos de todo medo. Pelo Seu Sangue derramado, Ele venceu a morte e o inferno. Meditemos sobre todos os medos que nos aprisionam e entreguemos cada um deles ao poder libertador do Sangue de Cristo.",
+            jaculatoria: "Pelo Vosso Precioso Sangue, libertai-nos, Senhor, de todo medo!"
+        },
+        {
+            title: "2ª Dezena — Libertação dos Vícios e Pecados",
+            meditation: "\"Onde abundou o pecado, superabundou a graça\" (Rm 5,20). Todo pecado habitual, todo vício — seja da carne, do orgulho, da ira, da inveja, da preguiça — é uma corrente que nos prende longe de Deus. Mas o Sangue de Cristo tem poder para quebrar toda corrente. Não há pecado maior que a misericórdia de Deus. Meditemos sobre os vícios e pecados que nos aprisionam, pedindo a graça da libertação e da conversão verdadeira.",
+            jaculatoria: "Pelo Vosso Precioso Sangue, libertai-nos, Senhor, de todo vício e pecado!"
+        },
+        {
+            title: "3ª Dezena — Libertação das Feridas Interiores",
+            meditation: "\"Ele mesmo carregou os nossos pecados em Seu corpo sobre o madeiro, para que nós, mortos ao pecado, vivamos para a justiça; pelas Suas chagas fostes curados\" (1Pd 2,24). Muitas vezes carregamos feridas profundas — rejeição, abandono, traumas de infância, mágoas não perdoadas. Essas feridas tornam-se prisões interiores. O Sangue de Jesus é bálsamo que cura toda ferida. Meditemos sobre nossas dores mais profundas, permitindo que o Sangue de Cristo as toque e cure.",
+            jaculatoria: "Pelo Vosso Precioso Sangue, curai nossas feridas interiores, Senhor!"
+        },
+        {
+            title: "4ª Dezena — Libertação das Influências do Maligno",
+            meditation: "\"Para isto se manifestou o Filho de Deus: para destruir as obras do diabo\" (1Jo 3,8). O maligno age através do engano, da tentação e da opressão espiritual. Mas diante do Nome de Jesus e do Seu Precioso Sangue, todo poder das trevas é anulado. Meditemos sobre a vitória de Cristo sobre Satanás e peçamos a libertação de toda influência maligna em nossas vidas, famílias e ambientes.",
+            jaculatoria: "Pelo Vosso Precioso Sangue, libertai-nos, Senhor, de toda ação do maligno!"
+        },
+        {
+            title: "5ª Dezena — Libertação para a Vida Nova",
+            meditation: "\"Conhecereis a verdade, e a verdade vos libertará\" (Jo 8,32). A libertação não é apenas 'de' algo, mas 'para' algo: para uma vida nova em Cristo, para a santidade, para o serviço, para a alegria verdadeira. Jesus nos liberta para que vivamos em plenitude. Meditemos sobre a nova vida que Cristo nos oferece — uma vida de paz, de alegria, de amor e de liberdade verdadeira dos filhos de Deus.",
+            jaculatoria: "Pelo Vosso Precioso Sangue, conduzi-nos à liberdade dos filhos de Deus!"
+        }
+    ];
+
+    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
+
+    const $container = $('#decadesContainer');
+    decades.forEach(function (d, i) {
+        const isFirst = i === 0;
+        $container.append(`
+            <div class="card decade-section">
+                <h3 class="decade-title">${d.title}</h3>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
+                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
+                            <p>${d.meditation}</p>
+                        </div>
+                    </div>
+                    <div class="accordion-tab">
+                        <div class="accordion-header">🙏 Ave-Marias e Jaculatória</div>
+                        <div class="accordion-content">
+                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
+                            <strong>10 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 10 vezes)</em><br/><br/>
+                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
+                            <em>${d.jaculatoria}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+});
+</script>
+</body>
+</html>
