@@ -56,8 +56,8 @@
 
     <!-- Todas as Intenções do Ano -->
     <div class="card">
-        <h2 style="text-align:center;margin-top:0;">📋 Intenções de 2025</h2>
-        <p class="muted" style="text-align:center;">Intenções gerais do Papa Francisco para o ano de 2025.</p>
+        <h2 style="text-align:center;margin-top:0;" id="tituloIntencoesAno">📋 Intenções do Ano</h2>
+        <p class="muted" style="text-align:center;" id="subtituloIntencoesAno">Intenções gerais do Papa Francisco para o ano atual.</p>
         <div id="todasIntencoes"></div>
     </div>
 
@@ -95,47 +95,96 @@
     <script src="/js/acessibilidade.js"></script>
 <script src="/js/sw-register.js"></script>
 <script>
-// Intenções do Papa Francisco 2025
-const intencoes2025 = [
-    { mes: "Janeiro", num: 1, titulo: "Por um Povo que Encontrou as Raízes da Paz", texto: "Rezemos para que o povo de Deus, alimentado pela Palavra e pelos sacramentos, encontre nas raízes da paz o caminho para ser fermento de reconciliação no mundo.", tema: "Paz" },
-    { mes: "Fevereiro", num: 2, titulo: "Por uma Igreja Missionária", texto: "Rezemos para que a Igreja, fiel ao Evangelho, seja cada vez mais missionária, saindo ao encontro de todos os que anseiam por misericórdia e esperança.", tema: "Missão" },
-    { mes: "Março", num: 3, titulo: "Pelos Refugiados e Migrantes", texto: "Rezemos pelos refugiados e migrantes forçados a abandonar suas terras, para que sejam acolhidos com respeito à sua dignidade e possam construir uma vida digna nos países de acolhida.", tema: "Solidariedade" },
-    { mes: "Abril", num: 4, titulo: "Pela Família", texto: "Rezemos pelas famílias para que vivam como verdadeiras comunidades de amor, de fé e de acolhimento, especialmente as que estão em situações de dificuldade.", tema: "Família" },
-    { mes: "Maio", num: 5, titulo: "Por uma Inteligência Artificial Humana", texto: "Rezemos para que o uso da inteligência artificial seja sempre posto a serviço da humanidade, respeitando a dignidade de cada pessoa e protegendo os mais vulneráveis.", tema: "Tecnologia" },
-    { mes: "Junho", num: 6, titulo: "Pelos Jovens", texto: "Rezemos pelos jovens para que, com discernimento e coragem, encontrem sua vocação e construam uma sociedade mais justa e fraterna.", tema: "Juventude" },
-    { mes: "Julho", num: 7, titulo: "Pelas Comunidades Locais", texto: "Rezemos pelas comunidades cristãs locais para que, animadas pelo Espírito Santo, sejam presença viva de Cristo no mundo, especialmente onde a Igreja é pequena.", tema: "Comunidade" },
-    { mes: "Agosto", num: 8, titulo: "Pela Casa Comum", texto: "Rezemos para que a humanidade, guiada pela sabedoria do Criador, cuide com responsabilidade da nossa Casa Comum e não comprometa as gerações futuras.", tema: "Ecologia" },
-    { mes: "Setembro", num: 9, titulo: "Pelos Doentes e Cuidadores", texto: "Rezemos pelos doentes e pelos que os cuidam, para que experimentem o amor de Deus e a solidariedade da comunidade humana, encontrando força e esperança.", tema: "Saúde" },
-    { mes: "Outubro", num: 10, titulo: "Pelas Missões", texto: "Rezemos para que a Igreja fortaleça as missões em todo o mundo, anunciando a todos os povos a Boa Nova do Evangelho com alegria e serviço.", tema: "Missão" },
-    { mes: "Novembro", num: 11, titulo: "Pelas Vítimas da Guerra", texto: "Rezemos pelas vítimas dos conflitos armados, especialmente as crianças e as mulheres, para que o clamor da paz seja ouvido e os corações se abram ao diálogo e à reconciliação.", tema: "Paz" },
-    { mes: "Dezembro", num: 12, titulo: "Pelo Advento da Esperança", texto: "Rezemos para que o tempo de Advento renove em todos a esperança que nasce do Natal de Jesus, e para que essa esperança seja luz no caminho de tantos que sofrem.", tema: "Esperança" }
-];
+// ── Intenções do Papa — carregadas automaticamente via API /api/intencoes-papa ──
+// O backend busca o PDF oficial em português do site popesprayer.va e extrai
+// as intenções mensais; o resultado fica em cache por 24 horas no servidor.
 
 $(function () {
     const mesAtual = new Date().getMonth(); // 0 = janeiro
-    const intAtual = intencoes2025[mesAtual] || intencoes2025[0];
 
-    $('#intencaoAtual').html(`
-        <div class="intencao-card" style="text-align:left;">
-            <h3>🗓️ ${intAtual.mes} 2025 <span class="mes-ativo">Mês Atual</span></h3>
-            <p style="font-size:1.1rem;font-weight:600;color:#1a4f89;margin:8px 0 4px;">${intAtual.titulo}</p>
-            <p>${intAtual.texto}</p>
-            <p style="margin-top:8px;"><span style="background:#e7ecf5;padding:3px 10px;border-radius:12px;font-size:0.85rem;color:#1a4f89;">🏷️ ${intAtual.tema}</span></p>
-        </div>
-    `);
+    function renderIntencoes(data) {
+        const ano       = data.ano || new Date().getFullYear();
+        const intencoes = data.intencoes || [];
+        const pdfUrl    = data.pdfUrl || null;
 
-    $('#oracaoIntencaoTexto').text(intAtual.titulo + ': ' + intAtual.texto);
+        // Títulos da seção anual
+        $('#tituloIntencoesAno').text('📋 Intenções de ' + ano);
+        const anoAtual = new Date().getFullYear();
+        let subtitulo = 'Intenções de oração do Papa para o ano de ' + ano + '.';
+        if (ano < anoAtual) {
+            subtitulo += ' (mais recentes disponíveis — os dados de ' + anoAtual + ' ainda não foram publicados)';
+        }
+        if (pdfUrl) {
+            subtitulo += ' <a href="' + pdfUrl + '" target="_blank" rel="noopener" style="font-size:0.85rem;">'
+                       + '📄 PDF oficial</a>';
+        }
+        $('#subtituloIntencoesAno').html(subtitulo);
 
-    const $todas = $('#todasIntencoes');
-    intencoes2025.forEach(function (int, i) {
-        const isAtual = i === mesAtual;
-        $todas.append(`
-            <div class="intencao-card${isAtual ? '' : ''}" style="margin-bottom:8px;">
-                <h3 style="font-size:0.95rem;margin-bottom:4px;">${isAtual ? '▶ ' : ''}${int.mes} — ${int.titulo} ${isAtual ? '<span class="mes-ativo">Atual</span>' : ''}</h3>
-                <p style="font-size:0.9rem;">${int.texto}</p>
-            </div>
-        `);
-    });
+        if (!intencoes.length) {
+            const linkPdf = pdfUrl
+                ? ' <a href="' + pdfUrl + '" target="_blank" rel="noopener">Acesse o PDF oficial aqui.</a>'
+                : '';
+            $('#intencaoAtual').html('<p class="muted">Intenções não disponíveis no momento.' + linkPdf + '</p>');
+            $('#oracaoIntencaoTexto').text('Intenção do mês atual.');
+            return;
+        }
+
+        // Intenção do mês corrente (ou a última disponível)
+        const idx = Math.min(mesAtual, intencoes.length - 1);
+        const intAtual = intencoes[idx];
+
+        $('#intencaoAtual').html(
+            '<div class="intencao-card" style="text-align:left;">'
+            + '<h3>🗓️ ' + intAtual.mes + ' ' + ano + ' <span class="mes-ativo">Mês Atual</span></h3>'
+            + '<p style="font-size:1.1rem;font-weight:600;color:#1a4f89;margin:8px 0 4px;">' + intAtual.titulo + '</p>'
+            + '<p>' + (intAtual.texto || '') + '</p>'
+            + (intAtual.tema ? '<p style="margin-top:8px;"><span style="background:#e7ecf5;padding:3px 10px;border-radius:12px;font-size:0.85rem;color:#1a4f89;">🏷️ ' + intAtual.tema + '</span></p>' : '')
+            + '</div>'
+        );
+
+        $('#oracaoIntencaoTexto').text(intAtual.titulo + (intAtual.texto ? ': ' + intAtual.texto : ''));
+
+        // Todas as intenções do ano
+        const $todas = $('#todasIntencoes');
+        $todas.empty();
+        intencoes.forEach(function (int, i) {
+            const isAtual = (i === idx);
+            $todas.append(
+                '<div class="intencao-card" style="margin-bottom:8px;">'
+                + '<h3 style="font-size:0.95rem;margin-bottom:4px;">'
+                + (isAtual ? '▶ ' : '') + int.mes + ' — ' + int.titulo
+                + (isAtual ? ' <span class="mes-ativo">Atual</span>' : '')
+                + '</h3>'
+                + (int.texto ? '<p style="font-size:0.9rem;">' + int.texto + '</p>' : '')
+                + '</div>'
+            );
+        });
+    }
+
+    function renderErro(msg, pdfUrl) {
+        const linkPdf = pdfUrl
+            ? ' <a href="' + pdfUrl + '" target="_blank" rel="noopener">Acesse o PDF oficial aqui.</a>'
+            : '';
+        $('#intencaoAtual').html('<p class="muted">⚠️ ' + (msg || 'Intenções não disponíveis.') + linkPdf + '</p>');
+        $('#oracaoIntencaoTexto').text('Intenção do mês atual.');
+        $('#subtituloIntencoesAno').html('Não foi possível carregar as intenções automaticamente.' + linkPdf);
+        $('#todasIntencoes').html(
+            '<p class="muted" style="text-align:center;">Nenhuma intenção disponível no momento.</p>'
+        );
+    }
+
+    // Carrega via API (resultado cacheado por 24h no servidor)
+    $.getJSON('/api/intencoes-papa')
+        .done(function (data) {
+            if (data.status === 'ok') {
+                renderIntencoes(data);
+            } else {
+                renderErro(data.erro, data.pdfUrl);
+            }
+        })
+        .fail(function () {
+            renderErro('Não foi possível conectar ao servidor. Tente novamente em instantes.');
+        });
 });
 </script>
 </body>

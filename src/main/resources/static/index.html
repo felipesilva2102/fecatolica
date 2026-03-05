@@ -228,7 +228,7 @@
                 <a href="/ferramentas/intencoes-papa.html" class="home-card">
                     <span class="home-card-icon">🕊️</span>
                     <h3>Intenções do Papa</h3>
-                    <p>As intenções mensais do Santo Padre para 2025.</p>
+                    <p>As intenções mensais do Santo Padre para <span class="ano-corrente"></span>.</p>
                 </a>
                 <a href="/ferramentas/santo-do-dia.html" class="home-card">
                     <span class="home-card-icon">✨</span>
@@ -403,5 +403,11 @@
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>
     <script src="/js/sw-register.js"></script>
+    <script>
+        // Preenche o ano corrente em todos os elementos com a classe .ano-corrente
+        document.querySelectorAll('.ano-corrente').forEach(function(el) {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
