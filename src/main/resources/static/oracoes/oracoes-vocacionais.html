@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Orações Vocacionais — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Orações católicas pelas vocações: sacerdotal, religiosa, matrimonial, missionária e leiga."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .vocation-card { background: #fff; border-radius: 14px; padding: 22px; margin-bottom: 16px; border-left: 5px solid var(--cor-primaria); transition: transform 0.2s, box-shadow 0.2s; }
+        .vocation-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .vocation-card h2 { margin: 0 0 4px; color: var(--cor-primaria); font-size: 1.15rem; }
+        .vocation-card .subtitle { font-size: 0.85rem; color: #888; margin-bottom: 12px; }
+        .vocation-card .prayer-text { line-height: 2; color: #333; }
+        .vocation-card .prayer-text p { margin: 8px 0; }
+        .sacerdotal { border-left-color: #7b2d8b; }
+        .sacerdotal h2 { color: #7b2d8b; }
+        .religiosa { border-left-color: #b87333; }
+        .religiosa h2 { color: #8a5520; }
+        .matrimonial { border-left-color: #c04050; }
+        .matrimonial h2 { color: #c04050; }
+        .missionaria { border-left-color: var(--cor-secundaria); }
+        .missionaria h2 { color: var(--cor-secundaria); }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/oracoes/oracoes.html">Orações</a> &rsaquo; <span>Vocacionais</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">🙏 Orações Vocacionais</h1>
+            <p style="text-align:center;" class="muted">Orações pelas diversas vocações na Igreja</p>
+            <p style="line-height:1.8; color:#444;">«A messe é grande, mas os trabalhadores são poucos. Pedi ao senhor da messe que mande trabalhadores para a sua messe.» (Mt 9, 37-38). Jesus nos pede que rezemos pelas vocações — cada cristão tem uma vocação própria.</p>
+        </div>
+
+        <!-- Oração geral pelas vocações -->
+        <div class="card vocation-card">
+            <h2>✨ Oração Pelas Vocações</h2>
+            <div class="subtitle">Oração do Pontifício Conselho para as Vocações</div>
+            <div class="prayer-text">
+                <p>Senhor Jesus, que chamais quem quereis e enviais aonde desejais, dai-nos sacerdotes santos, religiosos e religiosas consagrados, leigos comprometidos e missionários ardentes.</p>
+                <p>Fazei com que muitos jovens escutem o vosso convite e tenham a coragem de responder «sim» com generosidade, à imitação de Maria, vossa Mãe.</p>
+                <p>Enviai, Senhor, operários para a vossa messe. E não permitais que alguém se perca por falta de pastores, de missionários e de pessoas consagradas ao serviço do Evangelho.</p>
+                <p>Amém.</p>
+            </div>
+        </div>
+
+        <!-- Vocação sacerdotal -->
+        <div class="card vocation-card sacerdotal">
+            <h2>⛪ Oração Pelas Vocações Sacerdotais</h2>
+            <div class="subtitle">Pela santificação dos padres e pelas novas vocações ao sacerdócio</div>
+            <div class="prayer-text">
+                <p>Senhor Jesus Cristo, Pastor Eterno, que instituístes o Sacramento da Ordem para continuar a vossa obra redentora no mundo, olhai com amor para a vossa Igreja.</p>
+                <p>Suscitai nos corações dos jovens o desejo de se consagrarem inteiramente ao serviço dos irmãos na vida sacerdotal. Concedei-lhes a generosidade necessária para responderem ao vosso chamado.</p>
+                <p>Santificai os nossos sacerdotes, fortalecei-os nas tentações, consolai-os nas dificuldades e fazei deles instrumentos fiéis do vosso amor.</p>
+                <p>Por intercessão da Virgem Maria, Mãe dos Sacerdotes, e do Santo Cura d'Ars, patrono dos párocos, atendei a nossa súplica. Amém.</p>
+            </div>
+        </div>
+
+        <!-- Vocação religiosa -->
+        <div class="card vocation-card religiosa">
+            <h2>🙇 Oração Pelas Vocações Religiosas</h2>
+            <div class="subtitle">Pela vida consagrada — monges, freiras, irmãos e irmãs</div>
+            <div class="prayer-text">
+                <p>Pai Santo, que chamais homens e mulheres a seguirem Cristo mais de perto pelos conselhos evangélicos de pobreza, castidade e obediência, abençoai todas as comunidades religiosas do mundo.</p>
+                <p>Dai perseverança aos que abraçaram a vida consagrada. Enchei de entusiasmo missionário os noviços e as noviças. Suscitai novas vocações contemplativas e ativas para a vossa Igreja.</p>
+                <p>Que, pela renúncia ao mundo, os consagrados sejam sinal visível do vosso Reino e testemunhas alegres do Evangelho. Por Cristo, nosso Senhor.</p>
+                <p>Amém.</p>
+            </div>
+        </div>
+
+        <!-- Vocação matrimonial -->
+        <div class="card vocation-card matrimonial">
+            <h2>💍 Oração Pela Vocação Matrimonial</h2>
+            <div class="subtitle">Pelos esposos e noivos — o matrimônio como sacramento</div>
+            <div class="prayer-text">
+                <p>Deus de amor, que criastes o homem e a mulher à vossa imagem e abençoastes a união conjugal no Paraíso (Gn 2, 24), olhai com ternura para todos os casais cristãos.</p>
+                <p>Dai aos noivos a sabedoria para discernirem a vossa vontade. Fortalecei os esposos na fidelidade, na paciência e no amor recíproco. Fazei das famílias verdadeiras «igrejas domésticas» (LG 11).</p>
+                <p>Abençoai os filhos destes lares, para que cresçam na fé e na graça. E que os cônjuges cristãos sejam, um para o outro, sacramento do vosso amor. Por Cristo, nosso Senhor.</p>
+                <p>Amém.</p>
+            </div>
+        </div>
+
+        <!-- Vocação missionária -->
+        <div class="card vocation-card missionaria">
+            <h2>🌍 Oração Pelas Vocações Missionárias</h2>
+            <div class="subtitle">Santa Teresinha, patrona das missões — vocação universal</div>
+            <div class="prayer-text">
+                <p>Senhor Jesus, que antes de subir ao céu dissestes: «Ide e fazei discípulos de todos os povos» (Mt 28, 19), acendei no coração dos fiéis o fogo do vosso Espírito.</p>
+                <p>Chamei muitos jovens ao serviço missionário — para terras distantes e para as periferias das nossas cidades. Dai-lhes coragem, sabedoria e a alegria de anunciar o Evangelho.</p>
+                <p>Pela intercessão de São Francisco Xavier e de Santa Teresa de Lisieux, patrona das missões, abençoai todos os missionários do mundo. Amém.</p>
+            </div>
+        </div>
+
+        <!-- Discernimento vocacional -->
+        <div class="card vocation-card">
+            <h2>🔍 Oração de Discernimento Vocacional</h2>
+            <div class="subtitle">Para quem busca conhecer a vontade de Deus</div>
+            <div class="prayer-text">
+                <p>Senhor, meu Deus, eu creio firmemente que tendes um plano de amor para a minha vida. Não permitas que eu passe pela terra sem realizar aquilo para que me criastes.</p>
+                <p>Dai-me a luz do Espírito Santo para conhecer a minha vocação. Dai-me a generosidade para abraçá-la sem reservas. Dai-me a fortaleza para ser fiel até o fim.</p>
+                <p>Maria, Mãe do Bom Conselho, guiai-me no caminho. São José, modelo de obediência à vontade de Deus, intercedei por mim.</p>
+                <p>Jesus, manso e humilde de Coração, fazei o meu coração semelhante ao Vosso. Amém.</p>
+            </div>
+        </div>
+
+        <!-- Oração pelos Diáconos -->
+        <div class="card vocation-card sacerdotal">
+            <h2>📖 Oração Pelos Diáconos</h2>
+            <div class="subtitle">Pelo diaconato permanente e transitório</div>
+            <div class="prayer-text">
+                <p>Senhor Jesus Cristo, que viestes não para ser servido mas para servir (Mc 10, 45), abençoai os diáconos da vossa Igreja.</p>
+                <p>Cheios do Espírito Santo, como Santo Estêvão (At 6, 5), que eles sirvam com alegria na Palavra, na Liturgia e na Caridade. Suscitai novas vocações ao diaconato para o serviço do povo de Deus.</p>
+                <p>Amém.</p>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 871-933 (estados de vida), §§ 1533-1600 (sacramento da Ordem), §§ 1601-1666 (sacramento do Matrimônio)</li>
+                <li><strong>Concílio Vaticano II</strong>, <em>Lumen Gentium</em>: cap. IV (leigos), cap. V (vocação universal à santidade), cap. VI (religiosos)</li>
+                <li><strong>São João Paulo II</strong>, Exortação <em>Pastores Dabo Vobis</em> (1992) e <em>Vita Consecrata</em> (1996)</li>
+                <li><strong>Papa Francisco</strong>, Exortação <em>Gaudete et Exsultate</em> (2018): vocação universal à santidade</li>
+                <li><strong>Sagrada Escritura</strong>: Mt 9, 37-38; Mt 28, 19; Mc 10, 45; At 6, 1-6; Gn 2, 24</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

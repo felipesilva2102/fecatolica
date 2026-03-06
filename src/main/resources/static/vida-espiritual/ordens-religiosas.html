@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ordens e Congregações Religiosas — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="As grandes ordens e congregações religiosas da Igreja Católica — história, carisma e espiritualidade."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .order-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+        .order-card { padding: 20px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); transition: transform 0.2s, box-shadow 0.2s; }
+        .order-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .order-card h3 { margin: 0 0 2px; color: var(--cor-primaria); font-size: 1.1rem; }
+        .order-card .sigla { font-size: 0.85rem; color: #888; margin-bottom: 6px; }
+        .order-card .founder { font-size: 0.88rem; color: var(--cor-secundaria); margin-bottom: 8px; font-weight: 500; }
+        .order-card .charism { line-height: 1.7; color: #444; font-size: 0.95rem; }
+        .order-card .motto { margin-top: 8px; font-style: italic; color: #666; font-size: 0.9rem; padding: 6px 12px; background: rgba(201,168,76,0.1); border-radius: 8px; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Ordens Religiosas</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">⛪ Ordens e Congregações Religiosas</h1>
+            <p style="text-align:center;" class="muted">As grandes famílias espirituais da Igreja Católica</p>
+            <p style="line-height:1.8;color:#444;">A vida religiosa consagrada é dom do Espírito Santo à Igreja (CCC 914-933). Ao longo dos séculos, Deus suscitou fundadores e fundadoras que deram origem a ordens e congregações com carismas diversos — contemplação, pregação, educação, caridade, missões.</p>
+        </div>
+
+        <div class="order-grid">
+
+            <div class="order-card">
+                <h3>🏔️ Ordem de São Bento (Beneditinos)</h3>
+                <div class="sigla">OSB — fundada em 529</div>
+                <div class="founder">Fundador: São Bento de Núrsia (~480–547)</div>
+                <div class="charism">A mais antiga ordem do Ocidente. Vida monástica contemplativa equilibrando oração, trabalho e leitura (Lectio Divina). A Regra de São Bento moldou toda a civilização europeia e a vida monástica cristã.</div>
+                <div class="motto">«Ora et Labora» — Reza e trabalha</div>
+            </div>
+
+            <div class="order-card">
+                <h3>⚔️ Ordem dos Cistercienses</h3>
+                <div class="sigla">OCist — fundada em 1098</div>
+                <div class="founder">Fundadores: Santos Roberto, Alberico e Estêvão Harding</div>
+                <div class="charism">Reforma beneditina buscando a observância estrita da Regra. São Bernardo de Claraval foi seu maior expoente. Vida contemplativa, trabalho manual, simplicidade litúrgica e arquitetônica. Os Trapistas (OCSO) são o ramo de estrita observância.</div>
+                <div class="motto">«Cistercium, mater nostra» — Cister, nossa mãe</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🌸 Ordem dos Frades Menores (Franciscanos)</h3>
+                <div class="sigla">OFM — fundada em 1209</div>
+                <div class="founder">Fundador: São Francisco de Assis (1181/82–1226)</div>
+                <div class="charism">Vida fraterna na pobreza radical, pregação itinerante, cuidado da criação e serviço aos pobres. Inclui três ramos: Frades Menores (OFM), Conventuais (OFMConv) e Capuchinhos (OFMCap), além da Ordem Segunda (Clarissas) e da Ordem Terceira secular.</div>
+                <div class="motto">«Paz e Bem»</div>
+            </div>
+
+            <div class="order-card">
+                <h3>📚 Ordem dos Pregadores (Dominicanos)</h3>
+                <div class="sigla">OP — fundada em 1216</div>
+                <div class="founder">Fundador: São Domingos de Gusmão (1170–1221)</div>
+                <div class="charism">Pregação da verdade católica, estudo teológico, contemplação e vida comunitária. Grandes teólogos: Santo Tomás de Aquino, Santo Alberto Magno, Santa Catarina de Sena. Papel decisivo nas universidades medievais.</div>
+                <div class="motto">«Veritas» — Verdade</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🌍 Companhia de Jesus (Jesuítas)</h3>
+                <div class="sigla">SJ — fundada em 1534/1540</div>
+                <div class="founder">Fundador: Santo Inácio de Loyola (1491–1556)</div>
+                <div class="charism">Missões, educação, formação intelectual e os Exercícios Espirituais. Obediência especial ao Papa. Profundo impacto na educação mundial, ciência e evangelização. O Papa Francisco é o primeiro papa jesuíta.</div>
+                <div class="motto">«Ad Maiorem Dei Gloriam» — Para maior glória de Deus (AMDG)</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🕊️ Ordem do Carmo (Carmelitas)</h3>
+                <div class="sigla">OCarm / OCD — séc. XII–XIII; reforma em 1562</div>
+                <div class="founder">Reforma: Santa Teresa de Jesus (1515–1582) e São João da Cruz</div>
+                <div class="charism">Contemplação, oração mental, silêncio e vida de clausura (Carmelitas Descalças). Devoção ao Escapulário de Nossa Senhora do Carmo. Grandes místicos: Santa Teresinha do Menino Jesus, Santa Teresa de Ávila, São João da Cruz.</div>
+                <div class="motto">«Zelo zelatus sum pro Domino Deo exercituum» — Ardo de zelo pelo Senhor (1Rs 19,10)</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🔥 Ordem de Santo Agostinho (Agostinianos)</h3>
+                <div class="sigla">OSA — fundada em 1244 (união formal)</div>
+                <div class="founder">Inspirador: Santo Agostinho de Hipona (354–430)</div>
+                <div class="charism">Vida comunitária, estudo, pregação e caridade, seguindo a Regra de Santo Agostinho. Vida em comum como expressão do amor fraterno. Importantes na história das universidades e das missões.</div>
+                <div class="motto">«Tolle, lege» — Toma e lê</div>
+            </div>
+
+            <div class="order-card">
+                <h3>❤️ Congregação da Missão (Vicentinos/Lazaristas)</h3>
+                <div class="sigla">CM — fundada em 1625</div>
+                <div class="founder">Fundador: São Vicente de Paulo (1581–1660)</div>
+                <div class="charism">Evangelização dos pobres do campo, formação do clero e obras de caridade. Com Santa Luísa de Marillac fundou as Filhas da Caridade. A Sociedade de São Vicente de Paulo (leiga) inspira-se no mesmo carisma.</div>
+                <div class="motto">«Evangelizare pauperibus misit me» — Enviou-me a evangelizar os pobres (Lc 4,18)</div>
+            </div>
+
+            <div class="order-card">
+                <h3>⭐ Congregação Salesiana (Salesianos)</h3>
+                <div class="sigla">SDB — fundada em 1859</div>
+                <div class="founder">Fundador: São João Bosco (1815–1888)</div>
+                <div class="charism">Educação e evangelização da juventude pobre, com o «Sistema Preventivo» (razão, religião e carinho). Presença em 132 países. Com Santa Maria Domingas Mazzarello fundou as Filhas de Maria Auxiliadora (FMA).</div>
+                <div class="motto">«Da mihi animas, cetera tolle» — Dai-me almas, ficai com o resto</div>
+            </div>
+
+            <div class="order-card">
+                <h3>✝️ Congregação do Santíssimo Redentor (Redentoristas)</h3>
+                <div class="sigla">CSsR — fundada em 1732</div>
+                <div class="founder">Fundador: Santo Afonso Maria de Ligório (1696–1787)</div>
+                <div class="charism">Missões populares e pregação aos mais abandonados, especialmente nos meios rurais. Santo Afonso é Doutor da Igreja, patrono dos confessores e moralistas.</div>
+                <div class="motto">«Copiosa apud eum Redemptio» — N'Ele há abundante Redenção (Sl 130,7)</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🕯️ Ordem da Visitação (Visitandinas)</h3>
+                <div class="sigla">VHM — fundada em 1610</div>
+                <div class="founder">Fundadores: São Francisco de Sales e Santa Joana Francisca de Chantal</div>
+                <div class="charism">Vida contemplativa de clausura, fundada na mansidão e humildade de coração. Acessível a mulheres de saúde frágil. Santa Margarida Maria Alacoque, visitandina, recebeu as revelações do Sagrado Coração.</div>
+                <div class="motto">«Viva Jesus!»</div>
+            </div>
+
+            <div class="order-card">
+                <h3>💙 Missionárias da Caridade</h3>
+                <div class="sigla">MC — fundada em 1950</div>
+                <div class="founder">Fundadora: Santa Teresa de Calcutá (1910–1997)</div>
+                <div class="charism">Serviço gratuito aos mais pobres entre os pobres: moribundos, leprosos, órfãos, doentes de AIDS. Vida de extrema pobreza e oração. Presentes em mais de 130 países.</div>
+                <div class="motto">«Saciai a Sede de Jesus» (baseado em Jo 19,28)</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🌹 Opus Dei (Prelatura da Santa Cruz)</h3>
+                <div class="sigla">Prelatura Pessoal — fundada em 1928</div>
+                <div class="founder">Fundador: São Josemaría Escrivá (1902–1975)</div>
+                <div class="charism">Santificação do trabalho ordinário e da vida cotidiana. Os fiéis (leigos e sacerdotes) buscam a santidade no meio do mundo, em suas profissões e famílias. Erigida como prelatura pessoal em 1982.</div>
+                <div class="motto">«Sanctificar o trabalho, santificar-se no trabalho, santificar os outros com o trabalho»</div>
+            </div>
+
+            <div class="order-card">
+                <h3>🎵 Oratório de São Filipe Néri</h3>
+                <div class="sigla">CO — fundado em 1575</div>
+                <div class="founder">Fundador: São Filipe Néri (1515–1595)</div>
+                <div class="charism">Vida comunitária de sacerdotes seculares, sem votos, unidos pela caridade. Pregação popular, música sacra (daí o nome «oratório» musical), confissões e acompanhamento espiritual com alegria.</div>
+                <div class="motto">«Estado de alegria, servindo a Deus com alegria»</div>
+            </div>
+
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 914-933 (vida consagrada), 925-927 (institutos religiosos)</li>
+                <li><strong>São João Paulo II</strong>, <em>Vita Consecrata</em> (1996): exortação sobre a vida consagrada</li>
+                <li><strong>Anuário Pontifício</strong>: Lista oficial dos institutos de vida consagrada reconhecidos pela Santa Sé</li>
+                <li><strong>Regras e Constituições</strong> de cada instituto (documentos fundacionais aprovados pela Igreja)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

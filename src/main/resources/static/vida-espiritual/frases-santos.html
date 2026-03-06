@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Frases Célebres dos Santos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Frases e pensamentos célebres dos santos da Igreja Católica para inspiração espiritual."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .quote-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+        .quote-card { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+        .quote-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .quote-card .big-quote { font-size: 3.5rem; color: var(--cor-accent); opacity: 0.3; position: absolute; top: 8px; left: 16px; line-height: 1; font-family: Georgia, serif; }
+        .quote-card .text { font-style: italic; line-height: 1.75; color: #444; padding-top: 20px; font-size: 1rem; }
+        .quote-card .author { margin-top: 12px; font-weight: 600; color: var(--cor-primaria); font-size: 0.95rem; }
+        .quote-card .author-info { font-size: 0.8rem; color: #888; margin-top: 2px; }
+        .theme-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; justify-content: center; }
+        .theme-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--cor-primaria); background: #fff; color: var(--cor-primaria); cursor: pointer; font-size: 0.88rem; transition: all 0.2s; }
+        .theme-btn:hover, .theme-btn.active { background: var(--cor-primaria); color: #fff; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Frases dos Santos</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">✨ Frases Célebres dos Santos</h1>
+            <p style="text-align:center;" class="muted">Palavras de sabedoria dos mestres da vida espiritual</p>
+            <div class="theme-filter">
+                <button class="theme-btn active" data-filter="all">Todos</button>
+                <button class="theme-btn" data-filter="amor">Amor</button>
+                <button class="theme-btn" data-filter="oracao">Oração</button>
+                <button class="theme-btn" data-filter="humildade">Humildade</button>
+                <button class="theme-btn" data-filter="confianca">Confiança</button>
+                <button class="theme-btn" data-filter="cruz">Cruz e Sofrimento</button>
+                <button class="theme-btn" data-filter="santidade">Santidade</button>
+                <button class="theme-btn" data-filter="eucaristia">Eucaristia</button>
+                <button class="theme-btn" data-filter="maria">Maria</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="quote-grid" id="quoteGrid">
+                <!-- Amor -->
+                <div class="quote-card" data-theme="amor">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">No entardecer da vida, seremos julgados pelo amor.</div>
+                    <div class="author">São João da Cruz</div>
+                    <div class="author-info">Doutor da Igreja, místico carmelita (1542–1591)</div>
+                </div>
+                <div class="quote-card" data-theme="amor">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Não é a grandeza de nossas ações que conta, mas a grandeza do amor que pomos nelas.</div>
+                    <div class="author">Santa Teresa de Lisieux</div>
+                    <div class="author-info">Doutora da Igreja, «Pequena Flor» (1873–1897)</div>
+                </div>
+                <div class="quote-card" data-theme="amor">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Onde não há amor, ponha amor — e encontrará amor.</div>
+                    <div class="author">São João da Cruz</div>
+                    <div class="author-info">Doutor da Igreja (1542–1591)</div>
+                </div>
+                <div class="quote-card" data-theme="amor">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">O amor não se contenta com palavras; precisa de obras e sacrifícios.</div>
+                    <div class="author">Santa Teresa de Lisieux</div>
+                    <div class="author-info">Doutora da Igreja (1873–1897)</div>
+                </div>
+                <div class="quote-card" data-theme="amor">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Se realmente quisermos amar, precisamos aprender a perdoar.</div>
+                    <div class="author">Santa Teresa de Calcutá</div>
+                    <div class="author-info">Fundadora das Missionárias da Caridade (1910–1997)</div>
+                </div>
+
+                <!-- Oração -->
+                <div class="quote-card" data-theme="oracao">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A oração é a respiração da alma. É impossível viver sem respirar e é impossível viver sem rezar.</div>
+                    <div class="author">São Padre Pio</div>
+                    <div class="author-info">Frade capuchinho, estigmatizado (1887–1968)</div>
+                </div>
+                <div class="quote-card" data-theme="oracao">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A oração é um impulso do coração, um simples olhar lançado ao céu, um grito de gratidão e de amor tanto no meio da provação como no meio da alegria.</div>
+                    <div class="author">Santa Teresa de Lisieux</div>
+                    <div class="author-info">Doutora da Igreja (1873–1897)</div>
+                </div>
+                <div class="quote-card" data-theme="oracao">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Nada é mais prático do que encontrar Deus, isto é, do que apaixonar-se de maneira absoluta e definitiva.</div>
+                    <div class="author">Beato Pedro Arrupe, SJ</div>
+                    <div class="author-info">Superior Geral dos Jesuítas (1907–1991)</div>
+                </div>
+                <div class="quote-card" data-theme="oracao">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Meia hora de meditação é essencial, exceto quando estiver muito ocupado. Então uma hora inteira é necessária.</div>
+                    <div class="author">São Francisco de Sales</div>
+                    <div class="author-info">Doutor da Igreja, bispo de Genebra (1567–1622)</div>
+                </div>
+
+                <!-- Humildade -->
+                <div class="quote-card" data-theme="humildade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Não sou capaz de grandes coisas, mas quero fazer todas as pequenas coisas com grande amor.</div>
+                    <div class="author">Santa Teresa de Calcutá</div>
+                    <div class="author-info">Fundadora das Missionárias da Caridade (1910–1997)</div>
+                </div>
+                <div class="quote-card" data-theme="humildade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A humildade é o fundamento de todas as virtudes. Na alma em que esta virtude não existe, não pode haver nenhuma outra virtude senão mera aparência.</div>
+                    <div class="author">Santo Agostinho</div>
+                    <div class="author-info">Doutor da Igreja, bispo de Hipona (354–430)</div>
+                </div>
+                <div class="quote-card" data-theme="humildade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Senhor, fazei de mim um instrumento da vossa paz.</div>
+                    <div class="author">São Francisco de Assis</div>
+                    <div class="author-info">Fundador dos Franciscanos (1181/82–1226)</div>
+                </div>
+                <div class="quote-card" data-theme="humildade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Nada te perturbe, nada te espante. Tudo passa. Deus não muda. A paciência tudo alcança. Quem tem Deus nada lhe falta. Só Deus basta.</div>
+                    <div class="author">Santa Teresa de Ávila</div>
+                    <div class="author-info">Doutora da Igreja, reformadora do Carmelo (1515–1582)</div>
+                </div>
+
+                <!-- Confiança -->
+                <div class="quote-card" data-theme="confianca">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Jesus, eu confio em Vós!</div>
+                    <div class="author">Santa Faustina Kowalska</div>
+                    <div class="author-info">Apóstola da Divina Misericórdia (1905–1938)</div>
+                </div>
+                <div class="quote-card" data-theme="confianca">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Deus não nos chama a ser bem-sucedidos. Chama-nos a ser fiéis.</div>
+                    <div class="author">Santa Teresa de Calcutá</div>
+                    <div class="author-info">Fundadora das Missionárias da Caridade (1910–1997)</div>
+                </div>
+                <div class="quote-card" data-theme="confianca">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Se Deus é por nós, quem será contra nós? Não temais os que matam o corpo.</div>
+                    <div class="author">São Paulo Apóstolo</div>
+                    <div class="author-info">Apóstolo dos Gentios (c. 5–67 d.C.), cf. Rm 8, 31</div>
+                </div>
+                <div class="quote-card" data-theme="confianca">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Não tenhas medo, pois eu te resgatei; chamei-te pelo teu nome, tu és meu.</div>
+                    <div class="author">Profeta Isaías</div>
+                    <div class="author-info">Is 43, 1 — palavra de Deus ao seu povo</div>
+                </div>
+
+                <!-- Cruz e Sofrimento -->
+                <div class="quote-card" data-theme="cruz">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">O sofrimento é o maior tesouro da terra; purifica a alma. No sofrimento, conhecemos quem é o nosso verdadeiro amigo.</div>
+                    <div class="author">Santa Faustina Kowalska</div>
+                    <div class="author-info">Apóstola da Divina Misericórdia (1905–1938)</div>
+                </div>
+                <div class="quote-card" data-theme="cruz">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A cruz é a escada para o céu.</div>
+                    <div class="author">Santa Rosa de Lima</div>
+                    <div class="author-info">Primeira santa das Américas (1586–1617)</div>
+                </div>
+                <div class="quote-card" data-theme="cruz">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Senhor, ou sofrer ou morrer!</div>
+                    <div class="author">Santa Teresa de Ávila</div>
+                    <div class="author-info">Doutora da Igreja (1515–1582)</div>
+                </div>
+
+                <!-- Santidade -->
+                <div class="quote-card" data-theme="santidade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A santidade consiste em estar sempre alegre.</div>
+                    <div class="author">São Domingos Sávio</div>
+                    <div class="author-info">Jovem discípulo de Dom Bosco (1842–1857)</div>
+                </div>
+                <div class="quote-card" data-theme="santidade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Não me envergonho do Evangelho, pois é o poder de Deus para a salvação de todo aquele que crê.</div>
+                    <div class="author">São Paulo Apóstolo</div>
+                    <div class="author-info">Rm 1, 16</div>
+                </div>
+                <div class="quote-card" data-theme="santidade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Sê quem Deus quis que fosses e incendiarás o mundo.</div>
+                    <div class="author">Santa Catarina de Sena</div>
+                    <div class="author-info">Doutora da Igreja, padroeira da Europa (1347–1380)</div>
+                </div>
+                <div class="quote-card" data-theme="santidade">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Viver sem fé, sem um patrimônio a defender, sem lutar continuamente pela verdade, isto não é viver, mas «ir vivendo».</div>
+                    <div class="author">São Josemaría Escrivá</div>
+                    <div class="author-info">Fundador do Opus Dei (1902–1975)</div>
+                </div>
+
+                <!-- Eucaristia -->
+                <div class="quote-card" data-theme="eucaristia">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Quando olhamos para o Crucifixo, compreendemos quanto Jesus nos amou. Quando olhamos para a Hóstia, compreendemos quanto Jesus nos ama agora.</div>
+                    <div class="author">Santa Teresa de Calcutá</div>
+                    <div class="author-info">Fundadora das Missionárias da Caridade (1910–1997)</div>
+                </div>
+                <div class="quote-card" data-theme="eucaristia">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A Comunhão Eucarística é o remédio que nos liberta das faltas quotidianas e preserva dos pecados mortais.</div>
+                    <div class="author">Concílio de Trento</div>
+                    <div class="author-info">Sessão XIII, cap. 2 (1551)</div>
+                </div>
+                <div class="quote-card" data-theme="eucaristia">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Sem a Eucaristia dominical, não podemos viver!</div>
+                    <div class="author">Mártires de Abitina</div>
+                    <div class="author-info">Cristãos martirizados na Norte de África (304 d.C.)</div>
+                </div>
+
+                <!-- Maria -->
+                <div class="quote-card" data-theme="maria">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">A Maria toda a minha confiança; Ela é o meu refúgio mais seguro.</div>
+                    <div class="author">São João Bosco</div>
+                    <div class="author-info">Fundador dos Salesianos (1815–1888)</div>
+                </div>
+                <div class="quote-card" data-theme="maria">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Nunca se ouviu dizer que algum daqueles que recorreram à vossa proteção, imploraram a vossa assistência ou invocaram o vosso nome, fosse por vós desamparado.</div>
+                    <div class="author">São Bernardo de Claraval</div>
+                    <div class="author-info">Doutor da Igreja, monge cisterciense (1090–1153)</div>
+                </div>
+                <div class="quote-card" data-theme="maria">
+                    <div class="big-quote">&ldquo;</div>
+                    <div class="text">Per Mariam ad Iesum — Por Maria a Jesus. Maria é o caminho mais curto, mais fácil e mais seguro para chegar a Cristo.</div>
+                    <div class="author">São Luís Maria Grignion de Montfort</div>
+                    <div class="author-info">Missionário e escritor mariano (1673–1716)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Obras dos santos citados</strong>: <em>Diário de Santa Faustina</em>, <em>Manuscritos Autobiográficos</em> (Teresa de Lisieux), <em>Subida do Monte Carmelo</em> (João da Cruz), <em>Caminho</em> (Josemaría Escrivá)</li>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 828, 2030 (santidade como vocação universal)</li>
+                <li><strong>Sagrada Escritura</strong>: Rm 1, 16; Rm 8, 31; Is 43, 1</li>
+                <li><strong>Liturgia das Horas</strong>: Ofício das Leituras (hagiografias e textos dos santos)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+        document.querySelectorAll('.theme-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.theme-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('.quote-card').forEach(function(card) {
+                    if (filter === 'all' || card.getAttribute('data-theme') === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Te Deum e Hinos Litúrgicos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Te Deum, Veni Creator Spiritus, Stabat Mater, Salve Regina e outros hinos litúrgicos tradicionais com texto em português e latim."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .hymn-card { padding: 22px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); margin-bottom: 18px; transition: transform 0.2s, box-shadow 0.2s; }
+        .hymn-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .hymn-card h3 { margin: 0 0 4px; font-size: 1.15rem; color: var(--cor-primaria); }
+        .hymn-card .origin { font-size: 0.85rem; color: #888; margin-bottom: 14px; }
+        .hymn-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .hymn-col h4 { margin: 0 0 8px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hymn-col.latin h4 { color: #8e44ad; }
+        .hymn-col.pt h4 { color: var(--cor-primaria); }
+        .hymn-text { line-height: 1.9; font-size: 0.97rem; color: #333; white-space: pre-line; }
+        .hymn-text.latin-text { color: #555; font-style: italic; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+        @media (max-width: 600px) { .hymn-columns { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/oracoes/oracoes.html">Orações</a> &rsaquo; <span>Te Deum e Hinos</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">🎵 Te Deum e Hinos Litúrgicos</h1>
+            <p style="text-align:center;" class="muted">Os grandes hinos da tradição católica — latim e português</p>
+            <p style="line-height:1.8;color:#444;">Os hinos litúrgicos são orações cantadas que a Igreja conserva há séculos como expressão de louvor, súplica e ensinamento. Muitos deles são rezados na Liturgia das Horas, em solenidades e em devoções especiais. Os textos a seguir são da tradição oficial da Igreja, presentes no Breviário Romano, no Missal e nos devocionários aprovados.</p>
+        </div>
+
+        <!-- Te Deum -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Te Deum Laudamus</h3>
+                <div class="origin">Séc. IV — atribuído a Santo Ambrósio e Santo Agostinho. Cantado nas solenidades e ações de graças. Presente no Ofício de Leitura de domingos e solenidades.</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim</h4>
+                        <div class="hymn-text latin-text">Te Deum laudamus:
+te Dominum confitemur.
+Te aeternum Patrem,
+omnis terra veneratur.
+
+Tibi omnes angeli,
+tibi caeli et universae potestates:
+tibi cherubim et seraphim,
+incessabili voce proclamant:
+
+Sanctus, Sanctus, Sanctus
+Dominus Deus Sabaoth.
+Pleni sunt caeli et terra
+maiestatis gloriae tuae.
+
+Te gloriosus Apostolorum chorus,
+te prophetarum laudabilis numerus,
+te martyrum candidatus
+laudat exercitus.
+
+Te per orbem terrarum
+sancta confitetur Ecclesia,
+Patrem immensae maiestatis;
+venerandum tuum verum
+et unicum Filium;
+Sanctum quoque Paraclitum Spiritum.
+
+Tu rex gloriae, Christe.
+Tu Patris sempiternus es Filius.
+Tu, ad liberandum suscepturus hominem,
+non horruisti Virginis uterum.
+
+Tu, devicto mortis aculeo,
+aperuisti credentibus
+regna caelorum.
+
+Tu ad dexteram Dei sedes,
+in gloria Patris.
+Iudex crederis esse venturus.
+
+Te ergo quaesumus,
+tuis famulis subveni,
+quos pretioso sanguine redemisti.
+
+Aeterna fac cum sanctis tuis
+in gloria numerari.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">A Vós, ó Deus, louvamos:
+a Vós, Senhor, bendizemos.
+A Vós, eterno Pai,
+toda a terra Vos venera.
+
+A Vós todos os anjos,
+os céus e todas as potestades:
+a Vós os querubins e serafins,
+com incessante voz proclamam:
+
+Santo, Santo, Santo,
+Senhor Deus dos exércitos.
+Cheios estão os céus e a terra
+da majestade da vossa glória.
+
+A Vós louva o glorioso coro dos Apóstolos,
+a elogiável multidão de profetas,
+e o branco exército dos mártires
+canta louvores.
+
+Por toda a terra
+a santa Igreja Vos reconhece:
+Pai de imensa majestade;
+vosso venerável, verdadeiro
+e único Filho;
+e também o Espírito Santo Consolador.
+
+Vós sois o Rei da glória, ó Cristo.
+Vós sois o Filho sempiterno do Pai.
+Vós, para libertar o homem,
+não recusastes o seio da Virgem.
+
+Vós, vencido o aguilhão da morte,
+abristes aos que creem
+os reinos dos céus.
+
+Vós estais sentado à direita de Deus,
+na glória do Pai.
+Cremos que vireis como Juiz.
+
+Nós Vos pedimos:
+socorrei os vossos servos,
+remidos com o vosso precioso Sangue.
+
+Fazei que sejamos contados entre os vossos Santos
+na eterna glória.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Veni Creator Spiritus -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Veni Creator Spiritus</h3>
+                <div class="origin">Séc. IX — atribuído a Rábano Mauro. Hino oficial de Pentecostes, ordenações, concílios e conclaves.</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim</h4>
+                        <div class="hymn-text latin-text">Veni, Creator Spiritus,
+mentes tuorum visita,
+imple superna gratia,
+quae tu creasti pectora.
+
+Qui diceris Paraclitus,
+altissimi donum Dei,
+fons vivus, ignis, caritas,
+et spiritalis unctio.
+
+Tu septiformis munere,
+digitus paternae dexterae,
+tu rite promissum Patris,
+sermone ditans guttura.
+
+Accende lumen sensibus,
+infunde amorem cordibus,
+infirma nostri corporis
+virtute firmans perpeti.
+
+Hostem repellas longius,
+pacemque dones protinus;
+ductore sic te praevio,
+vitemus omne noxium.
+
+Per te sciamus da Patrem,
+noscamus atque Filium;
+teque utriusque Spiritum
+credamus omni tempore.
+
+Deo Patri sit gloria,
+et Filio, qui a mortuis
+surrexit, ac Paraclito,
+in saeculorum saecula. Amen.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">Vinde, Espírito Criador,
+visitai as almas dos vossos fiéis,
+enchei da graça do alto
+os corações que criastes.
+
+Vós que sois chamado Consolador,
+dom do Deus altíssimo,
+fonte viva, fogo, caridade,
+e espiritual unção.
+
+Sois sétuplo nos vossos dons,
+dedo da mão direita do Pai,
+prometido solenemente por Ele,
+enriquecendo as vozes com a vossa palavra.
+
+Acendei a luz nos nossos sentidos,
+infundi o amor nos nossos corações,
+e as fraquezas do nosso corpo
+fortalecei com perpétuo vigor.
+
+Afugentai para longe o inimigo,
+dai-nos prontamente a paz;
+guiados assim por Vós,
+evitemos todo o mal.
+
+Por Vós possamos conhecer o Pai,
+e também o Filho;
+e em Vós, Espírito de ambos,
+creiamos em todo o tempo.
+
+Glória a Deus Pai,
+e ao Filho que ressuscitou dos mortos,
+e ao Paráclito,
+pelos séculos dos séculos. Amém.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stabat Mater -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Stabat Mater Dolorosa</h3>
+                <div class="origin">Séc. XIII — atribuído ao franciscano Jacopone da Todi. Sequência da festa de Nossa Senhora das Dores (15 de setembro). Usado na Via-Sacra.</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim (primeiras estrofes)</h4>
+                        <div class="hymn-text latin-text">Stabat mater dolorosa
+iuxta crucem lacrimosa,
+dum pendebat Filius.
+
+Cuius animam gementem,
+contristatam et dolentem
+pertransivit gladius.
+
+O quam tristis et afflicta
+fuit illa benedicta,
+mater Unigeniti!
+
+Quae maerebat et dolebat,
+pia Mater, dum videbat
+nati poenas inclyti.
+
+Quis est homo qui non fleret,
+matrem Christi si videret
+in tanto supplicio?
+
+Eia, Mater, fons amoris,
+me sentire vim doloris
+fac, ut tecum lugeam.
+
+Fac, ut ardeat cor meum
+in amando Christum Deum
+ut sibi complaceam.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">Estava a Mãe dolorosa
+junto à cruz, chorosa,
+enquanto pendia o Filho.
+
+Cuja alma, gemente,
+contristada e dorida,
+uma espada traspassou.
+
+Oh, quão triste e aflita
+esteve aquela bem-dita,
+Mãe do Unigênito!
+
+Chorava e sofria,
+a piedosa Mãe, ao ver
+as penas do Filho insigne.
+
+Quem é o homem que não chorasse,
+ao ver a Mãe de Cristo
+em tão grande suplício?
+
+Eia, Mãe, fonte de amor,
+fazei-me sentir a força da dor,
+para que convosco eu chore.
+
+Fazei que arda o meu coração,
+no amor de Cristo Deus,
+para que n'Ele me agrade.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Veni Sancte Spiritus -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Veni Sancte Spiritus (Sequência de Pentecostes)</h3>
+                <div class="origin">Séc. XII — atribuído a Stephen Langton ou ao Papa Inocêncio III. Sequência obrigatória na Missa de Pentecostes. Chamada a «sequência dourada».</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim</h4>
+                        <div class="hymn-text latin-text">Veni, Sancte Spiritus,
+et emitte caelitus
+lucis tuae radium.
+
+Veni, pater pauperum,
+veni, dator munerum,
+veni, lumen cordium.
+
+Consolator optime,
+dulcis hospes animae,
+dulce refrigerium.
+
+In labore requies,
+in aestu temperies,
+in fletu solatium.
+
+O lux beatissima,
+reple cordis intima
+tuorum fidelium.
+
+Sine tuo numine,
+nihil est in homine,
+nihil est innoxium.
+
+Lava quod est sordidum,
+riga quod est aridum,
+sana quod est saucium.
+
+Flecte quod est rigidum,
+fove quod est frigidum,
+rege quod est devium.
+
+Da tuis fidelibus,
+in te confidentibus,
+sacrum septenarium.
+
+Da virtutis meritum,
+da salutis exitum,
+da perenne gaudium. Amen.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">Vinde, Espírito Santo,
+e enviai do céu
+um raio da vossa luz.
+
+Vinde, pai dos pobres,
+vinde, doador de graças,
+vinde, luz dos corações.
+
+Consolador perfeito,
+doce hóspede da alma,
+doce refrigério.
+
+No trabalho, sois descanso;
+no calor, amenidade;
+no pranto, consolo.
+
+Ó luz beatíssima,
+enchei o íntimo dos corações
+dos vossos fiéis.
+
+Sem o vosso auxílio,
+nada há no homem,
+nada que seja inocente.
+
+Lavai o que está sujo,
+regai o que está seco,
+curai o que está ferido.
+
+Dobrai o que está rígido,
+aquecei o que está frio,
+guiai o que está desviado.
+
+Dai aos vossos fiéis,
+que em Vós confiam,
+os sete dons sagrados.
+
+Dai o mérito da virtude,
+dai o porto da salvação,
+dai a alegria eterna. Amém.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salve Regina -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Salve Regina (Salve Rainha)</h3>
+                <div class="origin">Séc. XI — atribuído a Hermano de Reichenau. Antífona mariana cantada após as Completas no período do Tempo Comum (da Trindade ao Advento). Reza-se também ao final do Rosário.</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim</h4>
+                        <div class="hymn-text latin-text">Salve, Regina, Mater misericordiae,
+vita, dulcedo, et spes nostra, salve.
+Ad te clamamus, exsules filii Hevae,
+ad te suspiramus, gementes et flentes
+in hac lacrimarum valle.
+
+Eia, ergo, advocata nostra,
+illos tuos misericordes oculos
+ad nos converte;
+et Iesum, benedictum fructum ventris tui,
+nobis post hoc exsilium ostende.
+
+O clemens, O pia, O dulcis Virgo Maria.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">Salve, Rainha, Mãe de misericórdia,
+vida, doçura e esperança nossa, salve!
+A vós bradamos, os degredados filhos de Eva,
+a vós suspiramos, gemendo e chorando
+neste vale de lágrimas.
+
+Eia, pois, advogada nossa,
+esses vossos olhos misericordiosos
+a nós volvei;
+e depois deste desterro
+mostrai-nos Jesus, bendito fruto
+do vosso ventre.
+
+Ó clemente, ó piedosa, ó doce sempre Virgem Maria.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Magnificat -->
+        <div class="card">
+            <div class="hymn-card">
+                <h3>Magnificat (Cântico de Maria)</h3>
+                <div class="origin">Evangelho segundo São Lucas 1, 46-55 — rezado diariamente nas Vésperas da Liturgia das Horas.</div>
+                <div class="hymn-columns">
+                    <div class="hymn-col latin">
+                        <h4>Latim</h4>
+                        <div class="hymn-text latin-text">Magnificat anima mea Dominum,
+et exsultavit spiritus meus
+in Deo salvatore meo,
+quia respexit humilitatem
+ancillae suae.
+
+Ecce enim ex hoc beatam
+me dicent omnes generationes,
+quia fecit mihi magna,
+qui potens est,
+et sanctum nomen eius,
+
+et misericordia eius
+a progenie in progenies
+timentibus eum.
+
+Fecit potentiam in brachio suo,
+dispersit superbos
+mente cordis sui;
+deposuit potentes de sede
+et exaltavit humiles;
+
+esurientes implevit bonis
+et divites dimisit inanes.
+
+Suscepit Israel puerum suum,
+recordatus misericordiae suae,
+sicut locutus est ad patres nostros,
+Abraham et semini eius in saecula.</div>
+                    </div>
+                    <div class="hymn-col pt">
+                        <h4>Português</h4>
+                        <div class="hymn-text">A minha alma glorifica o Senhor,
+e o meu espírito exulta
+em Deus, meu Salvador,
+porque olhou para a humildade
+da sua serva.
+
+Eis que, doravante,
+todas as gerações me chamarão bem-aventurada,
+porque o Todo-poderoso
+fez em mim grandes coisas,
+e santo é o seu nome.
+
+A sua misericórdia se estende
+de geração em geração
+sobre os que O temem.
+
+Manifestou o poder do seu braço,
+dispersou os soberbos
+nos pensamentos do seu coração;
+derrubou os poderosos de seus tronos
+e exaltou os humildes;
+
+aos famintos cumulou de bens,
+e aos ricos despediu de mãos vazias.
+
+Acolheu Israel, seu servo,
+lembrando-se da sua misericórdia,
+conforme prometera a nossos pais,
+a Abraão e à sua descendência, para sempre.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Liturgia das Horas</strong> (Breviário Romano): Te Deum (Ofício de Leitura), Magnificat (Vésperas), Salve Regina (Completas)</li>
+                <li><strong>Missal Romano</strong>: Veni Sancte Spiritus (Sequência de Pentecostes), Stabat Mater (15 de setembro)</li>
+                <li><strong>Sagrada Escritura</strong>: Magnificat — Lc 1, 46-55</li>
+                <li><strong>Tradição litúrgica</strong>: Veni Creator (séc. IX, Rábano Mauro); Salve Regina (séc. XI, Hermano de Reichenau)</li>
+                <li><strong>CCC</strong>: §§ 2589 (Salmos e hinos); § 722 (Magnificat); § 2676 (Salve Rainha)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

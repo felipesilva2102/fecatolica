@@ -635,3 +635,93 @@ html.dark-mode .stat-card {
 }
 html.dark-mode .stat-number { color: var(--link-color); }
 html.dark-mode .stat-label { color: var(--muted-text); }
+
+/* ===== Round 3 pages: dark mode ===== */
+html.dark-mode .beatitude-card,
+html.dark-mode .mercy-item,
+html.dark-mode .article-card,
+html.dark-mode .mass-part,
+html.dark-mode .doctor-card,
+html.dark-mode .prayer-card,
+html.dark-mode .sin-virtue-card,
+html.dark-mode .hymn-card {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .hymn-text { color: var(--text-color); }
+html.dark-mode .hymn-text.latin-text { color: var(--muted-text); }
+html.dark-mode .hymn-card .origin,
+html.dark-mode .doctor-card .doctor-dates { color: var(--muted-text); }
+html.dark-mode .source-box { background: rgba(201,168,76,0.08); }
+html.dark-mode .tab-btn { background: var(--card-bg); color: var(--text-color); border-color: var(--border-color); }
+html.dark-mode .tab-btn.active { background: var(--link-color); color: #fff; }
+html.dark-mode .creed-text { background: rgba(26,79,137,0.15); color: var(--text-color); }
+html.dark-mode .search-filter input { background: #2a2a2a; color: var(--text-color); border-color: var(--border-color); }
+html.dark-mode .section-header { color: var(--text-color) !important; }
+html.dark-mode .gospel-quote { background: rgba(201,168,76,0.08); color: var(--text-color); }
+html.dark-mode .sin-side { border-color: #8b3a3a !important; }
+html.dark-mode .virtue-side { border-color: #2a6a2a !important; }
+
+/* Round 4 — Dark Mode */
+html.dark-mode .parable-card,
+html.dark-mode .miracle-card,
+html.dark-mode .saint-card,
+html.dark-mode .council-card,
+html.dark-mode .order-card,
+html.dark-mode .apparition-card,
+html.dark-mode .symbol-card,
+html.dark-mode .quote-card,
+html.dark-mode .novissimo-card,
+html.dark-mode .prayer-type-card,
+html.dark-mode .passage-card,
+html.dark-mode .dogma-card,
+html.dark-mode .prayer-section,
+html.dark-mode .vocation-card,
+html.dark-mode .canticle-card,
+html.dark-mode .healing-card { background: var(--card-bg); color: var(--text-color); border-color: var(--border-color); }
+html.dark-mode .parable-card p,
+html.dark-mode .miracle-card p,
+html.dark-mode .saint-card p,
+html.dark-mode .council-card p,
+html.dark-mode .order-card p,
+html.dark-mode .apparition-card p,
+html.dark-mode .symbol-card p,
+html.dark-mode .quote-card .text,
+html.dark-mode .novissimo-card p,
+html.dark-mode .novissimo-card li,
+html.dark-mode .prayer-type-card p,
+html.dark-mode .prayer-type-card li,
+html.dark-mode .passage-card .comment,
+html.dark-mode .dogma-card p,
+html.dark-mode .prayer-section .prayer-text,
+html.dark-mode .vocation-card .prayer-text,
+html.dark-mode .canticle-card .text,
+html.dark-mode .canticle-card .context,
+html.dark-mode .healing-card .prayer-text { color: var(--text-color); }
+html.dark-mode .parable-card .reference,
+html.dark-mode .miracle-card .reference,
+html.dark-mode .saint-card .saint-dates,
+html.dark-mode .council-card .council-year,
+html.dark-mode .order-card .founder,
+html.dark-mode .apparition-card .date,
+html.dark-mode .symbol-card .latin,
+html.dark-mode .quote-card .author-info,
+html.dark-mode .novissimo-card .subtitle,
+html.dark-mode .prayer-type-card .latin,
+html.dark-mode .passage-card .bible-text,
+html.dark-mode .dogma-card .year,
+html.dark-mode .prayer-section .subtitle,
+html.dark-mode .vocation-card .subtitle,
+html.dark-mode .healing-card .subtitle { color: var(--muted-text); }
+html.dark-mode .novissimo-card blockquote,
+html.dark-mode .prayer-type-card blockquote { background: rgba(201,168,76,0.06); color: var(--text-color); }
+html.dark-mode .passage-card .bible-text { background: rgba(26,79,137,0.1); color: var(--text-color); }
+html.dark-mode .theme-btn { background: var(--card-bg); color: var(--text-color); border-color: var(--border-color); }
+html.dark-mode .theme-btn.active { background: var(--link-color); color: #fff; }
+html.dark-mode .category-header,
+html.dark-mode .section-title { color: var(--text-color) !important; border-color: var(--border-color); }
+html.dark-mode .era-header { color: #ddd !important; }
+html.dark-mode .testament-header { opacity: 0.9; }
+html.dark-mode .warning-box { background: rgba(201,168,76,0.06); border-color: var(--border-color); }
+html.dark-mode .warning-box p { color: var(--text-color); }

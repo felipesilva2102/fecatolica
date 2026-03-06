@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Aparições Marianas Aprovadas — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="As aparições marianas oficialmente aprovadas pela Igreja Católica."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .apparition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 16px; }
+        .apparition-card { padding: 20px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid #8e44ad; transition: transform 0.2s, box-shadow 0.2s; }
+        .apparition-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .apparition-card h3 { margin: 0 0 4px; color: #6a2c91; font-size: 1.1rem; }
+        .apparition-card .meta { font-size: 0.85rem; color: #888; margin-bottom: 10px; }
+        .apparition-card .meta strong { color: #666; }
+        .apparition-card p { line-height: 1.7; color: #444; margin: 0; font-size: 0.95rem; }
+        .apparition-card .message { margin-top: 10px; padding: 10px 14px; background: rgba(142,68,173,0.08); border-radius: 8px; font-style: italic; color: #555; font-size: 0.92rem; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Aparições Marianas</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">🌹 Aparições Marianas Aprovadas pela Igreja</h1>
+            <p style="text-align:center;" class="muted">Manifestações da Mãe de Deus reconhecidas oficialmente</p>
+            <p style="line-height:1.8;color:#444;">A Igreja analisa cuidadosamente os relatos de aparições através de comissões diocesanas e da Congregação para a Doutrina da Fé. As aparições aprovadas recebem o <em>nihil obstat</em> ou reconhecimento formal, indicando que «nada se opõe a que sejam objeto de fé humana» (CCC 67). Não são conteúdo de fé obrigatório, mas sim revelações privadas que podem ajudar a viver a fé.</p>
+        </div>
+
+        <div class="apparition-grid">
+
+            <div class="apparition-card">
+                <h3>🇲🇽 Nossa Senhora de Guadalupe</h3>
+                <div class="meta">1531 · Tepeyac, México · <strong>Vidente:</strong> São Juan Diego</div>
+                <p>Maria aparece a um indígena asteca como uma mulher morena, grávida, em trajes mestiços. Deixa sua imagem milagrosamente impressa no tilma (manto) de Juan Diego, que se conserva até hoje na Basílica de Guadalupe. A imagem provocou milhões de conversões no México.</p>
+                <div class="message">«Acaso não estou aqui, eu que sou tua Mãe?»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇫🇷 Nossa Senhora da Medalha Milagrosa</h3>
+                <div class="meta">1830 · Paris, França · <strong>Vidente:</strong> Santa Catarina Labouré</div>
+                <p>Na Rue du Bac, Maria pede a cunhagem de uma medalha com a invocação: «Ó Maria concebida sem pecado, rogai por nós que recorremos a Vós.» Milhões de graças foram atribuídas ao uso devoto da medalha.</p>
+                <div class="message">«As graças serão abundantes para os que as pedirem com confiança.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇫🇷 Nossa Senhora de La Salette</h3>
+                <div class="meta">1846 · La Salette, França · <strong>Videntes:</strong> Mélanie Calvat e Maximin Giraud</div>
+                <p>Maria aparece chorando a duas crianças pastoras, lamentando a profanação do domingo e a blasfêmia. Pede conversão e oração. Aprovada pelo bispo de Grenoble em 1851.</p>
+                <div class="message">«Se meu povo não quer submeter-se, sou forçada a deixar cair o braço de meu Filho.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇫🇷 Nossa Senhora de Lourdes</h3>
+                <div class="meta">1858 · Lourdes, França · <strong>Vidente:</strong> Santa Bernadette Soubirous</div>
+                <p>18 aparições na gruta de Massabielle. Maria se identifica como «a Imaculada Conceição» (confirmando o dogma de 1854). Uma fonte de água brota e milhares de curas milagrosas são verificadas pelo Bureau Médico de Lourdes.</p>
+                <div class="message">«Eu sou a Imaculada Conceição. Quero que se faça aqui uma capela. Penitência, penitência, penitência!»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇫🇷 Nossa Senhora de Pontmain</h3>
+                <div class="meta">1871 · Pontmain, França · <strong>Videntes:</strong> Eugène e Joseph Barbedette e outros</div>
+                <p>Durante a guerra franco-prussiana, Maria aparece no céu estrelado com a mensagem: «Mas rezai, meus filhos. Deus vos ouvirá em breve.» Onze dias depois, o armistício foi assinado. Aprovada em 1872.</p>
+                <div class="message">«Mas rezai, meus filhos. Deus vos atenderá em breve. Meu Filho deixa-se comover.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇵🇹 Nossa Senhora de Fátima</h3>
+                <div class="meta">1917 · Fátima, Portugal · <strong>Videntes:</strong> Lúcia, Francisco e Jacinta</div>
+                <p>Seis aparições de maio a outubro de 1917. Maria pediu oração do Rosário diário, penitência e a consagração da Rússia ao seu Imaculado Coração. O «Milagre do Sol» em 13 de outubro foi testemunhado por ~70.000 pessoas. Três segredos: visão do inferno, guerras e perseguições à Igreja.</p>
+                <div class="message">«Rezem o terço todos os dias para alcançar a paz do mundo e o fim da guerra.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇧🇪 Nossa Senhora de Beauraing</h3>
+                <div class="meta">1932–1933 · Beauraing, Bélgica · <strong>Videntes:</strong> 5 crianças</div>
+                <p>33 aparições. Maria se apresenta como «a Imaculada Virgem» e «Mãe de Deus, Rainha do Céu». Pediu oração e conversão. Aprovada em 1949.</p>
+                <div class="message">«Rezai, rezai muito. Rezai sempre.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇧🇪 Nossa Senhora de Banneux</h3>
+                <div class="meta">1933 · Banneux, Bélgica · <strong>Vidente:</strong> Mariette Beco</div>
+                <p>8 aparições. Maria se identificou como «a Virgem dos Pobres» e indicou uma fonte de água para aliviar os doentes. Aprovada em 1949.</p>
+                <div class="message">«Eu sou a Virgem dos Pobres. Creiam em mim, eu crerei em vocês.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇷🇼 Nossa Senhora de Kibeho</h3>
+                <div class="meta">1981–1989 · Kibeho, Ruanda · <strong>Videntes:</strong> Alphonsine, Nathalie, Marie Claire</div>
+                <p>Primeira aparição mariana aprovada na África. Maria alertou sobre violência e pediu oração e jejum. Tragicamente, o genocídio de 1994 confirmou os avisos. Aprovada em 2001.</p>
+                <div class="message">«Quando vos digo para rezar, não estou dizendo algo impossível.»</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇵🇭 Nossa Senhora do Pilar</h3>
+                <div class="meta">40 d.C. · Saragoça, Espanha · <strong>Vidente:</strong> Apóstolo São Tiago</div>
+                <p>A tradição mais antiga: Maria, ainda viva, apareceu ao Apóstolo Tiago sobre um pilar de jaspe em Saragoça. É a patrona da Espanha e da Hispanidade. Uma das devoções marianas mais antigas do cristianismo.</p>
+                <div class="message">Tradição apostólica — reconhecida pela devoção secular da Igreja.</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇮🇪 Nossa Senhora de Knock</h3>
+                <div class="meta">1879 · Knock, Irlanda · <strong>Videntes:</strong> 15 testemunhas</div>
+                <p>Aparição silenciosa: Maria, São José e São João Evangelista apareceram junto a um altar com um cordeiro e uma cruz, na parede da igreja. Nenhuma palavra foi dita — uma aparição contemplativa. Aprovada em 1936.</p>
+                <div class="message">Aparição silenciosa — visão da adoração celestial.</div>
+            </div>
+
+            <div class="apparition-card">
+                <h3>🇪🇬 Nossa Senhora de Zeitoun</h3>
+                <div class="meta">1968–1971 · Zeitoun (Cairo), Egito</div>
+                <p>Aparições luminosas de Maria sobre a cúpula da igreja copta de Zeitoun, testemunhadas por centenas de milhares (cristãos, muçulmanos e jornalistas). Fotografada e filmada. Reconhecida pelo Patriarcado Copta.</p>
+                <div class="message">Aparição silenciosa luminosa, sem mensagem verbal.</div>
+            </div>
+
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Catecismo da Igreja Católica</strong>: § 67 (revelações privadas não acrescentam à fé, mas podem ajudar a vivê-la)</li>
+                <li><strong>Congregação para a Doutrina da Fé</strong>: Normas para discernimento de aparições (1978, atualizadas em 2024)</li>
+                <li><strong>Documentos de aprovação</strong>: Decretos episcopais de cada diocese respectiva</li>
+                <li><strong>René Laurentin</strong>: obras sobre aparições marianas (principal mariologista do séc. XX)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

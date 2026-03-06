@@ -1,4 +1,4 @@
-var CACHE_NAME = 'fecatolica-cache-v11';
+var CACHE_NAME = 'fecatolica-cache-v13';
 var URLS_PRE_CACHE = [
     '/',
     '/imagens/favicon.svg',
@@ -76,6 +76,14 @@ var URLS_PRE_CACHE = [
     '/quaresmas/quaresma-santa-teresinha.html',
     '/quaresmas/quaresma-sao-francisco.html',
     '/quaresmas/quaresma-natal.html',
+    '/oracoes/bem-aventurancas.html',
+    '/oracoes/obras-misericordia.html',
+    '/oracoes/oracoes-eucaristicas.html',
+    '/oracoes/te-deum-hinos.html',
+    '/vida-espiritual/credo-explicado.html',
+    '/vida-espiritual/partes-da-missa.html',
+    '/vida-espiritual/doutores-igreja.html',
+    '/vida-espiritual/pecados-capitais.html',
     '/css/style.css',
     '/css/acessibilidade.css',
     '/css/terco-interativo.css',
@@ -88,7 +96,22 @@ var URLS_PRE_CACHE = [
     '/js/sw-register.js',
     '/includes/menu.html',
     '/includes/footer.html',
-    '/manifest.json'
+    '/manifest.json',
+    '/vida-espiritual/parabolas-jesus.html',
+    '/vida-espiritual/milagres-jesus.html',
+    '/vida-espiritual/santos-brasileiros.html',
+    '/vida-espiritual/concilios-ecumenicos.html',
+    '/vida-espiritual/ordens-religiosas.html',
+    '/vida-espiritual/aparicoes-marianas.html',
+    '/vida-espiritual/novissimos.html',
+    '/vida-espiritual/simbolos-liturgicos.html',
+    '/vida-espiritual/frases-santos.html',
+    '/vida-espiritual/tipos-oracao.html',
+    '/vida-espiritual/maria-na-biblia.html',
+    '/oracoes/oracoes-defuntos.html',
+    '/oracoes/oracoes-vocacionais.html',
+    '/oracoes/cantico-criaturas.html',
+    '/oracoes/oracoes-cura.html'
 ];
 
 // Install - pre-cache dos recursos estaticos

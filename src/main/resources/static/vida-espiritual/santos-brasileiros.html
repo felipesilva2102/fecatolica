@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Santos e Beatos do Brasil — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Santos e beatos do Brasil canonizados e beatificados pela Igreja Católica."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .saint-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+        .saint-card { padding: 20px; border-radius: 12px; background: rgba(44,122,44,0.05); border-left: 4px solid var(--cor-secundaria); transition: transform 0.2s, box-shadow 0.2s; }
+        .saint-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .saint-card h3 { margin: 0 0 4px; color: var(--cor-secundaria); font-size: 1.1rem; }
+        .saint-card .dates { font-size: 0.82rem; color: #888; margin-bottom: 8px; }
+        .saint-card .feast { display: inline-block; background: rgba(201,168,76,0.2); padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; color: #7a6520; margin-bottom: 8px; }
+        .saint-card p { line-height: 1.7; color: #444; margin: 0; font-size: 0.95rem; }
+        .badge-type { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; }
+        .badge-type.santo { background: rgba(201,168,76,0.2); color: #8a6d10; }
+        .badge-type.beato { background: rgba(26,79,137,0.1); color: var(--cor-primaria); }
+        .badge-type.martir { background: rgba(180,40,40,0.1); color: #a03030; }
+        .section-header { text-align: center; font-size: 1.3rem; margin: 24px 0 8px; color: var(--cor-secundaria); }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Santos Brasileiros</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">🇧🇷 Santos e Beatos do Brasil</h1>
+            <p style="text-align:center;" class="muted">A santidade que floresceu na terra brasileira</p>
+            <p style="line-height:1.8;color:#444;">O Brasil possui santos canonizados e beatos reconhecidos pela Santa Sé. Suas vidas são testemunho de que a santidade é possível em qualquer época, lugar e condição social.</p>
+        </div>
+
+        <!-- Santos Canonizados -->
+        <div class="section-header">⭐ Santos Canonizados</div>
+
+        <div class="saint-grid">
+            <div class="saint-card">
+                <h3>Santo Antônio de Sant'Ana Galvão</h3>
+                <span class="badge-type santo">Santo</span>
+                <div class="dates">1739–1822 · São Paulo, SP</div>
+                <div class="feast">📅 Festa: 25 de outubro</div>
+                <p>Frei franciscano, o primeiro santo nascido no Brasil. Canonizado por Bento XVI em 11 de maio de 2007 em São Paulo. Fundador do Recolhimento de Nossa Senhora da Luz. Famoso pelas «pílulas de Frei Galvão» — papéis com orações que, pela fé, são associados a curas e proteção.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Santa Paulina do Coração Agonizante de Jesus</h3>
+                <span class="badge-type santo">Santo</span>
+                <div class="dates">1865–1942 · Vigolo Vattaro (Itália) → Nova Trento, SC</div>
+                <div class="feast">📅 Festa: 9 de julho</div>
+                <p>Amábile Lucia Visintainer, imigrante italiana, fundou a Congregação das Irmãzinhas da Imaculada Conceição. Canonizada por São João Paulo II em 19 de maio de 2002. Dedicou a vida ao cuidado dos doentes, pobres e órfãos no interior de Santa Catarina.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>São José de Anchieta</h3>
+                <span class="badge-type santo">Santo</span>
+                <div class="dates">1534–1597 · Tenerife (Espanha) → Brasil</div>
+                <div class="feast">📅 Festa: 9 de junho</div>
+                <p>Jesuíta, «Apóstolo do Brasil». Co-fundador de São Paulo e do Rio de Janeiro. Catequizou os indígenas, escreveu gramáticas do tupi e o primeiro poema brasileiro. Canonizado pelo Papa Francisco em 3 de abril de 2014.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Santa Dulce dos Pobres (Irmã Dulce)</h3>
+                <span class="badge-type santo">Santo</span>
+                <div class="dates">1914–1992 · Salvador, BA</div>
+                <div class="feast">📅 Festa: 13 de agosto</div>
+                <p>Maria Rita de Sousa Brito Lopes Pontes, religiosa das Irmãs Missionárias da Imaculada. Chamada «o anjo bom da Bahia», fundou obras sociais imensas: hospitais, escolas, abrigos. Canonizada pelo Papa Francisco em 13 de outubro de 2019.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Santos Mártires de Cunhaú e Uruaçu</h3>
+                <span class="badge-type martir">Mártires</span>
+                <div class="dates">†1645 · Rio Grande do Norte</div>
+                <div class="feast">📅 Festa: 3 de outubro</div>
+                <p>Trinta mártires (André de Soveral, Ambrósio Francisco Ferro e 28 companheiros leigos) massacrados por tropas holandesas calvinistas por se recusarem a abandonar a fé católica. Canonizados pelo Papa Francisco em 15 de outubro de 2017.</p>
+            </div>
+        </div>
+
+        <!-- Beatos -->
+        <div class="section-header">🙏 Beatos e Beatas</div>
+
+        <div class="saint-grid">
+            <div class="saint-card">
+                <h3>Beato Padre Donizetti Tavares de Lima</h3>
+                <span class="badge-type beato">Beato</span>
+                <div class="dates">1882–1961 · Tambaú, SP</div>
+                <div class="feast">📅 Festa: 16 de junho</div>
+                <p>Sacerdote diocesano, pároco de Tambaú por 35 anos. Conhecido por sua caridade heroica, vida de oração e por milagres de cura atribuídos à sua intercessão. Beatificado em 23 de novembro de 2019.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Beata Benigna Cardoso da Silva</h3>
+                <span class="badge-type martir">Mártir</span>
+                <div class="dates">1928–1941 · Santana do Cariri, CE</div>
+                <div class="feast">📅 Festa: 24 de outubro</div>
+                <p>Jovem de 13 anos do sertão cearense, assassinada em defesa da castidade. Beatificada pelo Papa Francisco em 24 de outubro de 2022. É a beata mais jovem do Brasil.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Beata Albertina Berkenbrock</h3>
+                <span class="badge-type martir">Mártir</span>
+                <div class="dates">1919–1931 · São Luís, SC</div>
+                <div class="feast">📅 Festa: 11 de junho</div>
+                <p>Menina de 12 anos da colônia alemã em Santa Catarina, assassinada em defesa da pureza. Beatificada em 20 de outubro de 2007.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Beato Adílio Daronch</h3>
+                <span class="badge-type martir">Mártir</span>
+                <div class="dates">1908–1924 · Nonoai, RS</div>
+                <div class="feast">📅 Festa: 21 de maio</div>
+                <p>Adolescente gaúcho de 16 anos, catequista, assassinado junto com o Beato Manuel Gómez González (padre palotino) durante perseguição religiosa. Beatificado em 21 de outubro de 2007.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Beata Lindalva Justo de Oliveira</h3>
+                <span class="badge-type martir">Mártir</span>
+                <div class="dates">1953–1993 · Salvador, BA</div>
+                <div class="feast">📅 Festa: 9 de abril</div>
+                <p>Filha da Caridade de São Vicente de Paulo, assassinada enquanto cuidava de idosos. Beatificada em 22 de dezembro de 2007. Exemplo de caridade até o martírio.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Beato Padre Léo (Frei Othmar)</h3>
+                <span class="badge-type beato">Beato — em processo</span>
+                <div class="dates">1941–2007 · Bom Princípio, RS</div>
+                <p>Frei Capuchinho, missionário popular, pregador incansável do Evangelho no Sul do Brasil. Processo de beatificação em andamento (Servo de Deus). Fiel: mais de 3 milhões assinaram pedido de beatificação.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Venerável Padre Rodolfo Komorek</h3>
+                <span class="badge-type beato">Venerável</span>
+                <div class="dates">1890–1949 · Catanduvas, PR</div>
+                <p>Sacerdote verbita (SVD), missionário no Paraná e Mato Grosso. Declarado Venerável pelo Papa Francisco em 2023, reconhecendo suas virtudes heroicas.</p>
+            </div>
+
+            <div class="saint-card">
+                <h3>Servo de Deus Padre Vítor Coelho de Almeida</h3>
+                <span class="badge-type beato">Servo de Deus</span>
+                <div class="dates">1899–1987 · Campinas, SP</div>
+                <p>Sacerdote redentorista, fundador da devoção à Mãe do Perpétuo Socorro em Campinas. Vida de intensa oração e direção espiritual. Processo em andamento.</p>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Vaticano</strong>: Atos de canonização e beatificação da Congregação para as Causas dos Santos</li>
+                <li><strong>CNBB</strong>: Confêrencia Nacional dos Bispos do Brasil — processos de canonização brasileiros</li>
+                <li><strong>Hagiografias oficiais</strong>: Documentos dos processos canônicos de cada santo e beato</li>
+                <li><strong>Papa Francisco</strong>: Homilias das canonizações de 2014, 2017 e 2019</li>
+                <li><strong>São João Paulo II</strong>: Homilia da canonização de Santa Paulina (2002)</li>
+                <li><strong>Bento XVI</strong>: Homilia da canonização de Frei Galvão (2007)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

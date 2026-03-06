@@ -392,7 +392,30 @@ function initFavorites() {
         '/oracoes/sagrada-familia.html': '👨‍👩‍👦 Sagrada Família',
         '/vida-espiritual/doutrina-social.html': '⚖️ Doutrina Social',
         '/vida-espiritual/mandamentos-preceitos.html': '📜 Mandamentos e Preceitos',
-        '/ferramentas/quiz-formacao.html': '📝 Quiz de Formação'
+        '/ferramentas/quiz-formacao.html': '📝 Quiz de Formação',
+        '/oracoes/bem-aventurancas.html': '⛰️ Bem-aventuranças',
+        '/oracoes/obras-misericordia.html': '🤲 Obras de Misericórdia',
+        '/oracoes/oracoes-eucaristicas.html': '🕯️ Orações Eucarísticas',
+        '/oracoes/te-deum-hinos.html': '🎵 Te Deum e Hinos',
+        '/vida-espiritual/credo-explicado.html': '✝️ Credo Explicado',
+        '/vida-espiritual/partes-da-missa.html': '⛪ Partes da Missa',
+        '/vida-espiritual/doutores-igreja.html': '📚 Doutores da Igreja',
+        '/vida-espiritual/pecados-capitais.html': '⚔️ Pecados Capitais e Virtudes',
+        '/vida-espiritual/parabolas-jesus.html': '📖 Parábolas de Jesus',
+        '/vida-espiritual/milagres-jesus.html': '✨ Milagres de Jesus',
+        '/vida-espiritual/santos-brasileiros.html': '🇧🇷 Santos Brasileiros',
+        '/vida-espiritual/concilios-ecumenicos.html': '🏛️ Concílios Ecumênicos',
+        '/vida-espiritual/ordens-religiosas.html': '🙇 Ordens Religiosas',
+        '/vida-espiritual/aparicoes-marianas.html': '🌹 Aparições Marianas',
+        '/vida-espiritual/novissimos.html': '⚖️ Novíssimos',
+        '/vida-espiritual/simbolos-liturgicos.html': '⛪ Símbolos Litúrgicos',
+        '/vida-espiritual/frases-santos.html': '✨ Frases dos Santos',
+        '/vida-espiritual/tipos-oracao.html': '🙏 Tipos de Oração',
+        '/vida-espiritual/maria-na-biblia.html': '🌹 Maria na Bíblia',
+        '/oracoes/oracoes-defuntos.html': '🕯️ Orações pelos Defuntos',
+        '/oracoes/oracoes-vocacionais.html': '🙏 Orações Vocacionais',
+        '/oracoes/cantico-criaturas.html': '🎵 Cânticos de Louvor',
+        '/oracoes/oracoes-cura.html': '💚 Orações de Cura'
     };
 
     // Save current page visit

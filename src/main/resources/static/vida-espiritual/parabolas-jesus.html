@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Parábolas de Jesus — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="As parábolas de Jesus Cristo nos Evangelhos com explicação, referência bíblica e ensinamento."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .parable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+        .parable-card { padding: 20px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); transition: transform 0.2s, box-shadow 0.2s; }
+        .parable-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .parable-card h3 { margin: 0 0 4px; color: var(--cor-primaria); font-size: 1.1rem; }
+        .parable-ref { font-size: 0.82rem; color: #888; margin-bottom: 10px; font-style: italic; }
+        .parable-card p { line-height: 1.7; color: #444; margin: 0; }
+        .parable-card .lesson { margin-top: 10px; padding: 10px 14px; background: rgba(201,168,76,0.1); border-radius: 8px; font-size: 0.92rem; color: #555; }
+        .parable-card .lesson strong { color: var(--cor-primaria); }
+        .theme-filter { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0; }
+        .theme-btn { padding: 6px 16px; border-radius: 20px; border: 2px solid var(--cor-primaria); background: transparent; color: var(--cor-primaria); cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+        .theme-btn:hover, .theme-btn.active { background: var(--cor-primaria); color: #fff; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Parábolas de Jesus</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">📖 Parábolas de Jesus</h1>
+            <p style="text-align:center;" class="muted">Os ensinamentos do Mestre em histórias — todas com referência bíblica</p>
+        </div>
+
+        <div class="card">
+            <div class="theme-filter">
+                <button class="theme-btn active" onclick="filterParables('all')">Todas</button>
+                <button class="theme-btn" onclick="filterParables('reino')">Reino de Deus</button>
+                <button class="theme-btn" onclick="filterParables('misericordia')">Misericórdia</button>
+                <button class="theme-btn" onclick="filterParables('vigilancia')">Vigilância</button>
+                <button class="theme-btn" onclick="filterParables('oracao')">Oração</button>
+                <button class="theme-btn" onclick="filterParables('mordomia')">Mordomia</button>
+            </div>
+        </div>
+
+        <div class="parable-grid" id="parableGrid">
+
+            <div class="parable-card" data-theme="misericordia">
+                <h3>🐑 O Bom Pastor (Ovelha Perdida)</h3>
+                <div class="parable-ref">Lc 15, 1-7 · Mt 18, 12-14</div>
+                <p>Um pastor deixa 99 ovelhas para buscar a que se perdeu, e ao encontrá-la, celebra com grande alegria.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Deus se alegra infinitamente com a conversão de um só pecador. Cada alma tem valor inestimável aos olhos de Deus.</div>
+            </div>
+
+            <div class="parable-card" data-theme="misericordia">
+                <h3>💰 O Filho Pródigo</h3>
+                <div class="parable-ref">Lc 15, 11-32</div>
+                <p>Um filho pede sua herança, dissipa tudo em vida dissoluta, e ao voltar arrependido, o pai o recebe com festa e vestiduras novas.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A misericórdia do Pai não tem limites. O arrependimento sincero sempre encontra os braços abertos de Deus (CCC 1439).</div>
+            </div>
+
+            <div class="parable-card" data-theme="misericordia">
+                <h3>🪙 A Dracma Perdida</h3>
+                <div class="parable-ref">Lc 15, 8-10</div>
+                <p>Uma mulher que perde uma de suas dez moedas varre toda a casa até encontrá-la, e convida as vizinhas para celebrar.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Deus busca ativamente cada pecador perdido. Há alegria entre os anjos por um pecador que se converte.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🌱 O Semeador</h3>
+                <div class="parable-ref">Mt 13, 1-23 · Mc 4, 1-20 · Lc 8, 4-15</div>
+                <p>Um semeador lança sementes que caem à beira do caminho, em terreno pedregoso, entre espinhos e em terra boa, produzindo frutos diferentes.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A semente é a Palavra de Deus. O fruto depende da disposição do coração que a recebe (CCC 546).</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🌾 O Joio e o Trigo</h3>
+                <div class="parable-ref">Mt 13, 24-30. 36-43</div>
+                <p>Um inimigo semeia joio no campo de trigo. O senhor ordena que cresçam juntos até a colheita, quando serão separados.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Bons e maus convivem na Igreja e no mundo até o Juízo Final, quando Deus fará a separação definitiva.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🌳 O Grão de Mostarda</h3>
+                <div class="parable-ref">Mt 13, 31-32 · Mc 4, 30-32</div>
+                <p>A menor de todas as sementes, quando plantada, cresce e torna-se a maior das hortaliças, e os pássaros fazem ninho em seus ramos.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> O Reino de Deus começa pequeno mas cresce até acolher todos os povos. A fé, mesmo pequena, pode mover montanhas.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🍞 O Fermento na Massa</h3>
+                <div class="parable-ref">Mt 13, 33 · Lc 13, 20-21</div>
+                <p>Uma mulher mistura fermento em três medidas de farinha e toda a massa fermenta.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> O Evangelho transforma silenciosa e interiormente toda a sociedade, assim como o fermento transforma a massa.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>💎 O Tesouro Escondido e a Pérola Preciosa</h3>
+                <div class="parable-ref">Mt 13, 44-46</div>
+                <p>Um homem encontra um tesouro num campo e vende tudo para comprá-lo. Um mercador encontra uma pérola de valor inestimável e vende tudo para adquiri-la.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> O Reino de Deus vale mais que tudo. Quem o descobre deve estar disposto a deixar tudo por ele.</div>
+            </div>
+
+            <div class="parable-card" data-theme="mordomia">
+                <h3>💰 Os Talentos</h3>
+                <div class="parable-ref">Mt 25, 14-30 · Lc 19, 11-27</div>
+                <p>Um senhor entrega talentos a três servos antes de viajar. Dois multiplicam; o terceiro enterra o seu. O senhor recompensa os fiéis e repreende o negligente.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Deus nos confia dons e devemos fazê-los frutificar. A fé exige ação — não basta guardar, é preciso multiplicar.</div>
+            </div>
+
+            <div class="parable-card" data-theme="misericordia">
+                <h3>🩹 O Bom Samaritano</h3>
+                <div class="parable-ref">Lc 10, 25-37</div>
+                <p>Um homem é assaltado na estrada. Um sacerdote e um levita passam sem ajudar. Um samaritano cuida dele com misericórdia.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> O nosso próximo é todo aquele que precisa de nós. A caridade concreta supera todas as barreiras sociais e religiosas (CCC 1932).</div>
+            </div>
+
+            <div class="parable-card" data-theme="vigilancia">
+                <h3>🪔 As Dez Virgens</h3>
+                <div class="parable-ref">Mt 25, 1-13</div>
+                <p>Cinco virgens prudentes levam azeite extra para suas lâmpadas; cinco imprudentes não levam. Quando o noivo chega à meia-noite, as imprudentes ficam sem luz.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Vigiai, pois não sabeis o dia nem a hora. A vida cristã exige preparação constante para o encontro com Cristo.</div>
+            </div>
+
+            <div class="parable-card" data-theme="vigilancia">
+                <h3>🏠 A Casa sobre a Rocha</h3>
+                <div class="parable-ref">Mt 7, 24-27 · Lc 6, 47-49</div>
+                <p>Quem ouve as palavras de Jesus e as pratica é como quem constrói sobre a rocha; quem não pratica, constrói sobre a areia.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A fé verdadeira se expressa em obras concretas. Ouvir a Palavra sem vivê-la é edificar sobre fundamento frágil.</div>
+            </div>
+
+            <div class="parable-card" data-theme="oracao">
+                <h3>🙏 O Fariseu e o Publicano</h3>
+                <div class="parable-ref">Lc 18, 9-14</div>
+                <p>O fariseu ora gabando-se de suas virtudes; o publicano, de longe, apenas diz: «Ó Deus, tem piedade de mim, pecador!» Este desceu justificado.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A humildade é o fundamento da oração. Deus resiste aos soberbos, mas dá graça aos humildes (CCC 2559).</div>
+            </div>
+
+            <div class="parable-card" data-theme="oracao">
+                <h3>🚪 O Amigo Importuno</h3>
+                <div class="parable-ref">Lc 11, 5-8</div>
+                <p>Um homem bate à porta do amigo à meia-noite pedindo pães para um visitante. Pela persistência, consegue o que deseja.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A oração deve ser perseverante e confiante. Deus atende quem insiste com fé (CCC 2613).</div>
+            </div>
+
+            <div class="parable-card" data-theme="oracao">
+                <h3>⚖️ O Juiz Iníquo e a Viúva</h3>
+                <div class="parable-ref">Lc 18, 1-8</div>
+                <p>Uma viúva persiste em pedir justiça a um juiz injusto, até que ele cede pela insistência. Jesus diz: «Deus não fará justiça aos seus escolhidos?»</p>
+                <div class="lesson"><strong>Ensinamento:</strong> «É preciso orar sempre, sem jamais desanimar.» Se até um juiz injusto cede, quanto mais o Pai bom!</div>
+            </div>
+
+            <div class="parable-card" data-theme="mordomia">
+                <h3>🪙 O Administrador Infiel</h3>
+                <div class="parable-ref">Lc 16, 1-13</div>
+                <p>Um administrador prestes a ser demitido reduz as dívidas dos devedores do amo para ganhar amigos. O senhor elogia sua astúcia.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Usai a riqueza para fazer o bem e ganhar amigos no céu. «Não podeis servir a Deus e ao dinheiro.»</div>
+            </div>
+
+            <div class="parable-card" data-theme="mordomia">
+                <h3>🍇 Os Vinhateiros Homicidas</h3>
+                <div class="parable-ref">Mt 21, 33-46 · Mc 12, 1-12</div>
+                <p>Um proprietário planta uma vinha e a confia a vinhateiros. Eles maltratam os servos enviados e matam o próprio filho do dono.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Deus enviou profetas e por fim seu Filho. Quem rejeita Cristo rejeita a pedra angular. O Reino será dado a quem produzir frutos.</div>
+            </div>
+
+            <div class="parable-card" data-theme="mordomia">
+                <h3>🍇 Os Operários da Vinha</h3>
+                <div class="parable-ref">Mt 20, 1-16</div>
+                <p>O dono da vinha contrata operários em horas diferentes, mas paga a todos o mesmo salário. Os primeiros reclamam.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A generosidade de Deus transcende a lógica humana. A salvação é dom gratuito, não salário merecido.</div>
+            </div>
+
+            <div class="parable-card" data-theme="vigilancia">
+                <h3>🌿 A Figueira Estéril</h3>
+                <div class="parable-ref">Lc 13, 6-9</div>
+                <p>Uma figueira não produz fruto há três anos. O vinhateiro pede mais um ano para adubá-la antes de cortá-la.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Deus é paciente e nos dá tempo para a conversão, mas não indefinidamente. É preciso produzir frutos de arrependimento.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🎉 O Banquete de Núpcias</h3>
+                <div class="parable-ref">Mt 22, 1-14 · Lc 14, 15-24</div>
+                <p>Um rei prepara um banquete, mas os convidados recusam. Manda chamar os pobres, coxos e cegos. Um que entrou sem veste nupcial é expulso.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> Todos são chamados ao banquete do Reino, mas é preciso responder ao convite com disposição interior digna (a veste nupcial = graça santificante).</div>
+            </div>
+
+            <div class="parable-card" data-theme="misericordia">
+                <h3>💸 O Devedor Implacável</h3>
+                <div class="parable-ref">Mt 18, 21-35</div>
+                <p>Um servo perdoado de uma dívida enorme recusa-se a perdoar a pequena dívida de um companheiro. O rei retira o perdão.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> «Perdoai e sereis perdoados.» Quem experimentou a misericórdia de Deus deve perdoar os outros de coração.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🐟 A Rede de Pesca</h3>
+                <div class="parable-ref">Mt 13, 47-50</div>
+                <p>Uma rede lançada ao mar apanha peixes de todo tipo. Em terra, separam os bons dos maus.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> No fim dos tempos, os anjos separarão os justos dos maus. A Igreja abriga todos, até o Juízo Final.</div>
+            </div>
+
+            <div class="parable-card" data-theme="vigilancia">
+                <h3>🌙 O Servo Vigilante</h3>
+                <div class="parable-ref">Lc 12, 35-40 · Mt 24, 42-44</div>
+                <p>«Estai prontos, pois o Filho do Homem virá na hora em que menos pensardes.» Os servos devem estar de cintura cingida e lâmpadas acesas.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> A vigilância cristã é viver sempre preparado para o encontro com Deus, vivendo em estado de graça.</div>
+            </div>
+
+            <div class="parable-card" data-theme="reino">
+                <h3>🌾 A Semente que Cresce Sozinha</h3>
+                <div class="parable-ref">Mc 4, 26-29</div>
+                <p>Um homem lança a semente na terra, dorme e levanta, e a semente germina e cresce sem que ele saiba como.</p>
+                <div class="lesson"><strong>Ensinamento:</strong> O Reino de Deus cresce misteriosamente pela ação oculta do Espírito Santo, para além dos nossos esforços.</div>
+            </div>
+
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Sagrada Escritura</strong>: Evangelhos segundo São Mateus, São Marcos e São Lucas (tradução CNBB)</li>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 546 (parábolas como porta do Reino), 1439 (conversão), 1932 (caridade), 2559 (humildade na oração), 2613 (perseverança)</li>
+                <li><strong>São João Paulo II</strong>, <em>Dives in Misericordia</em> (1980): sobre a parábola do Filho Pródigo</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    function filterParables(theme) {
+        document.querySelectorAll('.theme-btn').forEach(function(b){ b.classList.remove('active'); });
+        event.target.classList.add('active');
+        document.querySelectorAll('.parable-card').forEach(function(c){
+            if (theme === 'all' || c.getAttribute('data-theme') === theme) {
+                c.style.display = '';
+            } else {
+                c.style.display = 'none';
+            }
+        });
+    }
+    </script>
+</body>
+</html>
