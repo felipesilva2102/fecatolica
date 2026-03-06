@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>O Credo Explicado — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="O Credo dos Apóstolos e o Credo Niceno-Constantinopolitano explicados artigo por artigo, com referências do Catecismo da Igreja Católica."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .creed-text { background: rgba(26,79,137,0.05); border-radius: 12px; padding: 24px; margin: 16px 0; line-height: 1.9; font-size: 1.05rem; }
+        .creed-text strong { color: var(--cor-primaria); }
+        .article-card { padding: 18px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); margin-bottom: 14px; transition: transform 0.2s, box-shadow 0.2s; }
+        .article-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .article-card h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--cor-primaria); }
+        .article-card .excerpt { font-style: italic; font-size: 1rem; line-height: 1.6; margin-bottom: 10px; color: #333; border-left: 3px solid var(--cor-accent); padding-left: 12px; }
+        .article-card .explanation { line-height: 1.7; color: #555; font-size: 0.95rem; }
+        .article-card .refs { font-size: 0.85rem; color: #888; margin-top: 8px; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+        .tab-buttons { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+        .tab-btn { padding: 10px 20px; border: 2px solid var(--cor-primaria); border-radius: 8px; background: #fff; color: var(--cor-primaria); cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: var(--cor-primaria); color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>O Credo Explicado</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">✝️ O Credo Explicado</h1>
+            <p style="text-align:center;" class="muted">Símbolo dos Apóstolos e Credo Niceno-Constantinopolitano</p>
+            <p style="line-height:1.8;color:#444;">O Credo (do latim <em>Credo</em> = «Creio») é a profissão de fé que resume as verdades essenciais da fé cristã. O Catecismo ensina: «Desde a origem, a Igreja apostólica exprimiu e transmitiu a própria fé em fórmulas breves e normativas para todos» (CCC 186). Os dois credos principais são o <strong>Símbolo dos Apóstolos</strong> (séc. II) e o <strong>Credo Niceno-Constantinopolitano</strong> (381 d.C.).</p>
+        </div>
+
+        <div class="card">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="apostles">Símbolo dos Apóstolos</button>
+                <button class="tab-btn" data-tab="nicene">Credo Niceno</button>
+            </div>
+
+            <!-- Símbolo dos Apóstolos -->
+            <div class="tab-content active" id="tab-apostles">
+                <div class="creed-text">
+                    <strong>Creio em Deus Pai todo-poderoso,</strong> Criador do Céu e da Terra.<br><br>
+                    <strong>E em Jesus Cristo,</strong> seu único Filho, nosso Senhor,<br>
+                    que foi concebido pelo poder do Espírito Santo,<br>
+                    nasceu da Virgem Maria,<br>
+                    padeceu sob Pôncio Pilatos,<br>
+                    foi crucificado, morto e sepultado;<br>
+                    desceu à mansão dos mortos;<br>
+                    ressuscitou ao terceiro dia;<br>
+                    subiu aos céus,<br>
+                    está sentado à direita de Deus Pai todo-poderoso,<br>
+                    de onde há de vir a julgar os vivos e os mortos.<br><br>
+                    <strong>Creio no Espírito Santo,</strong><br>
+                    na Santa Igreja Católica,<br>
+                    na comunhão dos Santos,<br>
+                    na remissão dos pecados,<br>
+                    na ressurreição da carne,<br>
+                    na vida eterna. <strong>Amém.</strong>
+                </div>
+            </div>
+
+            <!-- Credo Niceno-Constantinopolitano -->
+            <div class="tab-content" id="tab-nicene">
+                <div class="creed-text">
+                    <strong>Creio em um só Deus,</strong> Pai todo-poderoso, Criador do Céu e da Terra, de todas as coisas visíveis e invisíveis.<br><br>
+                    <strong>Creio em um só Senhor, Jesus Cristo,</strong> Filho Unigênito de Deus, nascido do Pai antes de todos os séculos: Deus de Deus, Luz da Luz, Deus verdadeiro de Deus verdadeiro; gerado, não criado, consubstancial ao Pai. Por Ele todas as coisas foram feitas. E, por nós, homens, e para nossa salvação, desceu dos Céus. E encarnou pelo Espírito Santo, no seio da Virgem Maria, e Se fez homem. Também por nós foi crucificado sob Pôncio Pilatos; padeceu e foi sepultado. Ressuscitou ao terceiro dia, conforme as Escrituras; e subiu aos Céus, onde está sentado à direita do Pai. De novo há de vir, em sua glória, para julgar os vivos e os mortos; e o seu Reino não terá fim.<br><br>
+                    <strong>Creio no Espírito Santo,</strong> Senhor que dá a vida, e procede do Pai e do Filho; e com o Pai e o Filho é adorado e glorificado: Ele que falou pelos Profetas.<br><br>
+                    <strong>Creio na Igreja</strong> una, santa, católica e apostólica. Professo um só Batismo para a remissão dos pecados. E espero a ressurreição dos mortos e a vida do mundo que há de vir. <strong>Amém.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📖 Os 12 Artigos do Credo — Explicados</h2>
+
+            <div class="article-card">
+                <h3>1.° Artigo: «Creio em Deus Pai todo-poderoso, Criador do Céu e da Terra»</h3>
+                <div class="excerpt">Deus é Uno e Trino; Pai, Filho e Espírito Santo. É todo-poderoso e criou todas as coisas do nada.</div>
+                <div class="explanation">Professar Deus como Pai é reconhecê-Lo como origem de tudo e como Pai amoroso que cuida de sua criação. A onipotência divina não é arbitrária, mas «misteriosa, pois só a fé a pode discernir quando se manifesta na fraqueza» (CCC 268). Ele criou o universo livremente, por sabedoria e amor (cf. CCC 295).</div>
+                <div class="refs">CCC 198-421; Gn 1,1; Sl 33,6; Rm 1,20</div>
+            </div>
+
+            <div class="article-card">
+                <h3>2.° Artigo: «E em Jesus Cristo, seu único Filho, nosso Senhor»</h3>
+                <div class="excerpt">Jesus é o Cristo (Messias), o Filho Unigênito, verdadeiro Deus e verdadeiro Homem.</div>
+                <div class="explanation">O nome «Jesus» (em hebraico Yeshua) significa «Deus salva». «Cristo» é o título grego para «Messias» (Ungido). Confessá-Lo como «Senhor» é reconhecer a sua divindade: «Jesus é Senhor» foi a primeira confissão de fé da Igreja (CCC 449-451, cf. Fl 2,11).</div>
+                <div class="refs">CCC 422-455; Jo 1,1.14; Fl 2,9-11; At 2,36</div>
+            </div>
+
+            <div class="article-card">
+                <h3>3.° Artigo: «Concebido pelo Espírito Santo, nasceu da Virgem Maria»</h3>
+                <div class="excerpt">A Encarnação: Deus fez-se Homem pela ação do Espírito Santo no seio da Virgem Maria.</div>
+                <div class="explanation">O Verbo de Deus assumiu a natureza humana sem deixar de ser Deus — «verdadeiro Deus e verdadeiro homem» (Concílio de Calcedônia, 451). Maria é Theotokos, Mãe de Deus (Concílio de Éfeso, 431). Sua virgindade antes, durante e depois do parto é dogma de fé (CCC 499).</div>
+                <div class="refs">CCC 456-570; Lc 1,26-38; Is 7,14; Jo 1,14</div>
+            </div>
+
+            <div class="article-card">
+                <h3>4.° Artigo: «Padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado»</h3>
+                <div class="excerpt">A Paixão e Morte redentora de Cristo na Cruz é o centro da história da salvação.</div>
+                <div class="explanation">Jesus sofreu e morreu livremente para expiar os pecados da humanidade: «Deus provou o seu amor para conosco, pois Cristo morreu por nós quando éramos ainda pecadores» (Rm 5,8). A morte de Cristo é simultaneamente sacrifício pascal, resgate e redenção (CCC 613-617).</div>
+                <div class="refs">CCC 571-630; Is 53,4-5; Rm 5,8; 1Cor 15,3-4</div>
+            </div>
+
+            <div class="article-card">
+                <h3>5.° Artigo: «Desceu à mansão dos mortos; ao terceiro dia ressuscitou»</h3>
+                <div class="excerpt">Cristo desceu aos infernos para libertar os justos e ressuscitou gloriosamente.</div>
+                <div class="explanation">A descida aos infernos (não o inferno dos condenados, mas a «morada dos mortos», o Sheol/Hades) significa que Cristo estendeu a redenção a todos os justos que O precederam (CCC 633). A Ressurreição é o fundamento da fé cristã: «Se Cristo não ressuscitou, vazia é a nossa fé» (1Cor 15,14).</div>
+                <div class="refs">CCC 631-658; 1Pd 3,18-19; 1Cor 15,14.20; At 2,24</div>
+            </div>
+
+            <div class="article-card">
+                <h3>6.° Artigo: «Subiu aos Céus, está sentado à direita de Deus Pai»</h3>
+                <div class="excerpt">A Ascensão de Cristo: Ele entrou definitivamente na glória divina.</div>
+                <div class="explanation">Quarenta dias após a Ressurreição, Jesus subiu ao Céu à vista dos Apóstolos (At 1,9-11). «Estar sentado à direita do Pai» significa exercer o poder divino e interceder por nós como Sumo Sacerdote eterno (CCC 662-664; Hb 7,25).</div>
+                <div class="refs">CCC 659-667; At 1,9-11; Mc 16,19; Hb 7,25</div>
+            </div>
+
+            <div class="article-card">
+                <h3>7.° Artigo: «De onde há de vir julgar os vivos e os mortos»</h3>
+                <div class="excerpt">Cristo voltará em glória para o Juízo Final.</div>
+                <div class="explanation">Haverá um juízo particular após a morte de cada pessoa (CCC 1021-1022) e um Juízo Final universal no fim dos tempos (CCC 1038-1041). Cristo virá como juiz justo e misericordioso, e cada pessoa será julgada segundo as suas obras e a sua resposta à graça divina.</div>
+                <div class="refs">CCC 668-682; Mt 25,31-46; At 1,11; 2Cor 5,10</div>
+            </div>
+
+            <div class="article-card">
+                <h3>8.° Artigo: «Creio no Espírito Santo»</h3>
+                <div class="excerpt">O Espírito Santo é a Terceira Pessoa da Santíssima Trindade.</div>
+                <div class="explanation">O Espírito Santo «procede do Pai e do Filho» e é «adorado e glorificado» juntamente com eles. Foi enviado no dia de Pentecostes para guiar a Igreja, santificar os fiéis e distribuir os seus dons (CCC 683-747). Ele é o «Paráclito», Consolador e Advogado (Jo 14,26).</div>
+                <div class="refs">CCC 683-747; Jo 14,16-17.26; At 2,1-4; Gl 5,22-23</div>
+            </div>
+
+            <div class="article-card">
+                <h3>9.° Artigo: «Na Santa Igreja Católica, na comunhão dos Santos»</h3>
+                <div class="excerpt">A Igreja é Una, Santa, Católica e Apostólica — Corpo Místico de Cristo.</div>
+                <div class="explanation">A Igreja foi fundada por Jesus Cristo sobre Pedro: «Tu és Pedro, e sobre esta pedra edificarei a minha Igreja» (Mt 16,18). A «comunhão dos santos» significa a união espiritual entre os fiéis na terra, as almas do Purgatório e os santos do Céu — todos formamos um só Corpo em Cristo (CCC 946-962).</div>
+                <div class="refs">CCC 748-975; Mt 16,18; Ef 4,4-6; 1Cor 12,12-27</div>
+            </div>
+
+            <div class="article-card">
+                <h3>10.° Artigo: «Na remissão dos pecados»</h3>
+                <div class="excerpt">Pelo Batismo e pela Penitência, Deus perdoa todos os pecados.</div>
+                <div class="explanation">Jesus conferiu à Igreja o poder de perdoar os pecados: «A quem perdoardes os pecados, ser-lhes-ão perdoados» (Jo 20,23). O Batismo apaga o pecado original e todos os pecados pessoais; o sacramento da Penitência (Confissão) perdoa os pecados cometidos após o Batismo (CCC 976-987).</div>
+                <div class="refs">CCC 976-987; Jo 20,22-23; At 2,38; CCC 1422</div>
+            </div>
+
+            <div class="article-card">
+                <h3>11.° Artigo: «Na ressurreição da carne»</h3>
+                <div class="excerpt">No último dia, os nossos corpos mortais ressuscitarão.</div>
+                <div class="explanation">Cremos que, assim como Cristo ressuscitou corporalmente, também nós ressuscitaremos com o nosso próprio corpo — transformado e glorificado. «Semeado na corrupção, o corpo ressuscita na incorruptibilidade» (1Cor 15,42). Esta é a esperança que sustenta toda a fé cristã (CCC 988-1019).</div>
+                <div class="refs">CCC 988-1019; 1Cor 15,42-44; Jo 6,40; Fl 3,21</div>
+            </div>
+
+            <div class="article-card">
+                <h3>12.° Artigo: «Na vida eterna. Amém.»</h3>
+                <div class="excerpt">Deus nos chama à bem-aventurança eterna — o Céu, a visão beatífica.</div>
+                <div class="explanation">«A vida eterna» é a comunhão plena e definitiva com Deus — ver a Deus «face a face» (1Cor 13,12). O Céu é o fim último e a realização de todos os desejos do coração humano. O «Amém» final sela toda a profissão de fé com a nossa adesão pessoal: «Amém» em hebraico é «Assim seja; creio firmemente» (CCC 1020-1065).</div>
+                <div class="refs">CCC 1020-1065; 1Cor 13,12; Ap 21,3-4; Jo 17,3</div>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 185-1065 (Primeira Parte: A Profissão de Fé)</li>
+                <li><strong>Concílio de Niceia</strong> (325 d.C.) e <strong>Concílio de Constantinopla</strong> (381 d.C.) — texto do Credo Niceno-Constantinopolitano</li>
+                <li><strong>Concílio de Calcedônia</strong> (451 d.C.) — definição das duas naturezas de Cristo</li>
+                <li><strong>Concílio de Éfeso</strong> (431 d.C.) — Maria, Theotokos (Mãe de Deus)</li>
+                <li><strong>Bento XVI</strong>: Audiências gerais sobre o Credo (2012-2013)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    $(function(){
+        $('.tab-btn').on('click', function(){
+            var tab = $(this).data('tab');
+            $('.tab-btn').removeClass('active');
+            $(this).addClass('active');
+            $('.tab-content').removeClass('active');
+            $('#tab-' + tab).addClass('active');
+        });
+    });
+    </script>
+</body>
+</html>

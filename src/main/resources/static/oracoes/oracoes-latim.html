@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Orações em Latim — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .latin-card { margin-bottom: 10px; }
+        .latin-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+        .latin-col { padding: 14px; border-radius: 10px; font-size: 0.95rem; line-height: 1.7; }
+        .latin-col.lat { background: #f8f4e8; border: 1px solid #e8d9a8; }
+        .latin-col.pt { background: #f0f6fb; border: 1px solid #c8ddf0; }
+        .latin-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .latin-label.lat { color: #8b6914; }
+        .latin-label.pt { color: var(--cor-primaria); }
+        @media (max-width: 600px) {
+            .latin-pair { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <nav class="breadcrumb">
+        <a href="/">Início</a> &rsaquo; <a href="/oracoes/oracoes.html">Orações</a> &rsaquo; <strong>Orações em Latim</strong>
+    </nav>
+
+    <div class="card">
+        <h1 style="text-align:center;">🏛️ Orações em Latim</h1>
+        <p class="muted" style="text-align:center;">As orações tradicionais da Igreja na língua sagrada — com tradução em português.</p>
+    </div>
+
+    <!-- Pater Noster -->
+    <div class="card latin-card">
+        <h2>Pater Noster — Pai Nosso</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Pater noster, qui es in cælis,<br/>
+                sanctificétur nomen tuum.<br/>
+                Advéniat regnum tuum.<br/>
+                Fiat volúntas tua,<br/>
+                sicut in cælo et in terra.</p>
+                <p>Panem nostrum quotidiánum da nobis hódie,<br/>
+                et dimítte nobis débita nostra<br/>
+                sicut et nos dimíttimus debitóribus nostris.<br/>
+                Et ne nos indúcas in tentatiónem,<br/>
+                sed líbera nos a malo. Amen.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Pai nosso, que estais nos céus,<br/>
+                santificado seja o Vosso nome.<br/>
+                Venha a nós o Vosso reino.<br/>
+                Seja feita a Vossa vontade,<br/>
+                assim na terra como no céu.</p>
+                <p>O pão nosso de cada dia nos dai hoje,<br/>
+                perdoai-nos as nossas ofensas<br/>
+                assim como nós perdoamos a quem nos tem ofendido.<br/>
+                E não nos deixeis cair em tentação,<br/>
+                mas livrai-nos do mal. Amém.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ave Maria -->
+    <div class="card latin-card">
+        <h2>Ave Maria</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Ave María, grátia plena,<br/>
+                Dóminus tecum.<br/>
+                Benedícta tu in muliéribus,<br/>
+                et benedíctus fructus ventris tui, Iesus.</p>
+                <p>Sancta María, Mater Dei,<br/>
+                ora pro nobis peccatóribus,<br/>
+                nunc et in hora mortis nostræ. Amen.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Ave Maria, cheia de graça,<br/>
+                o Senhor é convosco.<br/>
+                Bendita sois vós entre as mulheres,<br/>
+                e bendito é o fruto do vosso ventre, Jesus.</p>
+                <p>Santa Maria, Mãe de Deus,<br/>
+                rogai por nós, pecadores,<br/>
+                agora e na hora de nossa morte. Amém.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gloria Patri -->
+    <div class="card latin-card">
+        <h2>Gloria Patri — Glória ao Pai</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Glória Patri, et Fílio, et Spirítui Sancto.<br/>
+                Sicut erat in princípio, et nunc, et semper,<br/>
+                et in sǽcula sæculórum. Amen.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Glória ao Pai, e ao Filho, e ao Espírito Santo.<br/>
+                Assim como era no princípio, agora e sempre,<br/>
+                por todos os séculos dos séculos. Amém.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salve Regina -->
+    <div class="card latin-card">
+        <h2>Salve Regína — Salve Rainha</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Salve, Regína, Mater misericórdiæ,<br/>
+                vita, dulcédo, et spes nostra, salve.<br/>
+                Ad te clamámus, éxsules fílii Hevæ,<br/>
+                ad te suspirámus, geméntes et flentes<br/>
+                in hac lacrimárum valle.</p>
+                <p>Eia, ergo, advocáta nostra, illos tuos<br/>
+                misericórdes óculos ad nos convérte;<br/>
+                et Iesum, benedíctum fructum ventris tui,<br/>
+                nobis post hoc exsílium osténde.</p>
+                <p>O clemens, O pia, O dulcis Virgo María.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Salve, Rainha, Mãe de misericórdia,<br/>
+                vida, doçura, esperança nossa, salve.<br/>
+                A vós bradamos, os degredados filhos de Eva;<br/>
+                a vós suspiramos, gemendo e chorando<br/>
+                neste vale de lágrimas.</p>
+                <p>Eia, pois, advogada nossa, esses vossos<br/>
+                olhos misericordiosos a nós volvei;<br/>
+                e depois deste desterro nos mostrai<br/>
+                Jesus, bendito fruto do vosso ventre.</p>
+                <p>Ó clemente, ó piedosa, ó doce sempre Virgem Maria.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credo -->
+    <div class="card latin-card">
+        <h2>Symbolum Apostolorum — Credo Apostólico</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Credo in Deum Patrem omnipoténtem,<br/>
+                Creatórem cæli et terræ,<br/>
+                et in Iesum Christum, Fílium eius únicum,<br/>
+                Dóminum nostrum,<br/>
+                qui concéptus est de Spíritu Sancto,<br/>
+                natus ex María Vírgine,<br/>
+                passus sub Póntio Piláto,<br/>
+                crucifíxus, mórtuus, et sepúltus,<br/>
+                descéndit ad ínferos,<br/>
+                tértia die resurréxit a mórtuis,<br/>
+                ascéndit ad cælos,<br/>
+                sedet ad déxteram Dei Patris omnipoténtis,<br/>
+                inde ventúrus est iudicáre vivos et mórtuos.</p>
+                <p>Credo in Spíritum Sanctum,<br/>
+                sanctam Ecclésiam cathólicam,<br/>
+                sanctórum communiónem,<br/>
+                remissiónem peccatórum,<br/>
+                carnis resurrectiónem,<br/>
+                vitam ætérnam. Amen.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Creio em Deus Pai todo-poderoso,<br/>
+                Criador do céu e da terra,<br/>
+                e em Jesus Cristo, seu único Filho,<br/>
+                Nosso Senhor,<br/>
+                que foi concebido pelo poder do Espírito Santo,<br/>
+                nasceu da Virgem Maria,<br/>
+                padeceu sob Pôncio Pilatos,<br/>
+                foi crucificado, morto e sepultado,<br/>
+                desceu à mansão dos mortos,<br/>
+                ressuscitou ao terceiro dia,<br/>
+                subiu aos céus,<br/>
+                está sentado à direita de Deus Pai todo-poderoso,<br/>
+                donde há de vir a julgar os vivos e os mortos.</p>
+                <p>Creio no Espírito Santo,<br/>
+                na santa Igreja Católica,<br/>
+                na comunhão dos santos,<br/>
+                na remissão dos pecados,<br/>
+                na ressurreição da carne,<br/>
+                na vida eterna. Amém.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub Tuum -->
+    <div class="card latin-card">
+        <h2>Sub Tuum Præsídium</h2>
+        <p class="muted">A mais antiga oração mariana conhecida (séc. III)</p>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Sub tuum præsídium confúgimus,<br/>
+                Sancta Dei Génitrix.<br/>
+                Nostras deprecatiónes ne despícias<br/>
+                in necessitátibus,<br/>
+                sed a perículis cunctis<br/>
+                líbera nos semper,<br/>
+                Virgo gloriósa et benedícta.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>À vossa proteção recorremos,<br/>
+                Santa Mãe de Deus.<br/>
+                Não desprezeis as nossas súplicas<br/>
+                em nossas necessidades,<br/>
+                mas livrai-nos sempre<br/>
+                de todos os perigos,<br/>
+                Virgem gloriosa e bendita.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Anima Christi -->
+    <div class="card latin-card">
+        <h2>Anima Christi — Alma de Cristo</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Ánima Christi, sanctífica me.<br/>
+                Corpus Christi, salva me.<br/>
+                Sanguis Christi, inébria me.<br/>
+                Aqua láteris Christi, lava me.<br/>
+                Pássio Christi, confórta me.<br/>
+                O bone Iesu, exáudi me.<br/>
+                Intra tua vúlnera abscónde me.<br/>
+                Ne permíttas me separári a te.<br/>
+                Ab hoste malígno defénde me.<br/>
+                In hora mortis meæ voca me.<br/>
+                Et iube me veníre ad te,<br/>
+                ut cum Sanctis tuis laudem te<br/>
+                in sǽcula sæculórum. Amen.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Alma de Cristo, santificai-me.<br/>
+                Corpo de Cristo, salvai-me.<br/>
+                Sangue de Cristo, inebriai-me.<br/>
+                Água do lado de Cristo, lavai-me.<br/>
+                Paixão de Cristo, confortai-me.<br/>
+                Ó bom Jesus, ouvi-me.<br/>
+                Dentro de vossas chagas, escondei-me.<br/>
+                Não permitais que eu me separe de Vós.<br/>
+                Do inimigo maligno, defendei-me.<br/>
+                Na hora da minha morte, chamai-me.<br/>
+                E mandai-me ir para Vós,<br/>
+                para que com os vossos Santos Vos louve<br/>
+                por todos os séculos dos séculos. Amém.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Veni Creator Spiritus -->
+    <div class="card latin-card">
+        <h2>Veni, Creátor Spíritus — Vinde, Espírito Criador</h2>
+        <div class="latin-pair">
+            <div class="latin-col lat">
+                <div class="latin-label lat">Latim</div>
+                <p>Veni, Creátor Spíritus,<br/>
+                mentes tuórum vísita,<br/>
+                imple supérna grátia<br/>
+                quæ tu creásti péctora.</p>
+                <p>Qui díceris Paráclitus,<br/>
+                altíssimi donum Dei,<br/>
+                fons vivus, ignis, cáritas,<br/>
+                et spiritális únctio.</p>
+                <p>Accénde lumen sénsibus,<br/>
+                infúnde amórem córdibus,<br/>
+                infírma nostri córporis<br/>
+                virtúte firmans pérpeti.</p>
+            </div>
+            <div class="latin-col pt">
+                <div class="latin-label pt">Português</div>
+                <p>Vinde, Espírito Criador,<br/>
+                visitai as almas dos vossos fiéis,<br/>
+                enchei da graça do alto<br/>
+                os corações que criastes.</p>
+                <p>Vós que sois chamado Consolador,<br/>
+                dom do Deus Altíssimo,<br/>
+                fonte viva, fogo, caridade,<br/>
+                e unção espiritual.</p>
+                <p>Acendei a luz nos sentidos,<br/>
+                infundi o amor nos corações,<br/>
+                as fraquezas do nosso corpo<br/>
+                fortalecei com vigor perene.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function() {
+    if (typeof registrarStreak === 'function') registrarStreak();
+});
+</script>
+</body>
+</html>

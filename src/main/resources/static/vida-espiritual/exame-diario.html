@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Exame Diário de Santo Inácio — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="O Exame Diário de Consciência de Santo Inácio de Loyola — 5 passos para encerrar o dia com Deus."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .exame-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 20px;
+            background: rgba(26,79,137,0.04);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .exame-step:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .exame-step-number {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--cor-primaria);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .exame-step h3 { margin: 0 0 6px; font-size: 1.1rem; }
+        .exame-step p { margin: 0; line-height: 1.6; color: #555; }
+        .exame-timer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .exame-timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            font-variant-numeric: tabular-nums;
+        }
+        .exame-controls { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+        .exame-controls button {
+            padding: 10px 24px;
+            border: 2px solid var(--cor-primaria);
+            background: #fff;
+            color: var(--cor-primaria);
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .exame-controls button:hover { background: var(--cor-primaria); color: #fff; }
+        .exame-controls button.active { background: var(--cor-primaria); color: #fff; }
+        .step-indicator { display: flex; gap: 8px; justify-content: center; margin: 16px 0; }
+        .step-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #ddd; transition: background 0.3s, transform 0.3s;
+        }
+        .step-dot.active { background: var(--cor-primaria); transform: scale(1.3); }
+        .step-dot.done { background: var(--cor-secundaria); }
+        .journal-area {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/exame-consciencia.html">Vida Espiritual</a> &rsaquo; <span>Exame Diário</span>
+        </nav>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🕯️ Exame Diário de Consciência</h1>
+                <p class="lead">Método de Santo Inácio de Loyola — 5 passos para encerrar o dia com Deus</p>
+                <p class="reading-time">⏱️ ~10 minutos</p>
+            </header>
+        </div>
+
+        <!-- Timer guiado -->
+        <div class="card exame-timer">
+            <h2 style="margin-top:0;">Timer do Exame</h2>
+            <div class="step-indicator" id="stepIndicator"></div>
+            <p id="stepTitle" style="font-size:1.2rem;font-weight:bold;margin:8px 0;">Pronto para começar</p>
+            <p id="stepDesc" class="muted" style="max-width:500px;margin:0 auto 12px;"></p>
+            <div class="exame-timer-display" id="timerDisplay">10:00</div>
+            <div class="exame-controls">
+                <button id="btnStart">▶ Iniciar</button>
+                <button id="btnPause" style="display:none;">⏸ Pausar</button>
+                <button id="btnReset" style="display:none;">↻ Reiniciar</button>
+            </div>
+        </div>
+
+        <!-- Os 5 Passos -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">Os 5 Passos do Exame</h2>
+
+            <div class="exame-step">
+                <div class="exame-step-number">1</div>
+                <div>
+                    <h3>Dar Graças</h3>
+                    <p>Coloque-se na presença de Deus. Agradeça pelos dons e bênçãos recebidos hoje —
+                    a vida, a saúde, as pessoas, os momentos de alegria, a fé. Reconheça que tudo é graça.</p>
+                    <textarea class="journal-area" placeholder="Pelo que sou grato(a) hoje?" id="journal1"></textarea>
+                </div>
+            </div>
+
+            <div class="exame-step">
+                <div class="exame-step-number">2</div>
+                <div>
+                    <h3>Pedir a Luz do Espírito Santo</h3>
+                    <p>Peça ao Espírito Santo que ilumine sua memória e seu coração para que você possa
+                    ver o dia como Deus o viu. Sem julgamento, apenas com verdade e amor.</p>
+                    <p style="margin-top:8px;font-style:italic;color:var(--cor-primaria);">
+                        "Vinde, Espírito Santo, enchei os corações dos vossos fiéis
+                        e acendei neles o fogo do vosso amor."
+                    </p>
+                </div>
+            </div>
+
+            <div class="exame-step">
+                <div class="exame-step-number">3</div>
+                <div>
+                    <h3>Rever o Dia</h3>
+                    <p>Passe mentalmente pelo dia, desde o momento em que acordou até agora.
+                    Observe os sentimentos que surgiram: consolações (alegria, paz, esperança)
+                    e desolações (tristeza, inquietação, afastamento de Deus). Onde sentiu a presença de Deus?
+                    Onde se afastou?</p>
+                    <textarea class="journal-area" placeholder="O que marcou meu dia? Onde senti Deus presente?" id="journal3"></textarea>
+                </div>
+            </div>
+
+            <div class="exame-step">
+                <div class="exame-step-number">4</div>
+                <div>
+                    <h3>Pedir Perdão</h3>
+                    <p>Com humildade, peça perdão a Deus pelas faltas do dia — palavras, pensamentos,
+                    omissões, ações que feriram o próximo ou a si mesmo. Não com culpa paralisante,
+                    mas com confiança na misericórdia infinita de Deus.</p>
+                    <textarea class="journal-area" placeholder="Pelo que peço perdão hoje?" id="journal4"></textarea>
+                </div>
+            </div>
+
+            <div class="exame-step">
+                <div class="exame-step-number">5</div>
+                <div>
+                    <h3>Propósito para Amanhã</h3>
+                    <p>Olhe para o dia de amanhã. Em que situação concreta você pode cooperar mais com a graça de Deus?
+                    Faça um propósito simples e concreto. Encerre com um Pai-Nosso ou uma oração espontânea.</p>
+                    <textarea class="journal-area" placeholder="Meu propósito para amanhã..." id="journal5"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oração final -->
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">🙏 Oração Final</h2>
+            <blockquote style="font-style:italic;font-size:1.05rem;line-height:1.7;max-width:600px;margin:0 auto;">
+                "Senhor, obrigado por este dia. Perdoai minhas faltas e dai-me a graça de viver
+                amanhã mais perto de Vós. Pela intercessão de Nossa Senhora e de Santo Inácio,
+                guardai meu sono e renovai minhas forças. Amém."
+            </blockquote>
+            <button id="btnSaveJournal" style="margin-top:16px;padding:10px 24px;border:2px solid var(--cor-secundaria);
+                background:#fff;color:var(--cor-secundaria);border-radius:8px;font-size:1rem;cursor:pointer;">
+                💾 Salvar Reflexões
+            </button>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Exame de Consciência — FeCatolica" data-partilhar-texto="Faça o Exame Diário de Consciência de Santo Inácio no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var steps = [
+            {title: '1. Dar Graças', desc: 'Agradeça pelos dons e bênçãos de hoje.', duration: 120 },
+            {title: '2. Pedir a Luz', desc: 'Peça ao Espírito Santo que ilumine sua memória.', duration: 60 },
+            {title: '3. Rever o Dia', desc: 'Reveja o dia com seus sentimentos e eventos.', duration: 240 },
+            {title: '4. Pedir Perdão', desc: 'Peça perdão pelas faltas de hoje.', duration: 90 },
+            {title: '5. Propósito', desc: 'Faça um propósito para amanhã.', duration: 90 }
+        ];
+        var totalSec = steps.reduce(function(s, st) { return s + st.duration; }, 0);
+        var currentStep = 0;
+        var secondsLeft = totalSec;
+        var stepSecondsLeft = steps[0].duration;
+        var interval = null;
+        var running = false;
+
+        // Build step indicators
+        var $ind = $('#stepIndicator');
+        for (var i = 0; i < steps.length; i++) {
+            $ind.append('<div class="step-dot" data-i="' + i + '"></div>');
+        }
+
+        function updateDisplay() {
+            var m = Math.floor(stepSecondsLeft / 60);
+            var s = stepSecondsLeft % 60;
+            $('#timerDisplay').text((m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s);
+            $('#stepTitle').text(steps[currentStep].title);
+            $('#stepDesc').text(steps[currentStep].desc);
+            $('.step-dot').each(function() {
+                var idx = parseInt($(this).data('i'));
+                $(this).removeClass('active done');
+                if (idx < currentStep) $(this).addClass('done');
+                else if (idx === currentStep) $(this).addClass('active');
+            });
+        }
+
+        function tick() {
+            if (stepSecondsLeft <= 0) {
+                currentStep++;
+                if (currentStep >= steps.length) {
+                    clearInterval(interval);
+                    running = false;
+                    $('#stepTitle').text('Exame finalizado!');
+                    $('#stepDesc').text('Deus abençoe sua noite. 🙏');
+                    $('#timerDisplay').text('00:00');
+                    $('.step-dot').addClass('done');
+                    $('#btnPause').hide();
+                    $('#btnReset').show();
+                    if (typeof showToast === 'function') showToast('Exame finalizado! Deus te abençoe. 🙏');
+                    return;
+                }
+                stepSecondsLeft = steps[currentStep].duration;
+                if (typeof showToast === 'function') showToast(steps[currentStep].title, 2000);
+            }
+            stepSecondsLeft--;
+            secondsLeft--;
+            updateDisplay();
+        }
+
+        $('#btnStart').on('click', function() {
+            if (running) return;
+            running = true;
+            interval = setInterval(tick, 1000);
+            $(this).hide();
+            $('#btnPause').show();
+            $('#btnReset').show();
+            updateDisplay();
+        });
+
+        $('#btnPause').on('click', function() {
+            if (running) {
+                clearInterval(interval);
+                running = false;
+                $(this).text('▶ Continuar');
+            } else {
+                running = true;
+                interval = setInterval(tick, 1000);
+                $(this).text('⏸ Pausar');
+            }
+        });
+
+        $('#btnReset').on('click', function() {
+            clearInterval(interval);
+            running = false;
+            currentStep = 0;
+            secondsLeft = totalSec;
+            stepSecondsLeft = steps[0].duration;
+            $('#stepTitle').text('Pronto para começar');
+            $('#stepDesc').text('');
+            updateDisplay();
+            $('#btnStart').show();
+            $('#btnPause').hide().text('⏸ Pausar');
+            $('#btnReset').hide();
+            $('.step-dot').removeClass('active done');
+        });
+
+        updateDisplay();
+
+        // Salvar reflexões
+        var STORAGE_KEY = 'fecatolica-exame-diario';
+        // Carregar reflexões do dia
+        var today = new Date().toISOString().slice(0, 10);
+        try {
+            var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            if (saved.date === today) {
+                if (saved.j1) $('#journal1').val(saved.j1);
+                if (saved.j3) $('#journal3').val(saved.j3);
+                if (saved.j4) $('#journal4').val(saved.j4);
+                if (saved.j5) $('#journal5').val(saved.j5);
+            }
+        } catch(e) {}
+
+        $('#btnSaveJournal').on('click', function() {
+            var data = {
+                date: today,
+                j1: $('#journal1').val(),
+                j3: $('#journal3').val(),
+                j4: $('#journal4').val(),
+                j5: $('#journal5').val()
+            };
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                if (typeof showToast === 'function') showToast('Reflexões salvas! 💾');
+            } catch(e) {
+                if (typeof showToast === 'function') showToast('Erro ao salvar.');
+            }
+        });
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

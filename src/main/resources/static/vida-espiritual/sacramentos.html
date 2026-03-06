@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Os Sete Sacramentos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Guia completo dos Sete Sacramentos da Igreja Católica."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Sacramentos</span>
+        </nav>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>⛪ Os Sete Sacramentos</h1>
+                <p class="lead">Sinais eficazes da graça, instituídos por Cristo e confiados à Igreja.</p>
+            </header>
+        </div>
+
+        <!-- Filtro por categoria -->
+        <div style="text-align:center;margin-bottom:16px;" id="sacr-filters">
+            <button class="salmo-filter active" data-cat="todos">Todos</button>
+            <button class="salmo-filter" data-cat="iniciacao">Iniciação</button>
+            <button class="salmo-filter" data-cat="cura">Cura</button>
+            <button class="salmo-filter" data-cat="servico">Serviço</button>
+        </div>
+
+        <div id="sacramentos-container"></div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Os Sete Sacramentos — FeCatolica" data-partilhar-texto="Conheça os Sete Sacramentos da Igreja Católica no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var sacramentos = [
+            {
+                nome: 'Batismo',
+                icon: '💧',
+                cat: 'iniciacao',
+                catLabel: 'Iniciação Cristã',
+                resumo: 'Porta de entrada na vida cristã, apaga o pecado original e nos torna filhos de Deus.',
+                materia: 'Água derramada sobre a cabeça.',
+                forma: '"Eu te batizo em nome do Pai, e do Filho, e do Espírito Santo."',
+                ministro: 'Ordinariamente o bispo, presbítero ou diácono. Em caso de necessidade, qualquer pessoa.',
+                efeitos: [
+                    'Remissão do pecado original e de todos os pecados pessoais',
+                    'Nascimento para a vida nova no Espírito Santo',
+                    'Incorporação à Igreja, Corpo de Cristo',
+                    'Marca indelével (caráter) — recebe-se uma só vez'
+                ],
+                referencia: 'Mt 28,19 — "Ide e fazei discípulos, batizando-os..."'
+            },
+            {
+                nome: 'Confirmação (Crisma)',
+                icon: '🔥',
+                cat: 'iniciacao',
+                catLabel: 'Iniciação Cristã',
+                resumo: 'Completa a graça do Batismo e fortalece com os dons do Espírito Santo.',
+                materia: 'Imposição das mãos e unção com o Santo Crisma na fronte.',
+                forma: '"Recebe, por este sinal, o Dom do Espírito Santo."',
+                ministro: 'Ordinariamente o bispo.',
+                efeitos: [
+                    'Efusão especial do Espírito Santo (como em Pentecostes)',
+                    'Aprofundamento da graça batismal',
+                    'União mais firme com Cristo e a Igreja',
+                    'Fortaleza para testemunhar a fé',
+                    'Caráter indelével — recebe-se uma só vez'
+                ],
+                referencia: 'At 2,1-4 — A descida do Espírito Santo em Pentecostes'
+            },
+            {
+                nome: 'Eucaristia',
+                icon: '🍞',
+                cat: 'iniciacao',
+                catLabel: 'Iniciação Cristã',
+                resumo: 'Fonte e ápice da vida cristã — o Corpo e o Sangue de Cristo sob as espécies do pão e do vinho.',
+                materia: 'Pão de trigo e vinho de videira.',
+                forma: '"Isto é o meu Corpo... Este é o cálice do meu Sangue..."',
+                ministro: 'O sacerdote (bispo ou presbítero) validamente ordenado.',
+                efeitos: [
+                    'União íntima com Cristo',
+                    'Aumento da graça santificante',
+                    'Perdão dos pecados veniais',
+                    'Preservação de pecados mortais futuros',
+                    'Unidade do Corpo Místico — a Igreja'
+                ],
+                referencia: 'Jo 6,51 — "Eu sou o pão vivo descido do céu."'
+            },
+            {
+                nome: 'Penitência (Confissão)',
+                icon: '💜',
+                cat: 'cura',
+                catLabel: 'Cura',
+                resumo: 'Sacramento da reconciliação com Deus e com a Igreja, pelo perdão dos pecados cometidos após o Batismo.',
+                materia: 'Os atos do penitente: contrição, confissão e satisfação.',
+                forma: '"Eu te absolvo dos teus pecados, em nome do Pai, e do Filho, e do Espírito Santo."',
+                ministro: 'O sacerdote (bispo ou presbítero).',
+                efeitos: [
+                    'Reconciliação com Deus e recuperação da graça',
+                    'Reconciliação com a Igreja',
+                    'Remissão da pena eterna',
+                    'Paz e serenidade de consciência',
+                    'Aumento das forças espirituais'
+                ],
+                referencia: 'Jo 20,23 — "Àqueles a quem perdoardes os pecados, ser-lhes-ão perdoados."'
+            },
+            {
+                nome: 'Unção dos Enfermos',
+                icon: '🫒',
+                cat: 'cura',
+                catLabel: 'Cura',
+                resumo: 'Sacramento que confere graça especial ao cristão em perigo de morte por doença ou velhice.',
+                materia: 'Óleo dos enfermos (óleo de oliveira bento pelo bispo).',
+                forma: '"Por esta santa Unção e pela sua piedosíssima misericórdia, o Senhor venha em teu auxílio..."',
+                ministro: 'O sacerdote (bispo ou presbítero).',
+                efeitos: [
+                    'União à Paixão de Cristo',
+                    'Conforto, paz e coragem para suportar os sofrimentos',
+                    'Perdão dos pecados (se o doente não pôde confessar-se)',
+                    'Restabelecimento da saúde, se for conveniente à salvação',
+                    'Preparação para a passagem à vida eterna'
+                ],
+                referencia: 'Tg 5,14-15 — "Está alguém doente? Chame os presbíteros da Igreja..."'
+            },
+            {
+                nome: 'Ordem (Ordenação)',
+                icon: '⛪',
+                cat: 'servico',
+                catLabel: 'Serviço da Comunhão',
+                resumo: 'Sacramento pelo qual a missão de Cristo é exercida na Igreja nos três graus: episcopado, presbiterado e diaconado.',
+                materia: 'Imposição das mãos do bispo.',
+                forma: 'Oração consagratória (própria de cada grau).',
+                ministro: 'O bispo.',
+                efeitos: [
+                    'Caráter indelével — configura a Cristo Sacerdote',
+                    'Graça do Espírito Santo para o ministério',
+                    'Poder de agir em nome de Cristo Cabeça (in persona Christi)',
+                    'Missão de ensinar, santificar e governar'
+                ],
+                referencia: 'Hb 5,6 — "Tu és sacerdote para sempre, segundo a ordem de Melquisedec."'
+            },
+            {
+                nome: 'Matrimônio',
+                icon: '💍',
+                cat: 'servico',
+                catLabel: 'Serviço da Comunhão',
+                resumo: 'Aliança pela qual homem e mulher constituem uma íntima comunidade de vida e amor, elevada por Cristo à dignidade de sacramento.',
+                materia: 'O consentimento mútuo dos esposos.',
+                forma: '"Eu te recebo como meu(minha) esposo(a) e prometo ser-te fiel..."',
+                ministro: 'Os próprios esposos (o sacerdote ou diácono é testemunha qualificada).',
+                efeitos: [
+                    'Vínculo matrimonial perpétuo e exclusivo',
+                    'Graça para amar-se com o amor com que Cristo ama a Igreja',
+                    'Graça para santificar-se mutuamente',
+                    'Graça para acolher e educar os filhos na fé',
+                    'Imagem da aliança de Cristo com a Igreja'
+                ],
+                referencia: 'Ef 5,25 — "Maridos, amai vossas mulheres, como Cristo amou a Igreja."'
+            }
+        ];
+
+        var $container = $('#sacramentos-container');
+
+        function renderSacramentos(filter) {
+            $container.empty();
+            var filtered = filter === 'todos' ? sacramentos : sacramentos.filter(function(s) { return s.cat === filter; });
+
+            $.each(filtered, function(i, s) {
+                var efeitosHtml = '<ul>' + s.efeitos.map(function(e) { return '<li>' + e + '</li>'; }).join('') + '</ul>';
+
+                var html = '<div class="card" data-cat="' + s.cat + '" style="border-left:4px solid var(--cor-primaria);">' +
+                    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">' +
+                        '<span style="font-size:2.5rem;">' + s.icon + '</span>' +
+                        '<div>' +
+                            '<h2 style="margin:0;">' + s.nome + '</h2>' +
+                            '<span class="badge-tema">' + s.catLabel + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<p style="font-size:1.05rem;line-height:1.6;margin-bottom:16px;">' + s.resumo + '</p>' +
+                    '<div class="accordion-panel">' +
+                        '<div class="accordion-tab">' +
+                            '<div class="accordion-header">Matéria e Forma</div>' +
+                            '<div class="accordion-content">' +
+                                '<p><strong>Matéria:</strong> ' + s.materia + '</p>' +
+                                '<p><strong>Forma:</strong> <em>' + s.forma + '</em></p>' +
+                                '<p><strong>Ministro:</strong> ' + s.ministro + '</p>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="accordion-tab">' +
+                            '<div class="accordion-header">Efeitos</div>' +
+                            '<div class="accordion-content">' + efeitosHtml + '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<p class="muted" style="margin-top:12px;font-style:italic;">📖 ' + s.referencia + '</p>' +
+                '</div>';
+
+                $container.append(html);
+            });
+        }
+
+        renderSacramentos('todos');
+
+        // Filtros
+        $('#sacr-filters').on('click', '.salmo-filter', function() {
+            $('#sacr-filters .salmo-filter').removeClass('active');
+            $(this).addClass('active');
+            renderSacramentos($(this).data('cat'));
+        });
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

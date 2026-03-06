@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Partes da Santa Missa — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="As partes da Santa Missa explicadas: Ritos Iniciais, Liturgia da Palavra, Liturgia Eucarística e Ritos Finais — conforme a Instrução Geral do Missal Romano."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .mass-section { margin-bottom: 20px; }
+        .mass-part { padding: 18px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); margin-bottom: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+        .mass-part:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .mass-part.liturgy-word { border-left-color: var(--cor-secundaria); background: rgba(44,122,44,0.04); }
+        .mass-part.liturgy-eucharist { border-left-color: var(--cor-accent); background: rgba(201,168,76,0.06); }
+        .mass-part.rites-final { border-left-color: #8e44ad; background: rgba(142,68,173,0.04); }
+        .mass-part h3 { margin: 0 0 8px; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
+        .mass-part p { margin: 0 0 6px; line-height: 1.7; color: #555; font-size: 0.95rem; }
+        .mass-part .igmr-ref { font-size: 0.83rem; color: #999; }
+        .prayer-text { background: rgba(26,79,137,0.05); border-radius: 8px; padding: 12px 16px; margin: 8px 0; font-style: italic; line-height: 1.7; color: #333; }
+        .section-header { text-align: center; padding: 12px; border-radius: 10px; margin-bottom: 16px; font-size: 1.1rem; font-weight: 700; }
+        .header-initial { background: rgba(26,79,137,0.1); color: var(--cor-primaria); }
+        .header-word { background: rgba(44,122,44,0.1); color: var(--cor-secundaria); }
+        .header-eucharist { background: rgba(201,168,76,0.15); color: #8B6914; }
+        .header-final { background: rgba(142,68,173,0.1); color: #8e44ad; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Partes da Missa</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">⛪ Partes da Santa Missa</h1>
+            <p style="text-align:center;" class="muted">Conforme a Instrução Geral do Missal Romano (IGMR)</p>
+            <p style="line-height:1.8;color:#444;">A Santa Missa é o «centro de toda a vida cristã» (CCC 1343). Nela, Cristo torna presente o sacrifício da Cruz e nos alimenta com o seu Corpo e Sangue. O Concílio Vaticano II ensina que a Missa é simultaneamente «memorial da Morte e Ressurreição do Senhor» e «banquete sagrado da comunhão no Corpo e Sangue de Cristo» (<em>Sacrosanctum Concilium</em>, n. 47).</p>
+            <p style="line-height:1.8;color:#444;">A Missa é composta de quatro partes principais: <strong>Ritos Iniciais</strong>, <strong>Liturgia da Palavra</strong>, <strong>Liturgia Eucarística</strong> e <strong>Ritos Finais</strong>.</p>
+        </div>
+
+        <!-- I. RITOS INICIAIS -->
+        <div class="card mass-section">
+            <div class="section-header header-initial">I. RITOS INICIAIS</div>
+
+            <div class="mass-part">
+                <h3>🚶 Procissão de Entrada e Canto de Abertura</h3>
+                <p>O sacerdote e os ministros dirigem-se ao altar em procissão, enquanto a assembleia entoa o canto de entrada. O canto de abertura tem a finalidade de «abrir a celebração, favorecer a união dos fiéis e introduzi-los no mistério do tempo litúrgico ou da festa» (IGMR 47).</p>
+                <div class="igmr-ref">IGMR 46-48</div>
+            </div>
+
+            <div class="mass-part">
+                <h3>✝️ Saudação e Sinal da Cruz</h3>
+                <p>O sacerdote saúda a assembleia com o Sinal da Cruz — «Em nome do Pai e do Filho e do Espírito Santo» — e uma das fórmulas litúrgicas: «A graça de Nosso Senhor Jesus Cristo, o amor do Pai e a comunhão do Espírito Santo estejam convosco» (2Cor 13,13).</p>
+                <div class="igmr-ref">IGMR 50; 2Cor 13,13</div>
+            </div>
+
+            <div class="mass-part">
+                <h3>🙏 Ato Penitencial</h3>
+                <p>A assembleia reconhece seus pecados e implora o perdão de Deus. As formas mais comuns são o <em>Confiteor</em> («Confesso a Deus todo-poderoso...») e as invocações «Senhor, tende piedade de nós» (<em>Kyrie eleison</em>). Este ato não substitui o sacramento da Confissão para pecados graves.</p>
+                <div class="prayer-text">«Confesso a Deus todo-poderoso e a vós, irmãos e irmãs, que pequei muitas vezes por pensamentos e palavras, atos e omissões, por minha culpa, minha tão grande culpa.»</div>
+                <div class="igmr-ref">IGMR 51-52; CCC 1393</div>
+            </div>
+
+            <div class="mass-part">
+                <h3>🎵 Glória (Gloria in excelsis Deo)</h3>
+                <p>Hino antiquíssimo da Igreja que louva a Santíssima Trindade. É cantado ou recitado aos domingos (fora da Quaresma e Advento), nas solenidades e festas. Começa com as palavras dos anjos na noite de Natal: «Glória a Deus nas alturas e paz na terra aos homens por Ele amados» (Lc 2,14).</p>
+                <div class="igmr-ref">IGMR 53; Lc 2,14</div>
+            </div>
+
+            <div class="mass-part">
+                <h3>📿 Oração Coleta</h3>
+                <p>O sacerdote diz «Oremos» e, após breve silêncio, pronuncia a oração coleta — que «recolhe» as intenções de toda a assembleia e as apresenta a Deus. A assembleia responde «Amém», fazendo sua a oração do sacerdote.</p>
+                <div class="igmr-ref">IGMR 54</div>
+            </div>
+        </div>
+
+        <!-- II. LITURGIA DA PALAVRA -->
+        <div class="card mass-section">
+            <div class="section-header header-word">II. LITURGIA DA PALAVRA</div>
+
+            <div class="mass-part liturgy-word">
+                <h3>📖 Primeira Leitura (Antigo Testamento)</h3>
+                <p>Normalmente tirada do Antigo Testamento (no Tempo Pascal, dos Atos dos Apóstolos). Mostra como Deus preparou a vinda de Cristo ao longo da história da salvação. O leitor conclui: «Palavra do Senhor», e a assembleia responde: «Graças a Deus».</p>
+                <div class="igmr-ref">IGMR 57-59; CCC 1154</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>🎶 Salmo Responsorial</h3>
+                <p>Após a primeira leitura, canta-se ou recita-se um salmo como resposta meditativa à Palavra de Deus proclamada. O Salmo Responsorial «favorece a meditação da Palavra de Deus» (IGMR 61). Os 150 Salmos são a oração por excelência de Israel e da Igreja.</p>
+                <div class="igmr-ref">IGMR 61</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>📖 Segunda Leitura (Novo Testamento)</h3>
+                <p>Tirada das Cartas dos Apóstolos (Paulo, Pedro, Tiago, João) ou do Apocalipse. Presente apenas nos domingos e solenidades. Transmite o ensinamento apostólico à comunidade cristã.</p>
+                <div class="igmr-ref">IGMR 60</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>📣 Aclamação ao Evangelho (Aleluia)</h3>
+                <p>A assembleia aclama de pé cantando «Aleluia!» (do hebraico «Louvai o Senhor»), acolhendo o próprio Cristo que vai falar no Evangelho. Na Quaresma, substitui-se por outra aclamação.</p>
+                <div class="igmr-ref">IGMR 62-64</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>✝️ Evangelho</h3>
+                <p>O ponto alto da Liturgia da Palavra. Proclamado pelo diácono ou sacerdote, o Evangelho contém as palavras e ações de Jesus Cristo. A assembleia ouve de pé, em sinal de reverência, e responde: «Glória a vós, Senhor!» antes, e «Louvor a vós, ó Cristo!» depois.</p>
+                <div class="igmr-ref">IGMR 60.62; CCC 1154</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>🗣️ Homilia</h3>
+                <p>O sacerdote ou diácono explica as leituras proclamadas e as aplica à vida da comunidade. A homilia é obrigatória nos domingos e dias de preceito e «faz parte da própria liturgia» (IGMR 65). Não é um discurso qualquer, mas a Palavra de Deus atualizada para hoje.</p>
+                <div class="igmr-ref">IGMR 65-66; <em>Sacrosanctum Concilium</em> 52</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>✝️ Profissão de Fé (Credo)</h3>
+                <p>Nos domingos e solenidades, toda a assembleia professa a fé recitando o Credo (Símbolo dos Apóstolos ou Credo Niceno). É a resposta da assembleia à Palavra de Deus: «antes de celebrar o mistério da fé na Eucaristia, os fiéis recordam e professam essa mesma fé» (IGMR 67).</p>
+                <div class="igmr-ref">IGMR 67-68; CCC 185-197</div>
+            </div>
+
+            <div class="mass-part liturgy-word">
+                <h3>🙏 Oração dos Fiéis (Preces)</h3>
+                <p>A assembleia exerce o sacerdócio batismal intercedendo pelas necessidades da Igreja, dos governantes, dos que sofrem e da comunidade local. É a resposta orante da assembleia à Palavra escutada.</p>
+                <div class="igmr-ref">IGMR 69-71; 1Tm 2,1-4</div>
+            </div>
+        </div>
+
+        <!-- III. LITURGIA EUCARÍSTICA -->
+        <div class="card mass-section">
+            <div class="section-header header-eucharist">III. LITURGIA EUCARÍSTICA</div>
+
+            <div class="mass-part liturgy-eucharist">
+                <h3>🍞 Apresentação das Oferendas (Ofertório)</h3>
+                <p>Trazem-se ao altar o pão e o vinho — que se tornarão o Corpo e Sangue de Cristo. O sacerdote apresenta as oferendas a Deus: «Bendito sejais, Senhor Deus do universo, pelo pão que recebemos da vossa bondade, fruto da terra e do trabalho humano.» Os fiéis podem oferecer também donativos para os pobres e para a Igreja.</p>
+                <div class="igmr-ref">IGMR 73-76; CCC 1350</div>
+            </div>
+
+            <div class="mass-part liturgy-eucharist">
+                <h3>🙌 Oração sobre as Oferendas</h3>
+                <p>O sacerdote convida: «Orai, irmãos e irmãs, para que o nosso sacrifício seja aceito por Deus Pai todo-poderoso.» A assembleia responde e o sacerdote pronuncia a oração sobre as oferendas, selando a preparação dos dons.</p>
+                <div class="igmr-ref">IGMR 77</div>
+            </div>
+
+            <div class="mass-part liturgy-eucharist">
+                <h3>⚡ Oração Eucarística</h3>
+                <p>O coração e centro de toda a Missa. Inclui:</p>
+                <p><strong>Prefácio e Santo</strong>: O sacerdote dá graças a Deus e toda a assembleia canta: «Santo, Santo, Santo, Senhor Deus do Universo!» (cf. Is 6,3; Ap 4,8).</p>
+                <p><strong>Epiclese</strong>: Invocação ao Espírito Santo para que transforme o pão e o vinho no Corpo e Sangue de Cristo.</p>
+                <p><strong>Narrativa da Instituição e Consagração</strong>: O sacerdote pronuncia as palavras de Jesus na Última Ceia: «Isto é o meu Corpo... Isto é o cálice do meu Sangue» (cf. Lc 22,19-20; 1Cor 11,23-25). Neste momento, pela ação do Espírito Santo, opera-se a transubstanciação: a substância do pão e do vinho se converte na substância do Corpo e Sangue de Cristo (CCC 1376).</p>
+                <p><strong>Anamnese</strong>: Memorial da Paixão, Morte e Ressurreição de Cristo.</p>
+                <p><strong>Intercessões</strong>: A Igreja reza pelo Papa, pelo Bispo, pelos vivos e pelos mortos.</p>
+                <p><strong>Doxologia final</strong>: «Por Cristo, com Cristo, em Cristo... toda a honra e toda a glória.» A assembleia responde com o grande «Amém».</p>
+                <div class="igmr-ref">IGMR 78-79; CCC 1352-1354, 1373-1377; Lc 22,19-20</div>
+            </div>
+
+            <div class="mass-part liturgy-eucharist">
+                <h3>🙏 Rito da Comunhão</h3>
+                <p><strong>Pai-Nosso</strong>: Toda a assembleia reza a oração que o próprio Jesus ensinou (Mt 6,9-13).</p>
+                <p><strong>Rito da Paz</strong>: Os fiéis expressam comunhão e caridade mútua: «A paz do Senhor esteja sempre convosco.»</p>
+                <p><strong>Fração do Pão</strong>: O sacerdote parte a hóstia consagrada, gesto que remonta à Última Ceia e a Emaús (Lc 24,30-31). Durante este rito, canta-se o <em>Agnus Dei</em>: «Cordeiro de Deus, que tirais o pecado do mundo, tende piedade de nós.»</p>
+                <p><strong>Comunhão</strong>: Os fiéis recebem o Corpo (e, quando previsto, o Sangue) de Cristo. «Quem come a minha carne e bebe o meu sangue tem a vida eterna» (Jo 6,54). Deve-se estar em estado de graça para comungar; quem tem consciência de pecado grave deve antes confessar-se (CCC 1385, cf. 1Cor 11,27-29).</p>
+                <div class="igmr-ref">IGMR 80-89; CCC 1382-1390; Jo 6,53-54; 1Cor 11,23-29</div>
+            </div>
+
+            <div class="mass-part liturgy-eucharist">
+                <h3>🤫 Oração após a Comunhão</h3>
+                <p>Após um tempo de silêncio e ação de graças, o sacerdote pronuncia a oração final da Liturgia Eucarística, pedindo os frutos do sacramento recebido.</p>
+                <div class="igmr-ref">IGMR 89</div>
+            </div>
+        </div>
+
+        <!-- IV. RITOS FINAIS -->
+        <div class="card mass-section">
+            <div class="section-header header-final">IV. RITOS FINAIS</div>
+
+            <div class="mass-part rites-final">
+                <h3>📢 Avisos Breves</h3>
+                <p>Eventuais comunicações à comunidade, se necessário.</p>
+                <div class="igmr-ref">IGMR 90</div>
+            </div>
+
+            <div class="mass-part rites-final">
+                <h3>✋ Bênção Final</h3>
+                <p>O sacerdote abençoa a assembleia em nome da Santíssima Trindade: «Abençoe-vos Deus todo-poderoso, Pai e Filho e Espírito Santo.» Em solenidades, pode-se usar uma bênção solene ou oração sobre o povo.</p>
+                <div class="igmr-ref">IGMR 90; Nm 6,24-26</div>
+            </div>
+
+            <div class="mass-part rites-final">
+                <h3>🚶 Despedida e Envio</h3>
+                <p>O diácono ou sacerdote despede a assembleia: «Ide em paz e o Senhor vos acompanhe.» A palavra «Missa» vem do latim <em>missio</em> (envio): somos enviados para viver no mundo aquilo que celebramos na Eucaristia. A Missa não termina na igreja — ela nos envia em missão.</p>
+                <div class="igmr-ref">IGMR 90; CCC 1332</div>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Instrução Geral do Missal Romano (IGMR)</strong>: 3.ª edição típica (2002), tradução CNBB — todos os números citados</li>
+                <li><strong>Catecismo da Igreja Católica</strong>: §§ 1322-1419 (O Sacramento da Eucaristia)</li>
+                <li><strong>Concílio Vaticano II</strong>: <em>Sacrosanctum Concilium</em> (1963), nn. 47-58 — sobre a Sagrada Liturgia</li>
+                <li><strong>Concílio de Trento</strong>: Sessão XIII (1551) — decreto sobre a Eucaristia e a transubstanciação</li>
+                <li><strong>São João Paulo II</strong>: Encíclica <em>Ecclesia de Eucharistia</em> (2003)</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

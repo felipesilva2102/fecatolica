@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Promessas de Jesus — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="As promessas de Jesus Cristo: Sagrado Coração, Divina Misericórdia, Rosário e mais."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .promessa-card {
+            background: linear-gradient(135deg, rgba(26,79,137,0.04) 0%, rgba(44,122,44,0.04) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--cor-primaria);
+            transition: transform 0.2s;
+        }
+        .promessa-card:hover { transform: translateY(-2px); }
+        .promessa-number {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: #fff;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Promessas de Jesus</span>
+        </nav>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>❤️‍🔥 Promessas de Jesus</h1>
+                <p class="lead">As grandes promessas de Nosso Senhor às almas devotas.</p>
+            </header>
+        </div>
+
+        <!-- Filtro -->
+        <div style="text-align:center;margin-bottom:16px;">
+            <button class="salmo-filter active" data-cat="todos">Todas</button>
+            <button class="salmo-filter" data-cat="sagrado-coracao">Sagrado Coração</button>
+            <button class="salmo-filter" data-cat="misericordia">Divina Misericórdia</button>
+            <button class="salmo-filter" data-cat="rosario">Rosário</button>
+            <button class="salmo-filter" data-cat="eucaristia">Eucaristia</button>
+        </div>
+
+        <!-- Sagrado Coração -->
+        <div class="card" data-cat="sagrado-coracao">
+            <h2 style="text-align:center;margin-top:0;">❤️‍🔥 As 12 Promessas do Sagrado Coração</h2>
+            <p class="muted" style="text-align:center;">Reveladas por Jesus a Santa Margarida Maria Alacoque (1673-1675)</p>
+
+            <div id="promessas-sc"></div>
+        </div>
+
+        <!-- Divina Misericórdia -->
+        <div class="card" data-cat="misericordia">
+            <h2 style="text-align:center;margin-top:0;">🙏 Promessas da Divina Misericórdia</h2>
+            <p class="muted" style="text-align:center;">Reveladas por Jesus a Santa Faustina Kowalska (1931-1938)</p>
+
+            <div id="promessas-dm"></div>
+        </div>
+
+        <!-- Rosário -->
+        <div class="card" data-cat="rosario">
+            <h2 style="text-align:center;margin-top:0;">📿 As 15 Promessas do Rosário</h2>
+            <p class="muted" style="text-align:center;">Promessas de Nossa Senhora ao Bem-Aventurado Alano de la Roche</p>
+
+            <div id="promessas-ros"></div>
+        </div>
+
+        <!-- Eucaristia -->
+        <div class="card" data-cat="eucaristia">
+            <h2 style="text-align:center;margin-top:0;">🍞 Promessas aos Devotos da Eucaristia</h2>
+            <p class="muted" style="text-align:center;">Frutos da Comunhão frequente, conforme a Tradição da Igreja</p>
+
+            <div id="promessas-euc"></div>
+        </div>
+
+        <!-- Partilha -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Promessas de Jesus — FeCatolica" data-partilhar-texto="Conheça as grandes promessas de Jesus no FeCatolica!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var promessasSC = [
+            'Eu lhes darei todas as graças necessárias ao seu estado de vida.',
+            'Eu porei a paz em suas famílias.',
+            'Eu os consolarei em todas as suas aflições.',
+            'Eu serei o seu refúgio seguro durante a vida, e sobretudo na hora da morte.',
+            'Eu derramarei abundantes bênçãos sobre todas as suas empresas.',
+            'Os pecadores encontrarão no meu Coração a fonte e o oceano infinito da misericórdia.',
+            'As almas tíbias se tornarão fervorosas.',
+            'As almas fervorosas se elevarão rapidamente à grande perfeição.',
+            'Eu abençoarei os lares em que a imagem do meu Sagrado Coração for exposta e honrada.',
+            'Eu darei aos sacerdotes a graça de tocar os corações mais endurecidos.',
+            'As pessoas que propagarem esta devoção terão os seus nomes escritos no meu Coração e dele jamais serão apagados.',
+            'A todos os que comungarem nas primeiras sextas-feiras, durante nove meses consecutivos, Eu prometo a graça da penitência final: não morrerão em minha desgraça, nem sem receberem os Sacramentos, e o meu Coração lhes será um refúgio seguro naquela hora extrema.'
+        ];
+
+        var promessasDM = [
+            'A alma que venerar esta imagem não perecerá.',
+            'Eu mesmo a defenderei como minha glória.',
+            'Prometo que a alma que rezar o Terço da Misericórdia será envolvida pela minha misericórdia na hora da morte.',
+            'Quando este terço é rezado junto aos moribundos, a ira divina se aplaca e a misericórdia insondável envolve a alma.',
+            'Todas as almas que adorarem a minha misericórdia e propagarem a devoção a ela, encorajando outras a confiarem na minha misericórdia, não experimentarão o terror na hora da morte.',
+            'A humanidade não encontrará paz enquanto não se voltar com confiança para a minha misericórdia.',
+            'Àquele que confia na minha misericórdia farei grandes coisas, no tempo e na eternidade.',
+            'Os sacerdotes haverão de recomendar aos pecadores como última esperança de salvação a confiança na minha misericórdia.'
+        ];
+
+        var promessasRos = [
+            'Aqueles que me servirem fielmente, rezando o Rosário, receberão graças especiais.',
+            'A todos os que devotamente rezarem o Rosário, prometo a minha proteção especial e grandes graças.',
+            'O Rosário será uma armadura poderosa contra o inferno; destruirá os vícios, diminuirá os pecados e derrotará as heresias.',
+            'O Rosário fará florescer as virtudes e as boas obras; obterá para as almas a misericórdia abundante de Deus.',
+            'Aquele que confia em mim através do Rosário não será esmagado pela adversidade.',
+            'Aquele que rezar devotamente o Rosário, meditando os seus mistérios, não será punido pela justiça de Deus.',
+            'Os verdadeiros devotos do Rosário não morrerão sem os Sacramentos da Igreja.',
+            'Aqueles que forem fiéis em rezar o Rosário terão, durante a vida e na hora da morte, a luz de Deus e a plenitude de suas graças.',
+            'Libertarei rapidamente do Purgatório as almas devotas do Rosário.',
+            'Os verdadeiros filhos do Rosário alcançarão um alto grau de glória no Céu.',
+            'O que pedirdes pelo Rosário, obtereis.',
+            'Aqueles que propagarem o meu Rosário serão socorridos por mim em todas as suas necessidades.',
+            'Obtive do meu Filho que todos os membros da Confraria do Rosário tenham como intercessores, em vida e na morte, toda a corte celestial.',
+            'Todos os que rezam o meu Rosário são meus filhos e irmãos do meu Filho único, Jesus Cristo.',
+            'A devoção ao meu Rosário é um grande sinal de predestinação.'
+        ];
+
+        var promessasEuc = [
+            'A Eucaristia é o alimento da alma, que dá forças para praticar o bem e resistir ao mal.',
+            'Quem comunga frequentemente recebe a plenitude da graça para crescer na santidade.',
+            'A Comunhão une a alma a Cristo de modo íntimo e real.',
+            'A Eucaristia é penhor da glória futura — antecipa a vida eterna.',
+            'Quem come da minha carne e bebe do meu sangue permanece em mim e eu nele (Jo 6,56).',
+            'A Eucaristia preserva dos pecados mortais e fortalece contra as tentações.'
+        ];
+
+        function renderList(arr, containerId) {
+            var $c = $(containerId);
+            $.each(arr, function(i, text) {
+                $c.append(
+                    '<div class="promessa-card">' +
+                        '<span class="promessa-number">' + (i + 1) + '</span>' +
+                        '<span style="line-height:1.6;">' + text + '</span>' +
+                    '</div>'
+                );
+            });
+        }
+
+        renderList(promessasSC, '#promessas-sc');
+        renderList(promessasDM, '#promessas-dm');
+        renderList(promessasRos, '#promessas-ros');
+        renderList(promessasEuc, '#promessas-euc');
+
+        // Filtro
+        $(document).on('click', '.salmo-filter', function() {
+            $('.salmo-filter').removeClass('active');
+            $(this).addClass('active');
+            var cat = $(this).data('cat');
+            if (cat === 'todos') {
+                $('[data-cat]').show();
+            } else {
+                $('[data-cat]').hide();
+                $('[data-cat="' + cat + '"]').show();
+            }
+        });
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

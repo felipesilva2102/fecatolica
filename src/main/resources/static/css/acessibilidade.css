@@ -449,6 +449,56 @@ html.dark-mode #resetarPlano {
     color: #e57373 !important;
 }
 
+/* ===== New Components dark ===== */
+html.dark-mode .salmo-filter {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--muted-text) !important;
+}
+html.dark-mode .salmo-filter:hover {
+    border-color: var(--link-color) !important;
+    color: var(--link-color) !important;
+}
+html.dark-mode .salmo-filter.active {
+    background: var(--border-color) !important;
+    color: #fff !important;
+    border-color: var(--link-color) !important;
+}
+html.dark-mode .badge-tema {
+    background: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .global-search-bar {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .global-search-bar input {
+    color: var(--text-color) !important;
+}
+html.dark-mode .recent-chip {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .recent-chip:hover {
+    background: rgba(100,181,246,0.15) !important;
+    border-color: var(--link-color) !important;
+}
+html.dark-mode .stat-card {
+    background: linear-gradient(135deg, #121e36 0%, #162032 100%) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .stat-number { color: var(--link-color) !important; }
+html.dark-mode .stat-label { color: var(--muted-text) !important; }
+html.dark-mode .breadcrumb { color: var(--muted-text) !important; }
+html.dark-mode .breadcrumb a { color: var(--link-color) !important; }
+html.dark-mode blockquote {
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .saint-of-day .saint-name { color: var(--text-color) !important; }
+html.dark-mode .saint-of-day .saint-desc { color: var(--muted-text) !important; }
+
 /* ===== Glossário Católico dark ===== */
 html.dark-mode .glossario-search {
     background: var(--card-bg) !important;
@@ -525,3 +575,63 @@ html.dark-mode ol, html.dark-mode ul, html.dark-mode li {
 }
 html.dark-mode strong { color: var(--text-color) !important; }
 html.dark-mode em { color: var(--muted-text) !important; }
+
+/* ===== Reading progress bar dark ===== */
+html.dark-mode .reading-progress-bar {
+    background: linear-gradient(90deg, var(--link-color), #4ecdc4);
+}
+
+/* ===== Favorite button dark ===== */
+html.dark-mode .btn-favorite {
+    background: var(--card-bg);
+    border-color: #c9a84c;
+    color: var(--muted-text);
+}
+html.dark-mode .btn-favorite.is-favorite {
+    background: #c9a84c;
+    color: #1a1a1a;
+}
+
+/* ===== Favorites chips dark ===== */
+html.dark-mode .fav-chip {
+    background: linear-gradient(135deg, #3a3200, #4a4200);
+    border-color: #6a5a20;
+    color: #ffd54f;
+}
+html.dark-mode .fav-chip:hover {
+    background: linear-gradient(135deg, #4a4200, #5a5200);
+    box-shadow: 0 2px 6px rgba(201,168,76,0.3);
+}
+
+/* ===== Toast dark ===== */
+html.dark-mode .toast-notification {
+    background: #e0e0e0;
+    color: #222;
+}
+
+/* ===== Keyboard hint dark ===== */
+html.dark-mode .kbd-hint {
+    background: #333;
+    border-color: #555;
+    color: #ccc;
+}
+
+/* ===== Virtue grid / promessa / exame dark (inline pages) ===== */
+html.dark-mode .virtue-item,
+html.dark-mode .promessa-card,
+html.dark-mode .exame-step,
+html.dark-mode .fruit-badge,
+html.dark-mode .don-card,
+html.dark-mode .sacramento-card {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ===== Stat card dark ===== */
+html.dark-mode .stat-card {
+    background: linear-gradient(135deg, #1e2a3a 0%, #1a2a1a 100%);
+    border-color: var(--border-color);
+}
+html.dark-mode .stat-number { color: var(--link-color); }
+html.dark-mode .stat-label { color: var(--muted-text); }

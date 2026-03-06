@@ -31,6 +31,21 @@ $(function () {
 
     // 5. Fade-in animation on scroll (Intersection Observer)
     initScrollAnimations();
+
+    // 6. Reading progress bar (content pages only)
+    initReadingProgress();
+
+    // 7. Keyboard shortcuts
+    initKeyboardShortcuts();
+
+    // 8. Favorites system
+    initFavorites();
+
+    // 9. Estimated reading time
+    initReadingTime();
+
+    // 10. Card hover tilt effect on home grid
+    initCardMicroInteractions();
 });
 
 /* ===== Highlight current page ===== */
@@ -208,3 +223,225 @@ function showToast(msg, duration) {
         setTimeout(function() { if (toast.parentNode) toast.remove(); }, 400);
     }, duration || 3000);
 }
+
+/* ===== Reading Progress Bar ===== */
+function initReadingProgress() {
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') return;
+
+    var bar = document.createElement('div');
+    bar.className = 'reading-progress-bar';
+    document.body.appendChild(bar);
+
+    window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(progress, 100) + '%';
+    }, {passive: true});
+}
+
+/* ===== Keyboard Shortcuts ===== */
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function(e) {
+        // Ctrl+K or Cmd+K → open search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            window.location.href = '/ferramentas/busca.html';
+        }
+        // Home key → go to home
+        if (e.key === 'Home' && !e.ctrlKey && !e.target.closest('input, textarea')) {
+            if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+                e.preventDefault();
+                window.location.href = '/';
+            }
+        }
+    });
+}
+
+/* ===== Estimated Reading Time ===== */
+function initReadingTime() {
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') return;
+
+    var $content = $('.container');
+    if (!$content.length) return;
+
+    var text = $content.text();
+    var words = text.trim().split(/\s+/).length;
+    var minutes = Math.max(1, Math.round(words / 200));
+
+    var $badge = $('<div>')
+        .css({textAlign:'center', margin:'8px 0', fontSize:'0.85rem', color:'#888'})
+        .text('📖 Leitura estimada: ~' + minutes + ' min');
+
+    var $firstCard = $content.find('.card').first();
+    if ($firstCard.length) {
+        $firstCard.after($badge);
+    }
+}
+
+/* ===== Card Micro-Interactions ===== */
+function initCardMicroInteractions() {
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    $(document).on('mouseenter', '.home-card', function() {
+        $(this).css({transform:'translateY(-4px) scale(1.02)', transition:'all 0.25s ease'});
+    }).on('mouseleave', '.home-card', function() {
+        $(this).css({transform:'translateY(0) scale(1)', transition:'all 0.25s ease'});
+    });
+}
+
+/* ===== Favorites System ===== */
+function initFavorites() {
+    var FAVS_KEY = 'fecatolica-favorites';
+    var path = window.location.pathname;
+
+    // Only show on content pages
+    if (path === '/' || path === '/index.html' || path === '/ferramentas/busca.html') return;
+
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem(FAVS_KEY) || '[]'); } catch(e) {}
+
+    var isFav = favs.indexOf(path) !== -1;
+
+    var btn = document.createElement('button');
+    btn.className = 'btn-favorite' + (isFav ? ' is-favorite' : '');
+    btn.innerHTML = isFav ? '★' : '☆';
+    btn.setAttribute('aria-label', isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
+    btn.setAttribute('title', 'Favoritar esta página (atalho: F)');
+    document.body.appendChild(btn);
+
+    btn.addEventListener('click', function() {
+        try {
+            favs = JSON.parse(localStorage.getItem(FAVS_KEY) || '[]');
+        } catch(e) { favs = []; }
+        var idx = favs.indexOf(path);
+        if (idx !== -1) {
+            favs.splice(idx, 1);
+            btn.classList.remove('is-favorite');
+            btn.innerHTML = '☆';
+            btn.setAttribute('aria-label', 'Adicionar aos favoritos');
+            showToast('Removido dos favoritos');
+        } else {
+            favs.push(path);
+            btn.classList.add('is-favorite');
+            btn.innerHTML = '★';
+            btn.setAttribute('aria-label', 'Remover dos favoritos');
+            showToast('Adicionado aos favoritos ★');
+        }
+        localStorage.setItem(FAVS_KEY, JSON.stringify(favs));
+    });
+
+    // Keyboard shortcut: F to toggle favorite
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'f' && !e.ctrlKey && !e.metaKey && !e.target.closest('input, textarea')) {
+            btn.click();
+        }
+    });
+}
+
+/* ===== Visitados Recentemente ===== */
+(function() {
+    var MAX_RECENT = 8;
+    var STORAGE_KEY = 'fecatolica-recent';
+    var path = window.location.pathname;
+
+    // Page titles map (only content pages)
+    var pageTitles = {
+        '/tercos/santo-terco.html': '📿 Santo Terço',
+        '/tercos/santo-rosario.html': '🌹 Santo Rosário',
+        '/tercos/terco-misericordia.html': '🙏 Terço da Misericórdia',
+        '/tercos/terco-sagrado-coracao.html': '❤️‍🔥 Terço do Sagrado Coração',
+        '/tercos/terco-sao-jose.html': '🌿 Terço de São José',
+        '/tercos/coroa-franciscana.html': '🌸 Coroa Franciscana',
+        '/tercos/coroa-sete-dores.html': '💔 Coroa das 7 Dores',
+        '/tercos/terco-dos-anjos.html': '✨ Terço dos Anjos',
+        '/tercos/terco-das-almas.html': '🕯️ Terço das Almas',
+        '/ladainhas/ladainha-loreto.html': '🌹 Ladainha de Loreto',
+        '/ladainhas/ladainha-sagrado-coracao.html': '❤️‍🔥 Lad. Sagrado Coração',
+        '/ladainhas/ladainha-dos-santos.html': '✨ Ladainha dos Santos',
+        '/oracoes/oracoes.html': '🙏 Orações Diárias',
+        '/oracoes/via-sacra.html': '✝️ Via-Sacra',
+        '/oracoes/hora-santa.html': '🕯️ Hora Santa',
+        '/oracoes/lectio-divina.html': '📖 Lectio Divina',
+        '/oracoes/via-lucis.html': '☀️ Via Lucis',
+        '/oracoes/consagracoes.html': '🕊️ Consagrações',
+        '/oracoes/salmos.html': '📜 Salmos',
+        '/oracoes/ato-contricao.html': '💧 Ato de Contrição',
+        '/ferramentas/meditacao.html': '🧘 Meditação Guiada',
+        '/ferramentas/timer-oracao.html': '⏱️ Timer de Oração',
+        '/ferramentas/modo-retiro.html': '🕯️ Modo Retiro',
+        '/vida-espiritual/exame-consciencia.html': '🔍 Exame de Consciência',
+        '/vida-espiritual/diario.html': '📓 Diário Espiritual',
+        '/vida-espiritual/santos-padroeiros.html': '⛪ Santos Padroeiros',
+        '/vida-espiritual/plano-leitura-biblica.html': '📕 Plano Bíblico',
+        '/vida-espiritual/mini-catecismo.html': '📚 Mini Catecismo',
+        '/vida-espiritual/glossario-catolico.html': '📖 Glossário Católico',
+        '/vida-espiritual/liturgia-das-horas.html': '🕐 Liturgia das Horas',
+        '/vida-espiritual/sacramentos.html': '⛪ Sacramentos',
+        '/vida-espiritual/exame-diario.html': '🕯️ Exame Diário',
+        '/vida-espiritual/promessas-jesus.html': '❤️‍🔥 Promessas de Jesus',
+        '/vida-espiritual/virtudes-dons.html': '🔥 Virtudes e Dons',
+        '/oracoes/angelus.html': '🔔 Angelus',
+        '/oracoes/oracoes-anjos.html': '👼 Orações aos Anjos',
+        '/oracoes/devocoes-marianas.html': '🌹 Devoções Marianas',
+        '/oracoes/oracoes-santos.html': '✨ Orações aos Santos',
+        '/oracoes/guia-confissao.html': '🕊️ Guia de Confissão',
+        '/oracoes/oracoes-latim.html': '🏛️ Orações em Latim',
+        '/oracoes/sagrada-familia.html': '👨‍👩‍👦 Sagrada Família',
+        '/vida-espiritual/doutrina-social.html': '⚖️ Doutrina Social',
+        '/vida-espiritual/mandamentos-preceitos.html': '📜 Mandamentos e Preceitos',
+        '/ferramentas/quiz-formacao.html': '📝 Quiz de Formação'
+    };
+
+    // Save current page visit
+    if (pageTitles[path]) {
+        try {
+            var recent = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            recent = recent.filter(function(r) { return r.path !== path; });
+            recent.unshift({path: path, title: pageTitles[path], ts: Date.now()});
+            if (recent.length > MAX_RECENT) recent = recent.slice(0, MAX_RECENT);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(recent));
+        } catch(e) { /* ignore */ }
+    }
+
+    // Render on home page
+    if (path === '/' || path === '/index.html') {
+        $(function() {
+            try {
+                var recent = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                if (recent.length > 0) {
+                    var $container = $('#recentVisits');
+                    var $card = $('#recentVisitsCard');
+                    if ($container.length) {
+                        $.each(recent, function(i, item) {
+                            $container.append(
+                                $('<a>').attr('href', item.path).addClass('recent-chip').text(item.title)
+                            );
+                        });
+                        $card.show();
+                    }
+                }
+            } catch(e) { /* ignore */ }
+
+            // Render favorites on home page
+            try {
+                var favs = JSON.parse(localStorage.getItem('fecatolica-favorites') || '[]');
+                if (favs.length > 0) {
+                    var $favContainer = $('#favoritesContainer');
+                    var $favCard = $('#favoritesCard');
+                    if ($favContainer.length) {
+                        $.each(favs, function(i, favPath) {
+                            var title = pageTitles[favPath] || favPath.replace(/.*\//, '').replace('.html', '');
+                            $favContainer.append(
+                                $('<a>').attr('href', favPath).addClass('fav-chip').text('★ ' + title)
+                            );
+                        });
+                        $favCard.show();
+                    }
+                }
+            } catch(e) { /* ignore */ }
+        });
+    }
+})();

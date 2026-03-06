@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Doutores da Igreja — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Os 37 Doutores da Igreja Católica — santos reconhecidos por sua eminente doutrina e santidade de vida."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .doctor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 16px; }
+        .doctor-card { padding: 18px; border-radius: 12px; background: rgba(26,79,137,0.04); border-left: 4px solid var(--cor-primaria); transition: transform 0.2s, box-shadow 0.2s; }
+        .doctor-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .doctor-card h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--cor-primaria); }
+        .doctor-card .dates { font-size: 0.85rem; color: #888; margin-bottom: 8px; }
+        .doctor-card .desc { line-height: 1.7; color: #555; font-size: 0.93rem; margin: 0; }
+        .doctor-card .proclaimed { font-size: 0.82rem; color: #999; margin-top: 8px; }
+        .search-filter { width: 100%; padding: 12px 16px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; margin-bottom: 16px; transition: border-color 0.2s; }
+        .search-filter:focus { outline: none; border-color: var(--cor-primaria); }
+        .counter { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 12px; }
+        .source-box { background: rgba(201,168,76,0.1); border-radius: 10px; padding: 16px 20px; margin-top: 20px; }
+        .source-box h3 { margin-top: 0; }
+        .source-box ul { margin: 8px 0; padding-left: 20px; }
+        .source-box li { margin-bottom: 6px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <nav class="breadcrumb">
+            <a href="/">Início</a> &rsaquo; <a href="/vida-espiritual/mini-catecismo.html">Vida Espiritual</a> &rsaquo; <span>Doutores da Igreja</span>
+        </nav>
+
+        <div class="card">
+            <h1 style="text-align:center;">📚 Doutores da Igreja</h1>
+            <p style="text-align:center;" class="muted">Os 37 santos reconhecidos pela eminente doutrina</p>
+            <p style="line-height:1.8;color:#444;">O título de «Doutor da Igreja» (<em>Doctor Ecclesiae</em>) é concedido pelo Papa a santos que se distinguiram por uma doutrina eminente, grande santidade de vida e relevância universal de seus escritos. São Pio V (1567) e Bento XIV (1720) formalizaram os critérios: <strong>eminens doctrina</strong> (doutrina eminente), <strong>insignis vitae sanctitas</strong> (insigne santidade de vida) e <strong>Ecclesiae Pastorum declaratio</strong> (declaração do Sumo Pontífice). Atualmente há 37 Doutores.</p>
+
+            <input type="text" class="search-filter" id="doctorSearch" placeholder="🔍 Buscar doutor por nome..."/>
+            <div class="counter" id="doctorCount">Mostrando 37 de 37 doutores</div>
+        </div>
+
+        <div class="card">
+            <h2>📖 Lista Completa dos 37 Doutores</h2>
+
+            <div class="doctor-grid" id="doctorGrid">
+                <div class="doctor-card" data-name="santo atanásio de alexandria">
+                    <h3>⛪ Santo Atanásio de Alexandria</h3>
+                    <div class="dates">c. 296–373 | Bispo e Padre da Igreja</div>
+                    <div class="desc">Defensor incansável da divindade de Cristo contra a heresia ariana. Exilado cinco vezes por fidelidade à fé do Concílio de Niceia. Autor de <em>Sobre a Encarnação do Verbo</em>.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1568, por São Pio V</div>
+                </div>
+                <div class="doctor-card" data-name="santo efrém da síria">
+                    <h3>🎵 Santo Efrém da Síria</h3>
+                    <div class="dates">c. 306–373 | Diácono e poeta teólogo</div>
+                    <div class="desc">«Harpa do Espírito Santo» — compôs hinos teológicos de beleza extraordinária. Mestre da tradição siríaca e defensor da ortodoxia contra gnósticos e arianos.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1920, por Bento XV</div>
+                </div>
+                <div class="doctor-card" data-name="santo hilário de poitiers">
+                    <h3>✝️ Santo Hilário de Poitiers</h3>
+                    <div class="dates">c. 310–367 | Bispo</div>
+                    <div class="desc">«Atanásio do Ocidente» — combateu o arianismo na Gália. Autor de <em>De Trinitate</em>, obra fundamental sobre a Trindade. Exilado pelo imperador Constâncio II.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1851, por Pio IX</div>
+                </div>
+                <div class="doctor-card" data-name="são cirilo de jerusalém">
+                    <h3>📖 São Cirilo de Jerusalém</h3>
+                    <div class="dates">c. 313–386 | Bispo</div>
+                    <div class="desc">Autor das célebres <em>Catequeses</em> — 24 conferências aos catecúmenos e neófitos que são um tesouro da catequese dos primeiros séculos sobre o Credo, Batismo e Eucaristia.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1882, por Leão XIII</div>
+                </div>
+                <div class="doctor-card" data-name="são basílio magno">
+                    <h3>🏠 São Basílio Magno</h3>
+                    <div class="dates">329–379 | Bispo de Cesareia</div>
+                    <div class="desc">Um dos três «Capadócios». Fundou comunidades monásticas, organizou a vida cenobítica e escreveu a <em>Regra de São Basílio</em>, ainda usada no Oriente. Defensor da divindade do Espírito Santo.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1568, por São Pio V</div>
+                </div>
+                <div class="doctor-card" data-name="são gregório nazianzeno">
+                    <h3>💬 São Gregório Nazianzeno</h3>
+                    <div class="dates">329–389 | Bispo de Constantinopla</div>
+                    <div class="desc">«O Teólogo» — um dos maiores oradores da História da Igreja. Seus cinco <em>Discursos Teológicos</em> sobre a Trindade são obra-prima da patrística grega.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1568, por São Pio V</div>
+                </div>
+                <div class="doctor-card" data-name="santo ambrósio de milão">
+                    <h3>⚖️ Santo Ambrósio de Milão</h3>
+                    <div class="dates">c. 339–397 | Bispo</div>
+                    <div class="desc">Governador romano que se tornou bispo por aclamação popular. Batizou Santo Agostinho. Introduziu o canto ambrosiano na liturgia e enfrentou o imperador Teodósio em defesa da moral cristã.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1298, por Bonifácio VIII</div>
+                </div>
+                <div class="doctor-card" data-name="são jerônimo">
+                    <h3>📜 São Jerônimo</h3>
+                    <div class="dates">c. 347–420 | Sacerdote e eremita</div>
+                    <div class="desc">Traduziu a Bíblia para o latim — a <em>Vulgata</em> — que foi a versão oficial da Igreja por mais de mil anos. Mestre da exegese bíblica: «Ignorar as Escrituras é ignorar Cristo».</div>
+                    <div class="proclaimed">Proclamado Doutor: 1298, por Bonifácio VIII</div>
+                </div>
+                <div class="doctor-card" data-name="são joão crisóstomo">
+                    <h3>🗣️ São João Crisóstomo</h3>
+                    <div class="dates">c. 349–407 | Patriarca de Constantinopla</div>
+                    <div class="desc">«Boca de Ouro» — o maior pregador da Igreja Oriental. Suas homilias sobre os Evangelhos e as Cartas de Paulo são referência até hoje. Defendeu os pobres e criticou o luxo do clero.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1568, por São Pio V</div>
+                </div>
+                <div class="doctor-card" data-name="santo agostinho de hipona">
+                    <h3>🔥 Santo Agostinho de Hipona</h3>
+                    <div class="dates">354–430 | Bispo</div>
+                    <div class="desc">O mais influente teólogo do Ocidente cristão. Converteu-se após uma juventude dissoluta. <em>Confissões</em>, <em>A Cidade de Deus</em> e <em>De Trinitate</em> moldaram todo o pensamento cristão posterior.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1298, por Bonifácio VIII</div>
+                </div>
+                <div class="doctor-card" data-name="são cirilo de alexandria">
+                    <h3>✝️ São Cirilo de Alexandria</h3>
+                    <div class="dates">c. 376–444 | Patriarca de Alexandria</div>
+                    <div class="desc">Defensor do título <em>Theotokos</em> (Mãe de Deus) para Maria no Concílio de Éfeso (431). Combateu o nestorianismo com profundidade teológica e firmeza doutrinal.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1882, por Leão XIII</div>
+                </div>
+                <div class="doctor-card" data-name="são leão magno">
+                    <h3>👑 São Leão Magno</h3>
+                    <div class="dates">c. 400–461 | Papa</div>
+                    <div class="desc">Papa que dissuadiu Átila de invadir Roma. Seu <em>Tomo a Flaviano</em> definiu a doutrina das duas naturezas de Cristo (divina e humana) no Concílio de Calcedônia (451).</div>
+                    <div class="proclaimed">Proclamado Doutor: 1754, por Bento XIV</div>
+                </div>
+                <div class="doctor-card" data-name="são pedro crisólogo">
+                    <h3>💎 São Pedro Crisólogo</h3>
+                    <div class="dates">c. 406–450 | Bispo de Ravena</div>
+                    <div class="desc">«Palavra de Ouro» — pregador eloquente. Deixou cerca de 170 sermões breves e densos, notáveis pela clareza teológica e o fervor pastoral.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1729, por Bento XIII</div>
+                </div>
+                <div class="doctor-card" data-name="são gregório magno">
+                    <h3>🎵 São Gregório Magno</h3>
+                    <div class="dates">c. 540–604 | Papa</div>
+                    <div class="desc">Papa que reformou a liturgia e promoveu o canto que leva seu nome (canto gregoriano). Enviou missionários à Inglaterra. Escreveu a <em>Regra Pastoral</em>, manual para bispos.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1298, por Bonifácio VIII</div>
+                </div>
+                <div class="doctor-card" data-name="santo isidoro de sevilha">
+                    <h3>📚 Santo Isidoro de Sevilha</h3>
+                    <div class="dates">c. 560–636 | Bispo</div>
+                    <div class="desc">«O último Padre da Igreja do Ocidente». Suas <em>Etimologias</em> são uma enciclopédia de todo o saber da época. Presidiu o IV Concílio de Toledo. Padroeiro da internet (proposto em 1997).</div>
+                    <div class="proclaimed">Proclamado Doutor: 1722, por Inocêncio XIII</div>
+                </div>
+                <div class="doctor-card" data-name="são beda o venerável">
+                    <h3>📝 São Beda, o Venerável</h3>
+                    <div class="dates">c. 673–735 | Monge beneditino</div>
+                    <div class="desc">«Pai da história inglesa». Escreveu a <em>História Eclesiástica do Povo Inglês</em> e vastos comentários bíblicos. Monge exemplar que dedicou toda a vida ao estudo e à oração.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1899, por Leão XIII</div>
+                </div>
+                <div class="doctor-card" data-name="são joão damasceno">
+                    <h3>🎨 São João Damasceno</h3>
+                    <div class="dates">c. 676–749 | Monge e sacerdote</div>
+                    <div class="desc">Último grande Padre da Igreja Oriental. Sistematizou a teologia ortodoxa em <em>A Fonte do Conhecimento</em>. Defensor do culto das imagens sagradas (ícones) contra os iconoclastas.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1890, por Leão XIII</div>
+                </div>
+                <div class="doctor-card" data-name="santo anselmo de cantuária">
+                    <h3>🧠 Santo Anselmo de Cantuária</h3>
+                    <div class="dates">1033–1109 | Bispo e monge</div>
+                    <div class="desc">«Pai da Escolástica». Formulou o argumento ontológico para a existência de Deus e a teoria da satisfação da Redenção em <em>Cur Deus Homo</em>. «Fé que busca a inteligência» (<em>fides quaerens intellectum</em>).</div>
+                    <div class="proclaimed">Proclamado Doutor: 1720, por Clemente XI</div>
+                </div>
+                <div class="doctor-card" data-name="são bernardo de claraval">
+                    <h3>🕯️ São Bernardo de Claraval</h3>
+                    <div class="dates">1090–1153 | Abade cisterciense</div>
+                    <div class="desc">«Doutor Melífluo» — místico, pregador e reformador. Fundou 68 mosteiros cistercienses. Sua devoção a Maria e seus escritos sobre o amor de Deus (<em>De Diligendo Deo</em>) são clássicos da espiritualidade.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1830, por Pio VIII</div>
+                </div>
+                <div class="doctor-card" data-name="santa hildegarda de bingen">
+                    <h3>🌿 Santa Hildegarda de Bingen</h3>
+                    <div class="dates">1098–1179 | Abadessa beneditina</div>
+                    <div class="desc">Mística, compositora, naturalista e escritora. Suas visões foram aprovadas pelo Papa Eugênio III. Escreveu <em>Scivias</em> sobre as verdades da fé, compôs liturgia musical e tratados sobre medicina natural.</div>
+                    <div class="proclaimed">Proclamada Doutora: 2012, por Bento XVI</div>
+                </div>
+                <div class="doctor-card" data-name="santo alberto magno">
+                    <h3>🔬 Santo Alberto Magno</h3>
+                    <div class="dates">c. 1200–1280 | Bispo e frade dominicano</div>
+                    <div class="desc">«Doutor Universal» — mestre de Santo Tomás de Aquino. Filósofo, teólogo e cientista, uniu magistralmente fé e razão. Padroeiro dos cientistas naturais.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1931, por Pio XI</div>
+                </div>
+                <div class="doctor-card" data-name="santo tomás de aquino">
+                    <h3>⭐ Santo Tomás de Aquino</h3>
+                    <div class="dates">1225–1274 | Frade dominicano</div>
+                    <div class="desc">«Doutor Angélico» — o maior teólogo e filósofo da Igreja. A <em>Suma Teológica</em> é a síntese mais completa da doutrina cristã. Harmonizou a filosofia de Aristóteles com a fé católica.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1567, por São Pio V</div>
+                </div>
+                <div class="doctor-card" data-name="são boaventura">
+                    <h3>🔥 São Boaventura</h3>
+                    <div class="dates">1221–1274 | Cardeal e frade franciscano</div>
+                    <div class="desc">«Doutor Seráfico». Místico e teólogo, escreveu o <em>Itinerário da Mente para Deus</em>. Ministro-geral da Ordem Franciscana, unificou a ordem com sabedoria e moderação.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1588, por Sisto V</div>
+                </div>
+                <div class="doctor-card" data-name="santo antônio de pádua">
+                    <h3>📖 Santo Antônio de Pádua</h3>
+                    <div class="dates">1195–1231 | Frade franciscano</div>
+                    <div class="desc">«Doutor Evangélico» — pregador poderoso nascido em Lisboa. Conhecido pelos milagres e pela devoção popular como «santo casamenteiro». Seus sermões são obras-primas de teologia e exegese.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1946, por Pio XII</div>
+                </div>
+                <div class="doctor-card" data-name="santa catarina de sena">
+                    <h3>💪 Santa Catarina de Sena</h3>
+                    <div class="dates">1347–1380 | Leiga dominicana</div>
+                    <div class="desc">Mística e conselheira de papas. Persuadiu Gregório XI a retornar de Avignon a Roma. Seus <em>Diálogos da Divina Providência</em> e centenas de cartas são tesouros espirituais. Co-padroeira da Europa.</div>
+                    <div class="proclaimed">Proclamada Doutora: 1970, por São Paulo VI</div>
+                </div>
+                <div class="doctor-card" data-name="são pedro canísio">
+                    <h3>📘 São Pedro Canísio</h3>
+                    <div class="dates">1521–1597 | Sacerdote jesuíta</div>
+                    <div class="desc">«Segundo apóstolo da Alemanha». Escreveu catecismos para diferentes níveis de formação que foram fundamentais na Contrarreforma. Fundou colégios e universidades pela Europa Central.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1925, por Pio XI</div>
+                </div>
+                <div class="doctor-card" data-name="são joão da cruz">
+                    <h3>🌑 São João da Cruz</h3>
+                    <div class="dates">1542–1591 | Carmelita descalço</div>
+                    <div class="desc">«Doutor Místico». Reformador da Ordem do Carmo com Santa Teresa. <em>Subida do Monte Carmelo</em> e <em>Noite Escura da Alma</em> são guias supremos da mística cristã.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1926, por Pio XI</div>
+                </div>
+                <div class="doctor-card" data-name="são roberto belarmino">
+                    <h3>🛡️ São Roberto Belarmino</h3>
+                    <div class="dates">1542–1621 | Cardeal jesuíta</div>
+                    <div class="desc">Principal teólogo da Contrarreforma. Suas <em>Disputationes</em> são uma defesa sistemática da fé católica. Catequista popular, escreveu um catecismo que teve centenas de edições.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1931, por Pio XI</div>
+                </div>
+                <div class="doctor-card" data-name="santa teresa de jesus de ávila">
+                    <h3>🏰 Santa Teresa de Jesus (Ávila)</h3>
+                    <div class="dates">1515–1582 | Carmelita descalça</div>
+                    <div class="desc">Reformadora do Carmelo e primeira mulher Doutora da Igreja. <em>O Castelo Interior</em> e <em>Caminho de Perfeição</em> são obras-primas da literatura mística. Sua oração: «Nada te perturbe, nada te espante...»</div>
+                    <div class="proclaimed">Proclamada Doutora: 1970, por São Paulo VI</div>
+                </div>
+                <div class="doctor-card" data-name="são francisco de sales">
+                    <h3>💝 São Francisco de Sales</h3>
+                    <div class="dates">1567–1622 | Bispo de Genebra</div>
+                    <div class="desc">Padroeiro dos jornalistas e escritores. <em>Introdução à Vida Devota</em> e <em>Tratado do Amor de Deus</em> tornaram a espiritualidade acessível aos leigos. Mestre da doçura: «Atrai-se mais moscas com uma gota de mel do que com um barril de vinagre».</div>
+                    <div class="proclaimed">Proclamado Doutor: 1877, por Pio IX</div>
+                </div>
+                <div class="doctor-card" data-name="são lourenço de bríndisi">
+                    <h3>⚔️ São Lourenço de Bríndisi</h3>
+                    <div class="dates">1559–1619 | Frade capuchinho</div>
+                    <div class="desc">Pregador poliglota (dominava hebraico, grego, latim e várias línguas modernas). Diplomata da Santa Sé e combatente espiritual nas guerras contra os otomanos. Seus sermões em latim são vastíssimos.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1959, por São João XXIII</div>
+                </div>
+                <div class="doctor-card" data-name="santo afonso maria de ligório">
+                    <h3>📕 Santo Afonso Maria de Ligório</h3>
+                    <div class="dates">1696–1787 | Bispo e fundador</div>
+                    <div class="desc">Fundador dos Redentoristas. Moralista genial, autor das <em>Glórias de Maria</em> e da <em>Teologia Moral</em>. Padroeiro dos confessores e moralistas. Pregou sempre a misericórdia de Deus acima do rigor.</div>
+                    <div class="proclaimed">Proclamado Doutor: 1871, por Pio IX</div>
+                </div>
+                <div class="doctor-card" data-name="santa teresa do menino jesus de lisieux">
+                    <h3>🌹 Santa Teresa do Menino Jesus (Lisieux)</h3>
+                    <div class="dates">1873–1897 | Carmelita</div>
+                    <div class="desc">A «Pequena Teresa» descobriu o «Caminhozinho» da infância espiritual: fazer tudo com amor, mesmo as menores coisas. Padroeira das missões e co-padroeira da França. Sua autobiografia <em>História de uma Alma</em> converteu milhões.</div>
+                    <div class="proclaimed">Proclamada Doutora: 1997, por São João Paulo II</div>
+                </div>
+                <div class="doctor-card" data-name="são gregório de narek">
+                    <h3>📿 São Gregório de Narek</h3>
+                    <div class="dates">c. 951–1003 | Monge e teólogo armênio</div>
+                    <div class="desc">Maior poeta e místico da tradição armênia. Seu <em>Livro das Lamentações</em> (Narek) é uma obra-prima da oração mística, chamado «o segundo Evangelho» pelos armênios.</div>
+                    <div class="proclaimed">Proclamado Doutor: 2015, por Papa Francisco</div>
+                </div>
+                <div class="doctor-card" data-name="santo irineu de lyon">
+                    <h3>🔗 Santo Irineu de Lyon</h3>
+                    <div class="dates">c. 130–202 | Bispo e mártir</div>
+                    <div class="desc">Discípulo de São Policarpo (que conheceu São João Apóstolo). Combateu as heresias gnósticas em <em>Contra as Heresias</em>. Teólogo da recapitulação: «A glória de Deus é o homem vivo».</div>
+                    <div class="proclaimed">Proclamado Doutor: 2022, por Papa Francisco</div>
+                </div>
+                <div class="doctor-card" data-name="são gregório de nissa">
+                    <h3>✨ São Gregório de Nissa</h3>
+                    <div class="dates">c. 335–394 | Bispo</div>
+                    <div class="desc">O mais especulativo dos três Capadócios. Teólogo da imagem de Deus no homem e da divinização. Sua <em>Vida de Moisés</em> é um clássico da teologia mística.</div>
+                    <div class="proclaimed">Proclamado Doutor: tradicionalmente considerado; venerado como tal desde a Antiguidade</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card source-box">
+            <h3>📚 Fontes</h3>
+            <ul>
+                <li><strong>Santa Sé</strong>: Lista oficial dos Doutores da Igreja — atualizada a cada proclamação</li>
+                <li><strong>Bento XIV</strong>: <em>De Servorum Dei Beatificatione</em> (1734-1738) — critérios para o doutorado eclesial</li>
+                <li><strong>Papa Francisco</strong>: Carta Apostólica proclamando Santo Irineu de Lyon como Doutor da Igreja (21/01/2022)</li>
+                <li><strong>São João Paulo II</strong>: Carta Apostólica <em>Divini Amoris Scientia</em> (1997) — proclamação de Santa Teresinha</li>
+                <li><strong>CCC</strong>: Referências variadas aos Padres e Doutores ao longo de todo o Catecismo</li>
+            </ul>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    $(function(){
+        var $grid = $('#doctorGrid');
+        var $cards = $grid.find('.doctor-card');
+        var $count = $('#doctorCount');
+
+        $('#doctorSearch').on('input', function(){
+            var q = $(this).val().toLowerCase().trim();
+            var visible = 0;
+            $cards.each(function(){
+                var name = $(this).attr('data-name') || '';
+                var text = $(this).text().toLowerCase();
+                var match = !q || name.indexOf(q) !== -1 || text.indexOf(q) !== -1;
+                $(this).toggle(match);
+                if (match) visible++;
+            });
+            $count.text('Mostrando ' + visible + ' de 37 doutores');
+        });
+    });
+    </script>
+</body>
+</html>

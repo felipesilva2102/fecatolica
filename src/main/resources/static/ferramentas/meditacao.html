@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Meditação Guiada — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card" style="background:linear-gradient(135deg,#1a3a5c 0%,#2c5a3c 100%);">
+            <header style="text-align:center;">
+                <h1>🧘 Meditação Cristã Guiada</h1>
+                <p class="lead">Encontre a paz interior em Deus através da meditação contemplativa.</p>
+            </header>
+        </div>
+
+        <!-- Seletor de Meditação -->
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">Escolha sua meditação</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px;">
+                <button class="mystery-btn meditacao-escolha mystery-btn-active" data-med="presenca">🕊️ Presença de Deus<small>5 min</small></button>
+                <button class="mystery-btn meditacao-escolha" data-med="respiracao">🌬️ Respiração Orante<small>5 min</small></button>
+                <button class="mystery-btn meditacao-escolha" data-med="corpo">🙏 Relaxamento em Deus<small>7 min</small></button>
+                <button class="mystery-btn meditacao-escolha" data-med="sagrado-coracao">❤️‍🔥 Sagrado Coração<small>10 min</small></button>
+                <button class="mystery-btn meditacao-escolha" data-med="silencio">🤫 Silêncio Contemplativo<small>15 min</small></button>
+            </div>
+        </div>
+
+        <!-- Área da Meditação -->
+        <div class="card" id="meditacao-area" style="min-height:300px;">
+            <!-- Timer -->
+            <div style="text-align:center;margin-bottom:20px;">
+                <div class="timer-display" id="medTimer">00:00</div>
+                <div id="medStepLabel" class="muted" style="margin-top:6px;font-size:0.95rem;">Pressione Iniciar para começar</div>
+            </div>
+
+            <!-- Texto da etapa -->
+            <div id="medTexto" style="text-align:center;font-size:1.1rem;line-height:1.8;min-height:120px;display:flex;align-items:center;justify-content:center;padding:20px;">
+                <p>Escolha uma meditação acima e pressione <strong>Iniciar</strong>.</p>
+            </div>
+
+            <!-- Indicador de passos -->
+            <div id="medPassos" style="display:flex;justify-content:center;gap:8px;margin:16px 0;flex-wrap:wrap;"></div>
+
+            <!-- Controles -->
+            <div style="text-align:center;margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <button class="btn btn-primary" id="medIniciar">▶️ Iniciar</button>
+                <button class="btn" id="medPausar" style="display:none;background:#f0ad4e;color:#fff;">⏸ Pausar</button>
+                <button class="btn btn-reset" id="medResetar" style="display:none;">🔄 Reiniciar</button>
+            </div>
+        </div>
+
+        <!-- Sobre a Meditação Cristã -->
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">📖 Sobre a Meditação Cristã</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header">O que é a meditação cristã?</div>
+                    <div class="accordion-content">
+                        <p style="line-height:1.7;">
+                            A meditação cristã é uma forma de oração que busca a <strong>união com Deus</strong> através do silêncio interior, da escuta da Palavra e da contemplação dos mistérios da fé.
+                        </p>
+                        <p style="line-height:1.7;">
+                            Diferente de práticas orientais, a meditação cristã é sempre <strong>relacional</strong>: é um encontro pessoal com Deus que nos ama. Grandes santos como <strong>Santa Teresa d'Ávila</strong>, <strong>São João da Cruz</strong> e <strong>São Francisco de Sales</strong> ensinaram e praticaram esta forma de oração.
+                        </p>
+                        <blockquote style="font-style:italic;color:#555;border-left:3px solid var(--cor-primaria);padding-left:14px;">
+                            "A oração mental não é outra coisa senão uma íntima partilha de amizade, na qual nos encontramos frequentemente a sós para conversar com Aquele que sabemos nos amar."
+                            <br/><span class="muted">— Santa Teresa de Jesus</span>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Dicas para meditar bem</div>
+                    <div class="accordion-content">
+                        <ul style="line-height:1.8;">
+                            <li><strong>Escolha um lugar tranquilo</strong> — de preferência diante de um crucifixo ou imagem sagrada.</li>
+                            <li><strong>Silencie o celular</strong> — este momento é só seu e de Deus.</li>
+                            <li><strong>Postura confortável</strong> — sentado com a coluna ereta, mãos abertas no colo.</li>
+                            <li><strong>Não se preocupe com distrações</strong> — quando surgirem, volte gentilmente a atenção a Deus.</li>
+                            <li><strong>Seja constante</strong> — a meditação diária transforma a vida espiritual.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compartilhar -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Meditação Guiada — FeCatolica" data-partilhar-texto="Medite e encontre a paz em Deus com meditações cristãs guiadas!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    $(function() {
+        var meditacoes = {
+            presenca: {
+                nome: 'Presença de Deus',
+                passos: [
+                    {duracao:30, texto:'Faça o <strong>Sinal da Cruz</strong>. Feche os olhos suavemente. Sinta que Deus está aqui, agora, com você.'},
+                    {duracao:40, texto:'Respire fundo... Inspire pelo nariz... Expire pela boca... A cada respiração, entregue suas preocupações a Deus.'},
+                    {duracao:30, texto:'Repita interiormente: <em>"Senhor, estou aqui diante de Vós."</em>'},
+                    {duracao:60, texto:'Imagine Jesus ao seu lado. Ele olha para você com amor infinito. Sinta Sua presença amorosa envolvendo todo o seu ser.'},
+                    {duracao:60, texto:'Fale com Jesus como um amigo. Abra seu coração. Conte-Lhe suas alegrias, dores e esperanças. Ele escuta com atenção.'},
+                    {duracao:50, texto:'Agora fique em silêncio... Simplesmente esteja na presença de Deus... Deixe que Ele fale ao seu coração.'},
+                    {duracao:30, texto:'Agradeça a Deus por este momento. Reze um <strong>Pai-Nosso</strong> com devoção. Faça o Sinal da Cruz. <em>Amém.</em>'}
+                ]
+            },
+            respiracao: {
+                nome: 'Respiração Orante',
+                passos: [
+                    {duracao:20, texto:'Faça o <strong>Sinal da Cruz</strong>. Sente-se confortavelmente. Coluna ereta, mãos abertas no colo.'},
+                    {duracao:40, texto:'Feche os olhos. Perceba sua respiração natural. Não tente controlá-la — apenas observe.'},
+                    {duracao:50, texto:'Ao <strong>inspirar</strong>, reze interiormente: <em>"Jesus"</em>.<br/>Ao <strong>expirar</strong>, reze: <em>"misericórdia"</em>.'},
+                    {duracao:60, texto:'Continue respirando e rezando...<br/><em>Inspira: "Jesus"</em><br/><em>Expira: "misericórdia"</em><br/>Cada respiração é uma oração.'},
+                    {duracao:60, texto:'Agora mude a invocação:<br/><em>Inspira: "Vinde"</em><br/><em>Expira: "Espírito Santo"</em><br/>Sinta o Espírito preenchendo todo o seu ser.'},
+                    {duracao:40, texto:'Fique em silêncio... Apenas Deus e você... Deixe a paz divina inundar seu coração.'},
+                    {duracao:30, texto:'Lentamente, retorne. Agradeça pela graça recebida. Reze: <em>"Glória ao Pai, ao Filho e ao Espírito Santo. Amém."</em>'}
+                ]
+            },
+            corpo: {
+                nome: 'Relaxamento em Deus',
+                passos: [
+                    {duracao:20, texto:'Faça o <strong>Sinal da Cruz</strong>. Sente-se ou deite-se confortavelmente. Feche os olhos com suavidade.'},
+                    {duracao:40, texto:'Perceba seus pés. Relaxe-os consciente. Imagine a paz de Deus descendo como uma luz quente sobre eles.'},
+                    {duracao:40, texto:'Suba a atenção para as pernas e joelhos. Relaxe cada músculo. A luz de Deus envolve e aquece.'},
+                    {duracao:40, texto:'Agora o abdômen e as costas. Solte toda a tensão. Cada respiração traz mais paz divina.'},
+                    {duracao:40, texto:'Os ombros, braços e mãos. Deixe-os pesados e relaxados. Entregue tudo ao Senhor.'},
+                    {duracao:40, texto:'O pescoço e a face. Relaxe a mandíbula, a testa, os olhos. A luz divina banha todo o seu rosto.'},
+                    {duracao:60, texto:'Todo o seu corpo está em paz. Você é envolvido pelo amor de Deus. Descanse nEle como uma criança nos braços do Pai.'},
+                    {duracao:60, texto:'Reze interiormente: <em>"Pai nosso, que estais no Céu... Venha a nós o vosso Reino... Seja feita a vossa vontade..."</em>'},
+                    {duracao:40, texto:'Agradeça pela paz recebida. Movimente suavemente os dedos. Abra os olhos. Leve esta paz para o seu dia. <em>Amém.</em>'}
+                ]
+            },
+            'sagrado-coracao': {
+                nome: 'Sagrado Coração de Jesus',
+                passos: [
+                    {duracao:30, texto:'Faça o <strong>Sinal da Cruz</strong>. Imagine-se diante de Jesus. Ele mostra-lhe o Seu Sagrado Coração, ardente de amor.'},
+                    {duracao:50, texto:'O Coração de Jesus brilha com uma chama viva. É o amor infinito de Deus por você, pessoalmente. Contemple esta cena.'},
+                    {duracao:60, texto:'Jesus diz: <em>"Eis o Coração que tanto amou os homens, que nada poupou até se esgotar e consumir para lhes testemunhar o seu amor."</em>'},
+                    {duracao:60, texto:'Converse com Jesus. Diga-Lhe o que está no seu coração. Peça-Lhe que transforme o seu coração à semelhança do Dele.'},
+                    {duracao:90, texto:'Repita lentamente: <em>"Sagrado Coração de Jesus, eu confio em Vós. Fazei o meu coração semelhante ao Vosso."</em><br/>Deixe cada palavra penetrar profundamente.'},
+                    {duracao:90, texto:'Permaneça em silêncio diante do Sagrado Coração. Sinta Seu amor curando suas feridas, acalmando seus medos, fortalecendo sua fé.'},
+                    {duracao:60, texto:'Ofereça a Jesus tudo o que você é: alegrias, dores, medos, esperanças. Deposite tudo no Seu Sagrado Coração.'},
+                    {duracao:60, texto:'Reze: <em>"Doce Coração de Jesus, fazei que eu Vos ame cada vez mais. Sagrado Coração de Jesus, tende piedade de nós."</em><br/>Faça o Sinal da Cruz. <em>Amém.</em>'}
+                ]
+            },
+            silencio: {
+                nome: 'Silêncio Contemplativo',
+                passos: [
+                    {duracao:30, texto:'Faça o <strong>Sinal da Cruz</strong>. Feche os olhos. Aquiete o coração e a mente.'},
+                    {duracao:40, texto:'Respire profundamente três vezes. Entregue cada preocupação a Deus. Diga: <em>"Senhor, estou aqui para Vós."</em>'},
+                    {duracao:60, texto:'Escolha uma palavra sagrada: <em>"Jesus"</em>, <em>"Abba"</em>, <em>"Amor"</em> ou <em>"Paz"</em>. Quando distrações vierem, gentilmente retorne à sua palavra.'},
+                    {duracao:180, texto:'<em style="font-size:1.3rem;">Silêncio...</em><br/><br/>Permaneça na presença de Deus. Não precisa pensar em nada. Apenas esteja. Deus fala no silêncio do coração.'},
+                    {duracao:180, texto:'<em style="font-size:1.3rem;">Silêncio...</em><br/><br/>Se distrações surgirem, não lute contra elas. Apenas retorne gentilmente à sua palavra sagrada. Deus está aqui.'},
+                    {duracao:180, texto:'<em style="font-size:1.3rem;">Silêncio...</em><br/><br/>Descanse em Deus como uma criança adormece nos braços de sua mãe. Nada a temer. Apenas amor.'},
+                    {duracao:120, texto:'<em style="font-size:1.3rem;">Silêncio...</em><br/><br/>Deixe que Deus faça o que quiser com este momento. Confie. Entregue-se.'},
+                    {duracao:60, texto:'Lentamente, comece a retornar. Reze o <strong>Pai-Nosso</strong> em voz baixa, saboreando cada palavra.'},
+                    {duracao:30, texto:'Agradeça a Deus por este encontro silencioso. Leve a paz que recebeu para as suas atividades. <em>Amém.</em>'}
+                ]
+            }
+        };
+
+        var medAtual = 'presenca';
+        var passoAtual = 0;
+        var tempoRestante = 0;
+        var timer = null;
+        var emPausa = false;
+
+        function renderPassos() {
+            var med = meditacoes[medAtual];
+            var html = '';
+            for (var i = 0; i < med.passos.length; i++) {
+                var cls = 'lectio-step-num';
+                if (i < passoAtual) cls += ' completed-step';
+                else if (i === passoAtual && timer) cls += ' active-step';
+                html += '<span class="' + cls + '" style="width:28px;height:28px;font-size:0.75rem;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;' +
+                    (i < passoAtual ? 'background:#2e7d32;color:#fff;' : (i === passoAtual && timer ? 'background:#1a4f89;color:#fff;' : 'background:#e0e0e0;color:#666;')) +
+                    '">' + (i + 1) + '</span>';
+            }
+            $('#medPassos').html(html);
+        }
+
+        function atualizarTimer() {
+            var m = Math.floor(tempoRestante / 60);
+            var s = tempoRestante % 60;
+            $('#medTimer').text((m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s);
+        }
+
+        function mostrarPasso() {
+            var med = meditacoes[medAtual];
+            if (passoAtual >= med.passos.length) {
+                pararMeditacao();
+                $('#medTexto').html('<p style="font-size:1.2rem;">✅ <strong>Meditação concluída!</strong><br/><br/>Que a paz de Cristo permaneça com você.<br/><em>"A paz vos deixo, a minha paz vos dou." (Jo 14,27)</em></p>');
+                $('#medStepLabel').text('Concluído');
+                $('#medTimer').text('00:00');
+                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+                return;
+            }
+            var passo = med.passos[passoAtual];
+            tempoRestante = passo.duracao;
+            atualizarTimer();
+            $('#medTexto').html('<p>' + passo.texto + '</p>');
+            $('#medStepLabel').text('Passo ' + (passoAtual + 1) + ' de ' + med.passos.length);
+            renderPassos();
+        }
+
+        function iniciarMeditacao() {
+            if (timer && !emPausa) return;
+            if (emPausa) {
+                emPausa = false;
+                $('#medPausar').text('⏸ Pausar').show();
+                $('#medIniciar').hide();
+            } else {
+                passoAtual = 0;
+                mostrarPasso();
+                $('#medIniciar').hide();
+                $('#medPausar').show();
+                $('#medResetar').show();
+            }
+            timer = setInterval(function() {
+                tempoRestante--;
+                atualizarTimer();
+                if (tempoRestante <= 0) {
+                    passoAtual++;
+                    mostrarPasso();
+                }
+            }, 1000);
+        }
+
+        function pausarMeditacao() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+                emPausa = true;
+                $('#medPausar').hide();
+                $('#medIniciar').text('▶️ Continuar').show();
+            }
+        }
+
+        function pararMeditacao() {
+            if (timer) clearInterval(timer);
+            timer = null;
+            emPausa = false;
+            $('#medPausar').hide();
+            $('#medResetar').hide();
+            $('#medIniciar').text('▶️ Iniciar').show();
+        }
+
+        function resetarMeditacao() {
+            pararMeditacao();
+            passoAtual = 0;
+            tempoRestante = 0;
+            atualizarTimer();
+            $('#medTexto').html('<p>Escolha uma meditação acima e pressione <strong>Iniciar</strong>.</p>');
+            $('#medStepLabel').text('Pressione Iniciar para começar');
+            renderPassos();
+        }
+
+        // Eventos
+        $('.meditacao-escolha').on('click', function() {
+            pararMeditacao();
+            $('.meditacao-escolha').removeClass('mystery-btn-active');
+            $(this).addClass('mystery-btn-active');
+            medAtual = $(this).data('med');
+            resetarMeditacao();
+        });
+
+        $('#medIniciar').on('click', iniciarMeditacao);
+        $('#medPausar').on('click', pausarMeditacao);
+        $('#medResetar').on('click', resetarMeditacao);
+
+        renderPassos();
+    });
+    </script>
+</body>
+</html>

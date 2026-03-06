@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Buscar — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🔍 Buscar no FeCatolica</h1>
+                <p class="lead">Encontre rapidamente orações, terços, novenas e mais.</p>
+            </header>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <input type="text" id="campoBusca" placeholder="Digite o que procura... (ex: misericórdia, São José, novena)" autofocus
+                   style="width:100%;max-width:600px;padding:14px 18px;border:2px solid #ddd;border-radius:12px;font-size:1.05rem;transition:border-color 0.2s;"
+                   onfocus="this.style.borderColor='var(--cor-primaria)'" onblur="this.style.borderColor='#ddd'"/>
+            <p class="muted" style="margin-top:8px;">Busca instantânea em todo o conteúdo do portal.</p>
+        </div>
+
+        <div id="resultadosBusca" class="home-grid"></div>
+
+        <div id="buscaVazia" style="text-align:center;display:none;" class="card">
+            <p style="font-size:1.1rem;">😔 Nenhum resultado encontrado.</p>
+            <p class="muted">Tente termos diferentes ou navegue pelo menu.</p>
+        </div>
+
+        <!-- Sugestões populares -->
+        <div id="sugestoes" class="card" style="text-align:center;">
+            <h2 style="margin-top:0;">⭐ Mais Acessados</h2>
+            <div class="home-grid" style="margin-top:12px;">
+                <a href="/tercos/santo-terco.html" class="home-card"><span class="home-card-icon">📿</span><h3>Santo Terço</h3></a>
+                <a href="/tercos/terco-misericordia.html" class="home-card"><span class="home-card-icon">🙏</span><h3>Terço da Misericórdia</h3></a>
+                <a href="/oracoes/oracoes.html" class="home-card"><span class="home-card-icon">🙏</span><h3>Orações Diárias</h3></a>
+                <a href="/liturgia/liturgia.html" class="home-card"><span class="home-card-icon">📖</span><h3>Liturgia Diária</h3></a>
+                <a href="/oracoes/via-sacra.html" class="home-card"><span class="home-card-icon">✝️</span><h3>Via-Sacra</h3></a>
+                <a href="/vida-espiritual/exame-consciencia.html" class="home-card"><span class="home-card-icon">🔍</span><h3>Exame de Consciência</h3></a>
+            </div>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    $(function() {
+        var conteudo = [
+            {titulo:'Santo Terço', icon:'📿', url:'/tercos/santo-terco.html', desc:'Reze o terço diário com meditações bíblicas', tags:'terco rosario ave maria pai nosso misterio'},
+            {titulo:'Santo Rosário', icon:'🌹', url:'/tercos/santo-rosario.html', desc:'Os quatro mistérios completos', tags:'rosario misterio gozoso doloroso glorioso luminoso'},
+            {titulo:'Terço da Misericórdia', icon:'🙏', url:'/tercos/terco-misericordia.html', desc:'Terço revelado a Santa Faustina', tags:'misericordia faustina divina'},
+            {titulo:'Terço do Sagrado Coração', icon:'❤️‍🔥', url:'/tercos/terco-sagrado-coracao.html', desc:'Devoção ao Coração de Jesus', tags:'sagrado coracao jesus'},
+            {titulo:'Terço de São José', icon:'🌿', url:'/tercos/terco-sao-jose.html', desc:'Mistérios josefinos', tags:'jose josefino'},
+            {titulo:'Coroa Franciscana', icon:'🌸', url:'/tercos/coroa-franciscana.html', desc:'7 dezenas de alegrias de Maria', tags:'franciscana francisco alegria maria'},
+            {titulo:'Coroa das 7 Dores', icon:'💔', url:'/tercos/coroa-sete-dores.html', desc:'As sete dores de Maria', tags:'dores maria sofrimento'},
+            {titulo:'Terço dos Anjos', icon:'✨', url:'/tercos/terco-dos-anjos.html', desc:'9 coros angélicos', tags:'anjos coros angelicos'},
+            {titulo:'Terço das Almas', icon:'🕯️', url:'/tercos/terco-das-almas.html', desc:'Sufrágios pelas almas do Purgatório', tags:'almas purgatorio sufragio'},
+            {titulo:'Terço do Combate', icon:'⚔️', url:'/tercos/terco-do-combate.html', desc:'Contra os ataques espirituais', tags:'combate espiritual guerra'},
+            {titulo:'Terço da Providência', icon:'🕊️', url:'/tercos/terco-da-providencia.html', desc:'Confiança na Divina Providência', tags:'providencia confianca'},
+            {titulo:'Terço da Libertação', icon:'🔓', url:'/tercos/terco-da-libertacao.html', desc:'Libertação espiritual', tags:'libertacao livre livre'},
+            {titulo:'Coroa do Espírito Santo', icon:'🔥', url:'/tercos/coroa-espirito-santo.html', desc:'Dons do Espírito Santo', tags:'espirito santo dons'},
+            {titulo:'Coroa das 12 Estrelas', icon:'⭐', url:'/tercos/coroa-doze-estrelas.html', desc:'12 estrelas de Maria', tags:'estrelas maria'},
+            {titulo:'Ladainha de Loreto', icon:'🌹', url:'/ladainhas/ladainha-loreto.html', desc:'Ladainha mariana mais antiga', tags:'loreto maria ladainha'},
+            {titulo:'Ladainha do Sagrado Coração', icon:'❤️‍🔥', url:'/ladainhas/ladainha-sagrado-coracao.html', desc:'Invocações ao Coração de Jesus', tags:'sagrado coracao ladainha'},
+            {titulo:'Ladainha dos Santos', icon:'✨', url:'/ladainhas/ladainha-dos-santos.html', desc:'A ladainha solene da liturgia', tags:'santos ladainha liturgia'},
+            {titulo:'Ladainha de São José', icon:'🌿', url:'/ladainhas/ladainha-sao-jose.html', desc:'Invocações a São José', tags:'jose ladainha'},
+            {titulo:'Ladainha da Humildade', icon:'🙇', url:'/ladainhas/ladainha-da-humildade.html', desc:'Oração de humildade', tags:'humildade ladainha'},
+            {titulo:'Ladainha do Espírito Santo', icon:'🔥', url:'/ladainhas/ladainha-espirito-santo.html', desc:'Invocações ao Espírito', tags:'espirito santo ladainha'},
+            {titulo:'Liturgia Diária', icon:'📖', url:'/liturgia/liturgia.html', desc:'Leituras, Salmo e Evangelho do dia', tags:'liturgia leitura evangelho salmo missa'},
+            {titulo:'Calendário Litúrgico', icon:'📅', url:'/liturgia/calendario.html', desc:'Festas e solenidades do ano', tags:'calendario liturgico festa solenidade'},
+            {titulo:'Orações Diárias', icon:'🙏', url:'/oracoes/oracoes.html', desc:'Angelus, manhã, noite, São Miguel...', tags:'oracao angelus manha noite sao miguel'},
+            {titulo:'Via-Sacra', icon:'✝️', url:'/oracoes/via-sacra.html', desc:'14 Estações do Caminho da Cruz', tags:'via sacra cruz estacao paixao'},
+            {titulo:'Via Lucis', icon:'☀️', url:'/oracoes/via-lucis.html', desc:'14 Estações da Ressurreição', tags:'via lucis ressurreicao pascoa'},
+            {titulo:'Hora Santa', icon:'🕯️', url:'/oracoes/hora-santa.html', desc:'Adoração ao Santíssimo Sacramento', tags:'hora santa adoracao santissimo'},
+            {titulo:'Lectio Divina', icon:'📖', url:'/oracoes/lectio-divina.html', desc:'Leitura orante da Bíblia', tags:'lectio divina biblia leitura orante'},
+            {titulo:'Consagrações', icon:'🕊️', url:'/oracoes/consagracoes.html', desc:'Consagrações a Jesus, Maria, São José', tags:'consagracao jesus maria jose'},
+            {titulo:'Bênçãos do Lar', icon:'🏠', url:'/oracoes/bencaos-do-lar.html', desc:'Bênçãos da casa, mesa e objetos', tags:'bencao lar casa mesa'},
+            {titulo:'Orações de Ocasião', icon:'💬', url:'/oracoes/oracoes-ocasiao.html', desc:'Doença, luto, desemprego, família...', tags:'ocasiao doenca luto desemprego familia ansiedade'},
+            {titulo:'Salmos Favoritos', icon:'📜', url:'/oracoes/salmos.html', desc:'Os salmos mais amados da tradição cristã', tags:'salmo salmos 23 91 51 louvor'},
+            {titulo:'Ato de Contrição', icon:'💧', url:'/oracoes/ato-contricao.html', desc:'Preparação para a Confissão', tags:'contricao confissao penitencia arrependimento'},
+            {titulo:'Ofício da Imaculada', icon:'🌟', url:'/oracoes/oficio-imaculada-conceicao.html', desc:'Ofício da Imaculada Conceição', tags:'oficio imaculada conceicao'},
+            {titulo:'Lorica de São Patrício', icon:'🛡️', url:'/oracoes/preces-sao-patricio.html', desc:'Oração de proteção', tags:'patricio lorica protecao'},
+            {titulo:'Cinco Primeiros Sábados', icon:'💙', url:'/oracoes/cinco-primeiros-sabados.html', desc:'Devoção reparadora de Fátima', tags:'cinco sabados fatima reparacao'},
+            {titulo:'Hora da Misericórdia', icon:'🕒', url:'/oracoes/hora-da-misericordia.html', desc:'Às 15h, hora da Misericórdia', tags:'misericordia hora tres'},
+            {titulo:'Exame de Consciência', icon:'🔍', url:'/vida-espiritual/exame-consciencia.html', desc:'Preparação para a Confissão', tags:'exame consciencia confissao mandamento'},
+            {titulo:'Diário Espiritual', icon:'📓', url:'/vida-espiritual/diario.html', desc:'Registre reflexões e graças', tags:'diario reflexao graca'},
+            {titulo:'Mural de Intenções', icon:'🕯️', url:'/vida-espiritual/mural.html', desc:'Intenções de oração comunitárias', tags:'mural intencao oracao comunidade'},
+            {titulo:'Mini Catecismo', icon:'📚', url:'/vida-espiritual/mini-catecismo.html', desc:'Credo, Mandamentos, Sacramentos...', tags:'catecismo credo mandamento sacramento'},
+            {titulo:'Glossário Católico', icon:'📖', url:'/vida-espiritual/glossario-catolico.html', desc:'+40 termos litúrgicos e teológicos', tags:'glossario termo liturgico teologico'},
+            {titulo:'Liturgia das Horas', icon:'🕐', url:'/vida-espiritual/liturgia-das-horas.html', desc:'Laudes, Vésperas e Completas', tags:'liturgia horas laudes vesperas completas'},
+            {titulo:'Plano de Leitura Bíblica', icon:'📕', url:'/vida-espiritual/plano-leitura-biblica.html', desc:'365 dias para ler a Bíblia', tags:'plano leitura biblia 365'},
+            {titulo:'Santos Padroeiros', icon:'⛪', url:'/vida-espiritual/santos-padroeiros.html', desc:'Santos por profissão e necessidade', tags:'santo padroeiro profissao causa'},
+            {titulo:'Timer de Oração', icon:'⏱️', url:'/ferramentas/timer-oracao.html', desc:'Presets de 3 a 60 minutos', tags:'timer tempo oracao minuto'},
+            {titulo:'Modo Retiro', icon:'🕯️', url:'/ferramentas/modo-retiro.html', desc:'Tela contemplativa sem distrações', tags:'retiro contemplacao silencio'},
+            {titulo:'Meditação Guiada', icon:'🧘', url:'/ferramentas/meditacao.html', desc:'Meditação cristã contemplativa com timer', tags:'meditacao guiada contemplacao silencio interior'},
+            {titulo:'Intenções do Papa', icon:'🕊️', url:'/ferramentas/intencoes-papa.html', desc:'Intenções mensais do Santo Padre', tags:'papa intencao mensal'},
+            {titulo:'Santo do Dia', icon:'✨', url:'/ferramentas/santo-do-dia.html', desc:'Biografia e oração do santo de hoje', tags:'santo dia hoje biografia'},
+            {titulo:'Buscar', icon:'🔍', url:'/ferramentas/busca.html', desc:'Buscar conteúdo no portal', tags:'busca pesquisa encontrar'}
+        ];
+
+        var $resultados = $('#resultadosBusca');
+        var $vazio = $('#buscaVazia');
+        var $sugestoes = $('#sugestoes');
+
+        function buscar(termo) {
+            if (!termo || termo.length < 2) {
+                $resultados.empty();
+                $vazio.hide();
+                $sugestoes.show();
+                return;
+            }
+            $sugestoes.hide();
+            var t = termo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            var resultados = conteudo.filter(function(item) {
+                var text = (item.titulo + ' ' + item.desc + ' ' + item.tags).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                return text.indexOf(t) >= 0;
+            });
+
+            if (resultados.length === 0) {
+                $resultados.empty();
+                $vazio.show();
+                return;
+            }
+
+            $vazio.hide();
+            var html = '';
+            resultados.forEach(function(r) {
+                html += '<a href="' + r.url + '" class="home-card">' +
+                    '<span class="home-card-icon">' + r.icon + '</span>' +
+                    '<h3>' + r.titulo + '</h3>' +
+                    '<p>' + r.desc + '</p></a>';
+            });
+            $resultados.html(html);
+        }
+
+        $('#campoBusca').on('input', function() {
+            buscar($(this).val());
+        });
+
+        // Se veio com parâmetro de busca
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q');
+        if (q) {
+            $('#campoBusca').val(q);
+            buscar(q);
+        }
+    });
+    </script>
+</body>
+</html>

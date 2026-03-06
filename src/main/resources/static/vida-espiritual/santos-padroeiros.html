@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Santos Padroeiros — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>⛪ Santos Padroeiros</h1>
+                <p class="lead">Encontre o santo padroeiro para sua profissão, necessidade ou situação de vida.</p>
+            </header>
+        </div>
+
+        <!-- Busca -->
+        <div class="card" style="text-align:center;">
+            <input type="text" id="buscaPadroeiro" placeholder="🔍 Buscar por profissão, causa ou necessidade..." 
+                   style="width:100%;max-width:500px;padding:12px 16px;border:2px solid #ddd;border-radius:10px;font-size:1rem;transition:border-color 0.2s;"
+                   onfocus="this.style.borderColor='var(--cor-primaria)'" onblur="this.style.borderColor='#ddd'"/>
+            <div style="margin-top:10px;">
+                <strong>Filtrar:</strong>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px;">
+                    <button class="salmo-filter active" data-cat="todos">Todos</button>
+                    <button class="salmo-filter" data-cat="profissao">Profissões</button>
+                    <button class="salmo-filter" data-cat="causa">Causas</button>
+                    <button class="salmo-filter" data-cat="saude">Saúde</button>
+                    <button class="salmo-filter" data-cat="familia">Família</button>
+                    <button class="salmo-filter" data-cat="paises">Países/Cidades</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Santos -->
+        <div id="listaPadroeiros" class="home-grid"></div>
+
+        <!-- Compartilhar -->
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Santos Padroeiros — FeCatolica" data-partilhar-texto="Descubra o santo padroeiro da sua profissão ou necessidade!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script>
+    $(function() {
+        var santos = [
+            {nome:'São José', icon:'🌿', desc:'Trabalhadores, pais de família, Igreja Universal, boa morte', cat:'profissao', tags:'trabalho pai familia boa morte operário carpinteiro igreja'},
+            {nome:'Santa Cecília', icon:'🎵', desc:'Músicos, cantores, poetas e compositores', cat:'profissao', tags:'musica cantor poeta compositor instrumento'},
+            {nome:'São Lucas', icon:'🎨', desc:'Médicos, cirurgiões, pintores e artistas', cat:'profissao', tags:'medico cirurgiao pintor artista saude'},
+            {nome:'São Tomás de Aquino', icon:'📚', desc:'Estudantes, escolas, universidades e filósofos', cat:'profissao', tags:'estudante escola universidade filosofo estudo'},
+            {nome:'Santo Isidoro', icon:'🌾', desc:'Agricultores, lavradores e trabalhadores do campo', cat:'profissao', tags:'agricultor lavrador campo fazenda'},
+            {nome:'São Francisco de Sales', icon:'📰', desc:'Jornalistas, escritores e imprensa', cat:'profissao', tags:'jornalista escritor imprensa midia jornal'},
+            {nome:'São Sebastião', icon:'🏹', desc:'Soldados, atletas, guardas e esportistas', cat:'profissao', tags:'soldado atleta guarda esporte militar'},
+            {nome:'Santa Rita de Cássia', icon:'🌹', desc:'Causas impossíveis e desesperadas', cat:'causa', tags:'causa impossivel desespero milagre dificuldade'},
+            {nome:'Santo Expedito', icon:'⚡', desc:'Causas urgentes e negócios urgentes', cat:'causa', tags:'urgente urgencia pressa negocios rapido'},
+            {nome:'São Judas Tadeu', icon:'💚', desc:'Causas perdidas e situações desesperadoras', cat:'causa', tags:'causa perdida desespero impossivel'},
+            {nome:'Santa Teresinha', icon:'🌼', desc:'Missões, floristas e aviadores', cat:'causa', tags:'missao flor aviador pequenos atos amor'},
+            {nome:'São Miguel Arcanjo', icon:'⚔️', desc:'Proteção espiritual, policiais e militares', cat:'causa', tags:'protecao espiritual policial militar batalha'},
+            {nome:'Nossa Senhora Aparecida', icon:'💙', desc:'Padroeira do Brasil', cat:'paises', tags:'brasil padroeira nacao'},
+            {nome:'São Jorge', icon:'🐉', desc:'Escoteiros, cavaleiros e Portugal', cat:'paises', tags:'escoteiro cavaleiro portugal'},
+            {nome:'Nossa Senhora de Fátima', icon:'🤍', desc:'Portugal e a paz no mundo', cat:'paises', tags:'portugal paz mundo fatima'},
+            {nome:'São Patrício', icon:'☘️', desc:'Irlanda e engenheiros', cat:'paises', tags:'irlanda engenheiro'},
+            {nome:'Santa Luzia', icon:'👁️', desc:'Olhos, cegos, oculistas e problemas de visão', cat:'saude', tags:'olhos cego visao oculista oftalmologista'},
+            {nome:'São Brás', icon:'🗣️', desc:'Garganta, doenças da garganta e otorrinolaringologistas', cat:'saude', tags:'garganta doenca otorrino'},
+            {nome:'São Peregrino', icon:'🎗️', desc:'Doentes com câncer', cat:'saude', tags:'cancer doenca grave'},
+            {nome:'São Camilo de Léllis', icon:'🏥', desc:'Enfermos, hospitais e enfermeiros', cat:'saude', tags:'enfermo hospital enfermeiro doente'},
+            {nome:'São Roque', icon:'🐕', desc:'Contra pestes, epidemias e doenças contagiosas', cat:'saude', tags:'peste epidemia contagio doenca'},
+            {nome:'Santa Gianna Beretta Molla', icon:'🤰', desc:'Gestantes, mães e defesa da vida', cat:'familia', tags:'gestante mae gravidez vida'},
+            {nome:'Santa Mônica', icon:'💧', desc:'Mães que rezam pelos filhos', cat:'familia', tags:'mae filho conversao oracao'},
+            {nome:'São Valentim', icon:'❤️', desc:'Namorados, casais e noivos', cat:'familia', tags:'namorado casal noivo amor casamento'},
+            {nome:'Sagrada Família', icon:'👨‍👩‍👦', desc:'Famílias cristãs', cat:'familia', tags:'familia cristã lar'},
+            {nome:'São Cristóvão', icon:'🚗', desc:'Motoristas e viajantes', cat:'profissao', tags:'motorista viajante carro viagem transporte'},
+            {nome:'Santa Bárbara', icon:'⛈️', desc:'Contra tempestades, raios e morte repentina', cat:'causa', tags:'tempestade raio trovao morte repentina'},
+            {nome:'São Bento', icon:'✝️', desc:'Contra malefícios, envenenamento e tentações', cat:'causa', tags:'maleficio envenenamento tentacao monge'},
+            {nome:'Santo Antônio', icon:'🔍', desc:'Objetos perdidos, casamentos e pobres', cat:'causa', tags:'perdido objeto casamento pobre encontrar'},
+            {nome:'São Francisco de Assis', icon:'🐦', desc:'Animais, ecologia, natureza', cat:'causa', tags:'animal ecologia natureza meio ambiente'},
+            {nome:'São João Bosco', icon:'👦', desc:'Jovens, educadores e aprendizes', cat:'profissao', tags:'jovem educador aprendiz professor'},
+            {nome:'São Pedro', icon:'🔑', desc:'Pescadores e papas', cat:'profissao', tags:'pescador papa'},
+            {nome:'São Cosme e São Damião', icon:'💊', desc:'Farmacêuticos e gêmeos', cat:'profissao', tags:'farmaceutico farmacia gemeo'},
+            {nome:'Nossa Senhora do Carmo', icon:'🏔️', desc:'Almas do purgatório', cat:'causa', tags:'alma purgatorio escapulario'},
+            {nome:'Nossa Senhora Desatadora dos Nós', icon:'🪢', desc:'Problemas familiares e dificuldades impossíveis', cat:'causa', tags:'problema familiar dificuldade no'},
+            {nome:'São Rafael Arcanjo', icon:'🏥', desc:'Viajantes, médicos e encontros amorosos', cat:'saude', tags:'viajante medico amor cura'},
+            {nome:'Santa Dymphna', icon:'🧠', desc:'Doenças mentais, ansiedade e depressão', cat:'saude', tags:'mental ansiedade depressao psicologico'},
+            {nome:'São Mateus', icon:'💰', desc:'Contadores, banqueiros e cobradores', cat:'profissao', tags:'contador banqueiro financeiro'},
+            {nome:'Santa Catarina de Alexandria', icon:'🎓', desc:'Filósofos, estudantes e bibliotecários', cat:'profissao', tags:'filosofo estudante bibliotecario'},
+            {nome:'São Gabriel Arcanjo', icon:'📡', desc:'Comunicadores, carteiros e telecomunicações', cat:'profissao', tags:'comunicador carteiro telecomunicacao radio tv'}
+        ];
+
+        function renderCard(s) {
+            return '<div class="home-card padroeiro-card" data-cat="' + s.cat + '" style="text-align:left;padding:16px;">' +
+                '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">' +
+                '<span style="font-size:2rem;">' + s.icon + '</span>' +
+                '<h3 style="margin:0;font-size:1.05rem;">' + s.nome + '</h3>' +
+                '</div>' +
+                '<p style="margin:0;color:#666;font-size:0.9rem;line-height:1.5;">' + s.desc + '</p>' +
+                '<span class="badge-tema" style="margin-top:8px;display:inline-block;">' +
+                (s.cat === 'profissao' ? 'Profissão' : s.cat === 'causa' ? 'Causa' : s.cat === 'saude' ? 'Saúde' : s.cat === 'familia' ? 'Família' : 'País/Cidade') +
+                '</span></div>';
+        }
+
+        function renderLista(filtro, busca) {
+            var html = '';
+            santos.forEach(function(s) {
+                if (filtro !== 'todos' && s.cat !== filtro) return;
+                if (busca) {
+                    var b = busca.toLowerCase();
+                    var match = s.nome.toLowerCase().indexOf(b) >= 0 ||
+                                s.desc.toLowerCase().indexOf(b) >= 0 ||
+                                s.tags.indexOf(b) >= 0;
+                    if (!match) return;
+                }
+                html += renderCard(s);
+            });
+            if (!html) html = '<p class="muted" style="text-align:center;grid-column:1/-1;">Nenhum santo encontrado. Tente outro termo.</p>';
+            $('#listaPadroeiros').html(html);
+        }
+
+        renderLista('todos', '');
+
+        $('.salmo-filter').on('click', function() {
+            $('.salmo-filter').removeClass('active');
+            $(this).addClass('active');
+            renderLista($(this).data('cat'), $('#buscaPadroeiro').val());
+        });
+
+        $('#buscaPadroeiro').on('input', function() {
+            var catAtual = $('.salmo-filter.active').data('cat') || 'todos';
+            renderLista(catAtual, $(this).val());
+        });
+
+        if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+    });
+    </script>
+</body>
+</html>

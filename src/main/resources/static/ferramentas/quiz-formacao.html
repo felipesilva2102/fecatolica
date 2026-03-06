@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Formação Católica — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .quiz-container { margin: 16px 0; }
+        .quiz-question {
+            background: #f8f9ff;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid #e0e8f0;
+            margin-bottom: 14px;
+        }
+        .quiz-question h3 { margin-top: 0; font-size: 1rem; }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 14px;
+            margin: 6px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover { background: #f0f6fb; border-color: var(--cor-primaria); }
+        .quiz-option.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+        .quiz-option.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.8; }
+        .quiz-score {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f6fb, #eef7f1);
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+        .quiz-score .score-number { font-size: 2rem; font-weight: 800; color: var(--cor-primaria); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <nav class="breadcrumb">
+        <a href="/">Início</a> &rsaquo; <strong>Formação Católica — Quiz</strong>
+    </nav>
+
+    <div class="card">
+        <h1 style="text-align:center;">📚 Formação Católica — Quiz</h1>
+        <p class="muted" style="text-align:center;">Teste seus conhecimentos sobre a fé católica com 15 perguntas.</p>
+        <div style="text-align:center;margin-top:10px;">
+            <button id="btnRestart" style="display:none;padding:10px 24px;border-radius:24px;background:var(--cor-primaria);color:#fff;border:none;cursor:pointer;font-size:0.95rem;">🔄 Recomeçar Quiz</button>
+        </div>
+    </div>
+
+    <div id="quizContainer" class="quiz-container"></div>
+    <div id="quizScore" class="quiz-score" style="display:none;"></div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+<script>
+$(function() {
+    if (typeof registrarStreak === 'function') registrarStreak();
+
+    var questions = [
+        {q: "Quantos sacramentos existem na Igreja Católica?", opts: ["5", "7", "9", "12"], answer: 1},
+        {q: "Qual é o primeiro livro da Bíblia?", opts: ["Êxodo", "Salmos", "Gênesis", "Mateus"], answer: 2},
+        {q: "Quem batizou Jesus no rio Jordão?", opts: ["São Pedro", "São Paulo", "São João Batista", "Moisés"], answer: 2},
+        {q: "Quantos apóstolos Jesus escolheu?", opts: ["7", "10", "12", "14"], answer: 2},
+        {q: "Qual é o maior mandamento segundo Jesus?", opts: ["Não matar", "Amar a Deus e o próximo", "Guardar o sábado", "Não roubar"], answer: 1},
+        {q: "Em que cidade Jesus nasceu?", opts: ["Nazaré", "Jerusalém", "Belém", "Cafarnaum"], answer: 2},
+        {q: "Quantos livros tem a Bíblia Católica?", opts: ["66", "70", "73", "76"], answer: 2},
+        {q: "Quem é a padroeira do Brasil?", opts: ["Nossa Senhora de Fátima", "Nossa Senhora Aparecida", "Nossa Senhora de Lourdes", "Nossa Senhora de Guadalupe"], answer: 1},
+        {q: "O que significa a palavra 'Eucaristia'?", opts: ["Sacrifício", "Ação de graças", "Pão do céu", "Comunhão"], answer: 1},
+        {q: "Quem escreveu a maioria das epístolas do Novo Testamento?", opts: ["São Pedro", "São João", "São Paulo", "São Tiago"], answer: 2},
+        {q: "Qual oração Jesus ensinou aos discípulos?", opts: ["Ave-Maria", "Salve Rainha", "Pai Nosso", "Credo"], answer: 2},
+        {q: "Quantos Evangelhos existem no Novo Testamento?", opts: ["2", "3", "4", "5"], answer: 2},
+        {q: "Em que solenidade celebramos a Ressurreição de Cristo?", opts: ["Natal", "Pentecostes", "Páscoa", "Corpus Christi"], answer: 2},
+        {q: "Qual é a virtude teologal que 'tudo crê, tudo espera, tudo suporta'?", opts: ["Fé", "Esperança", "Caridade", "Prudência"], answer: 2},
+        {q: "Quem é o atual sucessor de São Pedro (o Papa)?", opts: ["Bento XVI", "João Paulo III", "Francisco", "Clemente XV"], answer: 2}
+    ];
+
+    var score = 0;
+    var answered = 0;
+    var $container = $('#quizContainer');
+
+    function renderQuiz() {
+        score = 0;
+        answered = 0;
+        $container.empty();
+        $('#quizScore').hide();
+        $('#btnRestart').hide();
+
+        $.each(questions, function(i, q) {
+            var $qDiv = $('<div class="quiz-question card">');
+            $qDiv.append('<h3>' + (i + 1) + '. ' + q.q + '</h3>');
+
+            $.each(q.opts, function(j, opt) {
+                var $btn = $('<button class="quiz-option">').text(opt);
+                $btn.on('click', function() {
+                    if ($qDiv.find('.correct,.wrong').length > 0) return;
+
+                    $qDiv.find('.quiz-option').addClass('disabled');
+                    if (j === q.answer) {
+                        $btn.addClass('correct');
+                        score++;
+                    } else {
+                        $btn.addClass('wrong');
+                        $qDiv.find('.quiz-option').eq(q.answer).addClass('correct');
+                    }
+                    answered++;
+
+                    if (answered === questions.length) {
+                        showScore();
+                    }
+                });
+                $qDiv.append($btn);
+            });
+
+            $container.append($qDiv);
+        });
+    }
+
+    function showScore() {
+        var pct = Math.round((score / questions.length) * 100);
+        var msg = pct >= 80 ? '🏆 Excelente! Você conhece bem a fé!' :
+                  pct >= 60 ? '👍 Muito bem! Continue estudando!' :
+                  pct >= 40 ? '📖 Bom esforço! Que tal revisar o Mini Catecismo?' :
+                  '🙏 Não desanime! A fé é uma jornada. Estude mais e tente de novo!';
+
+        $('#quizScore').html(
+            '<div class="score-number">' + score + '/' + questions.length + '</div>' +
+            '<p style="font-size:1.1rem;margin:8px 0;">' + pct + '% de acerto</p>' +
+            '<p style="margin:4px 0;">' + msg + '</p>'
+        ).show();
+        $('#btnRestart').show();
+    }
+
+    renderQuiz();
+    $('#btnRestart').on('click', renderQuiz);
+});
+</script>
+</body>
+</html>
