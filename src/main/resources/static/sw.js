@@ -1,4 +1,4 @@
-var CACHE_NAME = 'fecatolica-cache-v15';
+var CACHE_NAME = 'fecatolica-cache-v16';
 var URLS_PRE_CACHE = [
     '/',
     '/imagens/favicon.svg',
@@ -123,7 +123,18 @@ var URLS_PRE_CACHE = [
     '/vida-espiritual/promessas-rosario.html',
     '/vida-espiritual/padres-igreja.html',
     '/vida-espiritual/dogmas-marianos.html',
-    '/oracoes/oracoes-protecao.html'
+    '/oracoes/oracoes-protecao.html',
+    '/vida-espiritual/historia-igreja.html',
+    '/vida-espiritual/papas-historia.html',
+    '/vida-espiritual/milagres-eucaristicos.html',
+    '/vida-espiritual/livros-biblia.html',
+    '/vida-espiritual/profecias-fatima.html',
+    '/vida-espiritual/discernimento.html',
+    '/vida-espiritual/santos-anjos.html',
+    '/vida-espiritual/mistica-crista.html',
+    '/oracoes/via-matris.html',
+    '/tercos/terco-santa-teresinha.html',
+    '/ladainhas/ladainha-sao-miguel.html'
 ];
 
 // Install - pre-cache dos recursos estaticos

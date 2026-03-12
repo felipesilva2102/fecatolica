@@ -456,7 +456,18 @@ function initFavorites() {
         '/vida-espiritual/promessas-rosario.html': '📿 Promessas do Rosário',
         '/vida-espiritual/padres-igreja.html': '📜 Padres da Igreja',
         '/vida-espiritual/dogmas-marianos.html': '👑 Dogmas Marianos',
-        '/oracoes/oracoes-protecao.html': '🛡️ Orações de Proteção'
+        '/oracoes/oracoes-protecao.html': '🛡️ Orações de Proteção',
+        '/vida-espiritual/historia-igreja.html': '📜 História da Igreja',
+        '/vida-espiritual/papas-historia.html': '👑 Os Papas da Igreja',
+        '/vida-espiritual/milagres-eucaristicos.html': '✨ Milagres Eucarísticos',
+        '/vida-espiritual/livros-biblia.html': '📖 Os Livros da Bíblia',
+        '/vida-espiritual/profecias-fatima.html': '🌹 Segredos de Fátima',
+        '/vida-espiritual/discernimento.html': '🔍 Discernimento Espiritual',
+        '/vida-espiritual/santos-anjos.html': '👼 Os Santos Anjos',
+        '/vida-espiritual/mistica-crista.html': '✨ Mística Cristã',
+        '/oracoes/via-matris.html': '🌹 Via Matris — Dores de Maria',
+        '/tercos/terco-santa-teresinha.html': '🌹 Terço de Sta. Teresinha',
+        '/ladainhas/ladainha-sao-miguel.html': '⚔️ Ladainha de São Miguel'
     };
 
     // Save current page visit
