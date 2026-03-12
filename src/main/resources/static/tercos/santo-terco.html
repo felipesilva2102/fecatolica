@@ -150,50 +150,54 @@
     <script src="/js/app.js"></script>
     <script>
     var Terco = (function () {
-        /* Mistérios na ordem correta — mesmo do Rosário */
+        /* Mistérios na ordem correta — padronizados com o Santo Rosário */
         var mysteries = [
             {
                 title: 'Mistérios Gozosos', days: ['segunda-feira', 'sábado'], color: '#4CAF50', icon: '🕊️',
-                virtues: ['Humildade', 'Caridade', 'Desapego', 'Obediência', 'Piedade'],
+                subtitle: 'Segunda-feira e Sábado — A Infância de Jesus',
+                virtues: ['Humildade', 'Caridade com o próximo', 'Pobreza de espírito / Desapego', 'Pureza de coração / Obediência', 'Busca de Deus / Piedade'],
                 items: [
-                    {name: '1.º — A Anunciação do Anjo a Maria', ref: 'Lc 1,26-38', meditation: 'Maria responde com humildade: "Eis aqui a serva do Senhor."'},
-                    {name: '2.º — A Visitação a Santa Isabel', ref: 'Lc 1,39-56', meditation: '"Bendita és tu entre as mulheres e bendito é o fruto do teu ventre!"'},
-                    {name: '3.º — O Nascimento de Jesus em Belém', ref: 'Lc 2,1-20', meditation: '"Glória a Deus nas alturas e paz na terra aos homens de boa vontade."'},
-                    {name: '4.º — A Apresentação no Templo', ref: 'Lc 2,22-40', meditation: '"Agora, Senhor, podeis deixar o vosso servo ir em paz."'},
-                    {name: '5.º — O Encontro de Jesus entre os Doutores', ref: 'Lc 2,41-52', meditation: '"Não sabíeis que devo ocupar-me das coisas de meu Pai?"'}
+                    {name: '1.º — A Anunciação do Anjo Gabriel a Maria', ref: 'Lc 1,26-38', meditation: 'O Anjo Gabriel anuncia a Maria que ela será a Mãe do Salvador. Maria, com humildade, responde: "Eis aqui a serva do Senhor, faça-se em mim segundo a vossa palavra."'},
+                    {name: '2.º — A Visitação de Maria a Santa Isabel', ref: 'Lc 1,39-56', meditation: 'Maria parte às pressas para visitar sua prima Isabel, levando Jesus em seu ventre. Isabel exclama: "Bendita és tu entre as mulheres e bendito é o fruto do teu ventre!"'},
+                    {name: '3.º — O Nascimento de Jesus em Belém', ref: 'Lc 2,1-20', meditation: 'Jesus nasce numa manjedoura em Belém. Os anjos anunciam aos pastores: "Glória a Deus nas alturas e paz na terra aos homens de boa vontade."'},
+                    {name: '4.º — A Apresentação de Jesus no Templo', ref: 'Lc 2,22-40', meditation: 'Maria e José levam o Menino Jesus ao Templo. O velho Simeão O toma nos braços e diz: "Agora, Senhor, podeis deixar o vosso servo ir em paz."'},
+                    {name: '5.º — O Encontro de Jesus no Templo entre os Doutores', ref: 'Lc 2,41-52', meditation: 'Após três dias de busca, Maria e José encontram Jesus no Templo, entre os doutores. Jesus responde: "Não sabíeis que devo ocupar-me das coisas de meu Pai?"'}
                 ]
             },
             {
                 title: 'Mistérios Luminosos', days: ['quinta-feira'], color: '#FFC107', icon: '✨',
-                virtues: ['Abertura ao Espírito', 'Fé', 'Conversão', 'Santidade', 'Adoração'],
+                subtitle: 'Quinta-feira — A Vida Pública de Jesus',
+                virtues: ['Abertura ao Espírito Santo', 'Fé em Jesus e docilidade a Maria', 'Desejo de conversão', 'Desejo de santidade', 'Adoração eucarística'],
                 items: [
-                    {name: '1.º — O Batismo de Jesus no Jordão', ref: 'Mt 3,13-17', meditation: '"Este é o meu Filho amado, em quem me comprazo."'},
-                    {name: '2.º — As Bodas de Caná', ref: 'Jo 2,1-12', meditation: '"Fazei tudo o que Ele vos disser."'},
-                    {name: '3.º — O Anúncio do Reino de Deus', ref: 'Mc 1,14-15', meditation: '"Convertei-vos e crede no Evangelho."'},
-                    {name: '4.º — A Transfiguração', ref: 'Mt 17,1-8', meditation: '"Este é o meu Filho amado. Escutai-O."'},
-                    {name: '5.º — A Instituição da Eucaristia', ref: 'Mt 26,26-29', meditation: '"Isto é o meu Corpo... fazei isto em minha memória."'}
+                    {name: '1.º — O Batismo de Jesus no Rio Jordão', ref: 'Mt 3,13-17', meditation: 'Jesus é batizado por João no Jordão. O Espírito Santo desce como pomba e a voz do Pai proclama: "Este é o meu Filho amado, em quem me comprazo."'},
+                    {name: '2.º — A Autorrevelação de Jesus nas Bodas de Caná', ref: 'Jo 2,1-12', meditation: 'Maria diz aos servos: "Fazei tudo o que Ele vos disser." Jesus realiza seu primeiro milagre, transformando a água em vinho.'},
+                    {name: '3.º — O Anúncio do Reino de Deus e o Convite à Conversão', ref: 'Mc 1,14-15', meditation: 'Jesus percorre a Galileia: "O tempo está cumprido e o Reino de Deus está próximo. Convertei-vos e crede no Evangelho."'},
+                    {name: '4.º — A Transfiguração de Jesus no Monte Tabor', ref: 'Mt 17,1-8', meditation: 'Jesus Se transfigura diante de Pedro, Tiago e João. Seu rosto brilha como o sol. A voz celeste diz: "Este é o meu Filho amado. Escutai-O."'},
+                    {name: '5.º — A Instituição da Sagrada Eucaristia', ref: 'Mt 26,26-29', meditation: 'Na Última Ceia, Jesus toma o pão: "Isto é o meu Corpo." E o cálice: "Este é o meu Sangue, derramado por muitos para remissão dos pecados."'}
                 ]
             },
             {
                 title: 'Mistérios Dolorosos', days: ['terça-feira', 'sexta-feira'], color: '#c0392b', icon: '✝️',
-                virtues: ['Contrição', 'Mortificação', 'Paciência', 'Perseverança', 'Entrega a Deus'],
+                subtitle: 'Terça-feira e Sexta-feira — A Paixão de Cristo',
+                virtues: ['Contrição / Arrependimento', 'Mortificação dos sentidos', 'Desprezo do mundo / Paciência', 'Paciência nas provações', 'Entrega total a Deus'],
                 items: [
-                    {name: '1.º — A Agonia no Horto', ref: 'Lc 22,39-46', meditation: '"Não se faça a minha vontade, mas a Tua."'},
-                    {name: '2.º — A Flagelação', ref: 'Jo 19,1', meditation: 'Jesus é açoitado, oferecendo cada golpe pela remissão dos pecados.'},
-                    {name: '3.º — A Coroação de Espinhos', ref: 'Mt 27,27-31', meditation: '"Salve, Rei dos judeus!" — Jesus aceita em silêncio.'},
-                    {name: '4.º — Jesus carrega a Cruz', ref: 'Jo 19,17', meditation: 'Jesus toma a pesada cruz e caminha rumo ao Calvário.'},
-                    {name: '5.º — A Crucificação e Morte', ref: 'Lc 23,33-46', meditation: '"Pai, em Tuas mãos entrego o meu espírito."'}
+                    {name: '1.º — A Agonia de Jesus no Horto das Oliveiras', ref: 'Lc 22,39-46', meditation: 'Jesus ora no Getsêmani em profunda angústia: "Pai, se é possível, afasta de mim este cálice; contudo, não se faça a minha vontade, mas a Tua."'},
+                    {name: '2.º — A Flagelação de Jesus atado à Coluna', ref: 'Jo 19,1', meditation: 'Pilatos manda açoitar Jesus. Nosso Senhor sofre terríveis flagelações, oferecendo cada golpe pela remissão dos nossos pecados.'},
+                    {name: '3.º — A Coroação de Espinhos', ref: 'Mt 27,27-31', meditation: 'Os soldados tecem uma coroa de espinhos e a cravam na cabeça de Jesus, zombando: "Salve, Rei dos judeus!" Jesus aceita a humilhação em silêncio.'},
+                    {name: '4.º — Jesus carrega a Cruz até o Calvário', ref: 'Jo 19,17', meditation: 'Jesus toma a pesada cruz e percorre o caminho do Calvário. Cai várias vezes, mas Se levanta com amor por nós.'},
+                    {name: '5.º — A Crucificação e Morte de Jesus', ref: 'Lc 23,33-46', meditation: '"Pai, perdoa-lhes, não sabem o que fazem." E entregando o espírito: "Pai, em Tuas mãos entrego o meu espírito."'}
                 ]
             },
             {
                 title: 'Mistérios Gloriosos', days: ['quarta-feira', 'domingo'], color: '#8e44ad', icon: '👑',
-                virtues: ['Fé', 'Esperança', 'Amor ao Espírito', 'Devoção a Maria', 'Perseverança'],
+                subtitle: 'Quarta-feira e Domingo — A Glória de Cristo e de Maria',
+                virtues: ['Fé', 'Esperança / Desejo do Céu', 'Amor ao Espírito Santo', 'Devoção a Maria / Boa morte', 'Perseverança final / Confiança em Maria'],
                 items: [
-                    {name: '1.º — A Ressurreição de Jesus', ref: 'Mt 28,1-10', meditation: '"Ele não está aqui: ressuscitou como havia dito."'},
-                    {name: '2.º — A Ascensão ao Céu', ref: 'At 1,6-11', meditation: '"Ele voltará do mesmo modo como O vistes partir."'},
-                    {name: '3.º — A Descida do Espírito Santo', ref: 'At 2,1-13', meditation: 'O Espírito desce em línguas de fogo sobre Maria e os Apóstolos.'},
-                    {name: '4.º — A Assunção de Maria', ref: 'Ap 12,1', meditation: 'Maria é elevada em corpo e alma ao Céu.'},
-                    {name: '5.º — A Coroação de Maria', ref: 'Ap 12,1; Sl 45', meditation: 'Maria é coroada Rainha do Céu e da Terra.'}
+                    {name: '1.º — A Ressurreição de Jesus', ref: 'Mt 28,1-10', meditation: 'Ao terceiro dia, Jesus ressuscita glorioso. O anjo anuncia: "Não tenhais medo! Ele não está aqui: ressuscitou como havia dito."'},
+                    {name: '2.º — A Ascensão de Jesus ao Céu', ref: 'At 1,6-11', meditation: 'Quarenta dias após a Ressurreição, Jesus sobe ao Céu. Os anjos dizem: "Ele voltará do mesmo modo como O vistes partir."'},
+                    {name: '3.º — A Descida do Espírito Santo sobre os Apóstolos', ref: 'At 2,1-13', meditation: 'No dia de Pentecostes, o Espírito Santo desce sobre Maria e os Apóstolos em forma de línguas de fogo, enchendo-os de sabedoria e coragem.'},
+                    {name: '4.º — A Assunção de Maria ao Céu', ref: 'Ap 12,1', meditation: 'A Virgem Maria é elevada em corpo e alma ao Céu. Aparece revestida de sol, com a lua sob os pés e uma coroa de doze estrelas.'},
+                    {name: '5.º — A Coroação de Maria como Rainha do Céu e da Terra', ref: 'Ap 12,1; Sl 45', meditation: 'Maria é coroada Rainha do Céu e da Terra, intercessora poderosa junto a seu Filho. "A Rainha está à Tua direita, ornada de ouro de Ofir."'}
                 ]
             }
         ];
@@ -292,6 +296,9 @@
 
             $('#todayMystery').html(m.icon + ' Hoje (' + today + '): <strong>' + m.title + '</strong>');
             $('#mysteryTitle').text(m.icon + ' ' + m.title);
+            if (m.subtitle) {
+                $('#mysteryTitle').after('<p class="muted" style="font-style:italic;margin-top:2px;">' + m.subtitle + '</p>');
+            }
 
             var box = $('#mysteryBody').empty();
             var panel = $('<div class="accordion-panel"></div>');

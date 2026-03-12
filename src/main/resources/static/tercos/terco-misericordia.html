@@ -120,7 +120,7 @@
             if (beadsDone >= TOTAL_BEADS) {
                 $('#sectionFinal').slideDown();
                 localStorage.setItem('misericordia_' + new Date().toISOString().slice(0,10), 'true');
-                if (window.FeStreaks) window.FeStreaks.record();
+                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
             }
         }
 
@@ -183,5 +183,6 @@
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
 </body>
 </html>

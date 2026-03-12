@@ -154,19 +154,39 @@
         if (Notification.permission === 'granted') {
             setReminderEnabled(true);
             scheduleReminder();
+            if (btnReminder) {
+                btnReminder.innerHTML = '🔕';
+                btnReminder.title = 'Desativar lembretes de oração';
+            }
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission().then(function(perm) {
                 if (perm === 'granted') {
                     setReminderEnabled(true);
                     scheduleReminder();
+                    if (btnReminder) {
+                        btnReminder.innerHTML = '🔕';
+                        btnReminder.title = 'Desativar lembretes de oração';
+                    }
+                } else {
+                    if (btnReminder) {
+                        btnReminder.innerHTML = '🔔';
+                        btnReminder.title = 'Ativar lembretes de oração';
+                    }
                 }
             });
         }
     }
 
+    var reminderIntervalId = null;
+
     function scheduleReminder() {
         // Check every minute if it's prayer time (6h, 12h, 18h, 21h)
         if (!isReminderEnabled() || Notification.permission !== 'granted') return;
+
+        if (reminderIntervalId) {
+            clearInterval(reminderIntervalId);
+            reminderIntervalId = null;
+        }
 
         var prayerMessages = [
             {hour: 6, msg: '🌅 Bom dia! É hora do Angelus da manhã. Reze conosco!'},
@@ -176,7 +196,7 @@
         ];
 
         var lastNotifKey = 'fecatolica_last_notif';
-        setInterval(function() {
+        reminderIntervalId = setInterval(function() {
             if (!isReminderEnabled()) return;
             var now = new Date();
             var h = now.getHours();
@@ -204,12 +224,14 @@
     function toggleReminder() {
         if (isReminderEnabled()) {
             setReminderEnabled(false);
+            if (reminderIntervalId) {
+                clearInterval(reminderIntervalId);
+                reminderIntervalId = null;
+            }
             btnReminder.innerHTML = '🔔';
             btnReminder.title = 'Ativar lembretes de oração';
         } else {
             requestNotificationPermission();
-            btnReminder.innerHTML = '🔕';
-            btnReminder.title = 'Desativar lembretes de oração';
         }
     }
 

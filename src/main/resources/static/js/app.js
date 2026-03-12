@@ -21,6 +21,8 @@ $(function () {
         if (data && data.cssVariaveis) {
             $('<style>').text(data.cssVariaveis).appendTo('head');
         }
+    }).fail(function() {
+        // Fallback silencioso se API offline
     });
 
     // 3. Inicializa accordions
@@ -249,8 +251,8 @@ function initKeyboardShortcuts() {
             e.preventDefault();
             window.location.href = '/ferramentas/busca.html';
         }
-        // Home key → go to home
-        if (e.key === 'Home' && !e.ctrlKey && !e.target.closest('input, textarea')) {
+        // Ctrl+Home → go to home page
+        if (e.key === 'Home' && e.ctrlKey && !e.target.closest('input, textarea')) {
             if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
                 e.preventDefault();
                 window.location.href = '/';
@@ -335,7 +337,7 @@ function initFavorites() {
 
     // Keyboard shortcut: F to toggle favorite
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'f' && !e.ctrlKey && !e.metaKey && !e.target.closest('input, textarea')) {
+        if (e.key === 'f' && !e.ctrlKey && !e.metaKey && !e.target.closest('input, textarea, [contenteditable]')) {
             btn.click();
         }
     });
@@ -415,7 +417,39 @@ function initFavorites() {
         '/oracoes/oracoes-defuntos.html': '🕯️ Orações pelos Defuntos',
         '/oracoes/oracoes-vocacionais.html': '🙏 Orações Vocacionais',
         '/oracoes/cantico-criaturas.html': '🎵 Cânticos de Louvor',
-        '/oracoes/oracoes-cura.html': '💚 Orações de Cura'
+        '/oracoes/oracoes-cura.html': '💚 Orações de Cura',
+        '/tercos/terco-do-combate.html': '⚔️ Terço do Combate',
+        '/tercos/terco-da-providencia.html': '🙏 Terço da Providência',
+        '/tercos/terco-da-libertacao.html': '🔓 Terço da Libertação',
+        '/tercos/terco-lagrimas-de-sangue.html': '😢 Terço Lágrimas de Sangue',
+        '/tercos/terco-imaculada-conceicao.html': '🌹 Terço Imaculada Conceição',
+        '/tercos/coroa-espirito-santo.html': '🔥 Coroa do Espírito Santo',
+        '/tercos/coroa-doze-estrelas.html': '⭐ Coroa das 12 Estrelas',
+        '/oracoes/bencaos-do-lar.html': '🏠 Bênçãos do Lar',
+        '/oracoes/oracoes-ocasiao.html': '🙏 Orações para Ocasiões',
+        '/oracoes/oficio-imaculada-conceicao.html': '🌹 Ofício da Imaculada',
+        '/oracoes/preces-sao-patricio.html': '☘️ Preces de São Patrício',
+        '/oracoes/cinco-primeiros-sabados.html': '🌹 Cinco Primeiros Sábados',
+        '/oracoes/hora-da-misericordia.html': '🕐 Hora da Misericórdia',
+        '/ferramentas/intencoes-papa.html': '🙏 Intenções do Papa',
+        '/ferramentas/santo-do-dia.html': '⛪ Santo do Dia',
+        '/ferramentas/busca.html': '🔍 Busca',
+        '/vida-espiritual/mural.html': '📌 Mural Espiritual',
+        '/ladainhas/ladainha-sao-jose.html': '🌿 Ladainha de São José',
+        '/ladainhas/ladainha-preciosissimo-sangue.html': '🩸 Lad. Preciosíssimo Sangue',
+        '/ladainhas/ladainha-santo-nome-jesus.html': '✝️ Lad. Santo Nome de Jesus',
+        '/ladainhas/ladainha-espirito-santo.html': '🔥 Lad. Espírito Santo',
+        '/ladainhas/ladainha-da-humildade.html': '🕊️ Ladainha da Humildade',
+        '/quaresmas/quaresma-liturgica.html': '⛪ Quaresma Litúrgica',
+        '/quaresmas/quaresma-sao-miguel.html': '⚔️ Quaresma de São Miguel',
+        '/quaresmas/quaresma-sao-jose.html': '🌿 Quaresma de São José',
+        '/quaresmas/quaresma-santo-antonio.html': '🙏 Quaresma de Santo Antônio',
+        '/quaresmas/quaresma-nossa-senhora-aparecida.html': '🌹 Quaresma de N. Sra. Aparecida',
+        '/quaresmas/quaresma-espirito-santo.html': '🔥 Quaresma do Espírito Santo',
+        '/quaresmas/quaresma-nossa-senhora-carmo.html': '🌹 Quaresma de N. Sra. do Carmo',
+        '/quaresmas/quaresma-santa-teresinha.html': '🌸 Quaresma de Santa Teresinha',
+        '/quaresmas/quaresma-sao-francisco.html': '🐦 Quaresma de São Francisco',
+        '/quaresmas/quaresma-natal.html': '🎄 Quaresma do Natal'
     };
 
     // Save current page visit

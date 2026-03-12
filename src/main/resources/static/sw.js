@@ -1,4 +1,4 @@
-var CACHE_NAME = 'fecatolica-cache-v13';
+var CACHE_NAME = 'fecatolica-cache-v14';
 var URLS_PRE_CACHE = [
     '/',
     '/imagens/favicon.svg',
@@ -76,6 +76,11 @@ var URLS_PRE_CACHE = [
     '/quaresmas/quaresma-santa-teresinha.html',
     '/quaresmas/quaresma-sao-francisco.html',
     '/quaresmas/quaresma-natal.html',
+    '/quaresmas/quaresma-liturgica.html',
+    '/quaresmas/quaresma-sao-miguel.html',
+    '/quaresmas/quaresma-sao-jose.html',
+    '/quaresmas/quaresma-santo-antonio.html',
+    '/quaresmas/quaresma-nossa-senhora-aparecida.html',
     '/oracoes/bem-aventurancas.html',
     '/oracoes/obras-misericordia.html',
     '/oracoes/oracoes-eucaristicas.html',

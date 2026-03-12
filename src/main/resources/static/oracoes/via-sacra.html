@@ -223,7 +223,7 @@
             // Streak / localStorage
             if (current === stations.length - 1) {
                 localStorage.setItem('viaSacra_completed_' + new Date().toISOString().slice(0,10), 'true');
-                if (window.FeStreaks) window.FeStreaks.record();
+                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
             }
         }
 
@@ -240,5 +240,6 @@
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
 </body>
 </html>

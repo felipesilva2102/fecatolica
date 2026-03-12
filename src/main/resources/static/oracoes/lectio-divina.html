@@ -302,7 +302,7 @@
             localStorage.setItem('lectio_history', JSON.stringify(history));
             localStorage.setItem('lectio_' + today, 'true');
 
-            if (window.FeStreaks) window.FeStreaks.record();
+            if (window.FeStreaks) window.FeStreaks.registrarAtividade();
             $('#completionCard').fadeIn(300);
             $('html, body').animate({scrollTop: $('#completionCard').offset().top - 80}, 300);
         };
@@ -311,5 +311,6 @@
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
 </body>
 </html>

@@ -231,7 +231,7 @@
             });
             saveEntries(entries);
 
-            if (window.FeStreaks) window.FeStreaks.record();
+            if (window.FeStreaks) window.FeStreaks.registrarAtividade();
 
             $('#saveMsg').html('<div class="msg-success">✅ Registro salvo com sucesso!</div>').show();
             setTimeout(function() { $('#saveMsg').fadeOut(); }, 3000);
@@ -302,5 +302,6 @@
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
 </body>
 </html>
