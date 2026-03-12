@@ -449,7 +449,14 @@ function initFavorites() {
         '/quaresmas/quaresma-nossa-senhora-carmo.html': '🌹 Quaresma de N. Sra. do Carmo',
         '/quaresmas/quaresma-santa-teresinha.html': '🌸 Quaresma de Santa Teresinha',
         '/quaresmas/quaresma-sao-francisco.html': '🐦 Quaresma de São Francisco',
-        '/quaresmas/quaresma-natal.html': '🎄 Quaresma do Natal'
+        '/quaresmas/quaresma-natal.html': '🎄 Quaresma do Natal',
+        '/tercos/terco-sao-miguel.html': '⚔️ Terço de São Miguel',
+        '/oracoes/primeiras-sextas.html': '❤️‍🔥 Nove Primeiras Sextas',
+        '/ladainhas/ladainha-divina-misericordia.html': '🙏 Lad. Divina Misericórdia',
+        '/vida-espiritual/promessas-rosario.html': '📿 Promessas do Rosário',
+        '/vida-espiritual/padres-igreja.html': '📜 Padres da Igreja',
+        '/vida-espiritual/dogmas-marianos.html': '👑 Dogmas Marianos',
+        '/oracoes/oracoes-protecao.html': '🛡️ Orações de Proteção'
     };
 
     // Save current page visit
