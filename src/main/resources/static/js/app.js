@@ -467,7 +467,13 @@ function initFavorites() {
         '/vida-espiritual/mistica-crista.html': '✨ Mística Cristã',
         '/oracoes/via-matris.html': '🌹 Via Matris — Dores de Maria',
         '/tercos/terco-santa-teresinha.html': '🌹 Terço de Sta. Teresinha',
-        '/ladainhas/ladainha-sao-miguel.html': '⚔️ Ladainha de São Miguel'
+        '/ladainhas/ladainha-sao-miguel.html': '⚔️ Ladainha de São Miguel',
+        '/vida-espiritual/heresias-historicas.html': '🛡️ Heresias Históricas',
+        '/vida-espiritual/sacramentais.html': '💧 Sacramentais',
+        '/vida-espiritual/ritos-catolicos.html': '⛪ Ritos Católicos',
+        '/vida-espiritual/evangelhos-explicados.html': '📖 Os Quatro Evangelhos',
+        '/vida-espiritual/vida-monastica.html': '🙇 Vida Monástica',
+        '/vida-espiritual/apologetica-catolica.html': '🧠 Apologética Católica'
     };
 
     // Save current page visit
