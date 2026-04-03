@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora das Graças — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>⭐ Terço de Nossa Senhora das Graças</h1>
+                <p class="lead">Devoção à Virgem da Medalha Milagrosa — Mãe cheia de graça, Mediatriz de todas as graças e Imaculada Conceição.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>"Ó Maria, concebida sem pecado, rogai por nós que a Vós recorremos!"</em> — Festa: 27 de novembro</p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora das Graças</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora das Graças</strong> está ligado à aparição de Maria à noviça Santa Catarina Labouré, em 27 de novembro de 1830, na Rue du Bac, em Paris. Nessa aparição, Nossa Senhora pediu que fosse cunhada a <strong>Medalha Milagrosa</strong> com a inscrição: <em>"Ó Maria concebida sem pecado, rogai por nós que recorremos a Vós."</em></p><p>A medalha espalhou-se rapidamente pelo mundo, acompanhada de inúmeras graças e conversões. O título "das Graças" expressa a generosidade maternal de Maria, que distribui abundantes graças a todos que a invocam com fé. A festa da Medalha Milagrosa é celebrada em 27 de novembro.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração da Medalha Milagrosa</li><li>5 dezenas meditando as graças concedidas por Maria</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração da Medalha Milagrosa:</em> Ó Maria concebida sem pecado, rogai por nós que recorremos a Vós. Virgem poderosa e cheia de graça, sede nossa Mãe e nossa protetora. Derramai sobre nós as graças de que tanto necessitamos e intercedei por nós junto ao Vosso Divino Filho. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">⭐ Oração Final a N. Sra. das Graças</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Ó Nossa Senhora das Graças,<br/>
+                que aparecestes a Santa Catarina Labouré<br/>
+                transbordante de luz e grças,<br/>
+                derramai sobre nós e sobre o mundo inteiro<br/>
+                a torrente das graças de que necessitamos.
+            </p>
+            <div style="background:#e8f4fd;border-left:4px solid #1a6b99;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Jaculatória da Medalha (3 vezes):</strong><br/>
+                    <em>"Ó Maria, concebida sem pecado, rogai por nós que a Vós recorremos!"</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço de N. Sra. das Graças! Que a Medalha Milagrosa vos proteja!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço de Nossa Senhora das Graças — FeCatolica" data-partilhar-texto="Reze o Terço de N. Sra. das Graças no FeCatolica — Ó Maria, concebida sem pecado!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — A Aparição e a Medalha Milagrosa',
+                meditation: 'Contemplamos a aparição de Nossa Senhora a Santa Catarina Labouré em 1830, na rue du Bac em Paris, quando Maria mostrou a Medalha e pediu que fosse cunhada: "Quem a usar com fé receberá grandes graças."',
+                jaculatoria: 'Ó Maria, que vos dignaístes aparecer a Catarina, ensinai-nos a confiar em vossas graças.'
+            },
+            {
+                title: '2ª Dezena — Maria, a Imaculada Conceição',
+                meditation: 'Meditamos o mistério da Imaculada Conceição de Maria — preservada do pecado original desde o primeiro instante de sua concepção, cheia de graça antes mesmo de nascer. Fundamento de toda a sua grandeza.',
+                jaculatoria: 'Maria Imaculada, cheia de graça desde a origem, tornai-nos dignos das promessas de Cristo.'
+            },
+            {
+                title: '3ª Dezena — Maria, Mãe e Mediatriz de Todas as Graças',
+                meditation: 'Refletimos sobre o papel de Maria como Mediatriz: todas as graças passam por suas mãos maternas antes de chegarem a nós. Na Medalha, os raios luminosos que saem de seus dedos representam essa torrente de graças.',
+                jaculatoria: 'Ó Maria, canal de todas as graças divinas, nunca cessei de buscar tua intercessão.'
+            },
+            {
+                title: '4ª Dezena — Maria, Nossa Mãe e Rainha',
+                meditation: 'Veneramos Maria como nossa Mãe e Rainha — coroada de doze estrelas, pisando a serpente, rodeada do globo do mundo que ela ampara. Nossa Senhora das Graças cuida de cada filho com amor materno.',
+                jaculatoria: 'Rainha das Graças, sede minha Mãe e minha Rainha até a morte.'
+            },
+            {
+                title: '5ª Dezena — Consagração e Fidelidade a N. Sra. das Graças',
+                meditation: 'Contemplamos a missão de Santa Catarina Labouré, que guardou o segredo das aparições por quarenta e seis anos, e nos legou a Medalha. Por ela, milhões receberam graças e conversões.',
+                jaculatoria: 'Nossa Senhora das Graças, recebei-nos sob vossa proteção para sempre.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

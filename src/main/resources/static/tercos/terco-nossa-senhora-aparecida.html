@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora Aparecida — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#003d7a"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🇧🇷 Terço de Nossa Senhora Aparecida</h1>
+            <p class="lead">Devoção à Padroeira do Brasil, Nossa Senhora da Conceição Aparecida, cuja imagem milagrosamente surgiu das águas do rio Paraíba do Sul em 1717.</p>
+            <p class="muted">"Virgem Aparecida, Mãe do povo brasileiro, rogai por nós!"</p>
+        </header>
+    </div>
+
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora Aparecida</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora Aparecida</strong> é uma devoção especial à Padroeira do Brasil, meditando sobre a história do achado da imagem, os milagres, a fé do povo brasileiro e a proteção maternal de Maria.</p>
+                    <p>A imagem de Nossa Senhora da Conceição foi encontrada por pescadores nas águas do rio Paraíba do Sul, em Guaratinguetá (SP), no dia 12 de outubro de 1717, e desde então tornou-se o maior símbolo de fé do Brasil.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e consagração a Nossa Senhora Aparecida</li>
+                        <li>5 dezenas com meditações sobre a história e devoção</li>
+                        <li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li>
+                        <li>Jaculatória: <em>"Nossa Senhora Aparecida, rogai por nós!"</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p>
+                    <p><em>Oferecimento:</em> Ó Maria Santíssima, Senhora Aparecida, eu me consagro a Vós, hoje e sempre, de corpo e alma, com tudo o que sou e possuo. Recebei-me como vosso(a) filho(a) e servidor(a). Protegei-me em todas as necessidades, defendei-me dos perigos e guiai-me no caminho da santidade. Amém.</p>
+                    <p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus; está sentado à direita de Deus Pai todo-poderoso; donde há de vir a julgar os vivos e os mortos. Creio no Espírito Santo; na Santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+                    <p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- As 5 Dezenas -->
+    <div id="decadesContainer"></div>
+
+    <!-- Oração Final -->
+    <div class="card" id="sectionFinal" style="display:none;">
+        <h2 style="text-align:center;margin-top:0;">🇧🇷 Oração Final</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oração a Nossa Senhora Aparecida</div>
+                <div class="accordion-content">
+                    <p>Ó incomparável Senhora da Conceição Aparecida, Mãe de meu Deus, Rainha dos Anjos, Advogada dos pecadores, Refúgio e Consolação dos aflitos e atribulados, Virgem Santíssima, cheia de poder e bondade, lançai sobre nós um olhar favorável, para que em todas as nossas necessidades possamos alcançar as graças de que tanto precisamos.</p>
+                    <p>Lembrai-vos, piedosa Mãe, que não se consta que de todos os que têm a Vós recorrido e invocado Vossa proteção, nenhum tenha sido por Vós desamparado.</p>
+                    <p>Animado(a) com esta confiança, a Vós recorro, tomo-Vos de hoje em diante por minha Mãe, minha protetora e minha guia. Cobri com Vosso manto de amor o Brasil inteiro e todos os que Vos invocam. Amém.</p>
+                </div>
+            </div>
+        </div>
+        <div class="msg-success" style="margin-top:16px;text-align:center;">
+            ✅ Terço de Nossa Senhora Aparecida concluído! Que a Padroeira do Brasil interceda por você e por nossa nação!
+        </div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de Nossa Senhora Aparecida no FeCatolica! 🇧🇷" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+        {
+            title: "1ª Dezena — O Achado Milagroso (1717)",
+            meditation: "Em 1717, três pescadores — Domingos Garcia, Felipe Pedroso e João Alves — lançaram suas redes no rio Paraíba do Sul sem nada pescar. João Alves puxou primeiro o corpo de uma imagem de Nossa Senhora, e depois a cabeça. Desde esse momento, a pesca tornou-se abundante. Meditemos sobre como Deus age por meios simples e inesperados, usando pessoas humildes para realizar seus planos de amor.",
+            jaculatoria: "Nossa Senhora Aparecida, rogai por nós que recorremos a Vós!"
+        },
+        {
+            title: "2ª Dezena — Os Primeiros Milagres",
+            meditation: "A pequena imagem de barro escurecida pelas águas começou a operar prodígios: cadeias de escravos que se rompiam, enfermos que se curavam, tempestades que cessavam. O povo reconheceu naquela imagem a presença amorosa de Maria. Meditemos sobre a fé simples que abre caminho para a ação de Deus em nossas vidas e peçamos essa mesma confiança filial.",
+            jaculatoria: "Nossa Senhora Aparecida, aumentai a nossa fé!"
+        },
+        {
+            title: "3ª Dezena — A Devoção do Povo Brasileiro",
+            meditation: "De uma humilde oratória de pescadores, a devoção cresceu e espalhou-se por todo o Brasil. Famílias se reuniam para rezar diante da imagem, romeiros atravessavam longas distâncias a pé. Em 1904, a imagem foi solenemente coroada, e em 1930, Pio XI proclamou Nossa Senhora Aparecida Padroeira do Brasil. Meditemos sobre como a fé de um povo inteiro se nutre pela oração e pela confiança em Maria.",
+            jaculatoria: "Nossa Senhora Aparecida, Padroeira do Brasil, protegei-nos!"
+        },
+        {
+            title: "4ª Dezena — O Santuário Nacional e a Fé Viva",
+            meditation: "A Basílica de Nossa Senhora Aparecida, o maior santuário mariano do mundo, acolhe milhões de peregrinos todos os anos. Ali, o povo deposita suas dores, esperanças e gratidão aos pés de Maria. Meditemos sobre a Igreja peregrina, povo de Deus em caminhada, que encontra em Maria a Mãe que acolhe, consola e conduz a Jesus.",
+            jaculatoria: "Nossa Senhora Aparecida, guiai a Igreja no Brasil!"
+        },
+        {
+            title: "5ª Dezena — Maria, Mãe da Esperança e da Unidade",
+            meditation: "Nossa Senhora Aparecida é sinal de esperança para o povo brasileiro: nos momentos de crise, de divisão e de sofrimento, Maria nos convida à unidade, à reconciliação e à confiança em Deus. Como Mãe, ela reúne todos os seus filhos sem distinção. Meditemos sobre o chamado de Maria à paz, à fraternidade e à construção de um Brasil mais justo e mais santo.",
+            jaculatoria: "Nossa Senhora Aparecida, Mãe da esperança, cobri o Brasil com Vosso manto!"
+        }
+    ];
+
+    FeBeads.build({ themeColor: '#003d7a', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

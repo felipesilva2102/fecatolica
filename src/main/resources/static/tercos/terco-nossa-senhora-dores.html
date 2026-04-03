@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora das Dores — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>💙 Terço de Nossa Senhora das Dores</h1>
+                <p class="lead">Devoção às Sete Dores de Maria Santíssima — a Mãe Dolorosa que uniu seu coração ao sofrimento redentor de Jesus, tornando-se Co-redentora da humanidade.</p>
+                <p class="muted" style="margin-top:6px;">⚔️ <em>"E a tua própria alma, uma espada traspassará."</em> (Lc 2,35) — Festa: 15 de setembro</p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora das Dores</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora das Dores</strong> medita sobre os sofrimentos que Maria Santíssima padeceu ao longo de sua vida, unidos à Paixão de seu Filho Jesus. A devoção às Sete Dores de Maria é antiquíssima na Igreja, celebrada desde o século XIII pela Ordem dos Servitas.</p><p>As sete dores são: a profecia de Simeão, a fuga para o Egito, a perda do Menino Jesus no Templo, o encontro com Jesus a caminho do Calvário, a crucifixão, a descida da cruz e a sepultura de Jesus. A festa de Nossa Senhora das Dores é celebrada em 15 de setembro, dia seguinte à Exaltação da Santa Cruz.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oferecimento às Dores de Maria</li><li>5 dezenas meditando os sofrimentos de Nossa Senhora</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oferecimento:</em> Ó Maria Dolorosa, Mãe das Dores, eu me uno aos Vossos sofrimentos e ofereço este terço em reparação ao Vosso Imaculado Coração trespassado pela espada. Concedei-nos a graça de compreender o valor redentor do sofrimento unido à Cruz de Cristo. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">💙 Oração Final a Nossa Senhora das Dores</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Ó Maria, Mãe das Dores e da Misericórdia,<br/>
+                que conhecestes o maior amor e a maior dor<br/>
+                ao lado da Cruz de vosso Filho,<br/>
+                obtende-nos o dom das lágrimas e da contrição,<br/>
+                para que na hora da nossa morte<br/>
+                encontremos o acolhimento de voss'alma maternal.
+            </p>
+            <div style="background:#f3e5f5;border-left:4px solid #800080;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Jaculatória (3 vezes):</strong><br/>
+                    <em>"Mãe das Dores, pela espada que traspassou vossa alma, salvai-nos!"</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço de Nossa Senhora das Dores! Maria Dolorosa, rogai por nós!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço de N. Sra. das Dores — FeCatolica" data-partilhar-texto="Reze o Terço de Nossa Senhora das Dores — Mãe Dolorosa, rogai por nós!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — A Profecia de Simeão',
+                meditation: 'Meditamos a primeira dor de Maria: quando levou o Menino Jesus ao Templo e o ancião Simeão profetizou que uma espada traspassaria a alma da Mãe, anunciando o sofrimento redentor que viria.',
+                jaculatoria: 'Maria, que desde cedo oferecestes o vosso coração ao sofrimento redentor, dai-nos docilidade à vontade de Deus.'
+            },
+            {
+                title: '2ª Dezena — A Fuga para o Egito',
+                meditation: 'Contemplamos a segunda dor de Maria: o anjo ordenou a José que fugisse com o Menino Jesus para o Egito para escapar de Herodes. A Sagrada Família tornou-se refugiada em terra estranha.',
+                jaculatoria: 'Maria, que sofreste o exílio e a incerteza, protege todas as famílias em perigo.'
+            },
+            {
+                title: '3ª Dezena — Jesus Perdido no Templo por Três Dias',
+                meditation: 'Meditamos a terceira dor de Maria: a angústia de três longos dias procurando o filho de 12 anos, até encontrá-lo no Templo. Três dias que prefiguravam os três dias no sepulcro.',
+                jaculatoria: 'Maria, que buscaste Jesus com perseverança, ajuda-nos a nunca cessar de buscá-Lo.'
+            },
+            {
+                title: '4ª Dezena — Maria encontra Jesus na Via Sacra e ao pé da Cruz',
+                meditation: 'Contemplamos a quarta e quinta dores juntas: Maria encontra Jesus carregando a Cruz — olhar que partiu dois corações — e então permanece ao pé da Cruz por três horas, unindo seu sofrimento ao sacrifício redentor do Filho.',
+                jaculatoria: 'Maria, Mãe da Esperança ao pé da Cruz, ensina-nos a oferecer nosso sofrimento em união com Cristo.'
+            },
+            {
+                title: '5ª Dezena — O Descimento da Cruz e a Sepultura de Jesus',
+                meditation: 'Meditamos a sexta e sétima dores: Maria recebeu nos braços o corpo de Jesus descido da Cruz — a Pietà — e depois o acompanhou até o sepulcro, onde O viu ser sepultado. Permaneceu só, mas com a fé inabalável na ressurreição prometida.',
+                jaculatoria: 'Maria, Mãe de toda consolação, que tua fé inabalável fortaleça nossa esperança na ressurreição.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

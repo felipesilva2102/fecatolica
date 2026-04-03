@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Missa Tradicional Latina — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .latim-box { background:rgba(201,168,76,0.08); border-left:4px solid #c9a84c; padding:0.8rem 1rem; border-radius:0 6px 6px 0; margin:.5rem 0; }
+        .latim-box .lat { font-style:italic; font-weight:600; color:#8b6820; }
+        .latim-box .pt { color:#555; font-size:.9rem; margin-top:.2rem; }
+        .parte-missa { display:flex; align-items:flex-start; gap:1rem; padding:.75rem; border-radius:8px; background:#f8f9fa; margin:.4rem 0; }
+        .parte-num { font-size:1.4rem; font-weight:700; color:#1a4f89; min-width:2.5rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>⛪ Missa Tradicional Latina</h1>
+            <p class="lead">A Forma Extraordinária do Rito Romano — o rito codificado por São Pio V em 1570, celebrado por séculos na Igreja latina.</p>
+            <p class="muted"><em>"Introibo ad altare Dei — Subirei ao altar de Deus."</em></p>
+        </header>
+    </div>
+
+    <!-- O que é -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📜 O que é a Missa Tradicional Latina?</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Forma Extraordinária do Rito Romano</div>
+                <div class="accordion-content" style="display:block;">
+                    <p>A Missa Tradicional Latina (MTL), também chamada <em>Forma Extraordinária</em> do Rito Romano ou <em>Missa Tridentina</em> (pois foi sistematizada no Concílio de Trento), é o rito de Missa que o Papa São Pio V codificou em 1570 com o Missal Romano. Esse rito, com raízes que remontam aos primeiros séculos, foi a forma comum da Missa Romana por mais de 400 anos até a reforma litúrgica de Paulo VI (Novus Ordo, 1969).</p>
+                    <p>O Papa Bento XVI, com o Motu Proprio <em>Summorum Pontificum</em> (2007), declarou que o Missal de 1962 (última editio typica anterior ao Concílio Vaticano II) nunca havia sido abolido e liberalizou sua celebração, chamando-o de "Forma Extraordinária." O Papa Francisco, com <em>Traditionis Custodes</em> (2021), restringiu novamente sua celebração à autorização do bispo diocesano.</p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Características Gerais</div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Língua:</strong> Inteiramente em latim (exceto o sermão e as leituras, que podem ser proclamadas também em vernáculo);</li>
+                        <li><strong>Orientação:</strong> Sacerdote e fiéis voltados para o Oriente (ad Orientem), ou para o leste simbólico — Cristo que vem;</li>
+                        <li><strong>Cânon Romano:</strong> Rezado em silêncio (Canon "secreto") — expressa a transcendência do sacrifício;</li>
+                        <li><strong>Postura:</strong> Comunhão recebida na língua e ajoelhado (na grade de comunhão);</li>
+                        <li><strong>Gestos:</strong> Muitas genuflexões, inclinações, sinais da cruz — riqueza ritual;</li>
+                        <li><strong>Silêncio:</strong> Muito silêncio sagrado, estimulando contemplação;</li>
+                        <li><strong>Missal de pé:</strong> Fiéis seguem com missal bilíngue latino-português.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partes da Missa -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🕯️ As Partes da Missa</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Missa dos Catecúmenos (Liturgia da Palavra)</div>
+                <div class="accordion-content" style="display:block;">
+                    <div class="parte-missa">
+                        <span class="parte-num">1</span>
+                        <div><strong>Orações ao Pé do Altar (Introibo)</strong><div class="latim-box"><span class="lat">Introibo ad altare Dei. Ad Deum qui laetificat iuventutem meam.</span><span class="pt">Subirei ao altar de Deus — a Deus que alegra a minha juventude.</span></div>Salmo 42, confissão mútua dos pecados (Confiteor), absolvição.</div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">2</span>
+                        <div><strong>Introito</strong><p>Antífona cantada (ou recitada) que abre o Próprio da Missa — varia sacerdote.</p></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">3</span>
+                        <div><strong>Kyrie, Glória</strong><div class="latim-box"><span class="lat">Kyrie eleison. Christe eleison. Kyrie eleison.</span><span class="pt">Senhor, tende piedade. Cristo, tende piedade. Senhor, tende piedade.</span></div></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">4</span>
+                        <div><strong>Coleta, Epístola, Gradual, Evangelho</strong><p>Orações e leituras do Próprio. Sacerdote lê ao altar; diácono ou subdiácono cantam. Entre Epístola e Evangelho: Gradual (Aleluia ou Trato).</p></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">5</span>
+                        <div><strong>Sermão e Credo</strong><div class="latim-box"><span class="lat">Credo in unum Deum, Patrem omnipotentem...</span><span class="pt">Creio em um só Deus, Pai todo-poderoso...</span></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Missa dos Fiéis (Liturgia Eucarística)</div>
+                <div class="accordion-content">
+                    <div class="parte-missa">
+                        <span class="parte-num">6</span>
+                        <div><strong>Ofertório</strong><p>Pão e vinho são oferecidos ao altar com orações ricas. Incluem a oração de oferta (<em>Suscipe, Sancte Pater</em>), mistura de água no vinho (<em>Deus qui humanae... mirabiliter condidisti</em>).</p></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">7</span>
+                        <div><strong>Secreta e Prefácio</strong><p>Oração sobre as oblatas (Secreta) rezada em voz baixa. Prefácio cantado prepara para o Canon:</p><div class="latim-box"><span class="lat">Sursum corda. — Habemus ad Dominum. Gratias agamus Domino Deo nostro. — Dignum et iustum est.</span><span class="pt">Levantai os corações. — Temo-los elevados ao Senhor. Graças demos ao Senhor nosso Deus. — É digno e justo.</span></div></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">8</span>
+                        <div><strong>Canon Romano (em silêncio)</strong><p>O momento mais sagrado. O sacerdote reza em voz muito baixa o Canon, incluindo a consagração. A campainha toca à elevação. Fiéis adoram prostrados ou de cabeça baixa.</p><div class="latim-box"><span class="lat">Hoc est enim corpus meum. — Hic est enim calix sanguinis mei...</span><span class="pt">Pois este é o meu corpo. — Pois este é o cálice do meu sangue...</span></div></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">9</span>
+                        <div><strong>Pater Noster e Comunhão</strong><p>Pai Nosso cantado ou recitado. Fração da hóstia. Agnus Dei. Comunhão do sacerdote. Comunhão dos fiéis na língua, ajoelhados.</p><div class="latim-box"><span class="lat">Domine, non sum dignus ut intres sub tectum meum, sed tantum dic verbo et sanabitur anima mea.</span><span class="pt">Senhor, não sou digno de que Vós entreis em minha morada, mas dizei uma só palavra e minha alma será curada.</span></div></div>
+                    </div>
+                    <div class="parte-missa">
+                        <span class="parte-num">10</span>
+                        <div><strong>Postcomunhão, Ite e Último Evangelho</strong><p>Oração após comunhão. <em>Ite missa est</em> (Ide, a missa está terminada). Bênção final. O sacerdote lê o início do Evangelho de João (Prologue: <em>In principio erat Verbum</em>) como encerramento.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Como acompanhar -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Acompanhar a Missa Latina</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Para Quem Vai pela Primeira Vez</div>
+                <div class="accordion-content" style="display:block;">
+                    <p><strong>Dicas práticas:</strong></p>
+                    <ul>
+                        <li>Obtenha um missal bilíngue (Latim-Português) ou baixe um PDF. Sites como <em>latinmass.org</em> oferecem missais gratuitos;</li>
+                        <li>Não se preocupe em acompanhar tudo — em especial o Canon é silencioso. Use esse tempo para adoração pessoal;</li>
+                        <li>Observe os gestos do sacerdote como sinais do que está acontecendo;</li>
+                        <li>A campainha toca à consagração — momento de genuflexão interior e adoração;</li>
+                        <li>Chegue com antecedência — há orações preparatórias antes da Missa propriamente dita;</li>
+                        <li>Vista-se com reverência — a liturgia convida ao melhor que temos para oferecer a Deus.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Orações Populares em Latim</div>
+                <div class="accordion-content">
+                    <div class="latim-box">
+                        <p class="lat">Anima Christi</p>
+                        <p>Alma de Cristo, santificai-me.<br/>Corpo de Cristo, salvai-me.<br/>Sangue de Cristo, inebriaste.<br/>Água do lado de Cristo, lavai-me.<br/>Paixão de Cristo, fortalecei-me.<br/>Ó bom Jesus, ouvi-me.</p>
+                    </div>
+                    <div class="latim-box">
+                        <p class="lat">Salve Regina</p>
+                        <p>Salve, Rainha, Mãe de misericórdia,<br/>vida, doçura e esperança nossa, salve.<br/>A Vós clamamos, os degredados filhos de Eva.<br/>A Vós suspiramos, gemendo e chorando<br/>neste vale de lágrimas.</p>
+                    </div>
+                    <div class="latim-box">
+                        <p class="lat">Sub Tuum Praesidium</p>
+                        <p>Sob vosso amparo nos refugiamos, ó santa Mãe de Deus.<br/>Não desprezeis as nossas súplicas em nossas necessidades,<br/>mas livrai-nos sempre de todos os perigos,<br/>ó Virgem gloriosa e bendita. (A mais antiga oração mariana — séc. III)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diferenças -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">⚖️ MTL × Novus Ordo — Comparação</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Principais Diferenças</div>
+                <div class="accordion-content" style="display:block;">
+                    <table style="width:100%;border-collapse:collapse;font-size:.9rem;">
+                        <thead><tr style="background:#1a4f89;color:#fff;"><th style="padding:.5rem;">Aspecto</th><th style="padding:.5rem;">MTL (Forma Extraordinária)</th><th style="padding:.5rem;">Novus Ordo (Forma Ordinária)</th></tr></thead>
+                        <tbody>
+                            <tr style="background:#f8f9fa;"><td style="padding:.5rem;font-weight:600;">Língua</td><td style="padding:.5rem;">Latim</td><td style="padding:.5rem;">Vernáculo (português, etc.)</td></tr>
+                            <tr><td style="padding:.5rem;font-weight:600;">Orientação</td><td style="padding:.5rem;">Ad Orientem (para o leste)</td><td style="padding:.5rem;">Versus Populum (para o povo)</td></tr>
+                            <tr style="background:#f8f9fa;"><td style="padding:.5rem;font-weight:600;">Cânon</td><td style="padding:.5rem;">Romano (único, silencioso)</td><td style="padding:.5rem;">4 Preces Eucarísticas</td></tr>
+                            <tr><td style="padding:.5rem;font-weight:600;">Comunhão</td><td style="padding:.5rem;">Na língua, ajoelhado</td><td style="padding:.5rem;">Na mão ou língua, em pé</td></tr>
+                            <tr style="background:#f8f9fa;"><td style="padding:.5rem;font-weight:600;">Leituras</td><td style="padding:.5rem;">1 ano litúrgico</td><td style="padding:.5rem;">3 anos litúrgicos (A, B, C)</td></tr>
+                            <tr><td style="padding:.5rem;font-weight:600;">Participação</td><td style="padding:.5rem;">Participatio actuosa interior</td><td style="padding:.5rem;">Participação verbal e ativa</td></tr>
+                            <tr style="background:#f8f9fa;"><td style="padding:.5rem;font-weight:600;">Silêncio</td><td style="padding:.5rem;">Muito presente (Canon)</td><td style="padding:.5rem;">Menos (tudo proclamado)</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:.8rem;font-size:.85rem;color:#666;">Ambas as formas são válidas e plenamente católicas. A MTL e o Novus Ordo pertencem à mesma tradição e expressam a mesma fé — de modos diferentes, com ênfases diferentes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:2rem;">
+        <p style="font-size:1.1rem;color:#1a4f89;font-weight:600;">⛪ "A beleza de Deus merece a mais bela liturgia que o homem pode oferecer."</p>
+        <p style="color:#666;">Seja pela forma extraordinária ou ordinária, que toda Missa seja uma porta para o Céu.</p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+    $('.accordion-header').click(function(){
+        $(this).next('.accordion-content').slideToggle(200);
+    });
+});
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço da Sagrada Família — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🏠 Terço da Sagrada Família</h1>
+                <p class="lead">Devoção a Jesus, Maria e José — modelo perfeito de família cristã e santuário do amor divino.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>"Sagrada Família de Nazaré, fazei de nossas famílias um lugar de comunhão, escola de oração e berço da vida."</em></p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço da Sagrada Família</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço da Sagrada Família</strong> contempla o mistério da família de Nazaré — Jesus, Maria e José — modelo de toda família cristã. Na humildade de Nazaré, o Filho de Deus viveu trinta anos de vida oculta, santificando o cotidiano da vida familiar com Sua presença.</p><p>A devoção à Sagrada Família ganhou impulso especial com o Papa Leão XIII, que consagrou as famílias cristãs a ela, e com São João Paulo II, que chamou a família de <em>"Igreja doméstica"</em>. A festa da Sagrada Família é celebrada no domingo seguinte ao Natal. Este terço é uma oração especial pelas famílias, pela unidade conjugal e pela educação dos filhos.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e consagração à Sagrada Família</li><li>5 dezenas meditando os mistérios da família de Nazaré</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração:</em> Jesus, Maria e José, Sagrada Família de Nazaré, modelo de toda família cristã, concedei-nos a graça de viver em nosso lar com o mesmo amor, respeito e fé que reinava em vossa casa. Protegei as nossas famílias e todas as famílias do mundo. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🏠 Oração Final da Sagrada Família</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Senhor Jesus Cristo, que sendo submisso a Maria e José<br/>
+                santificaste a vida familiar com virtudes inefáveis,<br/>
+                fazei que, com o exemplo da Sagrada Família,<br/>
+                nossas famílias sejam santuários de amor e paz.
+            </p>
+            <div style="background:#fdf5e6;border-left:4px solid #a0522d;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Bênção da Família:</strong><br/>
+                    <em>Que Jesus abençoe nossa família.<br/>
+                    Que Maria proteja nossa família.<br/>
+                    Que São José guarde nossa família.<br/>
+                    Santa Família de Nazaré, sede nosso modelo e intercessora perante Deus. Amém.</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço da Sagrada Família! Glória a Jesus, Maria e José!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço da Sagrada Família — FeCatolica" data-partilhar-texto="Reze o Terço da Sagrada Família no FeCatolica — Jesus, Maria e José!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — A Anunciação e o Nascimento de Jesus',
+                meditation: 'Contemplamos o "sim" de Maria ao anjo Gabriel e a chegada de Jesus ao mundo — o Verbo feito carne no seio da Sagrada Família.',
+                jaculatoria: 'Jesus nascido de Maria, abençoai as crianças de todas as famílias.'
+            },
+            {
+                title: '2ª Dezena — A Fuga para o Egito e o Retorno',
+                meditation: 'Meditamos o exílio da Sagrada Família: José, obediente, conduz Maria e Jesus em fuga — e depois os guia de volta a Nazaré, terra prometida.',
+                jaculatoria: 'São José, protetor dos fugitivos, acolhei em vosso coração todas as famílias em perigo.'
+            },
+            {
+                title: '3ª Dezena — A Vida Oculta em Nazaré',
+                meditation: 'Refletimos sobre os anos escondidos em Nazaré: Jesus crescia em sabedoria, estatura e graça — santificando o cotidiano com Maria e José.',
+                jaculatoria: 'Jesus, Maria e José, ensinai-nos a santidade no dia a dia.'
+            },
+            {
+                title: '4ª Dezena — Jesus no Templo: Encontro e Perda',
+                meditation: 'Contemplamos a angústia de Maria e José ao perderem Jesus por três dias, e a alegria do reencontro — prefigurando a morte e ressurreição.',
+                jaculatoria: 'Ó Maria, que procurastes Jesus com angústia, ajudai-nos a encontrá-Lo em nossa vida.'
+            },
+            {
+                title: '5ª Dezena — A Santidade do Lar de Nazaré',
+                meditation: 'Veneramos a santidade que floresceu no lar de Nazaré: o amor mútuo, a oração, o trabalho, a obediência — a família como Igreja doméstica.',
+                jaculatoria: 'Santa Família de Nazaré, sede o modelo e amparo de todas as famílias cristãs.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

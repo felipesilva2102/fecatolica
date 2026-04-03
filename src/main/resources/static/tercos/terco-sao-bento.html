@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São Bento — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✝️ Terço de São Bento</h1>
+                <p class="lead">Devoção ao Patriarca do Monasticismo Ocidental — protetor contra o mal, Pai da Europa e padroeiro de uma boa morte cristã.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>"Ora et Labora."</em> (Ora e Trabalha) — Regra de São Bento. Festa: 11 de julho</p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São Bento</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São Bento</strong> honra o Patriarca do Monaquismo Ocidental (480–547), fundador da Ordem Beneditina e autor da <em>Regra de São Bento</em>, cujo lema é <em>"Ora et Labora"</em> (Ora e Trabalha). Bento de Núrsia fundou o célebre mosteiro de Monte Cassino e sua regra moldou a civilização cristã europeia.</p><p>São Bento é especialmente invocado como <strong>protetor contra o mal, feitiçarias, envenenamentos e tentações do demônio</strong>. A <strong>Medalha de São Bento</strong> traz as iniciais de poderosos exorcismos em latim: <em>"Vade Retro Satana!"</em> (Vai para trás, Satanás!). Foi declarado Patrono da Europa por Paulo VI em 1964. Festa: 11 de julho.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial com invocação da Medalha de São Bento</li><li>5 dezenas meditando a vida e os ensinamentos de São Bento</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração a São Bento:</em> Glorioso patriarca São Bento, pai dos monges e protetor dos cristãos, intercedei por nós junto a Deus. Pela vossa poderosa intercessão e pela força da Sagrada Medalha, livrai-nos de todo o mal do corpo e da alma. Amém.</p><p style="text-align:center;font-size:0.92em;color:#555;"><strong>VRSNS MVSMV</strong> — <em>Vade Retro, Satana! Nunquam Suade Mihi Vana!</em></p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">✝️ Oração Final de São Bento</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                São Bento, Pai e Mestre dos monges,<br/>
+                que fundaste mosteiros como faróis de fé n'Europa,<br/>
+                intercedei por nós e por nossa família.<br/>
+                Que a vossa Medalha seja nosso escudo<br/>
+                contra todo poder do maligno.
+            </p>
+            <div style="background:#ecf0f1;border-left:4px solid #2c3e50;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Bênção final (Medallha de São Bento):</strong><br/>
+                    <em>"Pela Cruz de São Bento, que toda maldade seja destruída,<br/>
+                    todo feitiço desfeito, toda escuridão afastada.<br/>
+                    CRUX SANCTI PATRIS BENEDICTI — Que a Cruz do Santo Pai Bento nos proteja!"</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço de São Bento! "Ora et Labora" — Ora e Trabalha!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço de São Bento — FeCatolica" data-partilhar-texto="Reze o Terço de São Bento no FeCatolica — Ora et Labora!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — A Conversão e o Retiro no Deserto',
+                meditation: 'Contemplamos o jovem Bento que, horrorizado com a corrupção de Roma, abandonou tudo e foi viver como eremita na gruta de Subiaco — encontrando a Deus no silêncio e na solidão.',
+                jaculatoria: 'São Bento, que aprendestes a orar no silêncio, ensinai-nos o valor da vida interior.'
+            },
+            {
+                title: '2ª Dezena — O Fundador de Monte Cassino',
+                meditation: 'Meditamos a fundação do mosteiro de Monte Cassino — a casa-mãe do monasticismo ocidental — onde Bento reuniu monges e escreveu sua santa Regra, luz para a vida religiosa de todos os tempos.',
+                jaculatoria: 'São Bento, que construístes o monte santo do Senhor, dai-nos coragem de servi-Lo com fidelidade.'
+            },
+            {
+                title: '3ª Dezena — A Regra: Ora et Labora',
+                meditation: 'Refletimos sobre a Regra de São Bento — um tratado de espiritualidade que santifica a oração, o trabalho e a vida em comunidade. Por ela, milhares de monges encontraram o caminho de Deus.',
+                jaculatoria: 'São Bento, mestre da vida espiritual, ajudai-nos a fazer tudo para a glória de Deus.'
+            },
+            {
+                title: '4ª Dezena — O Patrono da Europa e Protetor contra o Mal',
+                meditation: 'Veneramos São Bento como "Pai da Europa" (proclamado pelo Papa Paulo VI), cujos mosteiros preservaram a fé e a cultura ocidental, e como protetor contra o veneno, o mal e as tentações diabólicas.',
+                jaculatoria: 'São Bento, escudo dos cristãos, protegei nossas famílias com a força de vossa Medalha.'
+            },
+            {
+                title: '5ª Dezena — A Morte Santa de São Bento',
+                meditation: 'Contemplamos a morte gloriosa de São Bento: tendo antecipado o dia de sua partida, recebeu os sacramentos e morreu de pé na igreja, com os braços levantados ao Céu, sustentado pelos irmãos.',
+                jaculatoria: 'São Bento, protetor dos agonizantes, acompanhai-nos até o último suspiro de nossa vida.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

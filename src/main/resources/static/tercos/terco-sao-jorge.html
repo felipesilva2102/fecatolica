@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São Jorge Mártir</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#cc0000"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #cc0000;">
+        <header style="text-align:center;">
+            <h1>🐉 Terço de São Jorge Mártir</h1>
+            <p class="lead">Devoção ao grande mártir e cavaleiro cristão, protetor contra o mal, as tentações e os perigos.</p>
+            <p class="muted">"São Jorge, cavaleiro de Cristo, rogai por nós!" — Celebrado em 23 de abril.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São Jorge</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São Jorge</strong> honra o mártir e soldado cristão, um dos santos mais populares do mundo. Segundo a tradição, Jorge era um oficial romano da Capadócia que se recusou a perseguir cristãos e por isso foi torturado e decapitado no início do século IV, sob o imperador Diocleciano.</p><p>A lenda do dragão simboliza a vitória da fé sobre o mal: Jorge teria libertado uma cidade aterrorizada por um dragão, derrotando-o com o sinal da cruz. São Jorge é <strong>padroeiro da Inglaterra, Portugal, Geórgia, Catalunha e do Rio de Janeiro</strong>, invocado como protetor dos soldados, cavaleiros e de todos que enfrentam batalhas espirituais. Festa: 23 de abril.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a São Jorge</li><li>5 dezenas meditando a coragem e o martírio de São Jorge</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> São Jorge, cavaleiro de Cristo, que pela fé no Senhor ressuscitado vencestes o dragão do medo e do pecado, dai-nos fortaleza para combater os inimigos da alma e perseverar no bem até o fim. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#cc0000;margin-top:0;">🛡️ Oração Final a São Jorge</h3>
+        <p>São Jorge, soldado glorioso de Cristo, que sofrestes tormentos indizíveis pela fé e não apostatais, coloai-nos sob vossa proteção. Defendei-nos dos perigos espirituais e temporais, e sede nosso intercessor no dia do juízo.</p>
+        <blockquote style="border-left: 4px solid #cc0000; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "São Jorge, pelos méritos do vosso martírio e pela vossa intercessão poderosa, protegei-nos de todo o mal e conduzi-nos à vida eterna. Amém."
+        </blockquote>
+        <div class="msg-success">✅ Terço de São Jorge concluído! Que o grande mártir vos proteja de todo mal.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de São Jorge no FeCatolica! 🐉" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — São Jorge, Capitão Romano Cristão',
+        meditation: 'Pelos soldados, policiais e todos que arriscam a vida protegendo os outros.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — O Combate com o Dragão — A Vitória da Fé',
+        meditation: 'Para vencer as tentações do diabo e os vícios que nos escravizam.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — O Martírio e a Recusa de Apostatar',
+        meditation: 'Pelos cristãos perseguidos e pelos que sofrem por causa da fé.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Padroeiro da Inglaterra, Portugal e do Brasil',
+        meditation: 'Pela proteção das nações, das famílias e dos lares cristãos.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — Intercessor nos Momentos de Perigo e Medo',
+        meditation: 'Pela coragem dos cristãos em professar a fé publicamente.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#cc0000', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

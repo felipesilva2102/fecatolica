@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quaresma de N. Sra. da Assunção</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#6a1b9a"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>👑 Quaresma de N. Sra. da Assunção</h1>
+                <p class="lead">40 dias de devoção à Rainha assumida ao Céu — do dia 7 de julho ao dia 15 de agosto.</p>
+                <p class="muted" style="margin-top:6px;">
+                    <em>"Uma grande sinal apareceu no céu: uma Mulher vestida de sol."</em> (Ap 12,1)
+                    — Primícias da ressurreição dos corpos, esperança de nossa glorificação eterna.
+                </p>
+            </header>
+        </div>
+
+        <div id="mensagemDia" style="text-align:center;">
+            <h3 id="qMensagem">📅 Carregando...</h3>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <div class="top-controls">
+                <input type="date" id="dataPicker" style="padding:8px;border-radius:8px;border:1px solid #ccc;"/>
+                <span id="qStatus" style="font-weight:bold;"></span>
+            </div>
+        </div>
+
+        <div id="accordionQuaresma"></div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        function carregarQuaresma(dataStr) {
+            var url = '/api/quaresma/nossa-senhora-assuncao';
+            if (dataStr) url += '?data=' + dataStr;
+
+            $.getJSON(url, function (data) {
+                $('#qMensagem').text('📅 ' + (data.mensagemDia || ''));
+
+                if (data.diaSelecionadoRenderizar) {
+                    $('#qStatus').text('📅 ' + data.mensagemDia).css('color', 'darkblue');
+
+                    var sections = [];
+                    if (data.oracaoPreparatoria) sections.push({title: '🙏 Preparação Diária', content: data.oracaoPreparatoria});
+                    if (data.suplicas) sections.push({title: '📿 As 20 Invocações (Súplica)', content: data.suplicas});
+                    if (data.oracaoFinal) sections.push({title: '✝️ Oração Final', content: data.oracaoFinal});
+                    if (data.jaculatoria) sections.push({title: '✨ Jaculatória', content: data.jaculatoria});
+                    buildAccordion(sections, '#accordionQuaresma');
+                } else {
+                    $('#qStatus').text('📅 ' + data.mensagemDia).css('color', '#b03030');
+                    $('#accordionQuaresma').empty();
+                }
+            });
+        }
+
+        $(function () {
+            carregarQuaresma(null);
+            var hoje = new Date().toISOString().split('T')[0];
+            $('#dataPicker').val(hoje);
+
+            $('#dataPicker').on('change', function () {
+                carregarQuaresma($(this).val());
+            });
+        });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/sw-register.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+</body>
+</html>

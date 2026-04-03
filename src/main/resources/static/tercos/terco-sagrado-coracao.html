@@ -25,59 +25,41 @@
             </header>
         </div>
 
-        <!-- Instrução -->
-        <div class="card" style="text-align:center;">
-            <p class="muted">Utiliza-se o terço comum (5 dezenas). Toque em cada conta para avançar na oração.</p>
-            <div class="beads-legend" style="margin-top:10px;">
-                <span>⚪ Pendente</span>
-                <span>🔵 Atual</span>
-                <span>🟡 Rezada</span>
-            </div>
-        </div>
-
-        <!-- Progresso SVG -->
-        <div class="card beads-card" style="text-align:center;">
-            <svg class="progress-ring" width="100" height="100">
-                <circle class="progress-ring-bg" cx="50" cy="50" r="44" stroke="#e0e0e0" stroke-width="6" fill="none"/>
-                <circle class="progress-ring-fg" id="progressRing" cx="50" cy="50" r="44"
-                        stroke="#c0392b" stroke-width="6" fill="none"
-                        stroke-dasharray="276.46" stroke-dashoffset="276.46"
-                        stroke-linecap="round" transform="rotate(-90 50 50)"/>
-                <text x="50" y="54" text-anchor="middle" font-size="16" fill="#333" id="progressText">0%</text>
-            </svg>
-            <div class="progress-bar-linear" style="margin-top:10px;">
-                <div class="progress-bar-fill" id="linearBar" style="width:0%;"></div>
-            </div>
-        </div>
-
         <!-- Início -->
-        <div class="card" id="sectionInicio">
-            <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
-            <p style="text-align:center;line-height:1.8;">
-                <strong>Sinal da Cruz:</strong><br/>
-                Em nome do Pai, e do Filho, e do Espírito Santo. Amém.
-            </p>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Ato de Consagração ao Sagrado Coração</p>
-                <p style="line-height:1.8;font-style:italic;">
-                    "Sagrado Coração de Jesus, em quem habita corporalmente toda a plenitude da divindade,
-                    a quem todos devemos amar — eu Vos consagro e entrego tudo o que sou e tudo o que tenho.
-                    Reina sobre mim, sobre minha família e sobre tudo o que me pertence.
-                    Doce Coração de Jesus, sede a minha salvação!"
-                </p>
-            </div>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Pai-Nosso</p>
-                <p style="line-height:1.8;">Pai nosso, que estais nos Céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.</p>
-            </div>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Ave-Maria</p>
-                <p style="line-height:1.8;">Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.</p>
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço do Sagrado Coração de Jesus</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço do Sagrado Coração de Jesus</strong> é uma devoção que medita o amor infinito de Cristo pela humanidade, simbolizado pelo Seu Coração trespassado na Cruz. A devoção ao Sagrado Coração teve grande impulso no século XVII, quando Jesus apareceu a <strong>Santa Margarida Maria Alacoque</strong>, religiosa visitandina em Paray-le-Monial (França).</p><p>Nessas aparições (1673-1675), Jesus revelou Seu Coração ardente de amor e pediu a instituição da festa do Sagrado Coração, a comunhão reparadora nas Primeiras Sextas-Feiras e a Hora Santa. Jesus prometeu: <em>"Eu te prometo, no excesso da misericórdia do meu Coração, que o meu amor todopoderoso concederá a todos os que comungarem nas primeiras sextas-feiras, durante nove meses consecutivos, a graça da perseverança final."</em></p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Ato de Consagração ao Sagrado Coração</li><li>5 dezenas meditando o amor do Coração de Jesus</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- 5 Dezenas -->
-        <div id="decadesContainer"></div>
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Ato de Consagração:</em> Sagrado Coração de Jesus, eu me consagro inteiramente a Vós. Sede o Rei do meu coração, da minha família e de todo o meu ser. Confio em Vosso amor infinito e em Vossas promessas. Sagrado Coração de Jesus, eu confio em Vós! Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
 
         <!-- Oração Final -->
         <div class="card" id="sectionFinal" style="display:none;">
@@ -111,113 +93,35 @@
     </div>
 
     <script src="/js/app.js"></script>
-    <script>
-    $(function() {
-        var decades = [
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
             {
-                titulo: '1ª Dezena — O Amor Eterno de Jesus',
-                contaGrandeOracao: '"Sagrado Coração de Jesus, que ardeis de amor por nós, inflamai os nossos corações do amor a Vós."',
-                contaPequenaOracao: '"Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso."',
-                finalDezena: 'Coração de Jesus, fonte de toda consolação, tende piedade de nós.'
+                title: '1ª Dezena — O Amor Eterno de Jesus',
+                jaculatoria: 'Coração de Jesus, fonte de toda consolação, tende piedade de nós.'
             },
             {
-                titulo: '2ª Dezena — A Entrega Total de Jesus',
-                contaGrandeOracao: '"Sagrado Coração de Jesus, que ardeis de amor por nós, inflamai os nossos corações do amor a Vós."',
-                contaPequenaOracao: '"Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso."',
-                finalDezena: 'Coração de Jesus, rei e centro de todos os corações, tende piedade de nós.'
+                title: '2ª Dezena — A Entrega Total de Jesus',
+                jaculatoria: 'Coração de Jesus, rei e centro de todos os corações, tende piedade de nós.'
             },
             {
-                titulo: '3ª Dezena — A Mansidão e Humildade de Jesus',
-                contaGrandeOracao: '"Sagrado Coração de Jesus, que ardeis de amor por nós, inflamai os nossos corações do amor a Vós."',
-                contaPequenaOracao: '"Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso."',
-                finalDezena: 'Coração de Jesus, obediente até a morte, tende piedade de nós.'
+                title: '3ª Dezena — A Mansidão e Humildade de Jesus',
+                jaculatoria: 'Coração de Jesus, obediente até a morte, tende piedade de nós.'
             },
             {
-                titulo: '4ª Dezena — A Misericórdia do Coração de Jesus',
-                contaGrandeOracao: '"Sagrado Coração de Jesus, que ardeis de amor por nós, inflamai os nossos corações do amor a Vós."',
-                contaPequenaOracao: '"Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso."',
-                finalDezena: 'Coração de Jesus, paciência e misericórdia, tende piedade de nós.'
+                title: '4ª Dezena — A Misericórdia do Coração de Jesus',
+                jaculatoria: 'Coração de Jesus, paciência e misericórdia, tende piedade de nós.'
             },
             {
-                titulo: '5ª Dezena — A Vitória do Amor de Jesus',
-                contaGrandeOracao: '"Sagrado Coração de Jesus, que ardeis de amor por nós, inflamai os nossos corações do amor a Vós."',
-                contaPequenaOracao: '"Jesus, manso e humilde de coração, fazei o meu coração semelhante ao vosso."',
-                finalDezena: 'Coração de Jesus, delícias de todos os Santos, tende piedade de nós.'
+                title: '5ª Dezena — A Vitória do Amor de Jesus',
+                jaculatoria: 'Coração de Jesus, delícias de todos os Santos, tende piedade de nós.'
             }
-        ];
+        ]
 
-        var TOTAL_BEADS = 55; // 5 x (1 + 10)
-        var beadsDone = 0;
-        var circumference = 2 * Math.PI * 44;
-
-        function updateProgress() {
-            var pct = Math.round(beadsDone / TOTAL_BEADS * 100);
-            var offset = circumference - (beadsDone / TOTAL_BEADS) * circumference;
-            $('#progressRing').attr('stroke-dashoffset', offset);
-            $('#progressText').text(pct + '%');
-            $('#linearBar').css('width', pct + '%');
-
-            if (beadsDone >= TOTAL_BEADS) {
-                $('#sectionFinal').slideDown();
-                localStorage.setItem('sagradocoracao_' + new Date().toISOString().slice(0,10), 'true');
-                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
-            }
-        }
-
-        function beadClick() {
-            var $b = $(this);
-            if ($b.hasClass('clicked')) return;
-            $b.removeClass('nextPulse');
-            $b.addClass('clicked');
-            beadsDone++;
-            updateProgress();
-
-            var $next = $b.parent().find('.rosary-bead:not(.clicked)').first();
-            if ($next.length === 0) {
-                var $nextDec = $b.closest('.decade-section').next('.decade-section');
-                if ($nextDec.length) {
-                    $nextDec.find('.accordion-header:not(.active)').click();
-                    $next = $nextDec.find('.rosary-bead:not(.clicked)').first();
-                }
-            }
-            if ($next.length) $next.addClass('nextPulse');
-        }
-
-        var html = '';
-        for (var d = 0; d < 5; d++) {
-            var dec = decades[d];
-            html += '<div class="card decade-section">';
-            html += '<div class="accordion-header' + (d === 0 ? ' active' : '') + '">' + dec.titulo + '</div>';
-            html += '<div class="accordion-content"' + (d === 0 ? ' style="display:block;"' : '') + '>';
-
-            html += '<div style="text-align:center;margin:12px 0;">';
-            html += '<p style="font-weight:600;color:#c0392b;">Conta grande (Pai-Nosso):</p>';
-            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaGrandeOracao + '</p>';
-            html += '<div class="beads-row" style="justify-content:center;margin:8px 0;"><span class="rosary-bead" style="width:30px;height:30px;" data-d="' + d + '"></span></div>';
-            html += '</div>';
-
-            html += '<div style="text-align:center;margin:12px 0;">';
-            html += '<p style="font-weight:600;color:#8b0000;">Contas pequenas (10x):</p>';
-            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaPequenaOracao + '</p>';
-            html += '<div class="beads-row" style="flex-wrap:wrap;justify-content:center;gap:6px;margin:8px 0;">';
-            for (var b = 1; b <= 10; b++) {
-                html += '<span class="rosary-bead" style="width:22px;height:22px;" data-d="' + d + '"></span>';
-            }
-            html += '</div></div>';
-
-            html += '<div style="background:#fff5f5;border-left:3px solid #c0392b;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;text-align:center;">';
-            html += '<p style="margin:0;font-style:italic;color:#7b0000;">' + dec.finalDezena + '</p>';
-            html += '</div>';
-
-            html += '</div></div>';
-        }
-        $('#decadesContainer').html(html);
-
-        $('#decadesContainer').on('click', '.rosary-bead', beadClick);
-
-        $('#decadesContainer .rosary-bead').first().addClass('nextPulse');
-    });
-    </script>
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>

@@ -46,17 +46,23 @@ public class QuaresmaLiturgicaService {
     }
 
     private String getPraticasQuaresmais() {
-        return "• Oracao diaria com a Palavra de Deus\n"
-                + "• Jejum e abstinencia conforme a disciplina da Igreja\n"
-                + "• Confissao e participacao na Eucaristia\n"
-                + "• Caridade concreta aos mais necessitados\n"
-                + "• Penitencia e conversao de vida";
+        return """
+               \u2022 Oracao diaria com a Palavra de Deus
+               \u2022 Jejum e abstinencia conforme a disciplina da Igreja
+               \u2022 Confissao e participacao na Eucaristia
+               \u2022 Caridade concreta aos mais necessitados
+               \u2022 Penitencia e conversao de vida""";
     }
 
     private String getOracaoQuaresmal() {
-        return "Senhor Jesus Cristo,\nneste tempo santo da Quaresma,\ndai-me um coracao humilde e convertido.\n"
-                + "Fortalecei-me na oracao, no jejum e na caridade,\npara que eu celebre com fe viva\n"
-                + "o misterio da vossa Pascoa.\nAmem.";
+        return """
+               Senhor Jesus Cristo,
+               neste tempo santo da Quaresma,
+               dai-me um coracao humilde e convertido.
+               Fortalecei-me na oracao, no jejum e na caridade,
+               para que eu celebre com fe viva
+               o misterio da vossa Pascoa.
+               Amem.""";
     }
 
     private String getLeituraSugerida() {

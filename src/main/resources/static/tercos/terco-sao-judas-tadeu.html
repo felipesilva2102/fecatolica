@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São Judas Tadeu — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✨ Terço de São Judas Tadeu</h1>
+                <p class="lead">Devoção ao Apóstolo das Causas Impossíveis e Desesperadas — intercessor poderoso nos momentos mais difíceis.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>"São Judas Tadeu, apóstolo de Jesus Cristo e servo de Maria, rogai por nós!"</em> — Festa: 28 de outubro</p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São Judas Tadeu</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São Judas Tadeu</strong> honra um dos doze apóstolos de Cristo, também chamado Tadeu ou Lebeu, primo de Jesus segundo a tradição. É autor da <strong>Epístola de Judas</strong> no Novo Testamento, onde exorta os fiéis a "combater pela fé que de uma vez foi transmitida aos santos" (Jd 1,3).</p><p>São Judas Tadeu é invocado como <strong>padroeiro das causas desesperadas e dos casos impossíveis</strong>, possivelmente porque, por ter o mesmo nome de Judas Iscariotes, poucos lhe faziam pedidos — e por isso ele se tornava especialmente dedicado a quem o invocasse. A tradição diz que evangelizou a Mesopotâmia e a Pérsia, onde foi martirizado com uma maça. Festa: 28 de outubro.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a São Judas Tadeu</li><li>5 dezenas meditando a vida apostólica de São Judas</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração a São Judas:</em> São Judas Tadeu, apóstolo de Cristo e parente de Jesus, advogado das causas desesperadas, intercedei por nós. A Vós recorremos com todo o fervor da alma, confiando que não ficaremos desamparados. Alcançai-nos as graças que necessitamos. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">✨ Oração Final a São Judas Tadeu</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Ó São Judas Tadeu, apóstolo grande e admirável,<br/>
+                amigo fiel de Nosso Senhor Jesus Cristo,<br/>
+                vós sois invocado como patrono dos casos impossíveis.<br/>
+                Intercedei por mim junto ao Senhor<br/>
+                e alcançai-me a graça de que necessito.
+            </p>
+            <div style="background:#f3e8ff;border-left:4px solid #4a0080;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Jaculatória:</strong><br/>
+                    <em>"São Judas Tadeu, apóstolo fiel, socorrei-me!"<br/>
+                    "São Judas Tadeu, rogai por nós!"<br/>
+                    (3 vezes)</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço de São Judas Tadeu! Glória ao Pai, ao Filho e ao Espírito Santo!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço de São Judas Tadeu — FeCatolica" data-partilhar-texto="Reze o Terço de São Judas Tadeu no FeCatolica — Apóstolo das Causas Impossíveis!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — São Judas, Apóstolo Escolhido por Jesus',
+                meditation: 'Contemplamos a eleição de Judas Tadeu entre os Doze Apóstolos: Jesus o chamou pelo nome, e ele deixou tudo para segui-Lo fiel até o martírio.',
+                jaculatoria: 'São Judas Tadeu, fiel discípulo de Cristo, fortalecei nossa fé na hora da provação.'
+            },
+            {
+                title: '2ª Dezena — São Judas na Última Ceia',
+                meditation: 'Meditamos a presença de São Judas Tadeu na Última Ceia, onde perguntou a Jesus: "Senhor, como é que vós vos manifestareis a nós e não ao mundo?" (Jo 14,22) — testemunha do amor divino.',
+                jaculatoria: 'Apóstolo amado, que convivestes com o próprio Jesus, conduzí-nos à intimidade com Deus.'
+            },
+            {
+                title: '3ª Dezena — São Judas, Intercessor dos Desesperados',
+                meditation: 'Refletimos sobre o ministério de São Judas Tadeu como padroeiro das causas difíceis e impossíveis — aquele que intercede quando ninguém mais ajuda e a esperança humana falhou.',
+                jaculatoria: 'São Judas Tadeu, nada é impossível para Deus com a tua intercessão.'
+            },
+            {
+                title: '4ª Dezena — São Judas, Pregador do Evangelho',
+                meditation: 'Veneramos São Judas como missionário que levou o Evangelho à Pérsia, Mesopotâmia e outras regiões, enfrentando perseguições com coragem inabalável.',
+                jaculatoria: 'Apóstolo corajoso, que não recuastes diante da perseguição, dai-nos ânimo na fé.'
+            },
+            {
+                title: '5ª Dezena — O Martírio e a Glória de São Judas Tadeu',
+                meditation: 'Contemplamos o martírio de São Judas Tadeu — que ofereceu sua vida por Cristo — e sua glória eterna no Céu, de onde intercede por todos os seus devotos.',
+                jaculatoria: 'São Judas Tadeu, que destes a vida por Jesus, ajudai-nos a viver e morrer por amor a Deus.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

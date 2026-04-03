@@ -126,6 +126,10 @@ function initHamburgerMenu() {
 
 /* ===== Accordion ===== */
 function initAccordions() {
+    // Remove handlers registered inline in individual pages to prevent double-firing.
+    // Inline scripts register direct .click() handlers before app.js runs;
+    // this clears them so only the single delegated handler below fires per click.
+    $('.accordion-header').off('click');
     $(document).on('click', '.accordion-header', function () {
         var $header = $(this);
         var $content = $header.next('.accordion-content');

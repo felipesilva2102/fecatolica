@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Exame de Consciência Interativo — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .exame-secao{margin-bottom:1.5rem;}
+        .exame-secao h3{color:#1a4f89;border-left:4px solid #c9a84c;padding-left:.8rem;margin-bottom:.8rem;}
+        html.dark-mode .exame-secao h3{color:#60a5fa;}
+        .exame-item{display:flex;align-items:flex-start;gap:.7rem;padding:.5rem .3rem;border-bottom:1px solid #eee;cursor:pointer;}
+        html.dark-mode .exame-item{border-bottom-color:#374151;}
+        .exame-item input[type=checkbox]{width:1.1rem;height:1.1rem;accent-color:#1a4f89;flex-shrink:0;margin-top:.15rem;}
+        .exame-item label{cursor:pointer;line-height:1.4;}
+        .exame-item.marcado label{text-decoration:line-through;color:#888;}
+        .resumo-bar{position:sticky;bottom:0;background:#1a4f89;color:#fff;padding:.8rem 1.2rem;border-radius:.5rem .5rem 0 0;text-align:center;font-weight:700;font-size:1.05rem;}
+        .acao-btns{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;}
+        .acao-btns button{padding:.6rem 1.3rem;background:#1a4f89;color:#fff;border:none;border-radius:.4rem;cursor:pointer;font-size:.95rem;}
+        .acao-btns button.sec{background:#2c7a2c;}
+        .acao-btns button:hover{opacity:.85;}
+        .mandamento-num{display:inline-block;background:#c9a84c;color:#fff;border-radius:50%;width:1.6rem;height:1.6rem;text-align:center;line-height:1.6rem;font-weight:700;margin-right:.4rem;flex-shrink:0;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>🙏 Exame de Consciência</h1>
+            <p class="lead">Ferramenta interativa para preparar-se para o Sacramento da Confissão — pergunte-se honestamente diante de Deus.</p>
+            <p class="muted"><em>"Examinai-vos a vós mesmos." — 2Cor 13,5</em></p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="margin-top:0;color:#1a4f89;">Como usar</h2>
+        <ol style="line-height:2;">
+            <li>Comece com uma oração pedindo luz ao Espírito Santo;</li>
+            <li>Marque os itens que se aplicam à sua vida desde a última confissão;</li>
+            <li>No final, revise o resumo e vá à confissão com contrição;</li>
+            <li>Não traga o dispositivo para o confessionário — memorize ou escreva num papel.</li>
+        </ol>
+        <div style="background:#fff3cd;border-left:4px solid #c9a84c;padding:1rem;border-radius:.4rem;margin-top:.5rem;">
+            <strong>Oração antes do exame:</strong><br/>
+            "Vem, Espírito Santo, ilumina minha mente e meu coração. Ajuda-me a conhecer meus pecados com clareza e deles me arrepender sinceramente. Amém."
+        </div>
+    </div>
+
+    <div class="card" id="exame-container"></div>
+
+    <div class="card">
+        <div class="acao-btns">
+            <button onclick="verResumo()">📋 Ver Resumo</button>
+            <button onclick="limparTudo()" class="sec">🔄 Recomeçar</button>
+            <button onclick="window.print()" style="background:#555;">🖨️ Imprimir</button>
+        </div>
+        <div id="resumo-area" style="display:none;margin-top:1rem;background:#f0f4ff;padding:1rem;border-radius:.5rem;">
+            <h3 style="margin-top:0;">Itens marcados:</h3>
+            <ul id="resumo-lista"></ul>
+            <p style="margin-top:.5rem;color:#1a4f89;font-weight:600;">Leve esses itens ao confessionário com contrição sincera e propósito de emenda.</p>
+        </div>
+    </div>
+
+    <div class="resumo-bar" id="resumo-bar">0 itens marcados</div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+const secoes = [
+    { t:"⚠️ Deveres para com Deus (1.º–3.º Mandamentos)", it:[
+        "Duvidei da existência de Deus ou do ensinamento da Igreja?",
+        "Pratiquei ou me interessei por superstição, magia, ocultismo, tarô ou esoterismo?",
+        "Usei o nome de Deus em vão, blasfemei ou amaldiçoei?",
+        "Faltei à Missa dominical por preguiça ou descuido (sem motivo grave)?",
+        "Consagrei pouco ou nenhum tempo à oração?",
+        "Recebi a Eucaristia em estado de pecado grave?",
+        "Não me confessei por longo período (mais de 1 ano)?",
+    ] },
+    { t:"👪 Deveres para com os pais e autoridades (4.º Mandamento)", it:[
+        "Desobedeci ou desrespeitei meus pais ou responsáveis?",
+        "Deixei de cuidar de parentes idosos ou necessitados?",
+        "Fui irresponsável com deveres profissionais ou civis?",
+        "Desrespeitei autoridades legítimas (civis, eclesiásticas)?",
+    ] },
+    { t:"⚔️ Respeito à vida (5.º Mandamento)", it:[
+        "Causei dano físico a outra pessoa?",
+        "Nutri ódio, rancor ou desejo de mal a alguém?",
+        "Cooperei ou me envolvi com aborto?",
+        "Abusou de álcool ou drogas, em si mesmo ou incentivou em outros?",
+        "Deixei-me dominar pela ira de forma excessiva?",
+        "Ofendi verbalmente, humilhei ou fiz bullying com alguém?",
+        "Tive pensamentos suicidas sem buscar ajuda?",
+    ] },
+    { t:"💑 Pureza (6.º e 9.º Mandamentos)", it:[
+        "Pratiquei atos sexuais fora do matrimônio?",
+        "Consenti em pensamentos impuros voluntariamente?",
+        "Usei pornografia ou material obsceno?",
+        "Pratiquei adultério ou traí meu cônjuge?",
+        "Masturbação habitual?",
+        "Usei contracepção artificial no matrimônio (contrária à lei natural)?",
+        "Participei ou incentivei homossexualidade ativa?",
+    ] },
+    { t:"💰 Justiça e propriedade (7.º e 10.º Mandamentos)", it:[
+        "Roubei ou furtei, ainda que pequena coisa?",
+        "Causei dano à propriedade alheia?",
+        "Não restituí o que devo a outros?",
+        "Fraudei em negócios, impostos ou contratos?",
+        "Desperdicei bens sem caridade?",
+        "Cooperei em prejuízo causado à empresa/empregador?",
+        "Nutri inveja grave dos bens do próximo?",
+    ] },
+    { t:"🗣️ Verdade e reputação (8.º Mandamento)", it:[
+        "Menti de forma grave?",
+        "Fiz falso testemunho (em juízo ou na vida comum)?",
+        "Caluniei alguém (atribuindo o que não fez)?",
+        "Detrahí alguém (revelando sem motivo faltas verdadeiras)?",
+        "Fiz fofoca ou espalhai segredos dos outros?",
+        "Guardei segredos que devia revelar por bem de terceiros?",
+    ] },
+    { t:"💗 Amor ao próximo e obras de misericórdia", it:[
+        "Recusei ajudar alguém em necessidade grave, podendo fazê-lo?",
+        "Fui insensível ao sofrimento dos pobres e marginalizados?",
+        "Não visitei doentes, presos ou solitários?",
+        "Prejudiquei a fé de alguém com mau exemplo?",
+        "Deixei de corrigir com caridade quem precisava?",
+    ] },
+];
+
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+
+    let html = '';
+    let id = 0;
+    secoes.forEach(s => {
+        html += `<div class="exame-secao"><h3>${s.t}</h3>`;
+        s.it.forEach(item => {
+            html += `<div class="exame-item" id="wrap-${id}" onclick="toggle(${id})">
+                <input type="checkbox" id="cb-${id}"/>
+                <label for="cb-${id}">${item}</label>
+            </div>`;
+            id++;
+        });
+        html += `</div>`;
+    });
+    document.getElementById('exame-container').innerHTML = html;
+});
+
+function toggle(id) {
+    const el = document.getElementById(`wrap-${id}`);
+    const cb = document.getElementById(`cb-${id}`);
+    cb.checked = !cb.checked;
+    el.classList.toggle('marcado', cb.checked);
+    atualizarResumo();
+}
+function atualizarResumo(){
+    const count = document.querySelectorAll('input[type=checkbox]:checked').length;
+    document.getElementById('resumo-bar').textContent = `${count} item(s) marcado(s)`;
+}
+function verResumo(){
+    const marcados = [...document.querySelectorAll('input[type=checkbox]:checked')];
+    const lista = document.getElementById('resumo-lista');
+    lista.innerHTML = marcados.length === 0
+        ? '<li>Nenhum item marcado.</li>'
+        : marcados.map(el => `<li>${el.closest('.exame-item').querySelector('label').textContent}</li>`).join('');
+    document.getElementById('resumo-area').style.display = 'block';
+    document.getElementById('resumo-area').scrollIntoView({behavior:'smooth'});
+}
+function limparTudo(){
+    document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('.exame-item').forEach(el => el.classList.remove('marcado'));
+    document.getElementById('resumo-area').style.display = 'none';
+    atualizarResumo();
+}
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

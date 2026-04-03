@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São Cristóvão</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#e65100"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #e65100;">
+        <header style="text-align:center;">
+            <h1>🚗 Terço de São Cristóvão</h1>
+            <p class="lead">Devoção ao gigante Reprobos que se tornou portador de Cristo, padroeiro dos viajantes, motoristas e alpinistas, símbolo de quem carrega Cristo ao próximo.</p>
+            <p class="muted">"Cristóvão" vem do grego Χριστόφορος: "portador de Cristo". — Festa: 25 de julho.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São Cristóvão</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São Cristóvão</strong> é uma devoção ao mártir cuja tradição nos conta que carregou o Menino Jesus nos ombros ao atravessar um rio caudaloso. O nome Cristóvão significa literalmente <em>"portador de Cristo"</em> (do grego <em>Christophoros</em>).</p><p>São Cristóvão é um dos <strong>Quatorze Santos Auxiliares</strong> e é invocado como <strong>padroeiro dos viajantes, motoristas e peregrinos</strong>, protetor contra tempestades, peste e morte repentina. A tradição popular diz: <em>"Quem vê São Cristóvão, naquele dia não sofrerá morte má."</em> Sua festa é celebrada em 25 de julho.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a São Cristóvão</li><li>5 dezenas meditando a missão de "carregar Cristo"</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> São Cristóvão, portador de Cristo, que atravessaste as águas turbulentas carregando o Menino Jesus, protegei-nos em todas as nossas viagens e peregrinações. Dai-nos a força para carregar Cristo em nosso coração a cada momento. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#e65100;margin-top:0;">🚗 Oração Final a São Cristóvão</h3>
+        <p>São Cristóvão, que servistes ao maior Rei do mundo ao carregar o Menino Jesus no ombro, continuai a proteger todos os que viajam. Que ao buscar servir ao maior Rei, encontremos sempre Cristo nos mais necessitados e na Eucaristia.</p>
+        <blockquote style="border-left: 4px solid #e65100; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "O que tu carregas é tão pesado que parece que o mundo inteiro está sobre teus ombros." — O Menino Jesus a Reprobos, tradição hagiográfica.
+        </blockquote>
+        <div class="msg-success">✅ Terço de São Cristóvão concluído! Boas viagens sob a proteção do Santo Portador de Cristo.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de São Cristóvão no FeCatolica! 🚗" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — Reprobos Busca Servir ao Maior Rei do Mundo',
+        meditation: 'Por todos que buscam dar sentido às suas vidas através do serviço a Deus.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — O Eremita Aponta Cristo como o Rei Supremo',
+        meditation: 'Pela fé dos pregadores e dos missionários que anunciam Cristo.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — A Travessia do Rio com o Menino Jesus no Ombro',
+        meditation: 'Pela proteção nos caminhos e pelos que viajam em perigo.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — O Peso de Cristo — O Peso da Salvação do Mundo',
+        meditation: 'Por motoristas, pilotos, marinheiros e todos que trabalham no transporte.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — O Martírio de Cristóvão e Sua Glória Eterna',
+        meditation: 'Pelas almas dos que morreram em acidentes e por uma morte santa.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#e65100', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8"/>
@@ -9,7 +9,29 @@
     <link rel="stylesheet" href="/css/print.css" media="print"/>
     <link rel="manifest" href="/manifest.json"/>
     <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Guia completo para uma boa confissão sacramental — exame de consciência, contrição, rito e ação de graças."/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .sin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 600px) { .sin-grid { grid-template-columns: 1fr; } }
+        .sin-card { padding: 18px; border-radius: 12px; }
+        .sin-card h3 { margin-top: 0; }
+        .sin-card ul { font-size: 0.93rem; padding-left: 18px; }
+        .sin-card li { margin-bottom: 6px; }
+        .mortal { background: #fef0f0; border: 1px solid #f5c6c6; }
+        .mortal h3 { color: #c0392b; }
+        .venial { background: #fef9e7; border: 1px solid #f9e79f; }
+        .venial h3 { color: #b7860b; }
+        .step-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--cor-primaria); color: #fff;
+            font-weight: 700; font-size: 0.85rem; margin-right: 8px; flex-shrink: 0;
+        }
+        .accordion-header { border-radius: 8px; margin-bottom: 2px; }
+        .accordion-tab:not(:last-child) { margin-bottom: 4px; }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -28,9 +50,9 @@
     <div class="card">
         <h2>📋 Antes da Confissão</h2>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">1. Exame de Consciência ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">1</span> Exame de Consciência</div>
+            <div class="accordion-content">
                 <p>Reserve um tempo de silêncio e peça ao Espírito Santo que ilumine sua consciência. Examine-se à luz dos <strong>Dez Mandamentos</strong>:</p>
                 <ol>
                     <li><strong>Amar a Deus sobre todas as coisas</strong> — Tenho buscado a Deus em primeiro lugar? Dediquei tempo à oração?</li>
@@ -48,22 +70,22 @@
             </div>
         </div>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">2. Contrição (Arrependimento) ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">2</span> Contrição (Arrependimento)</div>
+            <div class="accordion-content">
                 <p>O arrependimento sincero é a parte mais importante da Confissão. Existem dois tipos:</p>
                 <p><strong>Contrição perfeita:</strong> Sentir pesar por ter ofendido a Deus, que é infinitamente bom — motivada pelo amor a Deus.</p>
                 <p><strong>Contrição imperfeita (atrição):</strong> Sentir pesar pelo temor das penas do inferno ou pela fealdade do pecado — suficiente para o Sacramento.</p>
                 <p>Reze o <strong>Ato de Contrição</strong>:</p>
-                <blockquote style="border-left: 3px solid var(--cor-primaria); padding-left: 12px; color: #555;">
+                <blockquote>
                     Meu Deus, eu me arrependo de todo o coração de Vos ter ofendido, porque sois infinitamente bom e o pecado Vos desagrada. Proponho firmemente, com a ajuda da vossa graça, não mais pecar e fugir das ocasiões de pecado. Amém.
                 </blockquote>
             </div>
         </div>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">3. Propósito de Emenda ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">3</span> Propósito de Emenda</div>
+            <div class="accordion-content">
                 <p>Faça uma resolução sincera de:</p>
                 <ul>
                     <li>Não cometer novamente os mesmos pecados</li>
@@ -79,12 +101,12 @@
     <div class="card">
         <h2>🙏 Durante a Confissão</h2>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">4. Rito da Confissão ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">4</span> Rito da Confissão</div>
+            <div class="accordion-content">
                 <p><strong>O sacerdote inicia:</strong> "Em nome do Pai, do Filho e do Espírito Santo."</p>
                 <p><strong>Você diz:</strong></p>
-                <blockquote style="border-left: 3px solid var(--cor-secundaria); padding-left: 12px;">
+                <blockquote>
                     "Perdoai-me, Padre, porque eu pequei.<br/>
                     Minha última confissão foi há <em>[tempo]</em>.<br/>
                     Acuso-me dos seguintes pecados: ..."
@@ -95,12 +117,12 @@
             </div>
         </div>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">5. Absolvição ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">5</span> Absolvição</div>
+            <div class="accordion-content">
                 <p>O sacerdote pronuncia a fórmula da absolvição:</p>
-                <blockquote style="border-left: 3px solid var(--cor-accent); padding-left: 12px; font-style: italic;">
-                    "Deus, Pai de misericórdia, que, pela morte e ressurreição de seu Filho, reconciliou o mundo consigo e enviou o Espírito Santo para a remissão dos pecados, te conceda, pelo ministério da Igreja, o perdão e a paz. E eu te <strong>absolvo</strong> dos teus pecados, em nome do Pai, e do Filho, e do Espírito Santo."
+                <blockquote>
+                    <em>"Deus, Pai de misericórdia, que, pela morte e ressurreição de seu Filho, reconciliou o mundo consigo e enviou o Espírito Santo para a remissão dos pecados, te conceda, pelo ministério da Igreja, o perdão e a paz. E eu te <strong>absolvo</strong> dos teus pecados, em nome do Pai, e do Filho, e do Espírito Santo."</em>
                 </blockquote>
                 <p><strong>Você responde:</strong> "Amém."</p>
                 <p>O sacerdote pode dizer: "Vai em paz, o Senhor perdoou os teus pecados." E você responde: "Graças a Deus."</p>
@@ -112,12 +134,12 @@
     <div class="card">
         <h2>✨ Depois da Confissão</h2>
 
-        <div class="collapsible">
-            <button class="collapsible-toggle">6. Penitência e Ação de Graças ▾</button>
-            <div class="collapsible-body">
+        <div class="accordion-tab">
+            <div class="accordion-header"><span class="step-badge">6</span> Penitência e Ação de Graças</div>
+            <div class="accordion-content">
                 <p><strong>Cumpra a penitência</strong> dada pelo sacerdote o mais breve possível.</p>
                 <p>Agradeça a Deus pelo Sacramento e pela reconciliação. Reze:</p>
-                <blockquote style="border-left: 3px solid var(--cor-primaria); padding-left: 12px;">
+                <blockquote>
                     Senhor, obrigado por este Sacramento de amor e misericórdia. Agradeço pelo perdão recebido. Ajudai-me a viver em santidade e a evitar o pecado. Fortalecei-me com vossa graça. Nossa Senhora, guiai-me no caminho da conversão. Amém.
                 </blockquote>
             </div>
@@ -140,10 +162,10 @@
     <!-- Pecados mortais vs veniais -->
     <div class="card">
         <h2>📖 Pecado Mortal vs. Venial</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-            <div style="background:#fef0f0;padding:16px;border-radius:12px;border:1px solid #f5c6c6;">
-                <h3 style="color:#c0392b;margin-top:0;">☠️ Pecado Mortal</h3>
-                <ul style="font-size:0.92rem;">
+        <div class="sin-grid">
+            <div class="sin-card mortal">
+                <h3>☠️ Pecado Mortal</h3>
+                <ul>
                     <li>Matéria grave</li>
                     <li>Pleno conhecimento</li>
                     <li>Deliberado consentimento</li>
@@ -151,9 +173,9 @@
                     <li><strong>Deve ser confessado</strong></li>
                 </ul>
             </div>
-            <div style="background:#fef9e7;padding:16px;border-radius:12px;border:1px solid #f9e79f;">
-                <h3 style="color:#d4a017;margin-top:0;">⚠️ Pecado Venial</h3>
-                <ul style="font-size:0.92rem;">
+            <div class="sin-card venial">
+                <h3>⚠️ Pecado Venial</h3>
+                <ul>
                     <li>Matéria leve ou sem plena deliberação</li>
                     <li>Enfraquece a graça mas não a destrói</li>
                     <li>Pode ser perdoado pela oração, esmola e penitência</li>

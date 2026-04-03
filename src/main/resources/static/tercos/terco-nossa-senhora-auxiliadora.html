@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Terço de N. Sra. Auxiliadora</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/acessibilidade.css">
+        <link rel="stylesheet" href="/css/terco-interativo.css">
+        <link rel="stylesheet" href="/css/print.css" media="print">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1565c0">
+        <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="menu-placeholder"></div>
+            <div class="card hero-card" style="border-top: 4px solid #1565c0;">
+                <header style="text-align:center;">
+                    <h1>💙 Terço de Nossa Senhora Auxiliadora</h1>
+                    <p class="lead">Devoção à Auxiliadora dos Cristãos, descoberta por Dom Bosco como mãe e proteção dos jovens e das missões salesianas.</p>
+                    <p class="muted">"Auxiliadora dos Cristãos — ora pro nobis." — Festa: 24 de maio.</p>
+                </header>
+            </div>
+            
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora Auxiliadora</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora Auxiliadora</strong> é uma devoção especial à Virgem Maria sob o título de Auxilium Christianorum (Auxílio dos Cristãos). O título remonta ao século XVI, quando o Papa Pio V atribuiu a vitória na Batalha de Lepanto (1571) à intercessão de Maria.</p><p>São João Bosco foi o grande apóstolo desta devoção no século XIX. Ele construiu a Basílica de Maria Auxiliadora em Turim (1868) e propagou este título mariano por toda a família salesiana. Dom Bosco dizia: <em>"Tudo o que eu fiz, devo a Maria Auxiliadora."</em> A festa é celebrada em 24 de maio.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a Maria Auxiliadora</li><li>5 dezenas meditando o auxílio de Maria</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> Ó Maria Auxiliadora dos Cristãos, Mãe poderosa e protetora dos que Vos invocam, socorrei-nos em nossas necessidades e amparai-nos nos combates da vida. Assim como auxiliastes o Vosso povo ao longo dos séculos, sede também nosso refúgio e nossa fortaleza. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            
+            <div id="decadesContainer"></div>
+            <div id="sectionFinal" class="card fade-in" style="display:none;">
+                <h3 style="color:#1565c0;margin-top:0;">💙 Oração Final a Nossa Senhora Auxiliadora</h3>
+                <p>Nossa Senhora Auxiliadora, assim como ajudastes Dom Bosco a salvar a juventude de Turim, ajudai-nos a descobrir nossa vocação, a vencer as tentações e a perseverar no caminho do Evangelho. Sedes nossa auxiliadora em vida e na hora da morte.</p>
+                <blockquote style="border-left: 4px solid #1565c0; padding-left: 16px; margin: 16px 0; font-style: italic;">
+                    "Confiai em Nossa Senhora Auxiliadora e vereis o que são milagres." — Dom Bosco
+                </blockquote>
+                <div class="msg-success">✅ Terço de Nossa Senhora Auxiliadora concluído! Que Ela interceda por você e por todos os jovens.</div>
+            </div>
+            <button
+                class="btn-share"
+                data-partilhar
+                data-partilhar-texto="Rezei o Terço de Nossa Senhora Auxiliadora no FeCatolica! 💙"
+                style="display:block;margin:12px auto;"
+            >
+                📤 Partilhar esta Devoção
+            </button>
+            <div id="footer-placeholder"></div>
+        </div>
+        <script src="/js/app.js"></script>
+        <script src="/js/terco-interativo.js"></script>
+        <script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — Maria, Auxiliadora dos Cristãos desde Lepanto (1571)',
+        meditation: 'Pela proteção da cristandade e pela conversão dos povos.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — As Visões de Dom Bosco e a Basílica de Valdocco',
+        meditation: 'Pelas vocações salesianas e pela obra em favor dos jovens pobres.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — Nossa Senhora Guia os Jovens pelo Caminho do Bem',
+        meditation: 'Pela juventude em perigo e pelos que buscam um caminho de vida.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Auxiliadora das Missões e das Famílias',
+        meditation: 'Pelos missionários salesianos e pelas famílias em crise.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — Maria Auxiliadora e a Esperança da Vitória Final',
+        meditation: 'Por todos os que estão à beira da morte e necessitam de auxílio espiritual.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#1565c0', decades: decades });
+});
+        </script>
+        <script src="/js/acessibilidade.js"></script>
+        <script src="/js/streaks.js"></script>
+        <script src="/js/partilha.js"></script>
+        <script src="/js/sw-register.js"></script>
+    </body>
+</html>

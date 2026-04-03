@@ -1,9 +1,11 @@
 package com.mycompany.santo.terco.service;
 
 import jakarta.annotation.PostConstruct;
+
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
@@ -13,7 +15,6 @@ public class NovenaRegistry {
     private final Map<String, Object> novenas = new LinkedHashMap<>();
 
     @PostConstruct
-    @SuppressWarnings("unchecked")
     public void init() {
         // Escaneia o pacote de novenas e instancia cada classe
         String pkg = "com.mycompany.santo.terco.novena";
@@ -69,7 +70,7 @@ public class NovenaRegistry {
             try {
                 Class<?> clazz = Class.forName(pkg + "." + classNames[i]);
                 novenas.put(beanNames[i], clazz.getDeclaredConstructor().newInstance());
-            } catch (Exception e) {
+            } catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException e) {
                 System.err.println("Falha ao registrar novena: " + classNames[i] + " -> " + e.getMessage());
             }
         }

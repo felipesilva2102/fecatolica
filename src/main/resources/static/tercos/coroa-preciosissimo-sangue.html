@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Coroa do Preciosíssimo Sangue — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🩸 Coroa do Preciosíssimo Sangue</h1>
+                <p class="lead">Devoção reparadora ao Sangue de Jesus Cristo — ofertado ao Pai Eterno pela salvação do mundo e pela libertação das almas.</p>
+                <p class="muted" style="margin-top:6px;">✨ <em>"Eterno Pai, ofereço-Vos o Sangue Precioso de Jesus Cristo como reparação pelos pecados e pela Santa Igreja."</em> — Festa: 1.º de julho</p>
+            </header>
+        </div>
+
+        <div class="card" style="background:#fff5f5;">
+            <p style="text-align:center;margin:0;color:#5c0000;">Esta coroa contempla os cinco momentos em que Jesus derramou Seu Sangue por nós. Em cada dezena, o Sangue de Cristo é oferecido ao Pai em reparação e súplica.</p>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <p class="muted">Utiliza-se o terço comum (5 dezenas). Toque em cada conta para avançar na oração.</p>
+            <div class="beads-legend" style="margin-top:10px;">
+                <span>⚪ Pendente</span>
+                <span>🔵 Atual</span>
+                <span>🟡 Rezada</span>
+            </div>
+        </div>
+
+        <div class="card beads-card" style="text-align:center;">
+            <svg class="progress-ring" width="100" height="100">
+                <circle class="progress-ring-bg" cx="50" cy="50" r="44" stroke="#e0e0e0" stroke-width="6" fill="none"/>
+                <circle class="progress-ring-fg" id="progressRing" cx="50" cy="50" r="44"
+                        stroke="#8b0000" stroke-width="6" fill="none"
+                        stroke-dasharray="276.46" stroke-dashoffset="276.46"
+                        stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                <text x="50" y="54" text-anchor="middle" font-size="16" fill="#333" id="progressText">0%</text>
+            </svg>
+            <div class="progress-bar-linear" style="margin-top:10px;">
+                <div class="progress-bar-fill" id="linearBar" style="width:0%;background:#8b0000;"></div>
+            </div>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre a Coroa do Preciosíssimo Sangue</div>
+                <div class="accordion-content">
+                    <p>A <strong>Coroa do Preciosíssimo Sangue de Jesus</strong> é uma devoção que medita as sete vezes em que Jesus derramou Seu Sangue redentor: na circuncisão, no Getsêmani, na flagelação, na coroação de espinhos, na subida ao Calvário, na crucifixão e no golpe de lança.</p><p>A devoção ao Sangue de Cristo é antiquíssima na Igreja. São Paulo escreve: <em>"Fostes resgatados pelo precioso Sangue de Cristo, como de um Cordeiro sem defeito e sem mancha"</em> (1Pd 1,19). O mês de julho é tradicionalmente dedicado ao Preciosíssimo Sangue. Esta coroa é uma poderosa oração de reparação e súplica, invocando o Sangue de Cristo como remédio para todos os males.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Ato de Oferecimento do Sangue de Cristo</li><li>7 mistérios das efusões do Sangue de Jesus</li><li>Em cada mistério: 1 Pai-Nosso + 5 Glórias</li><li>Jaculatória ao final</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Ato de Oferta:</em> Eterno Pai, eu Vos ofereço o Preciosíssimo Sangue de Vosso Divino Filho Jesus, em união com as Santas Missas celebradas hoje no mundo inteiro, por todos os pecadores, pelas almas do purgatório e pelas necessidades da Santa Igreja. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+        <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">🩸 Oração Final</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Preciosíssimo Sangue de Jesus,<br/>
+                grito de misericórdia e perdão,<br/>
+                sede nossa força, nossa vida, nossa esperança.<br/>
+                Que este Sangue redentor cubra nossa alma<br/>
+                e nos leve seguros ao Pai Eterno.
+            </p>
+            <div style="background:#fff5f5;border-left:4px solid #8b0000;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Jaculatória final (7 vezes):</strong><br/>
+                    <em>"Eterno Pai, ofereço-Vos o Sangue de Jesus Cristo pelas almas do purgatório."</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou a Coroa do Preciosíssimo Sangue! Louvado seja o Sangue de Cristo!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Coroa do Preciosíssimo Sangue — FeCatolica" data-partilhar-texto="Reze a Coroa do Preciosíssimo Sangue no FeCatolica — Oferta ao Pai Eterno!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    $(function() {
+        var decades = [
+            {
+                titulo: '1ª Dezena — O Sangue da Circuncisão',
+                intencao: 'Contemplamos o primeiro derramamento do Sangue de Jesus na Circuncisão, oito dias após o nascimento. Primeiro sacrifício voluntário: o Filho de Deus começa a redimir desde o berço.',
+                contaGrandeOracao: '"Eterno Pai, ofereço-Vos o Sangue derramado na Circuncisão de Jesus, em reparação pelos pecados da infância e pelos inocentes do mundo!"',
+                contaPequenaOracao: '"Pelo Preciosíssimo Sangue de Jesus, tende misericórdia de nós."',
+                finalDezena: 'Preciosíssimo Sangue da Circuncisão, purificai nossas almas desde a infância.'
+            },
+            {
+                titulo: '2ª Dezena — O Sangue do Horto das Oliveiras',
+                intencao: 'Meditamos a agonia de Jesus no Getsêmani, onde Seu Sangue brotou como suor no chão, sob o peso de todos os pecados do mundo. A maior prova de amor e obediência.',
+                contaGrandeOracao: '"Eterno Pai, ofereço-Vos o Sangue que Jesus suou no Getsêmani por amor a nós, em reparação pela tibieza, a covardia e o abandono dos cristãos!"',
+                contaPequenaOracao: '"Pelo Preciosíssimo Sangue de Jesus, tende misericórdia de nós."',
+                finalDezena: 'Preciosíssimo Sangue do Horto, consolai os que agonizam e sofrem na solidão.'
+            },
+            {
+                titulo: '3ª Dezena — O Sangue da Flagelação',
+                intencao: 'Refletimos sobre a flagelação cruel que rasgou o corpo de Jesus da cabeça aos pés — Sangue derramado por nossos pecados de sensualidade, intemperança e falta de mortificação.',
+                contaGrandeOracao: '"Eterno Pai, ofereço-Vos o Sangue derramado na Flagelação de Jesus, em reparação pelos pecados contra a castidade, a temperança e pela violência do mundo!"',
+                contaPequenaOracao: '"Pelo Preciosíssimo Sangue de Jesus, tende misericórdia de nós."',
+                finalDezena: 'Preciosíssimo Sangue da Flagelação, curai as chagas do mundo e de nossa carne.'
+            },
+            {
+                titulo: '4ª Dezena — O Sangue da Coroação de Espinhos e da Crucifixão',
+                intencao: 'Veneramos o Sangue que escorreu pela testa de Jesus com a coroa de espinhos e que brotou de Suas mãos, pés e lado na Crucifixão — cumprimento perfeito do sacrifício redentor.',
+                contaGrandeOracao: '"Eterno Pai, ofereço-Vos o Sangue da Coroa de Espinhos e das Chagas da Cruz, em reparação pelos pecados de orgulho, blasfêmia e profanação das coisas sagradas!"',
+                contaPequenaOracao: '"Pelo Preciosíssimo Sangue de Jesus, tende misericórdia de nós."',
+                finalDezena: 'Preciosíssimo Sangue da Cruz, sede nossa redenção e nossa glória.'
+            },
+            {
+                titulo: '5ª Dezena — O Sangue e Água do Coração de Jesus',
+                intencao: 'Contemplamos o último derramamento: a lança do soldado que abriu o Coração de Jesus, de onde brotou Sangue e Água — fontes da Igreja, do Batismo e da Eucaristia.',
+                contaGrandeOracao: '"Eterno Pai, ofereço-Vos o Sangue e a Água brotados do Coração Aberto de Jesus, pelas necessidades da Santa Igreja e pela conversão dos moribundos!"',
+                contaPequenaOracao: '"Pelo Preciosíssimo Sangue de Jesus, tende misericórdia de nós."',
+                finalDezena: 'Preciosíssimo Sangue do Coração de Jesus, sede a vida da Igreja e a salvação das almas.'
+            }
+        ];
+
+        var TOTAL_BEADS = 55;
+        var beadsDone = 0;
+        var circumference = 2 * Math.PI * 44;
+
+        function updateProgress() {
+            var pct = Math.round(beadsDone / TOTAL_BEADS * 100);
+            var offset = circumference - (beadsDone / TOTAL_BEADS) * circumference;
+            $('#progressRing').attr('stroke-dashoffset', offset);
+            $('#progressText').text(pct + '%');
+            $('#linearBar').css('width', pct + '%');
+            if (beadsDone >= TOTAL_BEADS) {
+                $('#sectionFinal').slideDown();
+                localStorage.setItem('preciosissimosangue_' + new Date().toISOString().slice(0,10), 'true');
+                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+            }
+        }
+
+        function beadClick() {
+            var $b = $(this);
+            if ($b.hasClass('clicked')) return;
+            $b.removeClass('nextPulse');
+            $b.addClass('clicked');
+            beadsDone++;
+            updateProgress();
+            var $next = $b.parent().find('.rosary-bead:not(.clicked)').first();
+            if ($next.length === 0) {
+                var $nextDec = $b.closest('.decade-section').next('.decade-section');
+                if ($nextDec.length) {
+                    $nextDec.find('.accordion-header:not(.active)').click();
+                    $next = $nextDec.find('.rosary-bead:not(.clicked)').first();
+                }
+            }
+            if ($next.length) $next.addClass('nextPulse');
+        }
+
+        var html = '';
+        for (var d = 0; d < 5; d++) {
+            var dec = decades[d];
+            html += '<div class="card decade-section">';
+            html += '<div class="accordion-header' + (d === 0 ? ' active' : '') + '">' + dec.titulo + '</div>';
+            html += '<div class="accordion-content"' + (d === 0 ? ' style="display:block;"' : '') + '>';
+            html += '<div style="background:#fff5f5;border-left:3px solid #8b0000;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;">';
+            html += '<p style="margin:0;font-size:0.95rem;color:#5c0000;">' + dec.intencao + '</p>';
+            html += '</div>';
+            html += '<div style="text-align:center;margin:12px 0;">';
+            html += '<p style="font-weight:600;color:#8b0000;">Conta grande (Pai-Nosso):</p>';
+            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaGrandeOracao + '</p>';
+            html += '<div class="beads-row" style="justify-content:center;margin:8px 0;"><span class="rosary-bead" style="width:30px;height:30px;" data-d="' + d + '"></span></div>';
+            html += '</div>';
+            html += '<div style="text-align:center;margin:12px 0;">';
+            html += '<p style="font-weight:600;color:#5c0000;">Contas pequenas (10x):</p>';
+            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaPequenaOracao + '</p>';
+            html += '<div class="beads-row" style="flex-wrap:wrap;justify-content:center;gap:6px;margin:8px 0;">';
+            for (var b = 1; b <= 10; b++) {
+                html += '<span class="rosary-bead" style="width:22px;height:22px;" data-d="' + d + '"></span>';
+            }
+            html += '</div></div>';
+            html += '<div style="background:#fff5f5;border-left:3px solid #8b0000;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;text-align:center;">';
+            html += '<p style="margin:0;font-style:italic;color:#5c0000;">' + dec.finalDezena + '</p>';
+            html += '</div>';
+            html += '</div></div>';
+        }
+        $('#decadesContainer').html(html);
+        $('#decadesContainer').on('click', '.rosary-bead', beadClick);
+        $('#decadesContainer .rosary-bead').first().addClass('nextPulse');
+    });
+    </script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

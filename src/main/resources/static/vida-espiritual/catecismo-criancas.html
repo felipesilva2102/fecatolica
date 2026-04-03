@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catecismo para Crianças — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .qa-item { background: linear-gradient(135deg, #f0f7ff, #e8f5e8); border-radius: 10px; padding: 1rem 1.2rem; margin: .5rem 0; border-left: 4px solid #1a4f89; }
+        .qa-item .pergunta { font-weight: 700; color: #1a4f89; margin-bottom: .3rem; font-size: 1rem; }
+        .qa-item .resposta { color: #333; line-height: 1.6; }
+        .category-btn { padding: .5rem 1rem; border-radius: 20px; border: 2px solid #1a4f89; background: transparent; color: #1a4f89; cursor: pointer; font-size: .9rem; font-weight: 600; margin: .2rem; transition: all .2s; }
+        .category-btn.active, .category-btn:hover { background: #1a4f89; color: #fff; }
+        .qa-section { display: none; }
+        .qa-section.show { display: block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>👧👦 Catecismo para Crianças</h1>
+            <p class="lead">As verdades da fé explicadas de forma simples e amorosa, para que as crianças conheçam e amem a Deus desde pequeninos.</p>
+            <p class="muted">"Deixai as crianças virem a mim." — Jesus (Mc 10,14)</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📚 Escolha um Tema</h2>
+        <div style="text-align:center;margin:.5rem 0 1.5rem;">
+            <button class="category-btn active" onclick="showSection('deus')">😇 Deus</button>
+            <button class="category-btn" onclick="showSection('oracao')">🙏 Oração</button>
+            <button class="category-btn" onclick="showSection('mandamentos')">📜 Mandamentos</button>
+            <button class="category-btn" onclick="showSection('sacramentos')">✝️ Sacramentos</button>
+            <button class="category-btn" onclick="showSection('maria')">💙 Maria</button>
+            <button class="category-btn" onclick="showSection('virtudes')">⭐ Virtudes</button>
+        </div>
+
+        <!-- DEUS -->
+        <div class="qa-section show" id="sec-deus">
+            <div class="qa-item">
+                <div class="pergunta">🌟 Quem fez você?</div>
+                <div class="resposta">Deus me fez. Ele me criou com muito amor e queria que eu existisse desde antes do mundo existir.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">💝 Por que Deus te fez?</div>
+                <div class="resposta">Deus me fez para que eu O conhecesse, O amasse, O servisse e fosse feliz com Ele para sempre no Céu.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">👁️ Deus pode nos ver?</div>
+                <div class="resposta">Sim! Deus vê tudo — até o que está dentro do nosso coração. Mas Ele nos vê com amor, não para nos assustar.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🌈 Quem é a Santíssima Trindade?</div>
+                <div class="resposta">São três Pessoas num só Deus: o Pai (que criou tudo), o Filho (Jesus, que veio nos salvar) e o Espírito Santo (que mora dentro de nós). Três e um ao mesmo tempo — é o maior mistério!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">👶 Como Jesus veio ao mundo?</div>
+                <div class="resposta">Jesus é o Filho de Deus que se tornou homem. Ele nasceu do ventre da Virgem Maria pela ação do Espírito Santo, numa manjedoura em Belém. Deus Se fez bebê para estar perto de nós!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">✝️ Por que Jesus morreu na Cruz?</div>
+                <div class="resposta">Porque nos ama muito! Nossos pecados nos separavam de Deus. Jesus morreu para apagar nossos pecados e abrir o caminho para o Céu. Depois, Ele ressuscitou vivo — a Páscoa!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🕊️ Quem é o Espírito Santo?</div>
+                <div class="resposta">O Espírito Santo é Deus que mora dentro de cada cristão batizado. Ele nos guia, nos dá força para fazer o bem, nos ensina a rezar e nos inspira quando não sabemos o que fazer.</div>
+            </div>
+        </div>
+
+        <!-- ORAÇÃO -->
+        <div class="qa-section" id="sec-oracao">
+            <div class="qa-item">
+                <div class="pergunta">🙏 O que é rezar?</div>
+                <div class="resposta">Rezar é falar com Deus — como conversar com um amigo muito especial. Podemos agradecer, pedir, pedir perdão ou simplesmente dizer "Eu Te amo, Senhor."</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">📖 Qual é a oração que Jesus nos ensinou?</div>
+                <div class="resposta">O Pai Nosso (Mt 6,9-13). Jesus mesmo nos ensinou como rezar! É a oração mais importante de toda a Igreja.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">✨ O Pai Nosso — vamos aprender?</div>
+                <div class="resposta" style="font-style:italic;">
+                    Pai nosso que estais no céu,<br/>
+                    santificado seja o Vosso nome.<br/>
+                    Venha a nós o Vosso reino.<br/>
+                    Seja feita a Vossa vontade,<br/>
+                    assim na terra como no céu.<br/>
+                    O pão nosso de cada dia nos dai hoje.<br/>
+                    Perdoai as nossas ofensas,<br/>
+                    assim como nós perdoamos a quem nos tem ofendido.<br/>
+                    E não nos deixeis cair em tentação,<br/>
+                    mas livrai-nos do mal. Amém.
+                </div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">💙 O que é a Ave Maria?</div>
+                <div class="resposta">É uma oração ao anjo Gabriel e à Santa Isabel para cumprimentar Maria — a mãe de Jesus. Pedimos que ela reze por nós agora e na hora da morte.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">😴 Como rezar antes de dormir?</div>
+                <div class="resposta">Obrigado, Senhor, pelo dia de hoje. Perdoa o que fiz de errado. Abençoa mamãe, papai e todos que eu amo. Anjo da Guarda, fique ao meu lado enquanto durmo. Amém.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🍽️ Como rezar antes das refeições?</div>
+                <div class="resposta">Senhor, abençoai este alimento que vais nos dar e lembrai-nos dos que não têm o que comer. Amém. <br/><em>(Ou simplesmente: Bom apetite, Senhor! Obrigado pela comida!)</em></div>
+            </div>
+        </div>
+
+        <!-- MANDAMENTOS -->
+        <div class="qa-section" id="sec-mandamentos">
+            <div class="qa-item">
+                <div class="pergunta">📜 Quantos Mandamentos existem?</div>
+                <div class="resposta">Dez. Deus os deu a Moisés no Monte Sinai para nos ensinar como amar a Ele e ao próximo. Jesus os resumiu em dois: amar a Deus e amar ao próximo.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">1️⃣ Primeiro Mandamento</div>
+                <div class="resposta"><strong>"Amar a Deus sobre todas as coisas."</strong><br/>Deus é o mais importante — mais que brinquedos, que games, que dinheiro. Só Ele merece nossa adoração.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">2️⃣ Segundo Mandamento</div>
+                <div class="resposta"><strong>"Não usar o nome de Deus em vão."</strong><br/>Falar o nome de Deus com respeito. Não jurar mentira por Seu nome. O nome de Deus é sagrado.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">3️⃣ Terceiro Mandamento</div>
+                <div class="resposta"><strong>"Guardar o Domingo."</strong><br/>O Domingo é o dia do Senhor — dia de Missa e de descanso. Deus criou 6 dias e descansou no 7º. Nós também!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">4️⃣ Quarto Mandamento</div>
+                <div class="resposta"><strong>"Honrar pai e mãe."</strong><br/>Obedecer, respeitar e ajudar os pais. Eles foram escolhidos por Deus para nos cuidar.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">5️⃣-10️⃣ Os outros Mandamentos</div>
+                <div class="resposta">
+                    5. Não matar — respeitar a vida de todos<br/>
+                    6. Não praticar atos impuros<br/>
+                    7. Não roubar — respeitar o que é do outro<br/>
+                    8. Não mentir nem falar mal dos outros<br/>
+                    9. Não desejar a mulher/marido do próximo<br/>
+                    10. Não desejar o que é do próximo (inveja)
+                </div>
+            </div>
+        </div>
+
+        <!-- SACRAMENTOS -->
+        <div class="qa-section" id="sec-sacramentos">
+            <div class="qa-item">
+                <div class="pergunta">✝️ O que é um Sacramento?</div>
+                <div class="resposta">Um Sacramento é um sinal visível que nos dá a graça de Deus invisível. É como Deus nos toca de verdade! Jesus instituiu 7 Sacramentos para a Igreja.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">💦 Batismo</div>
+                <div class="resposta">A água da vida! O Batismo apaga o pecado original, nos faz filhos de Deus e membros da Igreja. O Espírito Santo vem morar dentro de nós.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🕊️ Crisma (Confirmação)</div>
+                <div class="resposta">O "Batismo do Espírito." Recebemos os 7 dons do Espírito Santo para vivermos e testemunharmos a fé com coragem. Somos "soldados de Cristo"!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🍞 Eucaristia</div>
+                <div class="resposta">O mais importante de todos! Na Missa, o pão e o vinho se tornam (de verdade!) o Corpo e o Sangue de Jesus. Quando recebemos a Comunhão, recebemos Jesus vivo!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">💛 Confissão (Reconciliação)</div>
+                <div class="resposta">Quando pecamos, nos distanciamos de Deus. Na Confissão, contamos nossos pecados ao padre, nos arrependemos, e Deus nos perdoa! O coração fica limpo e leve de novo.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">💒 Matrimônio</div>
+                <div class="resposta">O amor entre um homem e uma mulher que se comprometem para toda a vida diante de Deus. É Sacramento: Deus mesmo une os esposos e os ajuda a se amar.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">⛪ Ordem (Sacerdócio)</div>
+                <div class="resposta">Homens especialmente chamados por Deus para serem padres, diáconos ou bispos — para celebrar Missa, perdoar pecados e guiar o povo de Deus.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🕯️ Unção dos Enfermos</div>
+                <div class="resposta">O Sacramento dos doentes e idosos. O padre unge com óleo sagrado pedindo a cura e a força de Deus. Prepara a alma para encontrar Jesus.</div>
+            </div>
+        </div>
+
+        <!-- MARIA -->
+        <div class="qa-section" id="sec-maria">
+            <div class="qa-item">
+                <div class="pergunta">💙 Quem é Maria?</div>
+                <div class="resposta">Maria é a Mãe de Jesus — e como Jesus é Deus, ela é a Mãe de Deus! Ela é nossa mãe também, porque Jesus nos deu a Ela como mãe antes de morrer na Cruz (Jo 19,27).</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">✨ O que é a Imaculada Conceição?</div>
+                <div class="resposta">Maria foi criada por Deus sem o pecado original — de forma especial, em preparação para ser Mãe de Jesus. Ela nunca pecou em toda a sua vida. É o maior presente que Deus deu a uma criatura!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">📿 O que é o Rosário?</div>
+                <div class="resposta">O Rosário é uma oração maravilhosa onde rezamos Ave-Marias enquanto pensamos nos momentos mais importantes da vida de Jesus e Maria. É como um passeio com Nossa Senhora pelos Evangelhos!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🌟 O que são as aparições de Nossa Senhora?</div>
+                <div class="resposta">Em vários lugares do mundo (Fátima, Lourdes, Guadalupe), Nossa Senhora apareceu a crianças e pessoas simples para nos pedir oração, penitência e conversão. A Igreja aprovou essas aparições como verdadeiras.</div>
+            </div>
+        </div>
+
+        <!-- VIRTUDES -->
+        <div class="qa-section" id="sec-virtudes">
+            <div class="qa-item">
+                <div class="pergunta">💛 O que é uma virtude?</div>
+                <div class="resposta">Uma virtude é um hábito bom — como um músculo que fica forte quando exercitamos. Quanto mais praticamos uma virtude (ser justo, paciente, generoso), mais fácil fica fazer o bem!</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🌟 As 3 Virtudes Teologais</div>
+                <div class="resposta"><strong>Fé:</strong> Crer em Deus e em tudo o que Ele revelou.<br/><strong>Esperança:</strong> Confiar que Deus cumprirá Suas promessas.<br/><strong>Caridade:</strong> Amar a Deus acima de tudo e ao próximo como a si mesmo.<br/><em>São chamadas "teologais" porque vêm diretamente de Deus.</em></div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">⚖️ As 4 Virtudes Cardeais</div>
+                <div class="resposta"><strong>Prudência:</strong> Saber o que é bom e como fazer o bem.<br/><strong>Justiça:</strong> Dar a cada um o que lhe é devido e respeitar os direitos.<br/><strong>Fortaleza:</strong> Coragem de fazer o bem mesmo sendo difícil ou perigoso.<br/><strong>Temperança:</strong> Saber se controlar — não comer/beber demais, não ser impulsivo.</div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">😇 O que é ser santo?</div>
+                <div class="resposta">Santo é quem ama a Deus com todo o coração e age de acordo com esse amor. Não é perfeito nem nunca erra — é quem sempre se levanta quando cai e nunca desiste de se aproximar de Deus. <strong>Você pode ser santo!</strong></div>
+            </div>
+            <div class="qa-item">
+                <div class="pergunta">🤗 O que é o amor ao próximo?</div>
+                <div class="resposta">Jesus disse: "O que fizestes ao menor de meus irmãos, a Mim fizestes." Cuidar dos pobres, perdoar quem nos magoou, ajudar os doentes — quando fazemos isso por amor, estamos servindo a Deus diretamente!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações básicas -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🌟 Orações que Todo Cristão Deve Saber</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Sinal da Cruz e Glória</div>
+                <div class="accordion-content" style="display:block;">
+                    <p><strong>Sinal da Cruz:</strong> <em>Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</em> (Fazemos o sinal tocando testa, peito, ombro esquerdo, ombro direito)</p>
+                    <p><strong>Glória ao Pai:</strong> <em>Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre e pelos séculos dos séculos. Amém.</em></p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Ato de Contrição</div>
+                <div class="accordion-content">
+                    <p style="font-style:italic;">Meu Deus, eu me arrependo com todo o coração de todos os meus pecados, porque pecando eu mereço os Vossos castigos e muito mais porque ofendi a Vós que sois sumo bem e que mereces ser amado acima de todas as coisas. Proponho com o auxílio de Vossa graça não Vos ofender mais e fugir das ocasiões do pecado. Amém.</p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Credo Apostólico</div>
+                <div class="accordion-content">
+                    <p style="font-style:italic;">Creio em Deus Pai todo-poderoso, criador do céu e da terra. E em Jesus Cristo, Seu único Filho, Nosso Senhor; que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos; foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus, está sentado à direita de Deus Pai todo-poderoso, e virá de lá julgar os vivos e os mortos. Creio no Espírito Santo, na Santa Igreja Católica, na comunhão dos Santos, na remissão dos pecados, na ressurreição da carne, na vida eterna. Amém.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:2rem;">
+        <p style="font-size:1.1rem;color:#2c7a2c;font-weight:600;">👧👦 "Bem-aventurados os puros de coração, pois eles verão a Deus." — Jesus (Mt 5,8)</p>
+        <p style="color:#666;">Crianças que aprendem a amar a Deus desde pequenas têm o maior tesouro!</p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+    $('.accordion-header').click(function(){
+        $(this).next('.accordion-content').slideToggle(200);
+    });
+});
+
+function showSection(id) {
+    $('.qa-section').removeClass('show');
+    $('#sec-' + id).addClass('show');
+    $('.category-btn').removeClass('active');
+    event.target.classList.add('active');
+}
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

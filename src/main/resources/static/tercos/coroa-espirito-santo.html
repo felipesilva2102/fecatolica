@@ -114,6 +114,7 @@
 <script src="/js/app.js"></script>
     <script src="/js/acessibilidade.js"></script>
 <script src="/js/sw-register.js"></script>
+<script src="/js/terco-interativo.js"></script>
 <script>
 $(function () {
     const decades = [
@@ -154,34 +155,7 @@ $(function () {
         }
     ];
 
-    const aveMaria = "Ave-Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus.<br/>Santa Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora da nossa morte. Amém.";
-
-    const $container = $('#decadesContainer');
-    decades.forEach(function (d, i) {
-        const isFirst = i === 0;
-        $container.append(`
-            <div class="card decade-section">
-                <h3 class="decade-title">${d.title}</h3>
-                <div class="accordion-panel">
-                    <div class="accordion-tab">
-                        <div class="accordion-header${isFirst ? ' active' : ''}">💭 Meditação</div>
-                        <div class="accordion-content"${isFirst ? ' style="display:block;"' : ''}>
-                            <p>${d.meditation}</p>
-                        </div>
-                    </div>
-                    <div class="accordion-tab">
-                        <div class="accordion-header">🙏 Orações e Invocação</div>
-                        <div class="accordion-content">
-                            <p><strong>Pai-Nosso</strong> — Pai-Nosso que estais no céu...<br/><br/>
-                            <strong>7 Ave-Marias:</strong><br/>${aveMaria}<br/><em>(Repita 7 vezes)</em><br/><br/>
-                            <strong>Glória ao Pai</strong>, e ao Filho, e ao Espírito Santo. Como era no princípio, agora e sempre, pelos séculos dos séculos. Amém.<br/><br/>
-                            <em>${d.jaculatoria}</em></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `);
-    });
+    FeBeads.build({ themeColor: '#c62828', decades: decades, aveCount: 7 });
 });
 </script>
 <script src="/js/streaks.js"></script>

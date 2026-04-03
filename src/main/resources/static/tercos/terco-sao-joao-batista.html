@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São João Batista</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#2e7d32"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #2e7d32;">
+        <header style="text-align:center;">
+            <h1>🌊 Terço de São João Batista</h1>
+            <p class="lead">Devoção ao Precursor do Senhor, o maior dos profetas, voz que gritou no deserto para preparar os caminhos de Cristo.</p>
+            <p class="muted">"Convertei-vos, porque o Reino dos Céus está próximo!" — Mt 3,2 — Festa: 24 de junho.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São João Batista</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São João Batista</strong> honra o Precursor de Cristo, aquele que foi santificado no ventre materno ao encontro com Maria (Lc 1,41-44). João Batista é o último dos profetas do Antigo Testamento e o primeiro a anunciar que o Messias já estava presente: <em>"Eis o Cordeiro de Deus, que tira o pecado do mundo!"</em> (Jo 1,29).</p><p>João batizou Jesus no rio Jordão e deu testemunho da verdade até a morte, sendo decapitado por ordem de Herodes Antipas. Jesus disse sobre ele: <em>"Entre os nascidos de mulher, ninguém é maior que João Batista"</em> (Mt 11,11). A natividade de São João é celebrada em 24 de junho e seu martírio em 29 de agosto.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a São João Batista</li><li>5 dezenas meditando a missão do Precursor</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> São João Batista, voz que clama no deserto, Precursor do Messias e batizador do Senhor, preparai nossos corações para receber Cristo. Fazei-nos dignos de seguir o Cordeiro de Deus com fé, humildade e coragem. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#2e7d32;margin-top:0;">🌊 Oração Final a São João Batista</h3>
+        <p>São João Batista, profeta e mártir, que preparastes os caminhos do Senhor com a pregação da penitência e do batismo de conversão, intercedei por nós. Que tenhamos coragem de anunciar a verdade e de preferir a morte à apostasia.</p>
+        <blockquote style="border-left: 4px solid #2e7d32; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "É necessário que Ele cresça e que eu diminua." — João 3,30 — A humildade do Precursor que aponta para Cristo.
+        </blockquote>
+        <div class="msg-success">✅ Terço de São João Batista concluído! Que o Precursor interceda por você e fortaleça sua fé.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de São João Batista no FeCatolica! 🌊" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — O Anúncio do Nascimento de João a Zacarias',
+        meditation: 'Pelas famílias que esperam um filho e pelos que anseiam por uma vocação.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Visitação — João Tressalta no Ventre de Isabel',
+        meditation: 'Pelas crianças no ventre materno e pelas mães grávidas.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — A Vida no Deserto e a Pregação da Conversão',
+        meditation: 'Pela graça da penitência, do jejum e da oração vigilante.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — O Batismo de Jesus no Rio Jordão',
+        meditation: 'Pelas graças do Santo Batismo e pela fidelidade ao Espírito Santo.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — O Martírio de João — Morrer pela Verdade',
+        meditation: 'Por todos os que sofrem por defender a verdade e a moral cristã.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#2e7d32', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

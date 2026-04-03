@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/acessibilidade.css"/>
     <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
     <link rel="manifest" href="/manifest.json"/>
     <meta name="theme-color" content="#1a4f89"/>
     <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
@@ -179,5 +180,34 @@
 <script src="/js/streaks.js"></script>
 <script src="/js/partilha.js"></script>
 <script src="/js/sw-register.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function() {
+    var decades = [
+        { title: '1.ª Saudação — Coro dos Serafins', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Serafins</strong>, que o Senhor nos torne dignos de arder no fogo de perfeita caridade. Amém.<br><br><em>Os Serafins são os anjos mais próximos de Deus, ardendo em chamas de amor. \u201cSanto, Santo, Santo é o Senhor dos Exércitos!\u201d (Is 6,3)</em>' },
+        { title: '2.ª Saudação — Coro dos Querubins', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Querubins</strong>, que o Senhor Se digne conceder-nos a graça de abandonar o caminho do pecado e seguir o da perfeição cristã. Amém.<br><br><em>Os Querubins são guardiões da sabedoria divina. Contemplam a Deus face a face e irradiam Sua luz.</em>' },
+        { title: '3.ª Saudação — Coro dos Tronos', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Tronos</strong>, que o Senhor infunda em nossos corações o espírito de verdadeira e sincera humildade. Amém.<br><br><em>Os Tronos sustentam a justiça divina. Transmitem a paz e a serenidade de Deus.</em>' },
+        { title: '4.ª Saudação — Coro das Dominações', meditation: 'Por intercessão de São Miguel e do Coro celeste das <strong>Dominações</strong>, que o Senhor nos conceda a graça de dominar os nossos sentidos e corrigir as nossas paixões depravadas. Amém.<br><br><em>As Dominações regulam os deveres dos anjos inferiores. Manifestam a majestade de Deus.</em>' },
+        { title: '5.ª Saudação — Coro das Potestades', meditation: 'Por intercessão de São Miguel e do Coro celeste das <strong>Potestades</strong>, que o Senhor Se digne proteger as nossas almas contra as ciladas e tentações do demônio. Amém.<br><br><em>As Potestades combatem os espíritos malignos e protegem os fiéis contra as trevas.</em>' },
+        { title: '6.ª Saudação — Coro das Virtudes', meditation: 'Por intercessão de São Miguel e do Coro celeste das <strong>Virtudes</strong>, que o Senhor não nos deixe cair em tentação, mas nos livre de todo mal. Amém.<br><br><em>As Virtudes realizam milagres e prodígios. Infundem coragem e fortaleza nos servos de Deus.</em>' },
+        { title: '7.ª Saudação — Coro dos Principados', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Principados</strong>, que o Senhor encha as nossas almas do espírito de verdadeira e sincera obediência. Amém.<br><br><em>Os Principados guardam as nações e os reinos, dirigindo-os segundo a vontade de Deus.</em>' },
+        { title: '8.ª Saudação — Coro dos Arcanjos', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Arcanjos</strong>, que o Senhor nos conceda o dom da perseverança na fé e nas boas obras, para podermos alcançar a glória do Paraíso. Amém.<br><br><em>Os Arcanjos são mensageiros de grandes revelações. São Miguel, Gabriel e Rafael são os mais conhecidos.</em>' },
+        { title: '9.ª Saudação — Coro dos Anjos', meditation: 'Por intercessão de São Miguel e do Coro celeste dos <strong>Anjos</strong>, que o Senhor Se digne conceder-nos que eles nos guardem durante esta vida mortal, para depois nos conduzirem à glória eterna do Céu. Amém.<br><br><em>Os Anjos são os guardiões mais próximos dos homens. Cada pessoa possui um Anjo da Guarda que a acompanha toda a vida.</em>' }
+    ];
+
+    var $saudacoesCard = null;
+    $('.card').each(function() {
+        if (/Saudações Angélicas/.test($(this).find('h2:first').text())) {
+            $saudacoesCard = $(this);
+            $(this).hide();
+        }
+    });
+
+    if ($saudacoesCard) {
+        $('<div id="decadesContainer"></div>').insertBefore($saudacoesCard);
+        FeBeads.build({ themeColor: '#1565c0', decades: decades, aveCount: 3, hasGloria: false, hasJaculatoria: false });
+    }
+});
+</script>
 </body>
 </html>

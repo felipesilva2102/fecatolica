@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora do Perpétuo Socorro — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>❤️ Terço de Nossa Senhora do Perpétuo Socorro</h1>
+                <p class="lead">Devoção à Mãe do Perpétuo Socorro — cujo ícone sagrado, pintado no século XV, foi confiado pelos Redentoristas ao mundo inteiro com a missão de propagar seu amor materno.</p>
+                <p class="muted" style="margin-top:6px;">🕊️ <em>"Sede-me o auxílio perpétuo — em todo momento da minha vida e especialmente na hora da minha morte."</em> — Festa: 27 de junho</p>
+            </header>
+        </div>
+
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora do Perpétuo Socorro</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora do Perpétuo Socorro</strong> venera um dos mais antigos e venerados ícones marianos, pintado provavelmente no século XIV em Creta, no estilo bizantino. A imagem mostra Maria Santíssima segurando o Menino Jesus, que contempla os instrumentos da Paixão apresentados pelos arcanjos Miguel e Gabriel.</p><p>O ícone foi entronizado na igreja de Santo Afonso, em Roma, em 1866, quando o Papa Pio IX confiou sua custódia aos Redentoristas com as palavras: <em>"Fazei-a conhecida em todo o mundo."</em> Desde então, a devoção ao Perpétuo Socorro espalhou-se por todos os continentes. As Novenas Perpétuas às quartas-feiras reúnem milhões de fiéis semanalmente.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oferecimento a Nossa Senhora do Perpétuo Socorro</li><li>5 dezenas meditando o socorro perpétuo de Maria</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oferecimento:</em> Ó Mãe do Perpétuo Socorro, a Vós recorremos confiantes em Vossa maternal proteção. Vós que sempre estais pronta a socorrer os que Vos invocam, acolhei as nossas preces e alcançai-nos do Vosso Divino Filho as graças de que necessitamos. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
+
+        <div class="card" id="sectionFinal" style="display:none;">
+            <h2 style="text-align:center;margin-top:0;">❤️ Oração Final a Nossa Senhora do Perpétuo Socorro</h2>
+            <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                Ó Nossa Senhora do Perpétuo Socorro,<br/>
+                recorremos a vós em toda a nossa necessidade.<br/>
+                Sede-nos auxílio perpétuo — hoje e sempre — <br/>
+                e especialmente na hora da nossa morte.<br/>
+                Mostrai-nos Jesus, fruto do vosso ventre bendito,<br/>
+                e conduzi-nos ao porto seguro da salvação eterna.
+            </p>
+            <div style="background:#fdecea;border-left:4px solid #c41e3a;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                <p style="margin:0;line-height:1.8;">
+                    <strong>Jaculatória (3 vezes):</strong><br/>
+                    <em>"Nossa Senhora do Perpétuo Socorro, sede-nos o auxílio perpétuo!"</em>
+                </p>
+            </div>
+            <div class="msg-success" style="margin-top:16px;text-align:center;">
+                ✅ Você completou o Terço de N. Sra. do Perpétuo Socorro! Que Ela seja sempre nosso auxílio!
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Terço de N. Sra. do Perpétuo Socorro — FeCatolica" data-partilhar-texto="Reze o Terço de Nossa Senhora do Perpétuo Socorro — Sede-nos o auxílio perpétuo!">
+                📤 Compartilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — O Ícone Sagrado e Sua História Miraculosa',
+                meditation: 'Meditamos a história do ícone de Nossa Senhora do Perpétuo Socorro: pintado no século XV em Creta, passou por Roma (1499), foi depositado na Igreja de São Mateus, desapareceu com a destruição da igreja pela invasão napoleônica (1798) e foi encontrado novamente em 1865, quando o Papa Pio IX ordenou sua restituição aos Redentoristas — que o instalaram em Santa Maria in Posterula, onde é venerado até hoje.',
+                jaculatoria: 'Maria do Perpétuo Socorro, que vosso ícone seja para nós janela para o amor de Deus.'
+            },
+            {
+                title: '2ª Dezena — Maria, Mãe do Perpétuo Socorro',
+                meditation: 'Contemplamos o mistério de Maria como Mãe que socorre perpetuamente: o ícone mostra o Menino Jesus segurando a mão de Maria — olhando para os Arcanjos Miguel e Gabriel que lhe mostram os instrumentos da Paixão futura — enquanto Se refugia no colo materno. A cena revela que Maria é o lugar seguro onde Cristo nos conduz ao Pai.',
+                jaculatoria: 'Maria, nosso perpétuo refugio, protege-nos debaixo do manto do teu amor materno.'
+            },
+            {
+                title: '3ª Dezena — O Menino Jesus e os Arcanjos São Miguel e São Gabriel',
+                meditation: 'Meditamos o detalhe teológico do ícone: o Menino Jesus contempla com amor e temor os Arcanjos Miguel (com a Cruz e a esponja com fel) e Gabriel (com a lança e os pregos) — instrumentos da futura Paixão. O Filho de Deus aceita o sofrimento por amor a nós e se apoia na mãe em Sua humanidade.',
+                jaculatoria: 'Maria, que acolheste o Filho no temor da Cruz, acolhe-nos também a nós em nosso sofrimento.'
+            },
+            {
+                title: '4ª Dezena — O Auxílio Perpétuo na Hora da Morte',
+                meditation: 'Contemplamos a promessa mais preciosa de Nossa Senhora do Perpétuo Socorro: estar presente na hora da morte. A tradição redentorista ensina que quem invocar Maria naquele momento de passagem não será abandonado — ela conduzirá a alma ao julgamento misericordioso de seu Filho.',
+                jaculatoria: 'Maria, auxílio dos moribundos, que nunca nos abandones especialmente na hora da partida.'
+            },
+            {
+                title: '5ª Dezena — Consagração e Renovação da Devoção',
+                meditation: 'Meditamos a consagração a Nossa Senhora do Perpétuo Socorro: a entrega de nossa vida, família, projetos e esperanças ao cuidado maternal de Maria. Os Redentoristas receberam esta missão do Papa Pio IX: "tornar N. Sra. do Perpétuo Socorro conhecida no mundo inteiro" — missão que continuamos ao rezar este terço.',
+                jaculatoria: 'N. Sra. do Perpétuo Socorro, recebe nossa vida e conduzi-nos a Jesus, teu Filho amado.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/streaks.js"></script>
+    <script src="/js/partilha.js"></script>
+    <script src="/js/sw-register.js"></script>
+</body>
+</html>

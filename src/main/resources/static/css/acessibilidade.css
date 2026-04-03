@@ -725,3 +725,66 @@ html.dark-mode .era-header { color: #ddd !important; }
 html.dark-mode .testament-header { opacity: 0.9; }
 html.dark-mode .warning-box { background: rgba(201,168,76,0.06); border-color: var(--border-color); }
 html.dark-mode .warning-box p { color: var(--text-color); }
+
+/* ===== Contador de Oração dark ===== */
+html.dark-mode .contador-hero {
+    background: linear-gradient(135deg, #0f3460 0%, #1a4f2e 100%) !important;
+}
+html.dark-mode .oracao-tab {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .oracao-tab.active,
+html.dark-mode .oracao-tab:hover {
+    background: var(--border-color) !important;
+    color: #fff !important;
+}
+html.dark-mode .btn-contar {
+    background: linear-gradient(135deg, #0f3460, #1a4f2e) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+}
+html.dark-mode .btn-contar:active {
+    background: linear-gradient(135deg, #1a4f89, #2c7a2c) !important;
+}
+html.dark-mode .meta-section {
+    background: #121e36 !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .btn-meta {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--link-color) !important;
+}
+html.dark-mode .btn-meta.active,
+html.dark-mode .btn-meta:hover {
+    background: var(--border-color) !important;
+    color: #fff !important;
+}
+html.dark-mode .btn-controle {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .btn-controle:hover { opacity: 0.85; }
+html.dark-mode .oracao-texto {
+    background: #121e36 !important;
+    border-left-color: #64b5f6 !important;
+    color: var(--text-color) !important;
+}
+html.dark-mode .historico-item {
+    background: #121e36 !important;
+    border-color: var(--border-color) !important;
+}
+html.dark-mode .historico-item .nome { color: var(--text-color) !important; }
+html.dark-mode .historico-item .hora { color: var(--muted-text) !important; }
+html.dark-mode .progresso-bar-bg { background: #2a3a5e !important; }
+html.dark-mode .contador-numero { color: var(--link-color) !important; }
+html.dark-mode .contador-dezenas { color: var(--muted-text) !important; }
+html.dark-mode .contador-nome { color: var(--link-color) !important; }
+html.dark-mode .dezena-alert { background: rgba(100,181,246,0.12) !important; color: var(--text-color) !important; border-color: #64b5f6 !important; }
+html.dark-mode input[type="number"] {
+    background: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}

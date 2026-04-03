@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de São Francisco de Assis</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#7a5c2e"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #7a5c2e;">
+        <header style="text-align:center;">
+            <h1>🕊️ Terço de São Francisco de Assis</h1>
+            <p class="lead">Devoção ao Poverello de Assis, o Santo da Paz, da pobreza evangélica e do amor às criaturas.</p>
+            <p class="muted">"Senhor, fazei de mim um instrumento da vossa paz." — Oração de São Francisco.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São Francisco de Assis</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São Francisco de Assis</strong> homenageia o "Poverello" de Assis (1181/1182–1226), que renunciou às riquezas para abraçar a pobreza radical e seguir a Cristo. Francisco recebeu os <strong>estigmas</strong> (as chagas de Cristo em seu corpo) no Monte Alverne em 1224, sendo o primeiro santo a receber essa graça.</p><p>Fundador da Ordem dos Frades Menores (Franciscanos), Francisco é conhecido pelo <em>Cântico das Criaturas</em>, pelo presépio de Greccio e pelo amor radical a toda a criação. Es patrono da ecologia e dos animais. O Papa Francisco tomou seu nome em homenagem a esse santo. Festa: 4 de outubro.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial com invocação franciscana</li><li>5 dezenas meditando a vida e os exemplos de São Francisco</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração de São Francisco:</em> Senhor, fazei-me instrumento de vossa paz. Onde houver ódio, que eu leve o amor; onde houver ofensa, que eu leve o perdão; onde houver discórdia, que eu leve a união. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#7a5c2e;margin-top:0;">🌿 Oração Final Franciscana</h3>
+        <p>São Francisco de Assis, que recebestes as chagas de Cristo, que louvaste o Senhor em toda a criação, que escolhestes a pobreza como esposa — intercedei por nós, para que vivamos o Evangelho com alegria e simplicidade.</p>
+        <blockquote style="border-left: 4px solid #7a5c2e; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "Altíssimo, onipotente, bom Senhor, Tuas são o louvor, a glória e a honra e toda a bênção..." — Cântico das Criaturas, São Francisco.
+        </blockquote>
+        <div class="msg-success">✅ Terço de São Francisco concluído! Que o Poverello interceda por você e pelo mundo criado.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de São Francisco de Assis no FeCatolica! 🕊️" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — A Conversão de Francisco em Assis',
+        meditation: 'Pela conversão dos pecadores e dos que estão longe de Deus.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — "Francisco, Vai e Repara a Minha Igreja"',
+        meditation: 'Pela renovação da Igreja e pela santidade dos consagrados.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — A Pobreza, a Humildade e a Alegria Evangélica',
+        meditation: 'Por todos os pobres e marginalizados da sociedade.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Os Estigmas e a Conformação com Cristo Crucificado',
+        meditation: 'Pelos que sofrem e por todos os que oferecem seu sofrimento a Deus.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — "Irmão Sol, Irmã Lua" — O Cântico das Criaturas',
+        meditation: 'Pelo cuidado da criação e pela ecologia integral.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#7a5c2e', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catequese para Adultos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .catequese-hero {
+            background: linear-gradient(135deg, #1a4f89 0%, #2c7a2c 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .catequese-hero h1 { margin: 0 0 0.5rem; font-size: 2rem; }
+        .catequese-hero p { margin: 0; opacity: 0.92; }
+
+        .licoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .licao-card {
+            background: #fff;
+            border: 1px solid #dde2ec;
+            border-radius: 10px;
+            padding: 1.25rem 1.25rem 1rem;
+            cursor: pointer;
+            transition: box-shadow .2s, border-color .2s;
+            position: relative;
+        }
+        .licao-card:hover {
+            box-shadow: 0 4px 16px rgba(26,79,137,0.13);
+            border-color: #1a4f89;
+        }
+        .licao-num {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a4f89, #2c7a2c);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+        .licao-card h3 {
+            margin: 0.25rem 0 0.4rem;
+            font-size: 1rem;
+            color: #1a4f89;
+        }
+        .licao-card p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        .licao-card .licao-icone {
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .versao-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a4f89, #2c7a2c);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.55rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 0.25rem;
+            transition: opacity .2s;
+        }
+        .versao-btn:hover { opacity: 0.88; color: #fff; }
+
+        .verse-box {
+            background: rgba(201,168,76,0.1);
+            border-left: 4px solid #c9a84c;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #444;
+        }
+        .verse-ref {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: #1a4f89;
+        }
+
+        .licao-content { display: none; }
+        .licao-content.open { display: block; }
+
+        .catechism-step {
+            border-left: 3px solid #c9a84c;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            background: #fafafa;
+            border-radius: 0 8px 8px 0;
+        }
+        .catechism-step h4 {
+            margin: 0 0 0.4rem;
+            color: #1a4f89;
+            font-size: 0.95rem;
+        }
+        .catechism-step p, .catechism-step ul, .catechism-step ol {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.6;
+        }
+        .catechism-step ul li, .catechism-step ol li { margin-bottom: 0.25rem; }
+
+        .destaque-box {
+            background: rgba(26,79,137,0.06);
+            border: 1px solid rgba(26,79,137,0.2);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+        .destaque-box strong { color: #1a4f89; }
+
+        .progress-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.25rem 0 0;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .progress-nav button {
+            background: none;
+            border: 1px solid #1a4f89;
+            color: #1a4f89;
+            border-radius: 6px;
+            padding: 0.4rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .progress-nav button:hover { background: #1a4f89; color: #fff; }
+        .progress-nav span { font-size: 0.8rem; color: #888; }
+
+        /* Dark mode support */
+        html.dark-mode .licao-card { background: var(--card-bg); border-color: var(--border-color); }
+        html.dark-mode .licao-card h3 { color: var(--link-color); }
+        html.dark-mode .licao-card p { color: var(--muted-text); }
+        html.dark-mode .verse-box { background: rgba(201,168,76,0.07); color: var(--text-color); }
+        html.dark-mode .verse-ref { color: var(--link-color); }
+        html.dark-mode .catechism-step { background: #121e36; }
+        html.dark-mode .catechism-step h4 { color: var(--link-color); }
+        html.dark-mode .catechism-step p,
+        html.dark-mode .catechism-step ul,
+        html.dark-mode .catechism-step li { color: var(--text-color); }
+        html.dark-mode .destaque-box { background: rgba(100,181,246,0.06); border-color: var(--border-color); }
+        html.dark-mode .destaque-box strong { color: var(--link-color); }
+        html.dark-mode .progress-nav { border-top-color: var(--border-color); }
+        html.dark-mode .progress-nav span { color: var(--muted-text); }
+        html.dark-mode .progress-nav button { border-color: var(--link-color); color: var(--link-color); }
+        html.dark-mode .progress-nav button:hover { background: var(--link-color); color: #fff; }
+        html.dark-mode .catequese-hero { background: linear-gradient(135deg, #0f3460 0%, #1a4f2e 100%); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="catequese-hero card">
+        <h1>🎓 Catequese para Adultos</h1>
+        <p>Aprofunde sua fé com 17 lições essenciais da doutrina católica — claras, fundamentadas na Escritura e no Magistério da Igreja.</p>
+    </div>
+
+    <!-- Índice das lições -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📚 Lições</h2>
+        <p style="text-align:center;color:#666;margin-top:0;">Clique numa lição para abrir o conteúdo.</p>
+        <div class="licoes-grid" id="licoes-grid">
+            <!-- preenchido pelo JS -->
+        </div>
+    </div>
+
+    <!-- Área de conteúdo -->
+    <div class="card" id="conteudo-card" style="display:none;">
+        <div id="conteudo-licao"></div>
+    </div>
+
+    <!-- Rodapé de encorajamento -->
+    <div class="card" style="text-align:center;padding:2rem;">
+        <p style="font-size:1.1rem;color:#1a4f89;font-weight:600;">🙏 "A fé sem obras é morta." — Tiago 2,26</p>
+        <p style="color:#666;margin:0;">Que o estudo da fé nos leve a um encontro mais profundo com Jesus Cristo.</p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<div id="barra-acessibilidade" class="barra-acessibilidade" role="complementary" aria-label="Acessibilidade"></div>
+
+<script>
+const LICOES = [
+    {
+        num: 1, icone: '✝️', titulo: 'Quem é Deus?',
+        sub: 'O ser supremo, criador e pai amoroso de tudo que existe.',
+        versiculo: '"Deus é amor." — 1 João 4,8',
+        conteudo: [
+            { titulo: 'A existência de Deus', texto: 'A razão humana pode chegar ao conhecimento de Deus a partir das criaturas. As "vias" de Santo Tomás de Aquino (Summa Theologiae, I, q.2, a.3) demonstram que o movimento, a causalidade, a contingência, os graus de perfeição e a ordem do universo apontam necessariamente para um Ser supremo, eterno e necessário, que é Deus.' },
+            { titulo: 'Os atributos de Deus', texto: '<ul><li><strong>Eterno</strong> — existe fora do tempo, sem começo nem fim.</li><li><strong>Onipotente</strong> — pode tudo o que não contraria a sua natureza.</li><li><strong>Onisciente</strong> — conhece todas as coisas, passadas, presentes e futuras.</li><li><strong>Onipresente</strong> — presente em todo lugar.</li><li><strong>Infinitamente bom</strong> — a bondade é a própria essência de Deus.</li><li><strong>Justo e misericordioso</strong> — alia a justiça perfeita à misericórdia infinita.</li></ul>' },
+            { titulo: 'Deus se revela', texto: 'Deus não ficou em silêncio: revelou-se progressivamente — na criação, nos patriarcas, nos profetas, na Lei e, plenamente, em Jesus Cristo, "o caminho, a verdade e a vida" (Jo 14,6). A Sagrada Escritura e a Tradição são os dois rios de um único manancial da Revelação divina (Dei Verbum, 9).' },
+            { titulo: 'Reflexão', texto: 'O Catecismo da Igreja Católica (n. 27) afirma: "O desejo de Deus está inscrito no coração do homem, porque o homem foi criado por Deus e para Deus." Nossa inquietação interior é sinal dessa busca natural pelo Criador.' }
+        ]
+    },
+    {
+        num: 2, icone: '🌟', titulo: 'A Santíssima Trindade',
+        sub: 'Um só Deus em três Pessoas distintas: Pai, Filho e Espírito Santo.',
+        versiculo: '"Ide e fazei discípulos de todas as nações, batizando-os em nome do Pai, do Filho e do Espírito Santo." — Mt 28,19',
+        conteudo: [
+            { titulo: 'O mistério central da fé', texto: 'A Santíssima Trindade é o mistério mais fundamental do Cristianismo. Não são três deuses, mas um único Deus em três Pessoas: o Pai (fonte da divindade), o Filho (gerado eternamente pelo Pai) e o Espírito Santo (que procede do Pai e do Filho). As três Pessoas são co-eternas, co-iguais e consubstanciais.' },
+            { titulo: 'Na Sagrada Escritura', texto: '<ul><li>No Batismo de Jesus: o Pai fala do céu, o Filho é batizado, o Espírito desce como pomba (Mc 1,10-11).</li><li>Na última ceia: "O Pai enviará o Espírito Santo em meu nome" (Jo 14,26).</li><li>Na saudação de Paulo: "A graça do Senhor Jesus Cristo, o amor de Deus e a comunhão do Espírito Santo estejam convosco" (2Cor 13,13).</li></ul>' },
+            { titulo: 'A vida interior da Trindade', texto: 'As três Pessoas divinas vivem em comunhão perfeita de amor. O Pai gera eternamente o Filho; do amor entre Pai e Filho procede o Espírito Santo. Essa dinâmica de amor é o modelo de toda comunidade humana — família, Igreja, sociedade.' },
+            { titulo: 'Vivendo a Trindade', texto: 'Pelo Batismo, somos inseridos na vida trinitária. Toda oração cristã começa e termina em nome da Trindade. A vida de graça é uma participação real na vida íntima de Deus.' }
+        ]
+    },
+    {
+        num: 3, icone: '✝️', titulo: 'Jesus Cristo: Deus e Homem',
+        sub: 'O Verbo eterno que se fez carne para nos salvar.',
+        versiculo: '"O Verbo se fez carne e habitou entre nós." — João 1,14',
+        conteudo: [
+            { titulo: 'A Encarnação', texto: 'Jesus Cristo é o Filho de Deus, a segunda Pessoa da Santíssima Trindade, que assumiu a natureza humana no seio da Virgem Maria pela ação do Espírito Santo. Não é meio-Deus e meio-homem: é plenamente Deus e plenamente homem — duas naturezas numa única Pessoa divina (dogma de Calcedônia, 451).' },
+            { titulo: 'Por que o Filho se encarnou?', texto: '<ul><li>Para nos reconciliar com Deus e perdoar os pecados.</li><li>Para que conhecêssemos o amor de Deus.</li><li>Para ser nosso modelo de santidade.</li><li>Para nos fazer partícipes da natureza divina (2Pd 1,4).</li></ul>' },
+            { titulo: 'A vida pública', texto: 'Jesus pregou o Reino de Deus, chamou doze Apóstolos, realizou milagres como sinais do Reino, ensinou com autoridade e mostrou especial ternura pelos pobres, pecadores e marginalizados.' },
+            { titulo: 'Morte e Ressurreição', texto: 'A morte de Jesus na Cruz não foi uma derrota: foi o ato supremo de amor pelo qual Ele venceu o pecado e a morte. A Ressurreição no terceiro dia é o fundamento da fé cristã (1Cor 15,14): "Se Cristo não ressuscitou, vã é a nossa fé." Cristo ressuscitado vive para sempre e intercede por nós ao Pai.' }
+        ]
+    },
+    {
+        num: 4, icone: '🔥', titulo: 'O Espírito Santo',
+        sub: 'O Consolador, Senhor e vivificador enviado por Cristo.',
+        versiculo: '"Recebereis a força do Espírito Santo que descerá sobre vós." — Atos 1,8',
+        conteudo: [
+            { titulo: 'Quem é o Espírito Santo?', texto: 'O Espírito Santo é a terceira Pessoa da Santíssima Trindade, o "Dom de Deus" por excelência. Não é uma força ou energia, mas uma Pessoa divina com inteligência e vontade, que age na história da salvação.' },
+            { titulo: 'Os 7 dons do Espírito Santo', texto: '<ol><li><strong>Sabedoria</strong> — conhecer as coisas divinas com amor.</li><li><strong>Entendimento</strong> — penetrar os mistérios da fé.</li><li><strong>Conselho</strong> — discernir o bem a fazer em cada situação.</li><li><strong>Fortaleza</strong> — superar os obstáculos no caminho do bem.</li><li><strong>Ciência</strong> — avaliar as criaturas em relação a Deus.</li><li><strong>Piedade</strong> — amor filial a Deus e fraternal ao próximo.</li><li><strong>Temor de Deus</strong> — reverência e respeito pela majestade divina.</li></ol>' },
+            { titulo: 'Ação na Igreja', texto: 'O Espírito Santo anima a Igreja, garante a infalibilidade do Magistério, santifica os fiéis pelos sacramentos, distribui os carismas e guia a oração de cada cristão. "O Espírito vem em auxílio da nossa fraqueza" (Rm 8,26).' },
+            { titulo: 'Pecado contra o Espírito', texto: 'Jesus adverte sobre a blasfêmia contra o Espírito Santo (Mt 12,31). Os santos explicam que esse pecado é a recusa obstinada de aceitar o perdão de Deus — não porque Deus recuse perdoar, mas porque o pecador fecha deliberadamente o coração à misericórdia.' }
+        ]
+    },
+    {
+        num: 5, icone: '⛪', titulo: 'A Igreja Católica',
+        sub: 'Fundada por Cristo, mãe e mestra da fé.',
+        versiculo: '"Tu és Pedro, e sobre esta pedra edificarei a minha Igreja." — Mt 16,18',
+        conteudo: [
+            { titulo: 'Fundação e natureza', texto: 'Jesus Cristo fundou a Igreja sobre Pedro e os Apóstolos. A Igreja é simultânea e inseparavelmente humana e divina, visível e espiritual, hierárquica e comunidade de amor. É o "sacramento universal da salvação" (LG 48).' },
+            { titulo: 'As 4 marcas da Igreja', texto: '<ul><li><strong>Una</strong> — unidade de fé, sacramentos e governo.</li><li><strong>Santa</strong> — santificada por Cristo, chama à santidade.</li><li><strong>Católica</strong> — universal, para todos os povos e tempos.</li><li><strong>Apostólica</strong> — fundada sobre os Apóstolos, em continuidade ininterrupta.</li></ul>' },
+            { titulo: 'O Papa e os bispos', texto: 'O Papa é o sucessor de Pedro, vigário de Cristo e cabeça visível da Igreja. Os bispos são sucessores dos Apóstolos. Juntos formam o Colégio Episcopal, que com e sob o Papa exerce o magistério supremo da Igreja.' },
+            { titulo: 'A Igreja e a salvação', texto: 'Fora da Igreja não há salvação — doutrina que precisa ser bem compreendida: significa que a Igreja é o instrumento ordinário da salvação, não que todos os não-católicos estejam condenados. Deus pode salvar a quem quiser, mas os meios que instituiu estão na Igreja.' }
+        ]
+    },
+    {
+        num: 6, icone: '📖', titulo: 'A Bíblia Sagrada',
+        sub: 'A Palavra de Deus em palavras humanas.',
+        versiculo: '"Toda a Escritura é inspirada por Deus." — 2 Timóteo 3,16',
+        conteudo: [
+            { titulo: 'O que é a Bíblia?', texto: 'A Bíblia é a Palavra de Deus expressa em palavras humanas. Deus é o autor principal (inspiração divina) e os hagiógrafos humanos são autores reais que usaram sua inteligência, linguagem e cultura. A Bíblia contém 73 livros canônicos: 46 no Antigo Testamento e 27 no Novo Testamento.' },
+            { titulo: 'Como ler a Bíblia?', texto: '<ul><li>Com oração — pedir ao Espírito Santo que abra o entendimento.</li><li>Com a Igreja — a leitura correta é feita dentro da Tradição e do Magistério.</li><li>Atendendo ao gênero literário — poesia, história, profecia, epístola etc. não se leem da mesma forma.</li><li>No contexto — cada passagem deve ser interpretada no conjunto da Escritura.</li></ul>' },
+            { titulo: 'Antigo e Novo Testamento', texto: 'O Antigo Testamento prepara e anuncia o Novo; o Novo Testamento realiza e ilumina o Antigo (cf. DV 16). Jesus é a chave de interpretação de toda a Escritura: "Tudo o que está escrito a meu respeito nos livros de Moisés, dos profetas e dos salmos precisa cumprir-se" (Lc 24,44).' },
+            { titulo: 'Lectio Divina', texto: 'A Lectio Divina é o método tradicional de oração com a Bíblia: <em>lectio</em> (leitura atenta), <em>meditatio</em> (meditação e ressonância interior), <em>oratio</em> (oração pessoal), <em>contemplatio</em> (repouso em Deus) e <em>actio</em> (colocar em prática).' }
+        ]
+    },
+    {
+        num: 7, icone: '💒', titulo: 'Os 7 Sacramentos',
+        sub: 'Sinais eficazes da graça invisível, instituídos por Cristo.',
+        versiculo: '"A graça de Deus e o dom da graça de um único homem, Jesus Cristo, transbordaram para a multidão." — Romanos 5,15',
+        conteudo: [
+            { titulo: 'O que são sacramentos?', texto: 'Sacramentos são sinais eficazes da graça, instituídos por Jesus Cristo e confiados à Igreja, pelos quais é distribuída a vida divina. São eficazes "ex opere operato" — pela própria realização do rito, não pelas qualidades do ministro.' },
+            { titulo: 'Os 7 sacramentos', texto: '<ol><li>Batismo — iniciação cristã, perdão do pecado original</li><li>Crisma — confirmação e plenitude do Espírito Santo</li><li>Eucaristia — o corpo e sangue de Cristo, "fonte e ápice"</li><li>Penitência — reconciliação com Deus e a Igreja</li><li>Unção dos Enfermos — graça para os doentes e moribundos</li><li>Ordem Sagrada — diaconato, presbiterato, episcopado</li><li>Matrimônio — aliança conjugal elevada à dignidade de sacramento</li></ol>' },
+            { titulo: 'Sacramentos de iniciação', texto: 'Batismo, Crisma e Eucaristia formam os três sacramentos de iniciação cristã. Pela união desses três, o cristão nasce para a vida nova, é confirmado no Espírito e alimentado pelo Pão eucarístico.' },
+            { titulo: 'Sacramentos de cura', texto: 'A Penitência (confissão) e a Unção dos Enfermos são chamados "sacramentos de cura" porque curam as feridas do pecado e da doença, restaurando a comunhão com Deus e fortalecendo o cristão na provação.' }
+        ]
+    },
+    {
+        num: 8, icone: '💧', titulo: 'O Batismo',
+        sub: 'O portal dos sacramentos e o nascimento para a vida nova.',
+        versiculo: '"Quem crer e for batizado será salvo." — Marcos 16,16',
+        conteudo: [
+            { titulo: 'Síntese do Batismo', texto: 'O Batismo é o primeiro e fundamental sacramento. Pelos efeitos do Batismo: (1) apaga o pecado original e todos os pecados pessoais; (2) insere no Corpo de Cristo (a Igreja); (3) concede a filiação divina; (4) imprime caráter indelével (marca permanente na alma).' },
+            { titulo: 'Efeitos do Batismo', texto: '<ul><li>Perdão do pecado original e de todos os pecados cometidos antes do Batismo.</li><li>Renascimento como filho de Deus.</li><li>Incorporação à Igreja, o Corpo de Cristo.</li><li>Infusão das virtudes teologais: fé, esperança e caridade.</li><li>Recepção dos 7 dons do Espírito Santo.</li></ul>' },
+            { titulo: 'Batismo de crianças', texto: 'A Igreja batiza crianças desde os primeiros séculos, baseada na graça que precede qualquer mérito humano. Os pais e padrinhos comprometem-se a educar a criança na fé. O Batismo de infantes manifesta que a salvação é pura iniciativa gratuita de Deus.' },
+            { titulo: 'Batismo de adultos', texto: 'Adultos não batizados recebem o Batismo após um período de catecumenato (RICA — Ritual de Iniciação Cristã de Adultos). A preparação inclui instrução na fé, conversão progressiva, celebrações de escrutínio e, na Vigília Pascal, os sacramentos de iniciação.' }
+        ]
+    },
+    {
+        num: 9, icone: '🍞', titulo: 'A Eucaristia',
+        sub: 'O corpo e sangue de Cristo: fonte e ápice da vida cristã.',
+        versiculo: '"Eu sou o pão vivo descido do céu." — João 6,51',
+        conteudo: [
+            { titulo: 'O que é a Eucaristia?', texto: 'A Eucaristia é o sacramento do Corpo e Sangue de Jesus Cristo, tornados realmente presentes sob as espécies do pão e do vinho, pela consagração na Missa. Jesus instituiu a Eucaristia na Última Ceia (Lc 22,19-20) e ordenou: "Fazei isto em memória de mim."' },
+            { titulo: 'Presença real', texto: 'A Igreja ensina a transubstanciação: o pão e o vinho se transformam substancialmente no Corpo e Sangue de Cristo, permanecendo apenas os acidentes externos do pão e do vinho. Cristo está inteiramente presente em cada espécie e em cada partícula (CIC 1374).' },
+            { titulo: 'A Missa como sacrifício', texto: 'A Missa não é uma repetição do sacrifício da Cruz, mas a sua re-presentação (tornar presente) sacramental. O mesmo Cristo que morreu na Cruz se oferece ao Pai sob os sinais sacramentais do pão e do vinho.' },
+            { titulo: 'Disposição para a Comunhão', texto: 'Para receber a Comunhão, é necessário: (1) estar em estado de graça (sem pecado mortal); (2) guardar o jejum eucarístico de 1 hora; (3) ter a intenção de receber o Senhor com fé e reverência. Quem estiver em pecado mortal deve antes se confessar.' }
+        ]
+    },
+    {
+        num: 10, icone: '🕊️', titulo: 'A Confissão',
+        sub: 'O sacramento do perdão, da reconciliação e da paz.',
+        versiculo: '"Aqueles a quem perdoardes os pecados, serão perdoados." — João 20,23',
+        conteudo: [
+            { titulo: 'Por que confessar?', texto: 'Jesus instituiu o sacramento da Penitência quando, no dia da Ressurreição, soprou sobre os Apóstolos e disse: "Recebei o Espírito Santo. Aqueles a quem perdoardes os pecados, serão perdoados" (Jo 20,22-23). A confissão ao sacerdote é o meio ordinário pelo qual Deus perdoa os pecados cometidos após o Batismo.' },
+            { titulo: 'Os 5 atos do penitente', texto: '<ol><li><strong>Exame de consciência</strong> — recordar e reconhecer os pecados.</li><li><strong>Contrição</strong> — arrependimento sincero e propósito de emenda.</li><li><strong>Confissão ao sacerdote</strong> — acusação clara dos pecados mortais em número e espécie.</li><li><strong>Penitência</strong> — satisfação imposta pelo confessor.</li><li><strong>Absolvição</strong> — o sacerdote, em nome de Cristo, absolve.</li></ol>' },
+            { titulo: 'Pecado mortal e venial', texto: '<strong>Pecado mortal</strong> destrói a vida de graça. Requer: matéria grave, plena advertência e pleno consentimento. <strong>Pecado venial</strong> ofende a Deus e enfraquece a caridade, mas não destrói o vínculo com Deus. Os veniais podem ser perdoados por atos de contrição, orações e sacramentais.' },
+            { titulo: 'Confissão frequente', texto: 'Os santos recomendam a confissão frequente, mesmo quando não há pecados mortais a confessar. A Eucaristia perdoa os pecados veniais, mas a confissão traz graças especiais de fortalecimento, discernimento espiritual e crescimento na virtude.' }
+        ]
+    },
+    {
+        num: 11, icone: '🏠', titulo: 'O Matrimônio',
+        sub: 'A aliança conjugal elevada por Cristo à dignidade de sacramento.',
+        versiculo: '"O que Deus uniu, o homem não deve separar." — Mt 19,6',
+        conteudo: [
+            { titulo: 'O Matrimônio cristão', texto: 'O sacramento do Matrimônio é a aliança matrimonial pela qual um homem e uma mulher constituem entre si uma parceria de vida inteira, ordenada ao bem dos cônjuges e à procriação e educação dos filhos. Foi elevada por Cristo à dignidade de sacramento para os batizados.' },
+            { titulo: 'Propriedades do Matrimônio', texto: '<ul><li><strong>Unidade</strong> — entre um homem e uma mulher (monogamia).</li><li><strong>Indissolubilidade</strong> — "até que a morte os separe".</li><li><strong>Abertura à vida</strong> — ordenado por sua natureza à procriação.</li></ul>' },
+            { titulo: 'Os fins do Matrimônio', texto: 'O Matrimônio tem dois fins intrinsecamente ligados: (1) o bem dos próprios cônjuges (ajuda mútua, crescimento na santidade) e (2) a procriação e educação dos filhos. Não existe hierarquia entre esses fins — ambos são essenciais.' },
+            { titulo: 'A graça matrimonial', texto: 'O sacramento confere aos cônjuges a graça específica para viver o amor conjugal como imagem do amor de Cristo pela Igreja (Ef 5,25-32). Essa graça os fortalece para as exigências da fidelidade, da abertura à vida e da santificação mútua.' }
+        ]
+    },
+    {
+        num: 12, icone: '🌹', titulo: 'Maria, Mãe de Deus',
+        sub: 'A Theotokos — a mulher mais excelsa da criação.',
+        versiculo: '"Eis aqui a serva do Senhor. Faça-se em mim segundo a tua palavra." — Lucas 1,38',
+        conteudo: [
+            { titulo: 'Os privilégios de Maria', texto: '<ul><li><strong>Imaculada Conceição</strong> — preservada do pecado original desde o primeiro instante de sua existência (dogma, 1854).</li><li><strong>Maternidade divina</strong> — Theotokos, Mãe de Deus (dogma, Concílio de Éfeso, 431).</li><li><strong>Virgindade perpétua</strong> — virgem antes, durante e após o parto (dogma).</li><li><strong>Assunção</strong> — foi elevada ao céu em corpo e alma (dogma, 1950).</li></ul>' },
+            { titulo: 'Maria na economia da salvação', texto: 'Maria é inseparavelmente unida à obra salvífica de seu Filho. Disse "sim" (fiat) em nome de toda a humanidade. Esteve presente em Caná, na Cruz e no Pentecostes. É medianeira de graças e mãe espiritual de todos os cristãos (Jo 19,27).' },
+            { titulo: 'A devoção mariana', texto: 'A devoção a Maria é constitutiva da espiritualidade católica. O Rosário, o terço, as novenas marianas, a consagração a Maria — tudo isso são expressões do amor filial do cristão. "A verdadeira devoção a Maria conduz a Cristo", ensinam os santos.' },
+            { titulo: 'Maria e a Igreja', texto: 'Maria é o tipo e modelo perfeito da Igreja: virgem e mãe, crente e serva. A LG (cap. VIII) apresenta Maria inserida no mistério de Cristo e da Igreja. Honrar Maria é honrar a obra da graça de Deus nela.' }
+        ]
+    },
+    {
+        num: 13, icone: '🙏', titulo: 'A Oração Cristã',
+        sub: 'O diálogo com Deus: como falar e escutar o Senhor.',
+        versiculo: '"Orai sem cessar." — 1 Tessalonicenses 5,17',
+        conteudo: [
+            { titulo: 'O que é oração?', texto: 'Santo João Damasceno define oração como "a elevação da alma para Deus ou a demanda de bens convenientes a Deus". Santa Teresa d\'Ávila: "Oração não é outra coisa senão um tratar de amizade com Aquele que sabemos que nos ama." É diálogo, não monólogo.' },
+            { titulo: 'Formas de oração', texto: '<ul><li><strong>Bênção e adoração</strong> — reconhecer a grandeza de Deus.</li><li><strong>Petição</strong> — apresentar nossas necessidades a Deus.</li><li><strong>Intercessão</strong> — orar pelos outros.</li><li><strong>Ação de graças</strong> — gratidão pelas bênçãos recebidas.</li><li><strong>Louvor</strong> — glorificar Deus por Si mesmo.</li></ul>' },
+            { titulo: 'O Pai-Nosso', texto: 'O Pai-Nosso é "a oração do Senhor" (Mt 6,9-13), modelo de toda oração cristã. O CIC (n. 2761) o chama de "resumo de todo o Evangelho". Suas sete petições abrangem tudo que o cristão pode pedir a Deus.' },
+            { titulo: 'Obstáculos à oração', texto: 'Os principais obstáculos são: distração, aridez espiritual (ausência de consolação) e tibieza. Os santos ensinam a perseverar mesmo sem sentir: a fé e a fidelidade valem mais que as consolações. "Deus experimenta e purifica quem ama" (São João da Cruz).' }
+        ]
+    },
+    {
+        num: 14, icone: '📜', titulo: 'Os Mandamentos',
+        sub: 'A lei moral gravada no coração e proclamada por Deus.',
+        versiculo: '"Amai-vos uns aos outros como eu vos amei." — João 15,12',
+        conteudo: [
+            { titulo: 'Os 10 Mandamentos', texto: '<ol><li>Amarás a Deus sobre todas as coisas.</li><li>Não tomarás o nome de Deus em vão.</li><li>Guardarás o Dia do Senhor (domingo).</li><li>Honrarás teu pai e tua mãe.</li><li>Não matarás.</li><li>Não cometerás adultério.</li><li>Não furtarás.</li><li>Não levantarás falso testemunho.</li><li>Não cobiçarás a mulher do próximo.</li><li>Não cobiçarás os bens alheios.</li></ol>' },
+            { titulo: 'Lei moral e liberdade', texto: 'Os mandamentos não são prisões, mas caminhos de liberdade. Santo Agostinho: "Ama e faz o que quiseres" — quando amamos verdadeiramente, a lei deixa de ser peso e se torna expressão natural do amor. Jesus resume tudo em dois mandamentos: amar a Deus e ao próximo (Mt 22,37-40).' },
+            { titulo: 'Lei natural e Lei divina', texto: 'A lei moral natural está escrita no coração de todo ser humano (Rm 2,15) e é acessível pela razão. A lei divina (revelada) confirma e aperfeiçoa a lei natural, acrescentando precisão onde a razão vacila por causa do pecado.' },
+            { titulo: 'Os preceitos da Igreja', texto: 'Além dos mandamentos, a Igreja estabelece preceitos práticos: (1) participar da Missa aos domingos e dias santos; (2) confessar os pecados ao menos uma vez por ano; (3) comungar ao menos na Páscoa; (4) guardar os dias de jejum e abstinência; (5) ajudar às necessidades da Igreja.' }
+        ]
+    },
+    {
+        num: 15, icone: '⚖️', titulo: 'A Vida Eterna',
+        sub: 'Morte, Juízo, Céu, Purgatório e Inferno — os novíssimos.',
+        versiculo: '"Eu sou a ressurreição e a vida." — João 11,25',
+        conteudo: [
+            { titulo: 'A morte', texto: 'A morte é o fim da peregrinação terrena, o momento em que a alma se separa do corpo. Com a morte, encerra-se o tempo da misericórdia e começa o tempo da justiça. Não há reencarnação: "Aos homens está decretado morrerem uma só vez, e depois vem o Juízo" (Hb 9,27).' },
+            { titulo: 'O Juízo Particular e Final', texto: 'O <strong>Juízo Particular</strong> ocorre imediatamente após a morte de cada pessoa: a alma é julgada e vai para o céu, purgatório ou inferno. O <strong>Juízo Final</strong> (ou universal) se dará no fim dos tempos, quando Cristo voltará em glória e haverá a ressurreição dos corpos.' },
+            { titulo: 'Céu, Purgatório, Inferno', texto: '<ul><li><strong>Céu</strong> — visão beatífica de Deus face a face, felicidade plena e eterna.</li><li><strong>Purgatório</strong> — purificação final para os que morreram em graça mas ainda necessitam de purificação. É um estado de esperança, não de condenação. Podemos ajudar as almas com orações, missas e indulgências.</li><li><strong>Inferno</strong> — separação eterna de Deus, escolhida livremente pela pessoa. A Igreja definiu dogmaticamente a existência do inferno, mas não declarou nenhuma pessoa condenada.</li></ul>' },
+            { titulo: 'Escatologia cristã e esperança', texto: 'A esperança cristã não é ilusão: é certeza teologal fundada na Ressurreição de Cristo. "Nem olho viu, nem ouvido ouviu, nem coração de homem imaginou o que Deus preparou para os que o amam" (1Cor 2,9).' }
+        ]
+    },
+    {
+        num: 16, icone: '🎤', titulo: 'A Missão do Cristão',
+        sub: 'Todos os batizados são chamados à santidade e ao apostolado.',
+        versiculo: '"Ide por todo o mundo e proclamai o Evangelho a toda criatura." — Marcos 16,15',
+        conteudo: [
+            { titulo: 'O chamado universal à santidade', texto: 'O Concílio Vaticano II (LG 40) ensina que todos os cristãos, qualquer que seja seu estado de vida, são chamados à plenitude da vida cristã e à perfeição da caridade. A santidade não é privilégio de padres e religiosos: é vocação universal.' },
+            { titulo: 'O sacerdócio batismal', texto: 'Pelo Batismo, todos os cristãos participam do sacerdócio de Cristo (sacerdócio comum dos fiéis). Isso significa oferecer a Deus o sacrifício de si mesmo em cada situação da vida: trabalho, sofrimento, alegria, relações — tudo pode ser oferecido como culto espiritual (Rm 12,1).' },
+            { titulo: 'Apostolado e evangelização', texto: 'O cristão é chamado a ser "sal da terra e luz do mundo" (Mt 5,13-14). O apostolado se realiza: no testemunho de vida, na palavra (anúncio e catequese), nas obras de misericórdia e no engajamento para transformar as estruturas sociais à luz do Evangelho.' },
+            { titulo: 'O laicato no mundo', texto: 'A vocação própria dos leigos é evangelizar "de dentro" das realidades mundanas: família, profissão, cultura, política, economia. O mundo é o campo de ação do laicato; sua missão específica é impregnar o temporal com o espírito do Evangelho (AA 2).' }
+        ]
+    },
+    {
+        num: 17, icone: '📿', titulo: 'Vocações à Vida Consagrada',
+        sub: 'O sacerdócio, a vida religiosa e o seguimento radical de Cristo.',
+        versiculo: '"A colheita é grande, mas os operários são poucos." — Mateus 9,37',
+        conteudo: [
+            { titulo: 'O sacerdócio ministerial', texto: 'O sacerdote (presbítero) é ordenado para agir <em>in persona Christi Capitis</em> — na pessoa de Cristo Cabeça. Suas funções próprias são: presidir a Eucaristia, confessar, pregar e pastorear o povo de Deus. A ordenação confere caráter indelével e configuração especial com Cristo Sacerdote.' },
+            { titulo: 'A vida religiosa', texto: 'Os religiosos (freiras, frades, monges) professam os conselhos evangélicos: pobreza, castidade e obediência. Sua vida é sinal profético do Reino de Deus. Existem vida contemplativa (claustro e oração) e vida apostólica ativa (missões, educação, saúde).' },
+            { titulo: 'Vocação ao matrimônio e ao celibato', texto: 'Toda vocação é um chamado de amor de Deus. O matrimônio é caminho de santidade no amor conjugal e familiar. O celibato/virgindade consagrada é sinal escatológico: antecipa a vida do Reino, onde "não serão dados em casamento" (Mt 22,30).' },
+            { titulo: 'Discernir a vocação', texto: 'Discernir a vocação exige: oração perseverante, direção espiritual, vida sacramental intensa e abertura sincera à vontade de Deus. São João Paulo II dizia: "Não tenhais medo!" — de responder ao chamado de Deus, qualquer que seja a forma que ele tome.' }
+        ]
+    }
+];
+
+let licaoAtual = null;
+
+function renderLicoes() {
+    const grid = document.getElementById('licoes-grid');
+    grid.innerHTML = LICOES.map(l => `
+        <div class="licao-card" onclick="abrirLicao(${l.num})">
+            <span class="licao-icone">${l.icone}</span>
+            <span class="licao-num">Lição ${l.num}</span>
+            <h3>${l.titulo}</h3>
+            <p>${l.sub}</p>
+        </div>
+    `).join('');
+}
+
+function abrirLicao(num) {
+    const l = LICOES.find(x => x.num === num);
+    if (!l) return;
+    licaoAtual = num;
+
+    const conteudo = l.conteudo.map(item => `
+        <div class="catechism-step">
+            <h4>${item.titulo}</h4>
+            <div>${item.texto}</div>
+        </div>
+    `).join('');
+
+    const prev = num > 1 ? `<button onclick="abrirLicao(${num - 1})">← Lição ${num - 1}</button>` : '<span></span>';
+    const next = num < LICOES.length ? `<button onclick="abrirLicao(${num + 1})">Lição ${num + 1} →</button>` : '<span></span>';
+
+    document.getElementById('conteudo-licao').innerHTML = `
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+            <span style="font-size:2rem;">${l.icone}</span>
+            <div>
+                <div style="font-size:0.8rem;color:#888;">Lição ${l.num} de ${LICOES.length}</div>
+                <h2 style="margin:0;color:var(--cor-primaria,#1a4f89);">${l.titulo}</h2>
+                <p style="margin:0.25rem 0 0;color:#666;">${l.sub}</p>
+            </div>
+        </div>
+        <div class="verse-box">${l.versiculo}</div>
+        ${conteudo}
+        <div class="progress-nav">
+            ${prev}
+            <span>Lição ${num}/${LICOES.length}</span>
+            ${next}
+        </div>
+    `;
+
+    const card = document.getElementById('conteudo-card');
+    card.style.display = 'block';
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+}
+
+$(function () {
+    renderLicoes();
+
+    $('#menu-placeholder').load('/includes/menu.html', function () {
+        if (typeof initMenu === 'function') initMenu();
+    });
+    $('#footer-placeholder').load('/includes/footer.html');
+
+    // Acessibilidade
+    const barra = document.getElementById('barra-acessibilidade');
+    if (barra) {
+        $.get('/includes/barra-acessibilidade.html', function (html) { barra.innerHTML = html; if (typeof initAcessibilidade === 'function') initAcessibilidade(); }).fail(function () { barra.innerHTML = ''; });
+    }
+});
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

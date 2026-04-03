@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora de Fátima</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#c0a060"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #c0a060;">
+        <header style="text-align:center;">
+            <h1>🌹 Terço de Nossa Senhora de Fátima</h1>
+            <p class="lead">Uma devoção especial à Virgem de Fátima, pedindo a conversão dos pecadores e a paz do mundo.</p>
+            <p class="muted">"No final, o meu Imaculado Coração triunfará." — Nossa Senhora de Fátima, 1917</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora de Fátima</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora de Fátima</strong> é uma devoção nascida das aparições da Virgem Maria aos três pastorinhos — Lúcia, Francisco e Jacinta — na Cova da Iria, em Fátima (Portugal), entre maio e outubro de 1917.</p><p>Durante as aparições, Nossa Senhora pediu insistentemente a <strong>reza do Terço diário</strong> pela paz do mundo e pela conversão dos pecadores, e ensinou a jaculatória: <em>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o céu e socorrei especialmente as que mais precisarem de vossa misericórdia."</em> O milagre do sol (13 de outubro de 1917), presenciado por cerca de 70 mil pessoas, confirmou a autenticidade das aparições.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial com a Jaculatória de Fátima</li><li>5 dezenas meditando as aparições e a mensagem de Fátima</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória: <em>"Ó meu Jesus, perdoai-nos..."</em></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração de Fátima (para cada dezena):</em> Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o céu e socorrei especialmente as que mais precisarem de vossa misericórdia.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#c0a060;margin-top:0;">🌹 Oração Final de Fátima</h3>
+        <p>Santíssima Trindade, eu Vos ofereço os preciosos Corpos, Almas e Divindades de Nosso Senhor Jesus Cristo, presentes em todos os sacrários do mundo, em reparação dos ultrajes, sacrilégios e indiferenças com que o Ele mesmo é ofendido.</p>
+        <blockquote style="border-left: 4px solid #c0a060; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "Nossa Senhora de Fátima, rogai por nós que recorremos a Vós. Imaculado Coração de Maria, sede tudo nosso refúgio e o caminho que nos conduz a Deus."
+        </blockquote>
+        <div class="msg-success">✅ Terço de Nossa Senhora de Fátima concluído! Que a Virgem de Fátima interceda por você e pela paz do mundo.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de Nossa Senhora de Fátima no FeCatolica! 🌹" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — A Aparição do Anjo de Portugal',
+        meditation: 'Pelos pecadores do mundo e pela paz entre as nações.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Primeira Aparição de Nossa Senhora (13/05/1917)',
+        meditation: 'Pela conversão dos pecadores e pelo fim das guerras.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — O Segredo de Fátima e o Coração Imaculado',
+        meditation: 'Pela consagração do mundo ao Imaculado Coração de Maria.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — O Milagre do Sol (13/10/1917)',
+        meditation: 'Para que os homens creiam e se convertam a Deus.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — "No Final, o Meu Imaculado Coração Triunfará"',
+        meditation: 'Pela vitória do bem sobre o mal e pelo reino de Cristo na terra.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#c0a060', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

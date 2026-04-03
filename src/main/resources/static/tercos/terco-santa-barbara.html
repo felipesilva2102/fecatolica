@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Santa Bárbara</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#d32f2f"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #d32f2f;">
+        <header style="text-align:center;">
+            <h1>⛈️ Terço de Santa Bárbara</h1>
+            <p class="lead">Devoção à virgem e mártir que sua própria família quis matar por causa da fé em Cristo, padroeira dos artilheiros, mineiros e invocada contra os raios e as tempestades.</p>
+            <p class="muted">"Prendei as torres do mal com três janelas — em nome da Santíssima Trindade." — Tradição hagiográfica sobre Santa Bárbara. — Festa: 4 de dezembro.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Santa Bárbara</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Santa Bárbara</strong> honra a virgem e mártir do século III, uma das santas mais populares da cristandade. Segundo a tradição, Bárbara era filha de Dióscoro, um rico pagão da Nicomédia. Ao converter-se ao cristianismo, foi encerrada numa torre por seu próprio pai.</p><p>Quando recusou renegar a fé, foi torturada e decapitada pelo pai, que imediatamente foi fulminado por um raio. Por isso, Santa Bárbara é invocada como <strong>protetora contra raios, tempestades, incêndios e morte repentina</strong>. É padroeira dos bombeiros, artilheiros e mineradores. Sua festa é celebrada em 4 de dezembro.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a Santa Bárbara</li><li>5 dezenas meditando o martírio e a fé de Santa Bárbara</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> Santa Bárbara, virgem e mártir de Cristo, que pela fé no Deus verdadeiro enfrentaste o pai terreno e a espada do tirano, dai-nos a coragem de professar nossa fé sem temor e protegei-nos contra todo perigo do corpo e da alma. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#d32f2f;margin-top:0;">⛈️ Oração Final a Santa Bárbara</h3>
+        <p>Santa Bárbara, que convertida em segredo construístes uma torre com três janelas em honra à Trindade, protegei-nos das tempestades físicas e espirituais. Intercedei pelos artilheiros, pelos mineiros e por todos os que trabalham em situação de risco. Que morramos em paz, munidos dos santos sacramentos.</p>
+        <blockquote style="border-left: 4px solid #d32f2f; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "Santa Bárbara, vossa torre tem três janelas — pelo Pai, pelo Filho e pelo Espírito Santo — e sob vossa proteção pedimos morrer em paz e em graça." — Oração tradicional.
+        </blockquote>
+        <div class="msg-success">✅ Terço de Santa Bárbara concluído! Que ela proteja você das tempestades e interceda por uma boa morte.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de Santa Bárbara no FeCatolica! ⛈️" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — Bárbara, Filha de Dióscoro, Batizada em Segredo',
+        meditation: 'Pelos catecúmenos e por todos que buscam se aproximar da fé cristã.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Torre com Três Janelas em Honra à Santíssima Trindade',
+        meditation: 'Pelo aprofundamento da fé no mistério trinitário e pela catequese.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — A Denúncia pelo Próprio Pai e a Prisão',
+        meditation: 'Por todos os que sofrem perseguição da própria família por causa da fé.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Os Tormentos e a Firmeza Inabalável na Fé',
+        meditation: 'Pela fortaleza espiritual nas provações e pela grão dos mártires.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — O Martírio e a Proteção nas Tempestades — Padroeira dos Artilheiros',
+        meditation: 'Pelos artilheiros, mineiros, bombeiros e por uma morte santa e sacramentada.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#d32f2f', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

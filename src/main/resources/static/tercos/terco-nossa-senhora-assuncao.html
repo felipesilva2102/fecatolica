@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Terço de N. Sra. da Assunção</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/acessibilidade.css">
+        <link rel="stylesheet" href="/css/terco-interativo.css">
+        <link rel="stylesheet" href="/css/print.css" media="print">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#6a1b9a">
+        <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="menu-placeholder"></div>
+            <div class="card hero-card" style="border-top: 4px solid #6a1b9a;">
+                <header style="text-align:center;">
+                    <h1>👑 Terço de Nossa Senhora da Assunção</h1>
+                    <p class="lead">Devoção ao mistério da Assunção de Maria ao Céu em corpo e alma, dogma definido pelo Papa Pio XII em 1950, pré-figuração da ressurreição dos corpos.</p>
+                    <p class="muted">"Uma grande sinal apareceu no céu: uma Mulher vestida de sol, com a lua debaixo dos seus pés e uma coroa de doze estrelas sobre a cabeça." — Ap 12,1 — Festa: 15 de agosto.</p>
+                </header>
+            </div>
+            <!-- Instruções -->
+            <div class="card">
+                <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header">Sobre o Terço de Nossa Senhora da Assunção</div>
+                        <div class="accordion-content">
+                            <p>
+                                O
+                                <strong>Terço de Nossa Senhora da Assunção</strong>
+                                celebra o dogma da Assunção de Maria ao Céu em corpo e alma, proclamado pelo Papa Pio XII em 1950 pela Constituição Apostólica
+                                <em>Munificentissimus Deus</em>
+                                . Esta devoção medita sobre a glorificação da Virgem Maria, que, livre de todo pecado, foi elevada à glória celeste ao término de sua vida terrena.
+                            </p>
+                            <p>A festa da Assunção (15 de agosto) é uma das mais antigas celebrações marianas da Igreja, remontando ao século V. Os fiéis contemplam neste terço a vitória de Maria sobre a morte e a esperança da ressurreição prometida a todos os cristãos.</p>
+                            <p>
+                                <strong>Estrutura:</strong>
+                            </p>
+                            <ol>
+                                <li>Oração inicial e invocação a Nossa Senhora da Assunção</li>
+                                <li>5 dezenas meditando a glória da Assunção</li>
+                                <li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li>
+                                <li>Jaculatória ao final de cada dezena</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Orações Iniciais -->
+            <div class="card">
+                <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                        <div class="accordion-content">
+                            <p>
+                                <strong>Sinal da Cruz:</strong>
+                                Em nome do Pai, e do Filho, e do Espírito Santo. Amém.
+                            </p>
+                            <p>
+                                <em>Invocação:</em>
+                                Ó Maria, Rainha assunta ao Céu, que fostes elevada em corpo e alma à glória eterna, dignai-Vos acolher as preces dos Vossos filhos peregrinos neste vale de lágrimas. Cobri-nos com Vosso manto de luz e conduzi-nos ao Vosso Filho Jesus. Amém.
+                            </p>
+                            <p>
+                                <strong>Creio em Deus Pai</strong>
+                                todo-poderoso, criador do céu e da terra...
+                            </p>
+                            <p>
+                                <em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="decadesContainer"></div>
+            <div id="sectionFinal" class="card fade-in" style="display:none;">
+                <h3 style="color:#6a1b9a;margin-top:0;">👑 Oração Final a N. Sra. da Assunção</h3>
+                <p>Virgem gloriosa, que reinais ao lado de vosso Filho Jesus Cristo, intercedei por toda a Igreja militante. Sede para nós a estrela que guia ao porto seguro da eternidade, para que um dia também nós participemos da ressurreição dos corpos e da vida eterna.</p>
+                <blockquote style="border-left: 4px solid #6a1b9a; padding-left: 16px; margin: 16px 0; font-style: italic;">
+                    "A Imaculada Mãe de Deus, a sempre Virgem Maria, terminado o curso da vida terrena, foi assunta em corpo e alma à glória celestial." — Munificentissimus Deus, Pio XII, 1950.
+                </blockquote>
+                <div class="msg-success">✅ Terço de N. Sra. da Assunção concluído! Que Maria Rainha interceda por você.</div>
+            </div>
+            <button
+                class="btn-share"
+                data-partilhar
+                data-partilhar-texto="Rezei o Terço de Nossa Senhora da Assunção no FeCatolica! 👑"
+                style="display:block;margin:12px auto;"
+            >
+                📤 Partilhar esta Devoção
+            </button>
+            <div id="footer-placeholder"></div>
+        </div>
+        <script src="/js/app.js"></script>
+        <script src="/js/terco-interativo.js"></script>
+        <script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — Maria, Cheia de Graça desde a Imaculada Conceição',
+        meditation: 'Pela santificação de nossas almas e pela pureza do coração.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Dormição de Maria e a Reunião dos Apóstolos',
+        meditation: 'Por uma santa morte e pela perseverança final na fé.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — O Túmulo Vazio — Pré-Figura da Ressurreição dos Corpos',
+        meditation: 'Pela fé na ressurreição e pela esperança da vida eterna.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — A Definição Dogmática por Pio XII em 1950',
+        meditation: 'Pela fidelidade ao Magistério da Igreja e pela unidade dos cristãos.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — Maria Coroada como Rainha do Céu e da Terra',
+        meditation: 'Pela paz no mundo e pela vitória da Igreja sobre o mal.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#6a1b9a', decades: decades });
+});
+        </script>
+        <script src="/js/acessibilidade.js"></script>
+        <script src="/js/streaks.js"></script>
+        <script src="/js/partilha.js"></script>
+        <script src="/js/sw-register.js"></script>
+    </body>
+</html>

@@ -1016,6 +1016,92 @@ header p.lead {
     .intencao-header { flex-direction: column; align-items: flex-start; }
 }
 
+/* ===== Mega-Menu ===== */
+.mega-menu {
+    width: min(96vw, 950px);
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: nowrap;
+    padding: 16px 8px;
+    max-height: 82vh;
+    overflow-y: auto;
+}
+
+.dropdown:hover > .mega-menu,
+.dropdown.open > .mega-menu {
+    display: flex !important;
+}
+
+.mega-col {
+    flex: 1;
+    border-right: 1px solid #edf0f4;
+    padding: 4px 10px;
+    min-width: 0;
+}
+
+.mega-col:last-child { border-right: none; }
+
+.mega-title {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cor-primaria);
+    padding: 2px 0 7px;
+    margin-bottom: 3px;
+    border-bottom: 2px solid var(--cor-accent);
+    white-space: nowrap;
+}
+
+.mega-col a {
+    display: block;
+    padding: 4px 0;
+    color: #444;
+    font-size: 0.82rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mega-col a:hover {
+    color: var(--cor-primaria);
+    background: transparent !important;
+}
+
+/* Regular large dropdowns: scrollable so they don't overflow viewport */
+/* Exclude dropdowns with nested submenus — overflow:auto clips position:absolute children */
+.dropdown-menu:not(.mega-menu):not(.has-submenus) {
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .mega-menu {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        max-height: none !important;
+        flex-direction: column !important;
+    }
+    .mega-col {
+        border-right: none;
+        border-bottom: 1px solid #edf0f4;
+        padding: 8px 16px;
+    }
+    .mega-col:last-child { border-bottom: none; }
+    .mega-col a {
+        white-space: normal;
+        padding: 6px 0;
+        font-size: 0.9rem;
+    }
+    .mega-title { white-space: normal; }
+    .dropdown-menu:not(.mega-menu):not(.has-submenus) { max-height: none; overflow-y: visible; }
+}
+
 /* ===== Loading Spinner ===== */
 .loading-spinner {
     display: flex;

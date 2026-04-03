@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contador de Oração — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <meta name="description" content="Conte suas orações digitalmente — Pai-Nosso, Ave-Maria, Glória, Kyrie e muito mais."/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .contador-hero {
+            background: linear-gradient(135deg, #1a4f89 0%, #2c7a2c 100%);
+            color: white;
+            border-radius: 16px;
+            padding: clamp(16px, 4vw, 32px);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .contador-hero h1 { margin: 0 0 6px 0; font-size: clamp(1.4rem, 4vw, 2rem); }
+        .contador-hero p { margin: 0; opacity: 0.9; font-size: clamp(0.9rem, 2.5vw, 1.05rem); }
+
+        .oracoes-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .oracao-tab {
+            padding: 8px 16px;
+            border: 2px solid #1a4f89;
+            border-radius: 20px;
+            background: white;
+            color: #1a4f89;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .oracao-tab.active, .oracao-tab:hover {
+            background: #1a4f89;
+            color: white;
+        }
+
+        /* Display principal do contador */
+        .contador-display {
+            text-align: center;
+            padding: clamp(20px, 5vw, 40px);
+        }
+        .contador-nome {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: #1a4f89;
+            margin-bottom: 8px;
+        }
+        .contador-meta-info {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .contador-numero {
+            font-size: clamp(4rem, 15vw, 8rem);
+            font-weight: 900;
+            color: #1a4f89;
+            line-height: 1;
+            font-family: "Segoe UI", monospace;
+            letter-spacing: -2px;
+            transition: transform 0.1s ease;
+            user-select: none;
+        }
+        .contador-numero.bump {
+            transform: scale(1.12);
+            color: #2c7a2c;
+        }
+        .contador-dezenas {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #888;
+            margin-top: 4px;
+        }
+        .contador-dezenas span {
+            background: #eee;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-weight: 700;
+            color: #555;
+        }
+
+        /* Botão principal de contagem */
+        .btn-contar {
+            display: block;
+            width: min(260px, 80vw);
+            margin: 24px auto 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #1a4f89, #2c7a2c);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: min(200px, 55vw);
+            height: min(200px, 55vw);
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(26,79,137,0.35);
+            transition: all 0.15s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-contar:active {
+            transform: scale(0.93);
+            box-shadow: 0 3px 12px rgba(26,79,137,0.25);
+        }
+
+        /* Controles */
+        .controles-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .btn-controle {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.18s;
+            color: #555;
+        }
+        .btn-controle:hover { border-color: #1a4f89; color: #1a4f89; background: #f0f5ff; }
+        .btn-controle.danger:hover { border-color: #e33; color: #e33; background: #fff5f5; }
+
+        /* Meta / alvo */
+        .meta-section {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f9fbff;
+            border-radius: 12px;
+            border: 1px solid #dce8f8;
+        }
+        .meta-section label { display: block; font-weight: 600; color: #444; margin-bottom: 6px; font-size: 0.9rem; }
+        .meta-grid {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-meta {
+            padding: 7px 14px;
+            border: 2px solid #bdd1f0;
+            border-radius: 16px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a4f89;
+            transition: all 0.2s;
+        }
+        .btn-meta.active, .btn-meta:hover {
+            background: #1a4f89;
+            color: white;
+            border-color: #1a4f89;
+        }
+        .meta-input-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        .meta-input-row input {
+            width: 80px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* Barra de progresso */
+        .progresso-wrap {
+            margin-top: 14px;
+        }
+        .progresso-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        .progresso-bar-bg {
+            height: 12px;
+            background: #e0e8f5;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progresso-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a4f89, #2c7a2c);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+            min-width: 0;
+        }
+
+        /* Oração do dia */
+        .oracao-texto {
+            background: #f9fbff;
+            border-left: 4px solid #1a4f89;
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+            margin-top: 12px;
+            white-space: pre-wrap;
+        }
+        .accordion-tab { margin-bottom: 6px; }
+        .accordion-header {
+            background: #f0f5ff;
+            border: 1px solid #dce8f8;
+            border-radius: 8px;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1a4f89;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header::after { content: '▼'; font-size: 0.75rem; transition: transform 0.2s; }
+        .accordion-header.active::after { transform: rotate(180deg); }
+        .accordion-content { display: none; padding: 12px 16px; border: 1px solid #dce8f8; border-top: none; border-radius: 0 0 8px 8px; }
+
+        /* Histórico de sessão */
+        .historico-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f9fbff;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        .historico-item .nome { font-weight: 600; color: #333; }
+        .historico-item .qtd { color: #1a4f89; font-weight: 700; font-size: 1.1rem; }
+        .historico-item .hora { color: #bbb; font-size: 0.8rem; }
+
+        /* Vibration indicator */
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 8px 30px rgba(26,79,137,0.35); }
+            50% { box-shadow: 0 8px 40px rgba(44,122,44,0.6); }
+            100% { box-shadow: 0 8px 30px rgba(26,79,137,0.35); }
+        }
+        .btn-contar.glow { animation: pulseGreen 0.4s ease; }
+
+        @media (max-width: 600px) {
+            .btn-contar { width: 75vw; height: 75vw; }
+        }
+
+        /* som visual */
+        .dezena-alert {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: #2c7a2c;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .dezena-alert.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="contador-hero">
+            <h1>📿 Contador de Oração</h1>
+            <p>Conte suas preces de forma simples — toque no botão a cada oração rezada.</p>
+        </div>
+
+        <!-- Seletor de oração -->
+        <div class="card">
+            <h3 style="text-align:center;margin-top:0;color:#1a4f89;">Escolha a Oração</h3>
+            <div class="oracoes-tabs" id="oracoesTabs">
+                <button class="oracao-tab active" data-key="ave">Ave-Maria</button>
+                <button class="oracao-tab" data-key="pai">Pai-Nosso</button>
+                <button class="oracao-tab" data-key="gloria">Glória</button>
+                <button class="oracao-tab" data-key="credo">Credo</button>
+                <button class="oracao-tab" data-key="kyrie">Kyrie Eleison</button>
+                <button class="oracao-tab" data-key="fatima">Oração de Fátima</button>
+                <button class="oracao-tab" data-key="misericordia">Oração da Misericórdia</button>
+                <button class="oracao-tab" data-key="anjo">Oração ao Anjo</button>
+                <button class="oracao-tab" data-key="santo">Santo, Santo, Santo</button>
+                <button class="oracao-tab" data-key="personalizada">✏️ Personalizada</button>
+            </div>
+
+            <!-- Campo para oração personalizada -->
+            <div id="personalizada-input" style="display:none;text-align:center;margin-top:10px;">
+                <input type="text" id="nomePers" placeholder="Nome da oração (ex: Terço)" maxlength="40"
+                    style="padding:8px 12px;border-radius:8px;border:1px solid #ccc;font-size:1rem;width:min(280px,80vw)"/>
+                <button onclick="aplicarPersonalizada()" class="btn-meta" style="margin-left:8px;margin-top:5px;">Aplicar</button>
+            </div>
+        </div>
+
+        <!-- Área principal do contador -->
+        <div class="card">
+            <div class="contador-display">
+                <div class="contador-nome" id="contadorNome">Ave-Maria</div>
+                <div class="contador-meta-info" id="contadorMetaInfo">Meta: 10 orações</div>
+
+                <div class="contador-numero" id="contadorNumero">0</div>
+                <div class="contador-dezenas">Dezenas: <span id="contadorDezenas">0</span></div>
+
+                <button class="btn-contar" id="btnContar" aria-label="Contar oração" title="Toque para contar">📿</button>
+
+                <div class="controles-grid">
+                    <button class="btn-controle" onclick="desfazer()">↩️ Desfazer</button>
+                    <button class="btn-controle" onclick="pausarRezada()">💾 Salvar sessão</button>
+                    <button class="btn-controle danger" onclick="resetarContador()">🔄 Reiniciar</button>
+                </div>
+            </div>
+
+            <!-- Barra de progresso / meta -->
+            <div class="meta-section">
+                <label>🎯 Meta de Repetições</label>
+                <div class="meta-grid" id="metaGrid">
+                    <button class="btn-meta" data-meta="10">10</button>
+                    <button class="btn-meta active" data-meta="10">Ave-Maria: 10</button>
+                    <button class="btn-meta" data-meta="50">50</button>
+                    <button class="btn-meta" data-meta="100">100</button>
+                    <button class="btn-meta" data-meta="150">150</button>
+                    <button class="btn-meta" data-meta="200">200</button>
+                </div>
+                <div class="meta-input-row">
+                    <input type="number" id="metaCustom" min="1" max="9999" placeholder="Meta" value="10"/>
+                    <button class="btn-meta" onclick="setMeta(parseInt($('#metaCustom').val()))">Definir</button>
+                </div>
+                <div class="progresso-wrap" id="progressoWrap">
+                    <div class="progresso-label">
+                        <span id="progressoTexto">0 / 10</span>
+                        <span id="progressoPct">0%</span>
+                    </div>
+                    <div class="progresso-bar-bg">
+                        <div class="progresso-bar-fill" id="progressoBar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Texto da oração selecionada -->
+        <div class="card">
+            <div class="accordion-tab">
+                <div class="accordion-header" id="textoHeader">📖 Texto da Oração Selecionada</div>
+                <div class="accordion-content" id="textoContent">
+                    <div class="oracao-texto" id="textoOracao"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Histórico da sessão -->
+        <div class="card" id="historicoCard">
+            <h3 style="margin-top:0;color:#1a4f89;">📊 Histórico desta Sessão</h3>
+            <div id="historicoLista">
+                <p class="muted" style="text-align:center;">Nenhuma oração registrada ainda.</p>
+            </div>
+            <div style="text-align:center;margin-top:12px;">
+                <button class="btn-controle" onclick="exportarHistorico()">📄 Exportar Histórico</button>
+                <button class="btn-controle danger" onclick="limparHistorico()">🗑️ Limpar</button>
+            </div>
+        </div>
+
+        <!-- Dica espiritual -->
+        <div class="card" style="background:linear-gradient(135deg,#f9fbff,#f0f8f0);border-left:4px solid #2c7a2c;">
+            <h3 style="margin-top:0;color:#2c7a2c;">💡 Dica Espiritual</h3>
+            <p id="dicaEspiritual" style="margin:0;line-height:1.7;color:#444;"></p>
+        </div>
+
+        <div style="text-align:center;margin:12px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-titulo="Contador de Oração — FeCatolica"
+                data-partilhar-texto="Estou usando o Contador de Oração do FeCatolica! Reze comigo.">
+                📤 Convidar para Rezar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Alerta de dezena -->
+    <div class="dezena-alert" id="dezenaAlert">🙏 Dezena completa!</div>
+
+    <script src="/js/app.js"></script>
+    <script>
+    /* ===== Dados das orações ===== */
+    var ORACOES = {
+        ave: {
+            nome: 'Ave-Maria',
+            texto: 'Ave Maria, cheia de graça,\no Senhor é convosco;\nbendita sois vós entre as mulheres,\ne bendito é o fruto do vosso ventre, Jesus.\n\nSanta Maria, Mãe de Deus,\nrogai por nós, pecadores,\nagora e na hora de nossa morte.\nAmém.',
+            dezena: 10, emoji: '🌹'
+        },
+        pai: {
+            nome: 'Pai-Nosso',
+            texto: 'Pai Nosso que estais no céu,\nsantificado seja o vosso nome;\nvenha a nós o vosso reino;\nseja feita a vossa vontade,\nassim na terra como no céu.\n\nO pão nosso de cada dia\nnos dai hoje;\nperdoai-nos as nossas ofensas,\nassim como nós perdoamos\na quem nos tem ofendido;\enão nos deixeis cair em tentação,\nmas livrai-nos do mal.\nAmém.',
+            dezena: 10, emoji: '✝️'
+        },
+        gloria: {
+            nome: 'Glória ao Pai',
+            texto: 'Glória ao Pai, ao Filho e ao Espírito Santo.\nAssim como era no princípio,\nagora e sempre.\nPor todos os séculos dos séculos.\nAmém.',
+            dezena: 3, emoji: '✨'
+        },
+        credo: {
+            nome: 'Credo Apostólico',
+            texto: 'Creio em Deus Pai todo-poderoso,\nCriador do céu e da terra;\ne em Jesus Cristo, seu único Filho, Nosso Senhor;\nque foi concebido pelo poder do Espírito Santo;\nnasceu da Virgem Maria,\npadeceu sob Pôncio Pilatos,\nfoi crucificado, morto e sepultado;\ndesceu à mansão dos mortos;\nressuscitou ao terceiro dia;\nsubiu aos céus,\nestá sentado à direita de Deus Pai todo-poderoso,\ndonde há de vir julgar os vivos e os mortos.\nCreio no Espírito Santo,\nna santa Igreja Católica,\nna comunhão dos santos,\nna remissão dos pecados,\nna ressurreição da carne,\nna vida eterna.\nAmém.',
+            dezena: 1, emoji: '📜'
+        },
+        kyrie: {
+            nome: 'Kyrie Eleison',
+            texto: 'Senhor, tende piedade de nós.\nCristo, tende piedade de nós.\nSenhor, tende piedade de nós.',
+            dezena: 9, emoji: '🙏'
+        },
+        fatima: {
+            nome: 'Oração de Fátima',
+            texto: 'Ó meu Jesus,\nperdoai-nos, livrai-nos do fogo do inferno,\nlevai as almas todas para o Céu,\nespecialmente as que mais precisarem\nda vossa misericórdia.',
+            dezena: 10, emoji: '🌟'
+        },
+        misericordia: {
+            nome: 'Oração da Misericórdia',
+            texto: 'Eterno Pai,\nofereço-Vos o Corpo e o Sangue,\na Alma e a Divindade\nde Vosso Amantíssimo Filho,\nNosso Senhor Jesus Cristo,\nem expiação pelos nossos pecados\ne pelos do mundo inteiro.',
+            dezena: 10, emoji: '❤️‍🔥'
+        },
+        anjo: {
+            nome: 'Oração ao Anjo da Guarda',
+            texto: 'Anjo de Deus, meu zeloso guardador,\na quem a piedade celestial me confiou,\niluminai-me, guardai-me,\nregei-me e governai-me.\nAmém.',
+            dezena: 3, emoji: '👼'
+        },
+        santo: {
+            nome: 'Santo, Santo, Santo',
+            texto: 'Santo, Santo, Santo\né o Senhor Deus do universo!\nOs céus e a terra estão\ncheios da vossa glória.\nHosana nas alturas!',
+            dezena: 3, emoji: '🕊️'
+        },
+        personalizada: {
+            nome: 'Oração Personalizada',
+            texto: '(Digite o nome e toque em Aplicar)',
+            dezena: 10, emoji: '✏️'
+        }
+    };
+
+    var DICAS = [
+        '"A oração é a respiração da alma." — Santo Agostinho',
+        '"Reze sem cessar." — São Paulo (1Ts 5,17)',
+        '"Quem não abandona a oração, se perde certamente." — Santa Teresa D\'Ávila',
+        '"A oração é o melhor arma que possuímos, a chave que abre o coração de Deus." — Santa Pio de Pietrelcina',
+        '"A oração é uma conversa com Deus." — Clemente de Alexandria',
+        '"Oração e jejum são as asas que nos elevam ao Céu." — São João Crisóstomo',
+        '"Quem tem o costume de falar com Deus, conversa com o Rei dos reis." — Santa Teresa D\'Ávila',
+        '"Toda a nossa perfeição consiste em amar a Deus." — São Afonso de Ligório',
+        '"A perseverança na oração é o sinal mais seguro da predestinação." — São Afonso de Ligório',
+        '"Pedí e vos será dado; buscai e encontrareis." — Jesus (Mt 7,7)'
+    ];
+
+    /* ===== Estado ===== */
+    var estado = {
+        oracaoAtual: 'ave',
+        contagem: 0,
+        meta: 10,
+        historico: [],
+        sessoeSalvas: []
+    };
+
+    /* ===== Init ===== */
+    $(function() {
+        carregarEstado();
+        atualizarUI();
+        renderizarHistorico();
+
+        // Dica aleatória
+        var idx = Math.floor(Math.random() * DICAS.length);
+        $('#dicaEspiritual').text(DICAS[idx]);
+
+        // Tabs
+        $('#oracoesTabs').on('click', '.oracao-tab', function() {
+            $('.oracao-tab').removeClass('active');
+            $(this).addClass('active');
+            var key = $(this).data('key');
+            selecionarOracao(key);
+        });
+
+        // Botão principal - mouse e toque
+        $('#btnContar').on('click', contar);
+        $('#btnContar').on('touchend', function(e) {
+            e.preventDefault();
+            contar();
+        });
+
+        // Metas rápidas
+        $('#metaGrid').on('click', '.btn-meta', function() {
+            var m = parseInt($(this).data('meta'));
+            if (m) setMeta(m);
+        });
+
+        // Accordion do texto
+        $('#textoHeader').on('click', function() {
+            $(this).toggleClass('active');
+            $('#textoContent').slideToggle(200);
+        });
+
+        // Keyboard: espaço = contar
+        $(document).on('keydown', function(e) {
+            if (e.key === ' ' && !e.target.closest('input, textarea, button')) {
+                e.preventDefault();
+                contar();
+            }
+        });
+    });
+
+    /* ===== Contagem ===== */
+    function contar() {
+        estado.contagem++;
+        salvarEstado();
+        atualizarNumero();
+        animarBotao();
+        verificarMeta();
+        verificarDezena();
+    }
+
+    function desfazer() {
+        if (estado.contagem > 0) {
+            estado.contagem--;
+            salvarEstado();
+            atualizarNumero();
+            atualizarProgresso();
+        }
+    }
+
+    function resetarContador() {
+        if (estado.contagem > 0) {
+            // Salvar no histórico antes de resetar
+            registrarNoHistorico();
+        }
+        estado.contagem = 0;
+        salvarEstado();
+        atualizarNumero();
+        atualizarProgresso();
+        showToast('Contador reiniciado ✅');
+    }
+
+    function pausarRezada() {
+        if (estado.contagem === 0) {
+            showToast('Nenhuma oração contada ainda.');
+            return;
+        }
+        registrarNoHistorico();
+        estado.contagem = 0;
+        salvarEstado();
+        atualizarNumero();
+        atualizarProgresso();
+        renderizarHistorico();
+        showToast('Sessão salva no histórico! 📿');
+    }
+
+    function registrarNoHistorico() {
+        var oracao = ORACOES[estado.oracaoAtual];
+        var agora = new Date();
+        var hora = agora.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+        estado.historico.unshift({
+            nome: oracao.nome,
+            emoji: oracao.emoji,
+            qtd: estado.contagem,
+            hora: hora
+        });
+        if (estado.historico.length > 20) estado.historico.pop();
+        salvarEstado();
+    }
+
+    /* ===== UI ===== */
+    function selecionarOracao(key) {
+        if (key === 'personalizada') {
+            $('#personalizada-input').slideDown(200);
+        } else {
+            $('#personalizada-input').slideUp(200);
+        }
+        // Salvar sessão atual se houver contagem
+        if (estado.contagem > 0) pausarRezada();
+
+        estado.oracaoAtual = key;
+        estado.contagem = 0;
+        salvarEstado();
+        atualizarUI();
+    }
+
+    function aplicarPersonalizada() {
+        var nome = $('#nomePers').val().trim();
+        if (!nome) { showToast('Digite o nome da oração.'); return; }
+        ORACOES.personalizada.nome = nome;
+        ORACOES.personalizada.texto = '(Conte sua oração personalizada: ' + nome + ')';
+        atualizarUI();
+        showToast('Oração "' + nome + '" aplicada! ✅');
+    }
+
+    function atualizarUI() {
+        var oracao = ORACOES[estado.oracaoAtual];
+        $('#contadorNome').text(oracao.emoji + ' ' + oracao.nome);
+        $('#contadorMetaInfo').text('Meta: ' + estado.meta + ' orações');
+        $('#textoOracao').text(oracao.texto);
+        $('#btnContar').text(oracao.emoji);
+
+        // Atualizar tabs de meta sugerida
+        $('#metaGrid').empty();
+        var sugestoes = [oracao.dezena, oracao.dezena * 3, oracao.dezena * 5, 50, 100, 150];
+        sugestoes = [...new Set(sugestoes)].sort((a,b)=>a-b).slice(0,6);
+        sugestoes.forEach(function(m) {
+            var btn = $('<button class="btn-meta" data-meta="'+m+'">'+m+'</button>');
+            if (m === estado.meta) btn.addClass('active');
+            $('#metaGrid').append(btn);
+        });
+
+        atualizarNumero();
+        atualizarProgresso();
+    }
+
+    function atualizarNumero() {
+        $('#contadorNumero').text(estado.contagem);
+        var oracao = ORACOES[estado.oracaoAtual];
+        var dezenas = Math.floor(estado.contagem / oracao.dezena);
+        $('#contadorDezenas').text(dezenas);
+        atualizarProgresso();
+    }
+
+    function atualizarProgresso() {
+        var pct = estado.meta > 0 ? Math.min(100, Math.round((estado.contagem / estado.meta) * 100)) : 0;
+        $('#progressoBar').css('width', pct + '%');
+        $('#progressoTexto').text(estado.contagem + ' / ' + estado.meta);
+        $('#progressoPct').text(pct + '%');
+    }
+
+    function setMeta(m) {
+        if (!m || m < 1) return;
+        estado.meta = m;
+        salvarEstado();
+        $('#metaCustom').val(m);
+        $('#contadorMetaInfo').text('Meta: ' + m + ' orações');
+        // Update botões
+        $('#metaGrid .btn-meta').removeClass('active');
+        $('#metaGrid .btn-meta[data-meta="'+m+'"]').addClass('active');
+        atualizarProgresso();
+    }
+
+    function animarBotao() {
+        var $btn = $('#btnContar');
+        var $num = $('#contadorNumero');
+        $btn.addClass('glow');
+        $num.addClass('bump');
+        setTimeout(function() {
+            $btn.removeClass('glow');
+            $num.removeClass('bump');
+        }, 400);
+        // Vibração (mobile)
+        if (navigator.vibrate) navigator.vibrate(30);
+    }
+
+    function verificarMeta() {
+        if (estado.meta > 0 && estado.contagem === estado.meta) {
+            setTimeout(function() {
+                showToast('🎉 Meta atingida! ' + estado.meta + ' orações rezadas!', 4000);
+            }, 200);
+        }
+    }
+
+    function verificarDezena() {
+        var oracao = ORACOES[estado.oracaoAtual];
+        if (estado.contagem > 0 && estado.contagem % oracao.dezena === 0) {
+            var $alerta = $('#dezenaAlert');
+            var dezena = estado.contagem / oracao.dezena;
+            $alerta.text('🙏 ' + dezena + 'ª dezena completa!');
+            $alerta.addClass('show');
+            setTimeout(function() { $alerta.removeClass('show'); }, 2500);
+        }
+    }
+
+    /* ===== Histórico ===== */
+    function renderizarHistorico() {
+        var $lista = $('#historicoLista');
+        if (!estado.historico.length) {
+            $lista.html('<p class="muted" style="text-align:center;">Nenhuma oração registrada ainda.</p>');
+            return;
+        }
+        $lista.empty();
+        var total = 0;
+        estado.historico.forEach(function(item) {
+            total += item.qtd;
+            $lista.append(
+                '<div class="historico-item">' +
+                    '<span class="nome">' + item.emoji + ' ' + item.nome + '</span>' +
+                    '<span class="qtd">' + item.qtd + 'x</span>' +
+                    '<span class="hora">' + item.hora + '</span>' +
+                '</div>'
+            );
+        });
+        $lista.append('<p style="text-align:center;margin:8px 0 0;font-weight:700;color:#1a4f89;">Total: ' + total + ' orações nesta sessão</p>');
+    }
+
+    function exportarHistorico() {
+        if (!estado.historico.length) { showToast('Nenhum histórico para exportar.'); return; }
+        var linhas = ['Histórico de Orações — FeCatolica', '=' .repeat(30), ''];
+        var total = 0;
+        estado.historico.forEach(function(item) {
+            linhas.push(item.hora + ' — ' + item.emoji + ' ' + item.nome + ': ' + item.qtd + 'x');
+            total += item.qtd;
+        });
+        linhas.push('', 'TOTAL: ' + total + ' orações', 'Data: ' + new Date().toLocaleDateString('pt-BR'));
+        var texto = linhas.join('\n');
+        var blob = new Blob([texto], {type: 'text/plain;charset=utf-8'});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'historico-oracoes.txt';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function limparHistorico() {
+        estado.historico = [];
+        salvarEstado();
+        renderizarHistorico();
+        showToast('Histórico limpo.');
+    }
+
+    /* ===== Persistência ===== */
+    var STORAGE_KEY = 'fecatolica-contador';
+
+    function salvarEstado() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+    }
+
+    function carregarEstado() {
+        try {
+            var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            if (saved.oracaoAtual) estado.oracaoAtual = saved.oracaoAtual;
+            if (saved.meta) estado.meta = saved.meta;
+            if (saved.historico) estado.historico = saved.historico;
+            // Não restaurar contagem (começa do zero a cada visita)
+        } catch(e) {}
+    }
+    </script>
+</body>
+</html>

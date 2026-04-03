@@ -324,10 +324,10 @@ public class IntencoesPapaService {
     private Integer toInt(Object val) {
         if (val == null)
             return null;
-        if (val instanceof Number)
-            return ((Number) val).intValue();
+        if (val instanceof Number number)
+            return number.intValue();
         try {
-            return Integer.parseInt(val.toString());
+            return Integer.valueOf(val.toString());
         } catch (NumberFormatException e) {
             return null;
         }

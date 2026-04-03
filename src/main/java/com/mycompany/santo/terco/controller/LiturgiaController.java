@@ -4,8 +4,6 @@ import com.mycompany.santo.terco.DTO.LiturgiaDTO;
 import com.mycompany.santo.terco.service.LiturgiaService;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-
 @RestController
 @RequestMapping("/api/liturgia")
 public class LiturgiaController {

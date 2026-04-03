@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Nossa Senhora do Carmo</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#8B4513"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #8B4513;">
+        <header style="text-align:center;">
+            <h1>🏔️ Terço de Nossa Senhora do Carmo</h1>
+            <p class="lead">Devoção à Nossa Senhora do Monte Carmelo, padroeira da Ordem Carmelita e da espiritualidade contemplativa.</p>
+            <p class="muted">"Quem morrer com este Escapulário não sofrerá o fogo eterno." — Promessa de Nossa Senhora a São Simão Stock, 1251.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Nossa Senhora do Carmo</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Nossa Senhora do Carmo</strong> é uma devoção ligada à tradição carmelita, que remonta ao Monte Carmelo na Terra Santa, onde o profeta Elias defendeu a fé no Deus verdadeiro. A Ordem do Carmo surgiu no século XII, consagrando-se a Maria como a "Flor do Carmelo".</p><p>Em 16 de julho de 1251, Nossa Senhora apareceu a São Simão Stock, prior geral dos carmelitas, e lhe entregou o <strong>Santo Escapulário</strong>, com a promessa: <em>"Quem morrer vestindo este Escapulário não sofrerá o fogo eterno."</em> A devoção ao escapulário espalhou-se por toda a Igreja e é uma das mais tradicionais expressões de piedade mariana.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial com a "Flos Carmeli" (Flor do Carmelo)</li><li>5 dezenas meditando a proteção carmelitana de Maria</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração ao Escapulário:</em> Ó Flor do Carmelo, Videira frutuosa, esplendor do Céu, Virgem fecunda singular, ó Mãe terna que homem nenhum conheceu, aos filhos do Carmo dai proteção, Estrela do Mar. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#8B4513;margin-top:0;">🏔️ Oração Final Carmelita</h3>
+        <p>Ó Nossa Senhora do Monte Carmelo, cobri-nos com o vosso Santo Escapulário, sinal da vossa proteção materna. Levai-nos pelos caminhos da santidade e da oração contemplativa até à morada do Pai.</p>
+        <blockquote style="border-left: 4px solid #8B4513; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "Flos Carméli — Flor do Carmelo, sede nossa guia, nossa força e nosso refúgio na hora da morte e no dia do juízo."
+        </blockquote>
+        <div class="msg-success">✅ Terço do Carmo concluído! Que Nossa Senhora do Carmo cubra você com seu Santo Escapulário.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de Nossa Senhora do Carmo no FeCatolica! 🏔️" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — O Monte Carmelo e os Profetas',
+        meditation: 'Pelo espírito de contemplação e oração no coração de cada cristão.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Promessa do Escapulário (1251)',
+        meditation: 'Por todos os que vestem o Santo Escapulário e vivem a devoção mariana.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — São João da Cruz e a Noite Obscura',
+        meditation: 'Pelos que passam por provações espirituais e securas na oração.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Santa Teresa de Ávila e o Castelo Interior',
+        meditation: 'Por todos os consagrados religiosos e pelas vocações contemplativas.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — Santa Teresa do Menino Jesus e a Via da Infância Espiritual',
+        meditation: 'Por todas as almas do purgatório e pelos moribundos de hoje.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#8B4513', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

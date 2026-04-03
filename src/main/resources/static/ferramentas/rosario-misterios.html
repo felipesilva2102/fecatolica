@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mistérios do Rosário — Meditações Completas | FeCatolica</title>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/acessibilidade.css"/>
+<style>
+.tabs-container { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.tab-btn { padding:8px 18px; border-radius:20px; border:2px solid; background:#fff; cursor:pointer; font-size:0.88rem; font-weight:600; transition:all 0.2s; }
+.tab-btn.alegres  { border-color:#f9a825; color:#e65100; }
+.tab-btn.luminosos{ border-color:#1565c0; color:#0d47a1; }
+.tab-btn.dolorosos{ border-color:#6a1b9a; color:#4a148c; }
+.tab-btn.gloriosos{ border-color:#2e7d32; color:#1b5e20; }
+.tab-btn.active.alegres  { background:#fff8e1; }
+.tab-btn.active.luminosos{ background:#e3f2fd; }
+.tab-btn.active.dolorosos{ background:#f3e5f5; }
+.tab-btn.active.gloriosos{ background:#e8f5e9; }
+.mysteries-set { display:none; }
+.mysteries-set.active { display:block; }
+.misterio-card { border-radius:12px; margin-bottom:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.misterio-header { padding:14px 18px; display:flex; align-items:center; gap:12px; cursor:pointer; }
+.misterio-num { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; color:#fff; flex-shrink:0; }
+.misterio-titulo { font-weight:700; font-size:1rem; }
+.misterio-ref { font-size:0.8rem; opacity:0.7; margin-top:2px; }
+.misterio-body { padding:14px 18px 16px; border-top:1px solid rgba(0,0,0,0.06); display:none; }
+.misterio-body.open { display:block; }
+.fruto-box { display:inline-block; border-radius:20px; font-size:0.8rem; font-weight:600; padding:4px 12px; margin:8px 0 4px; }
+.meditacao-text { font-size:0.9rem; line-height:1.7; color:#444; margin:10px 0 0; }
+/* Cores por tipo */
+.alegres .misterio-header { background:#fff8e1; }
+.alegres .misterio-num { background:#f9a825; }
+.alegres .misterio-titulo { color:#e65100; }
+.alegres .fruto-box { background:#fff3e0; color:#e65100; border:1px solid #f9a825; }
+.luminosos .misterio-header { background:#e3f2fd; }
+.luminosos .misterio-num { background:#1565c0; }
+.luminosos .misterio-titulo { color:#0d47a1; }
+.luminosos .fruto-box { background:#e3f2fd; color:#0d47a1; border:1px solid #1565c0; }
+.dolorosos .misterio-header { background:#f3e5f5; }
+.dolorosos .misterio-num { background:#6a1b9a; }
+.dolorosos .misterio-titulo { color:#4a148c; }
+.dolorosos .fruto-box { background:#f3e5f5; color:#4a148c; border:1px solid #6a1b9a; }
+.gloriosos .misterio-header { background:#e8f5e9; }
+.gloriosos .misterio-num { background:#2e7d32; }
+.gloriosos .misterio-titulo { color:#1b5e20; }
+.gloriosos .fruto-box { background:#e8f5e9; color:#1b5e20; border:1px solid #2e7d32; }
+.versic-box { background:#f0f6fb; border-left:4px solid #1a4f89; border-radius:8px; padding:10px 14px; margin:8px 0; font-style:italic; color:#333; font-size:0.88rem; }
+.dia-semana-box { background:#f5f5f5; border-radius:8px; padding:12px 16px; margin-bottom:16px; font-size:0.88rem; }
+.dia-semana-box b { color:#1a4f89; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="background:linear-gradient(135deg,#fff8e1,#e8f5e9);border-left:5px solid #c9a84c;">
+        <h1 style="color:#1a4f89;margin:0 0 8px 0;">📿 Mistérios do Rosário</h1>
+        <p style="color:#555;margin:0;font-size:1.05rem;">Todos os 20 Mistérios com meditações completas, fruto de cada mistério e referência bíblica</p>
+    </div>
+
+    <div class="dia-semana-box">
+        <b>Quando rezar cada série:</b><br>
+        Segunda e Sábado — <b style="color:#e65100;">Mistérios Alegres</b> &nbsp;|&nbsp;
+        Terça e Sexta — <b style="color:#4a148c;">Mistérios Dolorosos</b> &nbsp;|&nbsp;
+        Quarta e Domingo — <b style="color:#1b5e20;">Mistérios Gloriosos</b> &nbsp;|&nbsp;
+        Quinta — <b style="color:#0d47a1;">Mistérios Luminosos</b> (João Paulo II, 2002)
+    </div>
+
+    <div class="tabs-container">
+        <button class="tab-btn alegres active" onclick="showMysteries('alegres',this)">🌟 Alegres</button>
+        <button class="tab-btn luminosos" onclick="showMysteries('luminosos',this)">💡 Luminosos</button>
+        <button class="tab-btn dolorosos" onclick="showMysteries('dolorosos',this)">✝️ Dolorosos</button>
+        <button class="tab-btn gloriosos" onclick="showMysteries('gloriosos',this)">👑 Gloriosos</button>
+    </div>
+
+    <!-- MISTÉRIOS ALEGRES -->
+    <div class="mysteries-set active" id="alegres">
+        <div class="misterio-card alegres">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">1</div>
+                <div><div class="misterio-titulo">A Anunciação do Anjo a Maria</div><div class="misterio-ref">Lc 1,26-38</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Alegra-te, cheia de graça, o Senhor está contigo!" (Lc 1,28)</div>
+                <div class="fruto-box">Fruto: Humildade — "Eis a serva do Senhor"</div>
+                <p class="meditacao-text">Gabriel aparece a Maria em Nazaré e anuncia que ela foi escolhida por Deus para ser Mãe do Messias. Maria, perturbada mas confiante, responde com o Fiat — a mais perfeita entrega humana a Deus. Neste mistério meditamos a humildade de Maria que não questiona a grandeza da missão, mas pergunta como Deus a realizará; e o amor divino que escolhe a pequenez de uma jovem aldeã para encarnar-Se.</p>
+            </div>
+        </div>
+        <div class="misterio-card alegres">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">2</div>
+                <div><div class="misterio-titulo">A Visitação de Maria a Santa Isabel</div><div class="misterio-ref">Lc 1,39-56</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Quando Isabel ouviu a saudação de Maria, saltou de alegria o menino em seu ventre." (Lc 1,41)</div>
+                <div class="fruto-box">Fruto: Caridade com o próximo</div>
+                <p class="meditacao-text">Maria, recém-agraciada, não fica parada — vai às pressas ajudar Isabel, sua prima grávida. Neste encontro, João Batista, ainda no ventre, trepida de alegria diante de Jesus, ainda no ventre de Maria. Isabel proclama: "Bendita és tu entre as mulheres!" E Maria responde com o Magnificat — o maior cântico de louvor do Novo Testamento. Meditamos a caridade ativa, que vai ao encontro do outro.</p>
+            </div>
+        </div>
+        <div class="misterio-card alegres">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">3</div>
+                <div><div class="misterio-titulo">O Nascimento de Jesus em Belém</div><div class="misterio-ref">Lc 2,1-20</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Nasceu-vos hoje o Salvador, que é o Cristo Senhor, na cidade de Davi." (Lc 2,11)</div>
+                <div class="fruto-box">Fruto: Desapego dos bens materiais / Pobreza espiritual</div>
+                <p class="meditacao-text">O Filho de Deus escolhe nascer em pobreza extrema — numa manjedoura, entre animais, envolto em panos. Os grandes de Jerusalém não O recebem; os pastores humildes são os primeiro a adorá-Lo. Deus revela sua lógica: a grandeza está na pobreza e na simplicidade. Meditamos o desprendimento, a gratidão pelos bens simples, e a adoração ao Deus que Se faz pequeno por amor.</p>
+            </div>
+        </div>
+        <div class="misterio-card alegres">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">4</div>
+                <div><div class="misterio-titulo">A Apresentação de Jesus no Templo</div><div class="misterio-ref">Lc 2,22-38</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Uma espada traspassará a tua própria alma." (Lc 2,35)</div>
+                <div class="fruto-box">Fruto: Pureza de alma e de corpo / Obediência</div>
+                <p class="meditacao-text">Quarenta dias após o nascimento, José e Maria levam Jesus ao Templo para a purificação e o resgate do primogênito. Simeão — que esperava ver o Messias antes de morrer — O reconhece e profetiza: "Luz para iluminar os gentios e glória de Israel." E profetiza a dor de Maria. A velha profetisa Ana também O reconhece. Meditamos a fidelidade à Lei de Deus e a aceitação das exigências da vocação.</p>
+            </div>
+        </div>
+        <div class="misterio-card alegres">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">5</div>
+                <div><div class="misterio-titulo">Jesus Encontrado no Templo</div><div class="misterio-ref">Lc 2,41-52</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Não sabíeis que é necessário que eu me ocupe das coisas de meu Pai?" (Lc 2,49)</div>
+                <div class="fruto-box">Fruto: Piedade filial / Amor à Casa de Deus</div>
+                <p class="meditacao-text">Jesus, com 12 anos, fica no Templo de Jerusalém por três dias, ensinando os doutores. Maria e José O buscam angustiados. Ao encontrá-Lo, Ele revela pela primeira vez sua consciência de Filho de Deus: "Não sabíeis que devia estar na casa de meu Pai?" Maria conservou tudo no coração. Meditamos o amor de Jesus pela oração, o cuidado dos pais por seus filhos, e a busca de Deus como centro de tudo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MISTÉRIOS LUMINOSOS -->
+    <div class="mysteries-set" id="luminosos">
+        <div class="misterio-card luminosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">1</div>
+                <div><div class="misterio-titulo">O Batismo de Jesus no Jordão</div><div class="misterio-ref">Mt 3,13-17</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Este é o meu Filho amado, no qual me compraço." (Mt 3,17)</div>
+                <div class="fruto-box">Fruto: Fidelidade ao próprio Batismo</div>
+                <p class="meditacao-text">João Batista batizava no Jordão quando Jesus chegou para ser batizado. João relutou: "Sou eu que preciso ser batizado por ti!" Mas Jesus insistiu, para "cumprir toda a justiça." Ao sair da água, o Espírito Santo desceu sobre Ele em forma de pomba, e a voz do Pai proclamou Sua identidade. A Trindade Santa se revela plenamente. Meditamos nossa filiação divina no Batismo.</p>
+            </div>
+        </div>
+        <div class="misterio-card luminosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">2</div>
+                <div><div class="misterio-titulo">As Bodas de Caná</div><div class="misterio-ref">Jo 2,1-12</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Fazei tudo o que ele vos disser." (Jo 2,5)</div>
+                <div class="fruto-box">Fruto: Confiança na intercessão de Maria</div>
+                <p class="meditacao-text">No primeiro milagre de Jesus, Maria percebe que o vinho acabou e intercede: "Eles não têm vinho." Jesus, aparentemente resistindo ("minha hora ainda não chegou"), realiza o milagre atendendo à solicitação de Sua mãe. Maria indica o caminho: "Fazei tudo o que ele vos disser." Meditamos o papel intercessor de Maria e a docilidade que devemos ter às suas orientações.</p>
+            </div>
+        </div>
+        <div class="misterio-card luminosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">3</div>
+                <div><div class="misterio-titulo">O Anúncio do Reino de Deus e o Chamado à Conversão</div><div class="misterio-ref">Mc 1,14-15</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"O Reino de Deus chegou. Convertei-vos e crede no Evangelho." (Mc 1,15)</div>
+                <div class="fruto-box">Fruto: Conversão e abertura ao perdão</div>
+                <p class="meditacao-text">Jesus percorre toda a Galileia pregando e curando. Proclama que o Reino de Deus — prometido pelos profetas — está chegando em Sua própria pessoa. Chama pescadores, coletores de impostos, pecadores; Come com Zaqueu; Perdoa a mulher adúltera. Meditamos a misericórdia de Deus que nos chama à conversão, e nossa abertura para deixar tudo e seguir Jesus.</p>
+            </div>
+        </div>
+        <div class="misterio-card luminosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">4</div>
+                <div><div class="misterio-titulo">A Transfiguração</div><div class="misterio-ref">Mt 17,1-8</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Seu rosto brilhava como o sol e suas vestes tornaram-se brancas como a luz." (Mt 17,2)</div>
+                <div class="fruto-box">Fruto: Anseio pela vida eterna / Contemplação</div>
+                <p class="meditacao-text">No Monte Tabor, diante de Pedro, Tiago e João, Jesus se transfigura: sua divindade por um instante transpassa a humanidade. Moisés e Elias (a Lei e os Profetas) aparecem com Ele. A voz do Pai repete: "Este é meu Filho amado." Pedro quer ficar ali: "É bom estarmos aqui!" Meditamos o desejo da vida eterna, a beleza da oração contemplativa, e a certeza da glória que nos espera.</p>
+            </div>
+        </div>
+        <div class="misterio-card luminosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">5</div>
+                <div><div class="misterio-titulo">A Instituição da Eucaristia</div><div class="misterio-ref">Lc 22,14-20</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Isto é o meu corpo, dado por vós. Fazei isso em memória de mim." (Lc 22,19)</div>
+                <div class="fruto-box">Fruto: Adoração à Eucaristia / Amor à Missa</div>
+                <p class="meditacao-text">Na Última Ceia, na véspera de Sua Paixão, Jesus institui o maior sacramento: o Pão se torna Seu Corpo, o Vinho se torna Seu Sangue. Ele Se entrega completamente antes mesmo da Cruz — antecipando no sacramento o sacrifício do Calvário. E ordena: "Fazei isso em memória de mim." Cada Missa é a renovação deste momento. Meditamos a presença real de Cristo na Eucaristia e nosso amor à Missa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MISTÉRIOS DOLOROSOS -->
+    <div class="mysteries-set" id="dolorosos">
+        <div class="misterio-card dolorosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">1</div>
+                <div><div class="misterio-titulo">A Agonia de Jesus no Jardim</div><div class="misterio-ref">Lc 22,39-46</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Pai, se queres, afasta de mim este cálice; contudo, não se faça a minha vontade, mas a tua." (Lc 22,42)</div>
+                <div class="fruto-box">Fruto: Conformidade com a vontade de Deus / Contrição</div>
+                <p class="meditacao-text">No Jardim do Getsêmani, Jesus, conhecendo plenamente o que O aguardava, sente angústia tão intensa que Seu suor se tornou como gotas de sangue. Três vezes ora ao Pai; tres vezes os discípulos dormem. Um anjo O conforta. Jesus se levanta e vai ao encontro de Seus algozes. Meditamos a aceitação da vontade de Deus nas nossas horas de sofrimento e a fidelidade na tentação.</p>
+            </div>
+        </div>
+        <div class="misterio-card dolorosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">2</div>
+                <div><div class="misterio-titulo">A Flagelação de Jesus</div><div class="misterio-ref">Jo 19,1</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Pelas suas chagas fomos curados." (Is 53,5)</div>
+                <div class="fruto-box">Fruto: Mortificação dos sentidos / Pureza</div>
+                <p class="meditacao-text">Pilatos ordena que Jesus seja flagelado — suplício brutal com chicotes de couro com pontas de osso ou metal, que rasgavam a carne. Os soldados romani tinham fama pela brutalidade. Jesus suportou em silêncio, oferecendo cada golpe pelos nossos pecados de carne. Meditamos o preço da nossa redenção e o dom da pureza que custou tanto sangue ao Senhor.</p>
+            </div>
+        </div>
+        <div class="misterio-card dolorosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">3</div>
+                <div><div class="misterio-titulo">A Coroação de Espinhos</div><div class="misterio-ref">Mt 27,27-31</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Uniram uma coroa de espinhos e puseram em sua cabeça [...] e ajoelhavam-se diante dele, escarnecendo-o." (Mt 27,29)</div>
+                <div class="fruto-box">Fruto: Humildade / Coragem moral</div>
+                <p class="meditacao-text">Os soldados vestem Jesus com um manto vermelho, impõem-Lhe uma coroa de espinhos que penetram Seu crânio, e O ridicularizam como "Rei dos Judeus." A humilhação foi planejada para destruir Sua dignidade. Jesus suportou em silêncio. Seus olhos — os olhos do Rei do universo — olharam com amor para esses homens que O torturavam. Meditamos a humildade e a coragem de ser fiel a Deus diante do escárnio do mundo.</p>
+            </div>
+        </div>
+        <div class="misterio-card dolorosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">4</div>
+                <div><div class="misterio-titulo">Jesus Carrega a Cruz até o Calvário</div><div class="misterio-ref">Jo 19,17</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"E, carregando a cruz, saiu em direção ao lugar chamado Calvário." (Jo 19,17)</div>
+                <div class="fruto-box">Fruto: Paciência nas tribulações / Perseverança</div>
+                <p class="meditacao-text">Após a noite de Getsêmani, os interrogatórios, a flagelação e a coroação, Jesus — num estado físico devastado — carrega uma cruz pesada pelas ruas de Jerusalém. Cai três vezes. Simone de Cirene é obrigado a ajudá-Lo. Verônica Lhe oferece o lenço. As mulheres de Jerusalém choram. Maria O encontra no percurso. Meditamos a perseverança diante das dificuldades da vida.</p>
+            </div>
+        </div>
+        <div class="misterio-card dolorosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">5</div>
+                <div><div class="misterio-titulo">A Crucificação e Morte de Jesus</div><div class="misterio-ref">Jo 19,18-37</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Pai, perdoa-lhes, porque não sabem o que fazem." (Lc 23,34)</div>
+                <div class="fruto-box">Fruto: Conversão final / Perseverança na fé</div>
+                <p class="meditacao-text">Das três da tarde, Jesus pendura entre dois ladrões. Durante três horas de agonia, profere as Sete Palavras da Cruz: pede perdão aos algozes, promete o Paraíso ao bom ladrão, entrega Maria a João (e a toda a Igreja), expressa Seu abandono ("Deus meu, por que me abandonaste?"), tem sede, anuncia que "está consumado", e entrega o Espírito. Às três da tarde — a Hora da Misericórdia — morre. Meditamos o maior ato de amor da história.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MISTÉRIOS GLORIOSOS -->
+    <div class="mysteries-set" id="gloriosos">
+        <div class="misterio-card gloriosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">1</div>
+                <div><div class="misterio-titulo">A Ressurreição de Jesus</div><div class="misterio-ref">Jo 20,1-29</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Por que procurais o Vivente entre os mortos? Não está aqui; ressuscitou!" (Lc 24,5-6)</div>
+                <div class="fruto-box">Fruto: Fé na vida eterna / Alegria pascal</div>
+                <p class="meditacao-text">No terceiro dia, o túmulo está vazio. Maria Madalena é a primeira a anunciar: "Vi o Senhor!" Jesus aparece a Pedro, aos discípulos de Emaús, ao colégio apostólico — a Tomé mostra as chagas: "Meu Senhor e meu Deus!" A Ressurreição não é mito — é o fundamento da nossa fé (1 Cor 15,14). Meditamos a esperança da ressurreição, a alegria de saber que a morte não tem a última palavra.</p>
+            </div>
+        </div>
+        <div class="misterio-card gloriosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">2</div>
+                <div><div class="misterio-titulo">A Ascensão de Jesus ao Céu</div><div class="misterio-ref">At 1,6-11</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Este Jesus que foi arrebatado de vossos olhos ao céu, virá da mesma forma como o vistes subir." (At 1,11)</div>
+                <div class="fruto-box">Fruto: Esperança / Anseio pelo Céu</div>
+                <p class="meditacao-text">Quarenta dias após a Ressurreição, no Monte das Oliveiras, Jesus abençoa os discípulos e sobe ao Céu. Dois anjos anunciam Seu retorno glorioso. Jesus "foi sentar-se à direita do Pai" — intercede por nós agora mesmo, como Sumo Sacerdote eterno (Hb 7,25). Sua humanidade glorificada está no Céu. Meditamos nosso destino eterno e o desejo do Céu como pátria definitiva.</p>
+            </div>
+        </div>
+        <div class="misterio-card gloriosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">3</div>
+                <div><div class="misterio-titulo">A Descida do Espírito Santo — Pentecostes</div><div class="misterio-ref">At 2,1-13</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Apareceu-lhes uma chama que se dividia e pousou sobre cada um deles; ficaram todos cheios do Espírito Santo." (At 2,3-4)</div>
+                <div class="fruto-box">Fruto: Ardor apostólico / Zelo pelo Evangelho</div>
+                <p class="meditacao-text">Cinquenta dias após a Páscoa, enquanto os discípulos oravam com Maria no Cenáculo, veio um vento impetuoso e línguas de fogo desceram sobre cada um. Cheios do Espírito Santo, saíram proclamando o Evangelho em todas as línguas — e três mil pessoas se converteram naquele dia. A Igreja nasceu neste momento. Meditamos o fogo do Espírito que precisa queimar em nós para sermos Sua chama no mundo.</p>
+            </div>
+        </div>
+        <div class="misterio-card gloriosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">4</div>
+                <div><div class="misterio-titulo">A Assunção de Maria ao Céu</div><div class="misterio-ref">Ap 12,1; Lc 1,28</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"Apareceu no céu um sinal grandioso: uma Mulher revestida do sol, com a lua sob os seus pés e na cabeça uma coroa de doze estrelas." (Ap 12,1)</div>
+                <div class="fruto-box">Fruto: Graça de uma boa morte / Devoção a Maria</div>
+                <p class="meditacao-text">Ao fim de sua vida terrena, Maria — que havia sido preservada do pecado original — foi assunta em corpo e alma para o Céu, como definiu dogmaticamente Pio XII em 1950. Seu corpo glorificado é o primeiro além de Cristo a participar da glória da Ressurreição. Maria é no Céu o que a Igreja será na consumação dos tempos. Meditamos nossa morte e nossa esperança de ressurreição final.</p>
+            </div>
+        </div>
+        <div class="misterio-card gloriosos">
+            <div class="misterio-header" onclick="toggleMisterio(this)">
+                <div class="misterio-num">5</div>
+                <div><div class="misterio-titulo">A Coroação de Maria como Rainha do Universo</div><div class="misterio-ref">Ap 12,1; Lc 1,33</div></div>
+            </div>
+            <div class="misterio-body">
+                <div class="versic-box">"O teu trono, ó Deus, dura pelos séculos dos séculos." (Sl 45,7)</div>
+                <div class="fruto-box">Fruto: Confiança na proteção de Maria / Perseverança final</div>
+                <p class="meditacao-text">No Céu, Maria é coroada pela Santíssima Trindade como Rainha do Universo — não por direito próprio, mas como plena participante da vitória de Cristo, que é o Rei. Ela reina com Seu Filho, intercedendo por toda a humanidade. As ladainhas da Virgem lhe dão títulos: Rainha dos Anjos, dos Patriarcas, dos Profetas, dos Apóstolos, dos Mártires, dos Confessores, das Virgens, de todos os Santos. Meditamos a nossa esperança de reinado com Cristo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$('#menu-placeholder').load('/includes/menu.html');
+$('#footer-placeholder').load('/includes/footer.html');
+
+function showMysteries(id, btn) {
+    document.querySelectorAll('.mysteries-set').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+}
+
+function toggleMisterio(header) {
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+}
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

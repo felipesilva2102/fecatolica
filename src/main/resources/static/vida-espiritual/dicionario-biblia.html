@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dicionário Bíblico — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .alpha-nav{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;justify-content:center;}
+        .alpha-btn{padding:.3rem .7rem;border:2px solid #1a4f89;background:transparent;color:#1a4f89;border-radius:.4rem;cursor:pointer;font-weight:600;transition:.2s;}
+        .alpha-btn:hover,.alpha-btn.ativo{background:#1a4f89;color:#fff;}
+        .termo-grupo{margin-bottom:1.5rem;}
+        .termo-letra{font-size:1.8rem;font-weight:700;color:#c9a84c;border-bottom:2px solid #c9a84c;margin-bottom:.8rem;}
+        .termo-item{background:#f8f8f8;border-radius:.5rem;padding:1rem 1.2rem;margin-bottom:.6rem;display:none;}
+        .termo-item.visivel{display:block;}
+        html.dark-mode .termo-item{background:#1f2937;}
+        .termo-nome{font-weight:700;color:#1a4f89;font-size:1.05rem;}
+        html.dark-mode .termo-nome{color:#60a5fa;}
+        .termo-heb{font-size:.85rem;color:#888;margin-bottom:.3rem;}
+        .busca-box{display:flex;gap:.5rem;margin-bottom:1rem;}
+        .busca-box input{flex:1;padding:.5rem 1rem;border:2px solid #1a4f89;border-radius:.4rem;font-size:1rem;}
+        .busca-box button{padding:.5rem 1rem;background:#1a4f89;color:#fff;border:none;border-radius:.4rem;cursor:pointer;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>📖 Dicionário Bíblico</h1>
+            <p class="lead">Termos essenciais da Bíblia e da teologia católica — com significado original, referências bíblicas e explicação acessível.</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <h2 style="margin-top:0;">Buscar Termo</h2>
+        <div class="busca-box">
+            <input type="text" id="busca-input" placeholder="Ex: Aleluia, Graça, Messias…" oninput="filtrarTermos()"/>
+            <button onclick="filtrarTermos()">🔍</button>
+        </div>
+        <div class="alpha-nav" id="alpha-nav"></div>
+    </div>
+
+    <div class="card" id="dic-container">
+        <!-- termos inseridos via JS -->
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+const termos = [
+    { l:"A", t:"Abel", h:"הֶבֶל (Hével)", d:"Segundo filho de Adão e Eva, pastor. Seu sacrifício de animais foi aceito por Deus; foi morto por seu irmão Caim. Prefigura Cristo, o Inocente assassinado." },
+    { l:"A", t:"Aleluia", h:"הַלְלוּיָהּ Hallelujah", d:"'Louvai a YHWH' — expressão hebraica de louvor usada nos Salmos (113-118) e no Apocalipse. Tradicional aclamação pascal; omitida do rito na Quaresma." },
+    { l:"A", t:"Aliança", h:"בְּרִית Berith", d:"Pacto sagrado entre Deus e Seu povo. Principais alianças: Noé (arco-íris), Abraão (circuncisão), Moisés/Sinai (10 Mandamentos), Davi (trono eterno), Nova Aliança em Cristo (Eucaristia)." },
+    { l:"A", t:"Amém", h:"אָמֵן Amen", d:"'Assim seja' / 'É verdade'. Expressão de assent e afirmação usada ao final das orações — 'firmeza, lealdade'. Jesus usa 'Em verdade, em verdade vos digo' (Amém, amém) com autoridade divina única." },
+    { l:"A", t:"Apóstolo", h:"ἀπόστολος Apostolos", d:"'Enviado'. Os 12 escolhidos por Jesus para anunciar o Evangelho. Paulo reivindica também o título (enviado pelo Ressuscitado). Os bispos são os sucessores dos Apóstolos — apostolicidade da Igreja." },
+    { l:"A", t:"Apocalipse", h:"ἀποκάλυψις Apokalypsis", d:"'Revelação, desvelamento'. Último livro do NT, atribuído ao Apóstolo João. Escrito em linguagem simbólica (gênero apocalíptico) para cristãos perseguidos pelo Império Romano. Não é manual de previsão do futuro, mas anúncio da vitória final de Cristo." },
+    { l:"A", t:"Arcanjo", h:"ἀρχάγγελος Arkhangelos", d:"'Anjo-chefe'. Três arcanjos mencionados na Escritura: Miguel ('Quem como Deus?') — guerreiro celestial; Gabriel ('Força de Deus') — mensageiro da Encarnação; Rafael ('Deus cura') — guia e curador (Tobias)." },
+    { l:"B", t:"Batismo", h:"βάπτισμα Baptisma", d:"'Imersão'. Primeiro sacramento, porta dos sacramentos, que lava o pecado original, incorpora ao Corpo de Cristo (Igreja), e configura a pessoa a Cristo como sacerdote, profeta e rei. Necessário para a salvação (Jo 3,5)." },
+    { l:"B", t:"Bênção", h:"בְּרָכָה Beraká", d:"'Bênção, louvor'. Em hebraico, beraká significa tanto bênção que desce de Deus ao homem quanto louvor que sobe do homem a Deus — a mesma palavra para os dois movimentos." },
+    { l:"B", t:"Bereshit", h:"בְּרֵאשִׁית", d:"Primeira palavra do AT: 'No princípio'. Título hebraico do Gênesis — 'No princípio criou Deus os céus e a terra' (Gn 1,1). Paralelo com o início do Evangelho de João: 'No princípio era o Verbo' (Jo 1,1)." },
+    { l:"C", t:"Canon Bíblico", h:"κανών Kanon", d:"'Regra, medida'. Lista oficial dos livros inspirados aceitos pela Igreja. O cânon católico contém 73 livros (46 AT + 27 NT); o protestante tem 66 (rejeitando os 7 deuterocanônicos: Tobias, Judite, 1-2 Macabeus, Eclesiástico, Sabedoria, Baruc)." },
+    { l:"C", t:"Carisma", h:"χάρισμα Kharisma", d:"'Dom gratuito'. Dons do Espírito Santo concedidos para o serviço da Igreja, não para glória pessoal (1Cor 12): profecia, línguas, cura, discernimento, liderança etc. Distintos das virtudes — transitórios e variáveis." },
+    { l:"C", t:"Cristo", h:"χριστός / מָשִׁיחַ Mashiakh", d:"'Ungido' — o mesmo significado de 'Messias' em hebraico. Título profético que designa o Rei prometido da linhagem de Davi que redimirá Israel. Em Jesus, cumprem-se as três unções: profeta, sacerdote e rei." },
+    { l:"C", t:"Concílio", h:"concilium (lat.)", d:"Assembleia solene de bispos para definir doutrina ou disciplina. 21 concílios ecumênicos (reconhecidos pela Igreja Católica), de Niceia I (325) ao Vaticano II (1962-65). Suas definições dogmáticas são infalíveis." },
+    { l:"D", t:"Davi", h:"דָּוִד David", d:"Segundo rei de Israel, descrido como 'homem segundo o coração de Deus' (1Sm 13,14). A aliança davídica promete um herdeiro cujo trono durará eternamente (2Sm 7) — cumprida em Jesus, o 'Filho de Davi'. Autor de muitos Salmos." },
+    { l:"D", t:"Deuterocanônico", h:"δεύτερος kanon", d:"'Segundo cânon'. Sete livros do AT aceitos pela Igreja Católica e Ortodoxa, mas rejeitados por Lutero no século XVI: Tobias, Judite, 1-2 Macabeus, Eclesiástico (Sirácide), Sabedoria e Baruc + partes de Ester e Daniel." },
+    { l:"E", t:"Êxodo", h:"אֵלֶּה שְׁמוֹת / Exodus (gr.)", d:"'Saída'. Segundo livro do Pentateuco — narra a libertação de Israel da escravidão do Egito, as 10 Pragas, a Páscoa, a travessia do Mar Vermelho e a aliança no Sinai. Prefigura a libertação do pecado pela Páscoa de Cristo." },
+    { l:"E", t:"Eucaristia", h:"εὐχαριστία Eukhharistia", d:"'Ação de Graças'. O fonte e cume da vida cristã (LG 11). Presença real de Jesus Cristo — corpo, sangue, alma e divindade — sob as espécies do pão e do vinho. Instituída na Última Ceia; renovada em cada Missa." },
+    { l:"E", t:"Escatologia", h:"ἔσχατος Eskhatos + logos", d:"'Tratado das últimas coisas'. Morte, Juízo, Purgatório, Inferno, Paraíso, Ressurreição e Parousia. A teologia cristã afirma que a história tem um fim — o retorno glorioso de Cristo — e cada vida também tem um fim pessoal seguido de julgamento." },
+    { l:"F", t:"Fé", h:"אֱמוּנָה Emunah / πίστις Pistis", d:"'Firmeza, fidelidade, confiança'. Virtude teologal pela qual a mente adere à Revelação de Deus e a vontade se entrega a Ele (Hb 11,1). Não é sentimento — é assentimento intelectual fundamentado na autoridade de Deus que revela." },
+    { l:"G", t:"Graça", h:"χάρις Kharis / חֵן Hen", d:"'Dom gratuito, favor'. Participação na vida divina concedida por Deus sem mérito. Graça santificante: estado habitual de união com Deus. Graças atuais: impulsos transitórios para o bem. Graça é o fundamento de toda a vida sobrenatural." },
+    { l:"G", t:"Getsêmani", h:"גַּת שְׁמָנִים Gat Shmanim", d:"'Prensa de azeite'. Jardim no Monte das Oliveiras onde Jesus orou na noite antes de Sua Paixão, com angústia tão intensa que suou sangue (hematidrosis). Lugar da agonia, da oração filial e da entrega à vontade do Pai." },
+    { l:"H", t:"Heresia", h:"αἵρεσις Hairesis", d:"'Escolha, divisão'. Negação pertinaz após o Batismo de uma verdade que deve ser crida com fé divina e católica (CIC cân. 751). Distinto de cisma (ruptura de comunhão) e apostasia (abandono total da fé)." },
+    { l:"I", t:"Imaculada Conceição", h:"Immaculata Conceptio (lat.)", d:"Dogma definido por Pio IX em 1854 (Bula Ineffabilis Deus): Maria foi preservada de toda mancha do pecado original desde o primeiro instante de sua concepção, em vista dos méritos de Cristo. Celebrada em 8 de dezembro." },
+    { l:"I", t:"Incarnação", h:"ἐνσάρκωσις Ensarkosis", d:"O Verbo eterno de Deus 'assumindo carne' — tornando-se verdadeiro homem sem deixar de ser Deus (Jo 1,14). Definida no Concílio de Calcedônia (451): Jesus é uma Pessoa divina em duas naturezas (divina e humana), sem confusão, mudança, divisão ou separação." },
+    { l:"J", t:"Jesus", h:"יֵשׁוּעַ Yeshua", d:"'YHWH salva'. Nome dado por Gabriel a Maria (Lc 1,31) e revelado a José (Mt 1,21). Forma hebraica/aramaica: Yeshua > Greco: Iēsous > Latino: Jesus. O nome expressa a missão: salvação pelo e em YHWH." },
+    { l:"J", t:"Justificação", h:"δικαίωσις Dikaiosin", d:"A ação pela qual Deus declara e torna justo o pecador (não apenas o declara). Central no debate da Reforma protestante. A Igreja Católica ensina que a justificação é gratuita (somente por graça) e transforma interiormente o pecador (não apenas o imputa como justo)." },
+    { l:"K", t:"Kerygma", h:"κήρυγμα Kerygma", d:"'Proclamação, pregação'. O núcleo do anúncio apostólico: Jesus morreu por nossos pecados, foi sepultado, ressuscitou ao terceiro dia e apareceu a Pedro e aos Doze (1Cor 15,3-8). O kerygma é a semente de toda catequese." },
+    { l:"L", t:"Liturgia", h:"λειτουργία Leitourgia", d:"'Obra do povo'. Culto oficial e público da Igreja — a santificação do homem e a glorificação de Deus através dos sacramentos, do ofício divino e dos sacramentais. A Missa é a liturgia por excelência." },
+    { l:"M", t:"Messias", h:"מָשִׁיחַ Mashiakh", d:"'Ungido'. O libertador esperado por Israel, da linhagem de Davi — ungido como profeta, sacerdote e rei. Jesus de Nazaré, ao aceitar o título em Pedro (Mt 16,16-17), redefine o messiado como serviço e sacrifício, não conquista política." },
+    { l:"M", t:"Martírio", h:"μαρτύριον Martyrion", d:"'Testemunho'. Morte voluntariamente aceita em ódio à fé. O mártir é o testemunho supremo da fé — mort pro Christo. A Igreja venera os mártires desde os primeiros cristãos. 'O sangue dos mártires é semente de cristãos' (Tertuliano)." },
+    { l:"N", t:"Noé", h:"נֹחַ Noakh", d:"'Descanso'. Patriarca que Deus escolheu para preservar a humanidade durante o Dilúvio — símbolo do julgamento e da misericórdia. A arca prefigura a Igreja; o arco-íris, a aliança. O batismo é prefigurado pelas águas do Dilúvio (1Pd 3,20-21)." },
+    { l:"O", t:"Oração", h:"תְּפִלָּה Tefilla / προσευχή Proseukhē", d:"'Elevação do coração a Deus'. A I grande categoria da vida espiritual. Santo Tomás define: 'Elevar a mente a Deus para pedir-Lhe os bens convenientes.' Formas: adoração, ação de graças, contrição, petição. Jesus ensinou o Pai-Nosso como modelo perfeito." },
+    { l:"P", t:"Páscoa", h:"פֶּסַח Pésakh", d:"'Passagem'. Festa judaica que celebra a saída do Egito — a passagem do anjo destruidor sobre as casas com sangue de cordeiro no umbral. Pascal cristão: a Passagem de Cristo da morte para a Ressurreição — cumprimento definitivo do êxodo. Festa máxima cristã." },
+    { l:"P", t:"Profeta", h:"נָבִיא Nabi / προφήτης Prophētēs", d:"'Porta-voz (de Deus)'. Não primariamente 'previsor do futuro', mas mensageiro da Palavra de Deus ao povo no presente. O profeta interpela (denuncia o mal), consola (anuncia a graça) e prediz (aponta o cumprimento). Jesus é o Profeta definitivo." },
+    { l:"P", t:"Purgatório", h:"Purgatorium (lat.)", d:"Estado de purificação final para os que morreram na graça de Deus, mas ainda necessitam de purificação antes de entrar na glória. Definido pelo II Concílio de Lyon (1274) e Florença (1439). Base bíblica: 2Mc 12,44-46; 1Cor 3,15; Mt 12,32." },
+    { l:"Q", t:"Quaresma", h:"Quadragesima (lat.)", d:"'Quarenta dias'. Período penitencial de 40 dias (Quarta-feira de Cinzas ao Tríduo Pascal) que prepara para a Páscoa. Evoca os 40 anos no deserto, os 40 dias de Moisés no Sinai e os 40 dias de jejum de Jesus no deserto." },
+    { l:"R", t:"Redenção", h:"גְּאֻלָּה Geula / ἀπολύτρωσις Apolytrosis", d:"'Resgate, libertação'. O resgate da humanidade do pecado pelo sacrifício de Cristo na Cruz. 'Redenção' era a compra da liberdade de escravos — Jesus 'compra de volta' o pecador da escravidão do pecado com Seu sangue precioso." },
+    { l:"R", t:"Ressurreição", h:"ἀνάστασις Anastasis", d:"'Levantamento'. Cristo ressuscitou corporalmente ao terceiro dia (1Cor 15). Não é mito ou metáfora — é o evento fundante do Cristianismo. Paulo: 'Se Cristo não ressuscitou, vã é a nossa pregação e vã é a vossa fé' (1Cor 15,14)." },
+    { l:"S", t:"Sacramento", h:"μυστήριον Mystēriori / sacramentum (lat.)", d:"'Sinal eficaz de graça instituído por Cristo e confiado à Igreja' (CIC 1131). Sete sacramentos: Batismo, Confirmação, Eucaristia, Penitência, Unção dos Enfermos, Ordem Sacerdotal, Matrimônio. Diferem dos sacramentais: causam a graça que significam." },
+    { l:"S", t:"Salvação", h:"יְשׁוּעָה Yeshuá / σωτηρία Sōtēria", d:"'Saúde, libertação'. Dom de Deus que liberta o homem do pecado, da morte e da condenação eterna, e o restaura para a comunhão com Deus. Iniciada no Batismo, cresce na vida sacramental, consumada na glória eterna." },
+    { l:"S", t:"Sion", h:"צִיּוֹן Tsión", d:"Monte em Jerusalém — centro espiritual de Israel. Metáfora da cidade de Deus, da Igreja e da Jerusalém celeste. 'Os que confiam no Senhor são como o monte Sion, que não pode ser abalado' (Sl 125,1)." },
+    { l:"T", t:"Torá", h:"תּוֹרָה Torah", d:"'Instrução, lei'. Em sentido estrito, os 5 primeiros livros da Bíblia (Pentateuco). Em sentido amplíssimo, toda a revelação de Deus a Israel. Jesus não veio 'abolir a Lei, mas dar-lhe plenitude' (Mt 5,17)." },
+    { l:"T", t:"Trindade", h:"Trinitas (lat.) / Τριάς Trias", d:"Um único Deus em três Pessoas distintas e iguais: Pai, Filho e Espírito Santo. Dogma central do Cristianismo, definido no Concílio de Niceia (325) e Constantinopla I (381). Não é 'três deuses' (triteísmo), nem uma Pessoa sob três formas (modalismo)." },
+    { l:"U", t:"Unção dos Enfermos", h:"ἔλαιον Elaion (óleo)", d:"Sacramento da cura espiritual (e às vezes física) para os gravemente enfermos, chamado no passado de 'Extrema Unção'. Institudo por Cristo (Mc 6,13) e ensinado por Tiago (5,14-15). Não é 'sacramento da morte' mas da força do Espírito na doença." },
+    { l:"V", t:"Verbo", h:"λόγος Logos / דָּבָר Davar", d:"'Palavra'. João 1,1: 'No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus.' O Logos grego era o princípio organizador do universo; João revela que esse Logos é uma Pessoa — o Filho eterno de Deus que se encarnou em Jesus de Nazaré." },
+    { l:"Z", t:"Zacarias", h:"זְכַרְיָה Zekharyah", d:"'YHWH se lembrou'. (1) Pai de João Batista, sacerdote que ficou mudo ao duvidar do anúncio do anjo (Lc 1). (2) Profeta pós-exílico cujo livro contém profecias messiânicas: o Rei humilde montado em jumento (9,9), os trinta siclos de prata (11,13), a abertura de um fontanário para o pecado (13,1)." }
+];
+
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+
+    const letras = [...new Set(termos.map(t => t.l))].sort();
+    const nav = document.getElementById('alpha-nav');
+    letras.forEach(l => {
+        const btn = document.createElement('button');
+        btn.className = 'alpha-btn';
+        btn.textContent = l;
+        btn.onclick = () => filtrarPorLetra(l, btn);
+        nav.appendChild(btn);
+    });
+
+    const cont = document.getElementById('dic-container');
+    const grupos = {};
+    termos.forEach(t => {
+        if (!grupos[t.l]) grupos[t.l] = [];
+        grupos[t.l].push(t);
+    });
+    Object.keys(grupos).sort().forEach(l => {
+        const g = document.createElement('div');
+        g.className = 'termo-grupo';
+        g.dataset.letra = l;
+        g.innerHTML = `<div class="termo-letra">${l}</div>`;
+        grupos[l].forEach(t => {
+            g.innerHTML += `<div class="termo-item visivel" data-nome="${t.t.toLowerCase()}">
+                <div class="termo-nome">${t.t}</div>
+                <div class="termo-heb">${t.h}</div>
+                <p>${t.d}</p>
+            </div>`;
+        });
+        cont.appendChild(g);
+    });
+});
+
+let letraAtiva = null;
+function filtrarPorLetra(l, btn) {
+    if (letraAtiva === l) {
+        letraAtiva = null;
+        document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('ativo'));
+        mostrarTodos();
+    } else {
+        letraAtiva = l;
+        document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        document.querySelectorAll('.termo-item').forEach(el => el.classList.remove('visivel'));
+        document.querySelectorAll(`.termo-grupo[data-letra="${l}"] .termo-item`).forEach(el => el.classList.add('visivel'));
+    }
+    document.getElementById('busca-input').value = '';
+}
+function mostrarTodos() {
+    document.querySelectorAll('.termo-item').forEach(el => el.classList.add('visivel'));
+}
+function filtrarTermos() {
+    const q = document.getElementById('busca-input').value.toLowerCase().trim();
+    letraAtiva = null;
+    document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('ativo'));
+    if (!q) { mostrarTodos(); return; }
+    document.querySelectorAll('.termo-item').forEach(el => {
+        el.classList.toggle('visivel', el.dataset.nome.includes(q));
+    });
+}
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

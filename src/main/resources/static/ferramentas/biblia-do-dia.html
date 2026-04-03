@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Versículo do Dia — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .versiculo-destaque{background:linear-gradient(135deg,#1a4f89,#2c7a2c);color:#fff;border-radius:1rem;padding:2.5rem 2rem;text-align:center;margin-bottom:2rem;}
+        .versiculo-destaque .ref{font-size:1rem;opacity:.8;margin-bottom:.5rem;letter-spacing:.05em;}
+        .versiculo-destaque .texto{font-size:1.35rem;font-style:italic;line-height:1.7;margin-bottom:1rem;}
+        .versiculo-destaque .livro{font-size:.9rem;opacity:.7;}
+        .meditacao-box{background:#f0f7ff;border-left:4px solid #1a4f89;padding:1rem 1.2rem;border-radius:0 .5rem .5rem 0;margin-top:1rem;}
+        html.dark-mode .meditacao-box{background:#1e3a5f;}
+        .nav-dia{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap;}
+        .nav-dia button{padding:.4rem .9rem;background:#1a4f89;color:#fff;border:none;border-radius:.4rem;cursor:pointer;}
+        .nav-dia input[type=number]{width:70px;padding:.4rem;text-align:center;border:2px solid #1a4f89;border-radius:.4rem;}
+        .compartilhar-btn{background:#c9a84c;color:#fff;border:none;padding:.5rem 1.2rem;border-radius:.4rem;cursor:pointer;font-weight:700;}
+        .todos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1rem;}
+        .mini-card{background:#f9f9f9;border-radius:.5rem;padding:.8rem;border-left:3px solid #c9a84c;cursor:pointer;}
+        html.dark-mode .mini-card{background:#1f2937;}
+        .mini-card:hover{border-color:#1a4f89;}
+        .mini-ref{font-weight:700;color:#1a4f89;font-size:.85rem;}
+        html.dark-mode .mini-ref{color:#60a5fa;}
+        .mini-texto{font-size:.9rem;color:#555;margin-top:.3rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+        html.dark-mode .mini-texto{color:#9ca3af;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>📖 Versículo do Dia</h1>
+            <p class="lead">Um versículo da Sagrada Escritura para cada dia do ano — com meditação para sua vida.</p>
+        </header>
+    </div>
+
+    <div class="card">
+        <div class="nav-dia">
+            <button onclick="anterior()">◀ Anterior</button>
+            <span>Dia <input type="number" id="num-dia" min="1" max="365" onchange="irParaDia()"/></span>
+            <button onclick="proximo()">Próximo ▶</button>
+            <button onclick="irHoje()" style="background:#c9a84c;">📅 Hoje</button>
+        </div>
+
+        <div id="versiculo-area"></div>
+
+        <div style="text-align:center;margin-top:1rem;">
+            <button class="compartilhar-btn" onclick="compartilhar()">📤 Compartilhar</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="margin-top:0;">📚 Todos os Versículos</h2>
+        <div class="todos-grid" id="todos-grid"></div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+const versiculos = [
+    {r:"Gn 1,1",t:"No princípio criou Deus os céus e a terra.",m:"Toda a existência começa em Deus. Antes do caos, houve um ato de amor criador. Hoje, agradeça a Deus o dom da vida — dom que não merecemos, mas recebemos gratuitamente."},
+    {r:"Gn 1,27",t:"Deus criou o ser humano à sua imagem e semelhança.",m:"Você não é produto do acaso: é imagem de Deus. Cada pessoa ao seu redor também o é. Como você tem tratado a imagem de Deus no outro?"},
+    {r:"Gn 3,9",t:"O Senhor Deus chamou o ser humano: Onde estás?",m:"Mesmo após o pecado, Deus vem ao encontro do homem. Não é o homem que busca Deus primeiro — é Deus que busca o homem. Deixe-se encontrar por Ele hoje."},
+    {r:"Gn 12,1",t:"O Senhor disse a Abrão: Sai da tua terra.",m:"A fé de Abraão começou com uma saída — deixar o conhecido e ir ao desconhecido. Qual 'terra' Deus está pedindo que você deixe hoje? Qual hábito, medo ou apego?"},
+    {r:"Êx 3,14",t:"Eu sou o que sou.",m:"O nome de Deus é Ser. Deus não tem passado nem futuro — é eternamente presente. Isso significa que Ele está com você agora, neste momento, não apenas nas grandes ocasiões."},
+    {r:"Êx 20,12",t:"Honra teu pai e tua mãe.",m:"O 4.º mandamento é o único com promessa: 'para que se prolonguem teus dias.' Honrar os pais não é necessariamente concordar com tudo, mas reconhecê-los como instrumentos de Deus em sua vida."},
+    {r:"Dt 6,4-5",t:"Escuta, Israel: o Senhor é nosso Deus, o Senhor é único. Amarás o Senhor teu Deus com todo o teu coração.",m:"O Shemá — a oração central de Israel. Jesus a cita como o primeiro mandamento. Amaremos a Deus 'com todo' — não com o que sobra do dia, das forças, do tempo."},
+    {r:"Js 1,9",t:"Sê forte e corajoso; não te atemorizes.",m:"Deus disse isso a Josué mais de três vezes. A coragem não é ausência de medo — é obedecer a Deus apesar do medo. Que tarefa difícil Deus lhe pede hoje?"},
+    {r:"Rt 1,16",t:"Onde quer que tu fores, eu irei; teu povo será meu povo e teu Deus, meu Deus.",m:"O amor de Rute por Noemi é um dos mais belos retratos de fidelidade da Bíblia. Quem na sua vida merece esse compromisso? Você tem dado esse tipo de lealdade?"},
+    {r:"1Sm 16,7",t:"O homem olha as aparências, mas o Senhor olha o coração.",m:"Deus escolheu Davi, o menor dos filhos, porque via o que os outros não viam. Você tem julgado as pessoas pelo exterior? Peça a Deus olhos para ver como Ele vê."},
+    {r:"Sl 1,1-2",t:"Feliz o homem que não segue o conselho dos ímpios. Seu prazer é a lei do Senhor.",m:"O Salmo 1 apresenta o caminho da felicidade: meditar a Palavra de Deus. Não é tristeza, nem rigidez — é alegria enraizada na Palavra que não passa."},
+    {r:"Sl 22,1",t:"Senhor é meu pastor; nada me faltará.",m:"O salmo mais amado da Bíblia. Jesus se identifica com esse pastor (Jo 10). Num dia de cansaço ou angústia, repita devagar: 'O Senhor é meu pastor. Nada me faltará.'"},
+    {r:"Sl 27,1",t:"O Senhor é minha luz e minha salvação; a quem temerei?",m:"A fé não elimina os perigos — mas transforma a relação com eles. Quando Deus é minha luz, a escuridão perde seu poder paralisante. Você teme mais o julgamento dos homens ou o amor de Deus?"},
+    {r:"Sl 46,10",t:"Aquietai-vos e sabei que eu sou Deus.",m:"A contemplação começa com silêncio. Nesta cultura de ruído e pressa, aquietar-se é ato de fé. Reserve 5 minutos hoje em silêncio — apenas para estar na presença de Deus."},
+    {r:"Sl 51,3",t:"Tem misericórdia de mim, ó Deus, segundo o teu amor.",m:"O Miserere — salmo da contrição de Davi após o pecado com Betsabeia. A confissão honesta de pecado abre a porta à misericórdia. Deus não quer perfeitos — quer verdadeiros."},
+    {r:"Sl 91,1",t:"Aquele que mora na sombra do Onipotente descansa sob a proteção do Deus Altíssimo.",m:"A proteção divina não promete ausência de dificuldades — promete presença divina em todas elas. Onde você busca segurança primeiramente: em Deus ou nas circunstâncias?"},
+    {r:"Sl 119,105",t:"Tua palavra é lâmpada para meus pés e luz para meu caminho.",m:"A Escritura não é livro de respostas mágicas — é luz para o próximo passo. Você precisa ver o caminho inteiro; Deus oferece luz para o próximo passo. Isso é fé."},
+    {r:"Pv 3,5",t:"Confia no Senhor de todo o teu coração.",m:"A sabedoria bíblica começa com abandono do orgulho intelectual. 'Não te apoies no teu entendimento' — nossa inteligência é limitada; a de Deus, infinita. Confie mesmo sem entender."},
+    {r:"Ec 3,1",t:"Há um momento para tudo e um tempo para cada propósito debaixo do céu.",m:"Qohélet nos ensina a receber cada estação da vida. Há tempo para plantar e arrancar, chorar e rir, abraçar e afastar. Você está resistindo a alguma estação que Deus enviou?"},
+    {r:"Ct 2,4",t:"Ele me introduziu na sala do banquete, e seu estandarte sobre mim é o amor.",m:"O Cântico dos Cânticos é a bíblia do amor esponsal — e os Padres o leram como o amor de Cristo pela Igreja e pela alma. Você se sente amado(a) por Deus isso hoje?"},
+    {r:"Is 40,31",t:"Os que esperam no Senhor renovarão as suas forças; subirão com asas como águias.",m:"A esperança bíblica não é ingenuidade — é certeza baseada na fidelidade de Deus. Nos momentos de esgotamento, a espera em Deus renova as forças que o esforço humano não consegue repor."},
+    {r:"Is 43,1",t:"Não temas, pois eu te remi; eu te chamei por teu nome: tu és meu.",m:"Deus conhece seu nome. Não somos número, não somos massa — somos Seus, individualmente amados e chamados. Esse 'Tu és meu' é pessoal, endereçado a você."},
+    {r:"Is 55,8",t:"Meus pensamentos não são os vossos pensamentos.",m:"A distância entre a sabedoria divina e a humana é imensa. Quando não entendemos os caminhos de Deus, a fé nos convida não a compreender, mas a confiar na bondade dEle."},
+    {r:"Jr 29,11",t:"Eu conheço os planos que tenho para vocês — planos de prosperidade e não de calamidade.",m:"Esta promessa foi dada a Israel no exílio babilônio — no pior momento. Deus promete futuro e esperança justamente quando tudo parece perdido. Qual é o seu 'exílio' hoje?"},
+    {r:"Jr 31,33",t:"Porei minha lei no seu interior e a escreverei no seu coração.",m:"A Nova Aliança não é de tábuas de pedra, mas de coração transformado. O Espírito Santo escreve a lei de amor no interior — não como obrigação exterior, mas como desejo do coração."},
+    {r:"Lm 3,22-23",t:"As misericórdias do Senhor não têm fim; suas compaixões nunca se esgotam; renovam-se cada manhã.",m:"Escrito nas ruínas de Jerusalém destruída. Mesmo no colapso total, o profeta descobre: a misericórdia de Deus recomeça a cada manhã. Hoje é uma manhã nova. Receba-a."},
+    {r:"Ez 36,26",t:"Darei a vocês um coração novo e porei em vocês um espírito novo.",m:"A conversão não é apenas reforma de comportamento — é transplante de coração. Só Deus pode dar o 'coração de carne' em vez do 'coração de pedra.' Peça-lhe isso hoje."},
+    {r:"Dn 3,17",t:"Nosso Deus, a quem servimos, pode nos livrar.",m:"Os três jovens na fornalha não sabem se serão salvos — mas servem a Deus de qualquer forma. Fé verdadeira não é 'Deus vai me salvar obrigatoriamente' mas 'sirvo a Deus mesmo que não seja salvo.'"},
+    {r:"Os 6,6",t:"Quero misericórdia, não sacrifício; conhecimento de Deus, e não holocaustos.",m:"Jesus cita esse versículo duas vezes (Mt 9,13; 12,7). O culto sem amor é vazio. Antes de rezar ou ir à Missa, pergunte-se: estou em paz com meu próximo?"},
+    {r:"Mq 6,8",t:"Praticar a justiça, amar a misericórdia e caminhar humildemente com o teu Deus.",m:"O programa completo da vida cristã em 3 verbos: fazer justiça, amar misericórdia, caminhar com humildade. Qual dos três precisa mais atenção na sua vida agora?"},
+    {r:"Hab 3,17-18",t:"Ainda que a figueira não floresça... ainda assim eu me alegrarei no Senhor.",m:"Fé radical: alegrar-se em Deus quando tudo desmorona. Não é otimismo, mas enraizamento em Alguém que não desmorona. Confie, mesmo sem resultados visíveis."},
+    {r:"Mt 4,4",t:"Não só de pão viverá o homem.",m:"Jesus cita Dt 8 ao ser tentado. Há uma fome mais profunda que a fome física — a fome de Deus. O pão físico a sacia por algumas horas; a Palavra de Deus alimenta para a eternidade."},
+    {r:"Mt 5,3",t:"Felizes os pobres em espírito, pois deles é o Reino dos Céus.",m:"A primeira bem-aventurança é paradoxal: a pobreza é beatitude? Em espírito — a pobreza de quem sabe que precisa de Deus. A riqueza mais perigosa é a autossuficiência espiritual."},
+    {r:"Mt 5,9",t:"Felizes os que promovem a paz, pois eles serão chamados filhos de Deus.",m:"Pacificadores não são os que evitam conflito a todo custo, mas os que buscam reconciliação — mesmo a custo pessoal. Há algum conflito em sua vida que você está evitando ao invés de resolver?"},
+    {r:"Mt 6,9-10",t:"Pai nosso que estais no céu, santificado seja o Vosso nome. Venha o Vosso reino.",m:"O Pai-Nosso começa com Deus — não com nossas necessidades. 'Santificado o Teu nome' é desejar que Deus seja glorificado em si mesmo, antes de qualquer benefício para nós."},
+    {r:"Mt 6,33",t:"Buscai em primeiro lugar o Reino de Deus.",m:"A ordenação das prioridades é o desafio da vida cristã. O 'em primeiro lugar' não proíbe buscar outras coisas — exige a ordem correta. O que você tem buscado em primeiro lugar?"},
+    {r:"Mt 11,28",t:"Vinde a mim, todos os que estais cansados e sobrecarregados.",m:"Jesus não chama os bem descansados e bem-sucedidos — chama os cansados. Seu convite é dirigido à exaustão humana. Que peso você está carregando que deveria entregar a Ele?"},
+    {r:"Mt 16,24",t:"Se alguém quiser me seguir, renuncie a si mesmo, tome a sua cruz e siga-me.",m:"A condição do discipulado é clara. 'Renunciar a si mesmo' não é autodestruição — é libertar-se do falso eu egoísta para ser movido por Cristo. Qual cruz você precisa aceitar?"},
+    {r:"Mc 1,15",t:"O tempo se cumpriu, o Reino de Deus está próximo. Convertei-vos.",m:"O kerygma de Jesus em três frases: anúncio, proximidade, exigência. A conversão não é evento único — é direção contínua. Converter-se é reorientar-se para Deus todos os dias."},
+    {r:"Lc 1,38",t:"Eis a serva do Senhor. Faça-se em mim segundo a tua palavra.",m:"O fiat de Maria é o modelo de toda obediência da fé. Ela não entendeu tudo — disse sim ao que não compreendia. Que 'fiat' Deus espera de você hoje?"},
+    {r:"Lc 10,27",t:"Amarás o Senhor teu Deus de todo o teu coração... e ao teu próximo como a ti mesmo.",m:"Os dois mandamentos são inseparáveis. O amor a Deus sem amor ao próximo é ilusão; o amor ao próximo sem Deus perde seu fundamento eterno. Os dois são um."},
+    {r:"Lc 15,20",t:"Ainda estava longe quando seu pai o viu e, movido de compaixão, correu a seu encontro.",m:"O pai da parábola não espera que o filho chegue — corre ao encontro. Essa é a imagem do Deus de Jesus: amor que toma iniciativa, que não aguarda mérito, que vai ao encontro."},
+    {r:"Jo 1,14",t:"O Verbo se fez carne e habitou entre nós.",m:"A Encarnação é o centro da história. Deus não ficou distante — entrou no humano, assumiu a carne, o cansaço, a dor, a morte. Não há nada na sua vida que Deus não conheça por dentro."},
+    {r:"Jo 3,16",t:"Porque Deus amou tanto o mundo que deu o seu Filho unigênito.",m:"O versículo mais citado da Bíblia. O amor de Deus não é abstrato — custou o Filho. 'Tanto' — não mediocremente. Esse amor é a fundação de tudo."},
+    {r:"Jo 8,12",t:"Eu sou a luz do mundo. Quem me segue não andará nas trevas.",m:"Jesus usa imagem bíblica do Shekinah — a presença divina luminosa. A luz não apenas brilha — mostra o caminho. Você tem seguido a luz de Cristo ou as luzes do mundo?"},
+    {r:"Jo 10,10",t:"Eu vim para que tenham vida e a tenham em abundância.",m:"Jesus não veio trazer religião controladora — veio trazer vida plena. Examine sua fé: ela está produzindo vida, alegria, fruto, expansão — ou apenas culpa e obrigação?"},
+    {r:"Jo 11,25",t:"Eu sou a ressurreição e a vida.",m:"Dito diante do túmulo de Lázaro. Jesus não diz 'darei ressurreição' — diz 'Eu sou.' A ressurreição não é evento futuro distante: é a Pessoa de Cristo, presente agora."},
+    {r:"Jo 13,35",t:"Nisto todos reconhecerão que sois meus discípulos: se tiverdes amor uns pelos outros.",m:"A identidade cristã não é primeiro o vocabulário, as práticas ou a cultura — é o amor fraternal. Como as pessoas ao seu redor reconhecem que você é discípulo de Cristo?"},
+    {r:"Jo 14,6",t:"Eu sou o caminho, a verdade e a vida.",m:"Três atributos essenciais que só Cristo afirma em si mesmo: caminho (meio), verdade (fundamento) e vida (fim). Não é mero guia ou inspiração — é o único caminho ao Pai."},
+    {r:"Jo 14,27",t:"A paz que eu vos dou não é como a que o mundo dá.",m:"O mundo oferece paz como ausência de conflito; Cristo dá paz como presença interior mesmo no conflito. Você tem buscado a paz de Cristo ou apenas a paz das circunstâncias?"},
+    {r:"At 2,42",t:"Eram assíduos ao ensinamento dos apóstolos, à fraternidade, à fração do pão e às orações.",m:"O retrato da primeira comunidade cristã em 4 pilares: doutrina, fraternidade, Eucaristia, oração. São os 4 pilares da vida cristã ainda hoje. Qual deles está faltando na sua vida?"},
+    {r:"Rm 5,8",t:"Deus prova o seu amor para conosco pelo fato de Cristo ter morrido por nós quando ainda éramos pecadores.",m:"A lógica do amor divino é inversa à humana. Nós amamos quem o merece; Deus amou os indignos. Você está esperando merecer o amor de Deus? Ele já o amou primeiro."},
+    {r:"Rm 8,28",t:"Sabemos que tudo concorre para o bem dos que amam a Deus.",m:"'Tudo' — não apenas as coisas boas. Paulo escreve isso depois de listar perseguições, fome, nudez, espada. A providência de Deus age através das situações difíceis, não apenas apesar delas."},
+    {r:"Rm 8,38-39",t:"Nada nos poderá separar do amor de Deus que está em Cristo Jesus.",m:"A lista de Paulo: morte, vida, anjos, principados, futuro, passado, poderes, altura, profundidade. Nenhuma dessas coisas pode cortar nossa conexão com o amor de Deus. Isso é segurança eterna."},
+    {r:"1Cor 13,4",t:"A caridade é paciente, é prestativa; a caridade não é invejosa.",m:"O hino da caridade de Paulo não descreve um sentimento — descreve comportamentos. Amor não é o que sentimos — é o que fazemos. Reveja cada frase e aplique à sua relação mais difícil."},
+    {r:"1Cor 13,13",t:"Agora permanecem a fé, a esperança e a caridade; mas a maior delas é a caridade.",m:"As três virtudes teologais. A fé passa (na visão beatífica veremos face a face). A esperança passa (o que se espera já se tem). Só o amor permanece — porque Deus é amor."},
+    {r:"1Cor 15,55",t:"Ó morte, onde está a tua vitória? Ó morte, onde está o teu aguilhão?",m:"O triunfo pascal de Paulo. A morte foi esvaziada de seu poder definitivo pela Ressurreição de Cristo. Para o cristão, morrer é 'ganho' (Fl 1,21) — não aniquilação, mas passagem."},
+    {r:"2Cor 12,9",t:"Minha graça te basta, pois é na fraqueza que o meu poder se revela plenamente.",m:"A resposta de Deus ao 'espinho na carne' de Paulo. Deus não removeu a fraqueza — revelou Sua força nela. Sua limitação atual pode ser o lugar exato onde a graça age."},
+    {r:"Gl 2,20",t:"Já não sou eu que vivo, mas é Cristo que vive em mim.",m:"O núcleo da espiritualidade paulina: a vida cristã não é imitação exterior de Cristo — é Christ habitando o interior por fé e graça. A mística cristã começa aqui."},
+    {r:"Gl 5,22",t:"O fruto do Espírito é caridade, alegria, paz, longanimidade, afabilidade, bondade, fidelidade.",m:"Esses não são objetivos a alcançar por esforço — são frutos do Espírito. Crescem quando estamos unidos à Videira (Jo 15). Avalie seus frutos para avaliar sua união com Cristo."},
+    {r:"Fl 4,6-7",t:"Não vos inquieteis com coisa alguma; em toda suplique apresentai a Deus os vossos pedidos.",m:"A cura da ansiedade segundo Paulo: não supressão, mas oração. 'Não vos inquieteis' não é negação do problema — é convite a trazê-lo a Deus. A paz de Deus guardará vossos corações."},
+    {r:"Fl 4,13",t:"Tudo posso naquele que me dá força.",m:"Paulo escreve isso na prisão — não é promessa de sucesso mundano, mas de suficiência divina em qualquer circunstância. 'Tudo' = suportar tanto a abundância quanto a escassez."},
+    {r:"Cl 3,17",t:"Tudo o que fizerdes, por palavra ou por obra, fazei-o em nome do Senhor Jesus.",m:"A santificação do cotidiano: cada ação, por pequena que seja, pode ser oferecida a Deus. Lavar louça, trabalhar, conversar — tudo pode ser oração se feito 'em nome do Senhor.'"},
+    {r:"1Ts 5,16-18",t:"Alegrai-vos sempre. Orai continuamente. Em tudo dai graças.",m:"Três imperativos inseparáveis. A alegria cristã não depende de circunstâncias; a oração contínua é postura, não performance; a ação de graças em 'tudo' — não apenas no bom."},
+    {r:"Hb 11,1",t:"A fé é a garantia do que se espera, a convicção acerca do que não se vê.",m:"A definição bíblica de fé: segurança (não sentimento) e convicção (não evidência física). A fé opera na fronteira do visível e do invisível — é a faculdade espiritual por excelência."},
+    {r:"Hb 12,1",t:"Corramos com perseverança para a corrida que nos está proposta.",m:"A vida cristã é corrida de longa distância — não sprint. Requer 'depor todo peso e o pecado que facilmente nos envolve.' A perseverança é virtude mais necessária que a intensidade inicial."},
+    {r:"Tg 2,17",t:"A fé, se não tiver obras, é morta em si mesma.",m:"Tiago e Paulo não se contradizem — complementam. Paulo ensina que somos salvos por fé, não obras; Tiago ensina que a fé verdadeira produz obras. Uma fé sem obras não é fé real."},
+    {r:"1Pd 5,7",t:"Lançai sobre ele toda a vossa ansiedade, porque ele tem cuidado de vós.",m:"Pedro dirige isso a comunidades perseguidas. A ansiedade é real — mas pode ser lançada, como quem joga um peso nos braços de outro. Deus carrega o que você não consegue."},
+    {r:"1Jo 4,8",t:"Deus é amor.",m:"A afirmação mais densa da Escritura. Não apenas 'Deus ama' — Deus É amor. O amor não é uma das características de Deus: é Sua essência, Sua natureza. Tudo que emana de Deus emana de amor."},
+    {r:"1Jo 4,18",t:"No amor não há temor; o amor perfeito expulsa o temor.",m:"O medo e o amor são incompatíveis em seu estado perfeito. O medo que vem do inferno opõe-se ao amor. Mas o temor filial — reverência amorosa — é compatível com o amor. Você serve a Deus por medo ou por amor?"},
+    {r:"Ap 1,8",t:"Eu sou o Alfa e o Ômega, o Primeiro e o Último.",m:"Cristo declara abrange toda a história — da primeira à última letra. Nada ocorreu antes Dele e nada ocorrerá depois. Toda a sua história pessoal está contida nesse abraço cósmico."},
+    {r:"Ap 3,20",t:"Estou à porta e bato; se alguém ouvir a minha voz e abrir a porta, entrarei.",m:"Cristo bate — mas não força. A liberdade humana é respeitada até o fim. A porta só se abre por dentro. Você tem ouvido Sua voz? A porta continua aberta por dentro?"},
+    {r:"Ap 21,5",t:"Eis que faço novas todas as coisas.",m:"A última promessa da Bíblia: renovação total. Não destruição do mundo, mas transfiguração. O cosmos gemendo (Rm 8) será curado. Toda a esperança cristã converge para esse 'faço novas todas as coisas'."}
+];
+
+let diaAtual = 1;
+
+function diaDoAno(){
+    const agora = new Date();
+    const inicio = new Date(agora.getFullYear(),0,0);
+    const diff = agora - inicio;
+    const umDia = 1000*60*60*24;
+    return Math.floor(diff/umDia);
+}
+
+function renderizar(dia){
+    diaAtual = Math.min(Math.max(dia,1),versiculos.length);
+    const v = versiculos[diaAtual-1];
+    document.getElementById('num-dia').value = diaAtual;
+    document.getElementById('versiculo-area').innerHTML = `
+        <div class="versiculo-destaque">
+            <div class="ref">📖 ${v.r}</div>
+            <div class="texto">"${v.t}"</div>
+        </div>
+        <div class="meditacao-box">
+            <strong>🌟 Meditação:</strong><br>${v.m}
+        </div>`;
+}
+
+function anterior(){ renderizar(diaAtual-1); }
+function proximo(){ renderizar(diaAtual+1); }
+function irHoje(){ renderizar(diaDoAno()); }
+function irParaDia(){
+    const v = parseInt(document.getElementById('num-dia').value);
+    if (!isNaN(v)) renderizar(v);
+}
+function compartilhar(){
+    const v = versiculos[diaAtual-1];
+    const texto = `📖 ${v.r}\n"${v.t}"\n\nFeCatolica — fe-catolica.com`;
+    if (navigator.share) {
+        navigator.share({title:'Versículo do Dia',text:texto});
+    } else {
+        navigator.clipboard.writeText(texto).then(()=>alert('Copiado!'));
+    }
+}
+
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+
+    irHoje();
+
+    const grid = document.getElementById('todos-grid');
+    versiculos.forEach((v,i) => {
+        const el = document.createElement('div');
+        el.className = 'mini-card';
+        el.innerHTML = `<div class="mini-ref">Dia ${i+1} — ${v.r}</div><div class="mini-texto">${v.t}</div>`;
+        el.onclick = () => { renderizar(i+1); window.scrollTo({top:0,behavior:'smooth'}); };
+        grid.appendChild(el);
+    });
+});
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

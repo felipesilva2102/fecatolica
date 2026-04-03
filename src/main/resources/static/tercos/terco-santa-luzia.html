@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terço de Santa Luzia</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#9c27b0"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card" style="border-top: 4px solid #9c27b0;">
+        <header style="text-align:center;">
+            <h1>👁️ Terço de Santa Luzia</h1>
+            <p class="lead">Devoção à nobre mártir de Siracusa que preferiu a morte ao abandono de Cristo, padroeira dos cegos e enfermos da vista.</p>
+            <p class="muted">"Os olhos que tu cobiças, eis que os perdi — e o que não saves é que já tenho outros, mais belos, que Deus me deu." — Tradição hagiógrafica — Festa: 13 de dezembro.</p>
+        </header>
+    </div>
+
+    
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de Santa Luzia</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de Santa Luzia</strong> honra a virgem e mártir de Siracusa (Sicília), que sofreu o martírio durante a perseguição de Diocleciano, por volta do ano 304. O nome Luzia vem do latim <em>lux</em> (luz), e desde os primeiros séculos a santa é venerada como <strong>protetora dos olhos e da visão</strong>.</p><p>Segundo a tradição, Luzia consagrou sua virgindade a Cristo e distribuiu seus bens aos pobres. Denunciada pelo pretendente rejeitado, foi submetida a torturas terríveis, mas permaneceu firme na fé. Seu culto espalhou-se por todo o mundo cristão, e ela é especialmente invocada por aqueles que sofrem de problemas de visão. Festa: 13 de dezembro.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial e invocação a Santa Luzia</li><li>5 dezenas meditando a fé e o martírio de Santa Luzia</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Invocação:</em> Santa Luzia, virgem e mártir, cujo nome resplandece como a luz de Cristo, iluminai os nossos olhos do corpo e da alma. Concedei-nos enxergar o caminho da verdade e ter clareza para distinguir o bem do mal. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+                <div id="decadesContainer"></div>
+
+    <div id="sectionFinal" class="card fade-in" style="display:none;">
+        <h3 style="color:#9c27b0;margin-top:0;">👁️ Oração Final a Santa Luzia</h3>
+        <p>Santa Luzia, que carregastes seu nome — Luz — como missão e martírio, iluminai os que padecem das trevas do pecado e das enfermidades dos olhos. Que tua intercessão abra nossos olhos interiores para reconhecer Cristo em cada irmão.</p>
+        <blockquote style="border-left: 4px solid #9c27b0; padding-left: 16px; margin: 16px 0; font-style: italic;">
+            "Tu és a luz do mundo. Uma cidade sobre uma montanha não pode ficar escondida." — Mt 5,14 — Igreja celebra Santa Luzia como testemunha luminosa.
+        </blockquote>
+        <div class="msg-success">✅ Terço de Santa Luzia concluído! Que ela ilumine sua vida e interceda pelas suas necessidades.</div>
+    </div>
+
+    <button class="btn-share" data-partilhar data-partilhar-texto="Rezei o Terço de Santa Luzia no FeCatolica! 👁️" style="display:block;margin:12px auto;">
+        📤 Partilhar esta Devoção
+    </button>
+
+    <div id="footer-placeholder"></div>
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
+    {
+        title: '1ª Dezena — Luzia Consagra sua Virgindade a Cristo',
+        meditation: 'Pelas vocações à vida consagrada e pela pureza do coração.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '2ª Dezena — A Distribuição dos Bens aos Pobres',
+        meditation: 'Pela generosidade com os pobres e pela detacha dos bens materiais.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '3ª Dezena — A Denúncia pelo Noivo Pagão e a Prisão',
+        meditation: 'Por todos os que são perseguidos pela fé e pelos que sofreram traição.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '4ª Dezena — Os Tormentos e o Milagre da Firmeza na Fé',
+        meditation: 'Pelos enfermos dos olhos e por todos que sofrem perseguição.',
+        jaculatoria: 'Glória ao Pai...'
+    },
+    {
+        title: '5ª Dezena — O Martírio e a Coroa Eterna de Santa Luzia',
+        meditation: 'Pela perseverança na fé até a morte e pela esperança da vida eterna.',
+        jaculatoria: 'Glória ao Pai... Salve Rainha...'
+    }
+]
+
+    FeBeads.build({ themeColor: '#9c27b0', decades: decades });
+});
+</script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/streaks.js"></script>
+<script src="/js/partilha.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

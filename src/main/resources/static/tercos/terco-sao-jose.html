@@ -25,58 +25,41 @@
             </header>
         </div>
 
-        <!-- Instrução -->
-        <div class="card" style="text-align:center;">
-            <p class="muted">Utiliza-se o terço comum (5 dezenas). Toque em cada conta para avançar na oração.</p>
-            <div class="beads-legend" style="margin-top:10px;">
-                <span>⚪ Pendente</span>
-                <span>🔵 Atual</span>
-                <span>🟡 Rezada</span>
-            </div>
-        </div>
-
-        <!-- Progresso SVG -->
-        <div class="card beads-card" style="text-align:center;">
-            <svg class="progress-ring" width="100" height="100">
-                <circle class="progress-ring-bg" cx="50" cy="50" r="44" stroke="#e0e0e0" stroke-width="6" fill="none"/>
-                <circle class="progress-ring-fg" id="progressRing" cx="50" cy="50" r="44"
-                        stroke="#5d8a3c" stroke-width="6" fill="none"
-                        stroke-dasharray="276.46" stroke-dashoffset="276.46"
-                        stroke-linecap="round" transform="rotate(-90 50 50)"/>
-                <text x="50" y="54" text-anchor="middle" font-size="16" fill="#333" id="progressText">0%</text>
-            </svg>
-            <div class="progress-bar-linear" style="margin-top:10px;">
-                <div class="progress-bar-fill" id="linearBar" style="width:0%;background:#5d8a3c;"></div>
-            </div>
-        </div>
-
         <!-- Início -->
-        <div class="card" id="sectionInicio">
-            <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
-            <p style="text-align:center;line-height:1.8;">
-                <strong>Sinal da Cruz:</strong><br/>
-                Em nome do Pai, e do Filho, e do Espírito Santo. Amém.
-            </p>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Oração a São José</p>
-                <p style="line-height:1.8;font-style:italic;">
-                    "Glorioso São José, esposo da Virgem Maria e pai putativo de Jesus Cristo,
-                    rogai por nós junto ao Pai Celestial, a fim de que possamos, imitando os vossos exemplos,
-                    viver e morrer santamente. Amém."
-                </p>
-            </div>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Pai-Nosso</p>
-                <p style="line-height:1.8;">Pai nosso, que estais nos Céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.</p>
-            </div>
-            <div style="text-align:center;margin-top:12px;">
-                <p style="font-weight:600;">Ave-Maria</p>
-                <p style="line-height:1.8;">Ave Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.</p>
+        
+    <!-- Instruções -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Sobre o Terço de São José</div>
+                <div class="accordion-content">
+                    <p>O <strong>Terço de São José</strong> honra o esposo da Virgem Maria e pai putativo de Jesus Cristo. José é o modelo do homem justo (Mt 1,19), obediente à vontade de Deus em silêncio e fidelidade. As Escrituras não registram nenhuma palavra de José — ele age pela fé.</p><p>Declarado patrono da Igreja Universal pelo Papa Pio IX em 1870, São José é invocado como <strong>padroeiro dos trabalhadores (1º de maio), das famílias e da boa morte</strong> — pois teve o privilégio de morrer nos braços de Jesus e Maria. O Papa Francisco dedicou-lhe o Ano de São José (2020-2021) e a Carta Apostólica <em>Patris Corde</em>.</p>
+                    <p><strong>Estrutura:</strong></p>
+                    <ol>
+                        <li>Oração inicial a São José</li><li>5 dezenas meditando as virtudes de São José</li><li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li><li>Jaculatória ao final de cada dezena</li>
+                    </ol>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- 5 Dezenas -->
-        <div id="decadesContainer"></div>
+    <!-- Orações Iniciais -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                <div class="accordion-content">
+                    <p><strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.</p><p><em>Oração a São José:</em> Glorioso São José, esposo da Virgem Maria e pai putativo de Jesus Cristo, rogai por nós junto ao Pai Celestial, a fim de que possamos, imitando os vossos exemplos, viver e morrer santamente. Amém.</p><p><strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...</p><p><em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+                <div id="decadesContainer"></div>
 
         <!-- Oração Final -->
         <div class="card" id="sectionFinal" style="display:none;">
@@ -112,122 +95,40 @@
     </div>
 
     <script src="/js/app.js"></script>
-    <script>
-    $(function() {
-        var decades = [
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function () {
+    var decades = [
             {
-                titulo: '1ª Dezena — São José, Esposo de Maria',
-                intencao: 'Contemplamos a fé e generosidade de José ao receber Maria como esposa, obedecendo ao anjo sem questionar.',
-                contaGrandeOracao: '"São José, esposo da Virgem Maria, modelo de fé e obediência à vontade de Deus, rogai por nós!"',
-                contaPequenaOracao: '"São José, pai e protetor, rogai por nós."',
-                finalDezena: 'São José, justo e fiel, ensinai-nos a obedecer a Deus em tudo.'
+                title: '1ª Dezena — São José, Esposo de Maria',
+                meditation: 'Contemplamos a fé e generosidade de José ao receber Maria como esposa, obedecendo ao anjo sem questionar.',
+                jaculatoria: 'São José, justo e fiel, ensinai-nos a obedecer a Deus em tudo.'
             },
             {
-                titulo: '2ª Dezena — São José, Pai de Jesus',
-                intencao: 'Meditamos a ternura de José ao zelar por Jesus: na fuga para o Egito, nos anos de Nazaré e no encontro no Templo.',
-                contaGrandeOracao: '"São José, pai putativo de Nosso Senhor Jesus Cristo, zelai pelas nossas famílias como zelastes pela Sagrada Família!"',
-                contaPequenaOracao: '"São José, pai e protetor, rogai por nós."',
-                finalDezena: 'São José, guardião do Redentor, protegei as nossas famílias.'
+                title: '2ª Dezena — São José, Pai de Jesus',
+                meditation: 'Meditamos a ternura de José ao zelar por Jesus: na fuga para o Egito, nos anos de Nazaré e no encontro no Templo.',
+                jaculatoria: 'São José, guardião do Redentor, protegei as nossas famílias.'
             },
             {
-                titulo: '3ª Dezena — São José, Patrono dos Trabalhadores',
-                intencao: 'Refletimos sobre a humildade e o trabalho de José como carpinteiro — santificando o trabalho cotidiano com suas próprias mãos.',
-                contaGrandeOracao: '"São José, operário e artesão, santificai o nosso trabalho e o de todos os que ganham o pão com o suor do rosto!"',
-                contaPequenaOracao: '"São José, pai e protetor, rogai por nós."',
-                finalDezena: 'São José, modelo de trabalhadores, abençoai os nossos esforços diários.'
+                title: '3ª Dezena — São José, Patrono dos Trabalhadores',
+                meditation: 'Refletimos sobre a humildade e o trabalho de José como carpinteiro — santificando o trabalho cotidiano com suas próprias mãos.',
+                jaculatoria: 'São José, modelo de trabalhadores, abençoai os nossos esforços diários.'
             },
             {
-                titulo: '4ª Dezena — São José, Protetor da Igreja',
-                intencao: 'Veneramos São José como patrono da Igreja Universal, proclamado pelo Papa Pio IX, que vela e intercede por toda a comunidade dos fiéis.',
-                contaGrandeOracao: '"São José, patrono da Santa Igreja, defendei-a das perseguições e guiai-a com o vosso poderoso patrocínio!"',
-                contaPequenaOracao: '"São José, pai e protetor, rogai por nós."',
-                finalDezena: 'São José, coluna da Igreja, fortalecei a nossa fé.'
+                title: '4ª Dezena — São José, Protetor da Igreja',
+                meditation: 'Veneramos São José como patrono da Igreja Universal, proclamado pelo Papa Pio IX, que vela e intercede por toda a comunidade dos fiéis.',
+                jaculatoria: 'São José, coluna da Igreja, fortalecei a nossa fé.'
             },
             {
-                titulo: '5ª Dezena — São José, Patrono da Boa Morte',
-                intencao: 'Pedimos a intercessão de José para a hora da morte — ele que morreu nos braços de Jesus e Maria e é padroeiro de uma morte santa e feliz.',
-                contaGrandeOracao: '"São José, patrono dos agonizantes, assistei-nos na hora da nossa morte, como Jesus e Maria vos assistiram!"',
-                contaPequenaOracao: '"São José, pai e protetor, rogai por nós."',
-                finalDezena: 'São José, esperança dos moribundos, obtende-nos uma morte santa e feliz.'
+                title: '5ª Dezena — São José, Patrono da Boa Morte',
+                meditation: 'Pedimos a intercessão de José para a hora da morte — ele que morreu nos braços de Jesus e Maria e é padroeiro de uma morte santa e feliz.',
+                jaculatoria: 'São José, esperança dos moribundos, obtende-nos uma morte santa e feliz.'
             }
-        ];
+        ]
 
-        var TOTAL_BEADS = 55;
-        var beadsDone = 0;
-        var circumference = 2 * Math.PI * 44;
-
-        function updateProgress() {
-            var pct = Math.round(beadsDone / TOTAL_BEADS * 100);
-            var offset = circumference - (beadsDone / TOTAL_BEADS) * circumference;
-            $('#progressRing').attr('stroke-dashoffset', offset);
-            $('#progressText').text(pct + '%');
-            $('#linearBar').css('width', pct + '%');
-
-            if (beadsDone >= TOTAL_BEADS) {
-                $('#sectionFinal').slideDown();
-                localStorage.setItem('saojose_' + new Date().toISOString().slice(0,10), 'true');
-                if (window.FeStreaks) window.FeStreaks.registrarAtividade();
-            }
-        }
-
-        function beadClick() {
-            var $b = $(this);
-            if ($b.hasClass('clicked')) return;
-            $b.removeClass('nextPulse');
-            $b.addClass('clicked');
-            beadsDone++;
-            updateProgress();
-
-            var $next = $b.parent().find('.rosary-bead:not(.clicked)').first();
-            if ($next.length === 0) {
-                var $nextDec = $b.closest('.decade-section').next('.decade-section');
-                if ($nextDec.length) {
-                    $nextDec.find('.accordion-header:not(.active)').click();
-                    $next = $nextDec.find('.rosary-bead:not(.clicked)').first();
-                }
-            }
-            if ($next.length) $next.addClass('nextPulse');
-        }
-
-        var html = '';
-        for (var d = 0; d < 5; d++) {
-            var dec = decades[d];
-            html += '<div class="card decade-section">';
-            html += '<div class="accordion-header' + (d === 0 ? ' active' : '') + '">' + dec.titulo + '</div>';
-            html += '<div class="accordion-content"' + (d === 0 ? ' style="display:block;"' : '') + '>';
-
-            html += '<div style="background:#f4faf0;border-left:3px solid #5d8a3c;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;">';
-            html += '<p style="margin:0;font-size:0.95rem;color:#3a5c28;">' + dec.intencao + '</p>';
-            html += '</div>';
-
-            html += '<div style="text-align:center;margin:12px 0;">';
-            html += '<p style="font-weight:600;color:#5d8a3c;">Conta grande (Pai-Nosso):</p>';
-            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaGrandeOracao + '</p>';
-            html += '<div class="beads-row" style="justify-content:center;margin:8px 0;"><span class="rosary-bead" style="width:30px;height:30px;" data-d="' + d + '"></span></div>';
-            html += '</div>';
-
-            html += '<div style="text-align:center;margin:12px 0;">';
-            html += '<p style="font-weight:600;color:#3a5c28;">Contas pequenas (10x):</p>';
-            html += '<p style="line-height:1.8;font-style:italic;">' + dec.contaPequenaOracao + '</p>';
-            html += '<div class="beads-row" style="flex-wrap:wrap;justify-content:center;gap:6px;margin:8px 0;">';
-            for (var b = 1; b <= 10; b++) {
-                html += '<span class="rosary-bead" style="width:22px;height:22px;" data-d="' + d + '"></span>';
-            }
-            html += '</div></div>';
-
-            html += '<div style="background:#f4faf0;border-left:3px solid #5d8a3c;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;text-align:center;">';
-            html += '<p style="margin:0;font-style:italic;color:#3a5c28;">' + dec.finalDezena + '</p>';
-            html += '</div>';
-
-            html += '</div></div>';
-        }
-        $('#decadesContainer').html(html);
-
-        $('#decadesContainer').on('click', '.rosary-bead', beadClick);
-
-        $('#decadesContainer .rosary-bead').first().addClass('nextPulse');
-    });
-    </script>
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+</script>
     <script src="/js/acessibilidade.js"></script>
     <script src="/js/streaks.js"></script>
     <script src="/js/partilha.js"></script>

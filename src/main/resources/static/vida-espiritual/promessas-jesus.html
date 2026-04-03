@@ -181,10 +181,10 @@
             $(this).addClass('active');
             var cat = $(this).data('cat');
             if (cat === 'todos') {
-                $('[data-cat]').show();
+                $('.card[data-cat]').show();
             } else {
-                $('[data-cat]').hide();
-                $('[data-cat="' + cat + '"]').show();
+                $('.card[data-cat]').hide();
+                $('.card[data-cat="' + cat + '"]').show();
             }
         });
     });

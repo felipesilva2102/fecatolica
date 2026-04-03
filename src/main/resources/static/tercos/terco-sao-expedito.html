@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Terço de São Expedito — FeCatolica</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/acessibilidade.css">
+        <link rel="stylesheet" href="/css/terco-interativo.css">
+        <link rel="stylesheet" href="/css/print.css" media="print">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1a4f89">
+        <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="menu-placeholder"></div>
+            <div class="card hero-card">
+                <header style="text-align:center;">
+                    <h1>⚡ Terço de São Expedito</h1>
+                    <p class="lead">Devoção ao Mártir Romano, Padroeiro das Causas Urgentes e Impossíveis — o santo que escolheu "hoje" em vez de "amanhã" para servir a Deus.</p>
+                    <p class="muted" style="margin-top:6px;">⚔️
+                        <em>"Hodie!" (Hoje!) — A resposta de São Expedito ao demônio disfarçado de corvo.</em> — Festa: 19 de abril
+                    </p>
+                </header>
+            </div>
+            <!-- Instruções -->
+            <div class="card">
+                <h2 style="text-align:center;margin-top:0;">📖 Como Rezar</h2>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header">Sobre o Terço de Santo Expedito</div>
+                        <div class="accordion-content">
+                            <p>O
+                                <strong>Terço de Santo Expedito</strong> honra o mártir romano cuja tradição o apresenta como um soldado convertido ao cristianismo, martirizado no século IV. Seu nome tornou-se sinônimo de
+                                <strong>urgência e pressa</strong> na resolução de problemas: Santo Expedito é invocado como o "santo das causas urgentes e justas".
+                            </p>
+                            <p>A iconografia o representa como um soldado romano pisando num corvo que grita
+                                <em>"Cras!"</em> (amanhã!) enquanto segura uma cruz com a inscrição
+                                <em>"Hodie!"</em> (hoje!) — simbolizando que a conversão não pode ser adiada. É especialmente popular no Brasil, na França e no Oriente. Festa: 19 de abril.
+                            </p>
+                            <p>
+                                <strong>Estrutura:</strong>
+                            </p>
+                            <ol>
+                                <li>Oração inicial e invocação a Santo Expedito</li>
+                                <li>5 dezenas meditando a urgência da conversão</li>
+                                <li>Em cada dezena: 1 Pai-Nosso + 10 Ave-Marias + Glória</li>
+                                <li>Jaculatória ao final de cada dezena</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Orações Iniciais -->
+            <div class="card">
+                <h2 style="text-align:center;margin-top:0;">✝️ Início</h2>
+                <div class="accordion-panel">
+                    <div class="accordion-tab">
+                        <div class="accordion-header">Oferecimento e Orações Iniciais</div>
+                        <div class="accordion-content">
+                            <p>
+                                <strong>Sinal da Cruz:</strong> Em nome do Pai, e do Filho, e do Espírito Santo. Amém.
+                            </p>
+                            <p>
+                                <em>Oração a Santo Expedito:</em> Santo Expedito, mártir de Cristo e protetor das causas urgentes e justas, intercedei por nós com a mesma urgência com que correstes ao encontro da fé. Não deixeis para amanhã o que podemos fazer hoje para a glória de Deus. Amém.
+                            </p>
+                            <p>
+                                <strong>Creio em Deus Pai</strong> todo-poderoso, criador do céu e da terra...
+                            </p>
+                            <p>
+                                <em>1 Pai-Nosso, 3 Ave-Marias, Glória ao Pai.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="decadesContainer"></div>
+            <div class="card" id="sectionFinal" style="display:none;">
+                <h2 style="text-align:center;margin-top:0;">⚡ Oração Final a São Expedito</h2>
+                <p style="text-align:center;line-height:1.8;font-style:italic;font-size:1.05rem;">
+                    São Expedito, padroeiro das causas urgentes,
+                    <br>
+                    que nada vos demorou na hora de escolher a Deus,
+                    <br>
+                    auxiliai-nos nas nossas necessidades imediatas,
+                    <br>
+                    afastai de nós a procrastinação e o medo,
+                    <br>
+                    e obtende-nos a graça de dizer "HOJE" a Cristo
+                    <br>
+                    sem mais hesitação.
+                </p>
+                <div style="background:#fef9e7;border-left:4px solid #b8860b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;">
+                    <p style="margin:0;line-height:1.8;">
+                        <strong>Jaculatória (3 vezes):</strong>
+                        <br>
+                        <em>"São Expedito, padroeiro das causas urgentes, socorrei-nos hoje!"</em>
+                    </p>
+                </div>
+                <div class="msg-success" style="margin-top:16px;text-align:center;">
+                    ✅ Você completou o Terço de São Expedito! Hodie — Hoje escolherei a Deus!
+                </div>
+            </div>
+            <div style="text-align:center;margin:12px 0;">
+                <button
+                    class="btn-share"
+                    data-partilhar
+                    data-partilhar-titulo="Terço de São Expedito — FeCatolica"
+                    data-partilhar-texto="Reze o Terço de São Expedito — Padroeiro das Causas Urgentes!"
+                >
+                    📤 Compartilhar
+                </button>
+            </div>
+            <div id="footer-placeholder"></div>
+        </div>
+        <script src="/js/app.js"></script>
+        <script src="/js/terco-interativo.js"></script>
+        <script>
+$(function () {
+    var decades = [
+            {
+                title: '1ª Dezena — O Soldado Romano e a Conversão',
+                meditation: 'Meditamos a conversão de Expedito: soldado romano que encontrou a fé cristã e, ao tentar adiar sua decisão por influência de um corvo (demônio) que grasnava "Cras! Cras!" (Amanhã! Amanhã!), respondeu esmagando o corvo: "HODIE!" (Hoje!), tornando-se símbolo da decisão imediata por Deus.',
+                jaculatoria: 'São Expedito, que vencestes a procrastinação com fé, ajuda-nos a dizer HOJE ao chamado de Deus.'
+            },
+            {
+                title: '2ª Dezena — Padroeiro das Causas Urgentes e Impossíveis',
+                meditation: 'Contemplamos São Expedito como padroeiro das causas urgentes: a tradição o invoca em situações de necessidade imediata, quando o tempo aperta e a situação parece impossível. Seu exemplo de prontidão é um convite a confiar em Deus sem demora.',
+                jaculatoria: 'São Expedito, intercessor nas causas urgentes, acolhe nossas petições mais imediatas.'
+            },
+            {
+                title: '3ª Dezena — A Coragem na Fé — Testemunho Público',
+                meditation: 'Meditamos a coragem de Expedito em professar a fé cristã num ambiente hostil, o exército romano. Ele não escondeu sua fé, mas a proclamou publicamente, aceitando as consequências de ser cristão num império pagão.',
+                jaculatoria: 'São Expedito, corajoso na fé, remove de nós o respeito humano e o medo de confessar Cristo.'
+            },
+            {
+                title: '4ª Dezena — O Martírio por Cristo',
+                meditation: 'Contemplamos o martírio de São Expedito: executado em Melitene, Armênia (atual Turquia), ao redor do ano 303 d.C. durante a perseguição de Diocleciano. Preferiu dar a vida a negar Cristo — o ato supremo de amor e fidelidade.',
+                jaculatoria: 'São Expedito, mártir glorioso, dá-nos fidelidade a Cristo até o último momento.'
+            },
+            {
+                title: '5ª Dezena — O Socorro aos Aflitos e Desesperados',
+                meditation: 'Meditamos a missão de São Expedito junto aos aflitos: quantos, em situação de desespero, invocarão seu nome e encontrarão alívio e socorro? Sua intercessão alcança especialmente os que estão à beira do desespero e precisam de um socorro urgente.',
+                jaculatoria: 'São Expedito, esperança dos desesperados, leva nosso grito a Cristo e voltai com a resposta.'
+            }
+        ]
+
+    FeBeads.build({ themeColor: '#1a4f89', decades: decades });
+});
+        </script>
+        <script src="/js/acessibilidade.js"></script>
+        <script src="/js/streaks.js"></script>
+        <script src="/js/partilha.js"></script>
+        <script src="/js/sw-register.js"></script>
+    </body>
+</html>

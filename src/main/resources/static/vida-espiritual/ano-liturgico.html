@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ano Litúrgico — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .tempo-card {border-radius:10px;padding:1.2rem 1.5rem;margin:.5rem 0;border-left:6px solid var(--cor);background:rgba(var(--cor-rgb),.07);}
+        .tempo-header {font-weight:700;font-size:1.1rem;color:var(--cor);margin-bottom:.4rem;}
+        .cor-badge {display:inline-block;width:1rem;height:1rem;border-radius:50%;vertical-align:middle;margin-right:.4rem;}
+        .festas-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.5rem;}
+        .festa-item {background:#f8f9fa;border-radius:6px;padding:.5rem .75rem;font-size:.88rem;}
+        .festa-item strong {display:block;color:#1a4f89;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="menu-placeholder"></div>
+
+    <div class="card hero-card">
+        <header style="text-align:center;">
+            <h1>📅 O Ano Litúrgico</h1>
+            <p class="lead">A Igreja recapitula anualmente todo o Mistério de Cristo — desde a Encarnação até o retorno glorioso. Cada tempo litúrgico é um convite a mergulhar numa dimensão do Mistério.</p>
+            <p class="muted">"O Ano Litúrgico é a própria vida de Cristo comunicada a Seus membros." — Dom Prosper Guéranger</p>
+        </header>
+    </div>
+
+    <!-- Introdução -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🌀 O que é o Ano Litúrgico?</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Santificação do Tempo</div>
+                <div class="accordion-content" style="display:block;">
+                    <p>O Ano Litúrgico (ou Ano Eclesiástico) é o ciclo anual da vida da Igreja que recapitula o Mistério da salvação — desde a expectativa do Messias (Advento) até a consumação final (Cristo Rei do Universo). Não é uma simples comemoração histórica, mas uma presença real dos mistérios de Cristo no tempo (SC 102).</p>
+                    <p>A Constituição <em>Sacrosanctum Concilium</em> (1963) do Vaticano II ensina: <em>"O que Cristo realizou na sua encarnação e no sacrifício pascal é atualizado na Liturgia, tornando-se presente para os fiéis que celebram."</em></p>
+                    <p>O Domingo é o "Dia do Senhor" — a Páscoa semanal, fundamento de todo o Ano Litúrgico. Em torno do Domingo, organizam-se os tempos e festas.</p>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Cores Litúrgicas</div>
+                <div class="accordion-content">
+                    <table style="width:100%;border-collapse:collapse;">
+                        <tr style="background:#3d2b1f;color:#fff;"><td style="padding:.5rem 1rem;">🟤 <strong>Roxo/Violeta</strong></td><td style="padding:.5rem;">Penitência, esperança, espera — Advento e Quaresma</td></tr>
+                        <tr style="background:#f8f9fa;"><td style="padding:.5rem 1rem;">⬜ <strong>Branco</strong></td><td style="padding:.5rem;">Festas de Cristo, de Nossa Senhora, de virgens e confessores — alegria, pureza</td></tr>
+                        <tr style="background:#dc143c;color:#fff;"><td style="padding:.5rem 1rem;">🔴 <strong>Vermelho</strong></td><td style="padding:.5rem;">Pentecostes, festas de apóstolos e mártires — Espírito Santo, sangue</td></tr>
+                        <tr style="background:#2d6a2d;color:#fff;"><td style="padding:.5rem 1rem;">🟢 <strong>Verde</strong></td><td style="padding:.5rem;">Tempo Comum — crescimento ordinário, esperança</td></tr>
+                        <tr style="background:#f8f9fa;"><td style="padding:.5rem 1rem;">🌸 <strong>Rosa</strong></td><td style="padding:.5rem;">3º Domingo do Advento (Gaudete) e 4º Domingo da Quaresma (Laetare)</td></tr>
+                        <tr style="background:#c9a300;color:#fff;"><td style="padding:.5rem 1rem;">🟡 <strong>Dourado</strong></td><td style="padding:.5rem;">Pode substituir branco, vermelho ou verde nas solenidades maiores</td></tr>
+                        <tr style="background:#111;color:#fff;"><td style="padding:.5rem 1rem;">⬛ <strong>Preto</strong></td><td style="padding:.5rem;">Missas de defuntos (uso opcional na Forma Extraordinária)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tempos Litúrgicos -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">🗓️ Os Tempos Litúrgicos</h2>
+
+        <div class="tempo-card" style="--cor:#6a1b9a;--cor-rgb:106,27,154;">
+            <div class="tempo-header"><span class="cor-badge" style="background:#6a1b9a;"></span>Advento (4 semanas antes do Natal)</div>
+            <p>Duplo caráter de espera: memória da primeira vinda de Cristo (Encarnação) e expectativa de Sua vinda final (Parousia). Tempo de conversão, sobriedade e oração. Começa no Domingo mais próximo a 30 de novembro (festa de São André).</p>
+            <p><strong>Destaques:</strong> 3º Domingo = Gaudete (rosa); 8 de dezembro = Imaculada Conceição (solene); Novena de Natal 16-24/12. Antífonas-O (17-23/12): "Ó Sabedoria," "Ó Adonai," etc.</p>
+        </div>
+
+        <div class="tempo-card" style="--cor:#1565c0;--cor-rgb:21,101,192;">
+            <div class="tempo-header"><span class="cor-badge" style="background:white;border:2px solid #ccc;"></span>Tempo do Natal (25 dez – Batismo do Senhor)</div>
+            <p>Celebra o mistério da Encarnação — Deus se faz homem. Começa com a Missa da Meia-Noite de 25 de dezembro e vai até o Domingo do Batismo do Senhor (jan).</p>
+            <p><strong>Festas principais:</strong> Natal (25/12); Sagrada Família (Domingo dentro da oitava); Circuncisão/Solenidade de Maria Mãe de Deus (1/1); Epifania (6/1, os Reis Magos); Batismo do Senhor (encerra o Natal).</p>
+        </div>
+
+        <div class="tempo-card" style="--cor:#2e7d32;--cor-rgb:46,125,50;">
+            <div class="tempo-header"><span class="cor-badge" style="background:#2e7d32;"></span>Tempo Comum (I) — entre Natal e Quaresma</div>
+            <p>Breve período entre o Batismo do Senhor e a Quarta-feira de Cinzas. As leituras retomam o início do ano litúrgico, com os primeiros milagres e chamadas de discípulos.</p>
+        </div>
+
+        <div class="tempo-card" style="--cor:#4a148c;--cor-rgb:74,20,140;">
+            <div class="tempo-header"><span class="cor-badge" style="background:#4a148c;"></span>Quaresma (40 dias — Cinzas até Quinta-Feira Santa)</div>
+            <p>Período de preparação intensa para a Páscoa. Os 40 dias evocam os 40 anos no deserto (Israel), os 40 dias de Moisés no Sinai, os 40 dias de jejum de Jesus. Pilar quaresmal: <strong>oração, jejum, esmola</strong> (Mt 6,1-18).</p>
+            <p><strong>Destaques:</strong> Quarta-feira de Cinzas (início); Domingo das Tentações (1º); Transfiguração (2º); 4º = Laetare (rosa, alegria no meio da penitência); Via-Sacra às sextas; Domingo de Ramos (início da Semana Santa).</p>
+        </div>
+
+        <div class="tempo-card" style="--cor:#b71c1c;--cor-rgb:183,28,28;">
+            <div class="tempo-header"><span class="cor-badge" style="background:#b71c1c;"></span>Semana Santa e Tríduo Pascal</div>
+            <p>Ápice de todo o Ano Litúrgico. O <strong>Tríduo Pascal</strong> (Quinta Santa, Sexta da Paixão, Sábado Santo + Vigília Pascal) é "a festa das festas."</p>
+            <ul>
+                <li><strong>Domingo de Ramos:</strong> Entrada triunfal; procissão com palmas; Paixão proclamada;</li>
+                <li><strong>Quinta-Feira Santa (Missa da Ceia):</strong> Instituição da Eucaristia e do Sacerdócio; Lava-Pés; Transferência para o Repositório;</li>
+                <li><strong>Sexta-Feira da Paixão:</strong> Única Missa sem consagração; Adoração da Cruz; Via Sacra;</li>
+                <li><strong>Sábado Santo:</strong> Silêncio tumular; Vigília Pascal à noite — liturgia do fogo, círio pascal, Exsultet, leituras, batizandos;</li>
+                <li><strong>Domingo de Páscoa:</strong> "Cristo ressuscitou! Aleluia!"</li>
+            </ul>
+        </div>
+
+        <div class="tempo-card" style="--cor:#1565c0;--cor-rgb:21,101,192;">
+            <div class="tempo-header"><span class="cor-badge" style="background:white;border:2px solid #ccc;"></span>Tempo Pascal (50 dias — Páscoa a Pentecostes)</div>
+            <p>A Grande Semana — 50 dias de júbilo pascal. Cada Domingo é "Domingo de Páscoa." O Aleluia ressoa em toda a liturgia. Os batizados crescem na fé nova recebida na Vigília.</p>
+            <p><strong>Destaques:</strong> Oitava da Páscoa; 2º Domingo = Divina Misericórdia; 40º dia = Ascensão (jov, país variam); Pentecostes (50º dia) — descent do Espírito Santo.</p>
+        </div>
+
+        <div class="tempo-card" style="--cor:#1b5e20;--cor-rgb:27,94,32;">
+            <div class="tempo-header"><span class="cor-badge" style="background:#1b5e20;"></span>Tempo Comum (II) — Pentecostes a Cristo Rei</div>
+            <p>O período mais longo do ano, que vai de Pentecostes ao último Domingo antes do Advento. Cresce na vida nova recebida pela Páscoa e Pentecostes — a vida cristã ordinária santificada pelo Espírito.</p>
+            <p><strong>Grandes Festas do Tempo Comum:</strong> Santíssima Trindade (Domingo após Pentecostes); Corpus Christi; Sagrado Coração (Sexta após Corpus); Assunção (15/8); Todos os Santos (1/11); Cristo Rei (último Domingo do Ano Litúrgico).</p>
+        </div>
+    </div>
+
+    <!-- Festas e Solenidades -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">⭐ Principais Solenidades do Ano</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Solenidades de Cristo</div>
+                <div class="accordion-content" style="display:block;">
+                    <div class="festas-grid">
+                        <div class="festa-item"><strong>25 dez — Natal</strong> Encarnação do Verbo</div>
+                        <div class="festa-item"><strong>6 jan — Epifania</strong> Manifestação aos Magos</div>
+                        <div class="festa-item"><strong>40º dia — Ascensão</strong> Subida ao Céu</div>
+                        <div class="festa-item"><strong>50º dia — Pentecostes</strong> Descida do Espírito</div>
+                        <div class="festa-item"><strong>Jov. após Pent. — Trindade</strong> Mistério Trinitário</div>
+                        <div class="festa-item"><strong>Corpus Christi</strong> Eucaristia</div>
+                        <div class="festa-item"><strong>Último Dom. — Cristo Rei</strong> Realeza de Cristo</div>
+                        <div class="festa-item"><strong>2 fev — Apresentação</strong> Purificação/Candelária</div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Solenidades Marianas</div>
+                <div class="accordion-content">
+                    <div class="festas-grid">
+                        <div class="festa-item"><strong>1 jan — Maria Mãe de Deus</strong> Theotokos</div>
+                        <div class="festa-item"><strong>25 mar — Anunciação</strong> Encarnação</div>
+                        <div class="festa-item"><strong>15 ago — Assunção</strong> Corpo e Alma ao Céu</div>
+                        <div class="festa-item"><strong>8 dez — Imaculada Conceição</strong> Sem pecado original</div>
+                        <div class="festa-item"><strong>8 set — Natividade de Maria</strong> Nascimento</div>
+                        <div class="festa-item"><strong>7 out — N. Sra. do Rosário</strong> Victoria de Lepanto</div>
+                        <div class="festa-item"><strong>15 set — N. Sra. das Dores</strong> Sete Dores</div>
+                        <div class="festa-item"><strong>12 dez — N. Sra. Guadalupe</strong> Aparição México</div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-tab">
+                <div class="accordion-header">Festas dos Santos</div>
+                <div class="accordion-content">
+                    <div class="festas-grid">
+                        <div class="festa-item"><strong>24 jun — Natividade de S. João Batista</strong></div>
+                        <div class="festa-item"><strong>29 jun — SS. Pedro e Paulo</strong></div>
+                        <div class="festa-item"><strong>15 ago — (acima) Assunção</strong></div>
+                        <div class="festa-item"><strong>1 nov — Todos os Santos</strong></div>
+                        <div class="festa-item"><strong>2 nov — Finados</strong></div>
+                        <div class="festa-item"><strong>26 dez — S. Estêvão Mártir</strong></div>
+                        <div class="festa-item"><strong>19 mar — S. José</strong></div>
+                        <div class="festa-item"><strong>29 set — SS. Arcanjos</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jejum e Abstinência -->
+    <div class="card">
+        <h2 style="text-align:center;margin-top:0;">✝️ Dias de Jejum e Abstinência</h2>
+        <div class="accordion-panel">
+            <div class="accordion-tab">
+                <div class="accordion-header active">Regras Atuais (Cân. 1249-1253)</div>
+                <div class="accordion-content" style="display:block;">
+                    <p><strong>Dias de Abstinência</strong> (não comer carne) — obrigatórios para maiores de 14 anos:</p>
+                    <ul>
+                        <li>Quarta-feira de Cinzas;</li>
+                        <li>Todas as sextas-feiras da Quaresma;</li>
+                        <li>Sexta-Feira da Paixão.</li>
+                    </ul>
+                    <p><strong>Dias de Jejum</strong> (uma refeição principal + 2 pequenas, sem comer entre refeições) — obrigatório dos 18 aos 59 anos:</p>
+                    <ul>
+                        <li>Quarta-feira de Cinzas;</li>
+                        <li>Sexta-Feira da Paixão.</li>
+                    </ul>
+                    <p><strong>Sextas-feiras durante o ano:</strong> A Igreja pede penitência toda sexta-feira (memória da morte de Cristo). A CNBB recomenda abstinência de carne ou outra forma equivalente de penitência.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:2rem;">
+        <p style="font-size:1.1rem;color:#1a4f89;font-weight:600;">📅 "O Ano Litúrgico é o calendário de amor de Deus à humanidade."</p>
+        <p style="color:#666;">Que cada tempo nos configure mais a Cristo, o Alpha e o Ômega da história.</p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+</div>
+<div id="barra-acessibilidade" class="barra-acessibilidade"></div>
+<script>
+$(function(){
+    $('#menu-placeholder').load('/includes/menu.html');
+    $('#footer-placeholder').load('/includes/footer.html');
+    $('.accordion-header').click(function(){
+        $(this).next('.accordion-content').slideToggle(200);
+    });
+});
+</script>
+<script src="/js/app.js"></script>
+<script src="/js/acessibilidade.js"></script>
+<script src="/js/sw-register.js"></script>
+</body>
+</html>

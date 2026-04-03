@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/acessibilidade.css"/>
     <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="stylesheet" href="/css/terco-interativo.css"/>
     <link rel="manifest" href="/manifest.json"/>
     <meta name="theme-color" content="#1a4f89"/>
     <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
@@ -211,5 +212,50 @@
 <script src="/js/streaks.js"></script>
 <script src="/js/partilha.js"></script>
 <script src="/js/sw-register.js"></script>
+<script src="/js/terco-interativo.js"></script>
+<script>
+$(function() {
+    var decades = [
+        {
+            title: '1ª Dezena — A Infância e a Familia Martin',
+            meditation: 'Meditamos na infância de Teresa em Alençon e Lisieux — uma família santa que a formou na fé viva. Seu pai, Luís, levava-a à adoração eucarística e chamava-a de \u201cminha Rainha\u201d. Sua mãe, Zélia, costureira de renda e mulher profundamente ora, morreu quando Teresa tinha apenas quatro anos.<br><br>Esta perda precoce foi a primeira grande dor da \u201cpequenininha Teresinha\u201d. Ela escolheu Nossa Senhora como sua segunda Mãe — e quando, anos depois, ficou gravemente doente, foi curada por um sorriso da estátua da Virgem.<br><br><strong>Para meditar:</strong> Como fui formado na fé? Quem foram meus \u201cLuís e Zélia\u201d — pessoas que me transmitiram o amor a Deus? Como posso transmitir essa herança?',
+            jaculatoria: 'Santa Teresinha, que foste educada numa família que te mostrou o rosto amoroso de Deus, rogai por nossas famílias. Que os lares cristãos sejam ninho de fé, de amor e de santidade, formando novos apóstolos e contemplativos. Chuva de rosas sobre as famílias! Santa Teresinha, rogai por nós!'
+        },
+        {
+            title: '2ª Dezena — A Entrada no Carmelo',
+            meditation: 'Aos quinze anos, Teresa Martin entra no Carmelo de Lisieux — o mesmo onde suas irmãs Pauline e Marie já eram religiosas. Para isso, precisou da permissão do bispo, recusada inicialmente, e depois do Papa Leão XIII pessoalmente, numa audiência em Roma.<br><br>Esta determinação revela uma alma que não recua diante dos obstáculos quando a vocação é clara. Teresa era pequena de estatura, de saúde frágil, jovíssima — mas com uma vontade de amor a Deus que nenhum obstáculo burocrático ou humano conseguiu deter.<br><br>No Carmelo, tomou o hábito em 10 de janeiro de 1889, com o nome de Teresa do Menino Jesus (ao qual acrescentaria depois \u201ce da Santa Face\u201d).<br><br><strong>Para meditar:</strong> Sou fiel à minha vocação? Deixo-me deter por obstáculos que, no fundo, não são insuperáveis? Ofereço-me totalmente a Deus no estado de vida em que me encontro?',
+            jaculatoria: 'Santa Teresinha, que persististe em tua vocação com amor e determinação, ajuda-nos a perseverar na nossa vocação — seja no matrimônio, no sacerdócio, na vida religiosa ou na vida consagrada no século. Que não recuemos diante dos obstáculos, mas confiemos que Deus que começa em nós uma obra a completa. Santa Teresinha, rogai por nós!'
+        },
+        {
+            title: '3ª Dezena — O Pequeno Caminho',
+            meditation: 'O grande presente espiritual de Santa Teresinha à Igreja: o \u201cCaminho da Infância Espiritual\u201d ou o \u201cPequeno Caminho\u201d.<br><br>Meditando no Cântico dos Cânticos e nos Provérbios (\u201cSe alguém é pequenino, venha a mim\u201d — Pv 9,4), Teresa entendeu que a santidade não exige feitos heroicos extraordinários — mas que sejamos pequenos como crianças diante de Deus, confiantes em Seu amor misericordioso.<br><br><em>\u201cO elevador que deve me elevar até o céu são os teus braços, ó Jesus. Para isso, eu não preciso crescer — pelo contrário, preciso permanecer pequena, tornar-me cada vez mais pequena.\u201d</em><br><br>Os \u201cpequenos atos\u201d — realizar com amor as tarefas cotidianas mais insignificantes — é o caminho de Teresa. Não precisamos fazer coisas grandes: precisamos fazer as coisas pequenas com grande amor.<br><br><strong>Para meditar:</strong> Estou tentando ser grande por esforço próprio — ou estou deixando Deus me carregar? Faço as coisas cotidianas com amor ou mecanicamente?',
+            jaculatoria: 'Santa Teresinha, doutora da infância espiritual, ensina-me a ser pequeno diante de Deus. Livra-me do orgulho espiritual que quer conquistar a santidade por força própria. Que eu confie no amor misericordioso do Pai como uma criança confia em seus pais. Transforma as minhas ações cotidianas em rosas de amor a Deus. Santa Teresinha, rogai por nós!'
+        },
+        {
+            title: '4ª Dezena — A Doença e O Sofrimento',
+            meditation: 'Nos últimos dezoito meses de vida, Teresa padeceu de tuberculose avançada — tosses com sangue, sufocamentos, dores físicas intensas — e também de uma terrível <em>noite da fé</em>: uma provação interior em que tudo o que ela amava parecia coertura de trevas, como se o céu não existisse.<br><br>Ela não ficou calada sobre isso. Em suas cartas, admitiu: \u201cSe não tivesse tido fé, teria dado fim a minha vida.\u201d Esta honestidade sobre a provação espiritual faz dela patrona especialmente poderosa para os que sofrem de depressão, ansiedade e crises de fé.<br><br>Ela suportou esta dupla cruz — física e espiritual — em silêncio e amor. Sua devoção à <em>Santa Face</em> (o rosto sofredor de Cristo) foi o sustento: ela queria se assemelhar ao Jesus desfigurado da Paixão, que \u201cnão tinha aparência nem beleza\u201d (Is 53).<br><br><strong>Para meditar:</strong> Como me porto diante do sofrimento? Finto que não existe, ou o ofereço a Deus? Os que sofrem de crise de fé precisam de minha compreensão, não de meu julgamento.',
+            jaculatoria: 'Santa Teresinha, que sofrestes na carne e no espírito sem perderes a confiança em Deus, intercedei por todos os que hoje sofrem — no corpo pela doença, na alma pela crise de fé ou pela depressão. Que o teu exemplo de amor no sofrimento seja luz para esses irmãos. Chuva de rosas sobre os enfermos! Santa Teresinha, rogai por nós!'
+        },
+        {
+            title: '5ª Dezena — A Morte e a Chuva de Rosas',
+            meditation: 'Teresa Martin morreu em 30 de setembro de 1897, às 19h20, com os olhos cravados no crucifixo, depois de pronunciar: \u201cMeu Deus, eu vos amo!\u201d Tinha vinte e quatro anos.<br><br>Antes de morrer, ela prometeu: <em>\u201cQuero passar o meu céu fazendo o bem na terra. Farei cair uma chuva de rosas.\u201d</em> Esta promessa foi cumprida de modo extraordinário: em vinte e oito anos após sua morte, ela foi canonizada — recorde histórico de velocidade para a época.<br><br>O sinal de sua intercessão é a rosa. Inúmeros fiéis relatam receber rosas (físicas ou espirituais — sensação de perfume, pétalas caindo) como sinal de resposta à sua intercessão.<br><br>João Paulo II a proclamou Doutora da Igreja em 1997, com estas palavras: <em>\u201cA pequena via é o caminho da santidade para todos.\u201d</em><br><br><strong>Para meditar:</strong> Tenho devoção a Santa Teresinha? Confio na intercessão dos santos? Acredito que os que morreram em Cristo continuam nos amando e intercedendo por nós?',
+            jaculatoria: 'Santa Teresinha, do alto do céu onde passas fazendo o bem, olha para nós. Faz cair sobre nós a chuva de rosas que prometeste — graças espirituais, conversões, curas, paz, força para amar a Deus. Apresenta nossas petições pessoais ao Coração de Jesus com todo o teu amor de Doutora da Infância. Santa Teresinha, rogai por nós! Amém.'
+        }
+    ];
+
+    var $firstDecade = null;
+    $('.card').each(function() {
+        if (/\d+ª Dezena/.test($(this).find('h2:first').text())) {
+            if (!$firstDecade) $firstDecade = $(this);
+            $(this).hide();
+        }
+    });
+
+    if ($firstDecade) {
+        $('<div id="decadesContainer"></div>').insertBefore($firstDecade);
+        FeBeads.build({ themeColor: '#d4768b', decades: decades });
+    }
+});
+</script>
 </body>
 </html>
