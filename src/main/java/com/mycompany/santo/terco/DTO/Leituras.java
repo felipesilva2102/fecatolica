@@ -15,5 +15,4 @@ public class Leituras {
     private List<Salmo> salmo;
     private List<Leitura> segundaLeitura;
     private List<Leitura> evangelho;
-    private List<String> extras;
 }
