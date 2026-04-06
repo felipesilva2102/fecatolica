@@ -6,25 +6,13 @@ package com.mycompany.santo.terco.DTO;
 
 import java.io.Serializable;
 
-public class Extra implements Serializable {
+import lombok.Setter;
+import lombok.Getter;
 
+@Getter
+@Setter
+public class Extra implements Serializable {
     private static final long serialVersionUID = 1L;
     private String titulo;
     private String texto;
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getTexto() {
-        return texto;
-    }
-
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
 }

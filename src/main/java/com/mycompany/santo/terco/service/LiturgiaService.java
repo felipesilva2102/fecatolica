@@ -1,5 +1,6 @@
 package com.mycompany.santo.terco.service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.santo.terco.DTO.LiturgiaDTO;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,8 @@ import java.time.LocalDate;
 public class LiturgiaService {
 
     private static final String API_URL = "https://liturgia.up.railway.app/v2/";
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     public LiturgiaDTO carregarLiturgia(int dia, int mes) {
         try {

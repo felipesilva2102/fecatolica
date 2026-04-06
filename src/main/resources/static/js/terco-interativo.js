@@ -181,6 +181,7 @@ window.FeBeads = {
                 if (te) te.innerHTML = '<strong>\ud83c\udf89 Ter\u00e7o completo! Deus te aben\u00e7oe!</strong>';
                 if (pe) pe.textContent = '\u2713';
                 if (window.FeStreaks) window.FeStreaks.registrarAtividade();
+                if (typeof config.onComplete === 'function') config.onComplete();
             }
         }
 

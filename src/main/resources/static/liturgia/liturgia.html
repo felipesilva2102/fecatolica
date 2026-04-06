@@ -129,6 +129,13 @@
                         });
                         sections.push({title: '📖 Evangelho', content: ev, html: true});
                     }
+                    if (data.leituras.extras && data.leituras.extras.length) {
+                        var exhtml = '';
+                        data.leituras.extras.forEach(function(e) {
+                            exhtml += '<div class="reading-block"><strong class="reading-ref">' + (e.titulo||'') + '</strong><div class="reading-text">' + (e.texto||'').replace(/\n/g,'<br>') + '</div></div>';
+                        });
+                        sections.push({title: '✨ Extras', content: exhtml, html: true});
+                    }
                 }
 
                 if (data.oracoes) {
