@@ -10,6 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDate;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class LiturgiaService {
@@ -18,7 +19,18 @@ public class LiturgiaService {
     private final ObjectMapper objectMapper = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+    // Cache: chave "dia-mes" → LiturgiaDTO
+    private final ConcurrentHashMap<String, LiturgiaDTO> cacheHoje = new ConcurrentHashMap<>();
+
     public LiturgiaDTO carregarLiturgia(int dia, int mes) {
+        String key = dia + "-" + mes;
+
+        // Retorna do cache se disponível
+        LiturgiaDTO cached = cacheHoje.get(key);
+        if (cached != null) {
+            return cached;
+        }
+
         try {
             String url = String.format("%s?dia=%d&mes=%d", API_URL, dia, mes);
             HttpClient client = HttpClient.newHttpClient();
@@ -26,7 +38,9 @@ public class LiturgiaService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                return objectMapper.readValue(response.body(), LiturgiaDTO.class);
+                LiturgiaDTO dto = objectMapper.readValue(response.body(), LiturgiaDTO.class);
+                cacheHoje.put(key, dto);
+                return dto;
             } else {
                 LiturgiaDTO dto = new LiturgiaDTO();
                 dto.setLiturgia("Erro HTTP: " + response.statusCode());
@@ -45,8 +59,25 @@ public class LiturgiaService {
         return carregarLiturgia(hoje.getDayOfMonth(), hoje.getMonthValue());
     }
 
+    /**
+     * Limpa o cache diário. Chamado pelo job agendado.
+     */
+    public void limparCache() {
+        cacheHoje.clear();
+    }
+
+    /**
+     * Pré-carrega a liturgia do dia no cache.
+     * Chamado pelo job agendado logo após limpar o cache.
+     */
+    public LiturgiaDTO preCarregarHoje() {
+        limparCache();
+        return carregarLiturgiaHoje();
+    }
+
     public String getCorLiturgiaHex(String cor) {
-        if (cor == null) return "#ffffff";
+        if (cor == null)
+            return "#ffffff";
         return switch (cor) {
             case "Verde" -> "#28a745";
             case "Vermelho" -> "#dc3545";

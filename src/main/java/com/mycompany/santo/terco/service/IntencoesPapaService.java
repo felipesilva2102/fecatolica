@@ -62,6 +62,15 @@ public class IntencoesPapaService {
     }
 
     /**
+     * Invalida o cache forçando a próxima chamada a buscar dados novos.
+     * Chamado pelo job agendado diário.
+     */
+    public void invalidarCache() {
+        this.cachedResponse = null;
+        this.cacheTime = 0;
+    }
+
+    /**
      * Retorna um mapa com:
      * - "ano" : int — ano das intenções
      * - "status" : "ok" | "error"
