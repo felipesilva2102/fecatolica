@@ -203,7 +203,7 @@ Liturgia Diária (leituras, salmos, orações) e Calendário Litúrgico.
 git clone https://github.com/felipesilva2102/fecatolica.git
 cd fecatolica
 
-# Compilar e rodar (porta 8082)
+# Compilar e rodar (porta 8080)
 ./mvnw spring-boot:run
 ```
 
@@ -212,7 +212,7 @@ cd fecatolica
 mvnw.cmd spring-boot:run
 ```
 
-Acesse: **http://localhost:8082**
+Acesse: **http://localhost:8080**
 
 ### Banco de dados
 
@@ -226,8 +226,8 @@ O H2 cria automaticamente o arquivo do banco em `~/.fecatolica/h2/intencoes`. N�
 # Build
 docker build -t fecatolica .
 
-# Run (porta 8080 no container → 8082 no host)
-docker run -p 8082:8080 fecatolica
+# Run (porta 8080 no container → 8080 no host)
+docker run -p 8080:8080 fecatolica
 ```
 
 O Dockerfile usa build multi-stage:
