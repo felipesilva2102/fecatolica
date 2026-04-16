@@ -48,7 +48,7 @@ public class NovenaSantoTomasAquinoBean implements Serializable {
             + "\n"
             + "São Tomás de Aquino sempre praticou a humildade como a mais bela e necessária das virtudes. Ainda criança, ele era o encantamento de todos pela modéstia e humildade de seu caráter; quando era estudante, seus colegas, tendo em vista o silêncio muito humilde com o qual tentava encobrir os talentos que Deus o havia preenchido, recebeu o apelido de Boi Mudo e, mais tarde, doutor nas universidades de Paris e Roma, nunca se notou nele algum sinal de arrogância e vaidade e recusava vigorosamente as mais altas dignidades da Igreja sem sequer exercer a posição de prelado em um convento de sua ordem.";
 
-    private String segundoDia = "Todos temos razões suficientes para nos humilharmos e nos reconhecermos em outros méritos e reconhecermos nos outros os méritos e excelências, de acordo com o apóstolo; “Vamos humildemente julgar os outros como nossos superiores”.\n"
+        private String segundoDia = "Todos temos razões suficientes para nos humilharmos e nos reconhecermos em outros méritos e reconhecermos nos outros os méritos e excelências, de acordo com o apóstolo; “Vamos humildemente julgar os outros como nossos superiores”.\n"
             + "\n"
             + "Exemplo do Santo\n"
             + "\n"

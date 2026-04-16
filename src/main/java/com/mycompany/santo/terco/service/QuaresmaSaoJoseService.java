@@ -11,53 +11,53 @@ import java.util.Map;
 public class QuaresmaSaoJoseService {
 
     private static final String ORACAO_PREPARATORIA = """
-            Glorioso Sao Jose, esposo purissimo de Maria e pai adotivo de Jesus!
-            Venho com confianca suplicar a vossa intercessao.
-            Coloco em vossas maos esta graca que tanto necessito: (fazer o pedido).
-            Amparai-me, o pai bondoso, e alcancai-me do Senhor tudo o que for para a salvacao da minha alma. Amem.""";
+            Glorioso São José, esposo purissimo de Maria e pai adotivo de Jesus!
+            Venho com confiança suplicar a vossa intercessão.
+            Coloco em vossas mãos esta graça que tanto necessito: (fazer o pedido).
+            Amparai-me, o pai bondoso, e alcancai-me do Senhor tudo o que for para a salvação da minha alma. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Sao Jose, espelho de paciencia, rogai por nos!
-            2. Sao Jose, amante da pobreza, rogai por nos!
-            3. Sao Jose, modelo dos trabalhadores, rogai por nos!
-            4. Sao Jose, honra da vida de familia, rogai por nos!
-            5. Sao Jose, guarda das virgens, rogai por nos!
-            6. Sao Jose, sustentaculo das familias, rogai por nos!
-            7. Sao Jose, consolo dos infelizes, rogai por nos!
-            8. Sao Jose, esperanca dos doentes, rogai por nos!
-            9. Sao Jose, padroeiro dos moribundos, rogai por nos!
-            10. Sao Jose, terror dos demonios, rogai por nos!
-            11. Sao Jose, defensor da Santa Igreja, rogai por nos!
-            12. Sao Jose, chefe da Sagrada Familia, rogai por nos!
-            13. Sao Jose, luz dos patriarcas, rogai por nos!
-            14. Sao Jose, esposo da Mae de Deus, rogai por nos!
-            15. Sao Jose, protetor dos castos, rogai por nos!
-            16. Sao Jose, modelo de obediencia, rogai por nos!
-            17. Sao Jose, exemplo de humildade, rogai por nos!
-            18. Sao Jose, justo entre os homens, rogai por nos!
-            19. Sao Jose, forte nas provacoes, rogai por nos!
-            20. Sao Jose, prudente nas decisoes, rogai por nos!
-            21. Sao Jose, fidelissimo servo de Deus, rogai por nos!
-            22. Sao Jose, guardiao do Redentor, rogai por nos!
-            23. Sao Jose, pai adotivo de Jesus, rogai por nos!
-            24. Sao Jose, patrono dos consagrados, rogai por nos!
-            25. Sao Jose, amigo dos anjos, rogai por nos!
-            26. Sao Jose, intercessor poderoso, rogai por nos!
-            27. Sao Jose, nosso advogado, rogai por nos!
-            28. Sao Jose, refugio das almas aflitas, rogai por nos!
-            29. Sao Jose, guia seguro no caminho, rogai por nos!
-            30. Sao Jose, nosso pai e protetor, rogai por nos!
+            1. São José, espelho de paciência, rogai por nós!
+            2. São José, amante da pobreza, rogai por nós!
+            3. São José, modelo dos trabalhadores, rogai por nós!
+            4. São José, honra da vida de família, rogai por nós!
+            5. São José, guarda das virgens, rogai por nós!
+            6. São José, sustentaculo das famílias, rogai por nós!
+            7. São José, consolo dos infelizes, rogai por nós!
+            8. São José, esperança dos doentes, rogai por nós!
+            9. São José, padroeiro dos moribundos, rogai por nós!
+            10. São José, terror dos demonios, rogai por nós!
+            11. São José, defensor da Santa Igreja, rogai por nós!
+            12. São José, chefe da Sagrada Família, rogai por nós!
+            13. São José, luz dos patriarcas, rogai por nós!
+            14. São José, esposo da Mãe de Deus, rogai por nós!
+            15. São José, protetor dos castos, rogai por nós!
+            16. São José, modelo de obediencia, rogai por nós!
+            17. São José, exemplo de humildade, rogai por nós!
+            18. São José, justo entre os homens, rogai por nós!
+            19. São José, forte nas provacoes, rogai por nós!
+            20. São José, prudente nas decisoes, rogai por nós!
+            21. São José, fidelissimo servo de Deus, rogai por nós!
+            22. São José, guardiao do Redentor, rogai por nós!
+            23. São José, pai adotivo de Jesus, rogai por nós!
+            24. São José, patrono dos consagrados, rogai por nós!
+            25. São José, amigo dos anjos, rogai por nós!
+            26. São José, intercessor poderoso, rogai por nós!
+            27. São José, nosso advogado, rogai por nós!
+            28. São José, refúgio das almas aflitas, rogai por nós!
+            29. São José, guia seguro no caminho, rogai por nós!
+            30. São José, nosso pai e protetor, rogai por nós!
             
-            (Apos terminar as 30, repetir com firmeza tres vezes:)
-            Sao Jose, providenciai! Sao Jose, providenciai! Sao Jose, providenciai!""";
+            (Apos terminar as 30, repetir com firmeza três vezes:)
+            São José, providenciai! São José, providenciai! São José, providenciai!""";
 
     private static final String ORACAO_FINAL = """
-            O glorioso Sao Jose, pai e protetor dos que vos invocam com confianca,
-            nao desprezeis minhas suplicas e alcancai-me a graca que tanto desejo (repetir o pedido).
-            Prometo propagar a vossa devocao e confiar sempre em vossa intercessao.
-            Amem.""";
+            O glorioso São José, pai e protetor dos que vos invocam com confiança,
+            não desprezeis minhas súplicas e alcancai-me a graça que tanto desejo (repetir o pedido).
+            Prometo propagar a vossa devoção e confiar sempre em vossa intercessão.
+            Amém.""";
 
-    private static final String JACULATORIA = "Sao Jose, meu pai e senhor, guardai minha alma e minha vida!";
+    private static final String JACULATORIA = "São José, meu pai e senhor, guardai minha alma e minha vida!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 2, 19);
@@ -70,9 +70,9 @@ public class QuaresmaSaoJoseService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Sao Jose (19/02 - 19/03).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de São José (19/02 - 19/03).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Sao Jose");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de São José");
         }
 
         result.put("diaQuaresma", dia);

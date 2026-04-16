@@ -15,47 +15,47 @@ import java.util.Map;
 public class QuaresmaSaoCristovaoService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O glorioso Sao Cristovao, portador de Cristo atraves das aguas!
-            Voce que carregou o menino Jesus em seus ombros,
+            Ó glorioso São Cristóvão, portador de Cristo através das águas!
+            Você que carregou o Menino Jesus em seus ombros,
             ensinai-nos a carregar Cristo em nossa vida cotidiana.
             Apresento-vos este meu pedido humildemente:
-            (fazer o pedido em silencio).
-            Sede para nos companheiro em nossas viagens, protector dos caminhos
-            e intercessor junto ao Senhor de todos os peregrinos. Amem.""";
+            (fazer o pedido em silêncio).
+            Sede para nós companheiro em nossas viagens, protetor dos caminhos
+            e intercessor junto ao Senhor de todos os peregrinos. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Sao Cristovao, Reprobo convertido pela forca da fe, rogai por nos!
-            2. Sao Cristovao, batizado com o nome de portador de Cristo, rogai por nos!
-            3. Sao Cristovao, que procurastes servir ao maior rei do mundo, rogai por nos!
-            4. Sao Cristovao, portador de Cristo pelas aguas turbulentas, rogai por nos!
-            5. Sao Cristovao, que sentistes o peso do mundo inteiro em vossos ombros, rogai por nos!
-            6. Sao Cristovao, gigante de corpo e ainda maior de fe, rogai por nos!
-            7. Sao Cristovao, que servistes a Deus com toda a vossa forca, rogai por nos!
-            8. Sao Cristovao, que confessastes Cristo diante dos tiranos, rogai por nos!
-            9. Sao Cristovao, martir pela verdade da fe, rogai por nos!
-            10. Sao Cristovao, padroeiro dos motoristas e viajantes, rogai por nos!
-            11. Sao Cristovao, protecao nas estradas e caminhos, rogai por nos!
-            12. Sao Cristovao, guardiao dos peregrinos da fe, rogai por nos!
-            13. Sao Cristovao, intercessor dos que partem em jornada, rogai por nos!
-            14. Sao Cristovao, que guardais os que viajam noite e dia, rogai por nos!
-            15. Sao Cristovao, protector de avioes, navios e trens, rogai por nos!
-            16. Sao Cristovao, que nos preservais dos acidentes e perigos, rogai por nos!
-            17. Sao Cristovao, exemplo de perseveranca espiritual, rogai por nos!
-            18. Sao Cristovao, auxiliar dos missionarios em terras longes, rogai por nos!
-            19. Sao Cristovao, padrao dos que viajam para buscar a Deus, rogai por nos!
-            20. Sao Cristovao, glorioso na corte celestial, rogai por nos!
+            1. São Cristóvão, réprobo convertido pela força da fé, rogai por nós!
+            2. São Cristóvão, batizado com o nome de portador de Cristo, rogai por nós!
+            3. São Cristóvão, que procurastes servir ao maior rei do mundo, rogai por nós!
+            4. São Cristóvão, portador de Cristo pelas águas turbulentas, rogai por nós!
+            5. São Cristóvão, que sentistes o peso do mundo inteiro em vossos ombros, rogai por nós!
+            6. São Cristóvão, gigante de corpo e ainda maior de fé, rogai por nós!
+            7. São Cristóvão, que servistes a Deus com toda a vossa força, rogai por nós!
+            8. São Cristóvão, que confessastes Cristo diante dos tiranos, rogai por nós!
+            9. São Cristóvão, mártir pela verdade da fé, rogai por nós!
+            10. São Cristóvão, padroeiro dos motoristas e viajantes, rogai por nós!
+            11. São Cristóvão, proteção nas estradas e caminhos, rogai por nós!
+            12. São Cristóvão, guardião dos peregrinos da fé, rogai por nós!
+            13. São Cristóvão, intercessor dos que partem em jornada, rogai por nós!
+            14. São Cristóvão, que guardais os que viajam noite e dia, rogai por nós!
+            15. São Cristóvão, protetor de aviões, navios e trens, rogai por nós!
+            16. São Cristóvão, que nos preservais dos acidentes e perigos, rogai por nós!
+            17. São Cristóvão, exemplo de perseverança espiritual, rogai por nós!
+            18. São Cristóvão, auxiliar dos missionários em terras longínquas, rogai por nós!
+            19. São Cristóvão, padrão dos que viajam para buscar a Deus, rogai por nós!
+            20. São Cristóvão, glorioso na corte celestial, rogai por nós!
             
-            (Concluir em oracao: "Sao Cristovao, sede nosso escudo em todas as jornadas.")""";
+            (Concluir em oração: "São Cristóvão, sede nosso escudo em todas as jornadas.")""";
 
     private static final String ORACAO_FINAL = """
-            O Sao Cristovao, tu que carregaste o proprio Cristo nos ombros,
-            ajudai-nos a carregar a Cruz de cada dia com amor e perseveranca.
+            Ó São Cristóvão, tu que carregaste o próprio Cristo nos ombros,
+            ajudai-nos a carregar a Cruz de cada dia com amor e perseverança.
             Protegei todos os que viajam pelas estradas do mundo:
             os motoristas, os ciclistas, os pedestres, os pilotos.
-            Afasta de nos os acidentes, os perigos e os imprevistos do caminho,
-            e guia-nos todos ao destino eterno que e o Ceu. Amem.""";
+            Afasta de nós os acidentes, os perigos e os imprevistos do caminho,
+            e guia-nos todos ao destino eterno que é o Céu. Amém.""";
 
-    private static final String JACULATORIA = "Sao Cristovao, portador de Cristo, protegei nossas viagens!";
+    private static final String JACULATORIA = "São Cristóvão, portador de Cristo, protegei nossas viagens!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 6, 16);
@@ -68,9 +68,9 @@ public class QuaresmaSaoCristovaoService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Sao Cristovao (16/06 - 25/07).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de São Cristóvão (16/06 - 25/07).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Sao Cristovao");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de São Cristóvão");
         }
 
         result.put("diaQuaresma", dia);

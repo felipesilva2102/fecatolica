@@ -15,46 +15,46 @@ import java.util.Map;
 public class QuaresmaNossaSenhoraAuxiliadoraService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O Maria Auxiliadora, Mae dos cristaos e Auxilio dos fieis!
-            Com toda a confianca de filhos amados, viemos a vos trazer este pedido:
-            (fazer o pedido em silencio).
-            Sois o recurso dos que sofrem, a esperanca dos desesperados,
+            O Maria Auxiliadora, Mãe dos cristãos e Auxílio dos fiéis!
+            Com toda a confiança de filhos amados, viemos a vos trazer este pedido:
+            (fazer o pedido em silêncio).
+            Sois o recurso dos que sofrem, a esperança dos desesperados,
             o conforto dos aflitos. Com Dom Bosco exclamamos:
-            "Maria Auxiliadora, rogai por nos!" Amem.""";
+            "Maria Auxiliadora, rogai por nós!" Amém.""";
 
     private static final String SUPLICAS = """
-            1. Nossa Senhora Auxiliadora, Mae de Deus, rogai por nos!
-            2. Nossa Senhora Auxiliadora, que ajudastes a Igreja nas perseguicoes, rogai por nos!
-            3. Nossa Senhora Auxiliadora, que aparecestes a Dom Bosco, rogai por nos!
-            4. Nossa Senhora Auxiliadora, Mae e Mestra da juventude, rogai por nos!
-            5. Nossa Senhora Auxiliadora, que acompanhastes os salesianos no mundo, rogai por nos!
-            6. Nossa Senhora Auxiliadora, consolacao dos tristes, rogai por nos!
-            7. Nossa Senhora Auxiliadora, curacao dos enfermos, rogai por nos!
-            8. Nossa Senhora Auxiliadora, amparo dos pobres, rogai por nos!
-            9. Nossa Senhora Auxiliadora, protecao dos viajantes, rogai por nos!
-            10. Nossa Senhora Auxiliadora, esperanca dos desesperados, rogai por nos!
-            11. Nossa Senhora Auxiliadora, auxilio dos cristaos na batalha espiritual, rogai por nos!
-            12. Nossa Senhora Auxiliadora, que alcancas gratias de Deus para nos, rogai por nos!
-            13. Nossa Senhora Auxiliadora, que apresentas nossas preces ao Filho Divino, rogai por nos!
-            14. Nossa Senhora Auxiliadora, padroeira da obra salesiana, rogai por nos!
-            15. Nossa Senhora Auxiliadora, que protegeste a Igreja em Lepanto, rogai por nos!
-            16. Nossa Senhora Auxiliadora, que libertaste o Papa Pio VII, rogai por nos!
-            17. Nossa Senhora Auxiliadora, Gloria da Igreja Catol-ica, rogai por nos!
-            18. Nossa Senhora Auxiliadora, modelo de dedicacao aos filhos, rogai por nos!
-            19. Nossa Senhora Auxiliadora, que nos conduzes ao Sagrado Coracao, rogai por nos!
-            20. Nossa Senhora Auxiliadora, que nos prepara para o Ceu, rogai por nos!
+            1. Nossa Senhora Auxiliadora, Mãe de Deus, rogai por nós!
+            2. Nossa Senhora Auxiliadora, que ajudastes a Igreja nas perseguicoes, rogai por nós!
+            3. Nossa Senhora Auxiliadora, que aparecestes a Dom Bosco, rogai por nós!
+            4. Nossa Senhora Auxiliadora, Mãe e Mestra da juventude, rogai por nós!
+            5. Nossa Senhora Auxiliadora, que acompanhastes os salesianos no mundo, rogai por nós!
+            6. Nossa Senhora Auxiliadora, consolação dos tristes, rogai por nós!
+            7. Nossa Senhora Auxiliadora, curacao dos enfermos, rogai por nós!
+            8. Nossa Senhora Auxiliadora, amparo dos pobres, rogai por nós!
+            9. Nossa Senhora Auxiliadora, proteção dos viajantes, rogai por nós!
+            10. Nossa Senhora Auxiliadora, esperança dos desesperados, rogai por nós!
+            11. Nossa Senhora Auxiliadora, auxílio dos cristãos na batalha espiritual, rogai por nós!
+            12. Nossa Senhora Auxiliadora, que alcancas gratias de Deus para nós, rogai por nós!
+            13. Nossa Senhora Auxiliadora, que apresentas nossas preces ao Filho Divino, rogai por nós!
+            14. Nossa Senhora Auxiliadora, padroeira da obra salesiana, rogai por nós!
+            15. Nossa Senhora Auxiliadora, que protegeste a Igreja em Lepanto, rogai por nós!
+            16. Nossa Senhora Auxiliadora, que libertaste o Papa Pio VII, rogai por nós!
+            17. Nossa Senhora Auxiliadora, Glória da Igreja Catol-ica, rogai por nós!
+            18. Nossa Senhora Auxiliadora, modelo de dedicacao aos filhos, rogai por nós!
+            19. Nossa Senhora Auxiliadora, que nos conduzes ao Sagrado Coração, rogai por nós!
+            20. Nossa Senhora Auxiliadora, que nos prepara para o Céu, rogai por nós!
             
-            (Concluir em oracao: "Maria Auxiliadora, rogai sempre por nos!")""";
+            (Concluir em oração: "Maria Auxiliadora, rogai sempre por nós!")""";
 
     private static final String ORACAO_FINAL = """
             O Maria Auxiliadora, sabemos que sem vos somos fracos,
             mas com vossa intercecao somos fortalecidos.
             Como Dom Bosco aprendeu a confiar plenamente em vos,
-            assim tambem nos queremos colocar nossa vida em vossas maos maternais.
+            assim também nós queremos colocar nossa vida em vossas mãos maternais.
             Auxiliai-nos em toda necessidade, guiai-nos para o vosso amado Filho Jesus,
-            e apresentai ao Pai nossos pedidos com vosso poderoso amor materno. Amem.""";
+            e apresentai ao Pai nossos pedidos com vosso poderoso amor materno. Amém.""";
 
-    private static final String JACULATORIA = "Maria Auxiliadora, socorro dos cristaos, rogai por nos!";
+    private static final String JACULATORIA = "Maria Auxiliadora, socorro dos cristãos, rogai por nós!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 4, 15);
@@ -67,7 +67,7 @@ public class QuaresmaNossaSenhoraAuxiliadoraService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de N. Sra. Auxiliadora (15/04 - 24/05).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de N. Sra. Auxiliadora (15/04 - 24/05).");
         } else {
             result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora Auxiliadora");
         }

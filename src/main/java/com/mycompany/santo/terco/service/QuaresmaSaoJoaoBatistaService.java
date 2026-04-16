@@ -15,45 +15,45 @@ import java.util.Map;
 public class QuaresmaSaoJoaoBatistaService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O glorioso Sao Joao Batista, voz que clamou no deserto
+            O glorioso São João Batista, voz que clamou no deserto
             e apontou o Cordeiro de Deus ao mundo!
-            Em espírito de penitencia e conversao, apresento a vos este meu pedido:
-            (fazer o pedido em silencio).
-            Que como voces, tambem eu aprenda a diminuir para que Cristo cresca.
-            Intercedei por mim diante do Pai Eterno. Amem.""";
+            Em espírito de penitência e conversão, apresento a vós este meu pedido:
+            (fazer o pedido em silêncio).
+            Que como vós, também eu aprenda a diminuir para que Cristo cresça.
+            Intercedei por mim diante do Pai Eterno. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Sao Joao Batista, Precursor do Messias, rogai por nos!
-            2. Sao Joao Batista, que saltastes de alegria no utero de Isabel, rogai por nos!
-            3. Sao Joao Batista, santificado antes de nascer, rogai por nos!
-            4. Sao Joao Batista, voz que clama no deserto, rogai por nos!
-            5. Sao Joao Batista, profeta do Altissimo, rogai por nos!
-            6. Sao Joao Batista, filho de Isabel e Zacarias, rogai por nos!
-            7. Sao Joao Batista, primo virginal de Jesus, rogai por nos!
-            8. Sao Joao Batista, batizador de Cristo no Jordao, rogai por nos!
-            9. Sao Joao Batista, que apontastes o Cordeiro de Deus, rogai por nos!
-            10. Sao Joao Batista, penitente do deserto, rogai por nos!
-            11. Sao Joao Batista, mestre da conversao, rogai por nos!
-            12. Sao Joao Batista, defensor da lei de Deus, rogai por nos!
-            13. Sao Joao Batista, maior entre os nascidos de mulher, rogai por nos!
-            14. Sao Joao Batista, modelo de humildade eucaristica, rogai por nos!
-            15. Sao Joao Batista, martir por amor a verdade, rogai por nos!
-            16. Sao Joao Batista, decapitado por Herodes Antipas, rogai por nos!
-            17. Sao Joao Batista, padroeiro dos batizados, rogai por nos!
-            18. Sao Joao Batista, inspirador dos eremitas e monges, rogai por nos!
-            19. Sao Joao Batista, amigo do Espouso Celestial, rogai por nos!
-            20. Sao Joao Batista, glorioso no Ceu eterno, rogai por nos!
+            1. São João Batista, Precursor do Messias, rogai por nós!
+            2. São João Batista, que saltastes de alegria no utero de Isabel, rogai por nós!
+            3. São João Batista, santificado antes de nascer, rogai por nós!
+            4. São João Batista, voz que clama no deserto, rogai por nós!
+            5. São João Batista, profeta do Altissimo, rogai por nós!
+            6. São João Batista, filho de Isabel e Zacarias, rogai por nós!
+            7. São João Batista, primo virginal de Jesus, rogai por nós!
+            8. São João Batista, batizador de Cristo no Jordao, rogai por nós!
+            9. São João Batista, que apontastes o Cordeiro de Deus, rogai por nós!
+            10. São João Batista, penitente do deserto, rogai por nós!
+            11. São João Batista, mestre da conversão, rogai por nós!
+            12. São João Batista, defensor da lei de Deus, rogai por nós!
+            13. São João Batista, maior entre os nascidos de mulher, rogai por nós!
+            14. São João Batista, modelo de humildade eucaristica, rogai por nós!
+            15. São João Batista, mártir por amor a verdade, rogai por nós!
+            16. São João Batista, decapitado por Herodes Antipas, rogai por nós!
+            17. São João Batista, padroeiro dos batizados, rogai por nós!
+            18. São João Batista, inspirador dos eremitas e monges, rogai por nós!
+            19. São João Batista, amigo do Espouso Celestial, rogai por nós!
+            20. São João Batista, glorioso no Céu eterno, rogai por nós!
             
-            (Concluir em oracao: "Senhor, que eu diminua para que Cristo cresca.")""";
+            (Concluir em oração: "Senhor, que eu diminua para que Cristo cresca.")""";
 
     private static final String ORACAO_FINAL = """
-            Santo Joao Batista, que com tanta humildade disseste "Nao sou eu o Cristo,
+            Santo João Batista, que com tanta humildade disseste "Não sou eu o Cristo,
             mas fui enviado diante d'Ele", ensinai-nos essa mesma humildade.
             Que em nossa vida, Cristo seja sempre o centro e nos apenas os servos.
             Que aprendamos a apontar Jesus ao mundo por nossas palavras e accoes.
-            Intercede por nos junto ao Cordeiro de Deus que tu mesmo proclamaste. Amem.""";
+            Intercede por nós junto ao Cordeiro de Deus que tu mesmo proclamaste. Amém.""";
 
-    private static final String JACULATORIA = "Sao Joao Batista, voz do deserto, preparai nosso coracao para Christ!";
+    private static final String JACULATORIA = "São João Batista, voz do deserto, preparai nosso coração para Christ!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 5, 16);
@@ -66,9 +66,9 @@ public class QuaresmaSaoJoaoBatistaService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Sao Joao Batista (16/05 - 24/06).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de São João Batista (16/05 - 24/06).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Sao Joao Batista");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de São João Batista");
         }
 
         result.put("diaQuaresma", dia);

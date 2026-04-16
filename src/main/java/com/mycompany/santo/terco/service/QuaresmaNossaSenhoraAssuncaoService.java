@@ -15,47 +15,47 @@ import java.util.Map;
 public class QuaresmaNossaSenhoraAssuncaoService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O Virgem Soberana, assumida em corpo e alma ao Ceu glorioso!
-            Vos que sois a primicias da ressurreicao de todos nos,
+            O Virgem Soberana, assumida em corpo e alma ao Céu glorioso!
+            Vos que sois a primicias da ressurreição de todos nos,
             apresentamos hoje este pedido confiante:
-            (fazer o pedido em silencio).
-            Sois a certeza de nossa esperanca: o que Deus fez em vos
-            tambem fara em nos no ultimo dia. Rogai por nos. Amem.""";
+            (fazer o pedido em silêncio).
+            Sois a certeza de nossa esperança: o que Deus fez em vos
+            também fará em nós no último dia. Rogai por nós. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Nossa Senhora da Assuncao, Rainha assumida ao Ceu, rogai por nos!
-            2. Nossa Senhora da Assuncao, acabamento da obra redentora, rogai por nos!
-            3. Nossa Senhora da Assuncao, primicias da ressurreicao dos corpos, rogai por nos!
-            4. Nossa Senhora da Assuncao, gloria de Israel e da Igreja, rogai por nos!
-            5. Nossa Senhora da Assuncao, sinal esperancoso para todos os fieis, rogai por nos!
-            6. Nossa Senhora da Assuncao, exaltada acima dos anjos, rogai por nos!
-            7. Nossa Senhora da Assuncao, Rainha do Ceu e da terra, rogai por nos!
-            8. Nossa Senhora da Assuncao, coroada de estrelas pelo Altissimo, rogai por nos!
-            9. Nossa Senhora da Assuncao, ao lado do trono de Deus Trino, rogai por nos!
-            10. Nossa Senhora da Assuncao, mediatriz das gracas divinas, rogai por nos!
-            11. Nossa Senhora da Assuncao, que intercedeis pelos pecadores, rogai por nos!
-            12. Nossa Senhora da Assuncao, mae de misericordia para com todos, rogai por nos!
-            13. Nossa Senhora da Assuncao, esperanca de nossa propria glorificacao, rogai por nos!
-            14. Nossa Senhora da Assuncao, que abristes as portas do Ceu a Maria, rogai por nos!
-            15. Nossa Senhora da Assuncao, alegria da Santissima Trindade, rogai por nos!
-            16. Nossa Senhora da Assuncao, padroeira do Brasil e de muitas nacoes, rogai por nos!
-            17. Nossa Senhora da Assuncao, que nos ensinais a esperar a vida eterna, rogai por nos!
-            18. Nossa Senhora da Assuncao, que levais ao Filho nossas orações, rogai por nos!
-            19. Nossa Senhora da Assuncao, estrela de esperanca na morte, rogai por nos!
-            20. Nossa Senhora da Assuncao, que nos leveis tambem ao Ceu, rogai por nos!
+            1. Nossa Senhora da Assunção, Rainha assumida ao Céu, rogai por nós!
+            2. Nossa Senhora da Assunção, acabamento da obra redentora, rogai por nós!
+            3. Nossa Senhora da Assunção, primicias da ressurreição dos corpos, rogai por nós!
+            4. Nossa Senhora da Assunção, glória de Israel e da Igreja, rogai por nós!
+            5. Nossa Senhora da Assunção, sinal esperancoso para todos os fiéis, rogai por nós!
+            6. Nossa Senhora da Assunção, exaltada acima dos anjos, rogai por nós!
+            7. Nossa Senhora da Assunção, Rainha do Céu e da terra, rogai por nós!
+            8. Nossa Senhora da Assunção, coroada de estrelas pelo Altissimo, rogai por nós!
+            9. Nossa Senhora da Assunção, ao lado do trono de Deus Trino, rogai por nós!
+            10. Nossa Senhora da Assunção, mediatriz das graças divinas, rogai por nós!
+            11. Nossa Senhora da Assunção, que intercedeis pelos pecadores, rogai por nós!
+            12. Nossa Senhora da Assunção, mãe de misericórdia para com todos, rogai por nós!
+            13. Nossa Senhora da Assunção, esperança de nossa propria glorificacao, rogai por nós!
+            14. Nossa Senhora da Assunção, que abristes as portas do Céu a Maria, rogai por nós!
+            15. Nossa Senhora da Assunção, alegria da Santíssima Trindade, rogai por nós!
+            16. Nossa Senhora da Assunção, padroeira do Brasil e de muitas nacoes, rogai por nós!
+            17. Nossa Senhora da Assunção, que nos ensinais a esperar a vida eterna, rogai por nós!
+            18. Nossa Senhora da Assunção, que levais ao Filho nossas orações, rogai por nós!
+            19. Nossa Senhora da Assunção, estrela de esperança na morte, rogai por nós!
+            20. Nossa Senhora da Assunção, que nos leveis tambem ao Céu, rogai por nós!
             
-            (Concluir em oracao: "Maria, nossa esperanca de ressurreicao, rogai por nos.")""";
+            (Concluir em oração: "Maria, nossa esperança de ressurreição, rogai por nós.")""";
 
     private static final String ORACAO_FINAL = """
-            O Virgem Santissima, assumida gloriosamente ao Ceu,
-            sede para nos sinal de esperanca certa.
-            Assim como fostes elevada em corpo e alma a gloria eterna,
+            Ó Virgem Santíssima, assumida gloriosamente ao Céu,
+            sede para nós sinal de esperança certa.
+            Assim como fostes elevada em corpo e alma a glória eterna,
             assim tambem confessamos que um dia serao glorificados
             os corpos de todos os que em Cristo durmem.
-            Ensinai-nos a viver nesta esperanca, a nao temer a morte,
-            e a preparar com santos meritos nossa eterna bern-aventuranca. Amem.""";
+            Ensinai-nos a viver nesta esperança, a não temer a morte,
+            e a preparar com santos meritos nossa eterna bern-aventuranca. Amém.""";
 
-    private static final String JACULATORIA = "Maria da Assuncao, Rainha do Ceu, rogai pelos que confiam em vos!";
+    private static final String JACULATORIA = "Maria da Assunção, Rainha do Céu, rogai pelos que confiam em vos!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 7, 7);
@@ -68,9 +68,9 @@ public class QuaresmaNossaSenhoraAssuncaoService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de N. Sra. da Assuncao (07/07 - 15/08).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de N. Sra. da Assunção (07/07 - 15/08).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora da Assuncao");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora da Assunção");
         }
 
         result.put("diaQuaresma", dia);

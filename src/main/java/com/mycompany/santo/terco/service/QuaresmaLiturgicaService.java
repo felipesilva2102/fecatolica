@@ -23,13 +23,13 @@ public class QuaresmaLiturgicaService {
 
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("diaSelecionadoRenderizar", dentroQuaresma);
-        result.put("periodoFormatado", dataInicio.format(FORMATTER) + " ate " + dataFim.format(FORMATTER));
+        result.put("periodoFormatado", dataInicio.format(FORMATTER) + " até " + dataFim.format(FORMATTER));
 
         if (!dentroQuaresma) {
-            result.put("mensagemDia", "A data selecionada esta fora da Quaresma liturgica deste ano (" +
-                    dataInicio.format(FORMATTER) + " ate " + dataFim.format(FORMATTER) + ").");
+            result.put("mensagemDia", "A data selecionada está fora da Quaresma litúrgica deste ano (" +
+                    dataInicio.format(FORMATTER) + " até " + dataFim.format(FORMATTER) + ").");
         } else {
-            result.put("mensagemDia", "Dia " + diaQuaresma + " da Quaresma liturgica");
+            result.put("mensagemDia", "Dia " + diaQuaresma + " da Quaresma litúrgica");
             result.put("temaDoDia", getTemaDoDia(diaQuaresma));
             result.put("praticasQuaresmais", getPraticasQuaresmais());
             result.put("oracaoQuaresmal", getOracaoQuaresmal());
@@ -39,33 +39,33 @@ public class QuaresmaLiturgicaService {
     }
 
     private String getTemaDoDia(int dia) {
-        if (dia <= 7) return "Conversao inicial: oracao e exame de consciencia.";
-        if (dia <= 20) return "Perseveranca: jejum, caridade e reconciliacao.";
-        if (dia <= 35) return "Purificacao do coracao: escuta da Palavra e vida sacramental.";
-        return "Preparacao imediata para a Semana Santa e a Pascoa.";
+        if (dia <= 7) return "Conversão inicial: oração e exame de consciência.";
+        if (dia <= 20) return "Perseverança: jejum, caridade e reconciliação.";
+        if (dia <= 35) return "Purificação do coração: escuta da Palavra e vida sacramental.";
+        return "Preparação imediata para a Semana Santa e a Páscoa.";
     }
 
     private String getPraticasQuaresmais() {
         return """
-               \u2022 Oracao diaria com a Palavra de Deus
-               \u2022 Jejum e abstinencia conforme a disciplina da Igreja
-               \u2022 Confissao e participacao na Eucaristia
+               \u2022 Oração diária com a Palavra de Deus
+               \u2022 Jejum e abstinência conforme a disciplina da Igreja
+               \u2022 Confissão e participação na Eucaristia
                \u2022 Caridade concreta aos mais necessitados
-               \u2022 Penitencia e conversao de vida""";
+               \u2022 Penitência e conversão de vida""";
     }
 
     private String getOracaoQuaresmal() {
         return """
                Senhor Jesus Cristo,
                neste tempo santo da Quaresma,
-               dai-me um coracao humilde e convertido.
-               Fortalecei-me na oracao, no jejum e na caridade,
-               para que eu celebre com fe viva
-               o misterio da vossa Pascoa.
-               Amem.""";
+               dai-me um coração humilde e convertido.
+               Fortalecei-me na oração, no jejum e na caridade,
+               para que eu celebre com fé viva
+               o mistério da vossa Páscoa.
+               Amém.""";
     }
 
     private String getLeituraSugerida() {
-        return "Sugestao de leitura: Mateus 6, 1-18 (oracao, jejum e esmola no segredo do coracao).";
+        return "Sugestão de leitura: Mateus 6, 1-18 (oração, jejum e esmola no segredo do coração).";
     }
 }

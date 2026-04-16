@@ -11,95 +11,95 @@ public class NovenaJunSagradoCoracaoBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String nome = "Novena ao Sagrado Coracao de Jesus";
+    private String nome = "Novena ao Sagrado Coração de Jesus";
 
     private String periodo =
-            "Reza-se nos nove dias que antecedem a Solenidade do Sagrado Coracao de Jesus "
-          + "(sexta-feira apos o domingo de Corpus Christi).";
+            "Reza-se nos nove dias que antecedem a Solenidade do Sagrado Coração de Jesus "
+          + "(sexta-feira após o domingo de Corpus Christi).";
 
     private String historia =
-            "A devocao ao Sagrado Coracao de Jesus tem origem nas revelacoes de Jesus a Santa Margarida Maria Alacoque, "
-          + "religiosa francesa do seculo XVII. Jesus mostrou-lhe o Seu Coracao ardente de amor pela humanidade "
-          + "e pediu que se estabelecesse a festa do Sagrado Coracao e a pratica dos nove primeiros sextas-feiras.";
+            "A devoção ao Sagrado Coração de Jesus tem origem nas revelações de Jesus a Santa Margarida Maria Alacoque, "
+          + "religiosa francesa do século XVII. Jesus mostrou-lhe o Seu Coração ardente de amor pela humanidade "
+          + "e pediu que se estabelecesse a festa do Sagrado Coração e a prática dos nove primeiros sextas-feiras.";
 
     private String oracaoInicial =
-            "Em nome do Pai, do Filho e do Espirito Santo. Amen.\n\n"
-          + "Sagrado Coracao de Jesus, fonte de todo amor, eu Vos adoro e Vos amo. "
-          + "Abri o meu coracao para receber a vossa graca e misericordia. "
-          + "Fazei que eu Vos ame cada dia mais e que o meu coracao esteja unido ao Vosso. Amen.";
+            "Em nome do Pai, do Filho e do Espírito Santo. Amém.\n\n"
+          + "Sagrado Coração de Jesus, fonte de todo amor, eu Vos adoro e Vos amo. "
+          + "Abri o meu coração para receber a vossa graça e misericórdia. "
+          + "Fazei que eu Vos ame cada dia mais e que o meu coração esteja unido ao Vosso. Amém.";
 
     private String oracaoFinal =
-            "Sagrado Coracao de Jesus, em Vos confio! "
-          + "Reinai sobre nos, sobre as nossas familias e sobre o mundo inteiro. "
-          + "Concedei-nos as gracas que Vos pedimos nesta novena e inflamai-nos no vosso divino amor. Amen.";
+            "Sagrado Coração de Jesus, em Vos confio! "
+          + "Reinai sobre nós, sobre as nossas famílias e sobre o mundo inteiro. "
+          + "Concedei-nos as graças que Vos pedimos nesta novena e inflamai-nos no vosso divino amor. Amém.";
 
     private String jaculatoria =
-            "Sagrado Coracao de Jesus, tende piedade de nos!\n"
-          + "Imaculado Coracao de Maria, rogai por nos!";
+            "Sagrado Coração de Jesus, tende piedade de nós!\n"
+          + "Imaculado Coração de Maria, rogai por nós!";
 
     private String primeiroDia =
-            "1.o Dia - O amor infinito do Coracao de Jesus.\n\n"
-          + "Sagrado Coracao de Jesus, fonte de todo amor, abri o nosso coracao para receber vossa graca "
-          + "e misericordia. Ensinai-nos a amar como Vos amais.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "1.o Dia - O amor infinito do Coração de Jesus.\n\n"
+          + "Sagrado Coração de Jesus, fonte de todo amor, abri o nosso coração para receber vossa graça "
+          + "e misericórdia. Ensinai-nos a amar como Vos amais.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String segundoDia =
-            "2.o Dia - A confianca no Coracao de Jesus.\n\n"
-          + "Coracao Sacratissimo de Jesus, em Vos confio! Dai-nos a graca de uma fe viva "
-          + "e operante que nos leve a fazer o bem e a confiar plenamente na vossa Providencia.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "2.o Dia - A confiança no Coração de Jesus.\n\n"
+          + "Coração Sacratíssimo de Jesus, em Vos confio! Dai-nos a graça de uma fé viva "
+          + "e operante que nos leve a fazer o bem e a confiar plenamente na vossa Providência.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String terceiroDia =
-            "3.o Dia - As virtudes do Coracao de Jesus.\n\n"
-          + "Sagrado Coracao de Jesus, modelo de virtudes, ensinai-nos a mansidao e a humildade de coracao. "
-          + "Transformai-nos a vossa imagem e semelhanca.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "3.o Dia - As virtudes do Coração de Jesus.\n\n"
+          + "Sagrado Coração de Jesus, modelo de virtudes, ensinai-nos a mansidão e a humildade de coração. "
+          + "Transformai-nos à vossa imagem e semelhança.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String quartoDia =
-            "4.o Dia - A reparacao ao Coracao de Jesus.\n\n"
-          + "Coracao de Jesus, ferido pelos nossos pecados, perdoai as nossas faltas "
-          + "e dai-nos a graca da contricao perfeita. Oferecemos reparacao pelos nossos pecados e os do mundo.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "4.o Dia - A reparação ao Coração de Jesus.\n\n"
+          + "Coração de Jesus, ferido pelos nossos pecados, perdoai as nossas faltas "
+          + "e dai-nos a graça da contrição perfeita. Oferecemos reparação pelos nossos pecados e os do mundo.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String quintoDia =
-            "5.o Dia - O refugio dos pecadores.\n\n"
-          + "Sagrado Coracao de Jesus, refugio dos pecadores, acolhei todos os que se afastaram de Vos "
+            "5.o Dia - O refúgio dos pecadores.\n\n"
+          + "Sagrado Coração de Jesus, refúgio dos pecadores, acolhei todos os que se afastaram de Vos "
           + "e trazei-os de volta ao vosso amor misericordioso.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String sextoDia =
-            "6.o Dia - A esperanca dos moribundos.\n\n"
-          + "Coracao de Jesus, esperanca dos moribundos, assistei todos os que partem deste mundo "
-          + "para que encontrem a vida eterna nos bracos da vossa misericordia.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "6.o Dia - A esperança dos moribundos.\n\n"
+          + "Coração de Jesus, esperança dos moribundos, assistei todos os que partem deste mundo "
+          + "para que encontrem a vida eterna nos braços da vossa misericórdia.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String setimoDia =
-            "7.o Dia - A paz do Coracao de Jesus.\n\n"
-          + "Sagrado Coracao de Jesus, paz e reconciliacao nossa, abencoi as nossas familias "
-          + "e comunidades com a vossa paz. Que reine o amor onde ha discordia.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+            "7.o Dia - A paz do Coração de Jesus.\n\n"
+          + "Sagrado Coração de Jesus, paz e reconciliação nossa, abençoai as nossas famílias "
+          + "e comunidades com a vossa paz. Que reine o amor onde há discórdia.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String oitavoDia =
             "8.o Dia - O caminho da santidade.\n\n"
-          + "Coracao de Jesus, delicia de todos os santos, atrai-nos ao caminho da santidade "
-          + "para que alcancemos o Ceu e participemos da vossa gloria eterna.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos!";
+          + "Coração de Jesus, delícia de todos os santos, atrai-nos ao caminho da santidade "
+          + "para que alcancemos o Céu e participemos da vossa glória eterna.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós!";
 
     private String nonoDia =
-            "9.o Dia - Consagracao ao Sagrado Coracao.\n\n"
-          + "Sacratissimo Coracao de Jesus, neste ultimo dia, consagramos-Vos a nossa vida. "
-          + "Reinai sobre nos e sobre o mundo inteiro, para sempre. "
-          + "Que o Vosso Reino de amor, justica e paz se estabeleca em todos os coracoes.\n\n"
-          + "Pai-Nosso, Ave-Maria, Gloria ao Pai.\n"
-          + "Sagrado Coracao de Jesus, tende piedade de nos! Amen.";
+            "9.o Dia - Consagração ao Sagrado Coração.\n\n"
+          + "Sacratíssimo Coração de Jesus, neste último dia, consagramos-Vos a nossa vida. "
+          + "Reinai sobre nós e sobre o mundo inteiro, para sempre. "
+          + "Que o Vosso Reino de amor, justiça e paz se estabeleça em todos os corações.\n\n"
+          + "Pai-Nosso, Ave-Maria, Glória ao Pai.\n"
+          + "Sagrado Coração de Jesus, tende piedade de nós! Amém.";
 
     private String disponivel = "https://www.vaticannews.va/pt/santo-do-dia.html";
 }

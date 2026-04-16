@@ -22,7 +22,7 @@ public class NovenaSantaTeresaJesusBean implements Serializable {
 
     private String periodo = "Normalmente feita dos dias 06 de outubro à 14 de outubro.";
 
-    private String aprendizado = "Com a Novena de Santa Teresa D’Ávila aprendemos que a oração é o caminho que devemos seguir para nos encontrarmos com Cristo, para vivermos com Ele uma profunda intimidade. A oração de contemplação nos faz conhecer toda a humanidade de Jesus e, a partir daí, experimentar um crescimento e uma maturidade para vivermos o matrimônio Espiritual com o Amado Esposo. \n"
+        private String aprendizado = "Com a Novena de Santa Teresa D’Ávila aprendemos que a oração é o caminho que devemos seguir para nos encontrarmos com Cristo, para vivermos com Ele uma profunda intimidade. A oração de contemplação nos faz conhecer toda a humanidade de Jesus e, a partir daí, experimentar um crescimento e uma maturidade para vivermos o matrimônio Espiritual com o Amado Esposo. \n"
             + "\n"
             + "“A oração de intimidade com Deus não é outra coisa senão um morrer quase total a todas as coisas do mundo para alegrar-se só em Deus.”";
 

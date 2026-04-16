@@ -35,7 +35,7 @@ public class NovenaNossaSenhoraGracasBean implements Serializable {
             + "\n"
             + "Dignai-vos de apresentá-las ao Vosso Divino Filho e de as atender se elas forem conformes à Vontade Divina e úteis às nossas almas.\n"
             + "\n"
-            + "E, depois de ter elevado a Deus vossas mãos suplicantes, dirigi-as para nós e envolvei-nos nos raios da vossa graça, iluminando nossos espíritos e purificando nossos corações, a fim de que, conduzidos por vós, cheguemos um dia à bem-aventurança eterna. Amem.";
+            + "E, depois de ter elevado a Deus vossas mãos suplicantes, dirigi-as para nós e envolvei-nos nos raios da vossa graça, iluminando nossos espíritos e purificando nossos corações, a fim de que, conduzidos por vós, cheguemos um dia à bem-aventurança eterna. Amém.";
 
     private String primeiroDia = "Contemplemos a Virgem Imaculada em sua primeira aparição a Santa Catarina Labouré. A piedosa noviça, guiada por seu Anjo da Guarda, é apresentada à Imaculada Senhora. Consideremos sua inefável alegria. Seremos também felizes como Santa Catarina se trabalharmos com ardor na nossa santificação. Gozaremos as delícias do Paraíso se nos privarmos dos gozos terrenos.\n"
             + "\n"
@@ -49,7 +49,7 @@ public class NovenaNossaSenhoraGracasBean implements Serializable {
             + "\n"
             + "Rezar: 3 Ave-marias, seguidas cada uma da invocação: “Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!”";
 
-    private String quartoDia = "Estando Santa Catarina Labouré em oração, a 27 de novembro de 1830, apareceu-lhe a Virgem Maria, formosíssima, esmagando a cabeça da serpente infernal. Nessa aparição se vê seu desejo imenso de nos proteger sempre contra o inimigo de nossa salvação. Invoquemos a Imaculada Mãe com confiança e amor!\n"
+        private String quartoDia = "Estando Santa Catarina Labouré em oração, a 27 de novembro de 1830, apareceu-lhe a Virgem Maria, formosíssima, esmagando a cabeça da serpente infernal. Nessa aparição se vê seu desejo imenso de nos proteger sempre contra o inimigo de nossa salvação. Invoquemos a Imaculada Mãe com confiança e amor!\n"
             + "\n"
             + "Rezar: 3 Ave-marias, seguidas cada uma da invocação: “Ó Maria, concebida sem pecado, rogai por nós que recorremos a Vós!”";
 

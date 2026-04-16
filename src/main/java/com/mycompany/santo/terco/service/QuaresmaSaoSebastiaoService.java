@@ -15,45 +15,45 @@ import java.util.Map;
 public class QuaresmaSaoSebastiaoService {
 
     private static final String ORACAO_PREPARATORIA = """
-            Glorioso martir Sao Sebastiao, soldado de Cristo que com coragem
-            confessastes a fe diante do imperador Diocleciano,
-            prostrado diante de vos, peco a vossa poderosa intercessao.
-            Apresento-vos esta graca que tanto necessito: (fazer o pedido em silencio).
-            Sao Sebastiao, que sobrevivestes as flechas pela forca de Deus,
-            alcancai-me a perseveranca na fe e a fortaleza nas provas. Amem.""";
+            Glorioso mártir São Sebastião, soldado de Cristo que com coragem
+            confessastes a fé diante do imperador Diocleciano,
+            prostrado diante de vós, peço a vossa poderosa intercessão.
+            Apresento-vos esta graça que tanto necessito: (fazer o pedido em silêncio).
+            São Sebastião, que sobrevivestes às flechas pela força de Deus,
+            alcançai-me a perseverança na fé e a fortaleza nas provas. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Sao Sebastiao, soldado intrépido da fe, rogai por nos!
-            2. Sao Sebastiao, oficial romano de Cristo, rogai por nos!
-            3. Sao Sebastiao, martir perfurado pelas flechas, rogai por nos!
-            4. Sao Sebastiao, que sobreviveu as torturas, rogai por nos!
-            5. Sao Sebastiao, curado pela martir Santa Irene, rogai por nos!
-            6. Sao Sebastiao, que voltou a denunciar o perseguidor, rogai por nos!
-            7. Sao Sebastiao, espelho de coragem crista, rogai por nos!
-            8. Sao Sebastiao, padroeiro dos atletas, rogai por nos!
-            9. Sao Sebastiao, intercessor nas epidemias e pestes, rogai por nos!
-            10. Sao Sebastiao, protetor da cidade do Rio de Janeiro, rogai por nos!
-            11. Sao Sebastiao, terror dos perseguidores da Igreja, rogai por nos!
-            12. Sao Sebastiao, modelo de fidelidade a Cristo, rogai por nos!
-            13. Sao Sebastiao, amigo dos soldados e policiais, rogai por nos!
-            14. Sao Sebastiao, padrao dos que lutam pelo bem, rogai por nos!
-            15. Sao Sebastiao, que morreste pela segunda vez de martir, rogai por nos!
-            16. Sao Sebastiao, esperanca dos que sofrem perseguicao, rogai por nos!
-            17. Sao Sebastiao, proteka-nos nas crises de saude, rogai por nos!
-            18. Sao Sebastiao, intercessor poderoso junto a Deus, rogai por nos!
-            19. Sao Sebastiao, glorioso no Ceu, rogai por nos!
-            20. Sao Sebastiao, nosso padroeiro e protecao, rogai por nos!
+            1. São Sebastião, soldado intrépido da fé, rogai por nós!
+            2. São Sebastião, oficial romano de Cristo, rogai por nós!
+            3. São Sebastião, mártir perfurado pelas flechas, rogai por nós!
+            4. São Sebastião, que sobreviveu às torturas, rogai por nós!
+            5. São Sebastião, curado pela mártir Santa Irene, rogai por nós!
+            6. São Sebastião, que voltou a denunciar o perseguidor, rogai por nós!
+            7. São Sebastião, espelho de coragem cristã, rogai por nós!
+            8. São Sebastião, padroeiro dos atletas, rogai por nós!
+            9. São Sebastião, intercessor nas epidemias e pestes, rogai por nós!
+            10. São Sebastião, protetor da cidade do Rio de Janeiro, rogai por nós!
+            11. São Sebastião, terror dos perseguidores da Igreja, rogai por nós!
+            12. São Sebastião, modelo de fidelidade a Cristo, rogai por nós!
+            13. São Sebastião, amigo dos soldados e policiais, rogai por nós!
+            14. São Sebastião, padrão dos que lutam pelo bem, rogai por nós!
+            15. São Sebastião, que morreste pela segunda vez de mártir, rogai por nós!
+            16. São Sebastião, esperança dos que sofrem perseguição, rogai por nós!
+            17. São Sebastião, protegei-nos nas crises de saúde, rogai por nós!
+            18. São Sebastião, intercessor poderoso junto a Deus, rogai por nós!
+            19. São Sebastião, glorioso no Céu, rogai por nós!
+            20. São Sebastião, nosso padroeiro e proteção, rogai por nós!
             
-            (Rezar um Pai-Nosso, uma Ave-Maria e uma Gloria ao terminar.)""";
+            (Rezar um Pai-Nosso, uma Ave-Maria e uma Glória ao terminar.)""";
 
     private static final String ORACAO_FINAL = """
-            O invicto Sao Sebastiao, que nem as flechas dos perseguidores
-            conseguiram dobrar a vossa fe, intercedei por nos nesta Quaresma.
-            Que como voces preferistes a morte às honras pagas,
-            nos tambem prefiramos a verdade de Cristo a qualquer comodidade mundana.
-            Alcancai-nos a graca de sermos fieis ate o fim. Amem.""";
+            Ó invicto São Sebastião, que nem as flechas dos perseguidores
+            conseguiram dobrar a vossa fé, intercedei por nós nesta Quaresma.
+            Que, como vós preferistes a morte às honras pagãs,
+            nós também prefiramos a verdade de Cristo a qualquer comodidade mundana.
+            Alcançai-nos a graça de sermos fiéis até o fim. Amém.""";
 
-    private static final String JACULATORIA = "Sao Sebastiao, martir glorioso e protetor dos fieis, rogai por nos!";
+    private static final String JACULATORIA = "São Sebastião, mártir glorioso e protetor dos fiéis, rogai por nós!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 12, 12);
@@ -72,9 +72,9 @@ public class QuaresmaSaoSebastiaoService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Sao Sebastiao (12/12 - 20/01).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de São Sebastião (12/12 - 20/01).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Sao Sebastiao");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de São Sebastião");
         }
 
         result.put("diaQuaresma", dia);

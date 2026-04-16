@@ -75,7 +75,7 @@ public class NovenaSantoAntaoBean implements Serializable {
             + "\n"
             + "Apressou-se o outro a replicar com a voz lastimosa:\n"
             + "\n"
-            + "“Sou o amante da fornicação. Minha missão é espreitar a juventude e seduzi-la. Chamam-me o espirito de fornicação. A quantos eu enganei, decididos que estavam a cuidar de seus sentidos! A quantas pessoas castas seduzi com minhas lisonjas! Eu sou aquele por cuja causa o profeta censura os decaídos: ‘Foram enganados pelo espírito da fornicação’. Sim, fui eu que os levei à queda. Fui eu que tanto te molestei e tão a miúdo fui vencido por ti”.\n"
+            + "“Sou o amante da fornicação. Minha missão é espreitar a juventude e seduzi-la. Chamam-me o espírito de fornicação. A quantos eu enganei, decididos que estavam a cuidar de seus sentidos! A quantas pessoas castas seduzi com minhas lisonjas! Eu sou aquele por cuja causa o profeta censura os decaídos: ‘Foram enganados pelo espírito da fornicação’. Sim, fui eu que os levei à queda. Fui eu que tanto te molestei e tão a miúdo fui vencido por ti”.\n"
             + "\n"
             + "Antão deu, pois, graças ao Senhor e armando-se de coragem contra ele, disse:\n"
             + "\n"

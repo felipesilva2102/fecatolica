@@ -11,56 +11,56 @@ import java.util.Map;
 public class QuaresmaSaoJudasTadeuService {
 
     private static final String ORACAO_PREPARATORIA = """
-            Glorioso Apostolo Sao Judas Tadeu, parente de Nosso Senhor Jesus Cristo!
+            Glorioso Apóstolo São Judas Tadeu, parente de Nosso Senhor Jesus Cristo!
             Vos que sois invocado em todo o mundo como patrono das causas desesperadas,
-            aqui me prostro confiante, com um pedido que parece sem saida: (fazer o pedido).
-            Por vossa fidelidade a Cristo ate o martirioe pela carta que escrevestes aos cristaos perseguidos,
-            intercedei por mim junto ao Trono da Misericordia Divina. Amem.""";
+            aqui me prostro confiante, com um pedido que parece sem saída: (fazer o pedido).
+            Por vossa fidelidade a Cristo até o martírio e pela carta que escrevestes aos cristãos perseguidos,
+            intercedei por mim junto ao Trono da Misericórdia Divina. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Sao Judas Tadeu, apostolo fiel de Nosso Senhor Jesus Cristo, rogai por nos!
-            2. Sao Judas Tadeu, parente de Jesus pela carne, rogai por nos!
-            3. Sao Judas Tadeu, que pregastes o Evangelho com coragem, rogai por nos!
-            4. Sao Judas Tadeu, missionario na Persia e na Mesopotamia, rogai por nos!
-            5. Sao Judas Tadeu, autor da Carta Catolica, rogai por nos!
-            6. Sao Judas Tadeu, que confortastes os cristaos perseguidos, rogai por nos!
-            7. Sao Judas Tadeu, martir glorioso da fe, rogai por nos!
-            8. Sao Judas Tadeu, invocado nas causas dificeis e desesperadas, rogai por nos!
-            9. Sao Judas Tadeu, poderoso intercessor junto a Deus, rogai por nos!
-            10. Sao Judas Tadeu, socorro dos abandonados, rogai por nos!
-            11. Sao Judas Tadeu, esperanca dos que nao tem esperanca, rogai por nos!
-            12. Sao Judas Tadeu, que reconstruis o que parecen destruido, rogai por nos!
-            13. Sao Judas Tadeu, amparo dos endividados e dos falidos, rogai por nos!
-            14. Sao Judas Tadeu, protecao nas situacoes de urgencia, rogai por nos!
-            15. Sao Judas Tadeu, guardiao dos que estao no fundo do poco, rogai por nos!
-            16. Sao Judas Tadeu, que encontrastes saidas onde nao havia, rogai por nos!
-            17. Sao Judas Tadeu, patrono dos impossibilidados por enfermidade, rogai por nos!
-            18. Sao Judas Tadeu, patrono dos que perderam tudo, rogai por nos!
-            19. Sao Judas Tadeu, esperanca das familias em crise, rogai por nos!
-            20. Sao Judas Tadeu, protetor dos jovens em desespero, rogai por nos!
-            21. Sao Judas Tadeu, auxilio em processos judiciais injustos, rogai por nos!
-            22. Sao Judas Tadeu, amparo dos presos e encarcerados, rogai por nos!
-            23. Sao Judas Tadeu, guardiao dos que sofrem discriminacao, rogai por nos!
-            24. Sao Judas Tadeu, consolador dos coramentos partidos, rogai por nos!
-            25. Sao Judas Tadeu, que nunca abandonas os que te invocam, rogai por nos!
-            26. Sao Judas Tadeu, que alcancas o que parece humanamente impossivel, rogai por nos!
-            27. Sao Judas Tadeu, nosso advogado no Ceu, rogai por nos!
-            28. Sao Judas Tadeu, gloria do Colegio Apostolico, rogai por nos!
-            29. Sao Judas Tadeu, testemunho vivo de que Cristo vence tudo, rogai por nos!
-            30. Sao Judas Tadeu, nosso pai e intercessor poderoso, rogai por nos!
+            1. São Judas Tadeu, apóstolo fiel de Nosso Senhor Jesus Cristo, rogai por nós!
+            2. São Judas Tadeu, parente de Jesus pela carne, rogai por nós!
+            3. São Judas Tadeu, que pregastes o Evangelho com coragem, rogai por nós!
+            4. São Judas Tadeu, missionário na Pérsia e na Mesopotâmia, rogai por nós!
+            5. São Judas Tadeu, autor da Carta Católica, rogai por nós!
+            6. São Judas Tadeu, que confortastes os cristãos perseguidos, rogai por nós!
+            7. São Judas Tadeu, mártir glorioso da fé, rogai por nós!
+            8. São Judas Tadeu, invocado nas causas difíceis e desesperadas, rogai por nós!
+            9. São Judas Tadeu, poderoso intercessor junto a Deus, rogai por nós!
+            10. São Judas Tadeu, socorro dos abandonados, rogai por nós!
+            11. São Judas Tadeu, esperança dos que não tem esperança, rogai por nós!
+            12. São Judas Tadeu, que reconstruis o que parecen destruido, rogai por nós!
+            13. São Judas Tadeu, amparo dos endividados e dos falidos, rogai por nós!
+            14. São Judas Tadeu, proteção nas situações de urgência, rogai por nós!
+            15. São Judas Tadeu, guardião dos que estão no fundo do poço, rogai por nós!
+            16. São Judas Tadeu, que encontrastes saídas onde não havia, rogai por nós!
+            17. São Judas Tadeu, patrono dos impossibilitados por enfermidade, rogai por nós!
+            18. São Judas Tadeu, patrono dos que perderam tudo, rogai por nós!
+            19. São Judas Tadeu, esperança das famílias em crise, rogai por nós!
+            20. São Judas Tadeu, protetor dos jovens em desespero, rogai por nós!
+            21. São Judas Tadeu, auxílio em processos judiciais injustos, rogai por nós!
+            22. São Judas Tadeu, amparo dos presos e encarcerados, rogai por nós!
+            23. São Judas Tadeu, guardião dos que sofrem discriminação, rogai por nós!
+            24. São Judas Tadeu, consolador dos corações partidos, rogai por nós!
+            25. São Judas Tadeu, que nunca abandonas os que te invocam, rogai por nós!
+            26. São Judas Tadeu, que alcanças o que parece humanamente impossível, rogai por nós!
+            27. São Judas Tadeu, nosso advogado no Céu, rogai por nós!
+            28. São Judas Tadeu, glória do Colégio Apostólico, rogai por nós!
+            29. São Judas Tadeu, testemunho vivo de que Cristo vence tudo, rogai por nós!
+            30. São Judas Tadeu, nosso pai e intercessor poderoso, rogai por nós!
             
-            (Repetir tres vezes com fé firme:)
-            Sao Judas Tadeu, intercede por nos, pois somos teus filhos desesperados!""";
+            (Repetir três vezes com fé firme:)
+            São Judas Tadeu, intercedei por nós, pois somos teus filhos desesperados!""";
 
     private static final String ORACAO_FINAL = """
-            O glorioso Sao Judas Tadeu, apostolo, martir e patrono das causas desesperadas!
-            Venho a Vos com um pedido que parece sem saida humana.
-            Confio plenamente na vossa intercessao junto a Jesus,
+            Ó glorioso São Judas Tadeu, apóstolo, mártir e patrono das causas desesperadas!
+            Venho a Vós com um pedido que parece sem saída humana.
+            Confio plenamente na vossa intercessão junto a Jesus,
             de cujo sangue sois parente e testemunha.
-            Apresentai ao Senhor a minha necessidade e alcancai-me a graca implorada.
-            Prometo propagar vossa devocao e ser grato por toda a vida. Amem.""";
+            Apresentai ao Senhor a minha necessidade e alcançai-me a graça implorada.
+            Prometo propagar vossa devoção e ser grato por toda a vida. Amém.""";
 
-    private static final String JACULATORIA = "Sao Judas Tadeu, apostolo e martir, rogai por nos que a Vos recorremos!";
+    private static final String JACULATORIA = "São Judas Tadeu, apóstolo e mártir, rogai por nós que a Vos recorremos!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 9, 19);
@@ -73,9 +73,9 @@ public class QuaresmaSaoJudasTadeuService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Sao Judas Tadeu (19/09 - 28/10).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de São Judas Tadeu (19/09 - 28/10).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Sao Judas Tadeu");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de São Judas Tadeu");
         }
 
         result.put("diaQuaresma", dia);

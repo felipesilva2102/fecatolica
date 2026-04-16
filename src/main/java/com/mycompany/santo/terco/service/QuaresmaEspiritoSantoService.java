@@ -13,120 +13,120 @@ import java.util.Map;
 public class QuaresmaEspiritoSantoService {
 
     private static final String PREPARACAO_DIARIA = """
-            • Faca o Sinal da Cruz.
-            • Acenda uma vela vermelha (cor do Espirito Santo).
-            • Permaneca em silencio por um instante pedindo a presenca do Espirito.""";
+            • Faça o Sinal da Cruz.
+            • Acenda uma vela vermelha (cor do Espírito Santo).
+            • Permaneça em silêncio por um instante pedindo a presença do Espírito.""";
 
     private static final String VENI_CREATOR = """
-            Vinde, Espirito Criador,
+            Vinde, Espírito Criador,
             Visitai as almas dos Vossos,
-            Enchei de graca celestial
-            Os coracoes que Vos criastes.
+            Enchei de graça celestial
+            Os corações que Vos criastes.
 
             Vos sois chamado o Consolador,
-            Dom do Deus Altissimo,
+            Dom do Deus Altíssimo,
             Fonte viva, fogo, caridade
-            E uncao espiritual.
+            E unção espiritual.
 
             Vos dais os sete sagrados dons,
-            O dedo da mao de Deus,
+            O dedo da mão de Deus,
             Prometido solenemente pelo Pai,
             Que enriqueceis as bocas com a Palavra.
 
             Acendei a luz nos sentidos,
-            Derramai o amor nos coracoes,
+            Derramai o amor nos corações,
             Fortalecei as fraquezas do corpo
-            Com o vigor perene da Vossa graca.
+            Com o vigor perene da Vossa graça.
 
-            Afastai de nos o inimigo,
+            Afastai de nós o inimigo,
             Dai-nos sem demora a paz,
             Sendo Vos o nosso guia,
             Evitemos todo o mal.
 
-            Por Vos conhecamos o Pai
-            E tambem o Filho,
-            E em Vos, Espirito de ambos,
-            Creiamos em todo o tempo. Amem.""";
+            Por Vós conheçamos o Pai
+            E também o Filho,
+            E em Vos, Espírito de ambos,
+            Creiamos em todo o tempo. Amém.""";
 
     private static final String ORACAO_AOS_SETE_DONS = """
-            Vinde, Espirito de Sabedoria, e ensinai-nos a apreciar as coisas do Ceu.
-            Vinde, Espirito de Entendimento, e iluminai a nossa mente.
-            Vinde, Espirito de Conselho, e guiai-nos pelo caminho da santidade.
-            Vinde, Espirito de Fortaleza, e dai-nos forca contra as tentacoes.
-            Vinde, Espirito de Ciencia, e ensinai-nos a discernir o bem do mal.
-            Vinde, Espirito de Piedade, e concedei-nos a devocao filial.
-            Vinde, Espirito de Temor de Deus, e preservai-nos de todo pecado.
-            Amem.""";
+            Vinde, Espírito de Sabedoria, e ensinai-nos a apreciar as coisas do Céu.
+            Vinde, Espírito de Entendimento, e iluminai a nossa mente.
+            Vinde, Espírito de Conselho, e guiai-nos pelo caminho da santidade.
+            Vinde, Espírito de Fortaleza, e dai-nos força contra as tentações.
+            Vinde, Espírito de Ciência, e ensinai-nos a discernir o bem do mal.
+            Vinde, Espírito de Piedade, e concedei-nos a devoção filial.
+            Vinde, Espírito de Temor de Deus, e preservai-nos de todo pecado.
+            Amém.""";
 
     private static final String SEQUENCIA = """
-            Vinde, Espirito Santo, enchei os coracoes dos Vossos fieis
+            Vinde, Espírito Santo, enchei os corações dos Vossos fiéis
             e acendei neles o fogo do Vosso Amor.
-            Enviai o Vosso Espirito e tudo sera criado,
+            Enviai o Vosso Espírito e tudo será criado,
             e renovareis a face da terra.
 
-            Oremos: O Deus, que instruistes os coracoes dos Vossos fieis
-            com a luz do Espirito Santo, concedei-nos que,
-            pelo mesmo Espirito, apreciemos o que e reto
-            e gozemos sempre das Suas consolacoes.
-            Por Cristo, nosso Senhor. Amem.""";
+            Oremos: Ó Deus, que instruistes os corações dos Vossos fiéis
+            com a luz do Espírito Santo, concedei-nos que,
+            pelo mesmo Espírito, apreciemos o que é reto
+            e gozemos sempre das Suas consolações.
+            Por Cristo, nosso Senhor. Amém.""";
 
     private static final String ORACAO_FINAL = """
-            Espirito Santo, alma da minha alma, eu Vos adoro.
+            Espírito Santo, alma da minha alma, eu Vos adoro.
             Iluminai-me, guiai-me, fortalecei-me, consolai-me.
             Dizei-me o que devo fazer, dai-me as Vossas ordens.
             Prometo submeter-me a tudo o que desejais de mim
-            e aceitar tudo o que permitirdes que me aconteca.
-            Fazei-me apenas conhecer a Vossa vontade. Amem.
+            e aceitar tudo o que permitirdes que me aconteça.
+            Fazei-me apenas conhecer a Vossa vontade. Amém.
             (Cardeal Mercier)""";
 
     private static final String FRUTOS_ESPIRITO = """
-            Os frutos do Espirito Santo sao: caridade, alegria, paz, paciencia,
-            benignidade, bondade, longanimidade, mansidao, fe, modestia,
-            continencia e castidade (Gl 5,22-23).""";
+            Os frutos do Espírito Santo são: caridade, alegria, paz, paciência,
+            benignidade, bondade, longanimidade, mansidão, fé, modéstia,
+            continência e castidade (Gl 5,22-23).""";
 
-    private static final String ORACOES_FINAIS = "• Pai-Nosso (1x)\n• Ave-Maria (1x)\n• Gloria ao Pai (7x, em honra dos 7 dons)";
+    private static final String ORACOES_FINAIS = "• Pai-Nosso (1x)\n• Ave-Maria (1x)\n• Glória ao Pai (7x, em honra dos 7 dons)";
 
     private static final List<String> LEITURAS = List.of(
-            "Dia 1 - Genesis 1,2: O Espirito de Deus pairava sobre as aguas.",
-            "Dia 2 - Isaias 11,2: Sobre Ele repousara o Espirito do Senhor.",
-            "Dia 3 - Joel 3,1-2: Derramarei o Meu Espirito sobre toda criatura.",
-            "Dia 4 - Ezequiel 36,26-27: Porei em vos um espirito novo.",
-            "Dia 5 - Sabedoria 1,7: O Espirito do Senhor enche o universo.",
-            "Dia 6 - Isaias 61,1: O Espirito do Senhor esta sobre mim.",
-            "Dia 7 - Lucas 1,35: O Espirito Santo descera sobre ti.",
-            "Dia 8 - Lucas 4,1: Jesus, cheio do Espirito Santo, voltou do Jordao.",
-            "Dia 9 - Joao 3,5-8: Quem nao nascer da agua e do Espirito...",
-            "Dia 10 - Joao 7,37-39: Rios de agua viva correrao do seu interior.",
-            "Dia 11 - Joao 14,16-17: Eu rogarei ao Pai e Ele vos dara outro Consolador.",
-            "Dia 12 - Joao 14,26: O Espirito Santo vos ensinara todas as coisas.",
-            "Dia 13 - Joao 15,26: O Espirito da Verdade que procede do Pai.",
-            "Dia 14 - Joao 16,7-8: Se Eu nao for, o Consolador nao vira.",
-            "Dia 15 - Joao 16,13: O Espirito da Verdade vos guiara a toda verdade.",
-            "Dia 16 - Atos 1,8: Recebereis a forca do Espirito Santo.",
-            "Dia 17 - Atos 2,1-4: Todos ficaram cheios do Espirito Santo.",
-            "Dia 18 - Atos 2,14-21: Sao Pedro, cheio do Espirito, pregou.",
-            "Dia 19 - Atos 4,31: Todos ficaram cheios do Espirito Santo e anunciavam a Palavra.",
-            "Dia 20 - Atos 8,14-17: Impuseram-lhes as maos e receberam o Espirito.",
-            "Dia 21 - Atos 10,44-48: O Espirito Santo desceu sobre todos os que ouviam.",
-            "Dia 22 - Romanos 5,5: O amor de Deus foi derramado pelo Espirito.",
-            "Dia 23 - Romanos 8,9: Se alguem nao tem o Espirito de Cristo...",
-            "Dia 24 - Romanos 8,14-16: Os que sao guiados pelo Espirito sao filhos de Deus.",
-            "Dia 25 - Romanos 8,26-27: O Espirito intercede por nos com gemidos inefaveis.",
-            "Dia 26 - 1Corintios 2,10-12: O Espirito sonda todas as coisas, ate as profundezas de Deus.",
-            "Dia 27 - 1Corintios 3,16: Vos sois templo de Deus e o Espirito habita em vos.",
-            "Dia 28 - 1Corintios 12,4-7: Ha diversidade de dons, mas o Espirito e o mesmo.",
-            "Dia 29 - 1Corintios 12,13: Fomos todos batizados num so Espirito.",
-            "Dia 30 - 2Corintios 3,17: Onde esta o Espirito do Senhor, ai ha liberdade.",
-            "Dia 31 - Galatas 5,16-18: Caminhai no Espirito.",
-            "Dia 32 - Galatas 5,22-23: O fruto do Espirito e caridade, alegria, paz...",
-            "Dia 33 - Efesios 1,13-14: Fostes selados com o Espirito da Promessa.",
-            "Dia 34 - Efesios 2,18: Por Ele temos acesso ao Pai num so Espirito.",
-            "Dia 35 - Efesios 4,3-4: Ha um so Espirito, um so Corpo.",
-            "Dia 36 - Efesios 4,30: Nao entristeçais o Espirito Santo de Deus.",
-            "Dia 37 - Efesios 5,18-20: Enchei-vos do Espirito.",
-            "Dia 38 - 1Tessalonicenses 5,19: Nao extingais o Espirito.",
-            "Dia 39 - 2Timoteo 1,6-7: Deus nao nos deu espirito de timidez.",
-            "Dia 40 - Apocalipse 22,17: O Espirito e a Esposa dizem: Vem!"
+            "Dia 1 - Gênesis 1,2: O Espírito de Deus pairava sobre as águas.",
+            "Dia 2 - Isaías 11,2: Sobre Ele repousará o Espírito do Senhor.",
+            "Dia 3 - Joel 3,1-2: Derramarei o Meu Espírito sobre toda criatura.",
+            "Dia 4 - Ezequiel 36,26-27: Porei em vos um espírito novo.",
+            "Dia 5 - Sabedoria 1,7: O Espírito do Senhor enche o universo.",
+            "Dia 6 - Isaías 61,1: O Espírito do Senhor está sobre mim.",
+            "Dia 7 - Lucas 1,35: O Espírito Santo descerá sobre ti.",
+            "Dia 8 - Lucas 4,1: Jesus, cheio do Espírito Santo, voltou do Jordão.",
+            "Dia 9 - João 3,5-8: Quem não nascer da água e do Espírito...",
+            "Dia 10 - João 7,37-39: Rios de água viva correrão do seu interior.",
+            "Dia 11 - João 14,16-17: Eu rogarei ao Pai e Ele vos dará outro Consolador.",
+            "Dia 12 - João 14,26: O Espírito Santo vos ensinará todas as coisas.",
+            "Dia 13 - João 15,26: O Espírito da Verdade que procede do Pai.",
+            "Dia 14 - João 16,7-8: Se Eu não for, o Consolador não virá.",
+            "Dia 15 - João 16,13: O Espírito da Verdade vos guiará a toda verdade.",
+            "Dia 16 - Atos 1,8: Recebereis a força do Espírito Santo.",
+            "Dia 17 - Atos 2,1-4: Todos ficaram cheios do Espírito Santo.",
+            "Dia 18 - Atos 2,14-21: São Pedro, cheio do Espírito, pregou.",
+            "Dia 19 - Atos 4,31: Todos ficaram cheios do Espírito Santo e anunciavam a Palavra.",
+            "Dia 20 - Atos 8,14-17: Impuseram-lhes as mãos e receberam o Espírito.",
+            "Dia 21 - Atos 10,44-48: O Espírito Santo desceu sobre todos os que ouviam.",
+            "Dia 22 - Romanos 5,5: O amor de Deus foi derramado pelo Espírito.",
+            "Dia 23 - Romanos 8,9: Se alguém não tem o Espírito de Cristo...",
+            "Dia 24 - Romanos 8,14-16: Os que são guiados pelo Espírito são filhos de Deus.",
+            "Dia 25 - Romanos 8,26-27: O Espírito intercede por nós com gemidos inefáveis.",
+            "Dia 26 - 1Coríntios 2,10-12: O Espírito sonda todas as coisas, até as profundezas de Deus.",
+            "Dia 27 - 1Coríntios 3,16: Vós sois templo de Deus e o Espírito habita em vós.",
+            "Dia 28 - 1Coríntios 12,4-7: Há diversidade de dons, mas o Espírito é o mesmo.",
+            "Dia 29 - 1Coríntios 12,13: Fomos todos batizados num só Espírito.",
+            "Dia 30 - 2Coríntios 3,17: Onde está o Espírito do Senhor, aí há liberdade.",
+            "Dia 31 - Gálatas 5,16-18: Caminhai no Espírito.",
+            "Dia 32 - Gálatas 5,22-23: O fruto do Espírito é caridade, alegria, paz...",
+            "Dia 33 - Efésios 1,13-14: Fostes selados com o Espírito da Promessa.",
+            "Dia 34 - Efésios 2,18: Por Ele temos acesso ao Pai num só Espírito.",
+            "Dia 35 - Efésios 4,3-4: Há um só Espírito, um só Corpo.",
+            "Dia 36 - Efésios 4,30: Não entristeçais o Espírito Santo de Deus.",
+            "Dia 37 - Efésios 5,18-20: Enchei-vos do Espírito.",
+            "Dia 38 - 1Tessalonicenses 5,19: Não extingais o Espírito.",
+            "Dia 39 - 2Timóteo 1,6-7: Deus não nos deu espírito de timidez.",
+            "Dia 40 - Apocalipse 22,17: O Espírito e a Esposa dizem: Vem!"
     );
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
@@ -140,12 +140,12 @@ public class QuaresmaEspiritoSantoService {
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("diaSelecionadoRenderizar", dentro);
 
-        if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma do Espirito Santo ("
+                if (!dentro) {
+                        result.put("mensagemDia", "A data selecionada não está dentro da Quaresma do Espírito Santo ("
                     + dataInicio.getDayOfMonth() + "/" + String.format("%02d", dataInicio.getMonthValue()) + " - "
                     + pentecostes.getDayOfMonth() + "/" + String.format("%02d", pentecostes.getMonthValue()) + ").");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma do Espirito Santo");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma do Espírito Santo");
         }
 
         result.put("diaQuaresma", dia);
@@ -161,8 +161,8 @@ public class QuaresmaEspiritoSantoService {
     }
 
     private String getLeituraDoDia(int dia) {
-        if (dia == -1) return "";
-        if (dia >= 1 && dia <= LEITURAS.size()) return LEITURAS.get(dia - 1);
-        return "Nao ha leitura definida para este dia.";
+                if (dia == -1) return "";
+                if (dia >= 1 && dia <= LEITURAS.size()) return LEITURAS.get(dia - 1);
+                return "Não há leitura definida para este dia.";
     }
 }

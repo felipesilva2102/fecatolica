@@ -75,7 +75,7 @@ public class NovenaSaoJoaoBoscoBean implements Serializable {
             + "Per Dóminum nostrum Iesum Christum, Filium tuum:\n"
             + "Qui tecum vivit et regnat\n"
             + "in unitáte Spíritus Sancti, Deus:\n"
-            + "per omnia sǽcula sǽculorum. ℟. Amen.\n"
+            + "per omnia sǽcula sǽculorum. ℟. Amém.\n"
             + "\n"
             + "Ó Deus, que suscitaste São João, vosso Confessor,\n"
             + "como pai e mestre dos jovens\n"
@@ -100,7 +100,7 @@ public class NovenaSaoJoaoBoscoBean implements Serializable {
             + "Tu nelle angustie, nelle lotte, nelle strettezze\n"
             + "difendici dal nemico e nell'ora della morte\n"
             + "accogli l'anima nostra in Paradiso!\n"
-            + "Amen.\n"
+            + "Amém.\n"
             + "\n"
             + "Ó Maria, Virgem poderosa,\n"
             + "vós, grande e ilustre defensora da Igreja;\n"
@@ -155,7 +155,7 @@ public class NovenaSaoJoaoBoscoBean implements Serializable {
             + "\n"
             + "Pai-Nosso, Ave-Maria e Glória.";
 
-    private String oitavoDia = "“Amem muito a castidade. Lembrem-se, para conservá-la é precioso trabalhar e rezar.”\n"
+        private String oitavoDia = "“Amai muito a castidade. Lembrem-se, para conservá-la é precioso trabalhar e rezar.”\n"
             + "\n"
             + "Glorioso São João Bosco, vós que amastes com um amor de predileção a bela virtude da pureza, e a tomastes como exemplo, com a palavra e com os escritos; fazei que também nós, enamorados de tão indispensável virtude, a pratiquemos constantemente e a difundamos com todas nossas forças.\n"
             + "\n"

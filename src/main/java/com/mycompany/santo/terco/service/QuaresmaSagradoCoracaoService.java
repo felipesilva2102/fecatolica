@@ -11,57 +11,57 @@ import java.util.Map;
 public class QuaresmaSagradoCoracaoService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O Coracao Santissimo de Jesus, fonte de toda consolacao e misericordia,
-            eis-me prostrado diante de Vos para oferecer-Vos o meu coracao.
-            Nesta Quaresma do Sagrado Coracao, desejo reparar as ofensas que os homens Vos fizeram
+            O Coração Santíssimo de Jesus, fonte de toda consolação e misericórdia,
+            eis-me prostrado diante de Vos para oferecer-Vos o meu coração.
+            Nesta Quaresma do Sagrado Coração, desejo reparar as ofensas que os homens Vos fizeram
             e confiando em vosso amor infinito, venho pedir-Vos: (fazer o pedido).
-            Jesus, mansinho e humilde de coracao, fazei o meu coracao semelhante ao Vosso. Amem.""";
+            Jesus, mansinho e humilde de coração, fazei o meu coração semelhante ao Vosso. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Coracao de Jesus, filho do Pai Eterno, tende misericordia de nos!
-            2. Coracao de Jesus, formado pelo Espirito Santo no seio da Virgem Mae, tende misericordia de nos!
-            3. Coracao de Jesus, unido substancialmente ao Verbo de Deus, tende misericordia de nos!
-            4. Coracao de Jesus, de infinita majestade, tende misericordia de nos!
-            5. Coracao de Jesus, templo santo de Deus, tende misericordia de nos!
-            6. Coracao de Jesus, tabernaculo do Altissimo, tende misericordia de nos!
-            7. Coracao de Jesus, casa de Deus e porta do Ceu, tende misericordia de nos!
-            8. Coracao de Jesus, ardente fornalha de caridade, tende misericordia de nos!
-            9. Coracao de Jesus, abismo de justica e de amor, tende misericordia de nos!
-            10. Coracao de Jesus, cheio de bondade e de amor, tende misericordia de nos!
-            11. Coracao de Jesus, abismo de toda a virtude, tende misericordia de nos!
-            12. Coracao de Jesus, digno de todo o louvor, tende misericordia de nos!
-            13. Coracao de Jesus, rei e centro de todos os coracoes, tende misericordia de nos!
-            14. Coracao de Jesus, em que estao todos os tesouros da sabedoria e da ciencia, tende misericordia de nos!
-            15. Coracao de Jesus, em que reside toda a plenitude da divindade, tende misericordia de nos!
-            16. Coracao de Jesus, em que o Pai muito Se compraz, tende misericordia de nos!
-            17. Coracao de Jesus, de cuja plenitude nos tornamos todos participantes, tende misericordia de nos!
-            18. Coracao de Jesus, desejo dos outeiros eternos, tende misericordia de nos!
-            19. Coracao de Jesus, paciente e muito misericordioso, tende misericordia de nos!
-            20. Coracao de Jesus, generoso para todos os que Vos invocam, tende misericordia de nos!
-            21. Coracao de Jesus, fonte de vida e de santidade, tende misericordia de nos!
-            22. Coracao de Jesus, propiciacao pelos nossos pecados, tende misericordia de nos!
-            23. Coracao de Jesus, saciado de oprobrios, tende misericordia de nos!
-            24. Coracao de Jesus, esmagado pelas nossas iniquidades, tende misericordia de nos!
-            25. Coracao de Jesus, obediente ate a morte, tende misericordia de nos!
-            26. Coracao de Jesus, traspassado por uma lanca, tende misericordia de nos!
-            27. Coracao de Jesus, fonte de toda consolacao, tende misericordia de nos!
-            28. Coracao de Jesus, nossa vida e nossa ressurreicao, tende misericordia de nos!
-            29. Coracao de Jesus, nossa paz e nossa reconciliacao, tende misericordia de nos!
-            30. Coracao de Jesus, vitima pelo pecado, tende misericordia de nos!
-            31. Coracao de Jesus, salvacao dos que em Vos esperam, tende misericordia de nos!
-            32. Coracao de Jesus, esperanca dos que em Vos morrem, tende misericordia de nos!
-            33. Coracao de Jesus, delicia de todos os Santos, tende misericordia de nos!
+            1. Coração de Jesus, filho do Pai Eterno, tende misericórdia de nós!
+            2. Coração de Jesus, formado pelo Espírito Santo no seio da Virgem Mãe, tende misericórdia de nós!
+            3. Coração de Jesus, unido substancialmente ao Verbo de Deus, tende misericórdia de nós!
+            4. Coração de Jesus, de infinita majestade, tende misericórdia de nós!
+            5. Coração de Jesus, templo santo de Deus, tende misericórdia de nós!
+            6. Coração de Jesus, tabernaculo do Altissimo, tende misericórdia de nós!
+            7. Coração de Jesus, casa de Deus e porta do Céu, tende misericórdia de nós!
+            8. Coração de Jesus, ardente fornalha de caridade, tende misericórdia de nós!
+            9. Coração de Jesus, abismo de justiça e de amor, tende misericórdia de nós!
+            10. Coração de Jesus, cheio de bondade e de amor, tende misericórdia de nós!
+            11. Coração de Jesus, abismo de toda a virtude, tende misericórdia de nós!
+            12. Coração de Jesus, digno de todo o louvor, tende misericórdia de nós!
+            13. Coração de Jesus, rei e centro de todos os corações, tende misericórdia de nós!
+            14. Coração de Jesus, em que estao todos os tesouros da sabedoria e da ciencia, tende misericórdia de nós!
+            15. Coração de Jesus, em que reside toda a plenitude da divindade, tende misericórdia de nós!
+            16. Coração de Jesus, em que o Pai muito Se compraz, tende misericórdia de nós!
+            17. Coração de Jesus, de cuja plenitude nos tornamos todos participantes, tende misericórdia de nós!
+            18. Coração de Jesus, desejo dos outeiros eternos, tende misericórdia de nós!
+            19. Coração de Jesus, paciente e muito misericordioso, tende misericórdia de nós!
+            20. Coração de Jesus, generoso para todos os que Vos invocam, tende misericórdia de nós!
+            21. Coração de Jesus, fonte de vida e de santidade, tende misericórdia de nós!
+            22. Coração de Jesus, propiciacao pelos nossos pecados, tende misericórdia de nós!
+            23. Coração de Jesus, saciado de oprobrios, tende misericórdia de nós!
+            24. Coração de Jesus, esmagado pelas nossas iniquidades, tende misericórdia de nós!
+            25. Coração de Jesus, obediente até a morte, tende misericórdia de nós!
+            26. Coração de Jesus, traspassado por uma lança, tende misericórdia de nós!
+            27. Coração de Jesus, fonte de toda consolação, tende misericórdia de nós!
+            28. Coração de Jesus, nossa vida e nossa ressurreição, tende misericórdia de nós!
+            29. Coração de Jesus, nossa paz e nossa reconciliação, tende misericórdia de nós!
+            30. Coração de Jesus, vitima pelo pecado, tende misericórdia de nós!
+            31. Coração de Jesus, salvação dos que em Vos esperam, tende misericórdia de nós!
+            32. Coração de Jesus, esperança dos que em Vos morrem, tende misericórdia de nós!
+            33. Coração de Jesus, delícia de todos os Santos, tende misericórdia de nós!
             
-            (Repetir tres vezes com fervor:)
-            Jesus, manso e humilde de coracao, fazei o meu coracao semelhante ao Vosso!""";
+            (Repetir três vezes com fervor:)
+            Jesus, manso e humilde de coração, fazei o meu coração semelhante ao Vosso!""";
 
     private static final String ORACAO_FINAL = """
-            O dulcissimo Jesus, que dissestes: Aprendei de Mim, que sou manso e humilde de coracao,
-            gravai no meu coracao as virtudes da mansidao e da humildade,
+            O dulcissimo Jesus, que dissestes: Aprendei de Mim, que sou manso e humilde de coração,
+            gravai no meu coração as virtudes da mansidão e da humildade,
             para que gozando da paz que prometestes, possa chegar a vos.
-            Sagrado Coracao de Jesus, confiamos em Vos! Amem.""";
+            Sagrado Coração de Jesus, confiamos em Vos! Amém.""";
 
-    private static final String JACULATORIA = "Sagrado Coracao de Jesus, eu confio e me abandono em Vos!";
+    private static final String JACULATORIA = "Sagrado Coração de Jesus, eu confio e me abandono em Vos!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 4, 27);
@@ -74,9 +74,9 @@ public class QuaresmaSagradoCoracaoService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma do Sagrado Coracao (27/04 - 05/06).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma do Sagrado Coração (27/04 - 05/06).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma do Sagrado Coracao de Jesus");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma do Sagrado Coração de Jesus");
         }
 
         result.put("diaQuaresma", dia);

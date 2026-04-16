@@ -11,57 +11,57 @@ import java.util.Map;
 public class QuaresmaNossaSenhoraFatimaService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O Virgem de Fatima, que aparecestes a tres pastorinhos em 1917
-            e pedistes oracao, penitencia e consagracao ao Vosso Imaculado Coracao,
-            eis-me diante de Vos nesta Quaresma de Fatima para atender ao vosso pedido.
-            Ofereco minha oracao, meu sofrimento e minha vida pela conversao dos pecadores.
-            Acolhei tambem o pedido especial que vos apresento: (fazer o pedido).
-            Coracao Imaculado de Maria, rogai por nos! Amem.""";
+            Ó Virgem de Fátima, que aparecestes a três pastorinhos em 1917
+            e pedistes oração, penitência e consagração ao Vosso Imaculado Coração,
+            eis-me diante de Vos nesta Quaresma de Fátima para atender ao vosso pedido.
+            Ofereço minha oração, meu sofrimento e minha vida pela conversão dos pecadores.
+            Acolhei também o pedido especial que vos apresento: (fazer o pedido).
+            Coração Imaculado de Maria, rogai por nós! Amém.""";
 
     private static final String SUPLICAS = """
-            1. Nossa Senhora de Fatima, que apareceste em Portugal em 1917, rogai por nos!
-            2. Nossa Senhora de Fatima, que pedistes oracao e penitencia, rogai por nos!
-            3. Nossa Senhora de Fatima, que revelastes os tres Segredos, rogai por nos!
-            4. Nossa Senhora de Fatima, que mostraste o Inferno as criancas, rogai por nos!
-            5. Nossa Senhora de Fatima, que pedistes a consagracao da Russia, rogai por nos!
-            6. Nossa Senhora de Fatima, Rainha do Rosario, rogai por nos!
-            7. Nossa Senhora de Fatima, que prometestes converter o mundo, rogai por nos!
-            8. Nossa Senhora de Fatima, que realizastes o Milagre do Sol, rogai por nos!
-            9. Nossa Senhora de Fatima, esperanca de paz para o mundo, rogai por nos!
-            10. Nossa Senhora de Fatima, que vos aparecestes tres meses antes da Revolucao Russa, rogai por nos!
-            11. Nossa Senhora de Fatima, mae da Lucia, Jacinta e Francisco, rogai por nos!
-            12. Nossa Senhora de Fatima, que apresentastes o Angel da Paz as criancas, rogai por nos!
-            13. Nossa Senhora de Fatima, protetora da Igreja nos tempos de tribulacao, rogai por nos!
-            14. Nossa Senhora de Fatima, Coracao Imaculado cheio de amor, rogai por nos!
-            15. Nossa Senhora de Fatima, que pedes nossa consagracao ao Vosso Coracao, rogai por nos!
-            16. Nossa Senhora de Fatima, guardada dos fieis do Rosario, rogai por nos!
-            17. Nossa Senhora de Fatima, reveladora do futuro da humanidade, rogai por nos!
-            18. Nossa Senhora de Fatima, patrona de Portugal e da Europa, rogai por nos!
-            19. Nossa Senhora de Fatima, que convertereis muitas almas pela penitencia, rogai por nos!
-            20. Nossa Senhora de Fatima, Mae de misericordia e intercessora universal, rogai por nos!
-            21. Nossa Senhora de Fatima, que presidis ao terceiro milenio, rogai por nos!
-            22. Nossa Senhora de Fatima, paz das nacoes em guerra, rogai por nos!
-            23. Nossa Senhora de Fatima, esperanca dos perseguidos pela fe, rogai por nos!
-            24. Nossa Senhora de Fatima, protetora dos sacerdotes e bispos, rogai por nos!
-            25. Nossa Senhora de Fatima, fonte de renovacao da Igreja, rogai por nos!
-            26. Nossa Senhora de Fatima, que pedes penitencia para salvar almas, rogai por nos!
-            27. Nossa Senhora de Fatima, que prometestes o triunfo do Vosso Imaculado Coracao, rogai por nos!
-            28. Nossa Senhora de Fatima, esperanca dos que sofrem por Cristo, rogai por nos!
-            29. Nossa Senhora de Fatima, que nossas vidas sejam consagradas ao Vosso Coracao, rogai por nos!
-            30. Nossa Senhora de Fatima, nossa Mai e nossa Rainha, rogai por nos!
+            1. Nossa Senhora de Fátima, que apareceste em Portugal em 1917, rogai por nós!
+            2. Nossa Senhora de Fátima, que pedistes oração e penitência, rogai por nós!
+            3. Nossa Senhora de Fátima, que revelastes os três Segredos, rogai por nós!
+            4. Nossa Senhora de Fátima, que mostraste o Inferno às crianças, rogai por nós!
+            5. Nossa Senhora de Fátima, que pedistes a consagração da Rússia, rogai por nós!
+            6. Nossa Senhora de Fátima, Rainha do Rosário, rogai por nós!
+            7. Nossa Senhora de Fátima, que prometestes converter o mundo, rogai por nós!
+            8. Nossa Senhora de Fátima, que realizastes o Milagre do Sol, rogai por nós!
+            9. Nossa Senhora de Fátima, esperança de paz para o mundo, rogai por nós!
+            10. Nossa Senhora de Fátima, que vos aparecestes três meses antes da Revolução Russa, rogai por nós!
+            11. Nossa Senhora de Fátima, mãe da Lúcia, Jacinta e Francisco, rogai por nós!
+            12. Nossa Senhora de Fátima, que apresentastes o Anjo da Paz às crianças, rogai por nós!
+            13. Nossa Senhora de Fátima, protetora da Igreja nos tempos de tribulação, rogai por nós!
+            14. Nossa Senhora de Fátima, Coração Imaculado cheio de amor, rogai por nós!
+            15. Nossa Senhora de Fátima, que pedes nossa consagração ao Vosso Coração, rogai por nós!
+            16. Nossa Senhora de Fátima, guardiã dos fiéis do Rosário, rogai por nós!
+            17. Nossa Senhora de Fátima, reveladora do futuro da humanidade, rogai por nós!
+            18. Nossa Senhora de Fátima, patrona de Portugal e da Europa, rogai por nós!
+            19. Nossa Senhora de Fátima, que convertereis muitas almas pela penitência, rogai por nós!
+            20. Nossa Senhora de Fátima, Mãe de misericórdia e intercessora universal, rogai por nós!
+            21. Nossa Senhora de Fátima, que presidis ao terceiro milênio, rogai por nós!
+            22. Nossa Senhora de Fátima, paz das nações em guerra, rogai por nós!
+            23. Nossa Senhora de Fátima, esperança dos perseguidos pela fé, rogai por nós!
+            24. Nossa Senhora de Fátima, protetora dos sacerdotes e bispos, rogai por nós!
+            25. Nossa Senhora de Fátima, fonte de renovação da Igreja, rogai por nós!
+            26. Nossa Senhora de Fátima, que pedes penitência para salvar almas, rogai por nós!
+            27. Nossa Senhora de Fátima, que prometestes o triunfo do Vosso Imaculado Coração, rogai por nós!
+            28. Nossa Senhora de Fátima, esperança dos que sofrem por Cristo, rogai por nós!
+            29. Nossa Senhora de Fátima, que nossas vidas sejam consagradas ao Vosso Coração, rogai por nós!
+            30. Nossa Senhora de Fátima, nossa Mãe e nossa Rainha, rogai por nós!
             
-            (Rezar tres vezes:)
-            Coracao Imaculado de Maria, rogai por nos que recorremos a Vos!""";
+            (Rezar três vezes:)
+            Coração Imaculado de Maria, rogai por nós que recorremos a Vos!""";
 
     private static final String ORACAO_FINAL = """
-            O Nossa Senhora de Fatima, Rainha do Rosario,
-            que descestes do Ceu para chamar a humanidade a conversao,
-            aceita esta Quaresma de oracao e penitencia que te oferecemos.
-            Apresenta nossas intencoes ao Coracao de teu Filho Jesus
-            e obtende-nos a conversao prometida de portugal e do mundo.
-            Coracao Imaculado de Maria, sede o nosso refugio e o caminho que nos conduz a Deus. Amem.""";
+            Ó Nossa Senhora de Fátima, Rainha do Rosário,
+            que descestes do Céu para chamar a humanidade a conversão,
+            aceita esta Quaresma de oração e penitência que te oferecemos.
+            Apresenta nossas intenções ao Coração de teu Filho Jesus
+            e obtende-nos a conversão prometida de Portugal e do mundo.
+            Coração Imaculado de Maria, sede o nosso refúgio e o caminho que nos conduz a Deus. Amém.""";
 
-    private static final String JACULATORIA = "Coracao Imaculado de Maria, rogai por nos que a Vos recorremos!";
+    private static final String JACULATORIA = "Coração Imaculado de Maria, rogai por nós que a Vos recorremos!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 4, 4);
@@ -74,9 +74,9 @@ public class QuaresmaNossaSenhoraFatimaService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de N. Sra. de Fatima (04/04 - 13/05).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de N. Sra. de Fátima (04/04 - 13/05).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora de Fatima");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora de Fátima");
         }
 
         result.put("diaQuaresma", dia);

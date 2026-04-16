@@ -15,47 +15,47 @@ import java.util.Map;
 public class QuaresmaSantaBarbaraService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O valorosa Santa Barbara, virgem e martir de Nicomedia!
-            Voce que foi trancada numa torre pelo proprio pai
-            e preferiu a morte e a apostasia do nome de Cristo,
-            apresento a vos com fe este meu pedido:
-            (fazer o pedido em silencio).
-            Sede para nos intercessora poderosa, e alcancai de Deus
-            a graca de permanecermos fieis ate o fim da vida. Amem.""";
+            Ó valorosa Santa Bárbara, virgem e mártir de Nicomédia!
+            Você que foi trancada numa torre pelo próprio pai
+            e preferiu a morte à apostasia do nome de Cristo,
+            apresento a vós com fé este meu pedido:
+            (fazer o pedido em silêncio).
+            Sede para nós intercessora poderosa, e alcançai de Deus
+            a graça de permanecermos fiéis até o fim da vida. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Santa Barbara, virgem corajosa de Nicomedia, rogai por nos!
-            2. Santa Barbara, que vos convertestes contemplando as obras de Deus, rogai por nos!
-            3. Santa Barbara, que pedistes uma janela a mais na torre para honrar a Trindade, rogai por nos!
-            4. Santa Barbara, filha fiel a Cristo mesmo contra o pai pagao, rogai por nos!
-            5. Santa Barbara, que sofrestes torturas hediondas sem negar a fe, rogai por nos!
-            6. Santa Barbara, que fostes decapitada pelas proprias maos de vosso pai, rogai por nos!
-            7. Santa Barbara, martir gloriosamente coroada no Ceu, rogai por nos!
-            8. Santa Barbara, padroeira dos artilheiros e soldados, rogai por nos!
-            9. Santa Barbara, proteccao contra tempestades e raios, rogai por nos!
-            10. Santa Barbara, auxílio em hora de morte subita, rogai por nos!
-            11. Santa Barbara, intercessora dos mineiros e bombeiros, rogai por nos!
-            12. Santa Barbara, proteccao dos que trabalham com explosivos, rogai por nos!
-            13. Santa Barbara, socorro nos terremotos e calamidades, rogai por nos!
-            14. Santa Barbara, que nos protegeis das armadilhas do inimigo, rogai por nos!
-            15. Santa Barbara, padroeira da morte santa e assistida, rogai por nos!
-            16. Santa Barbara, exemplo de fidelidade crista em tribulacao, rogai por nos!
-            17. Santa Barbara, que veneramos com a torre de tres janelas, rogai por nos!
-            18. Santa Barbara, invocada nas tormentas da alma e do corpo, rogai por nos!
-            19. Santa Barbara, poderosa intercessora junto ao trono de Cristo, rogai por nos!
-            20. Santa Barbara, virgem gloriosa entre as mais, rogai por nos!
+            1. Santa Bárbara, virgem corajosa de Nicomédia, rogai por nós!
+            2. Santa Bárbara, que vos convertestes contemplando as obras de Deus, rogai por nós!
+            3. Santa Bárbara, que pedistes uma janela a mais na torre para honrar a Trindade, rogai por nós!
+            4. Santa Bárbara, filha fiel a Cristo mesmo contra o pai pagão, rogai por nós!
+            5. Santa Bárbara, que sofrestes torturas hediondas sem negar a fé, rogai por nós!
+            6. Santa Bárbara, que fostes decapitada pelas próprias mãos de vosso pai, rogai por nós!
+            7. Santa Bárbara, mártir gloriosamente coroada no Céu, rogai por nós!
+            8. Santa Bárbara, padroeira dos artilheiros e soldados, rogai por nós!
+            9. Santa Bárbara, proteção contra tempestades e raios, rogai por nós!
+            10. Santa Bárbara, auxílio em hora de morte súbita, rogai por nós!
+            11. Santa Bárbara, intercessora dos mineiros e bombeiros, rogai por nós!
+            12. Santa Bárbara, proteção dos que trabalham com explosivos, rogai por nós!
+            13. Santa Bárbara, socorro nos terremotos e calamidades, rogai por nós!
+            14. Santa Bárbara, que nos protegeis das armadilhas do inimigo, rogai por nós!
+            15. Santa Bárbara, padroeira da morte santa e assistida, rogai por nós!
+            16. Santa Bárbara, exemplo de fidelidade cristã em tribulação, rogai por nós!
+            17. Santa Bárbara, que veneramos com a torre de três janelas, rogai por nós!
+            18. Santa Bárbara, invocada nas tormentas da alma e do corpo, rogai por nós!
+            19. Santa Bárbara, poderosa intercessora junto ao trono de Cristo, rogai por nós!
+            20. Santa Bárbara, virgem gloriosa entre as mais, rogai por nós!
             
-            (Concluir em oracao: "Santa Barbara, sede nosso amparo nas tempestades.")""";
+            (Concluir em oração: "Santa Bárbara, sede nosso amparo nas tempestades.")""";
 
     private static final String ORACAO_FINAL = """
-            O Santa Barbara, voce que foi amada por Deus e odiada pelo mundo,
-            rogai por todos os que sofrem perseguicao por causa de sua fe.
-            Intercedei especialmente pelos que afrontam a morte subita,
-            para que nenhum cristao morra sem os sacramentos.
+            Ó Santa Bárbara, você que foi amada por Deus e odiada pelo mundo,
+            rogai por todos os que sofrem perseguição por causa de sua fé.
+            Intercedei especialmente pelos que afrontam a morte súbita,
+            para que nenhum cristão morra sem os sacramentos.
             Protegei-nos das tempestades do corpo e das tempestades da alma,
-            e conduzi-nos com seguranca ao porto da salvacao eterna. Amem.""";
+            e conduzi-nos com segurança ao porto da salvação eterna. Amém.""";
 
-    private static final String JACULATORIA = "Santa Barbara, virgem e martir, protegei-nos das tempestades!";
+    private static final String JACULATORIA = "Santa Bárbara, virgem e mártir, protegei-nos das tempestades!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 10, 26);
@@ -68,9 +68,9 @@ public class QuaresmaSantaBarbaraService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de Santa Barbara (26/10 - 04/12).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de Santa Bárbara (26/10 - 04/12).");
         } else {
-            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Santa Barbara");
+            result.put("mensagemDia", "Dia " + dia + " da Quaresma de Santa Bárbara");
         }
 
         result.put("diaQuaresma", dia);

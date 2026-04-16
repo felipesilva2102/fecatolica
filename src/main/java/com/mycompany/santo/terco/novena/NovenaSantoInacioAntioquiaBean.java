@@ -33,7 +33,7 @@ public class NovenaSantoInacioAntioquiaBean implements Serializable {
 
     private String oracaoFinal = "Graças Vos dou, Pai Eterno, por enviar ao mundo Vosso diletíssimo Filho, Jesus Cristo, que salvou a humanidade e inspirou muitos a O seguirem. Veneramos especialmente Vosso servo Santo Inácio de Antioquia e rogamos, com grande confiança em Vós, Senhor Deus, que nos conceda pela intercessão de Inácio a graça que pedimos (pede-se agora a graça desejada). Com grande confiança na valorosa súplica de Santo Inácio de Antioquia, dignai-Vos atender-nos conforme Vossa perfeita vontade.\n"
             + "\n"
-            + "Rogai por nos, Santo Inácio de Antioquia, para que sejamos dignos das promessas de Cristo.";
+            + "Rogai por nós, Santo Inácio de Antioquia, para que sejamos dignos das promessas de Cristo.";
 
     private String primeiroDia = "Por esse motivo, eu te exorto a reavivar a chama do dom de Deus que recebeste pela imposição das minhas mãos. Pois Deus não nos deu um espírito de timidez, mas de fortaleza, de amor e de sabedoria. (II Tm 1,6-7)\n"
             + "\n"

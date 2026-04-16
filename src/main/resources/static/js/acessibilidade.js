@@ -289,7 +289,7 @@
         var container = document.createElement('div');
         container.className = 'vela-container';
         container.title = 'Vela Virtual - clique para acender/apagar';
-        container.setAttribute('aria-label', 'Vela virtual de oracao');
+        container.setAttribute('aria-label', 'Vela virtual de oração');
         container.onclick = toggleVela;
 
         container.innerHTML =

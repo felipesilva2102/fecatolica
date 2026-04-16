@@ -11,58 +11,58 @@ import java.util.Map;
 public class QuaresmaNossaSenhoraDoresService {
 
     private static final String ORACAO_PREPARATORIA = """
-            O Maria Dolorosa, Mae das Dores e Maede misericordia!
+            O Maria Dolorosa, Mãe das Dores e Mãe de misericórdia!
             Vos que permanecestes ao pe da Cruz de vossso Filho e unistes vossas dores
-            ao sacrificio redentor de Jesus por amor a nos,
+            ao sacrificio redentor de Jesus por amor a nós,
             intercedeis nesta Quaresma pelas minhas dores e necessidades: (fazer o pedido).
             Por cada das sete espadas que traspassaram vossa alma,
-            obtende-me a graca de oferecer meu sofrimento unido ao de vosso Filho. Amem.""";
+            obtende-me a graça de oferecer meu sofrimento unido ao de vosso Filho. Amém.""";
 
     private static final String SUPLICAS = """
-            1. Maria Dolorosa, pela 1a Dor: a profecia de Simeao, rogai por nos!
-            2. Maria Dolorosa, pela 2a Dor: a fuga para o Egito, rogai por nos!
-            3. Maria Dolorosa, pela 3a Dor: Jesus perdido por tres dias, rogai por nos!
-            4. Maria Dolorosa, pela 4a Dor: Maria encontra Jesus na Via Sacra, rogai por nos!
-            5. Maria Dolorosa, pela 5a Dor: Maria ao pe da Cruz por tres horas, rogai por nos!
-            6. Maria Dolorosa, pela 6a Dor: Maria recebe o corpo de Jesus descido da Cruz, rogai por nos!
-            7. Maria Dolorosa, pela 7a Dor: a sepultura de Jesus, rogai por nos!
-            8. Mae das Dores, que sofrestes o que nenhuma mae ja sofreu, rogai por nos!
-            9. Mae das Dores, que oferecestes vossas lagrimas pela nossa salvacao, rogai por nos!
-            10. Mae das Dores, que suportastes o silencio do Sabado Santo, rogai por nos!
-            11. Mae das Dores, esperanca na ressurreicao quando tudo parecia morto, rogai por nos!
-            12. Mae das Dores, que conhecestes o limite da dor humana, rogai por nos!
-            13. Mae das Dores, conforto dos que sofrem injustamente, rogai por nos!
-            14. Mae das Dores, auxilio dos que acompanham filhos doentes, rogai por nos!
-            15. Mae das Dores, suporte das familias que perderam um ente querido, rogai por nos!
-            16. Mae das Dores, esperanca dos que choram sem consol, rogai por nos!
-            17. Mae das Dores, amparo dos que sofrem depressao e abandono, rogai por nos!
-            18. Mae das Dores, estrela nos momentos de escuridao, rogai por nos!
-            19. Mae das Dores, que soubeste encontrar sentido no sofrimento, rogai por nos!
-            20. Mae das Dores, modelo de fortaleza e fe na tribulacao, rogai por nos!
-            21. Mae das Dores, que jamais perdestes a confianca em Deus, rogai por nos!
-            22. Mae das Dores, que intercedeis pelos moribundos e agonizantes, rogai por nos!
-            23. Mae das Dores, protecao especial na hora da morte, rogai por nos!
-            24. Mae das Dores, que recebeis os mortos no Ceu com amor maternal, rogai por nos!
-            25. Mae das Dores, consolo dos que trabalham com doentes terminais, rogai por nos!
-            26. Mae das Dores, que ajudais a transformar dor em oferta de love, rogai por nos!
-            27. Mae das Dores, cuja dor foi maior que qualquer dor humana, rogai por nos!
-            28. Mae das Dores, unida a nos em cada sofrimento, rogai por nos!
-            29. Mae das Dores, que apresentas nossas lagrimas ao Pai Eterno, rogai por nos!
-            30. Mae das Dores, nossa mae e intercessora nas horas de prova, rogai por nos!
+            1. Maria Dolorosa, pela 1a Dor: a profecia de Simeão, rogai por nós!
+            2. Maria Dolorosa, pela 2a Dor: a fuga para o Egito, rogai por nós!
+            3. Maria Dolorosa, pela 3a Dor: Jesus perdido por três dias, rogai por nós!
+            4. Maria Dolorosa, pela 4a Dor: Maria encontra Jesus na Via Sacra, rogai por nós!
+            5. Maria Dolorosa, pela 5a Dor: Maria ao pe da Cruz por três horas, rogai por nós!
+            6. Maria Dolorosa, pela 6a Dor: Maria recebe o corpo de Jesus descido da Cruz, rogai por nós!
+            7. Maria Dolorosa, pela 7a Dor: a sepultura de Jesus, rogai por nós!
+            8. Mãe das Dores, que sofrestes o que nenhuma mãe ja sofreu, rogai por nós!
+            9. Mãe das Dores, que oferecestes vossas lágrimas pela nossa salvação, rogai por nós!
+            10. Mãe das Dores, que suportastes o silêncio do Sabado Santo, rogai por nós!
+            11. Mãe das Dores, esperança na ressurreição quando tudo parecia morto, rogai por nós!
+            12. Mãe das Dores, que conhecestes o limite da dor humana, rogai por nós!
+            13. Mãe das Dores, conforto dos que sofrem injustamente, rogai por nós!
+            14. Mãe das Dores, auxílio dos que acompanham filhos doentes, rogai por nós!
+            15. Mãe das Dores, suporte das famílias que perderam um ente querido, rogai por nós!
+            16. Mãe das Dores, esperança dos que choram sem consol, rogai por nós!
+            17. Mãe das Dores, amparo dos que sofrem depressao e abandono, rogai por nós!
+            18. Mãe das Dores, estrela nos momentos de escuridão, rogai por nós!
+            19. Mãe das Dores, que soubeste encontrar sentido no sofrimento, rogai por nós!
+            20. Mãe das Dores, modelo de fortaleza e fé na tribulação, rogai por nós!
+            21. Mãe das Dores, que jamais perdestes a confiança em Deus, rogai por nós!
+            22. Mãe das Dores, que intercedeis pelos moribundos e agonizantes, rogai por nós!
+            23. Mãe das Dores, proteção especial na hora da morte, rogai por nós!
+            24. Mãe das Dores, que recebeis os mortos no Céu com amor maternal, rogai por nós!
+            25. Mãe das Dores, consolo dos que trabalham com doentes terminais, rogai por nós!
+            26. Mãe das Dores, que ajudais a transformar dor em oferta de amor, rogai por nós!
+            27. Mãe das Dores, cuja dor foi maior que qualquer dor humana, rogai por nós!
+            28. Mãe das Dores, unida a nós em cada sofrimento, rogai por nós!
+            29. Mãe das Dores, que apresentas nossas lágrimas ao Pai Eterno, rogai por nós!
+            30. Mãe das Dores, nossa mãe e intercessora nas horas de prova, rogai por nós!
             
-            (Rezar tres vezes:)
-            Mae das Dores, pela espada que traspassou vossa alma, salvai-nos!""";
+            (Rezar três vezes:)
+            Mãe das Dores, pela espada que traspassou vossa alma, salvai-nos!""";
 
     private static final String ORACAO_FINAL = """
-            O Maria, Mae das Dores e da misericordia,
+            O Maria, Mãe das Dores e da misericórdia,
             que na escola da Cruz aprendestes o amor mais perfeito,
             ensinai-nos a unir nossas dores ao sofrimento redentor de vosso Filho,
             para que nenhuma lagrima nossa seja perdida,
-            mas toda transformada em graca para nos e para os outros.
+            mas toda transformada em graça para nós e para os outros.
             Sede-nos presentes especialmente na hora da nossa morte,
-            e recebei-nos nos vossos bracos maternais. Amem.""";
+            e recebei-nos nos vossos braços maternais. Amém.""";
 
-    private static final String JACULATORIA = "Mae das Dores, pelas sete espadas de vossa dor, salvai-nos!";
+    private static final String JACULATORIA = "Mãe das Dores, pelas sete espadas de vossa dor, salvai-nos!";
 
     public Map<String, Object> getDadosQuaresma(LocalDate data) {
         LocalDate dataInicio = LocalDate.of(data.getYear(), 8, 7);
@@ -75,7 +75,7 @@ public class QuaresmaNossaSenhoraDoresService {
         result.put("diaSelecionadoRenderizar", dentro);
 
         if (!dentro) {
-            result.put("mensagemDia", "A data selecionada nao esta dentro da Quaresma de N. Sra. das Dores (07/08 - 15/09).");
+            result.put("mensagemDia", "A data selecionada não está dentro da Quaresma de N. Sra. das Dores (07/08 - 15/09).");
         } else {
             result.put("mensagemDia", "Dia " + dia + " da Quaresma de Nossa Senhora das Dores");
         }
