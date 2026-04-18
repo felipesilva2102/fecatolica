@@ -147,7 +147,11 @@ window.FeBeads = {
             el.style.width = size + 'px';
             el.style.height = size + 'px';
             el.style.lineHeight = size + 'px';
-            el.onclick = function () {
+            el.onclick = function (e) {
+                if (e) { 
+                    e.stopPropagation(); 
+                    e.preventDefault();
+                }
                 if (!el.classList.contains('clicked')) {
                     el.classList.add('clicked');
                     el.style.backgroundColor = color;
@@ -158,6 +162,7 @@ window.FeBeads = {
                     updateProgress();
                     if (window.FeTerco && window.FeTerco.vibrar) window.FeTerco.vibrar(30);
                 }
+                return false;
             };
             return el;
         }

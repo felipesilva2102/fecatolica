@@ -22,6 +22,7 @@
                 <h1>📿 Santo Terço</h1>
                 <p class="lead">Reze o terço diário com meditações e contas interativas.</p>
                 <p id="todayMystery" class="muted" style="margin-top:6px;font-weight:600;"></p>
+                <p class="muted" style="margin-top:8px;font-size:0.95rem;" id="horaLocal"></p>
             </header>
         </div>
 
@@ -149,6 +150,22 @@
 
     <script src="/js/app.js"></script>
     <script>
+    // Atualizar hora local em tempo real
+    function atualizarHoraLocalTerco() {
+        var agora = new Date();
+        var horas = String(agora.getHours()).padStart(2, '0');
+        var minutos = String(agora.getMinutes()).padStart(2, '0');
+        var segundos = String(agora.getSeconds()).padStart(2, '0');
+        var timezone = agora.toLocaleDateString('pt-BR', {timeZoneName:'short'}).split(' ').pop();
+        var horaFormatada = horas + ':' + minutos + ':' + segundos;
+        var el = document.getElementById('horaLocal');
+        if (el) {
+            el.textContent = '🕐 Hora local: ' + horaFormatada + ' (' + timezone + ')';
+        }
+    }
+    atualizarHoraLocalTerco();
+    setInterval(atualizarHoraLocalTerco, 1000);
+    
     var Terco = (function () {
         /* Mistérios na ordem correta — padronizados com o Santo Rosário */
         var mysteries = [
@@ -220,7 +237,8 @@
             el.style.width = size + 'px';
             el.style.height = size + 'px';
             el.style.lineHeight = size + 'px';
-            el.onclick = function() {
+            el.onclick = function(e) {
+                if (e) e.stopPropagation();
                 if (!el.classList.contains('clicked')) {
                     el.classList.add('clicked');
                     el.style.backgroundColor = activeColor;

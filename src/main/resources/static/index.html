@@ -23,6 +23,7 @@
                 <h1>✝️ FeCatolica</h1>
                 <p class="lead">Fé, Oração e Devoção — Seu portal católico para crescer na vida espiritual.</p>
                 <p class="muted" style="margin-top:8px;" id="greeting"></p>
+                <p class="muted" style="margin-top:8px;font-size:0.95rem;" id="horaLocal"></p>
             </header>
         </div>
 
@@ -842,15 +843,15 @@
                     <span class="stat-label">Novenas</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">10</span>
+                    <span class="stat-number">27</span>
                     <span class="stat-label">Quaresmas</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">18</span>
+                    <span class="stat-number">41</span>
                     <span class="stat-label">Terços e Rosários</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">10</span>
+                    <span class="stat-number">18</span>
                     <span class="stat-label">Ladainhas</span>
                 </div>
                 <div class="stat-card">
@@ -859,9 +860,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Streak display -->
-        <div id="streak-display" style="text-align:center;margin:12px 0;"></div>
 
         <!-- Partilha -->
         <div style="text-align:center;margin:12px 0;">
@@ -882,6 +880,19 @@
         var weekday = new Date().toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
         weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
         $('#greeting').html(greeting + '! Hoje é <strong>' + weekday + '</strong>.');
+
+        // Atualizar hora local em tempo real
+        function atualizarHoraLocal() {
+            var agora = new Date();
+            var horas = String(agora.getHours()).padStart(2, '0');
+            var minutos = String(agora.getMinutes()).padStart(2, '0');
+            var segundos = String(agora.getSeconds()).padStart(2, '0');
+            var timezone = agora.toLocaleDateString('pt-BR', {timeZoneName:'short'}).split(' ').pop();
+            var horaFormatada = horas + ':' + minutos + ':' + segundos;
+            $('#horaLocal').text('🕐 Hora local: ' + horaFormatada + ' (' + timezone + ')');
+        }
+        atualizarHoraLocal();
+        setInterval(atualizarHoraLocal, 1000);
 
         // Banner litúrgico
         $.getJSON('/api/liturgia', function(data) {
