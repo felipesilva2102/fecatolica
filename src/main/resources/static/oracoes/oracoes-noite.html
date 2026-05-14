@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Orações da Noite — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🌃 Orações da Noite</h1>
+                <p class="lead">Agradeça a Deus pelas graças do dia, peça perdão pelas faltas e rogue por um sono abençoado e protegido.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Agradecimento do Dia</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Meu Deus, agradeço-Vos todos os benefícios que hoje me concedestes. Peço-Vos perdão, de todo o coração, das faltas que cometi contra Vós e contra o próximo.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Breve Exame de Consciência</div>
+                    <div class="accordion-content">
+                        <p><em>(Faça um minuto de silêncio para repassar o dia em sua mente. Como me comportei com a família? Fiz meu trabalho/estudo com honestidade? Negligenciei a oração?)</em></p>
+                        <p>Senhor Jesus Cristo, Filho de Deus, tende piedade de mim, um pecador. Meu Deus, arrependo-me de todo o coração de Vos ter ofendido, porque sois tão bom e amável. Prometo firmemente, com o auxílio da Vossa a graça, não voltar a pecar e fugir das ocasiões de pecado. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Oração Antes de Dormir</div>
+                    <div class="accordion-content">
+                        <p>Senhor, Vossa infinita bondade me concedeu chegar ao fim deste dia. Antes de fechar os olhos ao sono, venho depositar no Vosso Coração compassivo todas as canseiras e dificuldades desse dia, e as preocupações de amanhã.<br>
+                        Dai-me, Senhor, um descanso reparador e guardai-me na Vossa paz. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Salve Rainha</div>
+                    <div class="accordion-content">
+                        <p>Salve, Rainha, Mãe de Misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva. A vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei. E depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce e sempre Virgem Maria.</p>
+                        <p>V. Rogai por nós, Santa Mãe de Deus.<br>R. Para que sejamos dignos das promessas de Cristo. Amém.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Visita à Nossa Senhora ao repouso</div>
+                    <div class="accordion-content">
+                        <p>Bendigamos ao Senhor, dêmos graças a Deus. A Virgem Santa Maria, Mãe de Deus, rogue por nós. O Senhor nos abençoe e nos livre de todo mal e nos conduza à vida eterna. Amém. E que a alma dos fiéis defuntos descansem em paz. Amém.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Faça o seu Exame de Consciência diário e suas Orações da Noite com o guia do FeCatolica. Boa noite de descanso e paz!">
+                📤 Partilhar Orações
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

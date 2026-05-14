@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Os Santos Anjos — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✨ Os Santos Anjos</h1>
+                <p class="lead">Conheça a doutrina católica sobre as criaturas espirituais: os nove coros angélicos, suas funções, e os Santos Arcanjos.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top:0;">Quem são os anjos?</h2>
+            <p>Conforme ensina o Catecismo (CIC 328), os anjos são criaturas puramente espirituais, incorpóreas, invisíveis e imortais, dotadas de inteligência e de vontade. Eles contemplam incessantemente a face de Deus e são Seus mensageiros e servos na obra da salvação.</p>
+
+            <h2 style="margin-top:20px;">Hierarquia Celeste (Os Nove Coros)</h2>
+            <p>A tradição da Igreja, inspirada sobretudo por Pseudo-Dionísio, o Areopagita (séc. V), baseada em São Paulo e no Antigo Testamento, organiza os anjos em nove coros ou categorias, distribuídas em três hierarquias:</p>
+
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">1ª Hierarquia (Contemplam a Deus)</div>
+                    <div class="accordion-content" style="display:block;">
+                        <ul>
+                            <li><strong>Serafins:</strong> O coro mais alto. Seus nomes significam "os que ardem" de caridade, pois estão os mais próximos ao trono divino.</li>
+                            <li><strong>Querubins:</strong> Caracterizados pela plenitude de conhecimento e sabedoria de Deus.</li>
+                            <li><strong>Tronos:</strong> Sustentam o trono de Deus, recebem diretamente d'Ele o conhecimento das coisas e manifestam a justiça divina.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">2ª Hierarquia (Governam o Universo)</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Dominações:</strong> Regulam as tarefas dos anjos inferiores e infundem na criação a lei providencial.</li>
+                            <li><strong>Virtudes:</strong> Têm o poder para operar os milagres criados por Deus, dando força e coragem para combater as dificuldades.</li>
+                            <li><strong>Potestades:</strong> Afastam os espíritos maus e protegem a ordem do universo cósmico.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">3ª Hierarquia (Mensageiros aos Homens)</div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Principados:</strong> Encarregados de zelar por países, reinos, nações, dioceses e paróquias.</li>
+                            <li><strong>Arcanjos:</strong> São líderes das missões mais importantes e graves aos homens (São Miguel, São Gabriel e São Rafael).</li>
+                            <li><strong>Anjos:</strong> Encarregados da proteção diária de cada pessoa humana (Anjo da Guarda).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Conheça a fascinante milícia celeste e os nove coros de anjos. Leia agora no FeCatolica.">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

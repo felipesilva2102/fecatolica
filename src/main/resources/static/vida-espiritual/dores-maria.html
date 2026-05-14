@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>As 7 Dores de Maria — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>💙 As 7 Dores de Maria</h1>
+                <p class="lead">Meditações sobre as dores que Nossa Senhora sofreu unida ao seu Filho.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top:0;">Mãe Dolorosa</h2>
+            <p>A Virgem Maria participou intimamente da Paixão de Cristo. Contemplar suas dores ensina a perseverar na fé e a confiar plenamente na providência de Deus.</p>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">1. Profecia de Simeão</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>"Uma espada transpassará a tua alma". Maria oferece o Filho e se prepara para a dor redentora.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">2. Fuga para o Egito</div>
+                    <div class="accordion-content">
+                        <p>Perseguida por Herodes, a Sagrada Família deixa sua terra e enfrenta o exílio.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">3. Perda do Menino Jesus</div>
+                    <div class="accordion-content">
+                        <p>Maria e José buscam o Menino no templo por três dias cheios de angústia.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">4. Encontro no caminho do Calvário</div>
+                    <div class="accordion-content">
+                        <p>A Mãe vê o Filho carregando a cruz e participa do seu sofrimento com amor silencioso.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">5. Jesus morre na cruz</div>
+                    <div class="accordion-content">
+                        <p>Maria permanece de pé junto à cruz e recebe a missão de ser Mãe da Igreja.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">6. Jesus é descido da cruz</div>
+                    <div class="accordion-content">
+                        <p>O corpo de Cristo repousa nos braços da Mãe, que contempla a obra da redenção.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">7. Sepultamento de Jesus</div>
+                    <div class="accordion-content">
+                        <p>Maria entrega o Filho ao sepulcro, aguardando com fé a promessa da ressurreição.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Medite as 7 Dores de Maria no FeCatolica.">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $(this).closest('.accordion-panel').find('.accordion-header').removeClass('active');
+                    $(this).closest('.accordion-panel').find('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

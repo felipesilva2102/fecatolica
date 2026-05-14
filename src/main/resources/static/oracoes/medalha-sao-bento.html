@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>A Cruz e a Medalha de São Bento — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>✝️ Medalha de São Bento</h1>
+                <p class="lead">Conheça o significado das letras da Medalha e a poderosa oração de exorcismo de São Bento.</p>
+                <p class="muted"><em>"A Cruz Sagrada seja a minha luz, não seja o dragão o meu guia."</em></p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2 style="text-align:center;margin-top:0;">🛡️ A Oração da Medalha</h2>
+            <p>A oração da Medalha de São Bento é, na verdade, um pequeno exorcismo, onde pedimos a intercessão deste grande Patriarca dos monges no Ocidente para nos proteger das ciladas malignas.</p>
+            
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Oração Tradicional</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>A Cruz Sagrada seja a minha luz,<br>
+                        Não seja o dragão o meu guia.<br>
+                        Retira-te, satanás!<br>
+                        Nunca me aconselhes coisas vãs.<br>
+                        É mau o que tu me ofereces,<br>
+                        Bebe tu mesmo os teus venenos!</p>
+                        <p><strong>Em latim:</strong><br>
+                        Crux Sacra Sit Mihi Lux,<br>
+                        Non Draco Sit Mihi Dux.<br>
+                        Vade Retro Satana!<br>
+                        Nunquam Suade Mihi Vana.<br>
+                        Sunt Mala Quae Libas,<br>
+                        Ipse Venena Bibas.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Significado das Letras</div>
+                    <div class="accordion-content">
+                        <p>Na frente e no verso da Medalha de São Bento, há iniciais em latim que correspondem à oração. Vejamos o que significam:</p>
+                        <ul>
+                            <li><strong>C S P B</strong> - Crux Sancti Patris Benedicti (Cruz do Santo Pai Bento)</li>
+                            <li><strong>C S S M L</strong> - Crux Sacra Sit Mihi Lux (A Cruz Sagrada seja a minha luz)</li>
+                            <li><strong>N D S M D</strong> - Non Draco Sit Mihi Dux (Não seja o dragão o meu guia)</li>
+                            <li><strong>V R S</strong> - Vade Retro Satana (Retira-te, satanás)</li>
+                            <li><strong>N S M V</strong> - Nunquam Suade Mihi Vana (Nunca me aconselhes coisas vãs)</li>
+                            <li><strong>S M Q L</strong> - Sunt Mala Quae Libas (É mau o que tu me ofereces)</li>
+                            <li><strong>I V B</strong> - Ipse Venena Bibas (Bebe tu mesmo os teus venenos)</li>
+                            <li>No alto da cruz, costuma estar a palavra <strong>PAX</strong>, que significa "Paz" (o lema da Ordem Beneditina).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Conheça o significado da Medalha de São Bento e sua poderosa oração no FeCatolica!">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

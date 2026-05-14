@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>História de Nossa Senhora Aparecida — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .historia-imagem {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🇧🇷 Nossa Senhora Aparecida</h1>
+                <p class="lead">Conheça a comovente história da Padroeira do Brasil, o encontro nas águas e os seus milagres.</p>
+                <p class="muted"><em>"Viva a Mãe de Deus e nossa, sem pecado concebida! Viva a Virgem Imaculada, a Senhora Aparecida!"</em></p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2>O Encontro da Imagem</h2>
+            <p>No ano de 1717, o conde de Assumar, então governador da capitania de São Paulo e Minas de Ouro, estava de passagem pelo Vale do Paraíba. A Câmara da Vila de Santo Antônio de Guaratinguetá ordenou que os pescadores trouxessem uma abundância de peixes para o banquete do conde.</p>
+            
+            <p>Domingos Garcia, Filipe Pedroso e João Alves saíram de barco rumo ao rio Paraíba do Sul. Após numerosas tentativas fracassadas, sem pescar nada, já estavam quase desistindo. João Alves lançou mais uma vez sua rede nas águas e, ao puxar, não encontrou um peixe, mas o <strong>corpo de uma imagem de Nossa Senhora da Conceição</strong>, feita de terracota e escurecida pelas águas do rio.</p>
+            
+            <p>Impressionado, ele lançou a rede mais uma vez, um pouco mais abaixo, e pescou a <strong>cabeça que se encaixava perfeitamente ao corpo</strong> da imagem.</p>
+            
+            <p>Após esse evento, os três pescadores lançaram novamente as redes e, milagrosamente, <strong>o barco se encheu com tantos peixes</strong> que corriam o risco de afundar. Esse foi o primeiro milagre de Nossa Senhora Aparecida, a "Aparecida das águas".</p>
+        </div>
+
+        <div class="card">
+            <h2>Os Primeiros Milagres</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Milagre das Velas (O Primeiro)</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Foi o primeiro milagre atestado entre os devotos, ainda na casa da família do pescador Filipe Pedroso. Aconteceu durante a oração do terço num dia de muito vento. Duas velas que iluminavam a pequena capela onde a imagem havia sido colocada apagaram-se sozinhas. Quando Sílvana da Rocha tentou acendê-las, elas se acenderam miraculosamente por conta própria. A partir daí, a devoção só cresceu na região.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Milagre do Escravo Zacarias</div>
+                    <div class="accordion-content">
+                        <p>Zacarias, um escravo fugitivo, estava sendo conduzido de volta para a fazenda de seu feitor. Ao passar pelo santuário primitivo de Aparecida, o escravo implorou ao feitor para que pudesse rezar. Ao ajoelhar-se perante a imagem de Nossa Senhora, <strong>as pesadas correntes que o prendiam romperam-se e caíram ao chão</strong>. O feitor, atônito, vendo que se tratava de uma intervenção divina, alforriou o escravo no mesmo instante.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">A Menina Cega</div>
+                    <div class="accordion-content">
+                        <p>Havia uma mãe e uma filha cega de nascença na cidade de Jaboticabal (SP). Ouvindo falar de Aparecida, planejaram a peregrinação e começaram a viagem. Ao avistarem as torres do santuário ao longe, a menina disse maravilhada: <strong>"Mãe, como é linda esta igreja!"</strong>. Ali, aos pés do santuário, ela abriu os olhos pela primeira vez na vida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Significado e Devoção</h2>
+            <p>A imagem de Nossa Senhora Aparecida é a própria Nossa Senhora da Conceição (a Imaculada), padroeira do Império Português naquela época. O fato de ter sido encontrada quebrada simboliza o Brasil dividido da época, assim como nós cristãos somos chamados a estar unidos em Cristo (a união da cabeça). A coloração negra da imagem nos lembra as pessoas marginalizadas e os escravos.</p>
+            <p>O Papa Pio XI conferiu o título a ela de <strong>Padroeira e Rainha do Brasil em 1930</strong>.</p>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Leia sobre a linda história e os milagres de Nossa Senhora Aparecida no FeCatolica!">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

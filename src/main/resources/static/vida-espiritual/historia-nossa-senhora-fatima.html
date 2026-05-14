@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>História de Nossa Senhora de Fátima — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🇵🇹 Nossa Senhora de Fátima</h1>
+                <p class="lead">O apelo à oração e penitência, as aparições aos três pastorinhos e o Milagre do Sol.</p>
+                <p class="muted"><em>"Rezem o terço todos os dias, para alcançarem a paz para o mundo e o fim da guerra."</em></p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2>As Aparições na Cova da Iria</h2>
+            <p>Em 1917, na localidade de Fátima, Portugal, Nossa Senhora apareceu a três crianças pastoras: <strong>Lúcia dos Santos</strong> (10 anos) e seus primos <strong>Francisco Marto</strong> (9 anos) e <strong>Jacinta Marto</strong> (7 anos).</p>
+            
+            <p>A primeira aparição ocorreu no dia <strong>13 de maio</strong>. As crianças brincavam quando viram um clarão como relâmpago, seguido de uma "Senhora mais brilhante que o sol" sobre uma azinheira. Ela pediu que retornassem àquele mesmo local todo dia 13 por seis meses seguidos.</p>
+        </div>
+
+        <div class="card">
+            <h2>Os Grandes Sinais</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">O Apelo Principal</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Nossa Senhora pediu, em todas as aparições, a <strong>recitação do Rosário todos os dias</strong>. Em 13 de julho de 1917, a Virgem também recomendou a oração ejaculatória para ser dita após cada dezena: <em>"Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o Céu e socorrei principalmente as que mais precisarem da Vossa Misericórdia"</em>.</p>
+                        <p>Além disso, fez apelos contundentes à penitência e à necessidade de conversão, dizendo que muitas almas iam para o inferno porque não havia quem se sacrificasse e rezasse por elas.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Segredo de Fátima</div>
+                    <div class="accordion-content">
+                        <p>O Segredo revelado às crianças dividia-se em três partes:</p>
+                        <ul>
+                            <li><strong>A visão do Inferno:</strong> Foi mostrada às crianças a terrível realidade do inferno para despertar um desejo ardente de salvar as almas.</li>
+                            <li><strong>A devoção ao Imaculado Coração:</strong> O pedido para a consagração da Rússia ao Seu Imaculado Coração e a Comunhão Reparadora dos Primeiros Sábados, que traria a paz ao mundo e impediria uma guerra ainda pior.</li>
+                            <li><strong>O Terceiro Segredo:</strong> Revelado publicamente no ano 2000 pelo Papa João Paulo II, descrevia uma visão profética de perseguições à Igreja, santos mártires caindo diante de balas e flechas, e um "Bispo vestido de branco" (simbolizando o Papa), que também sofria, referindo-se diretamente aos ataques e ao sofrimento da Igreja no século XX (culminando no atentado sofrido por João Paulo II em 13 de maio de 1981).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Milagre do Sol</div>
+                    <div class="accordion-content">
+                        <p>No dia <strong>13 de outubro de 1917</strong>, data da última aparição, entre 50 e 70 mil pessoas de todas as classes sociais reuniram-se na Cova da Iria, a maioria debaixo de chuva torrencial. Após a aparição, a chuva parou, as nuvens se abriram e o sol apareceu como um disco opaco que podia ser olhado sem ferir a vista.</p>
+                        <p>O sol, então, começou a girar vertiginosamente sobre si mesmo, projetando raios de luz de variadas cores, "dançando" e fazendo movimentos bruscos de zigue-zague. Em determinado momento, o sol pareceu precipitar-se sobre a multidão, que, assustada, pediu perdão por seus pecados. Ao fim do fenômeno, as roupas das dezenas de milhares de pessoas, antes encharcadas, encontravam-se completamente secas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Leia sobre as Aparições de Nossa Senhora de Fátima, o Milagre do Sol e os três pastorinhos no FeCatolica!">
+                📤 Partilhar História
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

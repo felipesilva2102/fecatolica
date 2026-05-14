@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Biblioteca Católica — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📚 Biblioteca Católica</h1>
+                <p class="lead">Recomendações de clássicos da espiritualidade, teologia e apologética para nutrir sua fé e intelecto.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top:0;">📖 Clássicos da Espiritualidade</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">Imitação de Cristo (Tomás de Kempis)</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>O livro mais lido do cristianismo depois da Bíblia. Traz conselhos profundos e práticos sobre humildade, desapego das coisas mundanas e comunhão íntima com Jesus.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">História de uma Alma (Santa Teresinha)</div>
+                    <div class="accordion-content">
+                        <p>A autobiografia de Santa Teresinha do Menino Jesus, onde ela expõe a sua "Pequena Via" de santidade baseada na confiança absoluta e no amor a Deus nas pequenas coisas.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Confissões (Santo Agostinho)</div>
+                    <div class="accordion-content">
+                        <p>Uma imersão na alma de um dos maiores gênios da Igreja. Agostinho narra sua conversão, seus erros passados e sua exaltação à infinita misericórdia de Deus.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Tratado da Verdadeira Devoção à Santíssima Virgem (São Luís de Montfort)</div>
+                    <div class="accordion-content">
+                        <p>O guia definitivo para a consagração total a Jesus por intermédio de Maria. Uma leitura essencial para quem deseja aprofundar sua vida mariana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+            <h2 style="margin-top:0;">🛡️ Apologética e Teologia</h2>
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header">Ortodoxia (G.K. Chesterton)</div>
+                    <div class="accordion-content">
+                        <p>Um relato brilhante e bem-humorado de como o autor descobriu que a doutrina cristã traz as respostas perfeitas para as grandes questões da condição humana.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Introdução ao Cristianismo (Joseph Ratzinger / Bento XVI)</div>
+                    <div class="accordion-content">
+                        <p>Uma fascinante explicação do Credo Apostólico para o homem moderno, redigida por um dos maiores mentes teológicas do nosso tempo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Procurando bons livros católicos? Confira as recomendações da Biblioteca do FeCatolica!">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Preceitos da Igreja — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>📜 Os 5 Preceitos da Igreja</h1>
+                <p class="lead">O mínimo indispensável garantido pela autoridade da Igreja para o crescimento no amor de Deus e do próximo.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top:0;">O que são os Preceitos?</h2>
+            <p>O Catecismo (CIC 2041) ensina que os preceitos se situam na linha de uma vida moral ligada à vida litúrgica e que dela se alimenta. Eles garantem o mínimo indispensável no espírito de oração, no esforço moral e no crescimento da fé.</p>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">1º Preceito</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p><strong>"Participar na missa, aos domingos e festas de guarda, e abster-se de trabalhos e atividades"</strong><br>
+                        Garante o dia do Senhor e a nossa união constante e assídua à Eucaristia nos dias determinados em memória da Ressurreição de Jesus.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">2º Preceito</div>
+                    <div class="accordion-content">
+                        <p><strong>"Confessar-se ao menos uma vez cada ano"</strong><br>
+                        Assegura a preparação para a comunhão e assegura o sacramento da Reconciliação retomando a condição de vida na Graça e libertando do pecado.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">3º Preceito</div>
+                    <div class="accordion-content">
+                        <p><strong>"Comungar ao menos pela Páscoa da Ressurreição"</strong><br>
+                        Garante a recepção do Corpo e Sangue do Senhor em comunhão com o mistério Pascal, origem e centro da Liturgia e nossa salvação.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">4º Preceito</div>
+                    <div class="accordion-content">
+                        <p><strong>"Guardar a abstinência e jejuar nos dias fixados pela Igreja"</strong><br>
+                        Dias fixos de mortificação (Quarta-feira de Cinzas e Sexta-feira Santa para o jejum, e sextas-feiras do ano sem festas solenes para penitência). Eles preparam a alma nas festas da Liturgia e ajudam no domínio do instinto.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">5º Preceito</div>
+                    <div class="accordion-content">
+                        <p><strong>"Prover às necessidades da Igreja, segundo as próprias posses"</strong><br>
+                        Fazer com que os cristãos sintam a responsabilidade de prover através de donativos (como dízimo e ofertas) o sustento material da comunidade terrena para manter o culto, sacerdotes e a pobreza.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Veja os 5 Preceitos Mínimos da Igreja Católica. Acesse no FeCatolica.">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

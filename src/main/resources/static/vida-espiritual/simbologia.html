@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Simbologia Católica — FeCatolica</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/acessibilidade.css"/>
+    <link rel="stylesheet" href="/css/print.css" media="print"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1a4f89"/>
+    <link rel="icon" href="/imagens/favicon.svg" type="image/svg+xml"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="menu-placeholder"></div>
+
+        <div class="card hero-card">
+            <header style="text-align:center;">
+                <h1>🎨 Simbologia Católica</h1>
+                <p class="lead">Desde as catacumbas dos primeiros cristãos, a Igreja utilizou símbolos para catequizar e afirmar verdades de fé. Entenda a iconografia sagrada.</p>
+            </header>
+        </div>
+
+        <div class="card">
+            <div class="accordion-panel">
+                <div class="accordion-tab">
+                    <div class="accordion-header active">O Peixe (Ichthys - ΙΧΘΥΣ)</div>
+                    <div class="accordion-content" style="display:block;">
+                        <p>Foi um dos primeiros símbolos cristãos, usado em segredo durante as perseguições romanas. A palavra grega para peixe é ICHTHYS, que era um acróstico perfeito para "<strong>I</strong>esous <strong>Ch</strong>ristos <strong>Th</strong>eou <strong>Y</strong>ios <strong>S</strong>oter" (Jesus Cristo, Filho de Deus, Salvador).</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Chi-Rho (XP)</div>
+                    <div class="accordion-content">
+                        <p>O monograma de Cristo. É formado pela sobreposição das duas primeiras letras do alfabeto grego usadas na palavra "Cristo" (ΧΡΙΣΤΟΣ): o Chi (X) e o Rho (P). Popularizou-se após o imperador Constantino o adotar em seus estandartes bélicos antes de se converter.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">Alfa e Ômega (Α / Ω)</div>
+                    <div class="accordion-content">
+                        <p>Tratam-se da primeira e da última letra do alfabeto grego. No livro do Apocalipse, Cristo afirma: <em>"Eu sou o Alfa e o Ômega, o Princípio e o Fim"</em> (Ap 21,6), simbolizando a eternidade de Deus Pai e Deus Filho.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Pelicano</div>
+                    <div class="accordion-content">
+                        <p>Muitas vezes visto em vitrais e sacrários, o pelicano era creditado, na lenda antiga, com a habilidade de perfurar o próprio peito para alimentar os filhotes famintos com o seu sangue. A Igreja viu nisso um belo símbolo de **Jesus Cristo e da Sagrada Eucaristia**, onde Ele nos alimenta de forma oblativa.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">O Cordeiro (Agnus Dei)</div>
+                    <div class="accordion-content">
+                        <p>Tradicionalmente retratado carregando um estandarte de vitória com e/ou deitado sobre um livro fechado de sete selos (como visto no Apocalipse). Simboliza Jesus, o "Cordeiro de Deus que tira o pecado do mundo" (Jo 1,29), a perfeita Vítima da Nova Aliança.</p>
+                    </div>
+                </div>
+                <div class="accordion-tab">
+                    <div class="accordion-header">A Âncora</div>
+                    <div class="accordion-content">
+                        <p>Símbolo valioso da teologia primitiva; encontra-se largamente nas catacumbas. Ela simboliza a **Esperança Cristã**. <em>"A esperança que temos é como uma âncora para a alma, firme e segura"</em> (Hb 6,19). Para os primeiros cristãos, a âncora formava veladamente o formato de uma cruz sem chamar atenção dos perseguidores romanos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin:16px 0;">
+            <button class="btn-share" data-partilhar data-partilhar-texto="Conheça os significados misticos e os acrósticos que formam a milenar simbologia católica. Acesse FeCatolica!">
+                📤 Partilhar
+            </button>
+        </div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.accordion-header').click(function() {
+                var content = $(this).next('.accordion-content');
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    content.slideUp(200);
+                } else {
+                    $('.accordion-header').removeClass('active');
+                    $('.accordion-content').slideUp(200);
+                    $(this).addClass('active');
+                    content.slideDown(200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
